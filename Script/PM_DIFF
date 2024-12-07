@@ -1,0 +1,140 @@
+_pcp_pmdiff()
+{
+    # All supported arguments for a co00and
+    local all_args=""
+    # Regex for args expecting non-metric parameter
+    local arg_regex=""
+		# 補完用の準備された関数
+		#local cur prev cword
+    # 引数分割に:を使わないようにしてコマンドライン情報を取得する
+    local cur prev words cword split
+    _init_completion -n : || return
+		_get_comp_words_by_ref -n : cur prev cword
+		# ロングオプションの分割を有効にしてコマンドライン情報を取得する
+    local cur prev words cword split
+    _init_completion -s || return
+
+
+		# 定義された変数として、COMP_CWORD(入力されたパラメータ個数）やCOMP_WORDS（入力された単語：配列）
+    local cmd=${COMP_WORDS[0]}
+		local cur=${COMP_WORDS[$cword]}
+
+    COMPREPLY=()
+
+		TMLIST="00:00 01:00 02:00 03:00 04:00 05:00 06:00 07:00 08:00 09:00 10:00 11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00 23:00"
+		# /var/log/pcp/pmlogger/hostname/20241010.0.xz 等のファイル名を探す
+		ARCHFL="2[0-9][0-9][0-9][01][0-9][0-3][0-9].[0-9].xz"
+		#echo $TMLIST
+
+    # Register arguments
+    case $cmd in
+    pmdiff*)
+    all_args="dzV?BEpqSTxXZ"
+    # 全オプション        all_args="dzV?BEpqSTxXZ"
+    #    all_args="B arch1_starttime;E arch1_endtime;p precision(精度);q threshold(閾値);S arch0_starttime;T arch0_endtime;xXZ"
+    arg_regex="-[dzV?BEpqSTxXZ]"
+    # 全オプション        arg_regex="-[dzV?BEpqSTxXZ]"
+    #    arg_regex="-[dzV?BEpqSTxXZ]"
+
+		# _pmdiff 関数は、TABを押下時に実行される。そのためその時のcur の値は随時変更されるので変更されたら前の値と比較し格納する
+		bf_cur=$cur
+		if [[ ${bf_cur} != ${cur} ]]; then
+		  bf_cur=$cur
+		fi
+
+		#echo; echo "============:  cmd ${COMP_WORDS[*]}, cword ${cword}, prev $prev, cur $cur, bf_cur $bf_cur"
+	  if [[ "${cmd}" == "pmdiff" && ${cword} -eq 1 ]]; then
+	  #if [[ "${cmd}" == "pmdiff" && ${cword} -eq 1 && ${cur} != "	" && $CNT -eq 0 && ${ALDOP} == "N" ]]; then
+	  #if [[ "${cmd}" == "pmdiff" && ${cword} -eq 1 && ${bf_cur} != ${cur} && ${ALDOP} != "N" ]]; then
+		#if [[ $OutputYN == 0 ]]; then
+	  #if [[ "${COMP_WORDS[0]}" == "pmdiff" && $OutputYN -eq 1 && ${cword} -eq 1 ]]; then
+		# cmd は他のコマンドも同じ処理で実現するためチェックする
+	  ## if [[ "${cmd}" == "pmdiff" && ${COMP_CWORD} -eq 1 && ${cur} != "-*" ]]; then
+		  EXAMP01="-S arch1_starttime[00:00] -T arch1_endtime[23:59] -B arch2_starttime -E arch2_endtime "
+		  #EXAMP02="-p precision[精度、浮動小数点表示] -q thres --skip-missing -x metric -X file -Z timezone[TZ:] "
+		  EXAMP02="-p precision[display all floating point number] -q threshhold[Metrics Double point or Half value] "
+			EXAMP03="-x metric -X file -Z timezone[TZ:] "
+		  EXAMP04="--skip-missing -d[debug mode] -z[Use archive set TZ] -V[version] -?[help] "
+			EXAMP05="archive1 [archive2]"
+		  echo; echo ${EXAMP01}; echo ${EXAMP02}; echo ${EXAMP03}; echo ${EXAMP04}; echo ${EXAMP05}; echo
+			# IFS=$'\n' の$をつける場合、'' の中に制御文字 /t を入れる場合に利用する
+			IFS=","
+			# 一度に、編集対象として推奨するオプションを表示する。アーカイブファイルは1つでも時間帯で比較できる
+			COMPREPLY=( $(compgen -W "-S 14:00 -T 16:00 -B 02:00 -E 04:00, " -- "${cur}") )
+			IFS=$' \n\t'
+#		  COMP_WORDS[0]="pmdiff -S 14:00 -T 16:00 -B 02:00 -E 04:00 " 
+#			echo ">>>>>>>>> $COMP_WORDS[0]"
+		  #return
+		  #cmd="pmdiff -S 14:00 -T 16:00 -B 01:00 -E 03:00 " 
+#			COMPREPLY=( $(compgen -W "-S 14:00 -T 16:00 -B 01:00 -E 03:00 " -- "${cur}") ) 
+#			echo -n "pmdiff "
+	  #elif [[ ${cword} -eq "2" && ${prev} == "-S" ]]; then
+		#	COMPREPLY=( $(compgen -W "$(echo $TMLIST) " -- "${cur}") )
+		  #return 0	
+		#else
+		#	IFS=$' \n\t'
+			#echo "#COMP_LINE: ${#COMP_LINE}"
+			#echo "-S 14:00 -T 16:00 -B 02:00 -E 04:00 "
+		fi
+    ;;
+    esac
+
+    local stime="",ttime="",btime="",etime="",sstime="",tttime="",bbtime="",eetime=""
+
+			# cur に時刻が5桁で設定されない場合があるようなのでここでチェック
+      for i in $(seq 1 $cword); do
+        if [[ "${COMP_WORDS[$i]}" == -S || "${COMP_WORDS[$i]}" == -T || "${COMP_WORDS[$i]}" == -B || "${COMP_WORDS[$i]}" == -E ]]; then
+					if [[ "${COMP_WORDS[$i]}" == -S ]]; then
+            stime="${COMP_WORDS[($i+1)]}"
+            stimec="${COMP_WORDS[($i+2)]}"
+            stimem="${COMP_WORDS[($i+3)]}"
+						echo "S:i($i)+1 ${COMP_WORDS[($i+1)]} ${COMP_WORDS[($i+2)]} ${COMP_WORDS[($i+3)]}"
+			      sstime=`date +%s -d "2024/1/1 ${stime}"`
+					elif [[ "${COMP_WORDS[$i]}" == -T ]]; then
+            ttime="${COMP_WORDS[($i+1)]}"
+            ttimec="${COMP_WORDS[($i+2)]}"
+            ttimem="${COMP_WORDS[($i+3)]}"
+						echo "T:i($i)+1 ${COMP_WORDS[($i+1)]} ${COMP_WORDS[($i+2)]} ${COMP_WORDS[($i+3)]}"
+			      tttime=`date +%s -d "2024/1/1 ${ttime}"`
+					elif [[ "${COMP_WORDS[$i]}" == -B ]]; then
+						echo "B:i($i)+1 ${COMP_WORDS[($i+1)]}"
+            btimeh="${COMP_WORDS[($i+1)]}"
+            btimec="${COMP_WORDS[($i+2)]}"
+            btimem="${COMP_WORDS[($i+3)]}"
+						echo "B:i($i)+1 ${COMP_WORDS[($i+1)]} ${COMP_WORDS[($i+2)]} ${COMP_WORDS[($i+3)]}"
+			      bbtime=`date +%s -d "2024/1/1 ${btime}"`
+					elif [[ "${COMP_WORDS[$i]}" == -E ]]; then
+						echo "E:i($i)+1 ${COMP_WORDS[($i+1)]}"
+            etimeh="${COMP_WORDS[($i+1)]}"
+            etimec="${COMP_WORDS[($i+2)]}"
+            etimem="${COMP_WORDS[($i+3)]}"
+						echo "S:i($i)+1 ${COMP_WORDS[($i+1)]}${COMP_WORDS[($i+2)]}${COMP_WORDS[($i+3)]}"
+			      eetime=`date +%s -d "2024/1/1 ${etime}"`
+			    fi
+			  fi
+      done
+
+			if [[ $tttime -lt $sstime ]]; then
+				echo "-T: $tttime , -S: $sstime"
+				echo "-T time is bigger than -S time"
+				return
+			elif [[ $bbtime -lt $eetime ]]; then
+				echo "-B: $bbtime , -E: $eetime"
+				echo "-E time is bigger than -B time"
+				return
+			fi
+
+			# After CurrentDirectory retrivew, /var/log/pcp/pmlogger/hostname retrivewing
+			CURDIR=${PWD}
+			ARCLIST=(`find ${CURDIR} -name $ARCHFL -print`)
+			if [[ ${#ARCLIST[@]} -eq 0 ]]; then
+				PCPDIR="/var/log/pcp/pmlogger/"
+				ARCLIST=(`find ${PCPDIR} -name $ARCHFL -print`)
+			fi
+
+			COMPREPLY=( $(compgen -W "$(echo ${ARCLIST}) " -- "${cur}") )
+
+}
+complete -o nosort -F _pcp_pmdiff -o default pmdiff
+
+##### complete -F _pcp_pmdiff -o default pmafm pmcd pmchart pmcheck pmclient pmconfig pmdakertnel pmdanvidia pmdumptext pmfine pmfind pmgetopt pmie pmie_check pminfo pmlogctl pmlogger_daily pmlogger_daily_report pmlogreduce pmlogrewrite pmlogsu00ary pmnsmerge pmprove pmpython pmquery pmseries pmsignal pmstat pmval

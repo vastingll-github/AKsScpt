@@ -1,0 +1,233 @@
+[.btn .btn-navbar]#[.icon-bar]## [.icon-bar]## [.icon-bar]###
+http://tech.clickyourstyle.com/[Technical tips]
+
+* link:/articles/142[シェルスクリプト]
+* link:/articles/139[構築・設定方法]
+* link:/articles/136[運用]
+* link:/articles/135[状態チェック]
+* link:/articles/140[etc]
+* link:/articles[記事一覧]
+
+* http://clickyourstyle.com/[Media hub]
+
+== http://tech.clickyourstyle.com/articles/8[置換・行や文字の削除などの文字列操作 (sed)]
+
+http://b.hatena.ne.jp/entry/http://tech.clickyourstyle.com/articles/8[image:http://b.st-hatena.com/images/entry-button/button-only@2x.png[このエントリーをはてなブックマークに追加,width=20,height=20]]
+
+[[fb-root]]
+
+https://twitter.com/share[ツイート]
+
+'''''
+
+[.underline]##
+
+[.underline]##
+
+linuxでテキストファイルを編集するのを自動化したい場合が結構ある。たとえばApacheなどのプログラムをインストールするときに設定値を置換するなど。bashでこういうことをする場合はsedなどで置換を行うとよい。sedの簡単な使い方を説明します。
+
+以下の例で頻繁的に使っている-i
+オプションは指定したファイルをそのまま上書きします。パイプでつないだり、リダイレクトしたりする場合は不要です。
+
+空行を削除
+
+....
+sed -i '/^$/d' target.txt
+....
+
+文字列を削除
+
+....
+sed -i 's/文字列//g' target.txt
+....
+
+文字列を含む行を削除
+
+....
+sed -i '/文字列/d' target.txt
+....
+
+設定ファイルの特定の行を削除するときに使えます。
+
+対象文字列を置換文字列に置換
+
+....
+sed -i 's/対象文字列/置換後文字列/g' target.txt
+....
+
+設定ファイルの値を変更したりコメントアウトしたり、逆にコメントアウトを外すときに使えます。
+
+指定行を削除（例では2～5行
+
+....
+sed -i '2,5d' target.txt
+....
+
+データ処理用にヘッダ行を削除したりするときに使えます。
+
+== 利用例
+
+私の場合、sedはOSインストール後の設定スクリプトでよく使います。
+よくやる例を以下に示します。
+
+/etc/sudoersファイルの中の 'Defaults requiretty'
+行をコメントアウトします。
+
+....
+# sed -i 's/Defaults.*requiretty/#Default\trequiretty/g' /etc/sudoers
+....
+
+この結果
+
+....
+修正前）
+Defaults          requiretty
+修正後）
+# Defaults        requiretty
+....
+
+/etc/sudoersファイルの中の '# %wheel ALL=(ALL) ALL'
+行のコメントアウトを外してwheelグループにsudoを許可します。
+
+....
+# sed -i 's/^#\s%wheel\s*ALL=(ALL)\s*ALL$/%wheel\tALL=(ALL)\tALL/g' /etc/sudoers
+....
+
+この結果
+
+....
+修正前）
+# %wheel    ALL=(ALL)   ALL
+修正後）
+%wheel  ALL=(ALL)   ALL
+....
+
+[.underline]##
+
+'''''
+
+* link:/articles/138[HowTo]
+* {blank}
+** link:/articles/141[ハードディスクを乱数で完全に消去する (shred)]
+** {blank}
+** link:/articles/134[乱数ファイルの作成 (dd)]
+** {blank}
+** *置換・行や文字の削除などの文字列操作 (sed)*
+** {blank}
+** link:/articles/11[文字列・数字のソート操作 (sort)]
+** {blank}
+** link:/articles/10[CSVなどから必要なカラムの抜き出し (cut)]
+** {blank}
+** link:/articles/93[日数、月数を指定してdateを実行する (date)]
+** {blank}
+** link:/articles/167[フォーマットを指定して日時を取得する (date)]
+** {blank}
+** link:/articles/3[UNIXタイムスタンプと時刻の変換 (ruby)]
+** {blank}
+** link:/articles/160[ユニークなファイルを作成する (mktemp)]
+** {blank}
+** link:/articles/193[読みやすいパスワードを自動生成する (pwgen)]
+** {blank}
+** link:/articles/196[プログラムの実行時間を測定する (time)]
+** {blank}
+** link:/articles/291[shellスクリプトからパスワードを変更する
+(chpasswd)]
+** {blank}
+** link:/articles/292[フルパス文字列からディレクトリ文字列だけを抜き出す
+(dirname)]
+** {blank}
+** link:/articles/293[フルパス文字列からファイル名や部分だけを抜き出す
+(basename)]
+** {blank}
+** link:/articles/456[grepで文字列の一致する部分だけを抜き出す (grep)]
+** {blank}
+
+'''''
+
+関連記事
+
+* http://tech.clickyourstyle.com/articles/8[置換・行や文字の削除などの文字列操作]
+* http://tech.clickyourstyle.com/articles/456[grepで文字列の一致する部分だけを抜き出す]
+
+'''''
+
+http://tech.clickyourstyle.com/category/linux[linux]
+
+http://tech.clickyourstyle.com/keyword/sed[sed]
+
+http://tech.clickyourstyle.com/language/bash[bash]
+
+'''''
+
+link:/articles[記事一覧へ]
+
+'''''
+
+*MENU*
+
+* link:/articles/142[シェルスクリプト]
+* link:/articles/139[構築・設定方法]
+* link:/articles/136[運用]
+* link:/articles/135[状態チェック]
+* link:/articles/140[etc]
+* link:/articles[記事一覧]
+
+'''''
+
+*CATEGORY*
+
+* link:/category/linux[linux]
+* link:/category/etc[etc]
+* link:/category/ubuntu[ubuntu]
+* link:/category/Redhat[Redhat]
+* link:/category/CentOS[CentOS]
+
+'''''
+
+*Photo*
+
+link:/images/6[image:/uploaded/upload_image/file/6/icon_a1180_008157_m.jpg[バナー用,title="バナー用"]]
+
+link:/images[すべての写真]
+
+'''''
+
+*連携アプリ*
+
+* link:/featured/web_tools[WEB tools]
+
+'''''
+
+*リンク*
+
+* http://screen.clickyourstyle.com[screen]
+
+'''''
+
+*最新記事一覧*
+
+* link:/articles/456[grepで文字列の一致する部分だけを抜き出す]
+* link:/articles/455[HISTIGNOREでhistoryから一部のコマンドを除外する。]
+* link:/articles/436[zip形式で圧縮および解凍]
+* link:/articles/293[フルパス文字列からファイル名や部分だけを抜き出す]
+* link:/articles/292[フルパス文字列からディレクトリ文字列だけを抜き出す]
+* link:/articles/291[shellスクリプトからパスワードを変更する]
+* link:/articles/290[プロセス名を指定してプロセスをkillする]
+* link:/articles/289[rpmパッケージのインストール、アップデート、アンインストール]
+* link:/articles/288[rpmパッケージファイルに含まれるファイルを確認する]
+* link:/articles/287[rpmインストールでインストールされたファイルの一覧取得]
+
+[.underline]##
+
+'''''
+
+* http://clickyourstyle.com/[Media hubトップページ]
+
+* {blank}
+
+* {blank}
+
+* {blank}
+
+[[copyright]]
+Media hub all rights reserved since 2013.

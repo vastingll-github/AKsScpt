@@ -1,0 +1,1538 @@
+Bookmarks
+
+== Bookmarks
+
+=== ブックマーク
+
+=== knab
+
+https://ib.aeonbank.co.jp/0040/B/B/B/C100/KBC11BN000B000.do[ログイン｜イオン銀行ダイレクト]
+
+https://www.shinseibank.com/powerflex/direct/[インターネットバンキング -
+新生パワーダイレクト | 新生銀行]
+
+https://www.rakuten-bank.co.jp/[楽天銀行（旧イーバンク銀行）｜ネットバンク]
+
+https://www.dentsu-kyosai.or.jp/[電通共済生協｜電気通信産業労働者共済生活協同組合]
+
+https://www.mizuhobank.co.jp/retail/products/direct/index.html[みずほダイレクト（インターネットバンキング）
+| みずほ銀行]
+
+https://www.smbc.co.jp/kojin/direct/[インターネットバンキング（SMBCダイレクト）
+： 三井住友銀行]
+
+https://znck.roren.cc/?m=znck&s=login[年金共済《ひろがり》積立金額確認画面｜ログイン]
+
+https://www.jp-bank.japanpost.jp/index.html[株式会社ゆうちょ銀行]
+
+https://ib.sevenbank.co.jp/IB/IB_U_CO_002/IB_U_CO_002_100.aspx[ログオン｜セブン銀行ダイレクトバンキング]
+
+https://ib.rokin.jp/nprotect/?bid=13[中央労働金庫| ろうきんダイレクト |
+ログインの前に｜セキュリティソフト導入のお願い]
+
+=== DRAC
+
+https://point.orico.co.jp/id/script/menu/gotologin?cid=5334851[ログイン｜クレジットカード・カードローンのオリコ]
+
+https://www.orico.co.jp/[かなえる、のそばに。 オリコカード]
+
+https://www.jreast.co.jp/card/index.html/[ビューカードはSuicaを便利に使えるJR東日本グループのクレジットカード]
+
+https://api.saisoncard.co.jp/auth/screen/na/authorize?response_type=code&client_id=ZC001&state=&scope=openid
+
+https://www.smbc-card.com/mem/index.jsp[三井住友カード会員向けサービス「Vpass」ログイン]
+
+https://www.rakuten.co.jp/?scid=wi_grp_gmx_ich_sbc[【楽天市場】Shopping
+is Entertainment! ：
+インターネット最大級の通信販売、通販オンラインショッピングコミュニティ]
+
+https://my.jcb.co.jp/Login[JCBの会員専用WEBサービス「MyJCB（マイジェーシービー）」]
+
+https://www.waon.net/[電子マネー WAON [ワオン] 公式サイト]
+
+https://www.aeon.co.jp/NetBranch/view.do?key=80d32b6115dd11ea9d96005056bf3e1c[MyPage｜暮らしのマネーサイト]
+
+https://secure.goldpoint.co.jp/gpm/membertop.html[GOLD POINT CARD +
+Member's Page]
+
+https://www.nissen-ncs.jp/WEB/index.php[Tポイントがどんどん貯まるクレジットカード｜マジカルクラブTカードJCB]
+
+https://7card.jcb.co.jp/iss-pc/member/user_manage/userLogin.html[セブンカードWEBサービス]
+
+https://www.jrepoint.jp/[JR東日本の共通ポイントサイト － JRE POINT]
+
+https://shopping.dmkt-sp.jp/?utm_source=a8&utm_medium=affiliate&utm_term=0&utm_campaign=a8net&a8=.VwlTVDbAujP3O-_1SjnDaOhj55Zj5d-tSF1cad_VPYdmuwjiyskhuwVjyw3L_ta6cDPguN.Eus.MusbhusuhawQvusQEP2bAuwOvuFQvus3qaEnNnsjhPYadIwmhVwlfs00000021220001[ドコモの通販サイト
+- dショッピング｜dポイント・ケータイ払いが使える通販（dマーケット）]
+
+https://www.nttdocomo.co.jp/mydocomo/index.html[My docomo | NTTドコモ]
+
+https://ca.cedyna.co.jp/member/login.asp[セディナビ（会員専用Webサービス）]
+
+https://www.nanaco-net.jp/pc/emServlet[nanaco / ログイン]
+
+https://www.amazon.co.jp/gp/help/customer/display.html?nodeId=GSD587LKW72HKU2V[Amazon.co.jp
+ヘルプ: カスタマーサービスに連絡]
+
+https://pointi.jp/campaign/welkatsu/[ウェル活特集！ウェル活でポイント1.5倍|ポイントサイトのポイントインカム]
+
+https://cyber.promise.co.jp/Pcmain/APA00Control[キャッシング・カードローンなら消費者金融の【プロミス】公式サイト]
+
+https://www.eposcard.co.jp/memberservice/pc/login/login_preload.do[エポスNet
+マイページログイン｜クレジットカードはエポスカード]
+
+https://wis.pocketcard.co.jp/netservice/login[ポケットカード会員専用ネットサービス　ログイン]
+
+https://mvno.dmm.com/[DMM mobile]
+
+https://members.acure-fun.net/wbam/PC/member/mem_login.php?[アキュア
+メンバーズ]
+
+https://point.recruit.co.jp/member/OAuthLogin/?response_type=code&redirect_uri=https%3A%2F%2Frecruit-card.jp%2Fdispatch%2F&state=10f36c755e4856b61dfc5cea5423197521d9c79e414eb334600c69221c06a1c9f073269ac7e88802f4fc8f03d9b4e855&client_id=235e716d979b2d8c8d3feaf53bfe7996619a5ae452be1b41555da255f2714e54[リクルートID
+- ログイン]
+
+https://cha.isao.net/profile_oem/OEMLogin.php?product_name=bms[会員登録情報]
+
+https://api.saisoncard.co.jp/html/NA/PCSP/logout/index.html[SAISON CARD
+Netアンサー]
+
+https://www5.dcmx.jp/dcmx/meisai?processCode=03Meisai[カードご利用明細照会]
+
+https://hometrade.nomura.co.jp/web/rmfCmnCauSysLgiInitAction.do[ログイン
+| 野村證券]
+
+https://secure.goldpoint.co.jp/gpm/authentication/index.html[ログイン -
+GOLD POINT CARD +]
+
+https://www.7mp.omni7.jp/#/[セブンマイルプログラム]
+
+=== Apache
+
+=== 定義
+
+https://httpd.apache.org/docs/2.4/ja/mod/directive-dict.html#Context[ディレクティブの解説に使われる用語
+- Apache HTTP サーバ バージョン 2.4]
+
+=== 仕様
+
+=== LogForm
+
+https://qiita.com/colorrabbit/items/a9189fd1f27c49613577[Apacheのログの表示形式を設定する方法
+〜調べてみた編〜 #Linux - Qiita]
+
+https://www.javadrive.jp/apache/log/index1.html[Apache |
+CustomLogディレクティブ：ログファイルの名前と使用するフォーマットを選択する]
+
+https://beyondjapan.com/blog/2017/12/apache-accesslog/[【Apache】アクセスログの書式の設定を理解する
+| 株式会社ビヨンド]
+
+https://www.javadrive.jp/apache/log/index2.html[Apache |
+LogFormatディレクティブ：ログファイルのフォーマットを定義する]
+
+=== EnvINFO
+
+https://www.cilas.net/[サイラスネット ｜
+インターネットマンションサービス]
+
+https://nanasi.jp/articles/howto/file/seemingly-unneeded-file.html#id6[vimエディタが（勝手に）作成する、一見、不要に見えるファイルが何をしているか
+— 名無しのvim使い]
+
+https://www.mitsubishielectric.co.jp/ldg/wink/ssl/displayProduct.do?pid=245835&ccd=102010[MR-G42N-PW｜三菱電機WIN2K]
+
+https://www.renet.jp/?utm_source=aftoma&utm_medium=af&utm_campaign=stitch&_buyer=20&affitoma_xuid=20,0,161,xuidx71d8b85a25x830[【国認定】パソコンの無料回収（処分・廃棄）サービス「リネットジャパン」]
+
+http://tplinkwifi.net/[Archer C3150]
+
+https://www.takagi-member.jp/login.php?TKG_MEMBER=2b0fho0nds3posf7kqq1b0f3j4[=ログイン｜My
+page｜takagi=]
+
+https://www.nomura-re-cc.jp/[野村不動産グループカスタマークラブ]
+
+https://sites.google.com/site/fudist/Home/vim-nihongo-ban/vim-japanese/ime-control#windows[Vim/GVimで「日本語入力固定モード」を使用する
+- fudist]
+
+https://groups.google.com/forum/#!forum/vim_jp[（45）vim_jp - Google
+グループ]
+
+https://www.microsoft.com/ja-jp/software-download/windows10ISO[Windows
+10 のディスク イメージ (ISO ファイル) のダウンロード]
+
+https://news.mynavi.jp/itsearch/article/hardware/4785[【連載】にわか管理者のためのLinux運用入門
+[211] Powerlineでカッコよく -
+エディタ編（Vim）｜サーバ/ストレージ｜IT製品の事例・解説記事]
+
+https://members.tokyo-gas.co.jp/[東京ガス ： myTOKYOGAS]
+
+https://mypage.melco-grp.jp/mypage/s/login/[ログイン│メルコグループ　マイページ]
+
+https://www.buffalo.jp/product/detail/software/ls-wx1.0tl_r1.html#tab-link[LS-WX1.0TL/R1
+: ソフトウェア | バッファロー]
+
+https://segakuin.com/linux/grub.html[GRUB rescue
+コマンドで起動しないブートローダーを修復する]
+
+https://faq.nomura-re-cc.jp/hc/ja/articles/6037275288591-%E3%83%9E%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E8%B2%BB%E3%81%AE%E5%86%85%E8%A8%B3%E3%82%84%E8%A9%B3%E7%B4%B0%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%81%9F%E3%81%84[マンション管理費の内訳や詳細を確認したい
+– 野村不動産グループカスタマークラブよくある質問]
+
+=== Editor
+
+=== Emacs
+
+https://qiita.com/suwa3/items/87af37b8a1148105af7c[Emacs内部でshellを複数起動する
+#Emacs - Qiita]
+
+=== vi
+
+=== VIM
+
+https://www.karakaram.com/vimfiler/[vimfilerとUniteでVimをファイラとして使用する方法
+- karakaram-blog]
+
+link:++https://sites.google.com/site/yoichiwo7/tools/vim#TOC--4++[vim -
+tiny tech]
+
+https://mattn.kaoriya.net/software/vim/20070907161814.htm[Big Sky ::
+意外と知られていないvimのtips(Mac
+OSXでもExploreから拡張子に応じたアプリケーションを起動)]
+
+https://debimate.jp/2019/09/14/%E3%80%90vim8-1-x%E3%81%8B%E3%82%89%E6%A8%99%E6%BA%96%E6%A9%9F%E8%83%BD%E3%80%91vim%E3%81%8B%E3%82%89gdb%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%9E%E3%82%A6%E3%82%B9/[【Vim8.1.xから標準機能】VimからGDBを起動する方法(マウスでGDBを操作可能)]
+
+https://groups.google.com/g/vim_dev[vim_dev - Google グループ]
+
+https://code.google.com/archive/p/vimcolorschemetest/[Google Code
+Archive - Long-term storage for Google Code Project Hosting.]
+
+https://rurukblog.com/post/ssh-fingerprint/[SSHにおけるフィンガープリントとは。ホスト認証とあわせて解説]
+
+https://www.clear-code.com/blog/2018/4/23.html[Vimで単語を囲む方法をいくつか
+- 2018-04-23 - ククログ]
+
+https://massie0414.com/index.php/vi/4660/[Ubuntuのviがどうも変なので調べてみた
+- massie programming]
+
+http://nanasi.jp/howto/diff.html[2つのテキストファイルのdiff —
+名無しのvim使い]
+
+=== デジタル関連
+
+https://www.sony.jp/bravia/update/?nccharset=81EE58CE&searchWord=A1[本体アップデート情報
+| テレビ ブラビア | ソニー]
+
+https://mvno.dmm.com/mypage/-/contact/[DMM mobile - 契約内容の確認]
+
+https://www.biccamera.com/bc/main/[ビックカメラ.com | ビックカメラの公式通販サイト]
+
+http://faq.askpc.panasonic.co.jp/faq/docs/003375[ダウンロード No.003375
+CF-J10B、J10C、J10D、J10R、J10Sシリーズ Windows
+8アップグレード対応モジュール| パナソニック パソコンサポート]
+
+http://askpc.panasonic.co.jp/r/windows/8/#3[Windows 8
+サポート評価情報（Windows 7からのアップグレード） | パナソニック
+パソコンサポート]
+
+http://192.168.0.1/[Archer C3150]
+
+https://online.nojima.co.jp/[ノジマオンライン -
+日本最大級のデジタル家電通販「Nojima Online」]
+
+http://faq.askpc.panasonic.co.jp/faq/docs/001065[ダウンロード No.001065
+個人向けPC 取扱説明書ダウンロード| パナソニック パソコンサポート]
+
+https://mvno.dmm.com/mypage/[DMM mobile - マイページ]
+
+http://blog.jcan.jp/sperion/42671/[orz記録 |
+Lubuntuでのデュアルモニター設定]
+
+https://jp.yamaha.com/products/audio_visual/sound_bar/ysp-2700/index.html[ヤマハ
+| YSP-2700 - サウンドバー - 概要]
+
+https://jp.yamaha.com/support/updates/68440.html[ヤマハ | YSP-2700
+最新ファームウェア（Ver.2.11） - サポート・お問い合わせ]
+
+http://rpm.pbone.net/index.php3/stat/4/idpl/21881048/dir/centos_6/com/gtk-sharp2-2.10.0-12.6.crt0.x86_64.rpm.html[RPM
+CentOS 6 gtk-sharp2 2.10.0 x86_64 rpm]
+
+http://ftp-srv2.kddilabs.jp/Linux/packages/CentOS/[Index of
+/Linux/packages/CentOS]
+
+https://www.plathome.co.jp/products/mini_key/pro/index.html[ぷらっとホーム
+- Mini Keyboardシリーズ - Mini Keyboard Pro]
+
+https://online.plathome.co.jp/%E3%81%B7%E3%82%89%E3%81%A3%E3%81%A8%E3%83%9B%E3%83%BC%E3%83%A0/Mini-Keyboard/[【ぷらっとオンライン】ぷらっとホーム
+Mini Keyboard シリーズ価格表｜通販]
+
+https://www.ne.jp/asahi/hishidama/home/tech/cvs/command.html#import[CVSコマンドメモ(Hishidama's
+CVS command Memo)]
+
+https://compatibleproducts.intel.com/ProductDetails?EPMID=83255[Intel®
+Product Compatibility Tool]
+
+https://harusamelab.com/2019/03/17/git%E3%81%8C%E5%87%BA%E6%9D%A5%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E6%AD%B4%E5%8F%B2%E3%81%A8%E5%B0%86%E6%9D%A5%E3%81%AE%E5%B1%95%E6%9C%9B%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1/[Gitが出来るまでの歴史と将来の展望(バージョン管理システム)
+- harusame lab]
+
+=== MS-Office
+
+http://replication.hatenablog.com/entry/20120321/1332338059[WordやExcelから直接SVNにコミットできるアドオンmsofficesvn
+- 小さい頃はエラ呼吸]
+
+https://appsource.microsoft.com/ja-jp/marketplace/apps?search=&page=1&product=office%3Bpowerpoint&category=project-management&src=office[ビジネス
+アプリ – Microsoft AppSource]
+
+http://freemind.s57.xrea.com/xdocdiffPlugin/[xdocdiff WinMerge Plugin
+-Word、Excel、PowerPoint、pdfの比較・差分を見る-]
+
+https://winmergejp.bitbucket.io/[WinMerge 日本語版]
+
+https://tortoisesvn.net/docs/release/TortoiseSVN_ja/tsvn-dug-diff.html[差分の表示]
+
+https://qiita.com/yamada-hakase/items/a8efe626f598c5eb6f8c[WindowsのRDPを使ってクラウド上のLinuxインスタンスに接続する
+- Qiita]
+
+https://applecom.blog.jp/archives/28911929.html[Android用VNCクライアントまとめ
+: りんご便り]
+
+https://www.surfly.jp/#product[簡単・安心・すぐつながる！お客様の満足度を高めるWeb画面共有ツール
+- Surfly]
+
+http://www.hanada.net/archives/1002[Buffalo LinkStation LS-WXL |
+hanada.net]
+
+https://github.com/Stonie/acp-commander[GitHub - Stonie/acp-commander:
+acp-commander from http://linkstationwiki.sourceforge.net/]
+
+https://support.brother.co.jp/j/s/support/html/cv_dcp567na_jpn/doc/manual/index.html#index_body[ユーザーズガイド
+パソコン活用＆ネットワーク]
+
+https://online.brother.co.jp/Account/Authentication[ログイン]
+
+https://www.nespresso.com/jp/ja/order/capsules/vertuo[ネスプレッソ
+コーヒーカプセルを購入する | コーヒーカプセル - ネスプレッソ]
+
+=== DeskTopLinux
+
+https://zenn.dev/tmtms/articles/202109-remap-key[Linux で X
+よりも低レイヤでキーマップを変更する]
+
+https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%BC%E9%85%8D%E5%88%97[キー配列
+- Wikipedia]
+
+https://www.ianlewis.org/jp/japanese-106-key-dvorak-keyboard-layout[Ubuntu
+で日本語 106キーDvorak 配列を設定 - Ian Lewis]
+
+https://github.com/rafi/awesome-vim-colorschemes[GitHub -
+rafi/awesome-vim-colorschemes: Collection of awesome color schemes for
+Neo/vim&#44; merged for quick use.]
+
+https://dailylife.pman-bros.com/ubuntu22_screen_shot/[Ubuntu 22.04 LTS
+でスクリーンショットを撮る、スクリーンキャストを録る方法 |
+ピーマンブラザーズの日常]
+
+https://forums.ubuntulinux.jp/viewtopic.php?id=21766[Ubuntu日本語フォーラム
+/ スクリーンロックが機能しなくなりました]
+
+https://www.server-world.info/query?os=Fedora_32&p=runlevel[Fedora 32 :
+ランレベルを変更する : Server World]
+
+https://www.server-world.info/query?os=Fedora_32&p=desktop&f=1[Fedora 32
+: GNOME デスクトップ : Server World]
+
+https://www.server-world.info/query?os=Fedora_19&p=x[Fedora 19 :
+デスクトップ環境 インストールと設定 : Server World]
+
+https://github.com/kmuto/review/blob/master/doc/quickstart.ja.md[review/quickstart.ja.md
+at master · kmuto/review]
+
+=== Redmine
+
+https://blog.redmine.jp/articles/4_1/install/ubuntu/[Redmine 4.1をUbuntu
+Server 18.04.3 LTSにインストールする手順]
+
+https://redmine.jp/tech_note/first-step/admin/[Redmineを使い始めるための初期設定]
+
+https://redmine.jp/faq/system_management/backup/[データのバックアップ方法]
+
+=== git
+
+https://git-scm.com/book/ja/v2/%E4%BB%98%E9%8C%B2-A%3A-%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E3%81%A7%E3%81%AEGit-Bash%E3%81%A7Git%E3%82%92%E4%BD%BF%E3%81%86[Git
+- BashでGitを使う]
+
+=== AuthINF-openIDconnect
+
+https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB[一番分かりやすい
+OpenID Connect の説明 #OAuth - Qiita]
+
+https://openid.net/specs/openid-connect-core-1_0.html[Final: OpenID
+Connect Core 1.0 incorporating errata set 2]
+
+https://datatracker.ietf.org/doc/html/rfc6749[RFC 6749 - The OAuth 2.0
+Authorization Framework]
+
+https://www.macnica.co.jp/business/security/manufacturers/okta/blog_20210901.html[Open
+ID Connectとは？概要とメリットを解説！ - セキュリティ事業 - マクニカ]
+
+https://keycloak-documentation.openstandia.jp/5.0.0/ja_JP/server_admin/index.html[Server
+Administration Guide]
+
+https://qiita.com/kurotsu/items/aedc92af2e4f61493c22[OAuth2.0/OpenID
+Connectの利用(3) : OpenAMでOPを立ててmod_auth_openidcと連携する
+#openid_connect - Qiita]
+
+=== Gnome-Term
+
+https://kt-hiro.hatenablog.com/entry/2022/05/15/150917[Ubuntu22.04
+FFmpeg + AviSynth + JoinLogoScp + delogo
+でSVT-AV1対応自動CMカットエンコード環境構築 -
+わすれないうちにメモしよう]
+
+=== OSStelephony
+
+https://itsfoss.com/deals/[Coupons - It's FOSS]
+
+https://signal.org/ja/download/[Signal >> Signal をダウンロード]
+
+https://jitsi.org/downloads/[Jitsi Downloads - iOS & Android apps; Jitsi
+Meet&#44; & Jitsi Videobridge builds]
+
+https://desktop.jitsi.org/[jitsi.org | Jitsi]
+
+https://github-production-release-asset-2e65be.s3.amazonaws.com/9653752/c0ce0000-a95d-11ea-930d-048772da6e4c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200626T085602Z&X-Amz-Expires=300&X-Amz-Signature=3956350e405141b8c834fdeec9848578b2f4815a3f4edb2f0b47046647e00861&X-Amz-SignedHeaders=host&actor_id=0&repo_id=9653752&response-content-disposition=attachment%3B%20filename%3Djitsi-2.10-5550.x86_64.rpm&response-content-type=application%2Foctet-stream[Download
+| Jitsi]
+
+https://sourceforge.net/projects/unitedrpms/[unitedrpms download |
+SourceForge.net]
+
+https://st-dktp/[Jitsi Meet]
+
+=== ISO
+
+https://ftp.riken.jp/Linux/[Index of /Linux]
+
+=== SourceCOOP
+
+https://wandbox.org/[[Wandbox]三へ( へ՞ਊ ՞)へ ﾊｯﾊｯ]
+
+https://codepen.io/[CodePen: Online Code Editor and Front End Web
+Developer Community]
+
+https://github.com/[GitHub: Where the world builds software · GitHub]
+
+http://jsbin.com/?html,output[JS Bin - Collaborative JavaScript
+Debugging]
+
+https://dan.com/buy-domain/climbi.com?redirected=true&tld=com[The domain
+name Climbi.com is for sale]
+
+https://searchcode.com/?q=Perl+SVN+Operation[Perl SVN Operation |
+searchcode]
+
+=== LinuxDistro
+
+https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg[Linux
+Distributions Timeline]
+
+http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/releases/[Ubuntu
+Releases]
+
+https://ftp.jaist.ac.jp/pub/Linux/[Index of /pub/Linux]
+
+https://www.ubuntulinux.jp/ubuntu/mirrors[日本国内のダウンロードサイト |
+Ubuntu Japanese Team]
+
+=== AcroLinux
+
+https://www.linux-setting.tokyo/2021/10/arcolinux-210911-archxfcearcolinuxl.html[ArcoLinux
+21.09.11
+〜archベース＆非常にリッチなXfceデスクトップ環境を有する"ArcoLinuxL"を検証する！・・MacライクなArcolinux
+Cutefishデスクトップ環境もちょっと触れます。]
+
+https://lovely910.com/2022/01/21/2022-01-%E8%BB%BD%E9%87%8F%E3%81%AA-arcolinux-l-22-01-10%E3%82%92%E3%80%81core-2-duo-p8600%E6%90%AD%E8%BC%89%E3%81%AE%E6%9D%B1%E8%8A%9D%E3%80%80dynabook-th-64h2%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9/[2022.01
+軽量な ArcoLinux L 22.01.10を、Core 2 Duo P8600搭載の東芝　Dynabook
+TH/64H2にインストール]
+
+https://sourceforge.net/projects/arcolinux/files/ArcoLinuxL/[ArcoLinuxL&#44;
+ArcoLinuxS and ArcoLinuxD - Browse /ArcoLinuxL at SourceForge.net]
+
+=== EndeavourOS
+
+http://linuxplayers.g1.xrea.com/endeavour_01.html[EndeavourOS -
+インストール]
+
+=== ArchLinux
+
+=== FedoraCore
+
+https://rheb.hatenablog.com/entry/202007-fedora-distribution[Fedora/CentOS
+Stream/CentOS/RHELの関係性 - 赤帽エンジニアブログ]
+
+=== Garudalinux
+
+https://sourceforge.net/projects/garuda-linux/[Garuda Linux]
+
+https://garudalinux.org/downloads.html[Garuda Linux | Downloads]
+
+https://freebsd.sing.ne.jp/linux/23/03/07/04.html[Garuda - 211129 - LXQt
+- 日本語入力]
+
+https://sourceforge.net/projects/garuda-linux/files/garuda/cinnamon/230319/garuda-cinnamon-linux-zen-230319.iso/download[Download
+garuda-cinnamon-linux-zen-230319.iso (Garuda Linux)]
+
+=== Ustudio
+
+https://report.hot-cafe.net/ubuntu-studio-2204lts-13455[Ubuntu Studio
+22.04 LTS…インストールから日本語入力まで！ | Report Hot Cafe]
+
+https://www.google.co.jp/search?q=vmware+workstaion+17+Linux+vmware-tools+%E5%B0%8E%E5%85%A5&sxsrf=APwXEdevwAvXR450_hOQbeKlyraU3toR9A%3A1681536485763&ei=5TU6ZMabLtT7wAP_1YXQBg&ved=0ahUKEwiGoqTHk6v-AhXUPXAKHf9qAWoQ4dUDCA8&uact=5&oq=vmware+workstaion+17+Linux+vmware-tools+%E5%B0%8E%E5%85%A5&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCAAQogQyBQgAEKIEOgoIABBHENYEELADOggIABCJBRCiBEoECEEYAFDBBljtDWDCFWgBcAF4AIABjgGIAfYEkgEDNC4ymAEAoAEByAEKwAEB&sclient=gws-wiz-serp[vmware
+workstaion 17 Linux vmware-tools 導入 - Google 検索]
+
+https://gihyo.jp/admin/serial/01/ubuntu-recipe/0677[第677回　aptで使うsources.listのオプションいろいろ
+| gihyo.jp]
+
+https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.ja.pdf
+
+https://www.rpmfind.net/linux/RPM/fedora/40/x86_64/r/rpm-4.19.1.1-1.fc40.x86_64.html[rpm-4.19.1.1-1.fc40.x86_64
+RPM]
+
+=== Rocky
+
+https://dl.rockylinux.org/vault/rocky/8.9/isos/x86_64/[Index of
+/vault/rocky/8.9/isos/x86_64/]
+
+=== ブックマーク
+
+=== Eciffohcet
+
+https://centos.pkgs.org/6/epel-x86_64/pdfgrep-1.2-7.el6.x86_64.rpm.html[pdfgrep-1.2-7.el6.x86_64.rpm
+CentOS 6 Download]
+
+http://replication.hatenablog.com/entry/20110825/1314198140[TortoiseSVNでWordやExcelの差分をWinMergeで比較する方法
+- 小さい頃はエラ呼吸]
+
+=== PHPexcel
+
+https://pg.4696.info/php/phpspreadsheet2.html[PhpSpreadsheet
+Excelファイルの読み込み – pg-info]
+
+https://code.google.com/archive/p/php-excel-reader/[Google Code Archive
+- Long-term storage for Google Code Project Hosting.]
+
+=== Web会議Jitsi
+
+https://www.designet.co.jp/ossinfo/rocket.chat/rocket.chat_conference/[Web会議システムのOSS〜Jitsi〜
+| OSSでのシステム構築・デージーネット]
+
+http://simplesandsamples.com/read-bin.pl.html[説明のないとってもシンプルなサンプルプログラム集]
+
+https://allabout.co.jp/gm/gc/426301/6/[6/7 Perl
+CPANモジュールのインストール方法 [Perl] All About]
+
+https://hogandiff.hotchpotch.xyz/install/[インストール | 方眼Diff]
+
+https://qiita.com/tsukamoto/items/dfe128746f73f88239ec[Excelファイル内の全シートをCSV保存するPerlスクリプト
+- Qiita]
+
+https://w.atwiki.jp/sakawork/pages/36.html[UNIX/デバッガ - sakawork @
+ウィキ - アットウィキ]
+
+=== 生活情報
+
+https://www.richell.co.jp/shop/lifecare/detail/018481[使っていいね！
+ペットボトルハンドル | リッチェル公式ウェブショップ ライフケア用品]
+
+https://inklab.jp/SHOP/list.cgi[激安互換インクカートリッジ専門店
+インクラボ]
+
+https://onewaywater.com/mineralwater/[ミネラルウォーター |
+ワンウェイウォーター]
+
+https://zenb.jp/account/login?return_url=%2Faccount[アカウント | ZENB]
+
+https://social.i-say106.com/[i-Say | アイセイ | イプソス株式会社]
+
+https://www.renet.jp/?utm_source=AFFITOMA_s&utm_medium=af&suid=xuidx763d20b63bxeb3&_buyer=20&affitoma_xuid=20,0,161,xuidx763d20b63bxeb3&_buyer=20&s_redirect_xuid=20,0,419,xuidx763d20b658x172[【国認定】パソコンの無料回収（処分・廃棄）サービス「リネットジャパン」]
+
+https://heiwa-med.com/access.html[アクセス│平和記念医院│清澄白河│門前仲町｜女医]
+
+https://www.iibc-global.org/toeic/official_data/lr/data_avelist.html[公開テスト
+平均スコア・スコア分布 一覧｜TOEIC Listening & Reading Test
+公式データ・資料｜【公式】TOEIC Program｜IIBC]
+
+https://www.sodastream.jp/products/detail.php?product_id=73[ソーダストリーム
+SodaStream｜ガスシリンダー｜ソーダストリーム ガスシリンダー 60L お得便
+2本×3回分]
+
+https://toyota.jp/carlineup/?padid=from_not_tjptop_menu_carlineup[トヨタ
+ラインアップ | トヨタ自動車WEBサイト]
+
+https://form.kintoneapp.com/public/form/show/5b07a82c41c13d1f8a4fce7a11da3fc123946f70e231f75dc633fe9d192f1e21[東京都
+ワクチン予約受付]
+
+https://jp.sharp/reizo/products/sjmf46h/[SJ-MF46H | 冷蔵庫：シャープ]
+
+https://www.fx-foreign-exchange.com/rate/audjpy.html[AUD/JPY：豪ドル/円
+為替レート推移・過去最高値/最安値 | WE LOVE FX]
+
+https://sodai.tokyokankyo.or.jp/Sodai/V2Main/13108/0
+
+https://web.n-bizlifestation.jp/top/pn/PNA01S01/index[ログイン - N-Biz
+Life Station]
+
+https://tv.yahoo.co.jp/listings?t=bs1[今日の番組表[BSデジタル] -
+Yahoo!テレビ.Gガイド [テレビ番組表]]
+
+https://www.research.ponta.jp/[Pontaリサーチ]
+
+https://toramoni.com/[スキマ時間でお小遣い稼ぎ！トラモ二]
+
+https://www.jcb.co.jp/promotion/mkt_lp/sk05/article01/index.html?ad_id=cojp_MKTD_SK05_all_all_ch01_01_210922[この秋、車中泊の自由度がさらにUPするカーテントに注目！
+｜ クレジットカードなら、JCBカード]
+
+https://www.mitsubishielectric.co.jp/home/reizouko/product/mr-mx46g/[三菱電機
+冷蔵庫：置けるスマート大容量シリーズ
+MXシリーズ（プレミアムフレンチモデル） MR-MX46G トップ]
+
+http://giftee.co/rb/q6j28rdp[カジュアルギフトサービス |
+カジュアルギフトのgiftee（ギフティ）]
+
+https://cfg.smt.docomo.ne.jp/authx/cgi/mltdomauth?arcv=eAF9Uctu2zAQ_Jbo4FND7S5fYgojlSiqMBq0KOw-0IuhSIol13pUkpEGRf-9lA4FeilBEMMZLHZ2FmWqREYCYp1k5KTjJkrAphklxG3KLXci0tbrMYJLJWaUqkxqTSlPeUZvCIgAUcB6fgUQ3AX7t-4QvApwgfU8D9NdGOZ13vas6NuwfRn6cc4vYd23VZhf5zpsurL6yeq5vdwfT_mWGAkjhDbcMKlAoPJf5l8dcZACbtGg0QakhJVFoSkym_xSHJ-rx6bcfng4rHY4reTj9-vwH2Vu2morvWFaHcOCaPHedR4q_hfiOtyqryR6WcpF9imgv3rpupDqn9GH4dIU-dz0HcsvJZvamZW9j6JnXcXOQ_h5574c3X53cGE1zeFUhG3edOw8Da_PUzVNvtAP9X66jtm360tJt_WPoRxvIi59QhDxmzUaQdqHhtG9exiVIrUZfdHp4ztxwvOnp3SPO_t1Y5vx-NSPRdXPw3bdHSdEidzHjSrNLEcONpEEoCnzC9ZCgwNt0CqwzkjUwkUQOwkJqdiAI7Iuk9Lvw8bB7z-i3KAX[dアカウント
+- ログイン]
+
+https://www.docomo.ne.jp/mydocomo/[My docomo | NTTドコモ]
+
+https://griene.jp/regist_battery/lp/003?media=crsbt&_buyer=127&adm_adtr_xuid=127,0,7953,xuid5x7fab9afed3xfa2[太陽光発電・蓄電池・オール電化の無料一括見積り・比較【グリエネ】]
+
+https://shop.kagome.co.jp/index.html[【カゴメの通販】カゴメ健康直送便]
+
+https://a-line1.aflac.co.jp/web74/cat/app/customer/Login[ログイン｜ご契約者様専用サイト「アフラック
+よりそうネット」｜アフラック]
+
+https://www.amazon.co.jp/mypoints?ref=CTAbuttonFromPendingEmail&ref_=pe_11405372_418967072&startTime=&filter=ALL&pageToken=&scanForward=true[マイポイント（Amazonポイントの獲得・利用履歴）]
+
+https://wcs.tokiomarine-nichido.co.jp/mfa_mypage/MFA/mfa_myp/agent.iw?AGENT_MFA=https%3a%2f%2fwcs.tokiomarine-nichido.co.jp%2fmfa_mypage%2fagt&path=%2fmfa_mypage%2fcustomer%2fMY%2fCST1%2fVHGJ0210M0010%2fSTARTUP&query=_Z6_aid%3dRENAUTH%26mf%3d%26CTL_KOUKOKU_ID%3d%26ACCOUNTUID%3d&tid=TID20220606152930950132A0-agent01&res=1[ログイン画面
+| マイページ]
+
+https://matsumoto-kanagata.net/item/products/earpick.html[みみごこち |
+松本金型株式会社]
+
+https://www.nomura-re-cc.jp/groupservice/[住まいのサービス｜野村不動産グループカスタマークラブ]
+
+https://www.nomu.com/[不動産の売買ならノムコムby野村不動産ソリューションズ]
+
+https://www.sekistone-search.com/stone/G721[ラブラドールブラック｜関ヶ原石材
+WEB石材カタログ]
+
+https://www.disneyplus.com/ja-jp/select-profile[プロフィールの選択 |
+Disney+(ディズニープラス)]
+
+https://7card.jcb.co.jp/iss-pc/member/user_manage/userLogout.html[セブンカードＷＥＢサービス（ＶＩＳＡ）]
+
+https://www.nenkin.go.jp/index.html[日本年金機構ホームページ]
+
+https://www.homepro.jp/hiyou/mansion.html[マンションリフォームの費用・相場をチェック｜「ホームプロ」リフォーム会社紹介サイト]
+
+https://doctorsfile.jp/[ドクターズ・ファイル｜症状から探せる、病気がわかる、ドクターが見つかる]
+
+https://postcoffee.co/subscription/?utm_source=presco&utm_medium=affiliate&utm_campaign=pointmedia&utm_content=pointi[PostCoffee
+| 毎回新しいコーヒーと出会えるコーヒーのサブスク・定期便]
+
+=== 家内デジタル機器
+
+https://www.frecious.jp/mypagecommon/login.php?ms=[FRECIOUS（フレシャス）｜マイページトップ（ログインページ）]
+
+https://dl.mitsubishielectric.co.jp/dl/ldg/wink/ssl/wink_doc/m_contents/k_ibim/MR-G42N-G57N-H05.pdf[MR-G42.E47.E52.E57N....02.qx4]
+
+https://www.asus.com/jp/support/article/893/[ZenFone Max Plus
+(M1)におけるテザリングについて]
+
+https://dynabook.com/pc/catalog/dynabook/080417tx/spec.htm[dynabook
+TXシリーズ ＜仕様＞]
+
+https://shimon.top/tyakusin/[電話に出れない！ライン電話の着信画面が表示されないアンドロイドの問題を解決する
+| シモテンのおっさん日記]
+
+https://appllio.com/trouble-shooting-when-the-line-call-screen-not-displayed[LINE電話の通知が来ない/着信画面が出ないトラブルの解決法まとめ
+| アプリオ]
+
+https://direct.brother.co.jp/shop/[ブラザーオンラインショップ【公式通販】｜ブラザーダイレクトクラブ]
+
+https://www.megane-murata1961.com/silhouette-top.html#tma%20must[シルエットメガネSilhouetteフレーム正規販売店全国対応メガネMURATA(村田)1961年創業]
+
+https://www.smile-etc.jp/index.html[ETCマイレージサービス]
+
+https://coffeecarrot.jp/mypage/login.php[/
+MYページ(ログイン)【珈琲きゃろっと】自家焙煎コーヒー豆の通信販売専門店]
+
+=== CarrotCoffee
+
+https://coffeecarrot.jp/products/detail.php?product_id=168[【401】∵18∵コスタリカ・モンテ・コペイ　エル・エンシノ農園(200g)【珈琲きゃろっと】自家焙煎コーヒー豆の通信販売専門店]
+
+https://nextpass.nomura-re.co.jp/login/[NEXT PASS10 MY PAGE]
+
+https://shop.nestle.jp/front/contents/guide/teiki/order_change/[ご注文内容の変更について
+| ご利用ガイド | 【公式】 ネスレ通販オンラインショップ]
+
+=== Speed Dial
+
+https://google.co.jp/
+
+https://www.shinseibank.com/powerflex/direct/
+
+https://www.smbc.co.jp/kojin/direct/[インターネットバンキング（SMBCダイレクト）
+： 三井住友銀行]
+
+https://www.mizuhobank.co.jp/retail/products/direct/index.html[みずほダイレクト（インターネットバンキング）
+| みずほ銀行]
+
+https://www.jp-bank.japanpost.jp/index.html[株式会社ゆうちょ銀行]
+
+https://www.smbc-card.com/mem/index.jsp[三井住友カード会員向けサービス「Vpass」ログイン]
+
+https://ib.rokin.jp/nprotect/?bid=13[rokin]
+
+https://api.saisoncard.co.jp/auth/screen/na/authorize?response_type=code&client_id=ZC001&state=&scope=openid[SAISON
+CARD Netアンサー]
+
+http://kakaku.com/
+
+https://my.jcb.co.jp/Login
+
+https://znck.roren.cc/?m=znck&s=login
+
+https://www.jorudan.co.jp/norikae/
+
+https://vivaldi.com/bk/sd-community-ja[Vivaldi日本語公式ブログ]
+
+https://www.frecious.jp/mypagecommon/login.php?ms=
+
+http://www.kmoni.bosai.go.jp/
+
+http://d-card.jp/st/
+
+https://www.nomura-re-cc.jp/
+
+https://vivaldi.com/bk/u-next[U-NEXT]
+
+https://vivaldi.com/bk/sd-accuweather[AccuWeather]
+
+https://www.youtube.com/[YouTube]
+
+https://ja.wikipedia.org/[Wikipedia]
+
+https://vivaldi.com/bk/amazon-jp[Amazon]
+
+https://vivaldi.com/bk/hulu-jp[Hulu]
+
+https://vivaldi.com/bk/sd-community-ja[Vivaldi日本語公式ブログ]
+
+=== テクノロジー
+
+https://vivaldi.com/bk/techacademy[TechAcademy [テックアカデミー] |
+オンラインのプログラミングスクール]
+
+https://www.atmarkit.co.jp/[ITエキスパートのための問題解決メディア -
+＠IT]
+
+https://jp.techcrunch.com/[TechCrunch]
+
+https://www.gizmodo.jp/[ギズモード・ジャパン]
+
+https://gigazine.net/[GIGAZINE（ギガジン） -
+黄金比が生む美にインスパイアされて考えられた「ハリスの螺旋」]
+
+https://www.lifehacker.jp/[ライフハッカー［日本版］]
+
+https://japan.cnet.com/[CNET Japan]
+
+https://mysupport.netapp.com/[NetApp Support - Welcome]
+
+http://ftp.iij.ad.jp/pub/linux/centos-vault/4.9/isos/ia64/[Index of
+/pub/linux/centos-vault/4.9/isos/ia64]
+
+https://archive.apache.org/dist/httpd/[Index of /dist/httpd]
+
+https://vboxmania.net/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A/[ネットワーク設定
+– VirtualBox Mania]
+
+https://www.dell.com/ja-jp/work/shop/cty/pdp/spd/poweredge-t710[PowerEdge
+11G T710タワーサーバの製品詳細 | Dell 日本]
+
+https://github.com/Automattic/simplenote-electron/releases/tag/v1.15.1[Release
+1.15.1 · Automattic/simplenote-electron · GitHub]
+
+https://kazmax.zpp.jp/cmd/f/flex.1.html[flex - コマンド (プログラム)
+の説明 - Linux コマンド集 一覧表]
+
+http://vega.pgw.jp/~kabe/linux/c7-caps-to-ctrl.html[Remapping Caps Lock
+to Control key in CentOS 7]
+
+https://panasonic.jp/cns/pc/products/xz6k/[レッツノートXZ（CF-XZ6） |
+パソコン（個人向け） | Panasonic]
+
+https://www.hsgi-shop.jp/page/190[わかりやすいSDHC UHS-I と class10
+の違い]
+
+=== ゲーム
+
+https://vivaldi.com/bk/gamersgate[GamersGate - Buy and download games
+for PC now]
+
+https://vivaldi.com/bk/hangame[無料ゲーム・オンラインゲームならハンゲーム]
+
+https://www.gungho.jp/[ゲームと趣味・無料でオンラインゲームするならガンホーゲームズ]
+
+https://yahoo-mbga.jp/[PCゲーム - ゲームならYahoo!モバゲー]
+
+https://www.game-hiroba.com/[無料オンラインゲーム完全ガイド |
+人気ランキング・新作 [PC]]
+
+https://www.gaming-city.com/[オンラインゲーム人気ランキング・無料ゲーム情報｜オンラインゲームズーム]
+
+=== ニュース
+
+https://www.nikkei.com/[日本経済新聞]
+
+https://www.sankei.com/[産経ニュース]
+
+https://www.msn.com/ja-jp[MSN Japan - Hotmail&#44; Outlook.com&#44;
+Skype&#44; OneDrive&#44; Bing]
+
+https://www.yomiuri.co.jp/[ニュース 速報 YOMIURI ONLINE(読売新聞)]
+
+https://www.asahi.com/[朝日新聞デジタル：朝日新聞社のニュースサイト]
+
+https://www.nikkan.co.jp/[日刊工業新聞 Business Line -
+日本のモノづくりに貢献する]
+
+https://www.jiji.com/[時事ドットコム]
+
+https://vivaldi.com/bk/nikkeibpm[日経ビジネス│日経BPが刊行するNo.1ビジネス誌]
+
+http://www.kmoni.bosai.go.jp/[強震モニタ]
+
+=== ショッピング
+
+https://vivaldi.com/bk/kumapon[割引クーポンの共同購入サイト -
+くまポン(クマポン)byGMO]
+
+https://vivaldi.com/bk/rakuten[楽天市場]
+
+https://vivaldi.com/bk/netoff[古本・DVD・CD・ゲームのネット買取・通販サイト
+ネットオフ]
+
+https://vivaldi.com/bk/dospara[パソコン（PC）通販のドスパラ【公式】]
+
+https://vivaldi.com/bk/tsukumo[自作PC・パーツ・周辺機器などの専門店【TSUKUMO】公式通販サイト]
+
+https://vivaldi.com/bk/square-enix[スクウェア・エニックス e-STORE]
+
+https://www.omni7.jp/top[セブン＆アイの総合通販サイト｜オムニ7]
+
+https://shop.aeon.com/netsuper/01050000017880/[おうちでイオン　イオンネットスーパー　イオンスタイル南砂]
+
+https://search.rakuten.co.jp/search/mall/silhouette+%E3%83%A1%E3%82%AC%E3%83%8D/[【楽天市場】silhouette
+メガネの通販]
+
+https://members.acure-fun.net/wbam/PC/member/mem_myp.php[アキュア
+メンバーズ]
+
+=== スポーツ
+
+https://vivaldi.com/bk/tokyoshimbun[東京中日スポーツ]
+
+https://vivaldi.com/bk/xebio[ゼビオ：総合スポーツ用品を扱う「スーパースポーツゼビオ」の公式通販サイト]
+
+http://ja.espnf1.com/[ESPN F1 | F1 ニュース | 速報 | Live]
+
+https://snownet.jp/[全国スキー場・ゲレンデ情報サイト ＊ SNOWNET]
+
+https://tennis.jp/[TENNIS.jp テニス ドット ジェイピー |
+総勢70名を超えるプロ選手を始めとするテニスエキスパートのテニスブログ、最新テニスニュース、全国のテニススクール&テニスショップ情報を掲載！テニス好き必見のテニスポータルサイトです。]
+
+https://www.valuegolf.co.jp/[バリューゴルフ（VALUE GOLF） │
+ゴルフ場予約、1人予約ランド、ゴルフショップ、ゴルフレッスン、月刊バリューゴルフなどゴルフを楽しむための総合サイト]
+
+https://golflite.co.jp/z-181/[Z-181　IDバッグタグ スヌーピーゴルフプロ |
+ライト株式会社 ‐ Golf it! (ゴルフ イット) ゴルフのライト
+[公式ウェブサイト]]
+
+https://www.valuegolf.co.jp/one_land/event/summer_event/?gclid=CjwKCAjw3K2XBhAzEiwAmmgrAuoe-_LMg8QVprGdUNH0FtrLwkIni61lQrS_NjHACf7w4r31VUldphoCKJ0QAvD_BwE[夏休み&お盆休み特集
+│ 1人予約ランド / バリューゴルフ（VALUE GOLF）]
+
+=== トラベル
+
+https://vivaldi.com/bk/qatar[Qatar Airways]
+
+https://vivaldi.com/bk/airbnb[AirBnB]
+
+https://vivaldi.com/bk/bookingcom-jp[Booking.com:
+世界中のホテル802&#44;167軒掲載.]
+
+https://vivaldi.com/bk/rentacar[日本旅行「旅ぷらざ」レンタカー料金比較・予約サイト]
+
+https://vivaldi.com/bk/imotonowifi[海外行くなら！イモトのWiFi]
+
+https://vivaldi.com/bk/hotelscom[Hotels.com - Cheap Hotels&#44; Discount
+Rates & Hotel Deals]
+
+https://vivaldi.com/bk/rakuten-travel[楽天トラベル: 宿・ホテル予約
+国内旅行・海外旅行 予約サイト]
+
+https://vivaldi.com/bk/traveloco[トラベロコ│海外在住日本人（ロコ）があなたの旅をお手伝いします。]
+
+https://vivaldi.com/bk/ikyu[ホテル予約・旅館予約[一休.com]]
+
+https://vivaldi.com/bk/kiwi-us[Kiwi.com | Find Cheap Flights & Discover
+New Destinations]
+
+https://vivaldi.com/bk/hostelworld-us[Budget Hotels: Find the best cheap
+Hotels Near me - Hostelworld]
+
+https://vivaldi.com/bk/marriott-us[Marriott Bonvoy]
+
+https://vivaldi.com/bk/agoda[Agoda.com]
+
+https://vivaldi.com/bk/aviasales[Aviasales]
+
+https://vivaldi.com/bk/airhelp[Get Compensation for Flight Delays of up
+to $700 | AirHelp]
+
+https://vivaldi.com/bk/discovercarhire[Find the Best Car Rental Deals
+Worldwide | Discover Car Hire]
+
+https://vivaldi.com/bk/voyagin[Voyagin: Asia`s Best Things to Do&#44;
+Tours&#44; Activities & Tickets]
+
+https://vivaldi.com/bk/intui[Intui.Travel]
+
+https://vivaldi.com/bk/musement[musement]
+
+https://vivaldi.com/bk/autoeurope[Europe Car Rentals from $8/day! Best
+Rate Guaranteed | Auto Europe ®]
+
+https://vivaldi.com/bk/gocity[Go City | Save Up To 65% On City
+Attractions]
+
+https://vivaldi.com/bk/economybookings[economybookings.com]
+
+https://vivaldi.com/bk/compensair[Compensation for flight delay or
+cancellation | Compensair]
+
+https://vivaldi.com/bk/bikes[Scooter&#44; motorcycle&#44; bicycle rental
+in 65+ countries | BikesBooking.com]
+
+https://vivaldi.com/bk/12go-asia[12Go]
+
+https://vivaldi.com/bk/ktaxi[Kiwitaxi]
+
+https://vivaldi.com/bk/tiqets[Tiqets - Instant tickets for remarkable
+experiences]
+
+https://vivaldi.com/bk/sputnik8[Sputnik]
+
+https://vivaldi.com/bk/ticketnetwork[TicketNetwork™ | Concert&#44;
+Sports&#44; Theater and Music Festival Tickets]
+
+https://www.kotsu.metro.tokyo.jp/tokopo/[ToKoPo
+都営交通のポイントサービス ｜ 東京都交通局]
+
+https://www.renosy.com/asset[不動産投資ならRENOSY
+ASSET(リノシーアセット)]
+
+=== エンターテイメント
+
+https://vivaldi.com/bk/hulu[Hulu(フールー):
+人気映画、ドラマ、アニメが見放題！【お試し無料】]
+
+https://vivaldi.com/bk/magazinewalker[マンガ･アニメ･声優誌など最新号が読み放題！マガジン☆WALKER]
+
+https://park.sjnk.co.jp/[SOMPO Park]
+
+https://www.bokunomidori.jp/c/product/pot/pot-size/9-12cm/gd1493[持っておくと便利！植物が成長しやすい植木鉢（9.5ｃｍ）×3鉢SET
+| [公式]e-花屋さん]
+
+https://store.shopping.yahoo.co.jp/colorfulbox/331013.html[ポット
+園芸ポット ブリキポット アイアンスタンド付 Mサイズ （ 植木鉢 プランター
+フラワーポット 花瓶 フラワーベース ）
+:331013:お弁当グッズのカラフルボックス - 通販 - Yahoo!ショッピング]
+
+https://www.cue-monitor.jp/[アンケートモニター募集中！！｜株式会社インテージのキューモニター]
+
+=== グルメ
+
+https://vivaldi.com/bk/gnavi[ぐるなび - レストラン予約と宴会・グルメ情報
+検索サイト]
+
+https://vivaldi.com/bk/tabelog[食べログ -
+ランキングと口コミで探せるグルメサイト]
+
+https://my.eisai.jp/campaign/[EISAI PARK(エーザイパーク)]
+
+http://www.sodastream.jp/?transactionid=dc9302d977029c945132fe4a7af49e29f83f26df[ソーダストリーム
+SodaStream]
+
+https://shop.nestle.jp/front/app/common/logout[ログアウト]
+
+http://yoshikei-dvlp.co.jp/menu/smile/[すまいるごはん |
+食材(ミールキット)宅配サービス：ヨシケイ]
+
+https://ssl1.suntory.co.jp/enjoy/[キャンペーン・エンタメ サントリー]
+
+https://zenb.jp/[野菜の新しいおいしさ、まるごと野菜｜ZENB（ゼンブ）
+公式通販]
+
+=== Bookmarks
+
+https://vivaldi.com/bk/booking-ja-bk[Booking.com]
+
+https://vivaldi.com/bk/ali-ja-bk[AliExpress]
+
+https://vivaldi.com/bk/airbnb-ja-bk[Airbnb]
+
+https://vivaldi.com/bk/amazon-ja-bk[Amazon]
+
+https://vivaldi.com/bk/ebay-ja-bk[eBay]
+
+https://vivaldi.com/bk/agoda-ja-bk[Agoda]
+
+https://vivaldi.com/bk/booking-ja-bk[Booking.com]
+
+https://vivaldi.com/bk/kayak-ja[Kayak]
+
+https://vivaldi.com/bk/ali-ja-bk[AliExpress]
+
+https://vivaldi.com/bk/amazon-ja-bk[Amazon]
+
+https://vivaldi.com/bk/ebay-ja-bk[eBay]
+
+https://vivaldi.com/bk/agoda-ja-bk[Agoda]
+
+=== Editor
+
+https://github.com/kmuto/review/blob/master/doc/format.ja.md[review/format.ja.md
+at master · kmuto/review]
+
+=== UniversalAnything
+
+=== Mantis
+
+https://stackoverflow.com/questions/54702283/application-error-400-error2045-error1045-in-mantisbt-ubuntu-18-04[php
+- Application error #400 [error:2045] [error:1045] in MantisBT (Ubuntu
+18.04) - Stack Overflow]
+
+https://translate.google.co.jp/translate?hl=ja&sl=en&u=https://stackoverflow.com/questions/54702283/application-error-400-error2045-error1045-in-mantisbt-ubuntu-18-04&prev=search&pto=aue[Google
+翻訳]
+
+=== Global
+
+https://www.tamacom.com/handbook/new.html[新機能の御紹介]
+
+https://engineers.ffri.jp/entry/2019/12/19/000000[Sourcetrail を使った
+radare2 ソースコードリーディング - FFRIエンジニアブログ]
+
+http://guppy.eng.kagawa-u.ac.jp/~kagawa/2007/ProgLang/flex.html[Flexについて]
+
+=== Scripts
+
+https://fumiyas.github.io/2016/12/15/positional-parameters.sh-advent-calendar.html[位置パラメーターの一括展開
+$* $@ "$*" "$@" の違いを知れ!! - Shell Script Advent Calendar 2016 -
+ダメ出し Blog]
+
+=== HTML
+
+http://www.shurey.com/js/labo/character.html[HTML特殊文字コード表]
+
+https://hacknote.jp/archives/5218/[formタグを改行せずに横に並べる方法 |
+ハックノート]
+
+https://ja.stackoverflow.com/questions/7182/html-%E6%96%87%E5%AD%97%E3%81%AE%E9%9A%A3%E3%81%AB%E3%81%82%E3%82%8B%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%81%8C%E4%B8%80%E6%AE%B5%E4%B8%8B%E3%81%8C%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%AE%E3%82%92%E9%98%B2%E3%81%8E%E3%81%9F%E3%81%84[css
+- HTML 文字の隣にあるテキストボックスが一段下がってしまうのを防ぎたい -
+スタック・オーバーフロー]
+
+https://httpd.apache.org/docs/2.4/ja/howto/cgi.html#configuring[Apache
+Tutorial: CGI による動的コンテンツ - Apache HTTP サーバ バージョン 2.4]
+
+https://www.secuavail.com/kb/tech-blog/tb-210616_01/[Apache(httpd)のアクセスログの収集について
+| セキュリティ専門企業発、ネットワーク・ログ監視の技術情報 -
+KnowledgeStare（ナレッジステア）]
+
+https://zenn.dev/okmtz/articles/9b86f50a5f210b[sedコマンドによる文字列の置き換え]
+
+=== Doxygen
+
+http://www.doxygen.jp/manual.html[Doxygen]
+
+https://qiita.com/wakaba130/items/faa6671bd5c954cb2d02[最近覚えた便利アプリ[doxygen]
+- Qiita]
+
+https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3[ソフトウェアドキュメンテーション
+- Wikipedia]
+
+http://mickey-happygolucky.hatenablog.com/entry/2019/04/01/115817[GNU
+Global(gtags)の対応言語を増やしてみる - みつきんのメモ]
+
+http://www7b.biglobe.ne.jp/~robe/pf/pf013.html[プログラマの友
+第十三報：flex を使ってみる]
+
+http://caspar.hazymoon.jp/unix/global.html[global]
+
+http://www.hpcs.cs.tsukuba.ac.jp/~msato/lecture-note/comp2003/tiny-c-note3.html[www.hpcs.cs.tsukuba.ac.jp/~msato/lecture-note/comp2003/tiny-c-note3.html]
+
+https://pointi.jp/game/[インカムミニゲーム｜ポイントサイトのポイントインカム]
+
+=== ReHOUSE
+
+https://www.daiwalifenext.co.jp/news/190.html[マンションみらい価値研究所が研究レポートを発信「修繕積立金の値上げ」に関する2&#44;500件の議案を調査｜マンション管理会社の【大和ライフネクスト】]
+
+https://suumo.jp/ms/shinchiku/kanagawa/sc_kawasakishisaiwai/nc_67727311/?rnms=404[【SUUMO】ラ・フォルム新川崎サウスコート
+| 新築マンション・分譲マンション物件情報]
+
+https://www.mansion-review.jp/[マンションの口コミ・相場・資産価値検索サイト【マンションレビュー】]
+
+=== HTML
+
+=== Canvas
+
+https://www.wabiapp.com/WabiSampleSource/html5/canvas_animation.html[キャンバスでアニメーション
+- わびさびサンプルソース]
+
+=== Javascript
+
+https://web-designer.cman.jp/javascript_ref/event_list/[JavaScript
+イベント一覧 【HTMLリファレンス】]
+
+https://www.google.co.jp/search?q=PCP+RHEL9[PCP RHEL9 - Google 検索]
+
+https://wcs.tokiomarine-nichido.co.jp/mfa_mypage/re_mypageweb/709835b5aa954dad859729b62979c20f[マイページ]
+
+=== Protocol
+
+https://www.ssllabs.com/ssltest/analyze.html?d=rakukura.ntt-finance.co.jp[SSL
+Server Test: rakukura.ntt-finance.co.jp (Powered by Qualys SSL Labs)]
+
+=== Grafana
+
+https://qiita.com/MetricFire/items/f7ac1c9edf33eac48772[【Grafana】基礎から応用まで、これで網羅！
+#grafana - Qiita]
+
+=== ノウハウ
+
+http://www.ajisaba.net/sh/multi_line.html[複数行の文字列を表示]
+
+https://allabout.co.jp/gm/gc/23931/3/[JavaScriptで画像のスライドショーを作成する方法]
+
+https://wcs.tokiomarine-nichido.co.jp/mfa_mypage/MFA/mfa_myp/agent.iw?AGENT_MFA=https%3a%2f%2fwcs.tokiomarine-nichido.co.jp%2fmfa_mypage%2fagt&path=%2fmfa_mypage%2fre_mypageapi%2fmyp&query=&tid=TID20230531233733690492A0-agent01&res=1[ログイン画面
+| マイページ]
+
+=== 貴金属相場情報
+
+https://gold.tanaka.co.jp/commodity/souba/y-gold.php[田中貴金属工業株式会社｜年次金価格推移]
+
+https://www.dai-ichi.co.jp/gold/past-price.asp?last=60[過去5年の金価格・金相場の推移]
+
+https://www.shichifukuhonpo.com/kaheiset.html?gad=1&gclid=CjwKCAjwo7iiBhAEEiwAsIxQEVSEE-bW7rk99PRum2o7-qQgGsyc0YvoNYuqVkfNKc4UMmwPilhmXhoC2aEQAvD_BwE[【貨幣セット・記念金貨・記念硬貨】の買取｜上野の七福本舗]
+
+https://www.politicalstaples.com/coin/gold/jp/ten-gozai60/heika-gozaii60-10/[天皇陛下御在位60年記念
+10万円金貨]
+
+link:++https://xn--t8j4aa4n0jya5ppmy28y8da3070eg7oa.com/lp/g/kinenkouka.php?ac=sn010002&kwd=kwd-365521269797&creative=02&loc_ad=&loc_interest_ms=&loc_physical_ms=1028851&gclid=CjwKCAjwo7iiBhAEEiwAsIxQEefvHQJ4Vdv-POj1sMpLfo1JPoLkFROrHsCVuJ7Sorig0WAoTJMw2hoCpI4QAvD_BwE++[記念硬貨買取ランキングTOP3｜高額査定の記念硬貨買取店]
+
+https://www.takakuureru.com/magazine/23854#:~:text=%E6%97%A7%E5%A3%B1%E5%86%86%E5%88%B8%E3%81%AE%E4%BE%A1%E5%80%A4%E3%83%BB%E8%B2%B7%E5%8F%96%E4%BE%A1%E6%A0%BC%E7%9B%B8%E5%A0%B4,-%E5%87%BA%E5%85%B8%3A%20%E6%97%A5%E6%9C%AC%E9%8A%80%E8%A1%8C&text=%E7%8F%BE%E5%9C%A8%E3%82%821%E5%86%86%E3%81%A8%E3%81%97%E3%81%A6,%E3%81%AF%E4%BB%A5%E4%B8%8B%E3%81%AE%E9%80%9A%E3%82%8A%E3%81%A7%E3%81%99%E3%80%82[一円札の買取おすすめ業者3選！一円札の価値は？いくらで売れる？売却時の注意点も
+| 高く売れるドットコムマガジン]
+
+https://item.rakuten.co.jp/yamabun-r/fr01a011/?scid=af_pc_etc&sc2id=af_113_0_10001868&iasid=wem_icbs_&icm_acid=255-776-8501&icm_agid=&icm_cid=18637883746&gclid=CjwKCAjwo7iiBhAEEiwAsIxQEfsQJwCkciiZkifs0n6ApLvB2Vgg_wY6dnqoix3hrKCR9DJvk4T20BoCNs8QAvD_BwE[【楽天市場】【流通品】
+1次10円札 証紙つき 【近代紙幣】：大和文庫・楽天市場支店]
+
+https://item.rakuten.co.jp/kure-coin/10000593/?scid=af_pc_etc&sc2id=af_113_0_10001868&icm_acid=255-776-8501&iasid=wem_icbs_&icm_cid=18637883746&gclid=CjwKCAjwo7iiBhAEEiwAsIxQEWX5wAG5svGqFYDIUGl39yGAvR6sHhQBXPazGq-cAChROmRZup5xAxoCFKoQAvD_BwE&icm_agid=[【楽天市場】日本銀行券A号10円　国会議事堂10円　未使用：紅林コイン]
+
+https://item.rakuten.co.jp/einsworld/e01603/?scid=af_pc_etc&sc2id=af_113_0_10001868&icm_acid=255-776-8501&iasid=wem_icbs_&gclid=CjwKCAjwo7iiBhAEEiwAsIxQEYG6DIbB5SqVgaMYppNfhWJFM62iyD6oUlABWscNG2I_f36rr8JhFxoCNkQQAvD_BwE&icm_cid=18637883746&icm_agid=[【楽天市場】日本銀行券
+板垣百円 前期 アルファベット2桁 後期 昭和28年 ～ (1953) 未使用 旧札
+旧紙幣 紙幣：アインス　コインズ]
+
+https://item.rakuten.co.jp/kure-coin/10010476/?scid=af_pc_etc&sc2id=af_113_0_10001868&iasid=wem_icbs_&icm_acid=255-776-8501&icm_agid=&gclid=CjwKCAjwo7iiBhAEEiwAsIxQER1VWnbCj2OQ3NOs94rXANBA2mC5c96uG5pdnR0_s9bF-lXWL7oarRoCZCcQAvD_BwE&icm_cid=18637883746[【楽天市場】日本銀行券Ｂ号500円
+岩倉旧500円　後期　アルファベット2桁　極美品：紅林コイン]
+
+https://item.rakuten.co.jp/yamabun-r/er01a029/?scid=af_pc_etc&sc2id=af_113_0_10001868&iasid=wem_icbs_&icm_acid=255-776-8501&gclid=CjwKCAjwo7iiBhAEEiwAsIxQEXnPRQil9t4wpSyu_OFD8M-bOolZGgCvWRCT7kDi5tiUzk1YsRUnNRoCKpMQAvD_BwE&icm_agid=&icm_cid=18637883746[【楽天市場】【未使用】
+聖徳太子 1000円札 （日本銀行券B号千円札） 記号2ケタ 未使用
+【1000円紙幣】：大和文庫・楽天市場支店]
+
+https://item.rakuten.co.jp/olenotakaraya/10000629/?scid=af_pc_etc&sc2id=af_113_0_10001868&icm_agid=&icm_acid=255-776-8501&iasid=wem_icbs_&icm_cid=18637883746&gclid=CjwKCAjwo7iiBhAEEiwAsIxQETrMPAS9Ztk6IDgcNkF0yGvLg1S8ha4s4oS8OkqH3l6Yem7sfJLG4hoC1ygQAvD_BwE[【楽天市場】伊藤博文　千円札　旧札　中古　1000円：おれのTAKARA]
+
+https://qiita.com/delphinus/items/b04752bb5b64e6cc4ea9[あなたの知らない
+less の世界 - Qiita]
+
+=== Analyze
+
+https://www.s-style.co.jp/blog/2018/04/1709/[MariaDB と MySQL
+のソースコードの類似度を調べる | スマートスタイル TECH
+BLOG｜データベース＆クラウドの最新技術情報を配信]
+
+https://pmd.sourceforge.io/pmd-4.3.0/cpd.html[PMD - Finding copied and
+pasted code]
+
+=== 赤外線
+
+http://shrkn65.nobody.jp/remocon/index.html[赤外線リモコンの信号定義データの合成
+— 赤外線リモコンの信号定義データの合成 1.3.1 ドキュメント]
+
+=== DocForm
+
+https://qiita.com/sky_y/items/80bcd0f353ef5b8980ee[多様なフォーマットに対応！ドキュメント変換ツールPandocを知ろう
+#HTML - Qiita]
+
+https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html[Pandoc
+User’s Guide 日本語版 — 日本Pandocユーザ会]
+
+https://gigazine.net/news/20201028-pandoc/[ものすごい種類の文書ファイルを他形式に変換できる「Pandoc」レビュー、MarkdownからLaTex、EPUBにまで対応
+- GIGAZINE]
+
+https://pandoc.org/[Pandoc - index]
+
+=== AsciiDoc
+
+https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/[Asciidoctor
+文法クイックリファレンス(日本語訳)]
+
+https://texwiki.texjp.org/?Linux%2FLinux%20Mint#texlive[Linux/Linux Mint
+- TeX Wiki]
+
+https://qiita.com/sky_y/items/15bf7737f4b37da50372[メモ:
+Pandoc+LaTeXで気軽に日本語PDFを出力する - Qiita]
+
+https://ja.osdn.net/projects/luatex-ja/wiki/LuaTeX-ja%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9[LuaTeX-jaの使い方
+- LuaTeX-ja Wiki - LuaTeX-ja - OSDN]
+
+=== Speed Dial
+
+https://vivaldi.com/bk/rakuten[楽天市場]
+
+https://vivaldi.com/bk/yahoo-shopping[Yahoo! Shopping]
+
+https://www.youtube.com/[YouTube]
+
+https://vivaldi.com/bk/amazon-jp[Amazon]
+
+https://vivaldi.com/bk/eneba-ja-jp[Eneba]
+
+https://vivaldi.com/bk/u-next[U-NEXT]
+
+https://vivaldi.com/bk/expedia-jp[エクスペディア (Expedia)]
+
+https://vivaldi.com/bk/hulu-jp[Hulu]
+
+https://vivaldi.com/bk/sd-accuweather[AccuWeather]
+
+https://vivaldi.com/bk/sd-social[Vivaldi Social]
+
+https://vivaldi.com/bk/sd-community-ja[Vivaldi日本語公式ブログ]
+
+vivaldi://game/[Vivaldi Game]
+
+=== Bookmarks
+
+=== Vivaldi
+
+https://vivaldi.com/bk/sd-browser-features-ja[Vivaldiの機能]
+
+https://vivaldi.com/bk/sd-webmail[Vivaldiウェブメール]
+
+https://vivaldi.com/bk/booking-ja-bk[Booking.com]
+
+https://vivaldi.com/bk/kayak-ja[Kayak]
+
+https://vivaldi.com/bk/ali-ja-bk[AliExpress]
+
+https://vivaldi.com/bk/amazon-ja-bk[Amazon]
+
+https://vivaldi.com/bk/ebay-ja-bk[eBay]
+
+https://vivaldi.com/bk/agoda-ja-bk[Agoda]
+
+https://onlineshop.smt.docomo.ne.jp/supports/settings/index.html[商品到着後の設定・開通（利用開始の手続き）
+| ご利用ガイド | ドコモオンラインショップ | NTTドコモ]
+
+=== PCP
+
+https://qiita.com/MetricFire/items/f7ac1c9edf33eac48772[【Grafana】基礎から応用まで、これで網羅！
+#grafana - Qiita]
+
+https://tech-lab.sios.jp/archives/32868[よくわかるGrafana入門【ダッシュボード編②】
+| SIOS Tech. Lab]
+
+https://qiita.com/frozencatpisces/items/e68862260941a7aa0f33[Grafana:
+ダッシュボードの基本的な作り方 #JSON - Qiita]
+
+https://udemy.benesse.co.jp/development/grafana.html#Grafana[Grafanaとは？特徴や機能、使い方を分かりやすく解説｜Udemy
+メディア]
+
+https://grafana.com/ja/grafana/[Grafana（グラファナ）｜クエリ、可視化、アラートのオブザーバビリティ・プラットフォーム]
+
+=== Pandoc
+
+https://github.com/jgm/pandoc/releases/tag/3.3[Release pandoc 3.3 ·
+jgm/pandoc]
+
+https://redhat.sios.jp/blog/guest-blog/performance-co-pilot/[Performance
+Co-Pilotでパフォーマンス測定を簡単にしよう | Red Hat Portal]
+
+https://tech-lab.sios.jp/archives/15823[Red Hat Convergence Tokyo 2019
+レポート トラック：PCP入門 編 | SIOS Tech. Lab]
+
+https://www.redhat.com/ja/blog/pcp%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%81%AE%E8%AC%8E%E3%82%92%E6%95%B0%E5%88%86%E3%81%A7%E8%A7%A3%E3%81%8F[PCPを使ってパフォーマンスの謎を数分で解く]
+
+=== Perl
+
+https://www.kent-web.com/perl/chap7.html[Perl基礎入門 | KentWeb]
+
+=== Python
+
+https://qiita.com/empelt/items/97dd2a78e530ec41c8f8[Pythonで特定の文字列で挟まれた文字列を取得する方法
+#Python - Qiita]
+
+https://ai-inter1.com/beautifulsoup_1/[図解！Python
+BeautifulSoupの使い方を徹底解説！(select、find、find_all、インストール、スクレイピングなど)
+- ビジPy]
+
+https://qiita.com/KEINOS/items/6efc1147b917d7811b5b[Python
+で文頭に記載する文字コードの「アレ」（なんちゃら UTF-8
+みたいなやつ）の名称と仕様 #Python3 - Qiita]
+
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/[Beautiful Soup
+Documentation — Beautiful Soup 4.12.0 documentation]
+
+https://kondou.com/BS4/#get-text[kondou.com - Beautiful Soup 4.2.0 Doc.
+日本語訳 (2013-11-19最終更新)]
+
+=== Ruby
+
+https://qiita.com/intrajp/items/a3636da128995536808e[startx で X
+を自動起動する #Linux - Qiita]
+
+https://www.server-world.info/query?os=Fedora_19&p=x[Fedora 19 :
+デスクトップ環境 インストールと設定 : Server World]
+
+https://www.server-world.info/query?os=Fedora_32&p=desktop&f=1[Fedora 32
+: GNOME デスクトップ : Server World]
+
+https://www.server-world.info/query?os=Fedora_32&p=runlevel[Fedora 32 :
+ランレベルを変更する : Server World]
+
+https://jp-seemore.com/iot/python/10727/[Pythonとsubprocessで成功する！10の実例入り詳解ガイド
+– Japanシーモア]
+
+https://zenn.dev/yukito0616/articles/90396181c2d6ee[Rubyからシェルスクリプトを実行する４つの書き方]
+
+https://ichigick.com/rails-log/[Ruby on Rails
+のログの読み方【これができれば脱初心者】 | IchigiBlog]
+
+http://dqn.sakusakutto.jp/2012/04/redmine.html[Redmineでトラブル発生！素人が原因を調査して解決するまでにやったことまとめ
+· DQNEO日記]
+
+https://ichigick.com/category/rails/[Ruby on Rails | IchigiBlog]
+
+=== ShellScript
+
+https://www.pcre.org/current/doc/html/pcre2grep.html[pcre2grep
+specification]
+
+https://qiita.com/ko1nksm/items/b4b342f77f6d3ee1a0a9[【脱sed】いい加減シェルスクリプトで文字列をsedで置換するなんてやめよう
+#Linux - Qiita]
+
+https://zenn.dev/portinc/articles/bash-best-practice[bashスクリプトのベストプラクティスを調査した]
+
+https://www.pmi-sfbac.org/here-document/[【Shellスクリプト】複数行のテキスト出力！ヒアドキュメントについて！
+| Beエンジニア]
+
+https://qiita.com/ikngtty/items/c179053b0dd4f811c4d1[シェルスクリプトプロジェクトにおける共通関数・定数の管理
+#ShellScript - Qiita]
+
+https://itpfdoc.hitachi.co.jp/manuals/3021/30213B3220/0422.HTM[9.3　シェル標準コマンド
+: JP1 Version 11 JP1/Advanced Shell ]
+
+http://tech.clickyourstyle.com/articles/8[置換・行や文字の削除などの文字列操作:sed:Technical
+tips:Media hub]
+
+=== 変数種類
+
+https://qiita.com/P-man_Brown/items/4a468333f33fce229270[【Bash】変数の文字列置き換え
+#初学者 - Qiita]
+
+=== 制御文
+
+https://infra-exp.com/bash-relation-operator/[【Linux】シェルスクリプトで使える比較演算子の使い方まとめ
+- インフラエクスペリエンス]
+
+=== for 書き方
+
+https://qiita.com/egawa_kun/items/196cd354c0d8e4e0fefc[シェルスクリプト（bash）のif文やwhile文で使う演算子について
+#Linux - Qiita]
+
+https://genzouw.com/entry/2021/06/21/080007/2665/[シェルスクリプトで引数でループする処理を書くときは
+“$\{@}” は不要だった | ゲンゾウ用ポストイット]
+
+https://qiita.com/ytyng/items/d7afe80ef9da7aa8b721[Bashでいろいろループする
+#Bash - Qiita]
+
+https://atmarkit.itmedia.co.jp/ait/articles/1901/09/news001.html[シェルスクリプトに挑戦しよう（13）制御構文［その5］――forによる繰り返し処理（3）：“応用力”をつけるためのLinux再入門（33）
+- ＠IT]
+
+https://www.tohoho-web.com/ex/shell.html#break[とほほのBash入門 -
+とほほのWWW入門]
+
+https://tech-blog.rakus.co.jp/entry/20211022/sed[sed コマンド【使い方
+まとめ】 - RAKUS Developers Blog | ラクス エンジニアブログ]
+
+https://www.amazon.co.jp/s?k=%E3%82%B9%E3%83%9E%E3%82%A4%E3%83%AB%E3%82%BB%E3%83%BC%E3%83%AB&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1V56EY3P497B6&sprefix=%E3%82%B9%E3%83%9E%E3%82%A4%E3%83%AB%E3%82%BB%E3%83%BC%E3%83%AB%2Caps%2C170&ref=nb_sb_noss_1[Amazon.co.jp
+: スマイルセール]
+
+https://qiita.com/ko1nksm/items/09bd50e51cc8663a4f0e?utm_source=Qiita+%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9&utm_campaign=3713b9ddd0-Qiita_newsletter_633_08_28_2024&utm_medium=email&utm_term=0_e44feaa081-3713b9ddd0-68692750[いい加減シェルスクリプトで
+[ $? -eq 0 ] や [ $? -ne 0 ] なんて エラー処理を書くのはやめよう！
+#Linux - Qiita]
+
+https://atmarkit.itmedia.co.jp/ait/articles/1907/18/news009.html[【
+compgen
+】コマンド――bashの補完候補を生成する／使用できるコマンド名を一覧表示する]
+
+https://blog.cybozu.io/entry/2016/09/26/080000[Bashタブ補完自作入門 -
+Cybozu Inside Out | サイボウズエンジニアのブログ]
+
+https://qiita.com/nil2/items/8a1544e206928c753a2e[Bash用の補完スクリプトの作り方
+- Qiita]
+
+=== VMwareUpdate
+
+https://community.broadcom.com/vmware-cloud-foundation/question/vmware-workstation-pro-1752-on-ubuntu-2404-lts-compile-errors[VMware
+Workstation Pro 17.5.2 on Ubuntu 24.04 LTS compile errors | VMware
+Workstation]
+
+=== ごみ箱
+
+http://bookmark.placeholder.url/[VMwareUpdate]
+
+=== 
+
+https://qiita.com/tamurashingo@github/items/54b25acc93e37580989d[シェルスクリプト上のループ処理について
+#ShellScript - Qiita]
+
+https://www.amazon.co.jp/TRIGKEY-Speed-%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3-3%E7%94%BB%E9%9D%A2%E5%90%8C%E6%99%82%E5%87%BA%E5%8A%9B-%E3%83%9F%E3%83%8B%E3%82%B2%E3%83%BC%E3%83%A0PC%E3%81%AB%E9%81%A9%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82/dp/B0BP1GC2V6?ref_=ast_sto_dp&th=1[Amazon
+| TRIGKEY ミニpc Speed S5 Pro AMD Ryzen 7 5800H(8 コアと 16
+スレッド&#44; 最大4.4 GHz&#44; Zen 3 アーキテクチャ) Mini PC 16GB DDR4
+500GB M.2 NVME SSD PCIE&#44; 小型pc&#44; 3画面同時出力 4K 60Hz&#44;
+高速WiFi 6/BT 5.2&#44; 家庭/オフィス/ミニゲームPC | TRIGKEY |
+パソコン・周辺機器 通販]
+
+https://qiita.com/frozencatpisces/items/e68862260941a7aa0f33[Grafana:
+ダッシュボードの基本的な作り方 #JSON - Qiita]
+
+https://ib.rokin.jp/nprotect/[ろうきん]
+
+https://point.orico.co.jp/id/script/menu/gototop
+
+https://www.orico.co.jp/
+
+http://grafana/[]
+
+https://dcard.docomo.ne.jp/st/[ドコモのクレジットカード ｜ dカード]
+
+https://d-card.jp/st/[dカード ｜ ドコモのクレジットカード]
+
+https://www.google.co.jp/search?q=%E4%B8%89%E4%BA%95%E4%BD%8F%E5%8F%8B%E9%8A%80%E8%A1%8C%E3%80%80%E6%94%AF%E5%BA%97%E7%95%AA%E5%8F%B7%E3%80%80783&sca_esv=a9228b41a6968b33&sxsrf=ACQVn0982wzh1jhUo145dNPOUFswErJ3NA%3A1710824321786&ei=gRv5ZZ60L5vc2roPx8Gh-Ao&ved=0ahUKEwje-OOfxf-EAxUbrlYBHcdgCK8Q4dUDCBA&uact=5&oq=%E4%B8%89%E4%BA%95%E4%BD%8F%E5%8F%8B%E9%8A%80%E8%A1%8C%E3%80%80%E6%94%AF%E5%BA%97%E7%95%AA%E5%8F%B7%E3%80%80783&gs_lp=Egxnd3Mtd2l6LXNlcnAiJ-S4ieS6leS9j-WPi-mKgOihjOOAgOaUr-W6l-eVquWPt-OAgDc4MzIFEAAYgARI4mhQlgJYx2NwC3gBkAEAmAHJAaABmhaqAQYyMi42LjG4AQPIAQD4AQGYAiWgAuMVwgIKEAAYRxjWBBiwA8ICEBAAGIAEGIoFGEMYsQMYgwHCAg0QABiABBiKBRhDGLEDwgIKEAAYgAQYigUYQ8ICCxAAGIAEGLEDGIMBwgITEAAYgAQYBBixAxiDARixAxiDAcICBxAAGIAEGATCAg0QABiABBgKGLEDGIMBwgIHEAAYgAQYCsICCxAAGIAEGAQYChgqwgIJEAAYgAQYBBgKwgIJEAAYgAQYChgXwgIJEAAYgAQYBBglwgIGEAAYBBgewgIIEAAYBBgeGA_CAgUQIRigAcICDRAAGIAEGAQYsQMYgwGYAwCIBgGQBgqSBwcyNC4xMi4xoAfNaQ&sclient=gws-wiz-serp[三井住友銀行　支店番号　783
+- Google 検索]
+
+https://www.ntt-card.com/[クレジットカードならNTTグループカード]
+
+https://my.ts3card.com/webapp/ToTP01020101Action.do?UNIQUEID=21488[MY
+TS3ログイン｜TS CUBIC カード]
+
+=== インポートしたブックマーク
+
+https://mylink.ntt-card.com/PU/USAE0100UIP01SCR.do[MyLink |
+NTTファイナンス]
+
+https://www.sevenbank.co.jp/[セブン銀行]
+
+https://www.aeonbank.co.jp/point_club/[イオン銀行ポイントクラブ
+｜イオン銀行]
+
+https://vivaldi.com/bk/expedia-jp[エクスペディア (Expedia)]
+
+https://vivaldi.com/bk/sd-social[Vivaldi Social]
+
+vivaldi://game/[Vivaldi Game]
+
+https://vivaldi.com/bk/eneba-ja-jp[Eneba]
+
+https://www.youtube.com/[YouTube]
+
+=== ごみ箱
+
+https://my.jcb.co.jp/iss-pc/member/user_manage/userLogout.html?link_id=myj_header_userLogout[JCBの会員専用WEBサービス「MyJCB（マイジェーシービー）」]
+
+https://secure.goldpoint.co.jp/gpm/authentication/index.html[ログイン -
+GOLD POINT CARD +]
+
+https://www.recruit.co.jp/[株式会社リクルート]
+
+https://www.rakuten-card.co.jp/e-navi/[楽天e-NAVI: ログイン画面]
+
+https://help.vivaldi.com/desktop/bookmarks-speed-dial/bookmarks/[Bookmarks
+| Vivaldi Browser Help]
+
+https://www.google.co.jp/search?q=ip%EF%BD%93os2+%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%80%80%E8%A7%A3%E9%99%A4%E6%99%82%E9%96%93&sxsrf=ALiCzsbqGiYa7ZG-9BqsSN4fpUd4tgE2NQ%3A1672355833733&ei=-R-uY-atLPWeseMP6viMmA8&ved=0ahUKEwimjqH7-p_8AhV1T2wGHWo8A_MQ4dUDCA8&uact=5&oq=ip%EF%BD%93os2+%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%80%80%E8%A7%A3%E9%99%A4%E6%99%82%E9%96%93&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQ8QQQHhCiBDIFCAAQogQyBQgAEKIEOgoIABBHENYEELADOgkIIRCgARAKECo6BAghEBU6BwghEKABEApKBAhBGABKBAhGGABQ4gRYgxxg3h5oAXABeACAAW-IAf4KkgEDNy43mAEAoAEByAEKwAEB&sclient=gws-wiz-serp[ipｓos2
+ログイン　解除時間 - Google 検索]
+
+https://www.google.co.jp/search?q=Kazamax&sxsrf=ALiCzsZAxhI8J41nRPQea9qtTv-TRA4Q_A%3A1671356174034&ei=Dt-eY-fOAczc2roP6YOsCA&ved=0ahUKEwjnja_47oL8AhVMrlYBHekBCwEQ4dUDCBA&uact=5&oq=Kazamax&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCCMQsQIQJzIHCAAQBBCABDIHCAAQBBCABDIHCAAQBBCABDIICAAQBxAeEAoyBggAEAcQHjIGCAAQBxAeMggIABAHEAQQHjIICAAQBxAEEB4yCAgAEAcQBBAeOgoIABBHENYEELADOgsIABAHEAQQHhDxBDoNCAAQCBAHEAQQHhDxBDoECCMQJzoFCAAQgARKBAhBGABKBAhGGABQywhYoCFgtTdoAnABeACAAWmIAbACkgEDMS4ymAEAoAEByAEKwAEB&sclient=gws-wiz-serp[Kazamax
+- Google 検索]
+
+https://www.aeonbank.co.jp/atm/convenience_store/[コンビニでご利用いただけるATM]
+
+=== 新しいフォルダー
+
+https://www.daiwalifenext.co.jp/news/190.html[マンションみらい価値研究所が研究レポートを発信「修繕積立金の値上げ」に関する2&#44;500件の議案を調査｜マンション管理会社の【大和ライフネクスト】]
+
+=== 新しいフォルダー
+
+https://api.saisoncard.co.jp/html/NA/PCSP/logout/index.html[SAISON CARD
+Netアンサー]
+
+https://aflac-direct.force.com/cst/s/cat?planNumber=&_ga=2.249544644.231670005.1654396310-1282928684.1654396310&pageId=C001#screenid=CC001[ご契約者様専用サイト「アフラック
+よりそうネット」｜アフラック]
+
+https://www.nttdocomo.co.jp/mydocomo/index.html
+
+=== Vivaldi
+
+https://www.itmedia.co.jp/[IT総合情報ポータル「ITmedia」Home]
+
+https://mainichi.jp/[毎日新聞のニュース・情報サイト]
+
+https://www.nhk.or.jp/[NHKオンライン]
+
+https://vivaldi.com/bk/sd-browser-features-ja[Vivaldiの機能]
+
+https://vivaldi.com/bk/sd-community-ja[Vivaldi日本語公式ブログ]
+
+https://vivaldi.com/bk/sd-webmail[Vivaldiウェブメール]
+
+https://vivaldi.com/bk/whereby-ja[Whereby]
+
+https://vivaldi.com/bk/hulu-jp[Hulu]
+
+https://vivaldi.com/bk/yahoo-shopping[Yahoo! Shopping]
+
+https://vivaldi.com/bk/sd-webmail[Vivaldiウェブメール]
+
+http://mantis/[]
+
+http://www.orico.co.jp/
+
+https://vivaldi.com/bk/amazon-jp[Amazon]
+
+https://vivaldi.com/bk/sd-browser-features-ja[Vivaldiの機能]
+
+https://www.shinseibank.com/powerflex/direct/
+
+https://shop.nestle.jp/front/contents/top/
+
+https://www.gpoint.co.jp/
+
+http://pointi.jp/
+
+https://point.orico.co.jp/id/script/menu/userinfo[ログイン｜クレジットカード・カードローンのオリコ]
