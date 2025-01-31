@@ -1,7 +1,8 @@
 # AKsScpt
 All Kinds of Script
 
-KumadeからPCPへの道
+
+からPCPへの道
 
 目次
 PCP情報の提供依頼
