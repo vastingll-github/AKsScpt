@@ -316,14 +316,14 @@ LOG_ERRCNT="errnum_collct.txt"
 
 ## Log ファイルのトップディレクトリ指定チェック
 if [ $# -eq 0 ]; then
-  echo;echo "       $0 LogsTopDir.....[ex. upload/Logs]";echo
+  echo -e "\n\n       $0 LogsTopDir.....[ex. upload/Logs]\n\n"
 	exit 1;
 fi
 
 #1. error retreviews                       ErrexistList.result
 grep -rin error $1 >  ${APCLOGCHK}/${ERREXISTLST}
 if [ ! -s ${APCLOGCHK}/${ERREXISTLST} ]; then
-  echo;echo "   $1 配下に、error の記述されるファイルはありません";echo
+  echo -e "\n\n   $1 配下に、error の記述されるファイルはありません\n\n"
 	rm -rf ${APCLOGCHK}
 	exit 0;
 fi
