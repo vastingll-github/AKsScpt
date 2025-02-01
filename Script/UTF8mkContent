@@ -1,0 +1,112 @@
+#!/usr/bin/bash
+
+# ELM3 返却。二重コーテーションマーク内の取出関数(SHELL 内部関数のみ利用)
+function ELMDIV () {
+	# 要素に=は1個。ADD_DATE="1721452638", HREF="http*"  の文字*=(ADD_DATE=) の文字部分外し
+  ELM0=${1#*=}
+	# "文字* の文字部分切取り
+  ELM1=${ELM0#\"*}
+  #		UNIXT1=${UNIXT0#\"}
+	# >文字* の>より前部分切取り ADD_DATE="1721452648"> となる部分があるので対応
+  ELM2=${ELM1%\"\>*}
+	# 文字*" の"より前部分を残す。ELM3 はUNIX Timeや”*”の*を取得
+  ELM3=${ELM2%\"}
+}
+
+# unenable chars : . _  % $ & ' ( ) * + ; : 
+# enable char : - ~ ! + , = @
+# DELM7 返却
+function CANTDIRCHAR () {
+# uconv は全角からの変換は対応しない
+#	uconv -x "[ａ-ｚ] Fullwidth-Halfwidth"
+#	以下のコマンドで日本語(正確には、漢字、ひらがな、カタカナ)以外の文字を正規化可能
+#	uconv -f utf-8 -t utf-8 -x '::[ [:^Katakana:] & [:^Hiragana:] & [:^Han:] ]; ::nfc;'
+	DELM7=`echo $1 | uconv -x '[^a-zA-Z] Halfwidth-Fullwidth;'`
+}
+
+# MKWDIR 返却。 $1 を中間真ん中に挿入して、前回のディレクトリと今回のディレクトをくっつける
+function UNIXTIME2CT () {
+	MKWDIR_BEF=${MKWDIR}
+  MKWDIR01=`date "+%Y_%m_%d-%H%M%S" --date @${2} | tr -d ' '`
+	# この関数が呼ばれたその前に作られたディレクトリ配下に作成する
+	MKWDIR=${MKWDIR_BEF}${1}${MKWDIR01}
+}
+
+# この資料の題名を格納するための変数
+BOOKCONTENT=$((BOOKCONTENT+1))
+# 各章の項番を新しい章になったら初期化する変数
+KOUBAN=1
+
+MKTIME=`date +%Y%m%d_%H%M%S_%3N`
+CURDIR=`pwd`
+SHOBAN=1
+SETSBAN=1
+ 
+# -d で日本語表示にある半角スペースを削除
+# -s オプションは、指定した文字が連続した場合、1 度だけ出力。 以下は連続する「改行」の場合に 1 つにするため、実際には空行を削除していることと同様
+# 【注】Webで表示するコメントに半角スペースがあると　readarray がそのコメントを落とすため、Kekkaファイルのその部分を手で削除しないといけない
+#pcre2grep -Mi '<H3 ADD_DATE=.*</H3>|<A HREF=.*[\s\S\w\W]*</A>' Kekka | sed 's/\>.*[[:space:]].*\<//g' | tr -s "\n" > BMKresult
+# readarrayはbashの組み込みのコマンド
+pcre2grep -Mi '<H3 ADD_DATE=.*</H3>|<A HREF=.*[\s\S\w\W]*</A>' Kekka | tr -s "\n" > BMKresult
+
+# 上記ファイル読込
+#data=$(<"file")
+#IFS= read -r -d "" data < "file" ||:
+# ||: は終了ステータスが非ゼロの場合にそれをを無視するためのものです
+# ファイルに NULL 文字が含まれてない場合は、区切り記号が
+# 見つからないということなので必ず非ゼロになります
+readarray htmlelm < "BMKresult"
+
+
+# 改行を区切子として設定
+# IFS='\n'
+for line in ${htmlelm[@]};
+do
+#  MKWDIR02=""; MKWDIR12=""
+#  ADD_DATE は全てのbookmarkに記述されるので最初に判断する。
+	if [[ $line =~ "ADD_DATE" ]]; then
+		# UnixTimeの取出し
+	  ELMDIV $line
+		# UnixTimeを世紀表現にする
+		UNIXTIME2CT "ADD" ${ELM3}
+# HTML のフォルダ定義はLAST_MODIFIEDが記述されるので、LASTが付いた場合は章題DIRを作成する
+	elif [[ $line =~ "LAST_MODIFIED" ]]; then
+
+	  ELMDIV $line # ELM3 を設定
+		UNIXTIME2CT "-LAST" ${ELM3}  # MKWDIR を設定
+		# 以下でBookmarkListで表示される文字を取得
+	  TITLE00=${line#*\"\>}
+	  TITLE01=${TITLE00%\<*}
+		CANTDIRCHAR ${TITLE01} # DELM7作成、Dir として利用できない文字を全て全角化する
+		# 一番最初のBMG(BookMarkGroup)だったらTOPDOCDIR として設定する
+		if [[ $BOOKCONTENT == 1 ]]; then
+		  #TOPDOCDIR=${MKTIME}/${MKWDIR}/${TITLE01}/
+		  TOPDOCDIR=${MKTIME}/${MKWDIR}/${DELM7}
+			# 資料トップディレクトリ作成
+      mkdir -p ${TOPDOCDIR}
+		  BOOKCONTENT=$((BOOKCONTENT+1))
+    else
+#		  CANTDIRCHAR ${TITLE01}
+		  SHOBAN=$((SHOBAN+1))
+		  SETSBAN=1
+		  DOCDIR=${SHOBAN}.${DELM7}
+#		  echo " MKWDIR2: " ${DOCDIR}
+    fi
+# 以下URL情報の取得処理
+	elif [[ $line =~ "HREF=" ]]; then
+	  ELMDIV $line
+		URL=${ELM3}
+# Webページの題目は、ICON 部分に含まれるためそれを取得する
+	elif [[ $line =~ "ICON=" ]]; then
+	  TITLE02=${line#*\"\>}
+	  TITLE03=${TITLE02%\<*}
+		CANTDIRCHAR ${TITLE03}
+		SETSDIR=${TOPDOCDIR}/${DOCDIR}/${SHOBAN}-${SETSBAN}.${DELM7}
+#		echo -e "####SETSDIR-info(ICON):  ${SETSDIR} \n"
+		mkdir -p ${SETSDIR}
+    ./UTF8_Html2pandc.bash ${URL} ${CURDIR}/${SETSDIR}
+    SETSBAN=$((SETSBAN+1))
+	fi
+done
+
+
