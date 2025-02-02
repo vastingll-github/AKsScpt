@@ -41,27 +41,32 @@ sar -w / pminfo -t | grep context
 sar -y / pminfo -t | grep tty
 sar -I / pminfo -t | grep interrup
 sar -S, sar -W / pcp atopsar -s
+
 PCP情報の提供依頼
 PCPを用いてリソース情報を確認するためにPJに依頼すべき資材を以下に示す。
-バージョン	RHEL、Rockyのバージョン。以下のコマンドで取得
-# cat /etc/redhat-release 
+バージョン	RHEL、Rockyのバージョン。以下のコマンドで取得    release version sysname machine(architecht) nodename distro
+# cat /etc/redhat-release | pminfo -f kernel.uname
+
+CPU,Mem?
+# pminfo -f kernel.percpu.cpu.sys
+
 ファイル	調査対象のサーバの以下のフォルダ配下のファイルすべて
  /var/log/pcp/pmlogger/ 
 このセクションを編集
 想定する構成
 本資料で想定する構成を以下に示す。
 
-分類	ホスト名	所掌	役割	PCPアーカイブログ
-集約収集サーバ	pcp00	PJ	複数の収集対象サーバからPCPのデータを集めるサーバ	/var/log/pcp/pmlogger/pcp00
-収集対象サーバ	web01	PJ	収集対象のサーバ。業務を行っているサーバ	/var/log/pcp/pmlogger/web01
-解析環境	OST01	OSTセンタ	PJから提供されたPCP情報を解析するための環境。OSTセンタメンバーの解析環境	/root/pcp/web01
+分類	         ホスト名	 所掌	     役割	                                       PCPアーカイブログ
+集約収集サーバ	pcp00	   PJ	      複数の収集対象サーバからPCPのデータを集めるサーバ	 /var/log/pcp/pmlogger/pcp00
+収集対象サーバ	web01	   PJ	      収集対象のサーバ。業務を行っているサーバ	         /var/log/pcp/pmlogger/web01
+解析環境	     OST01	   OSTセンタ	PJ提供のPCP情報を解析環境。OST担当の解析環境     /root/pcp/web01
 このセクションを編集
 解析方法
 収集したPCP情報を集約収集サーバで参照する方法、収集対象サーバでリアルタイムにPCP情報を参照する方法、PJから提供されたPCP情報をOSTセンタの解析環境で参照する方法、各環境でメトリクスを用いて解析する方法を示す。
 コマンド例としてpmstatを使用しているが、他のPCPコマンドでも同様に各オプションを使用可能
 -aや-hなどのオプションを使用しない場合、コマンドを実行している自サーバのシステム情報を取得するので要注意
 
-このセクションを編集
+このセクションを編集 
 収集対象サーバでの参照
 収集対象サーバで自サーバのpmstatを表示する方法を示す
 
