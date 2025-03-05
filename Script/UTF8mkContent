@@ -37,17 +37,27 @@ BOOKCONTENT=$((BOOKCONTENT+1))
 # 各章の項番を新しい章になったら初期化する変数
 KOUBAN=1
 
-MKTIME=`date +%Y%m%d_%H%M%S_%3N`
+#MKTIME=`date +%Y%m%d_%H%M%S_%3N`
+MKTIME=`date +%Y%m%d_%H%M`
 CURDIR=`pwd`
 SHOBAN=1
 SETSBAN=1
  
-# -d で日本語表示にある半角スペースを削除
-# -s オプションは、指定した文字が連続した場合、1 度だけ出力。 以下は連続する「改行」の場合に 1 つにするため、実際には空行を削除していることと同様
+#declare -a PickUp
+# 「ShellScript大全」〜「ShellScript大全End」まで抜きだす
+#PickUp=(`grep -n "ShellScript大全" $1 | cut -d":" -f1`)
+#PickUp=`grep -n "ShellScript大全" $1 | cut -d":" -f1`
+#Options="${PickUp[0]},${PickUp[1]}p"
+
+#sed -n ${Options} $1  > Kekka00
+#sed -e 's/\>[<space>,<tab>]*\<//g' Kekka00 > Kekka01
+# 「>Web表示される日本語<」 の間にある半角スペースを削除して上書き保存する
 # 【注】Webで表示するコメントに半角スペースがあると　readarray がそのコメントを落とすため、Kekkaファイルのその部分を手で削除しないといけない
+#sed -e 's/\>[<space>,tab>]*\<//g' Kekka > Kekka01
+# -s オプションは、指定した文字が連続した場合、1 度だけ出力。 以下は連続する「改行」の場合に 1 つにするため、実際には空行を削除していることと同様
 #pcre2grep -Mi '<H3 ADD_DATE=.*</H3>|<A HREF=.*[\s\S\w\W]*</A>' Kekka | sed 's/\>.*[[:space:]].*\<//g' | tr -s "\n" > BMKresult
 # readarrayはbashの組み込みのコマンド
-pcre2grep -Mi '<H3 ADD_DATE=.*</H3>|<A HREF=.*[\s\S\w\W]*</A>' Kekka | tr -s "\n" > BMKresult
+pcre2grep -Mi '<DT><H3 ADD_DATE=.*</H3>|<DT><A HREF=.*[\s\S\w\W]*</A>' Kekka | tr -s "\n" > BMKresult
 
 # 上記ファイル読込
 #data=$(<"file")
@@ -81,9 +91,11 @@ do
 		# 一番最初のBMG(BookMarkGroup)だったらTOPDOCDIR として設定する
 		if [[ $BOOKCONTENT == 1 ]]; then
 		  #TOPDOCDIR=${MKTIME}/${MKWDIR}/${TITLE01}/
-		  TOPDOCDIR=${MKTIME}/${MKWDIR}/${DELM7}
+#		  TOPDOCDIR=${MKTIME}/${MKWDIR}/${DELM7}
+		  TOPDOCDIR=${MKTIME}/${DELM7}
 			# 資料トップディレクトリ作成
-      mkdir -p ${TOPDOCDIR}
+#      mkdir -p ${TOPDOCDIR}
+#			echo  "TOPDIR: " ${TOPDOCDIR}
 		  BOOKCONTENT=$((BOOKCONTENT+1))
     else
 #		  CANTDIRCHAR ${TITLE01}
@@ -101,9 +113,14 @@ do
 	  TITLE02=${line#*\"\>}
 	  TITLE03=${TITLE02%\<*}
 		CANTDIRCHAR ${TITLE03}
-		SETSDIR=${TOPDOCDIR}/${DOCDIR}/${SHOBAN}-${SETSBAN}.${DELM7}
+		if [[ X${TOPDOCDIR} == "X" ]]; then
+			TOPDOCDIR="${MKTIME}/ShellScript大全"
+		fi
+		#SETSDIR=${TOPDOCDIR}/${DOCDIR}/${SHOBAN}-${SETSBAN}.${DELM7}
+		SETSDIR=${TOPDOCDIR}/${DOCDIR}/${SHOBAN}-${SETSBAN}
 #		echo -e "####SETSDIR-info(ICON):  ${SETSDIR} \n"
 		mkdir -p ${SETSDIR}
+#		echo "SETSDIR: " ${SETSDIR}
     ./UTF8_Html2pandc.bash ${URL} ${CURDIR}/${SETSDIR}
     SETSBAN=$((SETSBAN+1))
 	fi

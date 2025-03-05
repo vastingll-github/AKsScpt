@@ -16,6 +16,7 @@ HTTPINFO=`basename $2`
 #mkdir $CREATEDIR
 #echo $URL > ${CREATEDIR}/${HTTPINFO}
 
-curl  $URL | pandoc -f html -t asciidoc >  $2/$HTTPINFO.asciidoc
+#curl  $URL | pandoc -f html -t asciidoc >  $2/$HTTPINFO.adoc
+curl  $URL | pandoc -f html -t markdown_mmd >  $2/$HTTPINFO.mmd
 #echo  $URL "PATH : " $2/$HTTPINFO.asciidoc
 
