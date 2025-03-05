@@ -1,0 +1,764 @@
+<div id="globalheader-container" markdown="1" brand="hatenablog">
+
+</div>
+
+<div class="blog-controlls-blog-icon" markdown="1">
+
+[![知に至る病](https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png)](https://amano41.hatenablog.jp/)
+
+</div>
+
+<div class="blog-controlls-title" markdown="1">
+
+[知に至る病](https://amano41.hatenablog.jp/)
+
+</div>
+
+<a
+href="https://blog.hatena.ne.jp/amano41/amano41.hatenablog.jp/subscribe?utm_medium=button&amp;utm_source=blogs_topright_button&amp;utm_campaign=subscribe_blog"
+class="blog-controlls-subscribe-btn test-blog-header-controlls-subscribe">読者になる</a>
+
+<div id="container" markdown="1">
+
+<div id="container-inner" markdown="1">
+
+<div id="blog-title" markdown="1" brand="hatenablog">
+
+<div id="blog-title-inner" markdown="1">
+
+<div id="blog-title-content" markdown="1">
+
+# [知に至る病](https://amano41.hatenablog.jp/) [title]
+
+## お勉強したことを忘れないように書き留めています。 [blog-description]
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content" class="hfeed" markdown="1">
+
+<div id="content-inner" markdown="1">
+
+<div id="wrapper" markdown="1">
+
+<div id="main" markdown="1">
+
+<div id="main-inner" markdown="1">
+
+<div class="entry-inner" markdown="1">
+
+<div class="entry-content" markdown="1">
+
+<div class="variable-mobileWeb-ad" markdown="1">
+
+<div id="google_afc_user_container_0" class="sleeping-ad" markdown="1"
+style="display: block !important;">
+
+</div>
+
+</div>
+
+この広告は、90日以上更新していないブログに表示しています。
+
+</div>
+
+</div>
+
+<div class="entry-inner" markdown="1">
+
+<div class="entry-header" markdown="1">
+
+<div class="date entry-date first" markdown="1">
+
+<a href="https://amano41.hatenablog.jp/archive/2017/06/01"
+rel="nofollow"><span class="date-year">2017</span><span
+class="hyphen">-</span><span class="date-month">06</span><span
+class="hyphen">-</span><span class="date-day">01</span></a>
+
+</div>
+
+# <a href="https://amano41.hatenablog.jp/entry/bash-for-loop-over-array"
+class="entry-title-link bookmark">bash の配列を for ループで使う</a> [bash-の配列を-for-ループで使う]
+
+</div>
+
+<div class="entry-content hatenablog-entry" markdown="1">
+
+<a href="http://d.hatena.ne.jp/keyword/bash" class="keyword">bash</a> で
+for ループを使って配列の要素を参照するやり方のメモです。
+
+## for-each
+
+配列の全要素を列挙するには `${array[@]}` または `${array[*]}`
+を使います。
+インデックスの情報が必要ないのであれば，これが一番シンプルなやり方ですね。
+
+``` code
+for v in "${array[@]}"
+do
+    echo "$v"
+done
+```
+
+インデックスの情報が必要な場合は，変数を用意して自前でカウントしなくてはなりません。
+
+``` code
+i=0
+for v in "${array[@]}"
+do
+    echo "$i => $v"
+    let i++
+done
+```
+
+### @ と \* の違い
+
+`@` と `*`
+の違いは，ダブルクォーテーションで括ったときに，前者が配列の各要素を個別に出力するのに対して，後者は全要素を
+1 つに結合した結果を出力する点です。 配列を使って join
+相当の処理をしたいといった特別な理由がない限り，添え字に `@`
+を使ってダブルクォーテーションで括っておけば間違いがありません。
+
+## 要<a href="http://d.hatena.ne.jp/keyword/%C1%C7%BF%F4"
+class="keyword">素数</a>を使って C 言語風に
+
+配列の要<a href="http://d.hatena.ne.jp/keyword/%C1%C7%BF%F4"
+class="keyword">素数</a>は `${#array[@]}` または `${#array[*]}`
+で取得できます。 これを使って C 言語風の for
+ループを以下のように書けます。
+
+``` code
+for ((i = 0; i < ${#array[@]}; i++))
+do
+    echo "$i => ${array[$i]}"
+done
+```
+
+## 添え字のリストでよりスマートに
+
+`${!array[@]}` や `${!array[*]}` とすると，配列 array
+の**添え字のリスト**に展開されます。 C 言語風の for
+ループよりもスマートに書けます。
+インデックスの情報が必要なら，この書き方が一番よいのではないでしょうか。
+
+``` code
+for i in "${!array[@]}"
+do
+    echo "$i => ${array[$i]}"
+done
+```
+
+## 参考
+
+-   [bashの配列のまとめ -
+    それマグで！](http://takuya-1st.hatenablog.jp/entry/2016/12/27/053456)
+-   [Man page of
+    BASH](https://linuxjm.osdn.jp/html/GNU_bash/man1/bash.1.html)
+
+</div>
+
+<div class="entry-tags-wrapper" markdown="1">
+
+<div class="entry-tags" markdown="1">
+
+</div>
+
+</div>
+
+<span class="author vcard"><span class="fn" load-nickname="1"
+user-name="amano41">amano41</span></span>
+<span class="entry-footer-time">[2017-06-01
+18:25](https://amano41.hatenablog.jp/entry/bash-for-loop-over-array)</span>
+<span class="entry-footer-subscribe" test-blog-controlls-subscribe="">
+[読者になる](https://blog.hatena.ne.jp/amano41/amano41.hatenablog.jp/subscribe?utm_campaign=subscribe_blog&utm_source=blogs_entry_footer&utm_medium=button)
+</span>
+
+<div class="hatena-star-container" markdown="1" hatena-star-container=""
+hatena-star-url="https://amano41.hatenablog.jp/entry/bash-for-loop-over-array"
+hatena-star-title="bash の配列を for ループで使う"
+hatena-star-variant="profile-icon"
+hatena-star-profile-url-template="https://blog.hatena.ne.jp/{username}/">
+
+</div>
+
+<div class="social-buttons" markdown="1">
+
+<div class="social-button-item" markdown="1">
+
+<a
+href="https://b.hatena.ne.jp/entry/s/amano41.hatenablog.jp/entry/bash-for-loop-over-array"
+class="hatena-bookmark-button"
+data-hatena-bookmark-url="https://amano41.hatenablog.jp/entry/bash-for-loop-over-array"
+data-hatena-bookmark-layout="vertical-balloon"
+data-hatena-bookmark-lang="ja"
+title="この記事をはてなブックマークに追加"><img
+src="https://b.st-hatena.com/images/entry-button/button-only.gif"
+style="border: none;" width="20" height="20"
+alt="この記事をはてなブックマークに追加" /></a>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<div class="fb-share-button" markdown="1" layout="box_count"
+data-href="https://amano41.hatenablog.jp/entry/bash-for-loop-over-array">
+
+</div>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=bash+%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92+for+%E3%83%AB%E3%83%BC%E3%83%97%E3%81%A7%E4%BD%BF%E3%81%86+-+%E7%9F%A5%E3%81%AB%E8%87%B3%E3%82%8B%E7%97%85&amp;url=https%3A%2F%2Famano41.hatenablog.jp%2Fentry%2Fbash-for-loop-over-array"
+class="entry-share-button entry-share-button-twitter test-share-button-twitter"
+title="X（Twitter）で投稿する"></a>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<span class="pocket-btn" pocket-label="pocket"
+save-url="https://amano41.hatenablog.jp/entry/bash-for-loop-over-array"
+pocket-count="vertical" data-lang="en"></span>
+
+</div>
+
+</div>
+
+<div class="google-afc-image test-google-rectangle-ads" markdown="1">
+
+<div id="google_afc_user_container_1"
+class="google-afc-user-container google_afc_blocklink2_5 google_afc_boder"
+markdown="1" test-unit="/4374287/blog_user">
+
+</div>
+
+<a href="http://blog.hatena.ne.jp/guide/pro" class="open-pro-modal"
+data-guide-pro-modal-ad-url="https://hatena.blog/guide/pro/modal/ad">広告を非表示にする</a>
+
+</div>
+
+<div class="customized-footer" markdown="1">
+
+<div id="entry-footer-secondary-modules" class="entry-footer-modules"
+markdown="1">
+
+</div>
+
+</div>
+
+<div class="comment-box js-comment-box" markdown="1">
+
+-   もっと読む
+
+<span class="leave-comment-title js-leave-comment-title">コメントを書く</span>
+
+</div>
+
+</div>
+
+<div class="pager pager-permalink permalink" markdown="1">
+
+<span class="pager-prev"> <a
+href="https://amano41.hatenablog.jp/entry/apm-sync-starred-installed-packages"
+rel="prev"><span class="pager-arrow">« </span> apm
+でスターとローカルの差分をとって同…</a> </span>
+<span class="pager-next"> <a
+href="https://amano41.hatenablog.jp/entry/displayport-hot-plug-detect-signal"
+rel="next">DisplayPort 接続で省電力モードからの復… <span
+class="pager-arrow"> »</span></a> </span>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="box1-inner" markdown="1">
+
+</div>
+
+</div>
+
+<div id="box2-inner" markdown="1">
+
+<div class="hatena-module hatena-module-profile" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+プロフィール
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+<a href="https://amano41.hatenablog.jp/about"
+class="profile-icon-link"><img
+src="https://cdn.profile-image.st-hatena.com/users/amano41/profile.png?1477147160"
+class="profile-icon" alt="id:amano41" /></a> <span class="id">
+<a href="https://amano41.hatenablog.jp/about"
+class="hatena-id-link"><span data-load-nickname="1"
+data-user-name="amano41">id:amano41</span></a> </span>
+
+<div class="profile-description" markdown="1">
+
+お勉強したことを忘れないように書き留めています。
+
+</div>
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+<div class="profile-about" markdown="1">
+
+[このブログについて](https://amano41.hatenablog.jp/about)
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-search-box" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+検索
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-recent-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+[最新記事](https://amano41.hatenablog.jp/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://amano41.hatenablog.jp/entry/wsl-python3-venv-error"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">WSL
+    の Python で venv による仮想環境の作成がエラーになる</a> <a
+    href="https://b.hatena.ne.jp/entry/s/amano41.hatenablog.jp/entry/wsl-python3-venv-error"
+    class="bookmark-widget-counter"><img
+    src="https://b.hatena.ne.jp/entry/image/https://amano41.hatenablog.jp/entry/wsl-python3-venv-error"
+    alt="はてなブックマーク - WSL の Python で venv による仮想環境の作成がエラーになる" /></a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://amano41.hatenablog.jp/entry/python3-venv"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">Python3
+    on Windows10 で仮想環境を使う： venv モジュール編</a> <a
+    href="https://b.hatena.ne.jp/entry/s/amano41.hatenablog.jp/entry/python3-venv"
+    class="bookmark-widget-counter"><img
+    src="https://b.hatena.ne.jp/entry/image/https://amano41.hatenablog.jp/entry/python3-venv"
+    alt="はてなブックマーク - Python3 on Windows10 で仮想環境を使う： venv モジュール編" /></a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://amano41.hatenablog.jp/entry/python3-miniconda"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">Python3
+    on Windows10 で仮想環境を使う： Miniconda 編</a> <a
+    href="https://b.hatena.ne.jp/entry/s/amano41.hatenablog.jp/entry/python3-miniconda"
+    class="bookmark-widget-counter"><img
+    src="https://b.hatena.ne.jp/entry/image/https://amano41.hatenablog.jp/entry/python3-miniconda"
+    alt="はてなブックマーク - Python3 on Windows10 で仮想環境を使う： Miniconda 編" /></a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a
+    href="https://amano41.hatenablog.jp/entry/disable-ctrl-shift-to-stop-switching-ime"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">Ctrl
+    + Shift で IME が切り替わるのを止める</a> <a
+    href="https://b.hatena.ne.jp/entry/s/amano41.hatenablog.jp/entry/disable-ctrl-shift-to-stop-switching-ime"
+    class="bookmark-widget-counter"><img
+    src="https://b.hatena.ne.jp/entry/image/https://amano41.hatenablog.jp/entry/disable-ctrl-shift-to-stop-switching-ime"
+    alt="はてなブックマーク - Ctrl + Shift で IME が切り替わるのを止める" /></a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a
+    href="https://amano41.hatenablog.jp/entry/apm-sync-starred-installed-packages"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">apm
+    でスターとローカルの差分をとって同期するスクリプトを書いた</a> <a
+    href="https://b.hatena.ne.jp/entry/s/amano41.hatenablog.jp/entry/apm-sync-starred-installed-packages"
+    class="bookmark-widget-counter"><img
+    src="https://b.hatena.ne.jp/entry/image/https://amano41.hatenablog.jp/entry/apm-sync-starred-installed-packages"
+    alt="はてなブックマーク - apm でスターとローカルの差分をとって同期するスクリプトを書いた" /></a>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-archive" markdown="1"
+archive-type="default"
+archive-url="https://amano41.hatenablog.jp/archive">
+
+<div class="hatena-module-title" markdown="1">
+
+[アーカイブ](https://amano41.hatenablog.jp/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2018"
+    class="archive-module-year-title archive-module-year-2018">2018</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2018/07"
+        class="archive-module-month-title archive-module-month-2018-7">2018 /
+        7</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2018/03"
+        class="archive-module-month-title archive-module-month-2018-3">2018 /
+        3</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2017"
+    class="archive-module-year-title archive-module-year-2017">2017</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2017/12"
+        class="archive-module-month-title archive-module-month-2017-12">2017 /
+        12</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2017/09"
+        class="archive-module-month-title archive-module-month-2017-9">2017 /
+        9</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2017/06"
+        class="archive-module-month-title archive-module-month-2017-6">2017 /
+        6</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2016"
+    class="archive-module-year-title archive-module-year-2016">2016</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2016/11"
+        class="archive-module-month-title archive-module-month-2016-11">2016 /
+        11</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2016/10"
+        class="archive-module-month-title archive-module-month-2016-10">2016 /
+        10</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2016/07"
+        class="archive-module-month-title archive-module-month-2016-7">2016 /
+        7</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2016/05"
+        class="archive-module-month-title archive-module-month-2016-5">2016 /
+        5</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2016/04"
+        class="archive-module-month-title archive-module-month-2016-4">2016 /
+        4</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2015"
+    class="archive-module-year-title archive-module-year-2015">2015</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2015/11"
+        class="archive-module-month-title archive-module-month-2015-11">2015 /
+        11</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2014"
+    class="archive-module-year-title archive-module-year-2014">2014</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2014/04"
+        class="archive-module-month-title archive-module-month-2014-4">2014 /
+        4</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2013"
+    class="archive-module-year-title archive-module-year-2013">2013</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2013/08"
+        class="archive-module-month-title archive-module-month-2013-8">2013 /
+        8</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2013/05"
+        class="archive-module-month-title archive-module-month-2013-5">2013 /
+        5</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://amano41.hatenablog.jp/archive/2012"
+    class="archive-module-year-title archive-module-year-2012">2012</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2012/12"
+        class="archive-module-month-title archive-module-month-2012-12">2012 /
+        12</a>
+    -   <a href="https://amano41.hatenablog.jp/archive/2012/11"
+        class="archive-module-month-title archive-module-month-2012-11">2012 /
+        11</a>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-category" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+カテゴリー
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <a href="https://amano41.hatenablog.jp/archive/category/Atom"
+    class="category-Atom">Atom (1)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/Cygwin"
+    class="category-Cygwin">Cygwin (1)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/Git"
+    class="category-Git">Git (3)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/Processing"
+    class="category-Processing">Processing (2)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/Python"
+    class="category-Python">Python (4)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/R"
+    class="category-R">R (4)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/VBA"
+    class="category-VBA">VBA (1)</a>
+-   <a href="https://amano41.hatenablog.jp/archive/category/WSL"
+    class="category-WSL">WSL (1)</a>
+-   <a
+    href="https://amano41.hatenablog.jp/archive/category/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE"
+    class="category-正規表現">正規表現 (1)</a>
+-   <a
+    href="https://amano41.hatenablog.jp/archive/category/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86"
+    class="category-画像処理">画像処理 (1)</a>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-html" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+本棚
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+[これまでに読んだ本](http://mediamarker.net/u/amano-yoichi/)の中から個人的に評価が高かったものを表示しています。
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer-inner" markdown="1">
+
+<div class="guest-footer js-guide-register test-blogs-register-guide"
+markdown="1" style="display:none !important"
+data-action="guide-register">
+
+<div class="guest-footer-content" markdown="1">
+
+### はてなブログをはじめよう！
+
+amano41さんは、はてなブログを使っています。あなたもはてなブログをはじめてみませんか？
+
+<div class="guest-footer-btn-container" markdown="1">
+
+<div class="guest-footer-btn" markdown="1">
+
+<a href="https://blog.hatena.ne.jp/register?via=200227"
+class="btn btn-register js-inherit-ga"
+target="_blank">はてなブログをはじめる（無料）</a>
+
+</div>
+
+<div class="guest-footer-btn" markdown="1">
+
+<a href="https://hatena.blog/guide" target="_blank">はてなブログとは</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+[<img
+src="https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png"
+width="16" height="16" alt="知に至る病" />
+<span class="footer-address-name">知に至る病</span>](https://amano41.hatenablog.jp/)
+
+Powered by [Hatena Blog](https://hatena.blog/) \| <a
+href="https://blog.hatena.ne.jp/-/abuse_report?target_url=https%3A%2F%2Famano41.hatenablog.jp%2Fentry%2Fbash-for-loop-over-array"
+class="report-abuse-link test-report-abuse-link"
+target="_blank">ブログを報告する</a>
+
+</div>
+
+<div id="fb-root" markdown="1">
+
+</div>
+
+<div class="quote-box" markdown="1">
+
+<div class="tooltip-quote tooltip-quote-stock" markdown="1">
+
+</div>
+
+<div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet"
+markdown="1">
+
+<span class="js-tweet-quote" target="_blank" track-name="quote-tweet"
+track-once="">![](https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8 "引用して投稿する")</span>
+
+</div>
+
+</div>
+
+<div id="quote-stock-message-box" class="quote-stock-panel" markdown="1"
+style="position: absolute; z-index: 3000">
+
+<div id="quote-stock-succeeded-message" class="message-box" markdown="1"
+style="display: none">
+
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+</div>
+
+<div id="quote-login-required-message" class="message-box" markdown="1"
+style="display: none">
+
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+</div>
+
+<div id="quote-stock-failed-message" class="error-box" markdown="1"
+style="display: none">
+
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+</div>
+
+<div id="unstockable-quote-message-box" class="error-box" markdown="1"
+style="display: none; position: absolute; z-index: 3000;">
+
+限定公開記事のため引用できません。
+
+</div>
+
+</div>
+
+<div id="hidden-subscribe-button" markdown="1" style="display: none;">
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+</div>

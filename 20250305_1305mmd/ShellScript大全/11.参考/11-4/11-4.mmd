@@ -1,0 +1,954 @@
+<div class="allWrapper" markdown="1">
+
+<div id="GlobalHeader-react-component-15f659a7-8956-4812-b81d-e5ba1eee7fd3"
+markdown="1">
+
+<div class="style-1cnt4b8" markdown="1">
+
+<div markdown="1">
+
+<div class="style-ymuwam" markdown="1">
+
+<div class="style-fv3lde" markdown="1">
+
+<a href="/" class="style-1etvg7j" aria-label="Qiita"><img
+src="data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNDI2LjU3IDEzMCIgYXJpYS1oaWRkZW49InRydWUiPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==" /></a>
+
+</div>
+
+<div class="style-fv3lde" markdown="1">
+
+<span class="material-symbols-outlined style-18lpml7"
+aria-hidden="true">search</span>
+
+<span class="material-symbols-outlined style-v2p563"
+aria-hidden="true">search</span><span class="style-1afofdy">Search</span>
+
+<a
+href="/login?callback_action=login_or_signup&amp;redirect_to=%2Fko1nksm%2Fitems%2F46fa9df8031275c7dc0a&amp;realm=qiita"
+class="style-1sn73cs" rel="nofollow">Login</a><a
+href="/signup?callback_action=login_or_signup&amp;redirect_to=%2Fko1nksm%2Fitems%2F46fa9df8031275c7dc0a&amp;realm=qiita"
+class="style-1r635es" rel="nofollow">Signup</a>
+
+</div>
+
+</div>
+
+<span class="material-symbols-outlined style-18lpml7"
+aria-hidden="true">search</span>
+
+</div>
+
+1.  <a href="/" class="style-1ygoan4">Trend</a>
+2.  <a href="/question-feed" class="style-1ygoan4">Question</a>
+3.  <a href="/official-events" class="style-1ygoan4">Official Event</a>
+4.  <a href="/official-columns" class="style-1ygoan4"
+    target="_blank">Official Column<span
+    class="material-symbols-outlined style-1o3zxqp"
+    aria-hidden="true">open_in_new</span></a>
+5.  <a href="/organizations" class="style-1ygoan4">Organization</a>
+
+</div>
+
+</div>
+
+<div id="AlertMessage-react-component-9ece1fb5-f702-4c30-8bc8-331a818c5e4c"
+markdown="1">
+
+</div>
+
+<div class="mainWrapper" markdown="1">
+
+<div id="PersonalArticlePage-react-component-c8c23fb8-067b-4762-af57-89c1e1ccbd16"
+markdown="1">
+
+<div class="style-ffh7zq" markdown="1" role="main">
+
+<div class="section style-1hl01qi" markdown="1">
+
+<div class="style-c1wjhj" markdown="1">
+
+<div class="style-1duml6f" markdown="1">
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+"
+class="style-ftns26" />
+
+</div>
+
+<div class="style-wknrvb" markdown="1">
+
+<div class="style-3fim88" markdown="1">
+
+<a href="/ko1nksm/items/46fa9df8031275c7dc0a/likers"
+class="style-1a6dkvp" aria-label="151Likes"
+aria-describedby="like-tooltip">151</a>
+
+Go to list of users who liked
+
+</div>
+
+</div>
+
+</div>
+
+<div class="style-1bc9a2c" markdown="1">
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4="
+class="style-100tu0r" />
+
+<span class="style-1vem4tk">116</span>
+
+</div>
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMWIxY2Q1eiIgdmlld2JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJtMTEuNjggOC42MiA2LjU1LTcuNjJoLTEuNTVsLTUuNjkgNi42Mi00LjU1LTYuNjJoLTUuMjVsNi44OCAxMC4wMS02Ljg4IDcuOTloMS41NWw2LjAxLTYuOTkgNC44IDYuOTloNS4yNGwtNy4xMy0xMC4zOHptLTIuMTMgMi40Ny0uNy0xLTUuNTQtNy45MmgyLjM5bDQuNDcgNi40LjcgMSA1LjgyIDguMzJoLTIuMzlsLTQuNzUtNi43OXoiPjwvcGF0aD48L3N2Zz4="
+class="style-1b1cd5z" />
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTU3eGoxZyIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDIwIDIwIiB3aWR0aD0iMjAiPjxwYXRoIGQ9Im0yMCAxMGMwLTUuNTItNC40OC0xMC0xMC0xMHMtMTAgNC40OC0xMCAxMGMwIDQuOTkgMy42NiA5LjEzIDguNDQgOS44OHYtNi45OWgtMi41NHYtMi44OWgyLjU0di0yLjJjMC0yLjUxIDEuNDktMy44OSAzLjc4LTMuODkgMS4wOSAwIDIuMjQuMiAyLjI0LjJ2Mi40NmgtMS4yNmMtMS4yNCAwLTEuNjMuNzctMS42MyAxLjU2djEuODhoMi43N2wtLjQ0IDIuODloLTIuMzN2Ni45OWM0Ljc4LS43NSA4LjQ0LTQuODkgOC40NC05Ljg4eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMy44OSAxMi44OS40NC0yLjg5aC0yLjc3di0xLjg4YzAtLjc5LjM5LTEuNTYgMS42My0xLjU2aDEuMjZ2LTIuNDZzLTEuMTQtLjItMi4yNC0uMmMtMi4yOCAwLTMuNzggMS4zOC0zLjc4IDMuODl2Mi4yaC0yLjU0djIuODloMi41NHY2Ljk5Yy41MS4wOCAxLjAzLjEyIDEuNTYuMTJzMS4wNS0uMDQgMS41Ni0uMTJ2LTYuOTloMi4zM3oiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4="
+class="style-157xj1g" />
+
+<a
+href="https://b.hatena.ne.jp/entry/s/qiita.com/ko1nksm/items/46fa9df8031275c7dc0a"
+class="style-1o9h1hg" rel="noopener noreferrer" target="_blank"
+title="Hatena Bookmark"><img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMXV1N3UzdyIgdmlld2JveD0iMCAwIDIwIDIwIj48cmVjdCBoZWlnaHQ9IjE4IiByeD0iMy42NyIgd2lkdGg9IjE4IiB4PSIxIiB5PSIxIiBmaWxsPSIjMWQ5YmYwIj48L3JlY3Q+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0ibTExLjAxIDEwLjI5Yy0uMzMtLjM2LS43OC0uNTctMS4zNi0uNjEuNTItLjE0Ljg5LS4zNSAxLjEzLS42MnMuMzUtLjY0LjM1LTEuMTFjMC0uMzctLjA4LS42OS0uMjQtLjk3cy0uMzktLjUtLjY5LS42N2MtLjI2LS4xNS0uNTgtLjI1LS45NC0uMzEtLjM3LS4wNi0xLjAxLS4wOS0xLjkzLS4wOWgtMi4yNHY4LjE4aDIuMzFjLjkzIDAgMS42LS4wMyAyLjAxLS4wOXMuNzUtLjE3IDEuMDMtLjMyYy4zNC0uMTguNjEtLjQ0Ljc5LS43N3MuMjgtLjcyLjI4LTEuMTVjMC0uNjEtLjE2LTEuMDktLjQ5LTEuNDZ6bS0zLjg1LTIuNTdoLjQ4Yy41NSAwIC45My4wNiAxLjEyLjE5cy4yOS4zNC4yOS42NS0uMS41LS4zMS42M2MtLjIxLjEyLS41OC4xOC0xLjEzLjE4aC0uNDV2LTEuNjR6bTEuOSA0LjY5Yy0uMjIuMTMtLjU5LjItMS4xMi4yaC0uNzh2LTEuNzloLjgxYy41NCAwIC45MS4wNyAxLjExLjIuMi4xNC4zLjM4LjMuNzIgMCAuMzEtLjExLjUzLS4zMy42NnoiPjwvcGF0aD48cGF0aCBkPSJtMTMuODcgMTIuMDJjLS41NyAwLTEuMDQuNDYtMS4wNCAxLjA0cy40NiAxLjA0IDEuMDQgMS4wNCAxLjA0LS40NiAxLjA0LTEuMDQtLjQ2LTEuMDQtMS4wNC0xLjA0eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMi45NyA1LjkxaDEuOHY1LjQ1aC0xLjh6Ij48L3BhdGg+PC9nPjwvc3ZnPg=="
+class="style-1uu7u3w" /></a>
+
+<div class="style-79elbk" markdown="1">
+
+<span class="material-symbols-outlined style-v2p563"
+aria-hidden="true">more_horiz</span>
+
+<div class="style-2aaf4j" markdown="1">
+
+<div class="style-bxc62b" markdown="1">
+
+Delete article
+
+<span class="material-symbols-outlined style-v2p563"
+aria-hidden="true">close</span>
+
+</div>
+
+<div class="style-6vdptm" markdown="1">
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+</div>
+
+<div class="style-111ab2g" markdown="1">
+
+Cancel
+
+Delete<span class="material-symbols-outlined is-fill style-1jvcm2e"
+aria-hidden="true">delete</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="p-items_options" markdown="1">
+
+<div class="style-1hbd3g7" markdown="1">
+
+</div>
+
+<div class="p-items_toc" markdown="1">
+
+<div class="style-1hbd3g7" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="p-items_main" markdown="1">
+
+<div class="style-uaiz0z" markdown="1">
+
+</div>
+
+<div class="style-1cpeld6" markdown="1">
+
+<span class="material-symbols-outlined is-fill style-1l7bzw8"
+aria-hidden="true">info</span>
+
+More than 1 year has passed since last update.
+
+</div>
+
+<div class="style-8qb8m4" markdown="1">
+
+<div class="style-1yndj8s" markdown="1">
+
+</div>
+
+<div class="style-i43zkt" markdown="1" logly-image="true">
+
+<div class="style-17gh4w8" markdown="1">
+
+<a href="/ko1nksm" class="style-mavs84"></a>
+
+<div class="style-kcbbwa" markdown="1">
+
+<img
+src="https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F54918%2Fprofile-images%2F1473693528?ixlib=rb-4.0.0&amp;auto=compress%2Cformat&amp;lossless=0&amp;w=48&amp;s=0964fa6812034922ec2b40404d3ddde1"
+class="style-1wqqt93" loading="lazy" width="24" height="24" />
+
+</div>
+
+@ko1nksm<span class="style-15fzge">(Koichi Nakashima)</span>
+
+</div>
+
+</div>
+
+# 今どきのシェルスクリプトは数値計算にexprを使わない（POSIX準拠） [今どきのシェルスクリプトは数値計算にexprを使わないposix準拠]
+
+-   <a href="/tags/shellscript" class="style-mp1hhj">ShellScript</a>
+-   <a href="/tags/bash" class="style-mp1hhj">Bash</a>
+-   <a href="/tags/unix" class="style-mp1hhj">UNIX</a>
+-   <a href="/tags/shell" class="style-mp1hhj">shell</a>
+-   <a href="/tags/posix" class="style-mp1hhj">POSIX</a>
+
+<div class="style-1npej5s" markdown="1">
+
+<span class="style-3k9iaf">Last updated at
+2022-10-27</span><span class="style-3k9iaf">Posted at 2022-10-06</span>
+
+</div>
+
+</div>
+
+<div class="section it-MdContent" markdown="1">
+
+<div id="personal-public-article-body" markdown="1">
+
+<div class="mdContent-inner" markdown="1">
+
+## <span id="はじめに" class="fragment"></span>[](#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB)はじめに [はじめに]
+
+1992 年に POSIX でシェルが標準化されて以来、シェルスクリプトの数値計算に
+`expr` コマンドは使いません。`expr` コマンドを使って計算していたのは
+Bourne シェル（古い UNIX の sh）時代の話で、現在の POSIX sh
+（dash、bash、ksh 等）時代では数値計算に `expr`
+コマンドは不要です。今どきはシェルの機能だけで整数の計算を行うことができます。「今どき」って一体いつからだって話なわけですが……。
+
+**注意**
+シェルスクリプトでパフォーマンスの話をするとすぐに「他の言語で〜」という方がいますが、私はどんなことにでもシェルスクリプトを使えなんて一言も言っていません。パフォーマンスを気にしている理由は、そこが実際にシェルスクリプトのボトルネックになるポイントだからです。そもそもシェルスクリプトと一般的な言語は言語設計レベルで得意なことが違います。ユースケースが全く異なるため一般的な言語をシェルスクリプトの適切な代替として使うことは出来ません。他の言語に簡単に置き換えられるようなことをシェルスクリプトでしないでください。適材適所で複数の言語を適切に使い分けてください。
+
+## <span id="今どきのシェルが使えない環境はない" class="fragment"></span>[](#%E4%BB%8A%E3%81%A9%E3%81%8D%E3%81%AE%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%8C%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%84%E7%92%B0%E5%A2%83%E3%81%AF%E3%81%AA%E3%81%84)今どきのシェルが使えない環境はない [今どきのシェルが使えない環境はない]
+
+「現在の sh」とは AIX、HP-UX、Solaris など現役の商用 UNIX
+を含みます。さすがにサポート期限切れの OS
+は含めていません。これらは標準の sh として ksh
+が使われているはずです（参考
+<a href="https://www.in-ulm.de/~mascheck/various/shells/"
+rel="nofollow noopener" target="_blank">Various system shells</a>）。仮に
+`/bin/sh` が POSIX シェルでなくとも UNIX を名乗ることができる条件が
+POSIX 準拠である以上、どこかに POSIX シェルがインストールされています。
+
+「<a
+href="https://docs.oracle.com/cd/E26924_01/html/E25934/userenv-1.html"
+rel="nofollow noopener" target="_blank">Oracle Solaris 10 から Oracle
+Solaris 11 への移行</a>」より
+
+> シェルの変更 - デフォルトのシェル /bin/sh が ksh93
+> にリンクされるようになりました。
+
+<a
+href="https://www.ibm.com/docs/ja/aix/7.1?topic=concepts-available-shells"
+rel="nofollow noopener" target="_blank">AIX - 7.1 - 使用可能なシェル</a>
+
+> Korn シェル (/usr/bin/ksh) は、
+> デフォルト・シェルとしてセットアップされます。
+> デフォルト・シェルまたは標準シェルとは、/usr/bin/sh
+> コマンドにリンクされ、このコマンドで開始されるシェルのことです。
+
+## <span id="数値計算に使う----は読みやすい" class="fragment"></span>[](#%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%AB%E4%BD%BF%E3%81%86----%E3%81%AF%E8%AA%AD%E3%81%BF%E3%82%84%E3%81%99%E3%81%84)数値計算に使う \$(( ... )) は読みやすい❗ [数値計算に使う-...-は読みやすい]
+
+今どきのシェルスクリプトの数値計算には `$(( ... ))` を使います。`expr`
+コマンドによる計算は書き方が面倒です。例えば `$(( ... ))`
+を使った場合、以下のように直感的で可読性が高い計算式が、
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="23:1-27:3">
+
+<div class="highlight" markdown="1">
+
+    value=$(( (i + 1) * 5 ))
+
+    value=$(((i+1)*5)) # つなげすぎると読みづらくなるが、つなげて書いても良い
+
+</div>
+
+</div>
+
+`expr` コマンドを使うと以下のように長く読みづらくなってしまいます。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="31:1-35:3">
+
+<div class="highlight" markdown="1">
+
+    value=`expr \( $i + 1 \) \* 5` # 外部コマンド呼び出しの `...` は非推奨の古い書き方
+
+    value=$(expr \( $i + 1 \) \* 5) # 今は外部コマンド呼び出しに $(...) を使う
+
+</div>
+
+</div>
+
+変数は `$` が必要ですし、`( )` や `*`
+はシェルのメタ文字とみなされないようにエスケープが必要ですし、スペースを無くしてつなげて書いてはいけません。
+
+## <span id="---は-bash-の拡張機能ではなく全ての-posix-シェルで使える" class="fragment"></span>[](#---%E3%81%AF-bash-%E3%81%AE%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%85%A8%E3%81%A6%E3%81%AE-posix-%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B)\$(( ... )) は bash の拡張機能ではなく全ての POSIX シェルで使える [は-bash-の拡張機能ではなく全ての-posix-シェルで使える]
+
+「bash では `$(( ... ))` で数値計算ができます」みたいな、いかにも bash
+専用の独自機能ですというような誤解を与えかねない書き方を見かけますが
+`$(( ... ))` は POSIX で標準化された移植性が高い書き方です。bash
+だけではなく**全ての POSIX
+準拠のシェル**で使うことができます。`$(( ... ))`
+が使えないというのは古い UNIX で使われていた Bourne シェル（POSIX
+非準拠）の話で、1990
+年代前半ぐらいまで（？）はシェルスクリプトでの計算に `expr`
+コマンドをつかうのが普通でした。
+
+名著として今も紹介されている「<a href="https://www.amazon.co.jp/dp/4797321946" rel="nofollow noopener"
+target="_blank">入門 UNIX シェルプログラミング シェルの基礎から学ぶ UNIX
+の世界 改訂第2版</a>」でも「シェルに数式を処理する機能はありません」(P184)
+と書いてあったりして困ったものです。古い本ですがこの本の英語版原著の出版年である
+1995 年は POSIX 標準化の後で、この本に bash、ksh、zsh
+への言及があるにも関わらずです。少なくとも **「POSIX
+シェルや一部のシェルではシェルに数式を処理する機能がある」と書くことはできたはず**なので、著者が
+POSIX
+シェルを重視していなかったということなのでしょう。ともかくここから当時はまだ
+Bourne
+シェルが主流の時代だったということがわかります。なお、この本については「<a href="https://qiita.com/ko1nksm/items/0fa2f73dd6d9822518a3"
+id="reference-578da7fcd707f4516b22">名著「入門UNIXシェルプログラミング」の超詳細なレビューをしてみた（古い内容の訂正）</a>」で詳細に修正しています。
+
+ちなみに似たような機能で `let` コマンドや `((...))`
+がありますが、こちらは POSIX 準拠ではなく dash （Debian・Ubuntu 系の
+`/bin/sh`）などでは使えないので注意してください。どの環境でも使えるのは
+`$((...))` だけです。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="47:1-59:3">
+
+<div class="highlight" markdown="1">
+
+    # どの POSIX シェルでも使える書き方（POSIX 準拠）
+    i=$((i + 1)) 
+
+
+    # 以下は POSIX 準拠ではないので注意
+    let i=i+1    　 # 最初に誕生したが、すぐに同等の ((...)) に置き換えられた
+    ((i = i + 1))   
+
+    # 補足 let や ((...)) は代入にも使えるが、どちらかといえば if 等の条件で使う
+    # （計算結果が 0 になると終了ステータスは 1 になる）
+    i=10; while ((i--)); do echo "$i"; done
+
+</div>
+
+</div>
+
+こちら「<a href="https://qiita.com/ko1nksm/items/8fc8216cb94ec272c400"
+id="reference-d1b90331cdffd96a9737">シェルスクリプトは ((i=i+1))
+ではなく i=$((i+1)) で計算しなければいけない！という話</a>」の記事も参照してください。
+
+## <span id="expr-による計算は----よりも約-1000-倍遅い" class="fragment"></span>[](#expr-%E3%81%AB%E3%82%88%E3%82%8B%E8%A8%88%E7%AE%97%E3%81%AF----%E3%82%88%E3%82%8A%E3%82%82%E7%B4%84-1000-%E5%80%8D%E9%81%85%E3%81%84)expr による計算は \$(( ... )) よりも約 1000 倍遅い [expr-による計算は-...-よりも約-1000-倍遅い]
+
+シェルに組み込まれた機能である `$(( ... ))` とは異なり `expr`
+コマンドは外部コマンドであるため、コマンド呼び出しに大きく時間がかかります。下記の例では
+963.875
+倍遅いことがわかります。今のコンピュータであれば数回呼び出す程度気にならないと思いますが、ループの中などで呼び出すとクリティカルな影響を与えることがあります。0.1
+秒で終わる処理は 1000 倍だと 100 秒です。
+
+え？シェルスクリプトでそんなに大量に計算しない？現実にシェルスクリプトが遅いと文句を言ってる人の大半の原因がこれで、外部コマンドの呼び出しコストの大きさを甘く見ているからなんですよ。実用上問題ない速度が出るのに（適切ではない）他の言語に置き換えるのは「早すぎる最適化」です。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="69:1-83:3">
+
+<div class="highlight" markdown="1">
+
+    $ time dash -c 'i=0; while [ $i -lt 100000 ]; do i=$(( i + 1 )); done; echo $i'
+    100000
+
+    real    0m0.152s
+    user    0m0.151s
+    sys 0m0.000s
+
+    $ time dash -c 'i=0; while [ $i -lt 100000 ]; do i=$(expr $i + 1); done; echo $i'
+    100000
+
+    real    2m26.509s
+    user    1m48.080s
+    sys 0m46.850s
+
+</div>
+
+</div>
+
+シェルや環境によってどれくらい遅いかは異なりますが、本質的には外部コマンド呼び出しによる遅さが原因であるため、大体似たような結果になるはずです。
+
+「<a href="https://qiita.com/d_nishiyama85/items/a117d59a663cfcdea5e4"
+id="reference-67b3b2f21d6eeb23e630">シェルで変数のインクリメントに expr
+を使うと100倍遅い件</a>」の記事では 100
+倍（控えめに書かれているので計算上の実際の倍率は 121
+倍）遅いと書かれていますが、これは少し計測回数が少なくその他の処理のオーバーヘッドの影響を受けているようです。同じコードを私が計測した時、1000
+回のループでは 126 倍とほぼ同じ結果になりましたが、これを 100000
+回のループで計測すると 326 倍になりました。またこれは bash
+による計測であり、速いと言われる dash で計測すると 907
+倍となったので、ここで書いているように `expr` コマンドは約 1000
+倍（私は少し誇張してますｗ）遅いということになります。Cygwin や WSL1
+環境ではもっと遅く、この結果のさらに 10 倍以上遅くなります。
+
+## <span id="---は-bash-ではなく-ksh-で発明された" class="fragment"></span>[](#---%E3%81%AF-bash-%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F-ksh-%E3%81%A7%E7%99%BA%E6%98%8E%E3%81%95%E3%82%8C%E3%81%9F)\$(( ... )) は bash ではなく ksh で発明された [は-bash-ではなく-ksh-で発明された]
+
+多くの人が bash の拡張機能だと思いこんでいる機能の多くは、元々は ksh88
+または ksh93 がオリジナルです。`$(( ... ))` も最初に実装されたシェルは
+ksh88 です。なお、ksh88 は POSIX
+シェルの標準規格のベースとなったシェルで、POSIX シェルは ksh88
+のサブセットです。
+
+> “In early proposals, a form \\\[expression\] was used. It was
+> functionally equivalent to the "\\(())" of the current text, but
+> objections were lodged that the 1988 KornShell had already implemented
+> "\\(())" and there was no compelling reason to invent yet another
+> syntax. Furthermore, the "\\\[\]" syntax had a minor incompatibility
+> involving the patterns in case statements.”
+
+ksh (KornShell) は UNIX を開発した AT&T で開発されたシェルです。UNIX
+では長い間 Bourne シェルが 標準 sh (`/bin/sh`)
+として使われていましたが、徐々に ksh
+に置き換えられていきました。そのような経緯もあってか古い UNIX
+を使っていた人はシェルスクリプトと言ったら Bourne
+シェルが基本だと（今も？）考えているようです。Bourne シェルと POSIX
+シェルの違いは「<a href="https://qiita.com/ko1nksm/items/6b61b0e687d206be9cb0"
+id="reference-a48b904f165668fff6b2">Bourne Shell(レガシー
+sh)とPOSIXシェル(sh, bash, etc)の違い</a>」を参照してください。また実際に
+UNIX
+でどのようなシェルが使われどのように置き換えられていったかは「<a href="https://www.in-ulm.de/~mascheck/various/shells/"
+rel="nofollow noopener" target="_blank">Various system shells</a>」を参照してください。
+
+ついでに言いますが、紛らわしいので sh = Bourne
+シェルとは言わないようにしてください。**現在の sh は POSIX
+準拠のシェルに置き換わっており** Bourne
+シェルはもはや使われていません。Bourne シェルが本来の sh
+で勝手に他のシェルが sh
+を名乗っているだけという考え方もあるかもしれませんが、それを言ったら最初に
+sh を名乗ったのは <a href="https://ja.wikipedia.org/wiki/Thompson_Shell"
+rel="nofollow noopener" target="_blank">Thompson シェル</a>（UNIX
+の誕生とともに生まれた最初の UNIX シェル）です。
+
+## <span id="注意-010-は-8-進数かもしれないし-10-進数かもしれない" class="fragment"></span>[](#%E6%B3%A8%E6%84%8F-010-%E3%81%AF-8-%E9%80%B2%E6%95%B0%E3%81%8B%E3%82%82%E3%81%97%E3%82%8C%E3%81%AA%E3%81%84%E3%81%97-10-%E9%80%B2%E6%95%B0%E3%81%8B%E3%82%82%E3%81%97%E3%82%8C%E3%81%AA%E3%81%84)注意: \$((010)) は 8 進数かもしれないし 10 進数かもしれない [注意-010-は-8-進数かもしれないし-10-進数かもしれない]
+
+`expr` コマンドは頭に `0` をつけても 10
+進数として解釈されますが、`$((...))` の場合 8
+進数として解釈されることもあれば 10
+進数として解釈されることもあります。例えば ksh 93u+m や zsh
+ではデフォルトでは `$((010))` は 10 進数として解釈され `10`
+になります。これは POSIX 準拠モードにすることで 8 進数として解釈され `8`
+として扱われます。
+
+このようになった経緯の詳細は完全には調べていませんが、おそらく ksh88
+の時点で頭に `0` が来ても 10 進数として解釈したのが元凶です。ksh88 は 16
+進数の `0x` 表記に対応しているのですが、8
+進数表記には対応していませんでした（正確に言えば `8#010` のような表記で
+8 進数を含め任意の基数に対応しています）。その後の互換シェルでは ksh88
+と同じように 10 進数として解釈しましたが、bash のように 8
+進数として解釈するシェルも登場しました。そして POSIX
+で標準化されたためか 10 進数として解釈していたシェル（mksh と zsh）でも
+POSIX 準拠モードで 8 進数として解釈するようになりました。
+
+ksh は少しややしく ksh 93u+ では（ksh88 とは異なり）8
+進数として解釈されていたのですが、最近 (2022-08-02) リリースされた
+<a href="https://github.com/ksh93/ksh/releases/tag/v1.0.0"
+rel="nofollow noopener" target="_blank">ksh 93u+m</a>
+ではデフォルトで（ksh88 と同じく）10
+進数として解釈され、新しく追加された POSIX 準拠モード (`set -o posix`)
+を有効にすることで 8
+進数として解釈されるように変わりました。長い間使われていた仕様が変わったのは気になる所ですが
+ksh88 との互換性を考えるとあるべき仕様とも言えます。
+
+最近のシェルであればデフォルト、または POSIX 準拠モードにすることで 頭に
+`0` が来る数値は 8
+進数として解釈するはずですが、古いシェルの中には、POSIX
+準拠モードにしたとしても 10 進数として解釈するシェル（例 Debian 6 の
+pdksh や Debian 7 の
+mksh）があるので少し注意が必要かもしれません。なお以下のコードを利用すれば、頭
+`0` を削除することができるので `expr`
+と同じ動きに動作を統一させることができます。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="111:1-120:3">
+
+<div class="highlight" markdown="1">
+
+    # 以下の書き方も POSIX 準拠
+    num="001230"
+    num=$((${num#"${num%%[!0]*}"} + 0))
+    echo "$num" # => 1230
+
+    # 日付のように 2 桁を前提に出来るのであればこれでもよい
+    num="08"
+    echo $(( ${num#0} + 1 )) # => 9
+
+</div>
+
+</div>
+
+macOS のデフォルトのログインシェルが zsh
+に変わったため、シェルを気にせずターミナルで `echo $((010))`
+を実行すると 10 が出力されます。しかしシェルスクリプト (`#!/bin/sh` や
+`#!/bin/bash`) にして動かすと 8
+が出力されます。このような話を知らなければきっと混乱することでしょう。どの環境でも動くシェルスクリプトを書くためにはこのような問題も知って対処しなければならないのが辛い所です……。
+
+## <span id="数値かどうかの判定には-case-を使う" class="fragment"></span>[](#%E6%95%B0%E5%80%A4%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%81%AE%E5%88%A4%E5%AE%9A%E3%81%AB%E3%81%AF-case-%E3%82%92%E4%BD%BF%E3%81%86)数値かどうかの判定には case を使う [数値かどうかの判定には-case-を使う]
+
+`expr`
+コマンドの使い方として数値かどうかの判定に使うというものがあります。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="128:1-132:3">
+
+<div class="highlight" markdown="1">
+
+    if expr "$i" + 0 >/dev/null 2>&1; then
+      ... # 数値の場合
+    fi
+
+</div>
+
+</div>
+
+これと同等のことを行うには `case`
+を使います。少々冗長になるのでシェル関数にしたほうが良いでしょう。また
+POSIX 準拠ではありませんが `[[ ... ]]` を使うこともできます。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="136:1-153:3">
+
+<div class="highlight" markdown="1">
+
+    # 数値（負の値も含む）の場合に真を返す
+    isnum() {
+      case ${1#-} in # 頭のマイナスを取る（プラスも取りたい場合は ${1#[+-]}
+        *[!0-9]*) return 1 ;; # 数字以外の文字があれば数値ではない
+        *) return 0 ;;
+      esac
+    }
+
+    if isnum "$i"; then
+      ... # 数値の場合
+    fi
+
+    # [[ ]] をサポートしてるシェルではこちらでも良い
+    if [[ ${i#-} != *[!0-9]* ]]; then
+      ... # 数値の場合
+    fi
+
+</div>
+
+</div>
+
+`expr`
+コマンドと上記のコードの違いとして対応している数値の範囲の違いがあります。`expr`
+が数値とみなす最大値は signed integer（おそらく環境依存で 64
+ビット環境では 2^63^-1 = 9223372036854775807）
+のようですが、上記のコードは無限の桁数の数字を数値としてみなします。以下のように改良するとシェルが扱える範囲の値のみに制限することができます。なお殆どのシェルで
+64 ビット環境では 64 ビットの範囲の数値を扱うことができますが、POSIX
+で保証しているのは 32 ビットまでであり、mksh では 64 ビット環境でも 32
+ビットの範囲の数値しか扱うことができません。
+
+<div class="code-frame" markdown="1" data-lang="sh"
+sourcepos="157:1-166:3">
+
+<div class="highlight" markdown="1">
+
+    isint() {
+      case ${1#-} in
+        *[!0-9]*) return 1 ;;
+        *) { [ $(($1)) = "$1" ]; } 2>/dev/null || return 1 ;;
+      esac
+    }
+
+    # 補足 上記の { ...; } 2>/dev/null は zsh 用でエラーが出力されるため
+
+</div>
+
+</div>
+
+## <span id="おまけ-残る-expr-の役目は文字列の大小比較と正規表現マッチ" class="fragment"></span>[](#%E3%81%8A%E3%81%BE%E3%81%91-%E6%AE%8B%E3%82%8B-expr-%E3%81%AE%E5%BD%B9%E7%9B%AE%E3%81%AF%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BC%83%E3%81%A8%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%83%9E%E3%83%83%E3%83%81)おまけ: 残る expr の役目は文字列の大小比較と正規表現マッチ [おまけ-残る-expr-の役目は文字列の大小比較と正規表現マッチ]
+
+POSIX
+で標準化された範囲ではシェルに文字列の大小比較と正規表現マッチングがないため、`expr`
+コマンドの役目は残っています。しかしこれも bash、ksh、zsh
+であればシェルにその機能が含まれているため `expr`
+コマンドの役目は残っていません。
+
+余談ですが `expr` コマンドは正規表現マッチングができますが、基本正規表現
+(BRE)
+を使うため使いづらいコマンドです。この問題を解決したい方は「<a href="https://qiita.com/ko1nksm/items/d59c0c77088f36da22bf"
+id="reference-c39e2fdd72b1858d321b">シェルスクリプトの世界から基本正規表現(BRE)をなくそう！</a>」を参照してください。
+
+## <span id="おまけ-小数の計算には-bc-ではなく-awk-の方が良い" class="fragment"></span>[](#%E3%81%8A%E3%81%BE%E3%81%91-%E5%B0%8F%E6%95%B0%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AB%E3%81%AF-bc-%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F-awk-%E3%81%AE%E6%96%B9%E3%81%8C%E8%89%AF%E3%81%84)おまけ: 小数の計算には bc ではなく awk の方が良い [おまけ-小数の計算には-bc-ではなく-awk-の方が良い]
+
+`expr` コマンドも `$((...))` も POSIX
+で標準化された範囲では整数のみの対応で小数の計算はできません。小数の計算には
+`bc` コマンドを使うという記事が多いのですが、どちらかといえば `awk`
+を使った方が良いです。`bc`
+コマンドではだめということはないのですが、**`bc` コマンドは POSIX
+で標準化されたコマンドでありながら、インストールされていない環境がある**ので注意が必要です。まあインストールが必要というだけの話なので、インストールするのであれば
+`bc` コマンドでも良いですし、なんなら `dc` コマンドや Perl
+等でも問題ありません。
+
+ちなみに `bc` コマンドは「任意精度の計算言語 (An arbitrary precision
+calculator
+language)」と説明に書いてあるように、任意精度の計算が行えるので出番がなくなったわけではありません。大きな数の計算では必要になることもあるでしょう。ところで
+`bc` コマンドは計算**言語**でユーザー定義関数（POSIX
+準拠では関数名は一文字のみ……）が定義できたりできるの知っていました？
+
+## <span id="さいごに" class="fragment"></span>[](#%E3%81%95%E3%81%84%E3%81%94%E3%81%AB)さいごに [さいごに]
+
+いい加減 `expr`
+コマンドを使って数値計算する記事は無くなった方がいいと思います。新しく記事を書く人は
+`expr`
+コマンドによる数値計算は書かないか古いやり方だと明記するようにしましょう。わざわざ不便で遅い
+`expr`
+コマンドを使って整数の数値計算をする必要はありません。これ以上古い書き方の記事を増やさないようにしてください。
+
+</div>
+
+</div>
+
+</div>
+
+<div class="style-1r3vbu3" markdown="1">
+
+<div class="style-gg4vpm" markdown="1">
+
+<div class="style-1f18zs1" markdown="1">
+
+<div class="style-aaiy04" markdown="1">
+
+<div class="style-1duml6f" markdown="1">
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+"
+class="style-ftns26" />
+
+</div>
+
+<div class="style-buogjo" markdown="1">
+
+<div class="style-3fim88" markdown="1">
+
+<a href="/ko1nksm/items/46fa9df8031275c7dc0a/likers"
+class="style-1a6dkvp" aria-label="151Likes"
+aria-describedby="like-tooltip">151</a>
+
+Go to list of users who liked
+
+</div>
+
+</div>
+
+</div>
+
+<div class="style-izmm4j" markdown="1">
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4="
+class="style-100tu0r" />
+
+<span class="style-1129w32">116</span>
+
+</div>
+
+<div class="style-3fim88" markdown="1">
+
+<a href="#comments" class="style-tzv11m" aria-label="2Comments"
+aria-describedby="comments-tooltip"><span
+class="material-symbols-outlined style-n5k90r"
+aria-hidden="true">comment</span>2</a>
+
+Go to list of comments
+
+</div>
+
+</div>
+
+<div class="style-1f18zs1" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="style-rwy56f" markdown="1">
+
+Register as a new user and use Qiita more conveniently
+
+1.  You get articles that match your needs
+2.  You can efficiently read back useful information
+3.  You can use dark theme
+
+<a href="https://help.qiita.com/ja/articles/qiita-login-user"
+class="style-dzaums" target="_blank" rel="noopener noreferrer">What you
+can do with signing up</a>
+
+<div class="style-geahq7" markdown="1">
+
+<a
+href="/signup?callback_action=login_or_signup&amp;redirect_to=%2Fko1nksm%2Fitems%2F46fa9df8031275c7dc0a&amp;realm=qiita"
+class="style-1dq3d3h" rel="nofollow">Sign up</a><a
+href="/login?callback_action=login_or_signup&amp;redirect_to=%2Fko1nksm%2Fitems%2F46fa9df8031275c7dc0a&amp;realm=qiita"
+class="style-tfrxbl" rel="nofollow">Login</a>
+
+</div>
+
+</div>
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="style-1395ble" markdown="1">
+
+<div class="style-5jpx49" markdown="1">
+
+<div class="style-aaiy04" markdown="1">
+
+<div class="style-1duml6f" markdown="1">
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+"
+class="style-ftns26" />
+
+</div>
+
+<div class="style-wknrvb" markdown="1">
+
+<div class="style-3fim88" markdown="1">
+
+<a href="/ko1nksm/items/46fa9df8031275c7dc0a/likers"
+class="style-1a6dkvp" aria-label="151Likes"
+aria-describedby="like-tooltip">151</a>
+
+Go to list of users who liked
+
+</div>
+
+</div>
+
+</div>
+
+<div class="style-izmm4j" markdown="1">
+
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4="
+class="style-100tu0r" />
+
+<span class="style-1vem4tk">116</span>
+
+</div>
+
+<div class="style-79elbk" markdown="1">
+
+<span class="material-symbols-outlined style-v2p563"
+aria-hidden="true">more_horiz</span>
+
+<div class="style-2aaf4j" markdown="1">
+
+<div class="style-bxc62b" markdown="1">
+
+Delete article
+
+<span class="material-symbols-outlined style-v2p563"
+aria-hidden="true">close</span>
+
+</div>
+
+<div class="style-6vdptm" markdown="1">
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+</div>
+
+<div class="style-111ab2g" markdown="1">
+
+Cancel
+
+Delete<span class="material-symbols-outlined is-fill style-1jvcm2e"
+aria-hidden="true">delete</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="GlobalFooter-react-component-80111c75-f3df-4755-8e5b-a5d595caa75a"
+markdown="1">
+
+<div class="style-1vesoht" markdown="1">
+
+<div class="style-1xygyrj" markdown="1">
+
+<div class="style-j7qwjs" markdown="1">
+
+[<img
+src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRvIHRvcCBRaWl0YSIgdmlld2JveD0iMCAwIDQyNi41NyAxMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMzMuNSIgY2xhc3M9InN0eWxlLTFnMGsxd2siPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg=="
+class="style-1g0k1wk" />](/)
+
+How developers code is here.
+
+</div>
+
+<span class="small">© 2011-2025<span class="style-15fzge">Qiita
+Inc.</span></span>
+
+</div>
+
+<div class="style-u4ybgy" markdown="1">
+
+Guide & Help
+
+-   <a href="/about" class="style-ah54os">About</a>
+-   <a href="/terms" class="style-ah54os">Terms</a>
+-   <a href="/privacy" class="style-ah54os">Privacy</a>
+-   <a href="http://help.qiita.com/ja/articles/qiita-community-guideline"
+    class="style-ah54os" target="_blank">Guideline</a>
+-   <a href="https://help.qiita.com/ja/articles/others-brand-guideline"
+    class="style-ah54os" target="_blank">Media Kit</a>
+-   <a
+    href="https://github.com/increments/qiita-discussions/discussions/116"
+    class="style-ah54os" target="_blank">Feedback/Requests</a>
+-   <a href="https://help.qiita.com" class="style-ah54os"
+    target="_blank">Help</a>
+-   <a
+    href="https://business.qiita.com/?utm_source=qiita&amp;utm_medium=referral&amp;utm_content=footer"
+    class="style-ah54os" target="_blank">Advertisement</a>
+
+</div>
+
+<div class="style-u4ybgy" markdown="1">
+
+Contents
+
+-   <a href="/release-notes" class="style-ah54os">Release Note</a>
+-   <a href="/official-events" class="style-ah54os">Official Event</a>
+-   <a href="/official-columns" class="style-ah54os">Official Column</a>
+-   <a href="/advent-calendar/2024" class="style-ah54os">Advent Calendar</a>
+-   <a href="/qiita-award" class="style-ah54os">Qiita Award</a>
+-   <a href="/white_papers/2024" class="style-ah54os">Engineer White
+    Paper</a>
+-   <a href="/api/v2/docs" class="style-ah54os">API</a>
+
+</div>
+
+<div class="style-u4ybgy" markdown="1">
+
+Official Accounts
+
+-   <a href="https://x.com/qiita" class="style-ah54os" target="_blank"><img
+    src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg=="
+    class="style-ox3ag9" /><span class="style-15fzge">@Qiita</span></a>
+-   <a href="https://x.com/qiita_milestone" class="style-ah54os"
+    target="_blank"><img
+    src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg=="
+    class="style-ox3ag9" /><span
+    class="style-15fzge">@qiita_milestone</span></a>
+-   <a href="https://x.com/qiitapoi" class="style-ah54os"
+    target="_blank"><img
+    src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg=="
+    class="style-ox3ag9" /><span class="style-15fzge">@qiitapoi</span></a>
+-   <a href="https://www.facebook.com/qiita/" class="style-ah54os"
+    target="_blank">Facebook</a>
+-   <a href="https://www.youtube.com/@qiita5366" class="style-ah54os"
+    target="_blank">YouTube</a>
+-   <a href="https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA"
+    class="style-ah54os" target="_blank">Podcast</a>
+
+</div>
+
+<div class="style-u4ybgy" markdown="1">
+
+Our service
+
+-   <a href="https://teams.qiita.com/" class="style-ah54os"
+    target="_blank">Qiita Team</a>
+-   <a
+    href="https://zine.qiita.com?utm_source=qiita&amp;utm_medium=referral&amp;utm_content=footer"
+    class="style-ah54os" target="_blank">Qiita Zine</a>
+-   <a href="https://suzuri.jp/qiita" class="style-ah54os"
+    target="_blank">Official Shop</a>
+
+</div>
+
+<div class="style-u4ybgy" markdown="1">
+
+Company
+
+-   <a href="https://corp.qiita.com/company" class="style-ah54os"
+    target="_blank">About Us</a>
+-   <a href="https://corp.qiita.com/jobs/" class="style-ah54os"
+    target="_blank">Careers</a>
+-   <a href="https://blog.qiita.com" class="style-ah54os"
+    target="_blank">Qiita Blog</a>
+-   <a href="https://corp.qiita.com/releases/" class="style-ah54os"
+    target="_blank">News Release</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="Snackbar-react-component-10649890-1eef-4528-9d3d-385c04dba46d"
+markdown="1">
+
+</div>
+
+<div id="LoginModal-react-component-b9c4f829-d78c-401d-81aa-35a01f554999"
+markdown="1">
+
+</div>
+
+</div>
+
+<div id="dataContainer" markdown="1" style="display: none;"
+config="{&quot;actionPath&quot;:&quot;public/items#show&quot;,&quot;settings&quot;:{&quot;analyticsTrackingId&quot;:&quot;G-KEVS5DBRVN&quot;,&quot;tagManagerId&quot;:&quot;GTM-W9W5TX4&quot;,&quot;assetsMap&quot;:{},&quot;csrfToken&quot;:&quot;zKbp_NrmlEKxkF9R00W-MusieVMcjfSUFoNvkx3SJ_hbjRVClm_Mz120nuF-tVQjFe9h4TXQLV_J2nE8uweMCQ&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;pushOne&quot;:{&quot;accessToken&quot;:&quot;4bc4bb057a0601d388a7b9e499ca2307e9eb4fc172804e310c59e511d7cac356&quot;,&quot;dialogImageUrl&quot;:&quot;//cdn.qiita.com/assets/public/push_notification/image-qiitan-572179a3bbde375850422ea48b2b6272.png&quot;},&quot;textlint&quot;:{&quot;workerUrl&quot;:&quot;//cdn.qiita.com/assets/public/textlint-worker-751addf8aa1a59bf45e386ceb562a613.min.js&quot;}},&quot;currentUser&quot;:null,&quot;additionalParams&quot;:{&quot;query_parameters&quot;:{},&quot;path_parameters&quot;:{&quot;controller&quot;:&quot;public/items&quot;,&quot;action&quot;:&quot;show&quot;,&quot;user_id&quot;:&quot;ko1nksm&quot;,&quot;type&quot;:&quot;items&quot;,&quot;id&quot;:&quot;46fa9df8031275c7dc0a&quot;},&quot;request_id&quot;:&quot;87f02cb4-6009-4034-a822-90226df5c803&quot;,&quot;user_id&quot;:null}}">
+
+</div>

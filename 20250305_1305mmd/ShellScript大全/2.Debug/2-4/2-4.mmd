@@ -1,0 +1,1399 @@
+<div id="container" class="container cf" markdown="1">
+
+<div id="header-container" class="header-container" markdown="1">
+
+<div id="header-container-in"
+class="header-container-in hlt-center-logo" markdown="1">
+
+<div id="header" class="header cf" markdown="1" itemscope=""
+itemtype="https://schema.org/WPHeader">
+
+<div id="header-in" class="header-in wrap cf" markdown="1" itemscope=""
+itemtype="https://schema.org/WebSite">
+
+<div class="tagline" markdown="1" itemprop="alternativeHeadline">
+
+</div>
+
+<div class="logo logo-header logo-text" markdown="1">
+
+<a href="https://yossi-note.com/" class="site-name site-name-text-link"
+itemprop="url"><span class="site-name-text"
+itemprop="name about">よっしーノート</span></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="navi-in" class="navi-in wrap cf" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content" class="content cf" markdown="1">
+
+<div id="content-in" class="content-in wrap" markdown="1">
+
+<div id="main" class="main" markdown="1" role="main" itemscope=""
+itemtype="https://schema.org/Blog">
+
+<div class="article-header entry-header" markdown="1">
+
+# bash入門：trapについて -スクリプト終了時に処理をする- [bash入門trapについて--スクリプト終了時に処理をする-]
+
+<div id="pc_ad-3"
+class="widget widget-below-single-content-title widget_pc_ad"
+markdown="1">
+
+<div class="ad-area no-icon pc-ad-widget ad-rectangle ad-label-invisible cf"
+markdown="1" itemscope="" itemtype="https://schema.org/WPAdBlock">
+
+<div class="ad-label" markdown="1" itemprop="name" nosnippet="">
+
+スポンサーリンク
+
+</div>
+
+<div class="ad-wrap" markdown="1">
+
+<div class="ad-responsive ad-usual" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="eye-catch-wrap" markdown="1">
+
+<figure class="eye-catch" itemprop="image" itemscope=""
+itemtype="https://schema.org/ImageObject">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/12/329_introduction-to-bash-about-trap-processing-when-a-script-ends.jpg"
+class="attachment-780x410 size-780x410 eye-catch-image wp-post-image"
+decoding="async" data-fetchpriority="high"
+srcset="https://yossi-note.com/wp-content/uploads/2023/12/329_introduction-to-bash-about-trap-processing-when-a-script-ends.jpg 780w, https://yossi-note.com/wp-content/uploads/2023/12/329_introduction-to-bash-about-trap-processing-when-a-script-ends-300x158.jpg 300w, https://yossi-note.com/wp-content/uploads/2023/12/329_introduction-to-bash-about-trap-processing-when-a-script-ends-768x404.jpg 768w"
+sizes="(max-width: 780px) 100vw, 780px" width="780" height="410"
+alt="bash入門：trapについて -スクリプト終了時に処理をする-" />
+<span class="cat-label cat-label-6">ノウハウ</span>
+<figcaption>bash入門：trapについて
+-スクリプト終了時に処理をする-</figcaption>
+</figure>
+
+</div>
+
+<div class="sns-share ss-col-6 ss-high-and-low-lc bc-brand-color sbc-hide ss-top"
+markdown="1">
+
+<div class="sns-share-buttons sns-buttons" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=bash%E5%85%A5%E9%96%80%EF%BC%9Atrap%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E7%B5%82%E4%BA%86%E6%99%82%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B-&amp;url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-trap-processing-when-a-script-ends%2F"
+class="sns-button share-button twitter-button twitter-share-button-sq x-corp-button x-corp-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Xでシェア" title="Xでシェア"><span
+class="social-icon icon-x-corp"></span><span
+class="button-caption">X</span><span
+class="share-count twitter-share-count x-share-count"></span></a> <a
+href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-trap-processing-when-a-script-ends%2F&amp;t=bash%E5%85%A5%E9%96%80%EF%BC%9Atrap%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E7%B5%82%E4%BA%86%E6%99%82%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B-"
+class="sns-button share-button facebook-button facebook-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Facebookでシェア" title="Facebookでシェア"><span
+class="social-icon icon-facebook"></span><span
+class="button-caption">Facebook</span><span
+class="share-count facebook-share-count"></span></a> <a
+href="//b.hatena.ne.jp/entry/s/yossi-note.com/introduction-to-bash-about-trap-processing-when-a-script-ends/"
+class="sns-button share-button hatebu-button hatena-bookmark-button hatebu-share-button-sq"
+data-hatena-bookmark-layout="simple" target="_blank"
+rel="nofollow noopener noreferrer" aria-label="はてブでブックマーク"
+title="はてブでブックマーク"><span
+class="social-icon icon-hatena"></span><span
+class="button-caption">はてブ</span><span
+class="share-count hatebu-share-count"></span></a> <a
+href="//getpocket.com/edit?url=https://yossi-note.com/introduction-to-bash-about-trap-processing-when-a-script-ends/"
+class="sns-button share-button pocket-button pocket-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Pocketに保存" title="Pocketに保存"><span
+class="social-icon icon-pocket"></span><span
+class="button-caption">Pocket</span><span
+class="share-count pocket-share-count"></span></a> <a
+href="//timeline.line.me/social-plugin/share?url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-trap-processing-when-a-script-ends%2F"
+class="sns-button share-button line-button line-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="LINEでシェア" title="LINEでシェア"><span
+class="social-icon icon-line"></span><span
+class="button-caption">LINE</span><span
+class="share-count line-share-count"></span></a>
+<span class="sns-button share-button copy-button copy-share-button-sq"
+role="button" tabindex="0"
+clipboard-text="bash入門：trapについて -スクリプト終了時に処理をする- https://yossi-note.com/introduction-to-bash-about-trap-processing-when-a-script-ends/"
+aria-label="タイトルとURLをコピーする"><span class="social-icon icon-copy"></span><span class="button-caption">コピー</span><span class="share-count copy-share-count"></span></span>
+
+</div>
+
+</div>
+
+<div class="date-tags" markdown="1">
+
+<span class="post-date"><span class="fa fa-clock-o"
+aria-hidden="true"></span>2023.12.30</span>
+
+</div>
+
+<div class="read-time" markdown="1">
+
+<span class="fa fa-hourglass-half hourglass-half-icon"
+aria-hidden="true"></span>この記事は<span class="bold">約7分</span>で読めます。
+
+</div>
+
+</div>
+
+<div class="entry-content cf is-code-row-number-enable" markdown="1"
+itemprop="mainEntityOfPage">
+
+<div class="wp-block-cocoon-blocks-balloon-ex-box-1 speech-wrap sb-id-1 sbs-stn sbp-l sbis-cb cf block-box"
+markdown="1">
+
+<div class="speech-person" markdown="1">
+
+<figure class="speech-icon">
+<img
+src="https://yossi-note.com/wp-content/themes/cocoon-master/images/man.png"
+class="speech-icon-image" decoding="async" alt="よっしー" />
+</figure>
+
+<div class="speech-name" markdown="1">
+
+よっしー
+
+</div>
+
+</div>
+
+<div class="speech-balloon" markdown="1">
+
+こんにちは。よっしーです(\^\^)
+
+</div>
+
+</div>
+
+今日は、bashにおけるtrapについてご紹介します。
+
+<div id="common_ad-2"
+class="widget widget-single-content-middle widget_common_ad"
+markdown="1">
+
+<div class="ad-area no-icon common-ad-widget ad-none ad-label-invisible cf"
+markdown="1" itemscope="" itemtype="https://schema.org/WPAdBlock">
+
+<div class="ad-label" markdown="1" itemprop="name" nosnippet="">
+
+スポンサーリンク
+
+</div>
+
+<div class="ad-wrap" markdown="1">
+
+<div class="ad-responsive ad-usual" markdown="1">
+
+<a href="https://px.a8.net/svt/ejp?a8mat=3T2CEX+55R9IQ+1WP2+6GZCH"
+rel="nofollow"><img
+src="https://www28.a8.net/svt/bgt?aid=230216793312&amp;wid=001&amp;eno=01&amp;mid=s00000008903001087000&amp;mc=1"
+data-border="0" width="728" height="90" /></a>
+<img src="https://www10.a8.net/0.gif?a8mat=3T2CEX+55R9IQ+1WP2+6GZCH"
+data-border="0" width="1" height="1" />
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="toc"
+class="toc tnt-number toc-center tnt-number border-element"
+markdown="1">
+
+目次
+
+<div class="toc-content" markdown="1">
+
+1.  <a href="#toc1" tabindex="0">背景</a>
+2.  <a href="#toc2" tabindex="0">実行環境について</a>
+3.  <a href="#toc3" tabindex="0">概要</a>
+    1.  <a href="#toc4" tabindex="0">作成ファイル一覧</a>
+    2.  <a href="#toc5" tabindex="0">10_finally.sh</a>
+4.  <a href="#toc6" tabindex="0">動作確認</a>
+5.  <a href="#toc7" tabindex="0">解説</a>
+    1.  <a href="#toc8" tabindex="0">10_finally.sh</a>
+6.  <a href="#toc9" tabindex="0">おわりに</a>
+
+</div>
+
+</div>
+
+## <span id="toc1">背景</span> [背景]
+
+bashにおけるtrapについて調査する機会があったので、そのときの内容を備忘として残しました。
+
+この記事のソースは下記のサイトにアップしています。
+
+<div class="wp-block-cocoon-blocks-blogcard blogcard-type bct-reference-link"
+markdown="1">
+
+<a href="https://github.com/Gate-Yossi/Musica"
+class="blogcard-wrap external-blogcard-wrap a-wrap cf" rel="noopener"
+target="_blank" title="GitHub - Gate-Yossi/Musica: 読み方：ムジカ"></a>
+
+<div class="blogcard external-blogcard eb-left cf" markdown="1">
+
+<div class="blogcard-label external-blogcard-label" markdown="1">
+
+<span class="fa"></span>
+
+</div>
+
+<figure class="blogcard-thumbnail external-blogcard-thumbnail">
+<img
+src="https://opengraph.githubassets.com/6893cb925f4827927a592d7f3e28e3b372ddaa61df04ec224f5a8a3c8df425f9/Gate-Yossi/Musica"
+class="blogcard-thumb-image external-blogcard-thumb-image"
+decoding="async" width="160" height="90" />
+</figure>
+
+<div class="blogcard-content external-blogcard-content" markdown="1">
+
+<div class="blogcard-title external-blogcard-title" markdown="1">
+
+GitHub - Gate-Yossi/Musica: 読み方：ムジカ
+
+</div>
+
+<div class="blogcard-snippet external-blogcard-snippet" markdown="1">
+
+読み方：ムジカ. Contribute to Gate-Yossi/Musica development by creating
+an account on GitHub.
+
+</div>
+
+</div>
+
+<div class="blogcard-footer external-blogcard-footer cf" markdown="1">
+
+<div class="blogcard-site external-blogcard-site" markdown="1">
+
+<div class="blogcard-favicon external-blogcard-favicon" markdown="1">
+
+<img
+src="https://www.google.com/s2/favicons?domain=https://github.com/Gate-Yossi/Musica"
+class="blogcard-favicon-image external-blogcard-favicon-image"
+decoding="async" width="16" height="16" />
+
+</div>
+
+<div class="blogcard-domain external-blogcard-domain" markdown="1">
+
+github.com
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+## <span id="toc2">実行環境について</span> [実行環境について]
+
+実行環境は下記の記事を参考にお願いします。
+
+<div class="wp-block-cocoon-blocks-blogcard blogcard-type bct-related"
+markdown="1">
+
+<a
+href="https://yossi-note.com/introduction-to-bash-building-a-development-environment-using-docker/"
+class="blogcard-wrap internal-blogcard-wrap a-wrap cf"
+title="bash入門：Dockerによる開発環境の構築"></a>
+
+<div class="blogcard internal-blogcard ib-left cf" markdown="1">
+
+<div class="blogcard-label internal-blogcard-label" markdown="1">
+
+<span class="fa"></span>
+
+</div>
+
+<figure class="blogcard-thumbnail internal-blogcard-thumbnail">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/12/319.introduction-to-bash-building-a-development-environment-using-dockerpng-160x90.jpg"
+class="blogcard-thumb-image internal-blogcard-thumb-image wp-post-image"
+loading="lazy" decoding="async"
+srcset="https://yossi-note.com/wp-content/uploads/2023/12/319.introduction-to-bash-building-a-development-environment-using-dockerpng-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/12/319.introduction-to-bash-building-a-development-environment-using-dockerpng-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/12/319.introduction-to-bash-building-a-development-environment-using-dockerpng-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" />
+</figure>
+
+<div class="blogcard-content internal-blogcard-content" markdown="1">
+
+<div class="blogcard-title internal-blogcard-title" markdown="1">
+
+bash入門：Dockerによる開発環境の構築
+
+</div>
+
+<div class="blogcard-snippet internal-blogcard-snippet" markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、Dockerによる開発環境の構築する方法についてご紹介します。背景bashの実行環境を揃える機会があったので、そのときの内容を備忘として残しました。この記事のソースは下記のサイトにアップしてい...
+
+</div>
+
+</div>
+
+<div class="blogcard-footer internal-blogcard-footer cf" markdown="1">
+
+<div class="blogcard-site internal-blogcard-site" markdown="1">
+
+<div class="blogcard-favicon internal-blogcard-favicon" markdown="1">
+
+<img
+src="https://www.google.com/s2/favicons?domain=https://yossi-note.com"
+class="blogcard-favicon-image internal-blogcard-favicon-image"
+loading="lazy" decoding="async" width="16" height="16" />
+
+</div>
+
+<div class="blogcard-domain internal-blogcard-domain" markdown="1">
+
+yossi-note.com
+
+</div>
+
+</div>
+
+<div class="blogcard-date internal-blogcard-date" markdown="1">
+
+<div class="blogcard-post-date internal-blogcard-post-date"
+markdown="1">
+
+2023.12.20
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+## <span id="toc3">概要</span> [概要]
+
+本記事のtrapは、スクリプト終了時に必ずする処理をします。
+
+### <span id="toc4">作成ファイル一覧</span> [作成ファイル一覧]
+
+下記のファイルを作成しました。
+
+``` wp-block-code
+        new file:   local/work/10_finally/10_finally.sh
+```
+
+### <span id="toc5">10_finally.sh</span> [finally.sh]
+
+``` wp-block-code
+#!/usr/bin/env bash
+
+set -euCo pipefail
+
+readonly LOG_OUT=./stdout.log
+readonly LOG_ERR=./stderr.log
+
+exec 1> >(tee -a "$LOG_OUT")
+exec 2> >(tee -a "$LOG_ERR")
+
+function log_debug() {
+    log 'DEBUG' "$*"
+}
+
+function log_err() {
+    log 'ERROR' "$*"
+}
+
+function log() {
+    printf "%s\t[%5s]\t%s\n" "$(date '+%Y/%m/%d %H:%M:%S.%3N')" "$1" "$2"
+}
+
+function trap_err() {
+    error_status=$?
+    msg=$(printf "エラー発生 \$?=%d %s %s:%d" ${error_status} "${BASH_SOURCE[0]}" "${FUNCNAME[1]}" ${BASH_LINENO[0]})
+    log_err "${msg}"
+}
+
+function trap_exit() {
+    msg=$(printf "終了時の処理 %s %s:%d" "${BASH_SOURCE[0]}" "${FUNCNAME[1]}" ${BASH_LINENO[0]})
+    log_debug "${msg}"
+}
+
+trap trap_err ERR
+
+trap trap_exit EXIT
+
+log_debug "$(which bash)"
+
+log_debug "$(bash --version)"
+
+# 標準エラーへの出力確認用
+ls dummy.txt
+
+echo "ここは表示されない"
+```
+
+## <span id="toc6">動作確認</span> [動作確認]
+
+下記のコマンドを実行します。
+
+``` wp-block-code
+make build
+
+make up
+
+make login
+
+cd 10_finally
+
+chmod +x 10_finally.sh
+
+./10_finally.sh
+```
+
+strout.logに下記の文言が出力されている想定です。
+
+``` wp-block-code
+2023/12/10 14:45:59.721    [DEBUG] /usr/bin/bash
+2023/12/10 14:45:59.726 [DEBUG] GNU bash, version 5.2.15(1)-release (aarch64-unknown-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+ls: cannot access 'dummy.txt': No such file or directory
+2023/12/10 14:45:59.742 [ERROR] エラー発生 $?=2 ./10_finally.sh main:43
+2023/12/10 14:45:59.745 [DEBUG] 終了時の処理 ./10_finally.sh main:1
+```
+
+## <span id="toc7">解説</span> [解説]
+
+### <span id="toc8">10_finally.sh</span> [finally.sh-1]
+
+このスクリプトは、`trap`コマンドを使用してエラーハンドリングとスクリプト終了時の処理を行う
+Bash スクリプトです。以下に各部分の解説を示します：
+
+1.  `#!/usr/bin/env bash`: スクリプトが Bash
+    シェルで実行されることを指定しています。
+2.  `set -euCo pipefail`: スクリプトの設定を変更しています。
+
+-   `-e`: エラーが発生したら即座にスクリプトを終了します。
+-   `-u`: 未定義の変数を使用しようとするとエラーを発生させます。
+-   `-C`:
+    コマンドの返り値が0以外の場合、そのコマンドが非零であることを示します。
+-   `-o pipefail`:
+    パイプの途中でエラーが発生した場合、パイプ全体をエラーとして扱います。
+
+1.  `readonly LOG_OUT=./stdout.log`:
+    標準出力を記録するログファイルのパスを指定します。
+2.  `readonly LOG_ERR=./stderr.log`:
+    標準エラーを記録するログファイルのパスを指定します。
+3.  `exec 1> >(tee -a "$LOG_OUT")`:
+    標準出力をファイルにリダイレクトし、同時にその内容を標準出力にも表示します。リダイレクト先は
+    `$LOG_OUT` となります。
+4.  `exec 2> >(tee -a "$LOG_ERR")`:
+    標準エラーをファイルにリダイレクトし、同時にその内容を標準エラーにも表示します。リダイレクト先は
+    `$LOG_ERR` となります。
+5.  `function log_debug() { ... }`:
+    `log_debug`というデバッグ用のログを記録する関数を定義しています。`log`関数を呼び出して、ログの種類を
+    “DEBUG” としています。
+6.  `function log_err() { ... }`:
+    `log_err`というエラーログを記録する関数を定義しています。`log`関数を呼び出して、ログの種類を
+    “ERROR” としています。
+7.  `function log() { ... }`:
+    `log`という共通のログを記録する関数を定義しています。日付、ログの種類、メッセージを整形して表示します。
+8.  `function trap_err() { ... }`:
+    `trap_err`というエラーが発生した際に呼び出される関数を定義しています。エラーのステータスや発生箇所の情報を取得し、`log_err`関数を呼び出してエラーログを記録します。
+9.  `function trap_exit() { ... }`:
+    `trap_exit`というスクリプトが終了する際に呼び出される関数を定義しています。終了時の処理を行い、`log_debug`関数を呼び出してデバッグログを記録します。
+10. `trap trap_err ERR`: `ERR`
+    シグナルに対して、`trap_err`関数が呼び出されるように設定します。
+11. `trap trap_exit EXIT`: `EXIT`
+    シグナルに対して、`trap_exit`関数が呼び出されるように設定します。
+12. `log_debug "$(which bash)"`: インストールされている Bash
+    の実行ファイルのパスをデバッグログに記録します。
+13. `log_debug "$(bash --version)"`: Bash
+    のバージョン情報をデバッグログに記録します。
+14. `ls dummy.txt`: 標準エラーへの出力確認用に、存在しないファイル
+    `dummy.txt` を `ls`
+    コマンドでリストします。この部分でエラーが発生し、`trap_err`関数が呼び出されてエラーログが記録されます。
+15. `echo "ここは表示されない"`: 上記の `ls dummy.txt`
+    でエラーが発生した場合、この行は実行されません。スクリプトはエラーが発生した時点で終了するため、この行は実行されません。
+16. スクリプト終了時に
+    `trap_exit`関数が呼び出され、終了時の処理が実行されます。
+
+## <span id="toc9">おわりに </span> [おわりに]
+
+今日は、bashにおけるtrapについてご紹介しました。
+
+<div class="wp-block-cocoon-blocks-balloon-ex-box-1 speech-wrap sb-id-1 sbs-stn sbp-l sbis-cb cf block-box"
+markdown="1">
+
+<div class="speech-person" markdown="1">
+
+<figure class="speech-icon">
+<img
+src="https://yossi-note.com/wp-content/themes/cocoon-master/images/man.png"
+class="speech-icon-image" decoding="async" alt="よっしー" />
+</figure>
+
+<div class="speech-name" markdown="1">
+
+よっしー
+
+</div>
+
+</div>
+
+<div class="speech-balloon" markdown="1">
+
+何か質問や相談があれば、コメントをお願いします。また、エンジニア案件の相談にも随時対応していますので、お気軽にお問い合わせください。
+
+それでは、また明日お会いしましょう(\^\^)
+
+</div>
+
+</div>
+
+</div>
+
+<div class="entry-categories-tags ctdt-one-row" markdown="1">
+
+<div class="entry-categories" markdown="1">
+
+<a href="https://yossi-note.com/category/howto/"
+class="cat-link cat-link-6"><span class="fa fa-folder cat-icon tax-icon"
+aria-hidden="true"></span>ノウハウ</a>
+
+</div>
+
+<div class="entry-tags" markdown="1">
+
+<a href="https://yossi-note.com/tag/docker/"
+class="tag-link tag-link-9 border-element"><span
+class="fa fa-tag tag-icon tax-icon" aria-hidden="true"></span>Docker</a><a href="https://yossi-note.com/tag/shell/"
+class="tag-link tag-link-16 border-element"><span
+class="fa fa-tag tag-icon tax-icon" aria-hidden="true"></span>shell</a>
+
+</div>
+
+</div>
+
+<div class="sns-share ss-col-6 bc-brand-color sbc-hide ss-bottom"
+markdown="1">
+
+<div class="sns-share-message" markdown="1">
+
+シェアする
+
+</div>
+
+<div class="sns-share-buttons sns-buttons" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=bash%E5%85%A5%E9%96%80%EF%BC%9Atrap%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E7%B5%82%E4%BA%86%E6%99%82%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B-&amp;url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-trap-processing-when-a-script-ends%2F"
+class="sns-button share-button twitter-button twitter-share-button-sq x-corp-button x-corp-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Xでシェア" title="Xでシェア"><span
+class="social-icon icon-x-corp"></span><span
+class="button-caption">X</span><span
+class="share-count twitter-share-count x-share-count"></span></a> <a
+href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-trap-processing-when-a-script-ends%2F&amp;t=bash%E5%85%A5%E9%96%80%EF%BC%9Atrap%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E7%B5%82%E4%BA%86%E6%99%82%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B-"
+class="sns-button share-button facebook-button facebook-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Facebookでシェア" title="Facebookでシェア"><span
+class="social-icon icon-facebook"></span><span
+class="button-caption">Facebook</span><span
+class="share-count facebook-share-count"></span></a> <a
+href="//b.hatena.ne.jp/entry/s/yossi-note.com/introduction-to-bash-about-trap-processing-when-a-script-ends/"
+class="sns-button share-button hatebu-button hatena-bookmark-button hatebu-share-button-sq"
+data-hatena-bookmark-layout="simple" target="_blank"
+rel="nofollow noopener noreferrer" aria-label="はてブでブックマーク"
+title="はてブでブックマーク"><span
+class="social-icon icon-hatena"></span><span
+class="button-caption">はてブ</span><span
+class="share-count hatebu-share-count"></span></a> <a
+href="//getpocket.com/edit?url=https://yossi-note.com/introduction-to-bash-about-trap-processing-when-a-script-ends/"
+class="sns-button share-button pocket-button pocket-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Pocketに保存" title="Pocketに保存"><span
+class="social-icon icon-pocket"></span><span
+class="button-caption">Pocket</span><span
+class="share-count pocket-share-count"></span></a> <a
+href="//timeline.line.me/social-plugin/share?url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-trap-processing-when-a-script-ends%2F"
+class="sns-button share-button line-button line-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="LINEでシェア" title="LINEでシェア"><span
+class="social-icon icon-line"></span><span
+class="button-caption">LINE</span><span
+class="share-count line-share-count"></span></a>
+<span class="sns-button share-button copy-button copy-share-button-sq"
+role="button" tabindex="0"
+clipboard-text="bash入門：trapについて -スクリプト終了時に処理をする- https://yossi-note.com/introduction-to-bash-about-trap-processing-when-a-script-ends/"
+aria-label="タイトルとURLをコピーする"><span class="social-icon icon-copy"></span><span class="button-caption">コピー</span><span class="share-count copy-share-count"></span></span>
+
+</div>
+
+</div>
+
+<div class="sns-follow bc-brand-color fbc-hide sf-bottom" markdown="1">
+
+<div class="sns-follow-message" markdown="1">
+
+よっしーをフォローする
+
+</div>
+
+<div class="sns-follow-buttons sns-buttons" markdown="1">
+
+<a href="https://yossi-note.com/"
+class="sns-button follow-button website-button website-follow-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="著作サイトをチェック" title="著者サイト"><span
+class="icon-home-logo"></span></a>
+<a href="https://twitter.com/GateYossi"
+class="sns-button follow-button twitter-button twitter-follow-button-sq x-corp-button x-corp-follow-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="Xをフォロー" title="Xをフォロー"><span
+class="icon-x-corp-logo"></span></a> <a
+href="//feedly.com/i/discover/sources/search/feed/https%3A%2F%2Fyossi-note.com"
+class="sns-button follow-button feedly-button feedly-follow-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="feedlyで更新情報を購読" title="feedlyで更新情報を購読"><span
+class="icon-feedly-logo"></span><span
+class="follow-count feedly-follow-count"></span></a>
+<a href="https://yossi-note.com/feed/"
+class="sns-button follow-button rss-button rss-follow-button-sq"
+target="_blank" rel="nofollow noopener noreferrer"
+aria-label="RSSで更新情報を購読" title="RSSで更新情報を購読"><span
+class="icon-rss-logo"></span></a>
+
+</div>
+
+</div>
+
+<div id="pc_ad-2" class="widget widget-below-sns-buttons widget_pc_ad"
+markdown="1">
+
+<div class="ad-area no-icon pc-ad-widget ad-rectangle ad-label-invisible cf"
+markdown="1" itemscope="" itemtype="https://schema.org/WPAdBlock">
+
+<div class="ad-label" markdown="1" itemprop="name" nosnippet="">
+
+スポンサーリンク
+
+</div>
+
+<div class="ad-wrap" markdown="1">
+
+<div class="ad-responsive ad-usual" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-meta" markdown="1">
+
+<div class="author-info" markdown="1">
+
+<span class="fa fa-pencil" aria-hidden="true"></span>
+<a href="https://yossi-note.com/author/yossi_note/"
+class="author-link"><span class="post-author vcard author"
+itemprop="editor author creator copyrightHolder" itemscope=""
+itemtype="https://schema.org/Person"> </span></a>
+
+<span class="author-name fn" itemprop="name">よっしー</span>
+
+</div>
+
+</div>
+
+<div class="under-entry-content" markdown="1">
+
+## <span class="related-entry-main-heading main-caption"> 関連記事 </span> [関連記事]
+
+<div class="related-list" markdown="1">
+
+<a href="https://yossi-note.com/introducing_redis_exporter/"
+class="related-entry-card-wrap a-wrap border-element cf"
+title="Dockerで作る開発環境：redis-exporterの導入"></a>
+
+<figure class="related-entry-card-thumb card-thumb e-card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/05/91_introducing_redis_exporter-160x90.jpg"
+class="related-entry-card-thumb-image card-thumb-image wp-post-image"
+decoding="async" loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2023/05/91_introducing_redis_exporter-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/05/91_introducing_redis_exporter-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/05/91_introducing_redis_exporter-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" /> <span
+class="cat-label cat-label-6">ノウハウ</span>
+</figure>
+
+<div class="related-entry-card-content card-content e-card-content"
+markdown="1">
+
+### Dockerで作る開発環境：redis-exporterの導入 [dockerで作る開発環境redis-exporterの導入]
+
+<div class="related-entry-card-snippet card-snippet e-card-snippet"
+markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、dockerで構築した開発環境において、redis-exporterを導入した手順をご紹介します。実行環境この記事は、特定の開発環境を前提として書かれています。もし興味がある場合は、その開発環...
+
+</div>
+
+</div>
+
+<a
+href="https://yossi-note.com/introduction-to-gcp-terraform-state-management-vol-2/"
+class="related-entry-card-wrap a-wrap border-element cf"
+title="GCP入門： Terraformの状態管理 -Vol.2-"></a>
+
+<figure class="related-entry-card-thumb card-thumb e-card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2024/08/574-160x90.jpg"
+class="related-entry-card-thumb-image card-thumb-image wp-post-image"
+decoding="async" loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2024/08/574-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2024/08/574-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2024/08/574-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" /> <span
+class="cat-label cat-label-6">ノウハウ</span>
+</figure>
+
+<div class="related-entry-card-content card-content e-card-content"
+markdown="1">
+
+### GCP入門： Terraformの状態管理 -Vol.2- [gcp入門-terraformの状態管理--vol.2-]
+
+<div class="related-entry-card-snippet card-snippet e-card-snippet"
+markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、Terraformでの状態管理について解説しています。背景下記の記事の続きになります。実施内容main.tfを下記の内容に編集します。main.tfprovider
+"google" { pr...
+
+</div>
+
+</div>
+
+<a
+href="https://yossi-note.com/acquisition_of_aws_resource_information_built_with_terraform/"
+class="related-entry-card-wrap a-wrap border-element cf"
+title="Terraformで構築したAWSリソースの情報取得"></a>
+
+<figure class="related-entry-card-thumb card-thumb e-card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/05/110_Acquisition_of_AWS_resource_information_built_with_Terraform-160x90.jpg"
+class="related-entry-card-thumb-image card-thumb-image wp-post-image"
+decoding="async" loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2023/05/110_Acquisition_of_AWS_resource_information_built_with_Terraform-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/05/110_Acquisition_of_AWS_resource_information_built_with_Terraform-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/05/110_Acquisition_of_AWS_resource_information_built_with_Terraform-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" /> <span
+class="cat-label cat-label-6">ノウハウ</span>
+</figure>
+
+<div class="related-entry-card-content card-content e-card-content"
+markdown="1">
+
+### Terraformで構築したAWSリソースの情報取得 [terraformで構築したawsリソースの情報取得]
+
+<div class="related-entry-card-snippet card-snippet e-card-snippet"
+markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、Terraformの出力機能を使用したAWSリソースの構築についてご紹介します。背景Terraformの設定をパラメータ化するために入力変数を使用しました。この記事では、出力値を使ってTerr...
+
+</div>
+
+</div>
+
+<a href="https://yossi-note.com/introduce_grafana_dashboard/"
+class="related-entry-card-wrap a-wrap border-element cf"
+title="Dockerで作る開発環境：grafanaのdashboard.ymlを導入"></a>
+
+<figure class="related-entry-card-thumb card-thumb e-card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/04/83_introduce_grafana_dashboard-160x90.jpg"
+class="related-entry-card-thumb-image card-thumb-image wp-post-image"
+decoding="async" loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2023/04/83_introduce_grafana_dashboard-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/04/83_introduce_grafana_dashboard-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/04/83_introduce_grafana_dashboard-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" /> <span
+class="cat-label cat-label-6">ノウハウ</span>
+</figure>
+
+<div class="related-entry-card-content card-content e-card-content"
+markdown="1">
+
+### Dockerで作る開発環境：grafanaのdashboard.ymlを導入 [dockerで作る開発環境grafanaのdashboard.ymlを導入]
+
+<div class="related-entry-card-snippet card-snippet e-card-snippet"
+markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、dockerで構築した開発環境において、grafanaのdashboard.ymlを導入した手順をご紹介します。実行環境この記事では、下記の記事で構築している開発環境を前提にしています。もし環...
+
+</div>
+
+</div>
+
+<a
+href="https://yossi-note.com/introduction-to-gcp-cloud-logging-on-kubernetes-engine-vol-2/"
+class="related-entry-card-wrap a-wrap border-element cf"
+title="GCP入門： Kubernetes Engine での Cloud Logging -Vol.2-"></a>
+
+<figure class="related-entry-card-thumb card-thumb e-card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2024/09/579-160x90.jpg"
+class="related-entry-card-thumb-image card-thumb-image wp-post-image"
+decoding="async" loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2024/09/579-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2024/09/579-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2024/09/579-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" /> <span
+class="cat-label cat-label-6">ノウハウ</span>
+</figure>
+
+<div class="related-entry-card-content card-content e-card-content"
+markdown="1">
+
+### GCP入門： Kubernetes Engine での Cloud Logging -Vol.2- [gcp入門-kubernetes-engine-での-cloud-logging--vol.2-]
+
+<div class="related-entry-card-snippet card-snippet e-card-snippet"
+markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、Kubernetes Engine での
+Cloud
+Loggingについて解説しています。背景下記の記事の続きになります。実施内容下記のコマンドを実行します。make
+validate下記の...
+
+</div>
+
+</div>
+
+<a
+href="https://yossi-note.com/about_line_display_control_with_or_without_line_breaks/"
+class="related-entry-card-wrap a-wrap border-element cf"
+title="whileループとreadコマンド：改行の有無による行の表示制御について"></a>
+
+<figure class="related-entry-card-thumb card-thumb e-card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/06/124_About_line_display_control_with_or_without_line_breaks-160x90.jpg"
+class="related-entry-card-thumb-image card-thumb-image wp-post-image"
+decoding="async" loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2023/06/124_About_line_display_control_with_or_without_line_breaks-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/06/124_About_line_display_control_with_or_without_line_breaks-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/06/124_About_line_display_control_with_or_without_line_breaks-320x180.jpg 320w"
+sizes="(max-width: 160px) 100vw, 160px" width="160" height="90" /> <span
+class="cat-label cat-label-6">ノウハウ</span>
+</figure>
+
+<div class="related-entry-card-content card-content e-card-content"
+markdown="1">
+
+### whileループとreadコマンド：改行の有無による行の表示制御について [whileループとreadコマンド改行の有無による行の表示制御について]
+
+<div class="related-entry-card-snippet card-snippet e-card-snippet"
+markdown="1">
+
+よっしーこんにちは。よっしーです(\^\^)今日は、Bashスクリプトでwhile文を使用したときに最終行だけ処理をされなかった問題についてご紹介します。背景下記のデータファイル(sample.dat)があったとします。123このとき、下記のB...
+
+</div>
+
+</div>
+
+</div>
+
+<div id="pager-post-navi" class="pager-post-navi post-navi-default cf"
+markdown="1">
+
+<a
+href="https://yossi-note.com/introduction-to-bash-about-logging-vol-4/"
+class="prev-post a-wrap border-element cf"
+title="bash入門：logging(ロギング)について -vol.4-"></a>
+
+<div class="fa fa-chevron-left iconfont" markdown="1"
+aria-hidden="true">
+
+</div>
+
+<figure class="prev-post-thumb card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/12/328_introduction-to-bash-about-logging-vol-4-120x68.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2023/12/328_introduction-to-bash-about-logging-vol-4-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/12/328_introduction-to-bash-about-logging-vol-4-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/12/328_introduction-to-bash-about-logging-vol-4-320x180.jpg 320w"
+sizes="(max-width: 120px) 100vw, 120px" width="120" height="68" />
+</figure>
+
+<div class="prev-post-title" markdown="1">
+
+bash入門：logging(ロギング)について -vol.4-
+
+</div>
+
+<a
+href="https://yossi-note.com/introduction-to-bash-about-logging-vol-5/"
+class="next-post a-wrap cf"
+title="bash入門：logging(ロギング)について -vol.5-"></a>
+
+<div class="fa fa-chevron-right iconfont" markdown="1"
+aria-hidden="true">
+
+</div>
+
+<figure class="next-post-thumb card-thumb">
+<img
+src="https://yossi-note.com/wp-content/uploads/2023/12/330_introduction-to-bash-about-logging-vol-5-120x68.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://yossi-note.com/wp-content/uploads/2023/12/330_introduction-to-bash-about-logging-vol-5-120x68.jpg 120w, https://yossi-note.com/wp-content/uploads/2023/12/330_introduction-to-bash-about-logging-vol-5-160x90.jpg 160w, https://yossi-note.com/wp-content/uploads/2023/12/330_introduction-to-bash-about-logging-vol-5-320x180.jpg 320w"
+sizes="(max-width: 120px) 100vw, 120px" width="120" height="68" />
+</figure>
+
+<div class="next-post-title" markdown="1">
+
+bash入門：logging(ロギング)について -vol.5-
+
+</div>
+
+</div>
+
+<div id="comment-area" class="comment-area" markdown="1">
+
+<div class="section comment-list" markdown="1">
+
+## コメント [comments]
+
+</div>
+
+コメントを書き込む
+
+<div id="respond" class="comment-respond" markdown="1">
+
+### コメントをどうぞ <span class="small"><a
+href="/introduction-to-bash-about-trap-processing-when-a-script-ends/#respond"
+id="cancel-comment-reply-link" rel="nofollow"
+style="display:none;">コメントをキャンセル</a></span> [reply-title]
+
+<span id="email-notes">メールアドレスが公開されることはありません。</span>
+<span class="required">※</span> が付いている欄は必須項目です
+
+コメント <span class="required">※</span>
+
+名前 <span class="required">※</span>
+
+メール <span class="required">※</span>
+
+サイト
+
+次回のコメントで使用するためブラウザーに自分の名前、メールアドレス、サイトを保存する。
+
+![CAPTCHA](https://yossi-note.com/wp-content/siteguard/1362991481.png)
+
+上に表示された文字を入力してください。  
+
+</div>
+
+</div>
+
+</div>
+
+<div id="breadcrumb"
+class="breadcrumb breadcrumb-category sbp-main-bottom" markdown="1"
+itemscope="" itemtype="https://schema.org/BreadcrumbList">
+
+<div class="breadcrumb-home" markdown="1" itemscope=""
+itemtype="https://schema.org/ListItem" itemprop="itemListElement">
+
+<span class="fa fa-home fa-fw"
+aria-hidden="true"></span><a href="https://yossi-note.com" itemprop="item"><span
+class="breadcrumb-caption" itemprop="name">ホーム</span></a>
+
+<span class="sp"><span class="fa fa-angle-right"
+aria-hidden="true"></span></span>
+
+</div>
+
+<div class="breadcrumb-item" markdown="1" itemscope=""
+itemtype="https://schema.org/ListItem" itemprop="itemListElement">
+
+<span class="fa fa-folder fa-fw"
+aria-hidden="true"></span><a href="https://yossi-note.com/category/howto/" itemprop="item"><span
+class="breadcrumb-caption" itemprop="name">ノウハウ</span></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="sidebar" class="sidebar nwa cf" markdown="1"
+role="complementary">
+
+検索
+
+<div class="wp-block-search__inside-wrapper" markdown="1">
+
+検索
+
+</div>
+
+### タグ [タグ]
+
+<div class="tagcloud" markdown="1">
+
+<a href="https://yossi-note.com/tag/svelte/"
+class="tag-cloud-link tag-link-35 tag-link-position-1"
+aria-label="Svelte (174個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>Svelte</span><span
+class="tag-link-count">174</span></a>
+<a href="https://yossi-note.com/tag/docker/"
+class="tag-cloud-link tag-link-9 tag-link-position-2"
+aria-label="Docker (138個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>Docker</span><span
+class="tag-link-count">138</span></a>
+<a href="https://yossi-note.com/tag/php/"
+class="tag-cloud-link tag-link-11 tag-link-position-3"
+aria-label="PHP (103個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>PHP</span><span
+class="tag-link-count">103</span></a>
+<a href="https://yossi-note.com/tag/aws/"
+class="tag-cloud-link tag-link-13 tag-link-position-4"
+aria-label="AWS (64個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>AWS</span><span
+class="tag-link-count">64</span></a>
+<a href="https://yossi-note.com/tag/shell/"
+class="tag-cloud-link tag-link-16 tag-link-position-5"
+aria-label="shell (62個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>shell</span><span
+class="tag-link-count">62</span></a>
+<a href="https://yossi-note.com/tag/gcp/"
+class="tag-cloud-link tag-link-34 tag-link-position-6"
+aria-label="GCP (58個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>GCP</span><span
+class="tag-link-count">58</span></a>
+<a href="https://yossi-note.com/tag/terraform/"
+class="tag-cloud-link tag-link-8 tag-link-position-7"
+aria-label="Terraform (56個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon"
+aria-hidden="true"></span>Terraform</span><span
+class="tag-link-count">56</span></a> <a
+href="https://yossi-note.com/tag/%e4%bb%ae%e6%83%b3%e9%80%9a%e8%b2%a8/"
+class="tag-cloud-link tag-link-31 tag-link-position-8"
+aria-label="仮想通貨 (56個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon"
+aria-hidden="true"></span>仮想通貨</span><span
+class="tag-link-count">56</span></a> <a
+href="https://yossi-note.com/tag/%e8%b2%a0%e8%8d%b7%e8%a9%a6%e9%a8%93/"
+class="tag-cloud-link tag-link-26 tag-link-position-9"
+aria-label="負荷試験 (52個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon"
+aria-hidden="true"></span>負荷試験</span><span
+class="tag-link-count">52</span></a>
+<a href="https://yossi-note.com/tag/k6/"
+class="tag-cloud-link tag-link-27 tag-link-position-10"
+aria-label="k6 (44個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>k6</span><span
+class="tag-link-count">44</span></a>
+<a href="https://yossi-note.com/tag/mysql/"
+class="tag-cloud-link tag-link-14 tag-link-position-11"
+aria-label="MySQL (28個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>MySQL</span><span
+class="tag-link-count">28</span></a>
+<a href="https://yossi-note.com/tag/kubernetes/"
+class="tag-cloud-link tag-link-17 tag-link-position-12"
+aria-label="Kubernetes (28個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon"
+aria-hidden="true"></span>Kubernetes</span><span
+class="tag-link-count">28</span></a>
+<a href="https://yossi-note.com/tag/golang/"
+class="tag-cloud-link tag-link-22 tag-link-position-13"
+aria-label="Golang (17個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>Golang</span><span
+class="tag-link-count">17</span></a>
+<a href="https://yossi-note.com/tag/redis/"
+class="tag-cloud-link tag-link-29 tag-link-position-14"
+aria-label="Redis (10個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>Redis</span><span
+class="tag-link-count">10</span></a>
+<a href="https://yossi-note.com/tag/asdf/"
+class="tag-cloud-link tag-link-10 tag-link-position-15"
+aria-label="asdf (8個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>asdf</span><span
+class="tag-link-count">8</span></a>
+<a href="https://yossi-note.com/tag/jmeter/"
+class="tag-cloud-link tag-link-30 tag-link-position-16"
+aria-label="JMeter (7個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>JMeter</span><span
+class="tag-link-count">7</span></a>
+<a href="https://yossi-note.com/tag/redmine/"
+class="tag-cloud-link tag-link-33 tag-link-position-17"
+aria-label="Redmine (6個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>Redmine</span><span
+class="tag-link-count">6</span></a>
+<a href="https://yossi-note.com/tag/mariadb/"
+class="tag-cloud-link tag-link-25 tag-link-position-18"
+aria-label="MariaDB (4個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>MariaDB</span><span
+class="tag-link-count">4</span></a> <a
+href="https://yossi-note.com/tag/%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3/"
+class="tag-cloud-link tag-link-32 tag-link-position-19"
+aria-label="ブロックチェーン (2個の項目)"><span
+class="tag-caption"><span class="fa fa-tag tax-icon"
+aria-hidden="true"></span>ブロックチェーン</span><span
+class="tag-link-count">2</span></a>
+<a href="https://yossi-note.com/tag/brew/"
+class="tag-cloud-link tag-link-23 tag-link-position-20"
+aria-label="brew (1個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>brew</span><span
+class="tag-link-count">1</span></a> <a
+href="https://yossi-note.com/tag/%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3/"
+class="tag-cloud-link tag-link-37 tag-link-position-21"
+aria-label="セキュリティ (1個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon"
+aria-hidden="true"></span>セキュリティ</span><span
+class="tag-link-count">1</span></a>
+<a href="https://yossi-note.com/tag/zsh/"
+class="tag-cloud-link tag-link-15 tag-link-position-22"
+aria-label="zsh (1個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>zsh</span><span
+class="tag-link-count">1</span></a>
+<a href="https://yossi-note.com/tag/direnv/"
+class="tag-cloud-link tag-link-18 tag-link-position-23"
+aria-label="direnv (1個の項目)"><span class="tag-caption"><span
+class="fa fa-tag tax-icon" aria-hidden="true"></span>direnv</span><span
+class="tag-link-count">1</span></a>
+
+</div>
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow"
+markdown="1">
+
+## 最近の投稿 [最近の投稿]
+
+-   <a
+    href="https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-13/"
+    class="wp-block-latest-posts__post-title">Svelte入門：リファレンス
+    @sveltejs/kit -Vol.13-</a>
+-   <a
+    href="https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-12/"
+    class="wp-block-latest-posts__post-title">Svelte入門：リファレンス
+    @sveltejs/kit -Vol.12-</a>
+-   <a
+    href="https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-11/"
+    class="wp-block-latest-posts__post-title">Svelte入門：リファレンス
+    @sveltejs/kit -Vol.11-</a>
+-   <a
+    href="https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-10/"
+    class="wp-block-latest-posts__post-title">Svelte入門：リファレンス
+    @sveltejs/kit -Vol.10-</a>
+-   <a
+    href="https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-9/"
+    class="wp-block-latest-posts__post-title">Svelte入門：リファレンス
+    @sveltejs/kit -Vol.9-</a>
+
+</div>
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow"
+markdown="1">
+
+## 最近のコメント [最近のコメント]
+
+1.  <a href="https://yossi-note.com/passkey_error_on_mercari/#comment-8"
+    class="wp-block-latest-comments__comment-link">機種変更したらメルカリでパスキーエラーになったときのはなし</a>
+    に <a href="https://yossi-note.com/"
+    class="wp-block-latest-comments__comment-author">よっしー</a> より
+2.  <a href="https://yossi-note.com/passkey_error_on_mercari/#comment-7"
+    class="wp-block-latest-comments__comment-link">機種変更したらメルカリでパスキーエラーになったときのはなし</a>
+    に
+    <span class="wp-block-latest-comments__comment-author">よいしょ</span>
+    より
+3.  <a
+    href="https://yossi-note.com/introduction-to-php-run-at-any-date-and-time-with-timecop/#comment-6"
+    class="wp-block-latest-comments__comment-link">PHP入門：timecopで任意の日時で動作させる</a>
+    に <a href="https://yossi-note.com/"
+    class="wp-block-latest-comments__comment-author">よっしー</a> より
+4.  <a
+    href="https://yossi-note.com/introduction-to-php-run-at-any-date-and-time-with-timecop/#comment-5"
+    class="wp-block-latest-comments__comment-link">PHP入門：timecopで任意の日時で動作させる</a>
+    に
+    <span class="wp-block-latest-comments__comment-author">おかもと</span>
+    より
+5.  <a href="https://yossi-note.com/passkey_error_on_mercari/#comment-4"
+    class="wp-block-latest-comments__comment-link">機種変更したらメルカリでパスキーエラーになったときのはなし</a>
+    に <a href="https://yossi-note.com/"
+    class="wp-block-latest-comments__comment-author">よっしー</a> より
+
+</div>
+
+### にほんブログ村 [にほんブログ村]
+
+<div class="text-pc" markdown="1">
+
+<a href="https://blogmura.com/ranking/in?p_cid=11165451" rel="noopener"
+target="_blank"><img src="https://b.blogmura.com/88_31.gif"
+data-border="0" width="88" height="31"
+alt="ブログランキング・にほんブログ村へ" />にほんブログ村</a>
+
+</div>
+
+<div id="sidebar-scroll" class="sidebar-scroll" markdown="1">
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow"
+markdown="1">
+
+## アーカイブ [アーカイブ]
+
+-   [<span class="list-item-caption">2025年3月</span>](https://yossi-note.com/2025/03/)
+-   [<span class="list-item-caption">2025年2月</span>](https://yossi-note.com/2025/02/)
+-   [<span class="list-item-caption">2025年1月</span>](https://yossi-note.com/2025/01/)
+-   [<span class="list-item-caption">2024年12月</span>](https://yossi-note.com/2024/12/)
+-   [<span class="list-item-caption">2024年11月</span>](https://yossi-note.com/2024/11/)
+-   [<span class="list-item-caption">2024年10月</span>](https://yossi-note.com/2024/10/)
+-   [<span class="list-item-caption">2024年9月</span>](https://yossi-note.com/2024/09/)
+-   [<span class="list-item-caption">2024年8月</span>](https://yossi-note.com/2024/08/)
+-   [<span class="list-item-caption">2024年7月</span>](https://yossi-note.com/2024/07/)
+-   [<span class="list-item-caption">2024年6月</span>](https://yossi-note.com/2024/06/)
+-   [<span class="list-item-caption">2024年5月</span>](https://yossi-note.com/2024/05/)
+-   [<span class="list-item-caption">2024年4月</span>](https://yossi-note.com/2024/04/)
+-   [<span class="list-item-caption">2024年3月</span>](https://yossi-note.com/2024/03/)
+-   [<span class="list-item-caption">2024年2月</span>](https://yossi-note.com/2024/02/)
+-   [<span class="list-item-caption">2024年1月</span>](https://yossi-note.com/2024/01/)
+-   [<span class="list-item-caption">2023年12月</span>](https://yossi-note.com/2023/12/)
+-   [<span class="list-item-caption">2023年11月</span>](https://yossi-note.com/2023/11/)
+-   [<span class="list-item-caption">2023年10月</span>](https://yossi-note.com/2023/10/)
+-   [<span class="list-item-caption">2023年9月</span>](https://yossi-note.com/2023/09/)
+-   [<span class="list-item-caption">2023年8月</span>](https://yossi-note.com/2023/08/)
+-   [<span class="list-item-caption">2023年7月</span>](https://yossi-note.com/2023/07/)
+-   [<span class="list-item-caption">2023年6月</span>](https://yossi-note.com/2023/06/)
+-   [<span class="list-item-caption">2023年5月</span>](https://yossi-note.com/2023/05/)
+-   [<span class="list-item-caption">2023年4月</span>](https://yossi-note.com/2023/04/)
+-   [<span class="list-item-caption">2023年3月</span>](https://yossi-note.com/2023/03/)
+-   [<span class="list-item-caption">2023年2月</span>](https://yossi-note.com/2023/02/)
+
+</div>
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow"
+markdown="1">
+
+## カテゴリー [カテゴリー]
+
+-   [<span class="list-item-caption">PR</span>](https://yossi-note.com/category/pr/)
+-   [<span class="list-item-caption">ノウハウ</span>](https://yossi-note.com/category/howto/)
+-   [<span class="list-item-caption">初期設定</span>](https://yossi-note.com/category/init/)
+-   [<span class="list-item-caption">収益化</span>](https://yossi-note.com/category/%e5%8f%8e%e7%9b%8a%e5%8c%96/)
+-   [<span class="list-item-caption">未分類</span>](https://yossi-note.com/category/uncategorized/)
+-   [<span class="list-item-caption">環境構築</span>](https://yossi-note.com/category/%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89/)
+-   [<span class="list-item-caption">用語解説</span>](https://yossi-note.com/category/glossary/)
+
+</div>
+
+<div class="textwidget" markdown="1">
+
+<a href="https://px.a8.net/svt/ejp?a8mat=3T2CEX+555TWY+50+2I4LK1"
+rel="nofollow"><br />
+<img
+src="https://www26.a8.net/svt/bgt?aid=230216793311&amp;wid=001&amp;eno=01&amp;mid=s00000000018015138000&amp;mc=1"
+loading="lazy" decoding="async" data-border="0" width="160"
+height="600" /></a>  
+<img src="https://www17.a8.net/0.gif?a8mat=3T2CEX+555TWY+50+2I4LK1"
+loading="lazy" decoding="async" data-border="0" width="1" height="1" />
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer-in" class="footer-in wrap cf" markdown="1">
+
+<div class="footer-bottom fdt-logo fnm-text-width cf" markdown="1">
+
+<div class="footer-bottom-logo" markdown="1">
+
+<div class="logo logo-footer logo-text" markdown="1">
+
+<a href="https://yossi-note.com/" class="site-name site-name-text-link"
+itemprop="url"><span class="site-name-text"
+itemprop="name about">よっしーノート</span></a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom-content" markdown="1">
+
+<div id="navi-footer-in" class="navi-footer-in" markdown="1">
+
+-   <span id="menu-item-50">[サイトマップ](https://yossi-note.com/sitemap/)</span>
+-   <span id="menu-item-35">[プライバシーポリシー](https://yossi-note.com/privacy-policy/)</span>
+-   <span id="menu-item-39">[免責事項](https://yossi-note.com/disclaimer/)</span>
+-   <span id="menu-item-29">[お問い合わせ](https://yossi-note.com/25-2/)</span>
+
+</div>
+
+<div class="source-org copyright" markdown="1">
+
+© 2023 よっしーノート.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+-   <a href="https://yossi-note.com/sitemap/" class="menu-button-in"><span
+    class="custom-menu-icon menu-icon"><span
+    class="fa fa-star"></span></span><span
+    class="custom-menu-caption menu-caption">サイトマップ</span></a>
+-   <a href="https://yossi-note.com/privacy-policy/"
+    class="menu-button-in"><span class="custom-menu-icon menu-icon"><span
+    class="fa fa-star"></span></span><span
+    class="custom-menu-caption menu-caption">プライバシーポリシー</span></a>
+-   <a href="https://yossi-note.com/disclaimer/"
+    class="menu-button-in"><span class="custom-menu-icon menu-icon"><span
+    class="fa fa-star"></span></span><span
+    class="custom-menu-caption menu-caption">免責事項</span></a>
+-   <a href="https://yossi-note.com/25-2/" class="menu-button-in"><span
+    class="custom-menu-icon menu-icon"><span
+    class="fa fa-star"></span></span><span
+    class="custom-menu-caption menu-caption">お問い合わせ</span></a>
+
+<div id="go-to-top" class="go-to-top" markdown="1">
+
+<span class="fa fa-angle-double-up"></span>
+
+</div>
+
+<div class="copy-info" markdown="1">
+
+タイトルとURLをコピーしました
+
+</div>
+
+</div>

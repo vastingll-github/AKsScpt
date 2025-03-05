@@ -1,0 +1,942 @@
+<div id="header" markdown="1" itemscope=""
+itemtype="https://schema.org/WPHeader">
+
+<div id="head-in" markdown="1">
+
+<div id="head-parallax" markdown="1">
+
+<div class="head-cover" markdown="1">
+
+<div class="info" markdown="1" itemscope=""
+itemtype="https://schema.org/Website">
+
+<a href="https://genzouw.com/" itemprop="url"><span
+itemprop="name about">ゲンゾウ用ポストイット</span></a>
+
+シェル / Bash / Linux / Kubernetes / Docker / Git /
+クラウドのtipsを発信。
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="container" markdown="1">
+
+<div id="primary" class="clearfix" markdown="1">
+
+<div id="main" markdown="1" role="main">
+
+<div id="core" class="grid" markdown="1">
+
+<div markdown="1" itemprop="breadcrumb">
+
+1.  [ホーム](https://genzouw.com/)*\>*
+2.  [Bash](https://genzouw.com/entry/category/bash/)
+
+</div>
+
+<div id="mainEntity"
+class="post post-2665 type-post status-publish format-standard has-post-thumbnail category-bash"
+markdown="1" itemprop="mainEntityOfPage">
+
+<div id="article-header" markdown="1">
+
+# シェルスクリプトで引数でループする処理を書くときは “\${@}” は不要だった [シェルスクリプトで引数でループする処理を書くときは-は不要だった]
+
+</div>
+
+<div class="clearfix" markdown="1">
+
+<span class="date published">2021-06-21</span><span class="date"></span>
+
+2022-01-28<span class="category items"
+itemprop="keywords"><span class="first-item">[Bash](https://genzouw.com/entry/category/bash/)</span></span>
+
+<div id="sns-tops" markdown="1">
+
+<div class="snsf-c" markdown="1">
+
+-   <a
+    href="//twitter.com/share?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88&amp;url=https://genzouw.com/entry/2021/06/21/080007/2665/"
+    aria-label="Twitter" target="_blank" rel="nofollow noopener"
+    title="Tweet"><em></em><span class="snsname">Twitter</span><span
+    class="snsfcnt twitter-count"><em></em></span></a>
+-   <a
+    href="//www.facebook.com/sharer/sharer.php?u=https://genzouw.com/entry/2021/06/21/080007/2665/&amp;t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88"
+    aria-label="Facebook" target="_blank" rel="nofollow noopener"
+    title="Share on Facebook"><em></em><span
+    class="snsname">Facebook</span><span
+    class="snsfcnt facebook-count"><em></em></span></a>
+-   <a
+    href="//b.hatena.ne.jp/add?mode=confirm&amp;url=https://genzouw.com/entry/2021/06/21/080007/2665/&amp;title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88"
+    aria-label="Hatena Bookmark" target="_blank" rel="nofollow noopener"
+    title="Bookmark at Hatena"><em>B!</em><span
+    class="snsname">Hatena</span><span
+    class="snsfcnt hatena-count">1</span></a>
+-   <a
+    href="//lineit.line.me/share/ui?url=https://genzouw.com/entry/2021/06/21/080007/2665/#/"
+    aria-label="LINE" target="_blank" rel="nofollow noopener"
+    title="ラインで送る"><em></em><span class="snsname">LINE</span><span
+    class="snsfcnt line-count"><em>Send</em></span></a>
+-   <a
+    href="//line.me/R/msg/text/?%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88%0D%0Ahttps://genzouw.com/entry/2021/06/21/080007/2665/"
+    aria-label="LINE" target="_blank" rel="nofollow noopener"
+    title="ラインで送る"><em></em><span class="snsname">LINE</span><span
+    class="snsfcnt line-count"><em>Send</em></span></a>
+-   <a href="https://genzouw.com/feed/" aria-label="RSS" target="_blank"
+    rel="nofollow noopener" title="RSS"><em></em><span
+    class="snsname">RSS</span><span class="snsfcnt rss-count">-</span></a>
+
+<div class="sns-count-true sns-cache-true feed-cache-true clearfix"
+markdown="1" incomplete="f"
+luxe-permalink="https://genzouw.com/entry/2021/06/21/080007/2665/">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="toc_container" markdown="1">
+
+<span class="toc_title">Contents</span>
+
+-   [<span class="toc_number toc_depth_1">1.</span> はじめに](#toc_id_1)
+-   [<span class="toc_number toc_depth_1">2.</span> 検証環境](#toc_id_2)
+-   [<span class="toc_number toc_depth_1">3.</span>
+    今まで記述してた「コマンドライン引数」を使ったループ処理](#toc_id_3)
+-   [<span class="toc_number toc_depth_1">4.</span>
+    「コマンドライン引数」を使ったループ処理に `"${@}"`
+    の記載は不要](#toc_id_4)
+-   [<span class="toc_number toc_depth_1">5.</span> ひとこと](#toc_id_5)
+
+</div>
+
+## <span id="toc_id_1">はじめに</span>
+
+個人的にはシェルスクリプトでループ処理を書くと速度が出ず、また記載が冗長となるためあまり使いません。
+
+それでも分岐処理を含めて繰り返し処理したい場合にはループを書くことがあります。
+
+シェルスクリプト実行時に渡される「コマンドライン引数」でループを回すこともありますが、先日今まで書いていた処理がもっとかんたんに書けることを知りました。
+
+## <span id="toc_id_2">検証環境</span>
+
+``` bash
+$ uname -moi
+x86_64 x86_64 GNU/Linux
+
+$ head -n 2 /etc/os-release
+NAME="CentOS Linux"
+VERSION="7 (Core)"
+
+$ bash -version | head -n 1
+GNU bash, version 4.2.46(2)-release (x86_64-redhat-linux-gnu)
+```
+
+## <span id="toc_id_3">今まで記述してた「コマンドライン引数」を使ったループ処理</span>
+
+今までコマンドライン引数を使ったループ処理を記述したい場合には、 `for`
+と `"${@}"` 変数を使って記述していました。
+
+以下がそのコードになります。
+
+``` bash
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o noclobber
+
+for I in "${@}"; do
+  echo "$I"
+done
+```
+
+`test1.sh` という名前で保存し、実行してみます。
+
+``` bash
+# 実行権限を与えてあげましょう
+$ chmod 700 test1.sh
+
+# 実行
+$ ./test1.sh a b "c d" " e "
+a
+b
+c d
+ e
+```
+
+第 3 引数、第 4
+引数にはスペースを含んでいるため、ダブルクォート(`"`)で囲んでやる必要があります。  
+また、参照する際にも `"${@}"` という形式で `for`
+構文に渡してやる必要があります。
+
+上記 2
+点が大事なポイントですし、「知らないとハマるよね(ドヤァ」と思っていました。
+
+*つい先日までは。*
+
+## <span id="toc_id_4">「コマンドライン引数」を使ったループ処理に `"${@}"` の記載は不要</span>
+
+先日、別の方が作成されているシェルスクリプトを拝見することがありました。
+
+そこで書かれているループ処理の一部を抜粋すると、以下のようになっていました。
+
+``` bash
+for I; do
+  ...
+done
+```
+
+**「あれ？、 `in` 以降が記載されていない？」**
+
+スクリプトでやろうとしていることを見ると、コマンドライン引数を受け取りループを回すというものでした。
+
+**「もしかして、 `"${@}"` いらない？」**
+
+`"${@}"` は書かなくても良かったみたいです。  
+先程のループ処理のコードは以下と同義になります。
+
+``` bash
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o noclobber
+
+for I; do
+  echo "$I"
+done
+```
+
+`test2.sh` という名前で保存し、実行してみます。
+
+``` bash
+# 実行権限を与えてあげましょう
+$ chmod 700 test2.sh
+
+# 実行
+$ ./test2.sh a b "c d" " e "
+a
+b
+c d
+ e
+```
+
+全く同じ結果が出力されていますね。
+
+ポイントはミスりそうな記述 `"${@}"`
+を書かなくてもいいし、覚える必要もないという点です。
+
+## <span id="toc_id_5">ひとこと</span>
+
+人から学べることはたくさんありますね。
+
+シェルの勉強会、いつも参加したいなぁと思っているんですが、子供が 5
+人もいると土日はいつも大変な妻の代わりにこどもの面倒をみる必要があり、参加は難しい。
+
+平日の定時以降にやってくれると嬉しいなぁ。
+
+-   <a href="https://usptomo.doorkeeper.jp/" class="external"
+    target="_blank" rel="noopener external nofollow">USP 友の会 |
+    Doorkeeper</a> <span class="ext_icon"></span>
+
+</div>
+
+<div class="meta-box" markdown="1">
+
+<span class="date published">2021-06-21</span><span class="date"></span>
+
+2022-01-28<span class="category items"
+itemprop="keywords"><span class="first-item">[Bash](https://genzouw.com/entry/category/bash/)</span></span>
+
+</div>
+
+------------------------------------------------------------------------
+
+</div>
+
+<div class="sns-msg" markdown="1">
+
+## よろしければシェアお願いします
+
+</div>
+
+<div id="sns-bottoms" markdown="1">
+
+<div class="snsf-c" markdown="1">
+
+-   <a
+    href="//twitter.com/share?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88&amp;url=https://genzouw.com/entry/2021/06/21/080007/2665/"
+    aria-label="Twitter" target="_blank" rel="nofollow noopener"
+    title="Tweet"><em></em><span class="snsname">Twitter</span><span
+    class="snsfcnt twitter-count"><em></em></span></a>
+-   <a
+    href="//www.facebook.com/sharer/sharer.php?u=https://genzouw.com/entry/2021/06/21/080007/2665/&amp;t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88"
+    aria-label="Facebook" target="_blank" rel="nofollow noopener"
+    title="Share on Facebook"><em></em><span
+    class="snsname">Facebook</span><span
+    class="snsfcnt facebook-count"><em></em></span></a>
+-   <a
+    href="//b.hatena.ne.jp/add?mode=confirm&amp;url=https://genzouw.com/entry/2021/06/21/080007/2665/&amp;title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88"
+    aria-label="Hatena Bookmark" target="_blank" rel="nofollow noopener"
+    title="Bookmark at Hatena"><em>B!</em><span
+    class="snsname">Hatena</span><span
+    class="snsfcnt hatena-count">1</span></a>
+-   <a
+    href="//lineit.line.me/share/ui?url=https://genzouw.com/entry/2021/06/21/080007/2665/#/"
+    aria-label="LINE" target="_blank" rel="nofollow noopener"
+    title="ラインで送る"><em></em><span class="snsname">LINE</span><span
+    class="snsfcnt line-count"><em>Send</em></span></a>
+-   <a
+    href="//line.me/R/msg/text/?%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88%0D%0Ahttps://genzouw.com/entry/2021/06/21/080007/2665/"
+    aria-label="LINE" target="_blank" rel="nofollow noopener"
+    title="ラインで送る"><em></em><span class="snsname">LINE</span><span
+    class="snsfcnt line-count"><em>Send</em></span></a>
+-   <a href="https://genzouw.com/feed/" aria-label="RSS" target="_blank"
+    rel="nofollow noopener" title="RSS"><em></em><span
+    class="snsname">RSS</span><span class="snsfcnt rss-count">-</span></a>
+
+<div class="sns-count-true sns-cache-true feed-cache-true clearfix"
+markdown="1" incomplete="f"
+luxe-permalink="https://genzouw.com/entry/2021/06/21/080007/2665/">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="pnavi" class="grid" markdown="1">
+
+<div class="next" markdown="1">
+
+<a href="https://genzouw.com/entry/2021/06/24/190227/2670/"
+rel="next"><img
+src="https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=530%2C530&amp;ssl=1 530w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=565%2C565&amp;ssl=1 565w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?w=650&amp;ssl=1 650w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+
+<div class="ntitle" markdown="1">
+
+trコマンドで改行をカンマに変換すると","とだけ表示されてびっくりした話
+
+</div>
+
+<div class="next-arrow" markdown="1">
+
+Next
+
+</div>
+
+</div>
+
+<div class="prev" markdown="1">
+
+<a href="https://genzouw.com/entry/2021/06/20/093317/2668/"
+rel="prev"><img
+src="https://genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921.png?zoom=2&amp;resize=100%2C100&amp;ssl=1 200w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921.png?zoom=3&amp;resize=100%2C100&amp;ssl=1 300w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+
+<div class="ptitle" markdown="1">
+
+Vimでファイル編集中にスペルミス(typo)を検出するためにvim-codespellを導入してみた
+
+</div>
+
+<div class="prev-arrow" markdown="1">
+
+Prev
+
+</div>
+
+</div>
+
+</div>
+
+<div id="related-box" class="grid" markdown="1">
+
+## 関連記事 [関連記事]
+
+<div id="related" markdown="1">
+
+<div class="toc clearfix" markdown="1">
+
+<figure class="term">
+<a href="https://genzouw.com/entry/2019/06/13/090034/1605/"
+aria-hidden="true"><img
+src="https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=530%2C530&amp;ssl=1 530w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=565%2C565&amp;ssl=1 565w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?w=650&amp;ssl=1 650w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+</figure>
+
+<div class="excerpt" markdown="1">
+
+### [「grep」を使って稼働中のプロセスを確認する際に「grep」自身が引っかからないようにする方法いろいろ](https://genzouw.com/entry/2019/06/13/090034/1605/)
+
+はじめに 現在稼働中のプロセスを確認するときに、 ps aux コマンドを利用す
+...
+
+</div>
+
+</div>
+
+<div class="toc clearfix" markdown="1">
+
+<figure class="term">
+<a href="https://genzouw.com/entry/2019/03/29/083754/1272/"
+aria-hidden="true"><img
+src="https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=530%2C530&amp;ssl=1 530w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=565%2C565&amp;ssl=1 565w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?w=650&amp;ssl=1 650w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+</figure>
+
+<div class="excerpt" markdown="1">
+
+### [「direnv」を使ってプロジェクトディレクトリごとに環境変数が自動的に設定されるようにする](https://genzouw.com/entry/2019/03/29/083754/1272/)
+
+はじめに AWSの環境構築系のツール（ aws-cli とか Terraform ...
+
+</div>
+
+</div>
+
+<div class="toc clearfix" markdown="1">
+
+<figure class="term">
+<a href="https://genzouw.com/entry/2020/09/24/221756/2070/"
+aria-hidden="true"><img
+src="https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=530%2C530&amp;ssl=1 530w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=565%2C565&amp;ssl=1 565w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?w=650&amp;ssl=1 650w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+</figure>
+
+<div class="excerpt" markdown="1">
+
+### [Bashシェルスクリプトで連番付きファイル名の次の連番を算出する](https://genzouw.com/entry/2020/09/24/221756/2070/)
+
+はじめに
+特定のフォルダにファイルが配置されており、これら全てに通し連番が付与さ
+...
+
+</div>
+
+</div>
+
+<div class="toc clearfix" markdown="1">
+
+<figure class="term">
+<a href="https://genzouw.com/entry/2020/01/19/073052/1895/"
+aria-hidden="true"><img
+src="https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=530%2C530&amp;ssl=1 530w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=565%2C565&amp;ssl=1 565w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?w=650&amp;ssl=1 650w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+</figure>
+
+<div class="excerpt" markdown="1">
+
+### [シェルである文章内からある単語の登場回数を調べる](https://genzouw.com/entry/2020/01/19/073052/1895/)
+
+はじめに 文章内から特定の単語の登場回数を調べる方法について紹介します。
+検証環 ...
+
+</div>
+
+</div>
+
+<div class="toc clearfix" markdown="1">
+
+<figure class="term">
+<a href="https://genzouw.com/entry/2022/03/08/091833/2960/"
+aria-hidden="true"><img
+src="https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png"
+class="attachment-thumb100 size-thumb100 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=100%2C100&amp;ssl=1 100w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=75%2C75&amp;ssl=1 75w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=530%2C530&amp;ssl=1 530w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?resize=565%2C565&amp;ssl=1 565w, https://i0.wp.com/genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766.png?w=650&amp;ssl=1 650w"
+sizes="auto, (max-width: 100px) 100vw, 100px" width="100"
+height="100" /></a>
+</figure>
+
+<div class="excerpt" markdown="1">
+
+### [Bashでテスト用に1GiBの大容量ファイル(バイナリ/テキスト)を作成する方法いろいろ](https://genzouw.com/entry/2022/03/08/091833/2960/)
+
+はじめに
+アップロード・ダウンロード速度、通信速度を確認するために、サイズの大き
+...
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="comments" class="grid" markdown="1">
+
+## ディスカッション [ディスカッション]
+
+### コメント一覧 [コメント一覧]
+
+まだ、コメントがありません
+
+<div id="respond" class="comment-respond" markdown="1">
+
+### コメントを残す<span class="small"><a href="/entry/2021/06/21/080007/2665/#respond"
+id="cancel-comment-reply-link" rel="nofollow"
+style="display:none;">コメントをキャンセル</a></span> [reply-title]
+
+<div class="iframe" markdown="1">
+
+<div id="respond" class="comment-respond" markdown="1">
+
+### コメントを残す <span class="small"><a
+href="/jetpack-comment/?blogid=168055164&amp;postid=2665&amp;comment_registration=0&amp;require_name_email=1&amp;stc_enabled=1&amp;stb_enabled=1&amp;show_avatars=1&amp;avatar_default=gravatar_default&amp;greeting=%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E6%AE%8B%E3%81%99&amp;jetpack_comments_nonce=46a69e9e55&amp;greeting_reply=%25s+%E3%81%B8%E8%BF%94%E4%BF%A1%E3%81%99%E3%82%8B&amp;color_scheme=light&amp;lang=ja&amp;jetpack_version=14.4&amp;iframe_unique_id=1&amp;show_cookie_consent=10&amp;has_cookie_consent=0&amp;is_current_user_subscribed=0&amp;token_key=%3Bnormal%3B&amp;sig=07f243eecfa4f06fe992601668729576c5f9f5aa#respond"
+id="cancel-comment-reply-link" rel="nofollow"
+style="display:none;">コメントをキャンセル</a></span> [reply-title]
+
+<div class="comment-form__verbum light" markdown="1">
+
+</div>
+
+<div class="verbum-form-meta" markdown="1">
+
+</div>
+
+Δ
+
+</div>
+
+<div markdown="1" style="display:none">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="trackback" class="grid" markdown="1">
+
+### この記事のトラックバックURL [この記事のトラックバックurl]
+
+</div>
+
+</div>
+
+<div id="sidebar" markdown="1" itemscope="itemscope"
+itemtype="http://schema.org/WPSideBar">
+
+<div id="side" markdown="1">
+
+<div id="side-fixed" markdown="1">
+
+<div id="custom_html-5" class="widget_text widget widget_custom_html"
+markdown="1">
+
+### プロフィール [プロフィール]
+
+<div class="textwidget custom-html-widget" markdown="1">
+
+<div class="widget-profile" markdown="1">
+
+<img
+src="https://i0.wp.com/pbs.twimg.com/profile_images/2609827576/labg844jza6utj641nvb_400x400.jpeg?resize=180%2C180&amp;ssl=1"
+data-recalc-dims="1" width="180" height="180" alt="プロフィール" />
+
+<div class="nickname" markdown="1">
+
+[@genzouw](https://twitter.com/genzouw)
+
+</div>
+
+<div class="description" markdown="1">
+
+5人の子供を持つのおとうちゃん。
+
+参考になりましたら、**シェア**、**コメント**、**[支援](https://www.paypal.com/paypalme/my/profile)**をいただけると励みになります！
+
+システム構築の**相談**ものります。[<span class="bold">お問い合わせ</span>](mailto:genzouw@gmail.com "コンタクト")はこちら。
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="custom_html-11" class="widget_text widget widget_custom_html"
+markdown="1">
+
+### Youtubeはじめました [youtubeはじめました]
+
+<div class="textwidget custom-html-widget" markdown="1">
+
+<div class="g-ytsubscribe" markdown="1"
+channelid="UCl5cKDURfDAZKJLySyAepQg" layout="full" theme="dark"
+count="default">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="custom_html-14" class="widget_text widget widget_custom_html"
+markdown="1">
+
+### 学習をサポートします [学習をサポートします]
+
+<div class="textwidget custom-html-widget" markdown="1">
+
+<a href="https://menta.work/user/14625" style="text-align: center;"><img
+src="https://i0.wp.com/genzouw.com/wp-content/uploads/2021/05/menta.png?ssl=1"
+data-recalc-dims="1" alt="menta-icon" /></a>
+
+</div>
+
+</div>
+
+<div id="custom_html-13" class="widget_text widget widget_custom_html"
+markdown="1">
+
+### Go言語 始めました [go言語-始めました]
+
+<div class="textwidget custom-html-widget" markdown="1">
+
+<a href="https://go.genzouw.com/"
+style="font-weight: bold; font-size: 200%;"><img
+src="https://i0.wp.com/go.genzouw.com/wp-content/uploads/2021/03/file_type_go_gopher_icon_130571.png?ssl=1"
+style="width: 20%;" data-recalc-dims="1"
+alt="Go言語用ポストイット" />Go言語用ポストイット</a>
+
+</div>
+
+</div>
+
+<div id="search-2" class="widget widget_search" markdown="1">
+
+<div id="search" markdown="1" itemscope=""
+itemtype="https://schema.org/WebSite">
+
+</div>
+
+</div>
+
+<div id="custom_html-9" class="widget_text widget widget_custom_html"
+markdown="1">
+
+### 自作サービス紹介 [自作サービス紹介]
+
+<div class="textwidget custom-html-widget" markdown="1">
+
+-   <a href="https://hyakunin.genzouw.com/"
+    style="font-size:  110%;">ひゃくにんいっしゅをおぼえよう(子供向け)</a>
+-   <a href="https://kanji.genzouw.com/"
+    style="font-size:  110%;">かんじをおぼえよう(子供向け)</a>
+-   <a href="https://golly.genzouw.com/" style="font-size:  110%;">Golly -
+    投票サービス</a>
+
+</div>
+
+</div>
+
+<div id="tag_cloud-3" class="widget widget_tag_cloud" markdown="1">
+
+### カテゴリー [カテゴリー]
+
+<div class="tagcloud" markdown="1">
+
+<a href="https://genzouw.com/entry/category/amazon/"
+class="tag-cloud-link tag-link-3 tag-link-position-1"
+style="font-size: 13.773195876289pt;"
+aria-label="Amazon (18個の項目)">Amazon<span class="tag-link-count">
+(18)</span></a><a href="https://genzouw.com/entry/category/aws/"
+class="tag-cloud-link tag-link-58 tag-link-position-2"
+style="font-size: 14.20618556701pt;"
+aria-label="AWS (21個の項目)">AWS<span class="tag-link-count">
+(21)</span></a><a href="https://genzouw.com/entry/category/bash/"
+class="tag-cloud-link tag-link-9 tag-link-position-3"
+style="font-size: 22pt;" aria-label="Bash (265個の項目)">Bash<span
+class="tag-link-count"> (265)</span></a><a href="https://genzouw.com/entry/category/centos/"
+class="tag-cloud-link tag-link-16 tag-link-position-4"
+style="font-size: 16.948453608247pt;"
+aria-label="CentOS (52個の項目)">CentOS<span class="tag-link-count">
+(52)</span></a><a href="https://genzouw.com/entry/category/chatgpt/"
+class="tag-cloud-link tag-link-77 tag-link-position-5"
+style="font-size: 9.5876288659794pt;"
+aria-label="ChatGPT (4個の項目)">ChatGPT<span class="tag-link-count">
+(4)</span></a><a href="https://genzouw.com/entry/category/ci-cd/"
+class="tag-cloud-link tag-link-65 tag-link-position-6"
+style="font-size: 8.8659793814433pt;"
+aria-label="CI/CD (3個の項目)">CI/CD<span class="tag-link-count">
+(3)</span></a><a href="https://genzouw.com/entry/category/cygwin/"
+class="tag-cloud-link tag-link-36 tag-link-position-7"
+style="font-size: 11.752577319588pt;"
+aria-label="Cygwin (9個の項目)">Cygwin<span class="tag-link-count">
+(9)</span></a><a href="https://genzouw.com/entry/category/diary/"
+class="tag-cloud-link tag-link-48 tag-link-position-8"
+style="font-size: 15.577319587629pt;"
+aria-label="Diary (33個の項目)">Diary<span class="tag-link-count">
+(33)</span></a><a href="https://genzouw.com/entry/category/docker/"
+class="tag-cloud-link tag-link-59 tag-link-position-9"
+style="font-size: 16.80412371134pt;"
+aria-label="Docker (49個の項目)">Docker<span class="tag-link-count">
+(49)</span></a><a href="https://genzouw.com/entry/category/eclipse/"
+class="tag-cloud-link tag-link-6 tag-link-position-10"
+style="font-size: 8.8659793814433pt;"
+aria-label="Eclipse (3個の項目)">Eclipse<span class="tag-link-count">
+(3)</span></a><a href="https://genzouw.com/entry/category/facebook/"
+class="tag-cloud-link tag-link-31 tag-link-position-11"
+style="font-size: 11.39175257732pt;"
+aria-label="Facebook (8個の項目)">Facebook<span class="tag-link-count">
+(8)</span></a><a href="https://genzouw.com/entry/category/gae/"
+class="tag-cloud-link tag-link-49 tag-link-position-12"
+style="font-size: 10.670103092784pt;"
+aria-label="GAE (6個の項目)">GAE<span class="tag-link-count">
+(6)</span></a><a href="https://genzouw.com/entry/category/gaelyk/"
+class="tag-cloud-link tag-link-42 tag-link-position-13"
+style="font-size: 8pt;" aria-label="Gaelyk (2個の項目)">Gaelyk<span
+class="tag-link-count"> (2)</span></a><a href="https://genzouw.com/entry/category/gcp/"
+class="tag-cloud-link tag-link-64 tag-link-position-14"
+style="font-size: 13.19587628866pt;"
+aria-label="GCP (15個の項目)">GCP<span class="tag-link-count">
+(15)</span></a><a href="https://genzouw.com/entry/category/geb/"
+class="tag-cloud-link tag-link-34 tag-link-position-15"
+style="font-size: 8.8659793814433pt;"
+aria-label="Geb (3個の項目)">Geb<span class="tag-link-count">
+(3)</span></a><a href="https://genzouw.com/entry/category/git/"
+class="tag-cloud-link tag-link-37 tag-link-position-16"
+style="font-size: 15.505154639175pt;"
+aria-label="Git (32個の項目)">Git<span class="tag-link-count">
+(32)</span></a><a href="https://genzouw.com/entry/category/github/"
+class="tag-cloud-link tag-link-55 tag-link-position-17"
+style="font-size: 14.350515463918pt;"
+aria-label="GitHub (22個の項目)">GitHub<span class="tag-link-count">
+(22)</span></a><a href="https://genzouw.com/entry/category/github-actions/"
+class="tag-cloud-link tag-link-78 tag-link-position-18"
+style="font-size: 11.030927835052pt;"
+aria-label="Github Actions (7個の項目)">Github Actions<span
+class="tag-link-count"> (7)</span></a><a href="https://genzouw.com/entry/category/gradle/"
+class="tag-cloud-link tag-link-30 tag-link-position-19"
+style="font-size: 11.39175257732pt;"
+aria-label="Gradle (8個の項目)">Gradle<span class="tag-link-count">
+(8)</span></a><a href="https://genzouw.com/entry/category/grails/"
+class="tag-cloud-link tag-link-28 tag-link-position-20"
+style="font-size: 16.082474226804pt;"
+aria-label="Grails (39個の項目)">Grails<span class="tag-link-count">
+(39)</span></a><a href="https://genzouw.com/entry/category/griffon/"
+class="tag-cloud-link tag-link-26 tag-link-position-21"
+style="font-size: 13.628865979381pt;"
+aria-label="Griffon (17個の項目)">Griffon<span class="tag-link-count">
+(17)</span></a><a href="https://genzouw.com/entry/category/groovy/"
+class="tag-cloud-link tag-link-25 tag-link-position-22"
+style="font-size: 21.061855670103pt;"
+aria-label="Groovy (192個の項目)">Groovy<span class="tag-link-count">
+(192)</span></a><a href="https://genzouw.com/entry/category/java/"
+class="tag-cloud-link tag-link-7 tag-link-position-23"
+style="font-size: 16.010309278351pt;"
+aria-label="Java (38個の項目)">Java<span class="tag-link-count">
+(38)</span></a><a href="https://genzouw.com/entry/category/javascript/"
+class="tag-cloud-link tag-link-2 tag-link-position-24"
+style="font-size: 14.711340206186pt;"
+aria-label="JavaScript (25個の項目)">JavaScript<span
+class="tag-link-count"> (25)</span></a><a href="https://genzouw.com/entry/category/jedit/"
+class="tag-cloud-link tag-link-52 tag-link-position-25"
+style="font-size: 12.041237113402pt;"
+aria-label="jEdit (10個の項目)">jEdit<span class="tag-link-count">
+(10)</span></a><a href="https://genzouw.com/entry/category/junit/"
+class="tag-cloud-link tag-link-44 tag-link-position-26"
+style="font-size: 8pt;" aria-label="JUnit (2個の項目)">JUnit<span
+class="tag-link-count"> (2)</span></a><a href="https://genzouw.com/entry/category/kubernetes/"
+class="tag-cloud-link tag-link-63 tag-link-position-27"
+style="font-size: 12.546391752577pt;"
+aria-label="Kubernetes (12個の項目)">Kubernetes<span
+class="tag-link-count"> (12)</span></a><a href="https://genzouw.com/entry/category/linux/"
+class="tag-cloud-link tag-link-23 tag-link-position-28"
+style="font-size: 19.113402061856pt;"
+aria-label="Linux (104個の項目)">Linux<span class="tag-link-count">
+(104)</span></a><a href="https://genzouw.com/entry/category/mac/"
+class="tag-cloud-link tag-link-57 tag-link-position-29"
+style="font-size: 12.041237113402pt;"
+aria-label="Mac (10個の項目)">Mac<span class="tag-link-count">
+(10)</span></a><a href="https://genzouw.com/entry/category/mysql/"
+class="tag-cloud-link tag-link-20 tag-link-position-30"
+style="font-size: 9.5876288659794pt;"
+aria-label="MySQL (4個の項目)">MySQL<span class="tag-link-count">
+(4)</span></a><a href="https://genzouw.com/entry/category/php/"
+class="tag-cloud-link tag-link-8 tag-link-position-31"
+style="font-size: 11.030927835052pt;"
+aria-label="PHP (7個の項目)">PHP<span class="tag-link-count">
+(7)</span></a><a href="https://genzouw.com/entry/category/postgresql/"
+class="tag-cloud-link tag-link-33 tag-link-position-32"
+style="font-size: 8.8659793814433pt;"
+aria-label="PostgreSQL (3個の項目)">PostgreSQL<span
+class="tag-link-count"> (3)</span></a><a href="https://genzouw.com/entry/category/ruby/"
+class="tag-cloud-link tag-link-39 tag-link-position-33"
+style="font-size: 9.5876288659794pt;"
+aria-label="Ruby (4個の項目)">Ruby<span class="tag-link-count">
+(4)</span></a><a href="https://genzouw.com/entry/category/ssh/"
+class="tag-cloud-link tag-link-32 tag-link-position-34"
+style="font-size: 9.5876288659794pt;"
+aria-label="SSH (4個の項目)">SSH<span class="tag-link-count">
+(4)</span></a><a href="https://genzouw.com/entry/category/terraform/"
+class="tag-cloud-link tag-link-69 tag-link-position-35"
+style="font-size: 9.5876288659794pt;"
+aria-label="Terraform (4個の項目)">Terraform<span
+class="tag-link-count"> (4)</span></a><a href="https://genzouw.com/entry/category/twitter/"
+class="tag-cloud-link tag-link-50 tag-link-position-36"
+style="font-size: 8.8659793814433pt;"
+aria-label="Twitter (3個の項目)">Twitter<span class="tag-link-count">
+(3)</span></a><a href="https://genzouw.com/entry/category/twittet/"
+class="tag-cloud-link tag-link-19 tag-link-position-37"
+style="font-size: 17.886597938144pt;"
+aria-label="Twittet (69個の項目)">Twittet<span class="tag-link-count">
+(69)</span></a><a href="https://genzouw.com/entry/category/ubuntu/"
+class="tag-cloud-link tag-link-22 tag-link-position-38"
+style="font-size: 18.103092783505pt;"
+aria-label="Ubuntu (74個の項目)">Ubuntu<span class="tag-link-count">
+(74)</span></a><a href="https://genzouw.com/entry/category/vim/"
+class="tag-cloud-link tag-link-14 tag-link-position-39"
+style="font-size: 13.773195876289pt;"
+aria-label="Vim (18個の項目)">Vim<span class="tag-link-count">
+(18)</span></a><a href="https://genzouw.com/entry/category/web/"
+class="tag-cloud-link tag-link-62 tag-link-position-40"
+style="font-size: 10.164948453608pt;"
+aria-label="Web (5個の項目)">Web<span class="tag-link-count">
+(5)</span></a><a href="https://genzouw.com/entry/category/wordpress/"
+class="tag-cloud-link tag-link-60 tag-link-position-41"
+style="font-size: 10.670103092784pt;"
+aria-label="WordPress (6個の項目)">WordPress<span
+class="tag-link-count"> (6)</span></a><a href="https://genzouw.com/entry/category/yaml/"
+class="tag-cloud-link tag-link-71 tag-link-position-42"
+style="font-size: 8pt;" aria-label="YAML (2個の項目)">YAML<span
+class="tag-link-count"> (2)</span></a><a href="https://genzouw.com/entry/category/zsh/"
+class="tag-cloud-link tag-link-15 tag-link-position-43"
+style="font-size: 12.329896907216pt;"
+aria-label="Zsh (11個の項目)">Zsh<span class="tag-link-count">
+(11)</span></a><a
+href="https://genzouw.com/entry/category/%e3%81%a4%e3%81%b6%e3%82%84%e3%81%8d/"
+class="tag-cloud-link tag-link-70 tag-link-position-44"
+style="font-size: 8pt;" aria-label="つぶやき (2個の項目)">つぶやき<span
+class="tag-link-count"> (2)</span></a><a
+href="https://genzouw.com/entry/category/%e6%9c%aa%e5%88%86%e9%a1%9e/"
+class="tag-cloud-link tag-link-1 tag-link-position-45"
+style="font-size: 15pt;" aria-label="未分類 (27個の項目)">未分類<span
+class="tag-link-count"> (27)</span></a>
+
+</div>
+
+</div>
+
+<div id="archives-2" class="widget widget_archive" markdown="1">
+
+### アーカイブ [アーカイブ]
+
+アーカイブ月を選択 2023年12月 (4) 2023年8月 (1) 2023年5月 (2) 2023年4月
+(10) 2023年3月 (9) 2023年2月 (13) 2022年10月 (5) 2022年8月 (5) 2022年7月
+(4) 2022年6月 (1) 2022年5月 (1) 2022年4月 (1) 2022年3月 (2) 2022年2月
+(5) 2022年1月 (10) 2021年9月 (4) 2021年8月 (4) 2021年7月 (9) 2021年6月
+(9) 2021年5月 (10) 2021年4月 (6) 2021年3月 (18) 2021年2月 (12) 2021年1月
+(10) 2020年11月 (2) 2020年10月 (6) 2020年9月 (4) 2020年8月 (1) 2020年6月
+(3) 2020年5月 (6) 2020年4月 (6) 2020年3月 (3) 2020年2月 (8) 2020年1月
+(13) 2019年12月 (9) 2019年11月 (1) 2019年10月 (2) 2019年9月 (4)
+2019年8月 (5) 2019年7月 (10) 2019年6月 (11) 2019年5月 (13) 2019年4月
+(16) 2019年3月 (19) 2019年2月 (21) 2019年1月 (10) 2016年4月 (1)
+2016年1月 (1) 2015年12月 (3) 2015年11月 (5) 2014年7月 (3) 2014年5月 (1)
+2013年11月 (1) 2013年10月 (2) 2013年6月 (5) 2013年5月 (14) 2013年4月
+(11) 2013年3月 (8) 2013年2月 (11) 2013年1月 (19) 2012年12月 (21)
+2012年10月 (2) 2012年9月 (1) 2012年8月 (3) 2012年7月 (3) 2012年2月 (2)
+2012年1月 (4) 2011年12月 (2) 2011年11月 (11) 2011年10月 (9) 2011年5月
+(6) 2011年3月 (1) 2011年2月 (2) 2010年12月 (4) 2010年11月 (1) 2010年9月
+(1) 2010年8月 (9) 2010年7月 (6) 2010年6月 (2) 2010年5月 (14) 2010年4月
+(6) 2010年2月 (7) 2010年1月 (7) 2009年11月 (14) 2009年10月 (8) 2009年8月
+(5) 2009年7月 (12) 2009年6月 (9) 2009年5月 (11) 2009年4月 (14) 2009年3月
+(26) 2009年2月 (9) 2009年1月 (16) 2008年12月 (19) 2008年11月 (23)
+2008年10月 (19) 2008年9月 (16) 2008年8月 (4) 2008年7月 (1) 2008年6月 (1)
+2008年5月 (1) 2008年3月 (1) 2008年2月 (3) 2008年1月 (4) 2007年12月 (4)
+
+</div>
+
+<div id="recent-posts-2" class="widget widget_recent_entries"
+markdown="1">
+
+### 最近の投稿 [最近の投稿]
+
+-   [Bashの組み込みコマンド “bc”
+    を使ってみる](https://genzouw.com/entry/2023/12/30/091144/3607/)
+-   [シェルスクリプトで標準出力と標準エラー出力を入れ替える](https://genzouw.com/entry/2023/12/29/083812/3595/)
+-   [Github Copilot in the CLI
+    を使ってみる](https://genzouw.com/entry/2023/12/20/110833/3592/)
+-   [生物の進化から学ぶシステムの進化 – Timee Advent Calendar
+    2023](https://genzouw.com/entry/2023/12/08/000027/3572/)
+-   [OIDCを使ってGithub
+    ActionsからAWSにアクセスする仕組みについて理解を整理してみた](https://genzouw.com/entry/2023/08/16/174745/3549/)
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer" markdown="1" itemscope=""
+itemtype="https://schema.org/WPFooter">
+
+<div id="copyright" markdown="1">
+
+Copyright © <span itemprop="copyrightYear">2007</span>-2025
+<span itemprop="copyrightHolder name">ゲンゾウ用ポストイット</span> All
+Rights Reserved.
+
+WordPress Luxeritas Theme is provided by
+"<a href="https://thk.kanzae.net/" target="_blank"
+rel="nofollow noopener">Thought is free</a>".
+
+</div>
+
+</div>
+
+<div id="wp-footer" markdown="1">
+
+<div id="page-top" markdown="1">
+
+<span class="ptop"> PAGE TOP</span>
+
+</div>
+
+</div>

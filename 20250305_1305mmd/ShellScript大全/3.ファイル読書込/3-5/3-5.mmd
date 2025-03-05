@@ -1,0 +1,2639 @@
+<div id="container" class="container cf" markdown="1">
+
+<div id="header-container" class="header-container" markdown="1">
+
+<div id="header-container-in"
+class="header-container-in hlt-center-logo cl-slim" markdown="1">
+
+<div id="header" class="header cf" markdown="1" itemscope=""
+itemtype="https://schema.org/WPHeader">
+
+<div id="header-in" class="header-in wrap cf" markdown="1" itemscope=""
+itemtype="https://schema.org/WebSite">
+
+<div class="logo logo-header logo-text" markdown="1">
+
+<a href="https://linuxcommand.net/"
+class="site-name site-name-text-link" itemprop="url"
+data-wpel-link="internal"><span class="site-name-text"
+itemprop="name about">Linuxコマンド.NET</span></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="navi-in" class="navi-in wrap cf" markdown="1">
+
+-   <span id="menu-item-3925"><a href="https://linuxcommand.net/" data-wpel-link="internal"></a></span>
+    <div class="caption-wrap" markdown="1">
+
+    <div class="item-label" markdown="1">
+
+    HOME
+
+    </div>
+
+    </div>
+-   <span id="menu-item-3926"><a href="https://linuxcommand.net/command-list/"
+    data-wpel-link="internal"></a></span>
+    <div class="caption-wrap" markdown="1">
+
+    <div class="item-label" markdown="1">
+
+    Linuxコマンド一覧
+
+    </div>
+
+    </div>
+-   <span id="menu-item-3927"><a href="https://linuxcommand.net/latest/"
+    data-wpel-link="internal"></a></span>
+    <div class="caption-wrap" markdown="1">
+
+    <div class="item-label" markdown="1">
+
+    新着記事
+
+    </div>
+
+    </div>
+-   <span id="menu-item-3928"><a href="https://linuxcommand.net/sitemap/"
+    data-wpel-link="internal"></a></span>
+    <div class="caption-wrap" markdown="1">
+
+    <div class="item-label" markdown="1">
+
+    全記事一覧
+
+    </div>
+
+    </div>
+-   <span id="menu-item-3929"><a href="https://linuxcommand.net/privacy-policy/"
+    data-wpel-link="internal"></a></span>
+    <div class="caption-wrap" markdown="1">
+
+    <div class="item-label" markdown="1">
+
+    プライバシーポリシー
+
+    </div>
+
+    </div>
+-   <span id="menu-item-3930"><a href="https://linuxcommand.net/contact/"
+    data-wpel-link="internal"></a></span>
+    <div class="caption-wrap" markdown="1">
+
+    <div class="item-label" markdown="1">
+
+    Contact
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content-top" class="content-top wwa" markdown="1">
+
+<div id="content-top-in" class="content-top-in wrap" markdown="1">
+
+<div class="ad-area no-icon common-ad-widget ad-none ad-label-invisible cf"
+markdown="1" itemscope="" itemtype="https://schema.org/WPAdBlock">
+
+<div class="ad-label" markdown="1" itemprop="name" nosnippet="">
+
+スポンサーリンク
+
+</div>
+
+<div class="ad-wrap" markdown="1">
+
+<div class="ad-responsive ad-usual" markdown="1">
+
+<div class="info-box" markdown="1">
+
+<span class="small">このページにはアドセンス広告またはアフィリエイト広告が含まれています</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content" class="content cf" markdown="1">
+
+<div id="content-in" class="content-in wrap" markdown="1">
+
+<div id="main" class="main" markdown="1" role="main" itemscope=""
+itemtype="https://schema.org/Blog">
+
+<div class="article-header entry-header" markdown="1">
+
+# tee - 複数のファイルに出力をリダイレクトする [tee---複数のファイルに出力をリダイレクトする]
+
+<div class="ad-area no-icon ad-below-title ad-horizontal ad-label-invisible cf"
+markdown="1" itemscope="" itemtype="https://schema.org/WPAdBlock">
+
+<div class="ad-label" markdown="1" itemprop="name" nosnippet="">
+
+スポンサーリンク
+
+</div>
+
+<div class="ad-wrap" markdown="1">
+
+<div class="ad-responsive ad-usual" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="eye-catch-wrap display-none" markdown="1">
+
+<figure class="eye-catch" itemprop="image" itemscope=""
+itemtype="https://schema.org/ImageObject">
+<img src="https://linuxcommand.net/wp-content/uploads/2018/02/tee.jpg"
+class="attachment-300x300 size-300x300 eye-catch-image wp-post-image"
+decoding="async" data-fetchpriority="high"
+srcset="https://linuxcommand.net/wp-content/uploads/2018/02/tee.jpg 300w, https://linuxcommand.net/wp-content/uploads/2018/02/tee-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2018/02/tee-100x100.jpg 100w"
+sizes="(max-width: 300px) 100vw, 300px" width="300" height="300"
+alt="tee" />
+<span class="cat-label cat-label-17">Linuxコマンド</span>
+</figure>
+
+</div>
+
+<div class="sns-share ss-col-5 ss-high-and-low-lc bc-brand-color sbc-hide ss-top"
+markdown="1">
+
+<div class="sns-share-buttons sns-buttons" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B&amp;url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F"
+class="sns-button share-button twitter-button twitter-share-button-sq x-corp-button x-corp-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="Xでシェア" data-wpel-link="external" title="Xでシェア"><span
+class="social-icon icon-x-corp"></span><span
+class="button-caption">X</span><span
+class="share-count twitter-share-count x-share-count"></span></a> <a
+href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flinuxcommand.net%2Ftee%2F&amp;t=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B"
+class="sns-button share-button facebook-button facebook-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="Facebookでシェア" data-wpel-link="external"
+title="Facebookでシェア"><span
+class="social-icon icon-facebook"></span><span
+class="button-caption">Facebook</span><span
+class="share-count facebook-share-count"></span></a>
+<a href="//b.hatena.ne.jp/entry/s/linuxcommand.net/tee/"
+class="sns-button share-button hatebu-button hatena-bookmark-button hatebu-share-button-sq"
+data-hatena-bookmark-layout="simple" target="_blank"
+rel="nofollow noopener noreferrer external"
+aria-label="はてブでブックマーク" data-wpel-link="external"
+title="はてブでブックマーク"><span
+class="social-icon icon-hatena"></span><span
+class="button-caption">はてブ</span><span
+class="share-count hatebu-share-count"></span></a>
+<a href="//getpocket.com/edit?url=https://linuxcommand.net/tee/"
+class="sns-button share-button pocket-button pocket-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="Pocketに保存" data-wpel-link="external"
+title="Pocketに保存"><span class="social-icon icon-pocket"></span><span
+class="button-caption">Pocket</span><span
+class="share-count pocket-share-count"></span></a> <a
+href="//timeline.line.me/social-plugin/share?url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F"
+class="sns-button share-button line-button line-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="LINEでシェア" data-wpel-link="external"
+title="LINEでシェア"><span class="social-icon icon-line"></span><span
+class="button-caption">LINE</span><span
+class="share-count line-share-count"></span></a>
+
+</div>
+
+</div>
+
+<div class="date-tags" markdown="1">
+
+<span class="post-date"><span class="fa fa-clock-o"
+aria-hidden="true"></span><span class="entry-date date published"></span></span>
+
+2018.02.06<span class="post-update"><span class="fa fa-history"
+aria-hidden="true"></span>2018.05.08</span>
+
+</div>
+
+</div>
+
+<div class="entry-content cf" markdown="1" itemprop="mainEntityOfPage">
+
+teeコマンドは標準入力を標準出力に書き出すだけではなく、引数にした複数のファイルにも書き出すことができます。teeコマンドは、別のコマンドの実行結果をファイル書き出すだけではなく標準出力でも確認したいときや、一つのコマンドの実行結果を使用して、複数の処理に分岐させたいときに利用できます。
+
+<span id="more-1680"></span>
+
+<div id="toc_container" class="no_bullets" markdown="1">
+
+目次
+
+-   [<span class="toc_number toc_depth_1">1</span>
+    teeコマンドの利用例](#tee)
+    -   [<span class="toc_number toc_depth_2">1.1</span>
+        実行結果を同時にファイルと標準出力に出力](#i)
+    -   [<span class="toc_number toc_depth_2">1.2</span>
+        teeコマンドで出力するファイルに追記で出力
+        (-aオプション)](#tee_-a)
+-   [<span class="toc_number toc_depth_1">2</span>
+    teeコマンドのテクニック](#tee-2)
+    -   [<span class="toc_number toc_depth_2">2.1</span>
+        標準エラー出力もteeコマンドで出力](#tee-3)
+    -   [<span class="toc_number toc_depth_2">2.2</span>
+        プロセス置換を用いてコマンドを処理](#i-2)
+    -   [<span class="toc_number toc_depth_2">2.3</span>
+        execコマンドでファイルディスクリプタを変換](#exec)
+-   [<span class="toc_number toc_depth_1">3</span> 参考](#i-3)
+
+</div>
+
+<div class="ad-area no-icon ad-content-middle ad-dabble-rectangle ad-label-invisible cf"
+markdown="1" itemscope="" itemtype="https://schema.org/WPAdBlock">
+
+<div class="ad-label" markdown="1" itemprop="name" nosnippet="">
+
+スポンサーリンク
+
+</div>
+
+<div class="ad-wrap" markdown="1">
+
+<div class="ad-responsive ad-usual" markdown="1">
+
+</div>
+
+<div class="ad-responsive ad-additional ad-additional-double"
+markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+## <span id="tee">teeコマンドの利用例</span> [teeコマンドの利用例]
+
+### <span id="i">実行結果を同時にファイルと標準出力に出力</span> [実行結果を同時にファイルと標準出力に出力]
+
+teeコマンドは、パイプを用いて、別のコマンドの実行結果をファイルと標準出力に出力することができます。ただし、teeコマンドで指定したファイルは存在しない場合は作成され、存在する場合は上書きされます。
+
+<span class="keyboard-key">**コマンド例と実行結果**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584"
+class="urvanov-syntax-highlighter-syntax crayon-theme-dark-terminal urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-5">
+5
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-6">
+6
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-7">
+7
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c35b305906584-8">
+8
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-1"
+class="crayon-line">
+$echo 'tee test' | tee file1 file2
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-2"
+class="crayon-line crayon-striped-line">
+tee test
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-3"
+class="crayon-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-4"
+class="crayon-line crayon-striped-line">
+$cat file1
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-5"
+class="crayon-line">
+tee test
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-6"
+class="crayon-line crayon-striped-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-7"
+class="crayon-line">
+$cat file2
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c35b305906584-8"
+class="crayon-line crayon-striped-line">
+tee test
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+ 
+
+ 
+
+### <span id="tee_-a">teeコマンドで出力するファイルに追記で出力 (-aオプション)</span> [teeコマンドで出力するファイルに追記で出力--aオプション]
+
+-aオプションを用いると、teeコマンドで指定したファイルを上書きではなく、追記で出力していくことができます。ログファイルなどに利用する場合に便利なオプションになります。
+
+<span class="keyboard-key">**コマンド例と実行結果**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288"
+class="urvanov-syntax-highlighter-syntax crayon-theme-dark-terminal urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-5">
+5
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-6">
+6
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-7">
+7
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-8">
+8
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c365033111288-9">
+9
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-1"
+class="crayon-line">
+$cat file1
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-2"
+class="crayon-line crayon-striped-line">
+tee test
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-3"
+class="crayon-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-4"
+class="crayon-line crayon-striped-line">
+$echo 'tee -a option test' | tee -a file1
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-5"
+class="crayon-line">
+tee -a option test
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-6"
+class="crayon-line crayon-striped-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-7"
+class="crayon-line">
+$cat file1
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-8"
+class="crayon-line crayon-striped-line">
+tee test
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c365033111288-9"
+class="crayon-line">
+tee -a option test
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+ 
+
+ 
+
+## <span id="tee-2">teeコマンドのテクニック</span> [teeコマンドのテクニック]
+
+### <span id="tee-3">標準エラー出力もteeコマンドで出力</span> [標準エラー出力もteeコマンドで出力]
+
+リダイレクトの構文は
+
+<div id="urvanov-syntax-highlighter-67c7cda81c367129674148"
+class="urvanov-syntax-highlighter-syntax crayon-theme-classic urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c367129674148-1">
+1
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c367129674148-1"
+class="crayon-line">
+[n]&gt;word
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+になり、nは数字で、ファイル記述子(ファイルディスクリプタ,file
+descriptor)を表します。  
+ファイル記述子は基本的に、0が標準入力、1が標準出力、2が標準エラー出力を表します。  
+wordはファイルを表します。出力の場合、nが省略された場合は1が指定されます。
+
+また、リダイレクトの複製の構文は
+
+<div id="urvanov-syntax-highlighter-67c7cda81c36a646836716"
+class="urvanov-syntax-highlighter-syntax crayon-theme-classic urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36a646836716-1">
+1
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c36a646836716-1"
+class="crayon-line">
+[n]&gt;&amp;word
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+で、この場合のwordは数字でファイル記述子を表します。これはwordのファイル記述子の出力先が、nのファイル記述子の出力先と同じになります。
+
+teeコマンドで標準エラーも同時に出力したい場合は、teeコマンドで通す前のコマンドに対して、標準エラー出力を標準出力にするリダイレクトを行います。  
+つまり、リダイレクトの方法は以下のようになります。
+
+<div id="urvanov-syntax-highlighter-67c7cda81c36b181901766"
+class="urvanov-syntax-highlighter-syntax crayon-theme-classic urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36b181901766-1">
+1
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c36b181901766-1"
+class="crayon-line">
+command 2&gt;&amp;1
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+<span class="keyboard-key">**コマンド例と実行結果**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122"
+class="urvanov-syntax-highlighter-syntax crayon-theme-dark-terminal urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-5">
+5
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-6">
+6
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-7">
+7
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-8">
+8
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-9">
+9
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-10">
+10
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-11">
+11
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-12">
+12
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-13">
+13
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36d811170122-14">
+14
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-1"
+class="crayon-line">
+$bash print.sh | tee file
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-2"
+class="crayon-line crayon-striped-line">
+This is stderr
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-3"
+class="crayon-line">
+This is stdout
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-4"
+class="crayon-line crayon-striped-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-5"
+class="crayon-line">
+$cat file
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-6"
+class="crayon-line crayon-striped-line">
+This is stdout
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-7"
+class="crayon-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-8"
+class="crayon-line crayon-striped-line">
+$bash print.sh 2&gt;&amp;1 | tee file
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-9"
+class="crayon-line">
+This is stdout
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-10"
+class="crayon-line crayon-striped-line">
+This is stderr
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-11"
+class="crayon-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-12"
+class="crayon-line crayon-striped-line">
+$cat file
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-13"
+class="crayon-line">
+This is stdout
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36d811170122-14"
+class="crayon-line crayon-striped-line">
+This is stderr
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+<span class="keyboard-key">**print.sh**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c36f249925204"
+class="urvanov-syntax-highlighter-syntax crayon-theme-classic urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36f249925204-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36f249925204-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36f249925204-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36f249925204-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c36f249925204-5">
+5
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c36f249925204-1"
+class="crayon-line">
+#/bin/bash
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36f249925204-2"
+class="crayon-line crayon-striped-line">
+ &#10;</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36f249925204-3"
+class="crayon-line">
+echo 'This is stdout'
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36f249925204-4"
+class="crayon-line crayon-striped-line">
+ &#10;</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c36f249925204-5"
+class="crayon-line">
+echo 'This is stderr' &gt;&amp;2
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+ 
+
+ 
+
+### <span id="i-2">プロセス置換を用いてコマンドを処理</span> [プロセス置換を用いてコマンドを処理]
+
+プロセス置換(Process
+Substitution)は、Bashの機能でプロセスを入力ファイルや出力ファイルのように利用できます。プロセス置換で用いたプロセスは非同期で実行されます。プロセス置換の構文は以下のようになります。
+
+<div id="urvanov-syntax-highlighter-67c7cda81c370791524623"
+class="urvanov-syntax-highlighter-syntax crayon-theme-classic urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c370791524623-1">
+1
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c370791524623-2">
+2
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c370791524623-1"
+class="crayon-line">
+&lt;(list)
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c370791524623-2"
+class="crayon-line">
+&gt;(list)
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+このプロセス置換とteeコマンドを組み合わせると大きなファイルを何度も読み込むことなく、複数の処理を行うことができます。
+
+ここの例では、ファイルの圧縮と圧縮前のファイルのいくつかのチェックサムを行います。また、チェックサムや圧縮ができているかの簡単なチェックも行っています。
+
+<span class="keyboard-key">**コマンド例と実行結果**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522"
+class="urvanov-syntax-highlighter-syntax crayon-theme-dark-terminal urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-5">
+5
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-6">
+6
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-7">
+7
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-8">
+8
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-9">
+9
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c372035108522-10">
+10
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-1"
+class="crayon-line">
+$cat archive.tar | tee &gt;(sha1sum &gt; archive_sha1sum) &gt;(md5sum
+&gt; archive_md5sum) | gzip &gt; archive.tar.gz
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-2"
+class="crayon-line crayon-striped-line">
+$ls
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-3"
+class="crayon-line">
+archive.tar  archive.tar.gz  archive_md5sum  archive_sha1sum
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-4"
+class="crayon-line crayon-striped-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-5"
+class="crayon-line">
+$cat archive.tar | md5sum -c archive_md5sum
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-6"
+class="crayon-line crayon-striped-line">
+-: 完了
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-7"
+class="crayon-line">
+$cat archive.tar | sha1sum -c archive_sha1sum
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-8"
+class="crayon-line crayon-striped-line">
+-: 完了
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-9"
+class="crayon-line">
+$gzip -t -v archive.tar.gz
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c372035108522-10"
+class="crayon-line crayon-striped-line">
+archive.tar.gz:     OK
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+ 
+
+ 
+
+### <span id="exec">execコマンドでファイルディスクリプタを変換</span> [execコマンドでファイルディスクリプタを変換]
+
+execコマンドは組み込みコマンドで、コマンドが指定された場合、新しいプロセスを作成せずに現在のシェルに置き換えてコマンドを実行します。
+
+しかし、execコマンドでコマンドを指定せずにリダイレクトのみを行うと現在のシェルのリダイレクトの設定を変更できます。これを用いるとシェルスクリプトで実行結果のログやエラーのログを取りやすくなります。
+
+<span class="keyboard-key">**tee_log.sh**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825"
+class="urvanov-syntax-highlighter-syntax crayon-theme-classic urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-5">
+5
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-6">
+6
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c374080350825-7">
+7
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-1"
+class="crayon-line">
+#/bin/bash
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-2"
+class="crayon-line crayon-striped-line">
+ &#10;</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-3"
+class="crayon-line">
+exec 1&gt; &gt;(tee stdout.log)
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-4"
+class="crayon-line crayon-striped-line">
+exec 2&gt; &gt;(tee stderr.log &gt;&amp;2)
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-5"
+class="crayon-line">
+ &#10;</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-6"
+class="crayon-line crayon-striped-line">
+echo 'This is stdout'
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c374080350825-7"
+class="crayon-line">
+echo 'This is stderr' &gt;&amp;2
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<span class="keyboard-key">**コマンド例と実行結果**</span>
+
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693"
+class="urvanov-syntax-highlighter-syntax crayon-theme-dark-terminal urvanov-syntax-highlighter-font-sourcecodepro urvanov-syntax-highlighter-os-pc print-yes notranslate"
+markdown="1" settings=" minimize scroll-always disable-anim"
+style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 20px !important;">
+
+<div class="crayon-toolbar" markdown="1"
+settings=" mouseover hide delay"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<span class="crayon-title"></span>
+
+<div class="crayon-tools" markdown="1"
+style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;">
+
+<div class="crayon-button urvanov-syntax-highlighter-nums-button"
+markdown="1" title="行番号ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-plain-button"
+markdown="1" title="プレーンテキスト表示ON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-wrap-button"
+markdown="1" title="行の折り返しON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-expand-button"
+markdown="1" title="横に広げるON/OFF">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-copy-button"
+markdown="1" title="Copy">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+<div class="crayon-button urvanov-syntax-highlighter-popup-button"
+markdown="1" title="新しいウィンドウでコードを開く">
+
+<div class="urvanov-syntax-highlighter-button-icon" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="crayon-info" markdown="1"
+style="min-height: 19.6px !important; line-height: 19.6px !important;">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-plain-wrap" markdown="1">
+
+</div>
+
+<div class="urvanov-syntax-highlighter-main" markdown="1" style="">
+
+<table class="crayon-table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd urvanov-syntax-highlighter-row">
+<td class="crayon-nums" data-settings="hide"><div
+class="urvanov-syntax-highlighter-nums-content"
+style="font-size: 14px !important; line-height: 20px !important;">
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-1">
+1
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-2">
+2
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-3">
+3
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-4">
+4
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-5">
+5
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-6">
+6
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-7">
+7
+</div>
+<div class="crayon-num crayon-striped-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-8">
+8
+</div>
+<div class="crayon-num"
+data-line="urvanov-syntax-highlighter-67c7cda81c376034070693-9">
+9
+</div>
+</div></td>
+<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre"
+style="font-size: 14px !important; line-height: 20px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-1"
+class="crayon-line">
+$bash tee_log.sh
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-2"
+class="crayon-line crayon-striped-line">
+$This is stdout
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-3"
+class="crayon-line">
+This is stderr
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-4"
+class="crayon-line crayon-striped-line">
+ &#10;</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-5"
+class="crayon-line">
+$cat stdout.log
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-6"
+class="crayon-line crayon-striped-line">
+This is stdout
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-7"
+class="crayon-line">
+$
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-8"
+class="crayon-line crayon-striped-line">
+$cat stderr.log
+</div>
+<div id="urvanov-syntax-highlighter-67c7cda81c376034070693-9"
+class="crayon-line">
+This is stderr
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+ 
+
+このログの取り方の欠点としては、プロセス置換で処理するコマンドがバックグラウンドで動作し、シェルスクリプトの終了が分かりずらくなるかもしれません。
+
+<img
+src="https://linuxcommand.net/wp-content/uploads/2018/02/tee-process-substitute.jpg"
+class="alignnone size-full wp-image-1689" decoding="async" width="300"
+height="112" alt="tee-process-substitute" />
+
+ 
+
+ 
+
+ 
+
+## <span id="i-3">参考</span> [参考]
+
+<a
+href="https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html#tee-invocation"
+data-wpel-link="external" target="_blank"
+rel="external noopener noreferrer">GNU Coreutils: tee invocation</a>
+
+<a href="https://www.gnu.org/software/bash/manual/"
+data-wpel-link="external" target="_blank"
+rel="external noopener noreferrer">GNU Bash manual</a>
+
+</div>
+
+<div class="entry-categories-tags ctdt-one-row" markdown="1">
+
+<div class="entry-categories" markdown="1">
+
+<a href="https://linuxcommand.net/category/linux-command/"
+class="cat-link cat-link-17" data-wpel-link="internal"><span
+class="fa fa-folder cat-icon tax-icon"
+aria-hidden="true"></span>Linuxコマンド</a>
+
+</div>
+
+</div>
+
+<div class="sns-share ss-col-5 bc-brand-color sbc-hide ss-bottom"
+markdown="1">
+
+<div class="sns-share-buttons sns-buttons" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B&amp;url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F"
+class="sns-button share-button twitter-button twitter-share-button-sq x-corp-button x-corp-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="Xでシェア" data-wpel-link="external" title="Xでシェア"><span
+class="social-icon icon-x-corp"></span><span
+class="button-caption">X</span><span
+class="share-count twitter-share-count x-share-count"></span></a> <a
+href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flinuxcommand.net%2Ftee%2F&amp;t=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B"
+class="sns-button share-button facebook-button facebook-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="Facebookでシェア" data-wpel-link="external"
+title="Facebookでシェア"><span
+class="social-icon icon-facebook"></span><span
+class="button-caption">Facebook</span><span
+class="share-count facebook-share-count"></span></a>
+<a href="//b.hatena.ne.jp/entry/s/linuxcommand.net/tee/"
+class="sns-button share-button hatebu-button hatena-bookmark-button hatebu-share-button-sq"
+data-hatena-bookmark-layout="simple" target="_blank"
+rel="nofollow noopener noreferrer external"
+aria-label="はてブでブックマーク" data-wpel-link="external"
+title="はてブでブックマーク"><span
+class="social-icon icon-hatena"></span><span
+class="button-caption">はてブ</span><span
+class="share-count hatebu-share-count"></span></a>
+<a href="//getpocket.com/edit?url=https://linuxcommand.net/tee/"
+class="sns-button share-button pocket-button pocket-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="Pocketに保存" data-wpel-link="external"
+title="Pocketに保存"><span class="social-icon icon-pocket"></span><span
+class="button-caption">Pocket</span><span
+class="share-count pocket-share-count"></span></a> <a
+href="//timeline.line.me/social-plugin/share?url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F"
+class="sns-button share-button line-button line-share-button-sq"
+target="_blank" rel="nofollow noopener noreferrer external"
+aria-label="LINEでシェア" data-wpel-link="external"
+title="LINEでシェア"><span class="social-icon icon-line"></span><span
+class="button-caption">LINE</span><span
+class="share-count line-share-count"></span></a>
+
+</div>
+
+</div>
+
+<div class="footer-meta" markdown="1">
+
+<div class="author-info" markdown="1">
+
+<span class="fa fa-pencil" aria-hidden="true"></span>
+<a href="https://linuxcommand.net" class="author-link"
+data-wpel-link="internal"><span class="post-author vcard author"
+itemprop="editor author creator copyrightHolder" itemscope=""
+itemtype="https://schema.org/Person"> </span></a>
+
+<span class="author-name fn" itemprop="name">Linuxコマンド.NET</span>
+
+</div>
+
+</div>
+
+<div class="under-entry-content" markdown="1">
+
+</div>
+
+<div id="breadcrumb"
+class="breadcrumb breadcrumb-category sbp-main-bottom" markdown="1"
+itemscope="" itemtype="https://schema.org/BreadcrumbList">
+
+<div class="breadcrumb-home" markdown="1" itemscope=""
+itemtype="https://schema.org/ListItem" itemprop="itemListElement">
+
+<span class="fa fa-home fa-fw"
+aria-hidden="true"></span><a href="https://linuxcommand.net" itemprop="item"
+data-wpel-link="internal"><span class="breadcrumb-caption"
+itemprop="name">ホーム</span></a>
+
+<span class="sp"><span class="fa fa-angle-right"
+aria-hidden="true"></span></span>
+
+</div>
+
+<div class="breadcrumb-item" markdown="1" itemscope=""
+itemtype="https://schema.org/ListItem" itemprop="itemListElement">
+
+<span class="fa fa-folder fa-fw"
+aria-hidden="true"></span><a href="https://linuxcommand.net/category/linux-command/"
+itemprop="item" data-wpel-link="internal"><span
+class="breadcrumb-caption" itemprop="name">Linuxコマンド</span></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="sidebar" class="sidebar nwa cf" markdown="1"
+role="complementary">
+
+### サイト内検索 [サイト内検索]
+
+<div class="textwidget custom-html-widget" markdown="1">
+
+<div class="gcse-searchbox-only" markdown="1">
+
+</div>
+
+</div>
+
+### 人気記事 [人気記事]
+
+<div class="popular-entry-cards widget-entry-cards no-icon cf"
+markdown="1">
+
+<a href="https://linuxcommand.net/read/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-1"
+data-wpel-link="internal" title="read - 標準入力から変数に代入する"></a>
+
+<div class="post-1362 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-linux-command-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img src="https://linuxcommand.net/wp-content/uploads/2017/12/read.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2017/12/read.jpg 300w, https://linuxcommand.net/wp-content/uploads/2017/12/read-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2017/12/read-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+read - 標準入力から変数に代入する
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2017.12.18</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2024.12.10</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://linuxcommand.net/bash-special-parameters/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-2"
+data-wpel-link="internal"
+title="Bashの$@,$#などの$から始まる特殊な変数について"></a>
+
+<div class="post-2851 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-know-how-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img
+src="https://linuxcommand.net/wp-content/uploads/2017/07/knowhow.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2017/07/knowhow.jpg 300w, https://linuxcommand.net/wp-content/uploads/2017/07/knowhow-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2017/07/knowhow-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+Bashの\$@,\$#などの\$から始まる特殊な変数について
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2020.06.14</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2020.06.16</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://linuxcommand.net/du/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-3"
+data-wpel-link="internal"
+title="du - ファイルやディレクトリのサイズを表示"></a>
+
+<div class="post-780 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-linux-command-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img src="https://linuxcommand.net/wp-content/uploads/2017/08/du.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2017/08/du.jpg 300w, https://linuxcommand.net/wp-content/uploads/2017/08/du-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2017/08/du-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+du - ファイルやディレクトリのサイズを表示
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2017.08.29</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2018.05.08</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://linuxcommand.net/make-options/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-4"
+data-wpel-link="internal" title="makeコマンドのオプションについて"></a>
+
+<div class="post-2456 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-make-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img src="https://linuxcommand.net/wp-content/uploads/2018/04/make.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2018/04/make.jpg 300w, https://linuxcommand.net/wp-content/uploads/2018/04/make-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2018/04/make-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+makeコマンドのオプションについて
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2018.05.01</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2018.05.04</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://linuxcommand.net/objdump/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-5"
+data-wpel-link="internal"
+title="objdump - オブジェクトファイルの情報を表示する"></a>
+
+<div class="post-2698 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-linux-command-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img
+src="https://linuxcommand.net/wp-content/uploads/2018/07/objdump.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2018/07/objdump.jpg 300w, https://linuxcommand.net/wp-content/uploads/2018/07/objdump-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2018/07/objdump-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+objdump - オブジェクトファイルの情報を表示する
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2018.08.02</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2020.06.22</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://linuxcommand.net/patch/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-6"
+data-wpel-link="internal"
+title="patch - ファイルにパッチファイルを適用する"></a>
+
+<div class="post-1426 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-linux-command-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img src="https://linuxcommand.net/wp-content/uploads/2018/04/patch.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2018/04/patch.jpg 300w, https://linuxcommand.net/wp-content/uploads/2018/04/patch-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2018/04/patch-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+patch - ファイルにパッチファイルを適用する
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2018.04.06</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2018.05.08</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="https://linuxcommand.net/printf/"
+class="popular-entry-card-link widget-entry-card-link a-wrap no-7"
+data-wpel-link="internal"
+title="printf - フォーマット形式で文字列を表示する"></a>
+
+<div class="post-2005 popular-entry-card widget-entry-card e-card cf post type-post status-publish format-standard has-post-thumbnail hentry category-linux-command-post"
+markdown="1">
+
+<figure
+class="popular-entry-card-thumb widget-entry-card-thumb card-thumb">
+<img
+src="https://linuxcommand.net/wp-content/uploads/2018/03/printf.jpg"
+class="attachment-thumb120 size-thumb120 wp-post-image" decoding="async"
+loading="lazy"
+srcset="https://linuxcommand.net/wp-content/uploads/2018/03/printf.jpg 300w, https://linuxcommand.net/wp-content/uploads/2018/03/printf-150x150.jpg 150w, https://linuxcommand.net/wp-content/uploads/2018/03/printf-100x100.jpg 100w"
+sizes="(max-width: 68px) 100vw, 68px" width="68" height="68" />
+</figure>
+
+<div class="popular-entry-card-content widget-entry-card-content card-content"
+markdown="1">
+
+<div class="popular-entry-card-title widget-entry-card-title card-title"
+markdown="1">
+
+printf - フォーマット形式で文字列を表示する
+
+</div>
+
+<div class="popular-entry-card-date widget-entry-card-date display-none"
+markdown="1">
+
+<span class="popular-entry-card-post-date widget-entry-card-post-date post-date">2018.03.09</span><span class="popular-entry-card-update-date widget-entry-card-update-date post-update">2018.05.08</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+### サイトメニュー [サイトメニュー]
+
+<div class="menu-nav-menu-container" markdown="1">
+
+-   <span id="menu-item-3931"><a href="https://linuxcommand.net/" data-wpel-link="internal">HOME</a></span>
+-   <span id="menu-item-3940"><a href="https://linuxcommand.net/latest/"
+    data-wpel-link="internal">新着記事</a></span>
+-   <span id="menu-item-3932"><a href="https://linuxcommand.net/command-list/"
+    data-wpel-link="internal">Linuxコマンド一覧</a></span>
+-   <span id="menu-item-3718"><a href="https://linuxcommand.net/shell-and-shell-script/"
+    data-wpel-link="internal">シェルとシェルスクリプト</a></span>
+-   <span id="menu-item-3720"><a href="https://linuxcommand.net/text-processing-and-utilities/"
+    data-wpel-link="internal">テキスト処理とユーティリティ</a></span>
+-   <span id="menu-item-3725"><a href="https://linuxcommand.net/user-account/"
+    data-wpel-link="internal">ユーザアカウント</a></span>
+-   <span id="menu-item-3723"><a href="https://linuxcommand.net/file-operation-and-file-system/"
+    data-wpel-link="internal">ファイル操作とファイルシステム</a></span>
+-   <span id="menu-item-3719"><a
+    href="https://linuxcommand.net/system-infomation-and-process-management/"
+    data-wpel-link="internal">システム情報とプロセス管理</a></span>
+-   <span id="menu-item-3727"><a href="https://linuxcommand.net/computer-terminal/"
+    data-wpel-link="internal">端末関係</a></span>
+-   <span id="menu-item-3722"><a href="https://linuxcommand.net/computer-network/"
+    data-wpel-link="internal">ネットワーク</a></span>
+-   <span id="menu-item-3721"><a href="https://linuxcommand.net/database-system/"
+    data-wpel-link="internal">データベース</a></span>
+-   <span id="menu-item-3724"><a
+    href="https://linuxcommand.net/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0%e9%96%a2%e9%80%a3/"
+    data-wpel-link="internal">プログラミング関連</a></span>
+-   <span id="menu-item-3726"><a href="https://linuxcommand.net/image-and-graph/"
+    data-wpel-link="internal">画像・グラフ</a></span>
+-   <span id="menu-item-3888"><a href="https://linuxcommand.net/package-management/"
+    data-wpel-link="internal">パッケージ管理</a></span>
+-   <span id="menu-item-3938"><a href="https://linuxcommand.net/privacy-policy/"
+    data-wpel-link="internal">プライバシーポリシー</a></span>
+-   <span id="menu-item-3939"><a href="https://linuxcommand.net/contact/"
+    data-wpel-link="internal">Contact</a></span>
+-   <span id="menu-item-3933"><a href="https://linuxcommand.net/sitemap/"
+    data-wpel-link="internal">全記事一覧</a></span>
+
+</div>
+
+### カテゴリー [カテゴリー]
+
+-   <a href="https://linuxcommand.net/category/cgi/"
+    data-wpel-link="internal"><span class="list-item-caption">CGI</span></a>
+-   <a href="https://linuxcommand.net/category/linux/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">Linux</span></a>
+-   <a href="https://linuxcommand.net/category/linux-command/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">Linuxコマンド</span></a>
+-   <a href="https://linuxcommand.net/category/know-how/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">Linuxコマンドのノウハウ</span></a>
+-   <a href="https://linuxcommand.net/category/make/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">make</span></a>
+-   <a href="https://linuxcommand.net/category/perl/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">Perl</span></a>
+-   <a href="https://linuxcommand.net/category/python/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">Python</span></a>
+-   <a href="https://linuxcommand.net/category/windows/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">Windows</span></a>
+-   <a
+    href="https://linuxcommand.net/category/%e3%81%8a%e3%81%99%e3%81%99%e3%82%81%e3%81%ae%e6%9c%ac/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">おすすめの本</span></a>
+-   <a href="https://linuxcommand.net/category/other/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">その他</span></a>
+-   <a
+    href="https://linuxcommand.net/category/%e3%82%b7%e3%82%a7%e3%83%ab%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">シェルスクリプト</span></a>
+-   <a href="https://linuxcommand.net/category/programming/"
+    data-wpel-link="internal"><span
+    class="list-item-caption">プログラミング言語</span></a>
+
+<div id="sidebar-scroll" class="sidebar-scroll" markdown="1">
+
+### 目次 [目次]
+
+-   [<span class="toc_number toc_depth_1">1</span>
+    teeコマンドの利用例](#tee)
+    -   [<span class="toc_number toc_depth_2">1.1</span>
+        実行結果を同時にファイルと標準出力に出力](#i)
+    -   [<span class="toc_number toc_depth_2">1.2</span>
+        teeコマンドで出力するファイルに追記で出力
+        (-aオプション)](#tee_-a)
+-   [<span class="toc_number toc_depth_1">2</span>
+    teeコマンドのテクニック](#tee-2)
+    -   [<span class="toc_number toc_depth_2">2.1</span>
+        標準エラー出力もteeコマンドで出力](#tee-3)
+    -   [<span class="toc_number toc_depth_2">2.2</span>
+        プロセス置換を用いてコマンドを処理](#i-2)
+    -   [<span class="toc_number toc_depth_2">2.3</span>
+        execコマンドでファイルディスクリプタを変換](#exec)
+-   [<span class="toc_number toc_depth_1">3</span> 参考](#i-3)
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer-in" class="footer-in wrap cf" markdown="1">
+
+<div class="footer-bottom fdt-logo fnm-text-width cf" markdown="1">
+
+<div class="footer-bottom-logo" markdown="1">
+
+<div class="logo logo-footer logo-text" markdown="1">
+
+<a href="https://linuxcommand.net/"
+class="site-name site-name-text-link" itemprop="url"
+data-wpel-link="internal"><span class="site-name-text"
+itemprop="name about">Linuxコマンド.NET</span></a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom-content" markdown="1">
+
+<div id="navi-footer-in" class="navi-footer-in" markdown="1">
+
+</div>
+
+<div class="source-org copyright" markdown="1">
+
+© 2017-2025 Linuxコマンド.NET.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>

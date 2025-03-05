@@ -1,0 +1,1845 @@
+<div id="globalheader-container" markdown="1" brand="hatenablog"
+style="display: none">
+
+</div>
+
+<div id="container" markdown="1">
+
+<div id="container-inner" markdown="1">
+
+<div id="blog-title" markdown="1" brand="hatenablog">
+
+<div id="blog-title-inner" markdown="1"
+style="background-image: url('https://cdn-ak.f.st-hatena.com/images/fotolife/c/cybozuinsideout/20180828/20180828132441.png'); background-position: center 0px;">
+
+<div id="blog-title-content" markdown="1">
+
+# [Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/) [title]
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content" class="hfeed" markdown="1">
+
+<div id="content-inner" markdown="1">
+
+<div id="wrapper" markdown="1">
+
+<div id="main" markdown="1">
+
+<div id="main-inner" markdown="1">
+
+<div class="entry-inner" markdown="1">
+
+<div class="entry-header" markdown="1">
+
+<div class="date entry-date first" markdown="1">
+
+<a href="https://blog.cybozu.io/archive/2016/09/26" rel="nofollow"><span
+class="date-year">2016</span><span class="hyphen">-</span><span
+class="date-month">09</span><span class="hyphen">-</span><span
+class="date-day">26</span></a>
+
+</div>
+
+# <a href="https://blog.cybozu.io/entry/2016/09/26/080000"
+class="entry-title-link bookmark">Bashタブ補完自作入門</a> [bashタブ補完自作入門]
+
+<div class="entry-categories categories" markdown="1">
+
+<a href="https://blog.cybozu.io/archive/category/Linux"
+class="entry-category-link category-Linux">Linux</a>
+
+</div>
+
+</div>
+
+<div class="entry-content hatenablog-entry" markdown="1">
+
+ドーモ、SREチームの湯谷([@yutannihilation](https://twitter.com/yutannihilation))です。最近気になるモジュラーシンセはIntellijelです。
+
+上司が[いい感じのコマンドをつくるという記事](http://blog.cybozu.io/entry/cybozu-go-cmd)を書いていましたが、いい感じのコマンドにはいい感じのタブ補完を付けたくなります。この記事ではBashのタブ補完を自作する方法を紹介します。
+
+## タブ補完の仕組み
+
+Bashのタブ補完自体はBashに組み込まれている仕組みです（参考：[Bash
+Reference Manual - 8.6 Programmable
+Completion](http://www.gnu.org/software/bash/manual/bash.html#Programmable-Completion)）。`complete`というBashの組み込み関数によって補完方法（`compspec(completion specification)`と言うらしいです）が規定されていて、これがタブなどによって起動されます。
+
+タブ補完は、`ls`ならファイル名、`cd`ならディレクトリ名、というようにコマンドに応じたものが設定されています。最近のLinuxディストリビューションでは多くのコマンドで快適にタブ補完ができますが、それは[bash-completion](https://github.com/scop/bash-completion)というパッケージのおかげです。
+
+このパッケージが用意してくれている数々の補完関数は、`/usr/share/bash-completion/completions`以下に配置されていることが多いです（このパスはディストリビューションやbash-completionのバージョンによっても異なります）。たとえば、`man`の補完方法は`/usr/share/bash-completion/completions/man`に定義されています。見てみましょう。
+
+``` code
+$ cat /usr/share/bash-completion/completions/man
+# man(1) completion                                        -*- shell-script -*-
+
+[[ $OSTYPE == *@(darwin|freebsd|solaris|cygwin|openbsd)* ]] || _userland GNU \
+    || return 1
+
+_man()
+{
+    local cur prev words cword split
+    _init_completion -s -n : || return
+
+...略...
+
+    __ltrim_colon_completions "$cur"
+    return 0
+} &&
+complete -F _man man apropos whatis
+
+# ex: ts=4 sw=4 et filetype=sh
+```
+
+`_man()`というシェル関数が定義され、それに続いて`complete`コマンドが実行されています。`-F`は、補完するための関数を指定するオプションです。これによって、`man`コマンドと`apropos`コマンドと`whatis`コマンドは`_man()`という関数によって補完が行われるように設定されています。
+
+ユーザがタブを押すと、`_man()`に`COMP_CWORD`とか`COMP_WORDS`といった変数（後述）で今のコマンドラインに入力されている文字が渡されます。`_man()`はそこから候補を絞り込んだ結果を、`COMPREPLY`という変数で返します。それがタブ補完の候補として表示される、という流れです。
+
+## はじめの一歩
+
+まず、候補として`one`と`two`を表示するシンプルな関数`_dummy()`をつくってみます。候補のリストを`COMPREPLY`という変数に入れると、補完候補として表示されるようになります。
+
+``` code
+$ _dummy() { COMPREPLY=(one two); }
+```
+
+これを`man`コマンドの補完方法に指定します。
+
+``` code
+$ complete -F _dummy man
+```
+
+これで`man`コマンドは`_dummy`関数でタブ補完されるようになりました。ここで、
+
+``` code
+$ man <TAB>
+```
+
+と打つと、以下のように候補が表示されるはずです。
+
+``` code
+$ man
+one  two
+```
+
+でも上の`_dummy()`だと、コマンドラインの状態はお構いなしに同じ候補しか表示しません。
+
+``` code
+$ man o<TAB>
+one  two
+$ man one<TAB>
+one  two
+```
+
+`o`まで打ったら候補は`one`だけになってほしいですよね。そのために`_dummy()`は、今のコマンドラインの状態を受け取って、候補の絞り込みをする必要があります。
+
+## 補完候補の絞り込み
+
+これには、`COMP_CWORD`・`COMP_WORDS`という変数と`compgen`というコマンドを使います。
+
+### `COMP_CWORD`・`COMP_WORDS`
+
+この変数には、それぞれ以下の値が入っています。
+
+-   `COMP_CWORD`: 今カーソルがあるワードは何語目か
+-   `COMP_WORDS`: コマンドラインのワードのリスト
+
+たとえば、以下のように`COMP_CWORD`と`COMP_WORDS`を`echo`する関数を設定してみます。
+
+``` code
+$ _dummy()
+{
+  echo
+  echo COMP_CWORD: ${COMP_CWORD}
+  echo COMP_WORDS: ${COMP_WORDS[@]}
+}
+```
+
+これでタブを押すと、以下のような結果になります。`COMP_CWORD`と`COMP_WORDS`にどのような変数が渡っているかイメージが付くでしょうか。カーソルの直前がワードのときと空白のときで結果が異なる点には注意が必要です。
+
+``` code
+$ man <TAB>
+COMP_CWORD: 1
+COMP_WORDS: man
+```
+
+``` code
+$ man test test2<TAB>
+COMP_CWORD: 2
+COMP_WORDS: man test test2
+```
+
+``` code
+$ man test test2 <TAB>
+COMP_CWORD: 3
+COMP_WORDS: man test test2
+```
+
+### `_get_comp_words_by_ref()`
+
+現在カーソルがあるワードは`${COMP_WORDS[${COMP_CWORD}]}`、そのひとつ前は`${COMP_WORDS[${COMP_CWORD}-1]}`といったかたちでアクセスすることができます。でも、ちょっと長くて見づらいです。`_get_comp_words_by_ref()`という便利関数を使うと、現在カーソルがあるワードは`$cur`、ひとつ前のワードは`$prev`、ワード数は`$cword`という変数に入ります。
+
+こんな感じです。
+
+``` code
+$ _dummy()
+{
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  echo
+  echo cur: ${cur}
+  echo prev: ${prev}
+  echo cword: ${cword}
+}
+
+$ man arg1 arg2<TAB>
+cur: arg2
+prev: arg1
+cword: 2
+```
+
+こうした便利関数はやはりbash-completionパッケージによって提供されているもので、`/usr/share/bash-completion/bash_completion`に定義されています。定義が気になる場合はこのファイルを覗いてみましょう。（例えば`_get_comp_words_by_ref`の定義は[このあたり](https://github.com/scop/bash-completion/blob/c16826ee35ecb405fe87007404d0fb846ad61a15/bash_completion#L343-L369)です）
+
+### `compgen`
+
+`compgen`は、オプションによって出てくる補完候補から、引数とマッチ（基本的に前方一致）するものだけを絞り込むコマンドです。各オプションは`man 7 bash-builtins`に詳しく書かれています。ここでは主要なオプションだけ紹介します。
+
+-   `-W`
+
+`-W`は、変換候補となる文字列のリストを指定するオプションです。以下のように、指定した文字列リストから、引数と前方一致するものだけに絞り込んでリストアップしてくれます。
+
+``` code
+$ compgen -W "one two once twice" --
+one
+two
+once
+twice
+$ compgen -W "one two once twice" -- o
+one
+once
+$ compgen -W "one two once twice" -- onc
+once
+```
+
+-   `-c`/`-f`/`-d`
+
+自前で文字列のリストを与えなくても、コマンドのリストとか、ファイルのリストとかを補完候補にすることができるオプションです。`-c`はコマンド（と実行ファイル、ディレクトリ）、`-f`はファイル、`-d`はディレクトリを補完するようになります。たとえば、以下のように`-c`オプションに`man`という引数を与えると、`man`から始まるコマンドがリストアップされます。
+
+``` code
+$ compgen -c -- man
+mandb
+manpage-alert
+man
+manpath
+```
+
+### 補完してみる
+
+`compgen`を使うと、`dummy()`は現在のコマンドラインの文字を使って候補を絞り込んだ補完ができるようになります。
+
+``` code
+$ _dummy()
+{
+  local cur prev opts
+  _get_comp_words_by_ref -n : cur prev
+  opts="one two once twice"
+
+  COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+}
+```
+
+こんな感じの動きです。
+
+``` code
+$ man <TAB>
+once   one    twice  two
+$ man on<TAB>
+once  one
+```
+
+ようやく補完できました。めでたしめでたし！（たったこれだけしか補完できない`_dummy()`に飽きたら、`complete -r man`でデフォルトの補完に戻すことができます）
+
+## 例：go-apt-cacher の補完
+
+具体例として、APT専用のキャッシュプロキシ[go-apt-cacher](http://blog.cybozu.io/entry/2016/07/19/103000)のタブ補完をつくってみましょう。
+
+`go-apt-cacher`には以下のオプションがあります（バージョン1.2.2時点）。オプションによって補完すべきものが違います。`-f`と`-logfile`はファイル名をとり、`-logformat`と`-loglevel`はそれぞれ固有の選択肢をとります。
+
+``` code
+$ go-apt-cacher -h
+Usage of go-apt-cacher:
+  -f string
+        configuration file name (default "/etc/go-apt-cacher.toml")
+  -logfile string
+        Log filename
+  -logformat string
+        Log format [plain,logfmt,json]
+  -loglevel string
+        Log level [critical,error,warning,info,debug]
+```
+
+まず、`go-apt-cacher -`まで入力してタブを押すとオプションが補完されるようにしてみましょう。オプションはコマンドの直後、つまり`$cword`が1の位置にきます。このときはオプションのリストを`compgen`の`-W`に指定して補完するようにします。
+
+``` code
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+```
+
+次に、オプションが`-logformat`の場合は`plain`、`logfmt`、`json`のいずれかが、`-loglevel`の場合は`critical`、`error`、`warning`、`info`、`debug`が補完されるようにしてみましょう。カーソルがオプションの次に来ているときは、`$prev`にオプションが入るのでこれを条件分岐に使うといいでしょう。
+
+``` code
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+  elif [ "${cword}" -eq 2 ]; then
+    if [ "${prev}" = "-logformat" ]; then
+      COMPREPLY=( $(compgen -W "plain logfmt json" -- "${cur}") )
+    elif [ "${prev}" = "-loglevel" ]; then
+      COMPREPLY=( $(compgen -W "critical error warning info debug" -- "${cur}") )
+    fi
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+```
+
+さらに、オプションが`-logfile`や`-f`のときにはファイルへのパスが補完されるようにしてみます。ファイルの補完には`compgen`の`-f`オプションを使います。`compopt -o filenames`は、ディレクトリ名には`/`を付けてくれるようにするおまじないです（詳しいことが気になる方は`man 7 bash-builtins`を読んでください）。
+
+``` code
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+
+  elif [ "${cword}" -eq 2 ]; then
+    if [ "${prev}" = "-logformat" ]; then
+      COMPREPLY=( $(compgen -W "plain logfmt json" -- "${cur}") )
+    elif [ "${prev}" = "-loglevel" ]; then
+      COMPREPLY=( $(compgen -W "critical error warning info debug" -- "${cur}") )
+    elif [ "${prev}" = "-logfile" -o "${prev}" = "-f" ]; then
+      compopt -o filenames
+      COMPREPLY=( $(compgen -f -- "${cur}") )
+    fi
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+```
+
+これで完成です。
+
+この例は`compgen`の`-W`と`-f`しか使いませんでしたが、最終的に`COMPREPLY`に候補のリストを渡せば何をしてもかまいません。やり方は様々です。`/usr/share/bash-completion/completions/`下に良い例がたくさんあるので、探求心の強い方は参考にしてみてください。
+
+## 補完関数の置き場所
+
+個人的に使うものであれば`~/.bash_completion`というファイルをつくって書いておけば、ログイン時に自動で読み込まれます。
+
+パッケージなどに含める場合であれば、bash-completionパッケージが使っている`/usr/share/bash-completion/completions`などに置くのが良いでしょう。このパスは、`pkg-config --variable=completionsdir bash-completion`というコマンドで調べることができます。詳しくは[bash-completionのFAQ](https://github.com/scop/bash-completion#faq)を参照してください。
+
+## まとめ
+
+みなさまの快適なBash生活の一助となれば幸いです。
+
+サイボウズではBashやビアバッシュが好きなエンジニアを募集しています。SREの募集要項は[こちら](http://cybozu.co.jp/company/job/recruitment/list/sre.html)です。
+
+</div>
+
+<div class="entry-tags-wrapper" markdown="1">
+
+<div class="entry-tags" markdown="1">
+
+</div>
+
+</div>
+
+<span class="author vcard"><span class="fn" load-nickname="1"
+user-name="cybozuinsideout">cybozuinsideout</span></span>
+<span class="entry-footer-time">[2016-09-26
+08:00](https://blog.cybozu.io/entry/2016/09/26/080000)</span>
+
+<div class="social-buttons" markdown="1">
+
+</div>
+
+<div class="customized-footer" markdown="1">
+
+<div id="entry-footer-secondary-modules" class="entry-footer-modules"
+markdown="1">
+
+</div>
+
+<div class="entry-footer-html" markdown="1">
+
+<div id="fb-root" markdown="1">
+
+</div>
+
+<a
+href="http://b.hatena.ne.jp/entry/https://blog.cybozu.io/entry/2016/09/26/080000"
+class="hatena-bookmark-button"
+data-hatena-bookmark-title="Bashタブ補完自作入門 - Cybozu Inside Out | サイボウズエンジニアのブログ"
+data-hatena-bookmark-layout="standard-balloon"
+data-hatena-bookmark-lang="ja"
+title="このエントリーをはてなブックマークに追加"><img
+src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+style="border: none;" width="20" height="20"
+alt="このエントリーをはてなブックマークに追加" /></a>
+
+<a href="https://twitter.com/share" class="twitter-share-button tweets"
+data-url="https://blog.cybozu.io/entry/2016/09/26/080000">Tweet</a>
+
+<div class="fb-like" markdown="1"
+data-href="https://blog.cybozu.io/entry/2016/09/26/080000"
+layout="button_count" data-action="like" show-faces="true"
+share="false">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="pager pager-permalink permalink" markdown="1">
+
+<span class="pager-prev">
+<a href="https://blog.cybozu.io/entry/internship-2016-qa-security"
+rel="prev"><span class="pager-arrow">« </span>
+サイボウズサマーインターン2016 報告その…</a> </span>
+<span class="pager-next"> <a
+href="https://blog.cybozu.io/entry/internship-2016-web-application-development"
+rel="next">サイボウズサマーインターン2016 報告その… <span
+class="pager-arrow"> »</span></a> </span>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="box1-inner" markdown="1">
+
+</div>
+
+</div>
+
+<div id="box2-inner" markdown="1">
+
+<div class="hatena-module hatena-module-profile" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+Profile
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+<a href="https://blog.cybozu.io/about" class="profile-icon-link"><img
+src="https://cdn.profile-image.st-hatena.com/users/cybozuinsideout/profile.png?1671431787"
+class="profile-icon" alt="id:cybozuinsideout" /></a> <span class="id">
+<a href="https://blog.cybozu.io/about" class="hatena-id-link"><span
+data-load-nickname="1"
+data-user-name="cybozuinsideout">id:cybozuinsideout</span></a>
+[*はてなブログ for
+DevBlog*](https://blog.hatena.ne.jp/guide/corporation "はてなブログ for DevBlog")
+</span>
+
+<div class="profile-activities" markdown="1">
+
+最終更新: 2025-02-26 11:20
+
+</div>
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+<div class="profile-about" markdown="1">
+
+[このブログについて](https://blog.cybozu.io/about)
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-html" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+リンク
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://tech.cybozu.io/" target="_blank"
+    data-ref="noopener"><img src="https://tech.cybozu.io/favicon-32x32.png"
+    class="linklist-img" width="24" height="24" />Cybozu Tech -
+    ポータルサイト</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://blog.kintone.io/" target="_blank"
+    data-ref="noopener"><img src="https://blog.kintone.io/icon/favicon"
+    class="linklist-img" width="24" height="24" />Kintone Engineering
+    Blog</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://tech.cybozu.vn/" target="_blank"
+    data-ref="noopener"><img src="https://tech.cybozu.vn/favicon-32x32.png"
+    class="linklist-img" width="24" height="24" />Cybozu Vietnam Tech
+    Sharing</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://twitter.com/cybozuinsideout" target="_blank"
+    data-ref="noopener"><img
+    src="https://abs.twimg.com/favicons/twitter.3.ico" class="linklist-img"
+    width="24" height="24" />X (旧Twitter) - CybozuInsideOut</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://cybozu.connpass.com/" target="_blank"
+    data-ref="noopener"><img
+    src="https://connpass.com/static/img/favicon.ico" class="linklist-img"
+    width="24" height="24" />connpass - Cybozu Inside Out</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://speakerdeck.com/cybozuinsideout/" target="_blank"
+    data-ref="noopener"><img
+    src="https://d1eu30co0ohy4w.cloudfront.net/assets/favicon-bdd5839d46040a50edf189174e6f7aacc8abb3aaecd56a4711cf00d820883f47.png"
+    class="linklist-img" width="24" height="24" />Speaker Deck -
+    cybozuinsideout</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://www.youtube.com/c/cybozuinsideout" target="_blank"
+    data-ref="noopener"><img
+    src="https://www.youtube.com/s/desktop/25bf5aae/img/favicon_32x32.png"
+    class="linklist-img" width="24" height="24" /> YouTube -
+    cybozuinsideout</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    <a href="https://cybozu.github.io/summer-blog-fes-2024/" target="_blank"
+    data-ref="noopener"><img
+    src="https://cybozu.github.io/summer-blog-fes-2024/favicon.png"
+    class="linklist-img" width="24" height="24" />CYBOZU SUMMER BLOG FES
+    '24</a>
+
+    </div>
+
+-   <div markdown="1" style="display:flex;">
+
+    [<img
+    src="https://cdn-ak.f.st-hatena.com/images/fotolife/c/cybozuinsideout/20230529/20230529185416.png"
+    class="linklist-img" width="24" height="24" /> Cybozu Advent
+    Calendar 2022](https://blog.cybozu.io/advent_calendar_2022)
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-html" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+X (旧Twitter)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+<a href="https://twitter.com/cybozuinsideout?ref_src=twsrc%5Etfw"
+class="twitter-timeline" data-width="410" data-height="400">Tweets by
+cybozuinsideout</a>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-recent-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+[最新記事](https://blog.cybozu.io/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://blog.cybozu.io/entry/2025/02/26/112000"
+    class="urllist-image-link recent-entries-image-link"><img
+    src="https://cdn.image.st-hatena.com/image/square/00fa050e84154d539982a4af8425c1f0aae23a2f/backend=imagemagick;height=140;version=1;width=250/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fm%2Fmehm8128%2F20250218%2F20250218181757.png"
+    title="25新卒エンジニア5人の内定者アルバイト体験記"
+    class="urllist-image recent-entries-image" loading="lazy" width="250"
+    height="140" alt="25新卒エンジニア5人の内定者アルバイト体験記" /></a>
+    <div class="urllist-date-link recent-entries-date-link"
+    markdown="1">
+
+    <a href="https://blog.cybozu.io/archive/2025/02/26"
+    rel="nofollow">2025-02-26</a>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/entry/2025/02/26/112000"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">25新卒エンジニア5人の内定者アルバイト体験記</a>
+    <div class="urllist-entry-body recent-entries-entry-body"
+    markdown="1">
+
+    こんにちは、サイボウズ 25卒エンジニアチームです。
+    今回、サイボウズの25卒エンジニアの中で内定者アル…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://blog.cybozu.io/entry/2025/02/21/140000"
+    class="urllist-image-link recent-entries-image-link"><img
+    src="https://cdn.image.st-hatena.com/image/square/551f319e5fb358f451e0a09a9d4092b95683ba34/backend=imagemagick;height=140;version=1;width=250/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fyellow-sabotech%2F20250217%2F20250217214752.png"
+    title="コドモンとサイボウズで、XPとスクラムのアプローチの違いを語るイベントを開催しました！"
+    class="urllist-image recent-entries-image" loading="lazy" width="250"
+    height="140"
+    alt="コドモンとサイボウズで、XPとスクラムのアプローチの違いを語るイベントを開催しました！" /></a>
+    <div class="urllist-date-link recent-entries-date-link"
+    markdown="1">
+
+    <a href="https://blog.cybozu.io/archive/2025/02/21"
+    rel="nofollow">2025-02-21</a>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/entry/2025/02/21/140000"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">コドモンとサイボウズで、XPとスクラムのアプローチ…</a>
+    <div class="urllist-entry-body recent-entries-entry-body"
+    markdown="1">
+
+    こんにちは。kintone開発のAndroidエンジニア、トニオ（@tonionagauzzi）です。
+    本日は、株式会社コドモン…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://blog.cybozu.io/entry/2025/02/21/115859"
+    class="urllist-image-link recent-entries-image-link"><img
+    src="https://cdn.image.st-hatena.com/image/square/c0967904b1db5bf8ef9cd8ffa5be51b321903fed/backend=imagemagick;height=140;version=1;width=250/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fyellow-sabotech%2F20250221%2F20250221113925.png"
+    title="SwiftUI View Coding Guidelinesを公開しました"
+    class="urllist-image recent-entries-image" loading="lazy" width="250"
+    height="140" alt="SwiftUI View Coding Guidelinesを公開しました" /></a>
+    <div class="urllist-date-link recent-entries-date-link"
+    markdown="1">
+
+    <a href="https://blog.cybozu.io/archive/2025/02/21"
+    rel="nofollow">2025-02-21</a>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/entry/2025/02/21/115859"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">SwiftUI
+    View Coding Guide…</a>
+    <div class="urllist-entry-body recent-entries-entry-body"
+    markdown="1">
+
+    こんにちは、iOS Developerの@el_metal_です。
+    SwiftUIのView実装のためのガイドラインを作成・公開したの…
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-search-box" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+検索
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-category" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+カテゴリー
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <a href="https://blog.cybozu.io/archive/category/AI"
+    class="category-AI">AI (4)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Android"
+    class="category-Android">Android (31)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Arduino"
+    class="category-Arduino">Arduino (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Argo%20CD"
+    class="category-Argo-CD">Argo CD (8)</a>
+-   <a href="https://blog.cybozu.io/archive/category/AWS"
+    class="category-AWS">AWS (14)</a>
+-   <a href="https://blog.cybozu.io/archive/category/C%2FC%2B%2B"
+    class="category-C/C++">C/C++ (24)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Ceph"
+    class="category-Ceph">Ceph (4)</a>
+-   <a href="https://blog.cybozu.io/archive/category/CI%2FCD"
+    class="category-CI/CD">CI/CD (9)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Design%20Systems"
+    class="category-Design-Systems">Design Systems (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/DevOps"
+    class="category-DevOps">DevOps (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/DOGO"
+    class="category-DOGO">DOGO (4)</a>
+-   <a href="https://blog.cybozu.io/archive/category/DX"
+    class="category-DX">DX (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Elasticsearch"
+    class="category-Elasticsearch">Elasticsearch (2)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/EngineeringProductivity"
+    class="category-EngineeringProductivity">EngineeringProductivity
+    (12)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Flutter"
+    class="category-Flutter">Flutter (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Garoon"
+    class="category-Garoon">Garoon (22)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Gemini"
+    class="category-Gemini">Gemini (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/GitHubActions"
+    class="category-GitHubActions">GitHubActions (4)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Go"
+    class="category-Go">Go (18)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Google%20I%2FO"
+    class="category-Google-I/O">Google I/O (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/iOS"
+    class="category-iOS">iOS (28)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Java"
+    class="category-Java">Java (23)</a>
+-   <a href="https://blog.cybozu.io/archive/category/JavaScript"
+    class="category-JavaScript">JavaScript (26)</a>
+-   <a href="https://blog.cybozu.io/archive/category/kintone"
+    class="category-kintone">kintone (57)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Kotlin"
+    class="category-Kotlin">Kotlin (8)</a>
+-   <a href="https://blog.cybozu.io/archive/category/KotlinFest"
+    class="category-KotlinFest">KotlinFest (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Kubernetes"
+    class="category-Kubernetes">Kubernetes (41)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Linux"
+    class="category-Linux">Linux (25)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Maneki"
+    class="category-Maneki">Maneki (5)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Meetup"
+    class="category-Meetup">Meetup (15)</a>
+-   <a href="https://blog.cybozu.io/archive/category/MySQL"
+    class="category-MySQL">MySQL (15)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Neco"
+    class="category-Neco">Neco (62)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Network"
+    class="category-Network">Network (6)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Next.js"
+    class="category-Next.js">Next.js (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Node.js"
+    class="category-Node.js">Node.js (3)</a>
+-   <a href="https://blog.cybozu.io/archive/category/npm"
+    class="category-npm">npm (4)</a>
+-   <a href="https://blog.cybozu.io/archive/category/OSC"
+    class="category-OSC">OSC (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/OST"
+    class="category-OST">OST (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/PHP"
+    class="category-PHP">PHP (14)</a>
+-   <a href="https://blog.cybozu.io/archive/category/PM"
+    class="category-PM">PM (3)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Python"
+    class="category-Python">Python (3)</a>
+-   <a href="https://blog.cybozu.io/archive/category/QA"
+    class="category-QA">QA (68)</a>
+-   <a href="https://blog.cybozu.io/archive/category/R" class="category-R">R
+    (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/React"
+    class="category-React">React (12)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Rook"
+    class="category-Rook">Rook (5)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Rust"
+    class="category-Rust">Rust (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Selenium"
+    class="category-Selenium">Selenium (9)</a>
+-   <a href="https://blog.cybozu.io/archive/category/SRE"
+    class="category-SRE">SRE (11)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Storage"
+    class="category-Storage">Storage (11)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Swift"
+    class="category-Swift">Swift (12)</a>
+-   <a href="https://blog.cybozu.io/archive/category/SwiftUI"
+    class="category-SwiftUI">SwiftUI (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/TDD"
+    class="category-TDD">TDD (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/TE"
+    class="category-TE">TE (6)</a>
+-   <a href="https://blog.cybozu.io/archive/category/TLS"
+    class="category-TLS">TLS (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/TypeScript"
+    class="category-TypeScript">TypeScript (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Ubuntu"
+    class="category-Ubuntu">Ubuntu (5)</a>
+-   <a href="https://blog.cybozu.io/archive/category/UX%2FUI"
+    class="category-UX/UI">UX/UI (17)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/UX%E3%83%A9%E3%82%A4%E3%82%BF%E3%83%BC"
+    class="category-UXライター">UXライター (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Windows"
+    class="category-Windows">Windows (5)</a>
+-   <a href="https://blog.cybozu.io/archive/category/WWDC"
+    class="category-WWDC">WWDC (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/Yakumo"
+    class="category-Yakumo">Yakumo (18)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B"
+    class="category-お知らせ">お知らせ (32)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A"
+    class="category-ふりかえり">ふりかえり (6)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%8F%E3%81%8C%E3%81%BE%E3%81%BE%E3%82%AB%E3%83%BC%E3%83%89"
+    class="category-わがままカード">わがままカード (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B7%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3"
+    class="category-アクセシビリティ">アクセシビリティ (12)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB"
+    class="category-アジャイル">アジャイル (27)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%A2%E3%83%89%E3%83%99%E3%83%B3%E3%83%88%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC"
+    class="category-アドベントカレンダー">アドベントカレンダー (22)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88"
+    class="category-イベント">イベント (121)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3"
+    class="category-インターン">インターン (63)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9"
+    class="category-インフラ">インフラ (47)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9"
+    class="category-オープンソース">オープンソース (29)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%B5%E3%82%A4%E3%83%9C%E3%82%A6%E3%82%BAOffice"
+    class="category-サイボウズOffice">サイボウズOffice (2)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%B5%E3%82%A4%E3%83%9C%E3%82%A6%E3%82%BA%E3%83%BB%E3%83%A9%E3%83%9C"
+    class="category-サイボウズ・ラボ">サイボウズ・ラボ (18)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0"
+    class="category-スクラム">スクラム (26)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC"
+    class="category-スクラムマスター">スクラムマスター (4)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3"
+    class="category-セキュリティ">セキュリティ (58)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88"
+    class="category-ソフトウェアテスト">ソフトウェアテスト (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%93%E3%83%AB%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0"
+    class="category-チームビルディング">チームビルディング (2)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%86%E3%82%AF%E3%83%8B%E3%82%AB%E3%83%AB%E3%83%A9%E3%82%A4%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"
+    class="category-テクニカルライティング">テクニカルライティング (21)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%86%E3%82%B9%E3%83%88"
+    class="category-テスト">テスト (20)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA"
+    class="category-テスト駆動開発">テスト駆動開発 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%86%E3%83%AC%E3%83%AF%E3%83%BC%E3%82%AF"
+    class="category-テレワーク">テレワーク (3)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%8A%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3"
+    class="category-デザイナーインターン">デザイナーインターン (4)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3"
+    class="category-デザイン">デザイン (15)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90"
+    class="category-データ分析">データ分析 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86"
+    class="category-ドキュメント管理">ドキュメント管理 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%8F%E3%83%83%E3%82%AB%E3%82%BD%E3%83%B3"
+    class="category-ハッカソン">ハッカソン (22)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%90%E3%82%B0%E3%83%90%E3%82%A6%E3%83%B3%E3%83%86%E3%82%A3"
+    class="category-バグバウンティ">バグバウンティ (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0"
+    class="category-パフォーマンスチューニング">パフォーマンスチューニング
+    (6)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%95%E3%83%AD%E3%83%AA%E3%82%A2"
+    class="category-フロリア">フロリア (35)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%89"
+    class="category-フロントエンド">フロントエンド (47)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6"
+    class="category-ブラウザ">ブラウザ (5)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E"
+    class="category-プログラマ">プログラマ (7)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0"
+    class="category-プログラミング">プログラミング (41)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88"
+    class="category-プログラミングコンテスト">プログラミングコンテスト
+    (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88"
+    class="category-マネジメント">マネジメント (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB"
+    class="category-モバイル">モバイル (67)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0"
+    class="category-モブプログラミング">モブプログラミング (7)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%A9%E3%83%9C%E3%83%A6%E3%83%BC%E3%82%B9"
+    class="category-ラボユース">ラボユース (20)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0"
+    class="category-リファクタリング">リファクタリング (2)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF"
+    class="category-リモートワーク">リモートワーク (4)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%AA%E3%83%AC%E3%83%BC%E3%83%96%E3%83%AD%E3%82%B0"
+    class="category-リレーブログ">リレーブログ (2)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%AC%E3%83%88%E3%83%AD%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96"
+    class="category-レトロスペクティブ">レトロスペクティブ (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%A9%E3%82%A4%E3%82%BA"
+    class="category-ローカライズ">ローカライズ (10)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E5%83%8D%E3%81%8D%E6%96%B9"
+    class="category-働き方">働き方 (7)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E5%86%85%E5%AE%9A%E8%80%85%E3%82%A2%E3%83%AB%E3%83%90%E3%82%A4%E3%83%88"
+    class="category-内定者アルバイト">内定者アルバイト (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E5%8B%89%E5%BC%B7%E4%BC%9A"
+    class="category-勉強会">勉強会 (64)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E5%8C%97%E6%B5%B7%E9%81%93"
+    class="category-北海道">北海道 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E5%8F%82%E5%8A%A0%E5%A0%B1%E5%91%8A"
+    class="category-参加報告">参加報告 (13)</a>
+-   <a href="https://blog.cybozu.io/archive/category/%E5%90%88%E5%AE%BF"
+    class="category-合宿">合宿 (2)</a>
+-   <a href="https://blog.cybozu.io/archive/category/%E5%93%81%E8%B3%AA"
+    class="category-品質">品質 (1)</a>
+-   <a href="https://blog.cybozu.io/archive/category/%E5%BA%83%E5%B3%B6"
+    class="category-広島">広島 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E6%83%85%E3%82%B7%E3%82%B9"
+    class="category-情シス">情シス (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E6%8A%80%E8%A1%93%E5%90%8C%E4%BA%BA%E8%AA%8C"
+    class="category-技術同人誌">技術同人誌 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A"
+    class="category-振り返り">振り返り (4)</a>
+-   <a href="https://blog.cybozu.io/archive/category/%E6%96%87%E5%8C%96"
+    class="category-文化">文化 (45)</a>
+-   <a href="https://blog.cybozu.io/archive/category/%E6%A4%9C%E8%A8%BC"
+    class="category-検証">検証 (8)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E6%A9%9F%E8%83%BD%E6%94%B9%E5%96%84"
+    class="category-機能改善">機能改善 (3)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E6%B5%B7%E5%A4%96%E5%87%BA%E5%BC%B5"
+    class="category-海外出張">海外出張 (7)</a>
+-   <a href="https://blog.cybozu.io/archive/category/%E7%94%9F%E6%88%90AI"
+    class="category-生成AI">生成AI (2)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E7%94%9F%E7%94%A3%E6%80%A7%E5%90%91%E4%B8%8A%E3%83%81%E3%83%BC%E3%83%A0"
+    class="category-生産性向上チーム">生産性向上チーム (12)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E7%99%BA%E8%A1%A8%E8%B3%87%E6%96%99"
+    class="category-発表資料">発表資料 (22)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E7%A4%BE%E5%86%85%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88"
+    class="category-社内イベント">社内イベント (13)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E8%A8%BC%E6%98%8E%E6%9B%B8"
+    class="category-証明書">証明書 (1)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E9%96%8B%E7%99%BA%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9"
+    class="category-開発プロセス">開発プロセス (37)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83"
+    class="category-開発環境">開発環境 (29)</a>
+-   <a
+    href="https://blog.cybozu.io/archive/category/%E9%A1%A7%E5%AE%A2%E7%90%86%E8%A7%A3"
+    class="category-顧客理解">顧客理解 (1)</a>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-archive" markdown="1"
+archive-type="default" archive-url="https://blog.cybozu.io/archive">
+
+<div class="hatena-module-title" markdown="1">
+
+[月別アーカイブ](https://blog.cybozu.io/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2025"
+    class="archive-module-year-title archive-module-year-2025">2025</a>
+    -   <a href="https://blog.cybozu.io/archive/2025/02"
+        class="archive-module-month-title archive-module-month-2025-2">2025 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2025/01"
+        class="archive-module-month-title archive-module-month-2025-1">2025 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2024"
+    class="archive-module-year-title archive-module-year-2024">2024</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/12"
+        class="archive-module-month-title archive-module-month-2024-12">2024 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/11"
+        class="archive-module-month-title archive-module-month-2024-11">2024 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/10"
+        class="archive-module-month-title archive-module-month-2024-10">2024 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/09"
+        class="archive-module-month-title archive-module-month-2024-9">2024 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/08"
+        class="archive-module-month-title archive-module-month-2024-8">2024 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/07"
+        class="archive-module-month-title archive-module-month-2024-7">2024 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/06"
+        class="archive-module-month-title archive-module-month-2024-6">2024 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/05"
+        class="archive-module-month-title archive-module-month-2024-5">2024 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/04"
+        class="archive-module-month-title archive-module-month-2024-4">2024 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/03"
+        class="archive-module-month-title archive-module-month-2024-3">2024 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/02"
+        class="archive-module-month-title archive-module-month-2024-2">2024 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2024/01"
+        class="archive-module-month-title archive-module-month-2024-1">2024 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2023"
+    class="archive-module-year-title archive-module-year-2023">2023</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/12"
+        class="archive-module-month-title archive-module-month-2023-12">2023 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/11"
+        class="archive-module-month-title archive-module-month-2023-11">2023 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/10"
+        class="archive-module-month-title archive-module-month-2023-10">2023 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/09"
+        class="archive-module-month-title archive-module-month-2023-9">2023 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/08"
+        class="archive-module-month-title archive-module-month-2023-8">2023 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/07"
+        class="archive-module-month-title archive-module-month-2023-7">2023 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/06"
+        class="archive-module-month-title archive-module-month-2023-6">2023 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/05"
+        class="archive-module-month-title archive-module-month-2023-5">2023 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/04"
+        class="archive-module-month-title archive-module-month-2023-4">2023 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/03"
+        class="archive-module-month-title archive-module-month-2023-3">2023 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/02"
+        class="archive-module-month-title archive-module-month-2023-2">2023 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2023/01"
+        class="archive-module-month-title archive-module-month-2023-1">2023 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2022"
+    class="archive-module-year-title archive-module-year-2022">2022</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/12"
+        class="archive-module-month-title archive-module-month-2022-12">2022 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/11"
+        class="archive-module-month-title archive-module-month-2022-11">2022 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/10"
+        class="archive-module-month-title archive-module-month-2022-10">2022 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/09"
+        class="archive-module-month-title archive-module-month-2022-9">2022 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/08"
+        class="archive-module-month-title archive-module-month-2022-8">2022 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/07"
+        class="archive-module-month-title archive-module-month-2022-7">2022 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/06"
+        class="archive-module-month-title archive-module-month-2022-6">2022 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/05"
+        class="archive-module-month-title archive-module-month-2022-5">2022 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/04"
+        class="archive-module-month-title archive-module-month-2022-4">2022 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/03"
+        class="archive-module-month-title archive-module-month-2022-3">2022 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2022/02"
+        class="archive-module-month-title archive-module-month-2022-2">2022 /
+        2</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2021"
+    class="archive-module-year-title archive-module-year-2021">2021</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/12"
+        class="archive-module-month-title archive-module-month-2021-12">2021 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/11"
+        class="archive-module-month-title archive-module-month-2021-11">2021 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/10"
+        class="archive-module-month-title archive-module-month-2021-10">2021 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/09"
+        class="archive-module-month-title archive-module-month-2021-9">2021 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/08"
+        class="archive-module-month-title archive-module-month-2021-8">2021 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/07"
+        class="archive-module-month-title archive-module-month-2021-7">2021 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/06"
+        class="archive-module-month-title archive-module-month-2021-6">2021 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/05"
+        class="archive-module-month-title archive-module-month-2021-5">2021 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/04"
+        class="archive-module-month-title archive-module-month-2021-4">2021 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/03"
+        class="archive-module-month-title archive-module-month-2021-3">2021 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/02"
+        class="archive-module-month-title archive-module-month-2021-2">2021 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2021/01"
+        class="archive-module-month-title archive-module-month-2021-1">2021 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2020"
+    class="archive-module-year-title archive-module-year-2020">2020</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/12"
+        class="archive-module-month-title archive-module-month-2020-12">2020 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/11"
+        class="archive-module-month-title archive-module-month-2020-11">2020 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/10"
+        class="archive-module-month-title archive-module-month-2020-10">2020 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/09"
+        class="archive-module-month-title archive-module-month-2020-9">2020 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/08"
+        class="archive-module-month-title archive-module-month-2020-8">2020 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/07"
+        class="archive-module-month-title archive-module-month-2020-7">2020 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/06"
+        class="archive-module-month-title archive-module-month-2020-6">2020 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/05"
+        class="archive-module-month-title archive-module-month-2020-5">2020 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/04"
+        class="archive-module-month-title archive-module-month-2020-4">2020 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/03"
+        class="archive-module-month-title archive-module-month-2020-3">2020 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/02"
+        class="archive-module-month-title archive-module-month-2020-2">2020 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2020/01"
+        class="archive-module-month-title archive-module-month-2020-1">2020 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2019"
+    class="archive-module-year-title archive-module-year-2019">2019</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/12"
+        class="archive-module-month-title archive-module-month-2019-12">2019 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/11"
+        class="archive-module-month-title archive-module-month-2019-11">2019 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/10"
+        class="archive-module-month-title archive-module-month-2019-10">2019 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/09"
+        class="archive-module-month-title archive-module-month-2019-9">2019 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/08"
+        class="archive-module-month-title archive-module-month-2019-8">2019 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/07"
+        class="archive-module-month-title archive-module-month-2019-7">2019 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/06"
+        class="archive-module-month-title archive-module-month-2019-6">2019 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/05"
+        class="archive-module-month-title archive-module-month-2019-5">2019 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/04"
+        class="archive-module-month-title archive-module-month-2019-4">2019 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/03"
+        class="archive-module-month-title archive-module-month-2019-3">2019 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/02"
+        class="archive-module-month-title archive-module-month-2019-2">2019 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2019/01"
+        class="archive-module-month-title archive-module-month-2019-1">2019 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2018"
+    class="archive-module-year-title archive-module-year-2018">2018</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/12"
+        class="archive-module-month-title archive-module-month-2018-12">2018 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/11"
+        class="archive-module-month-title archive-module-month-2018-11">2018 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/10"
+        class="archive-module-month-title archive-module-month-2018-10">2018 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/09"
+        class="archive-module-month-title archive-module-month-2018-9">2018 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/08"
+        class="archive-module-month-title archive-module-month-2018-8">2018 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/07"
+        class="archive-module-month-title archive-module-month-2018-7">2018 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/06"
+        class="archive-module-month-title archive-module-month-2018-6">2018 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/05"
+        class="archive-module-month-title archive-module-month-2018-5">2018 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/04"
+        class="archive-module-month-title archive-module-month-2018-4">2018 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/03"
+        class="archive-module-month-title archive-module-month-2018-3">2018 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/02"
+        class="archive-module-month-title archive-module-month-2018-2">2018 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2018/01"
+        class="archive-module-month-title archive-module-month-2018-1">2018 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2017"
+    class="archive-module-year-title archive-module-year-2017">2017</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/12"
+        class="archive-module-month-title archive-module-month-2017-12">2017 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/11"
+        class="archive-module-month-title archive-module-month-2017-11">2017 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/10"
+        class="archive-module-month-title archive-module-month-2017-10">2017 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/09"
+        class="archive-module-month-title archive-module-month-2017-9">2017 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/08"
+        class="archive-module-month-title archive-module-month-2017-8">2017 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/07"
+        class="archive-module-month-title archive-module-month-2017-7">2017 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/06"
+        class="archive-module-month-title archive-module-month-2017-6">2017 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/05"
+        class="archive-module-month-title archive-module-month-2017-5">2017 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/04"
+        class="archive-module-month-title archive-module-month-2017-4">2017 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/03"
+        class="archive-module-month-title archive-module-month-2017-3">2017 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/02"
+        class="archive-module-month-title archive-module-month-2017-2">2017 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2017/01"
+        class="archive-module-month-title archive-module-month-2017-1">2017 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2016"
+    class="archive-module-year-title archive-module-year-2016">2016</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/12"
+        class="archive-module-month-title archive-module-month-2016-12">2016 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/11"
+        class="archive-module-month-title archive-module-month-2016-11">2016 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/10"
+        class="archive-module-month-title archive-module-month-2016-10">2016 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/09"
+        class="archive-module-month-title archive-module-month-2016-9">2016 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/08"
+        class="archive-module-month-title archive-module-month-2016-8">2016 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/07"
+        class="archive-module-month-title archive-module-month-2016-7">2016 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/06"
+        class="archive-module-month-title archive-module-month-2016-6">2016 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/05"
+        class="archive-module-month-title archive-module-month-2016-5">2016 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/04"
+        class="archive-module-month-title archive-module-month-2016-4">2016 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/03"
+        class="archive-module-month-title archive-module-month-2016-3">2016 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/02"
+        class="archive-module-month-title archive-module-month-2016-2">2016 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2016/01"
+        class="archive-module-month-title archive-module-month-2016-1">2016 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2015"
+    class="archive-module-year-title archive-module-year-2015">2015</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/12"
+        class="archive-module-month-title archive-module-month-2015-12">2015 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/11"
+        class="archive-module-month-title archive-module-month-2015-11">2015 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/10"
+        class="archive-module-month-title archive-module-month-2015-10">2015 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/09"
+        class="archive-module-month-title archive-module-month-2015-9">2015 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/07"
+        class="archive-module-month-title archive-module-month-2015-7">2015 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/06"
+        class="archive-module-month-title archive-module-month-2015-6">2015 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/05"
+        class="archive-module-month-title archive-module-month-2015-5">2015 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/04"
+        class="archive-module-month-title archive-module-month-2015-4">2015 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/03"
+        class="archive-module-month-title archive-module-month-2015-3">2015 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/02"
+        class="archive-module-month-title archive-module-month-2015-2">2015 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2015/01"
+        class="archive-module-month-title archive-module-month-2015-1">2015 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2014"
+    class="archive-module-year-title archive-module-year-2014">2014</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/12"
+        class="archive-module-month-title archive-module-month-2014-12">2014 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/11"
+        class="archive-module-month-title archive-module-month-2014-11">2014 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/10"
+        class="archive-module-month-title archive-module-month-2014-10">2014 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/09"
+        class="archive-module-month-title archive-module-month-2014-9">2014 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/08"
+        class="archive-module-month-title archive-module-month-2014-8">2014 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/07"
+        class="archive-module-month-title archive-module-month-2014-7">2014 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/06"
+        class="archive-module-month-title archive-module-month-2014-6">2014 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/05"
+        class="archive-module-month-title archive-module-month-2014-5">2014 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/04"
+        class="archive-module-month-title archive-module-month-2014-4">2014 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/03"
+        class="archive-module-month-title archive-module-month-2014-3">2014 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/02"
+        class="archive-module-month-title archive-module-month-2014-2">2014 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2014/01"
+        class="archive-module-month-title archive-module-month-2014-1">2014 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2013"
+    class="archive-module-year-title archive-module-year-2013">2013</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/12"
+        class="archive-module-month-title archive-module-month-2013-12">2013 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/11"
+        class="archive-module-month-title archive-module-month-2013-11">2013 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/10"
+        class="archive-module-month-title archive-module-month-2013-10">2013 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/09"
+        class="archive-module-month-title archive-module-month-2013-9">2013 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/08"
+        class="archive-module-month-title archive-module-month-2013-8">2013 /
+        8</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/07"
+        class="archive-module-month-title archive-module-month-2013-7">2013 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/06"
+        class="archive-module-month-title archive-module-month-2013-6">2013 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/05"
+        class="archive-module-month-title archive-module-month-2013-5">2013 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/04"
+        class="archive-module-month-title archive-module-month-2013-4">2013 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/03"
+        class="archive-module-month-title archive-module-month-2013-3">2013 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/02"
+        class="archive-module-month-title archive-module-month-2013-2">2013 /
+        2</a>
+    -   <a href="https://blog.cybozu.io/archive/2013/01"
+        class="archive-module-month-title archive-module-month-2013-1">2013 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2012"
+    class="archive-module-year-title archive-module-year-2012">2012</a>
+    -   <a href="https://blog.cybozu.io/archive/2012/12"
+        class="archive-module-month-title archive-module-month-2012-12">2012 /
+        12</a>
+    -   <a href="https://blog.cybozu.io/archive/2012/11"
+        class="archive-module-month-title archive-module-month-2012-11">2012 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2012/10"
+        class="archive-module-month-title archive-module-month-2012-10">2012 /
+        10</a>
+    -   <a href="https://blog.cybozu.io/archive/2012/09"
+        class="archive-module-month-title archive-module-month-2012-9">2012 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2012/06"
+        class="archive-module-month-title archive-module-month-2012-6">2012 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2012/04"
+        class="archive-module-month-title archive-module-month-2012-4">2012 /
+        4</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2011"
+    class="archive-module-year-title archive-module-year-2011">2011</a>
+    -   <a href="https://blog.cybozu.io/archive/2011/11"
+        class="archive-module-month-title archive-module-month-2011-11">2011 /
+        11</a>
+    -   <a href="https://blog.cybozu.io/archive/2011/07"
+        class="archive-module-month-title archive-module-month-2011-7">2011 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2011/04"
+        class="archive-module-month-title archive-module-month-2011-4">2011 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2011/03"
+        class="archive-module-month-title archive-module-month-2011-3">2011 /
+        3</a>
+    -   <a href="https://blog.cybozu.io/archive/2011/02"
+        class="archive-module-month-title archive-module-month-2011-2">2011 /
+        2</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2010"
+    class="archive-module-year-title archive-module-year-2010">2010</a>
+    -   <a href="https://blog.cybozu.io/archive/2010/06"
+        class="archive-module-month-title archive-module-month-2010-6">2010 /
+        6</a>
+    -   <a href="https://blog.cybozu.io/archive/2010/05"
+        class="archive-module-month-title archive-module-month-2010-5">2010 /
+        5</a>
+    -   <a href="https://blog.cybozu.io/archive/2010/04"
+        class="archive-module-month-title archive-module-month-2010-4">2010 /
+        4</a>
+    -   <a href="https://blog.cybozu.io/archive/2010/02"
+        class="archive-module-month-title archive-module-month-2010-2">2010 /
+        2</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://blog.cybozu.io/archive/2009"
+    class="archive-module-year-title archive-module-year-2009">2009</a>
+    -   <a href="https://blog.cybozu.io/archive/2009/09"
+        class="archive-module-month-title archive-module-month-2009-9">2009 /
+        9</a>
+    -   <a href="https://blog.cybozu.io/archive/2009/07"
+        class="archive-module-month-title archive-module-month-2009-7">2009 /
+        7</a>
+    -   <a href="https://blog.cybozu.io/archive/2009/05"
+        class="archive-module-month-title archive-module-month-2009-5">2009 /
+        5</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="bottom-editarea" markdown="1">
+
+<div class="entry-footer-section" markdown="1">
+
+<a href="http://cybozu.co.jp/" target="_blank"
+rel="noreferrer">サイボウズ株式会社</a>
+
+<a href="http://labs.cybozu.co.jp/" target="_blank"
+rel="noreferrer">サイボウズ・ラボ株式会社</a>
+
+<a href="https://cybozu.co.jp/recruit/" target="_blank"
+rel="noreferrer">採用情報</a>
+
+[プライバシーポリシー](http://blog.cybozu.io/entry/privacy)
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="quote-box" markdown="1">
+
+<div class="tooltip-quote tooltip-quote-stock" markdown="1">
+
+</div>
+
+<div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet"
+markdown="1">
+
+<span class="js-tweet-quote" target="_blank" track-name="quote-tweet"
+track-once="">![](https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8 "引用して投稿する")</span>
+
+</div>
+
+</div>
+
+<div id="quote-stock-message-box" class="quote-stock-panel" markdown="1"
+style="position: absolute; z-index: 3000">
+
+<div id="quote-stock-succeeded-message" class="message-box" markdown="1"
+style="display: none">
+
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+</div>
+
+<div id="quote-login-required-message" class="message-box" markdown="1"
+style="display: none">
+
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+</div>
+
+<div id="quote-stock-failed-message" class="error-box" markdown="1"
+style="display: none">
+
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+</div>
+
+<div id="unstockable-quote-message-box" class="error-box" markdown="1"
+style="display: none; position: absolute; z-index: 3000;">
+
+限定公開記事のため引用できません。
+
+</div>
+
+</div>
+
+<div id="hidden-subscribe-button" markdown="1" style="display: none;">
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+</div>

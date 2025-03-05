@@ -1,0 +1,1183 @@
+<div id="globalheader-container" markdown="1" brand="hatenablog">
+
+</div>
+
+<div class="blog-controlls-blog-icon" markdown="1">
+
+[![y-kawazの日記](https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png)](https://y-kawaz.hatenadiary.org/)
+
+</div>
+
+<div class="blog-controlls-title" markdown="1">
+
+[y-kawazの日記](https://y-kawaz.hatenadiary.org/)
+
+</div>
+
+<a
+href="https://blog.hatena.ne.jp/y-kawaz/y-kawaz.hatenadiary.org/subscribe?utm_medium=button&amp;utm_campaign=subscribe_blog&amp;utm_source=blogs_topright_button"
+class="blog-controlls-subscribe-btn test-blog-header-controlls-subscribe">読者になる</a>
+
+<div id="container" markdown="1">
+
+<div id="container-inner" markdown="1">
+
+<div id="blog-title" markdown="1" brand="hatenablog">
+
+<div id="blog-title-inner" markdown="1">
+
+<div id="blog-title-content" markdown="1">
+
+# [y-kawazの日記](https://y-kawaz.hatenadiary.org/) [title]
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content" class="hfeed" markdown="1">
+
+<div id="content-inner" markdown="1">
+
+<div id="wrapper" markdown="1">
+
+<div id="main" markdown="1">
+
+<div id="main-inner" markdown="1">
+
+<div class="entry-inner" markdown="1">
+
+<div class="entry-content" markdown="1">
+
+<div class="variable-mobileWeb-ad" markdown="1">
+
+<div id="google_afc_user_container_0" class="sleeping-ad" markdown="1"
+style="display: block !important;">
+
+</div>
+
+</div>
+
+この広告は、90日以上更新していないブログに表示しています。
+
+</div>
+
+</div>
+
+<div class="entry-inner" markdown="1">
+
+<div class="entry-header" markdown="1">
+
+<div class="date entry-date first" markdown="1">
+
+<a href="https://y-kawaz.hatenadiary.org/archive/2010/07/20"
+rel="nofollow"><span class="date-year">2010</span><span
+class="hyphen">-</span><span class="date-month">07</span><span
+class="hyphen">-</span><span class="date-day">20</span></a>
+
+</div>
+
+# <a href="https://y-kawaz.hatenadiary.org/entry/20100720/1279607344"
+class="entry-title-link bookmark">bashの配列変数に関するTips</a> [bashの配列変数に関するtips]
+
+<div class="entry-categories categories" markdown="1">
+
+<a href="https://y-kawaz.hatenadiary.org/archive/category/Linux"
+class="entry-category-link category-Linux">Linux</a>
+
+</div>
+
+</div>
+
+<div class="entry-content hatenablog-entry" markdown="1">
+
+<div class="section" markdown="1">
+
+#### 序文（飛ばしてよし）
+
+まず話は僕が書いてた<a href="https://d.hatena.ne.jp/keyword/%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8"
+class="keyword">スクリプト</a>で、引数から"最後の"値だけを分離したものを使いたかったってのが始まりです。  
+最初の引数の分離なら shift
+でいけるんだが、最後をいきなり分離するのが直接は出来ないっぽいので、格闘の結果以下のように解決しました。
+
+``` code
+#!/bin/sh
+ARGS=("$@")
+echo "最後以外: ${ARGS[@]:0:((${#ARGS[@]}-1))}"
+echo "最後のみ: ${ARGS[((${#ARGS[@]}-1))]}"
+echo "最後のみ: ${ARGS[-1]}" # bash-4.2 以降なら負のインデックスが使える!
+```
+
+以下が上記<a href="https://d.hatena.ne.jp/keyword/%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8"
+class="keyword">スクリプト</a>の実行結果です。
+
+    $ ./test.sh a b c d
+    最後以外: a b c
+    最後のみ: d
+
+やっていることは、まず引数をARGVという配列変数に詰めなおして、その後配列変数に対するスライスや引数処理で欲しい値を取得してます。  
+配列変数なんて滅多に扱わないだろうし特有の表現もあるしで、詳しくない人は意味不明ですよね(\^\^;  
+なので備忘録としてここで使ってるTipsを以下に纏めておきます。
+
+<div class="section" markdown="1">
+
+##### よく考えたら配列に詰め直す必要なかったわ
+
+``` code
+#!/bin/sh
+echo "最後以外: " "${@:1:$#-1}"
+echo "最後のみ: " "${@:$#}"
+```
+
+引数処理だと\$1に1番目の引数が入ってて、配列変数の場合だとインデックスは0から始まるから、インデックス処理が1個ずれるのがポイントだな。
+
+ちなみに文字列の一部として展開したい場合は@じゃなく以下のように\*を使ったほうが良い。
+
+``` code
+#!/bin/sh
+echo "最後以外: ${*:1:$#-1}"
+echo "最後のみ: ${*:$#}"
+```
+
+ちなみに上記2つの<a href="https://d.hatena.ne.jp/keyword/%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8"
+class="keyword">スクリプト</a>にを仮に atmark.sh と
+<a href="https://d.hatena.ne.jp/keyword/asterisk"
+class="keyword">asterisk</a>.sh とした場合以下の様な違いが出るよ。
+
+``` code
+sh atmark.sh a b c d
+# ↑これは↓こう解釈される
+echo "最後以外: a" "b" "c" 
+echo "最後のみ: d"
+
+sh asterisk.sh a b c d
+# ↑これは↓こう解釈される
+echo "最後以外: a b c" 
+echo "最後のみ: d"
+```
+
+</div>
+
+</div>
+
+<div class="section" markdown="1">
+
+#### 普通の配列（インデックス配列）
+
+例を見たほうが早いと思うので早速…
+
+``` code
+# 要素数3の配列を作成
+ARRAY=(a b "c c c")
+
+# 値の取得
+echo ${ARRAY[0]}  # -> a
+echo ${ARRAY[1]}  # -> b
+echo ${ARRAY[2]}  # -> c c c
+echo ${ARRAY[3]}  # -> (空)
+
+# 配列サイズの取得
+echo ${#ARRAY[@]}  # -> 3
+
+# 配列の全ての値を取得（@と*はダブルクオートで囲った時の動作が異なる）
+echo ${ARRAY[@]}    # echo a b c c c と同じ
+echo ${ARRAY[*]}    # echo a b c c c と同じ
+echo "${ARRAY[@]}"  # echo a b "c c c" と同じ
+echo "${ARRAY[*]}"  # echo "a b c c c" と同じ
+
+# 配列の値を書き換える
+ARRAY[0]=A  # -> ARRAY=(A b "c c c")
+
+# 配列に値をインデックス指定で追加する１（最後のインデックス+1のインデックスを指定する）
+ARRAY[3]=d  # -> ARRAY=(A b "c c c" d)
+
+# ループで回す１（ダブルクオートで囲まない場合は@も*も同じ動作で、全て空白展開された後に解釈される）
+for v in ${ARRAY[@]}; do
+  echo "$v"
+done
+# a
+# b
+# c
+# c
+# c
+
+# ループで回す２（[@]をダブルクオートで囲むと配列の値が１つずつ取り出せる）
+for v in "${ARRAY[@]}"; do
+  echo "$v"
+done
+# a
+# b
+# c c c
+
+# ループで回す３（[*]をダブルクオートで囲むと1つの文字列になるだけなので１回しかループしない）
+for v in "${ARRAY[*]}"; do
+  echo "$v"
+done
+# a b c c c
+
+# 配列に値をconcat的に追加する（複数の値を纏めて追加もできる）
+ARRAY+=(e)   # -> ARRAY=(A b "c c c" d e)
+ARRAY+=(f g) # -> ARRAY=(A b "c c c" d e f g)
+
+# 最後の値を取得する（配列サイズを取得する式を使って以下のようにすれば最後の値の取得もできます）
+echo ${ARRAY[((${#ARRAY[@]}-1))]}  # -> g
+
+# 配列をコピーする
+A2=("$ARRAY[@]")  # -> A2=(A b "c c c" d e f g)
+
+# 配列の一部分だけをスライスして取得する
+echo ${ARRAY[@]:0:2}  # -> A b (インデックス0から2個取り出す)
+echo ${ARRAY[@]:1:3}  # -> b c c c d (インデックス1から3個取り出す)
+echo ${ARRAY[@]:4}    # -> d e f g (第2引数を省略すると最後までの意)
+echo ${ARRAY[@]:-1}   # -> (空) (マイナス表現で最後の値を取得するようなことは残念ながら出来ません)
+
+# 配列の各値に対して置換や前方一致削除や後方一致削除等の式を適用することも可能です
+ARRAY=(/bin /usr/bin /usr/local/bin)
+echo ${ARRAY[@]/bin/lib}  # -> /lib /usr/lib /usr/local/lib (文字列置換)
+echo ${ARRAY[@]#*/}       # -> bin usr/bin usr/local/bin    (最短前方一致削除)
+echo ${ARRAY[@]##*/}      # -> bin bin bin                  (最長前方一致削除)
+echo ${ARRAY[@]%[a-z]*}   # -> /bi /usr/bi /usr/local/bi    (最短後方一致削除)
+echo ${ARRAY[@]%%[a-z]*}  # -> / / /                        (最長後方一致削除)
+
+# なんかキモイので僕は余り使わないが配列変数に引数無しでアクセスすると
+# 最初の値に対する操作と同じ意味になる。
+ARRAY=(a b c)
+echo $ARRAY        # -> a (最初の値が返される)
+ARRAY=A            # これは ARRAY[0]=A と同じ
+echo "${ARRAY[@]}" # -> A b c (最初の値だけが変更されている)
+
+# インデックスを飛ばすことも出来る
+ARRAY=(a b)
+ARRAY[100]=c
+echo ${ARRAY[0]}   # -> a
+echo ${ARRAY[1]}   # -> b
+echo ${ARRAY[2]}   # -> (空)
+echo ${ARRAY[100]} # -> c
+echo ${ARRAY[@]}   # -> a b c    # インデックス順で取得される
+echo ${#ARRAY[@]}  # -> 3        # 配列サイズはインデックスが飛んでても正しいサイズ
+echo ${!ARRAY[@]}  # -> 0 1 100  # キー一覧は飛んだ値になる
+```
+
+</div>
+
+<div class="section" markdown="1">
+
+#### <a href="https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3"
+class="keyword">連想配列</a>
+
+<a href="https://d.hatena.ne.jp/keyword/bash" class="keyword">bash</a>では<a href="https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3"
+class="keyword">連想配列</a>も使えます。<span class="deco"
+style="color:#FF0000;">※残念ながら<a href="https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3"
+class="keyword">連想配列</a>は<a href="https://d.hatena.ne.jp/keyword/bash" class="keyword">bash</a>
+4.x以上でしか使えません。古い<a href="https://d.hatena.ne.jp/keyword/bash" class="keyword">bash</a>ではdeclare
+-Aをした時点でinvalid optionエラーになります。</span>  
+<a href="https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3"
+class="keyword">連想配列</a>を使う場合は変数に<a href="https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3"
+class="keyword">連想配列</a>だよーという属性を追加するためにdeclare
+-Aをしてやる必要があります。
+
+``` code
+# 連想配列だよーと宣言(必須)
+declare -A HASH
+
+# 代入
+HASH[foo]=bar
+HASH[a]=1
+HASH[2]=ni # declare -Aで連想配列化されてる場合は数字添字も単に文字列キーとして扱われる
+
+# 利用
+echo ${HASH[foo]} # -> bar
+echo ${HASH[a]}   # -> 1
+echo ${HASH[2]}   # -> ni
+
+# まとめて代入も出来ます
+HASH=([one]=1 [two]=2 [three]=3)
+echo ${HASH[one]}   # -> 1
+echo ${HASH[two]}   # -> 2
+echo ${HASH[three]} # -> 3
+
+# 同じ書式で、declareと同時に初期化もできます
+declare -A H2=([tatuya]=dead [takuya]=alive [minami]=alive)
+
+# インデックス配列と同じようにconcat的な追加もできます
+HASH+=([four]=4 [five]=5) 
+
+# 値の列挙もインデックス配列と同じように[@]や[*]で出来ます(ただし順不同)
+echo ${HASH[@]} # -> 4 1 5 2 3
+
+# 配列サイズもインデックス配列の時と同じように#で出来ます
+echo ${#HASH[@]} # -> 5
+
+# キーの列挙も出来ます（ただし順不同）
+echo ${!HASH[@]} # -> four one five two three
+
+# 特定のキーを削除するには添字指定で unset すればよい
+unset HASH[one]
+echo ${HASH[@]}  # -> 4 5 2 3
+echo ${!HASH[@]} # -> four five two three
+
+# foreach的なループをしてみる
+for key in "${!HASH[@]}";do
+  value="${HASH[$key]}"
+  echo "$key is $value"
+done
+# four is 4
+# five is 5
+# two is 2
+# three is 3
+```
+
+</div>
+
+<div class="section" markdown="1">
+
+#### その他：配列な特殊変数
+
+配列変数の扱いからはちょっと外れるけど配列繋がりってことで…
+
+-   \$PIPESTATUS という特殊変数の紹介。知ってると結構便利。
+
+``` code
+echo foo | grep foo | grep bar | cat
+echo ${PIPESTATUS[@]} # -> 0 0 1 0 (直前のパイプの各コマンドの終了コードが個別に取れる)
+echo foo | grep foo | grep bar | cat
+echo ${PIPESTATUS[2]} # -> 1 (配列変数なので一部のみを狙って取れる)
+```
+
+</div>
+
+<div class="section" markdown="1">
+
+#### さいごに
+
+慣れれば配列を使えるというのはやはり便利ではありますが、知らないとイミフなので他人が見る可能性のある各所に説明もしくは以下のようなコメントををつけておくのが無難でしょうｗ
+
+``` code
+# 配列操作に関してはココを参照＞http://bit.ly/SLZ3Gx
+```
+
+</div>
+
+</div>
+
+<div class="entry-tags-wrapper" markdown="1">
+
+<div class="entry-tags" markdown="1">
+
+</div>
+
+</div>
+
+<span class="author vcard"><span class="fn" load-nickname="1"
+user-name="y-kawaz">y-kawaz</span></span>
+<span class="entry-footer-time">[2010-07-20
+15:29](https://y-kawaz.hatenadiary.org/entry/20100720/1279607344)</span>
+<span class="entry-footer-subscribe" test-blog-controlls-subscribe="">
+[読者になる](https://blog.hatena.ne.jp/y-kawaz/y-kawaz.hatenadiary.org/subscribe?utm_medium=button&utm_campaign=subscribe_blog&utm_source=blogs_entry_footer)
+</span>
+
+<div class="hatena-star-container" markdown="1" hatena-star-container=""
+hatena-star-url="https://y-kawaz.hatenadiary.org/entry/20100720/1279607344"
+hatena-star-title="bashの配列変数に関するTips"
+hatena-star-variant="profile-icon"
+hatena-star-profile-url-template="https://blog.hatena.ne.jp/{username}/">
+
+</div>
+
+<div class="social-buttons" markdown="1">
+
+<div class="social-button-item" markdown="1">
+
+<a
+href="https://b.hatena.ne.jp/entry/s/y-kawaz.hatenadiary.org/entry/20100720/1279607344"
+class="hatena-bookmark-button"
+data-hatena-bookmark-url="https://y-kawaz.hatenadiary.org/entry/20100720/1279607344"
+data-hatena-bookmark-layout="vertical-balloon"
+data-hatena-bookmark-lang="ja"
+title="この記事をはてなブックマークに追加"><img
+src="https://b.st-hatena.com/images/entry-button/button-only.gif"
+style="border: none;" width="20" height="20"
+alt="この記事をはてなブックマークに追加" /></a>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<div class="fb-share-button" markdown="1" layout="box_count"
+data-href="https://y-kawaz.hatenadiary.org/entry/20100720/1279607344">
+
+</div>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=bash%E3%81%AE%E9%85%8D%E5%88%97%E5%A4%89%E6%95%B0%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8BTips+-+y-kawaz%E3%81%AE%E6%97%A5%E8%A8%98&amp;url=https%3A%2F%2Fy-kawaz.hatenadiary.org%2Fentry%2F20100720%2F1279607344"
+class="entry-share-button entry-share-button-twitter test-share-button-twitter"
+title="X（Twitter）で投稿する"></a>
+
+</div>
+
+</div>
+
+<div class="google-afc-image test-google-rectangle-ads" markdown="1">
+
+<div id="google_afc_user_container_1"
+class="google-afc-user-container google_afc_blocklink2_5 google_afc_boder"
+markdown="1" test-unit="/4374287/blog_user">
+
+</div>
+
+<a href="http://blog.hatena.ne.jp/guide/pro" class="open-pro-modal"
+data-guide-pro-modal-ad-url="https://hatena.blog/guide/pro/modal/ad">広告を非表示にする</a>
+
+</div>
+
+<div class="customized-footer" markdown="1">
+
+<div id="entry-footer-secondary-modules" class="entry-footer-modules"
+markdown="1">
+
+<div class="hatena-module hatena-module-related-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+関連記事
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20110324/1300983699"
+    class="urllist-image-link related-entries-image-link"><img
+    src="https://cdn.image.st-hatena.com/image/square/e2aeeecaa517a636e116aa24b8c5a7caf2c5660f/backend=imagemagick;height=100;version=1;width=100/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fy-kawaz%2F20110325%2F20110325012003.jpg"
+    title="東京Node学園1時限目行ってきましたメモ"
+    class="urllist-image related-entries-image" loading="lazy" width="100"
+    height="100" alt="東京Node学園1時限目行ってきましたメモ" /></a>
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2011/03/24"
+    rel="nofollow">2011-03-24</a>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20110324/1300983699"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">東京Node学園1時限目行ってきましたメモ</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    Node.jsの勉強会イベント『東京Node学園1時限目』に行ってきま…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2011/01/23"
+    rel="nofollow">2011-01-23</a>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20110123/1295779916"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">Linuxでうっかりrm
+    -rfしちゃったけど復活出来たよー＼(＾o＾)／</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    サーバのファイル整理作業をしていたところ…、 間違えてrm -rf…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20100416/1271401890"
+    class="urllist-image-link related-entries-image-link"><img
+    src="https://cdn.image.st-hatena.com/image/square/ff4c3959a24f2d8383f2939997235eb84c1284d4/backend=imagemagick;height=100;version=1;width=100/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fy-kawaz%2F20100416%2F20100416154640.png"
+    title="GAE/J使いの為のインデックス削除ツール"
+    class="urllist-image related-entries-image" loading="lazy" width="100"
+    height="100" alt="GAE/J使いの為のインデックス削除ツール" /></a>
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2010/04/16"
+    rel="nofollow">2010-04-16</a>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20100416/1271401890"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">GAE/J使いの為のインデックス削除ツール</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    pythonで開発している場合は appcfg.py vacuum_indexes がある…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2009/11/11"
+    rel="nofollow">2009-11-11</a>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20091111/1257961854"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">Go言語を試す</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    昨日はたまたま休暇を取って1日外で遊んでいたので、Go言語の発…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2009/08/26"
+    rel="nofollow">2009-08-26</a>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20090826/1251267667"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">ls
+    ~ を晒してみる</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    そんことをしてる人が居たので自分もやってみた。 \[kawaz@r2 \~\]…
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="comment-box js-comment-box" markdown="1">
+
+-   もっと読む
+
+<span class="leave-comment-title js-leave-comment-title">コメントを書く</span>
+
+</div>
+
+</div>
+
+<div class="pager pager-permalink permalink" markdown="1">
+
+<span class="pager-prev">
+<a href="https://y-kawaz.hatenadiary.org/entry/20100723/1279884736"
+rel="prev"><span class="pager-arrow">« </span>
+ツイッターの現在地を更新するWEBアプリ書…</a> </span>
+<span class="pager-next">
+<a href="https://y-kawaz.hatenadiary.org/entry/20100712/1278927498"
+rel="next">アメリカの表現規制ってこんな酷いの！？ <span
+class="pager-arrow"> »</span></a> </span>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="box1-inner" markdown="1">
+
+</div>
+
+</div>
+
+<div id="box2-inner" markdown="1">
+
+<div class="hatena-module hatena-module-profile" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+プロフィール
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+<a href="https://y-kawaz.hatenadiary.org/about"
+class="profile-icon-link"><img
+src="https://cdn.profile-image.st-hatena.com/users/y-kawaz/profile.png"
+class="profile-icon" alt="id:y-kawaz" /></a> <span class="id">
+<a href="https://y-kawaz.hatenadiary.org/about"
+class="hatena-id-link"><span data-load-nickname="1"
+data-user-name="y-kawaz">id:y-kawaz</span></a> </span>
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+<div class="profile-about" markdown="1">
+
+[このブログについて](https://y-kawaz.hatenadiary.org/about)
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-search-box" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+検索
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-links" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+リンク
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   [はてなブログ](https://hatena.blog/)
+-   [ブログをはじめる](https://hatena.blog/guide?via=200109)
+-   [週刊はてなブログ](http://blog.hatenablog.com)
+-   [はてなブログPro](https://hatena.blog/guide/pro)
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-recent-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+[最新記事](https://y-kawaz.hatenadiary.org/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20150111/1420981715"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">スマホ版はてなのコレな！</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20150111/1420981713"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">スマホ版はてなのコレな！</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20140331/1396250718"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">引っ越し、というか</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20130319/1363672391"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">tmuxのステータスラインの色を起動したホスト毎に変える</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://y-kawaz.hatenadiary.org/entry/20130308/1362735393"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">tmuxでマウスモードのON/OFFを単一キーで簡単に切り替えたい！</a>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-archive" markdown="1"
+archive-type="default"
+archive-url="https://y-kawaz.hatenadiary.org/archive">
+
+<div class="hatena-module-title" markdown="1">
+
+[月別アーカイブ](https://y-kawaz.hatenadiary.org/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2015"
+    class="archive-module-year-title archive-module-year-2015">2015</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2015/01"
+        class="archive-module-month-title archive-module-month-2015-1">2015 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2014"
+    class="archive-module-year-title archive-module-year-2014">2014</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2014/03"
+        class="archive-module-month-title archive-module-month-2014-3">2014 /
+        3</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2013"
+    class="archive-module-year-title archive-module-year-2013">2013</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2013/03"
+        class="archive-module-month-title archive-module-month-2013-3">2013 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2013/02"
+        class="archive-module-month-title archive-module-month-2013-2">2013 /
+        2</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2012"
+    class="archive-module-year-title archive-module-year-2012">2012</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2012/06"
+        class="archive-module-month-title archive-module-month-2012-6">2012 /
+        6</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2012/05"
+        class="archive-module-month-title archive-module-month-2012-5">2012 /
+        5</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2012/03"
+        class="archive-module-month-title archive-module-month-2012-3">2012 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2012/01"
+        class="archive-module-month-title archive-module-month-2012-1">2012 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2011"
+    class="archive-module-year-title archive-module-year-2011">2011</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/11"
+        class="archive-module-month-title archive-module-month-2011-11">2011 /
+        11</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/10"
+        class="archive-module-month-title archive-module-month-2011-10">2011 /
+        10</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/09"
+        class="archive-module-month-title archive-module-month-2011-9">2011 /
+        9</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/07"
+        class="archive-module-month-title archive-module-month-2011-7">2011 /
+        7</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/06"
+        class="archive-module-month-title archive-module-month-2011-6">2011 /
+        6</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/05"
+        class="archive-module-month-title archive-module-month-2011-5">2011 /
+        5</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/04"
+        class="archive-module-month-title archive-module-month-2011-4">2011 /
+        4</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/03"
+        class="archive-module-month-title archive-module-month-2011-3">2011 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/02"
+        class="archive-module-month-title archive-module-month-2011-2">2011 /
+        2</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2011/01"
+        class="archive-module-month-title archive-module-month-2011-1">2011 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2010"
+    class="archive-module-year-title archive-module-year-2010">2010</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/12"
+        class="archive-module-month-title archive-module-month-2010-12">2010 /
+        12</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/11"
+        class="archive-module-month-title archive-module-month-2010-11">2010 /
+        11</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/10"
+        class="archive-module-month-title archive-module-month-2010-10">2010 /
+        10</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/09"
+        class="archive-module-month-title archive-module-month-2010-9">2010 /
+        9</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/08"
+        class="archive-module-month-title archive-module-month-2010-8">2010 /
+        8</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/07"
+        class="archive-module-month-title archive-module-month-2010-7">2010 /
+        7</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/06"
+        class="archive-module-month-title archive-module-month-2010-6">2010 /
+        6</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/04"
+        class="archive-module-month-title archive-module-month-2010-4">2010 /
+        4</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/03"
+        class="archive-module-month-title archive-module-month-2010-3">2010 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/02"
+        class="archive-module-month-title archive-module-month-2010-2">2010 /
+        2</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2010/01"
+        class="archive-module-month-title archive-module-month-2010-1">2010 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2009"
+    class="archive-module-year-title archive-module-year-2009">2009</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/12"
+        class="archive-module-month-title archive-module-month-2009-12">2009 /
+        12</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/11"
+        class="archive-module-month-title archive-module-month-2009-11">2009 /
+        11</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/10"
+        class="archive-module-month-title archive-module-month-2009-10">2009 /
+        10</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/09"
+        class="archive-module-month-title archive-module-month-2009-9">2009 /
+        9</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/08"
+        class="archive-module-month-title archive-module-month-2009-8">2009 /
+        8</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/07"
+        class="archive-module-month-title archive-module-month-2009-7">2009 /
+        7</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/06"
+        class="archive-module-month-title archive-module-month-2009-6">2009 /
+        6</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/05"
+        class="archive-module-month-title archive-module-month-2009-5">2009 /
+        5</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/04"
+        class="archive-module-month-title archive-module-month-2009-4">2009 /
+        4</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/03"
+        class="archive-module-month-title archive-module-month-2009-3">2009 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/02"
+        class="archive-module-month-title archive-module-month-2009-2">2009 /
+        2</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2009/01"
+        class="archive-module-month-title archive-module-month-2009-1">2009 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2008"
+    class="archive-module-year-title archive-module-year-2008">2008</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/12"
+        class="archive-module-month-title archive-module-month-2008-12">2008 /
+        12</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/11"
+        class="archive-module-month-title archive-module-month-2008-11">2008 /
+        11</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/10"
+        class="archive-module-month-title archive-module-month-2008-10">2008 /
+        10</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/09"
+        class="archive-module-month-title archive-module-month-2008-9">2008 /
+        9</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/08"
+        class="archive-module-month-title archive-module-month-2008-8">2008 /
+        8</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/07"
+        class="archive-module-month-title archive-module-month-2008-7">2008 /
+        7</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/06"
+        class="archive-module-month-title archive-module-month-2008-6">2008 /
+        6</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/05"
+        class="archive-module-month-title archive-module-month-2008-5">2008 /
+        5</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/04"
+        class="archive-module-month-title archive-module-month-2008-4">2008 /
+        4</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/03"
+        class="archive-module-month-title archive-module-month-2008-3">2008 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/02"
+        class="archive-module-month-title archive-module-month-2008-2">2008 /
+        2</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2008/01"
+        class="archive-module-month-title archive-module-month-2008-1">2008 /
+        1</a>
+
+-   <div class="archive-module-button" markdown="1">
+
+    <span class="archive-module-hide-button">▼</span>
+    <span class="archive-module-show-button">▶</span>
+
+    </div>
+
+    <a href="https://y-kawaz.hatenadiary.org/archive/2007"
+    class="archive-module-year-title archive-module-year-2007">2007</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/12"
+        class="archive-module-month-title archive-module-month-2007-12">2007 /
+        12</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/10"
+        class="archive-module-month-title archive-module-month-2007-10">2007 /
+        10</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/08"
+        class="archive-module-month-title archive-module-month-2007-8">2007 /
+        8</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/07"
+        class="archive-module-month-title archive-module-month-2007-7">2007 /
+        7</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/05"
+        class="archive-module-month-title archive-module-month-2007-5">2007 /
+        5</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/04"
+        class="archive-module-month-title archive-module-month-2007-4">2007 /
+        4</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/03"
+        class="archive-module-month-title archive-module-month-2007-3">2007 /
+        3</a>
+    -   <a href="https://y-kawaz.hatenadiary.org/archive/2007/02"
+        class="archive-module-month-title archive-module-month-2007-2">2007 /
+        2</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer-inner" markdown="1">
+
+<div class="guest-footer js-guide-register test-blogs-register-guide"
+markdown="1" style="display:none !important"
+data-action="guide-register">
+
+<div class="guest-footer-content" markdown="1">
+
+### はてなブログをはじめよう！
+
+y-kawazさんは、はてなブログを使っています。あなたもはてなブログをはじめてみませんか？
+
+<div class="guest-footer-btn-container" markdown="1">
+
+<div class="guest-footer-btn" markdown="1">
+
+<a href="https://blog.hatena.ne.jp/register?via=200227"
+class="btn btn-register js-inherit-ga"
+target="_blank">はてなブログをはじめる（無料）</a>
+
+</div>
+
+<div class="guest-footer-btn" markdown="1">
+
+<a href="https://hatena.blog/guide" target="_blank">はてなブログとは</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+[<img
+src="https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png"
+width="16" height="16" alt="y-kawazの日記" />
+<span class="footer-address-name">y-kawazの日記</span>](https://y-kawaz.hatenadiary.org/)
+
+Powered by [Hatena Blog](https://hatena.blog/) \| <a
+href="https://blog.hatena.ne.jp/-/abuse_report?target_url=https%3A%2F%2Fy-kawaz.hatenadiary.org%2Fentry%2F20100720%2F1279607344"
+class="report-abuse-link test-report-abuse-link"
+target="_blank">ブログを報告する</a>
+
+</div>
+
+<div id="fb-root" markdown="1">
+
+</div>
+
+<div class="quote-box" markdown="1">
+
+<div class="tooltip-quote tooltip-quote-stock" markdown="1">
+
+</div>
+
+<div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet"
+markdown="1">
+
+<span class="js-tweet-quote" target="_blank" track-name="quote-tweet"
+track-once="">![](https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8 "引用して投稿する")</span>
+
+</div>
+
+</div>
+
+<div id="quote-stock-message-box" class="quote-stock-panel" markdown="1"
+style="position: absolute; z-index: 3000">
+
+<div id="quote-stock-succeeded-message" class="message-box" markdown="1"
+style="display: none">
+
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+</div>
+
+<div id="quote-login-required-message" class="message-box" markdown="1"
+style="display: none">
+
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+</div>
+
+<div id="quote-stock-failed-message" class="error-box" markdown="1"
+style="display: none">
+
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+</div>
+
+<div id="unstockable-quote-message-box" class="error-box" markdown="1"
+style="display: none; position: absolute; z-index: 3000;">
+
+限定公開記事のため引用できません。
+
+</div>
+
+</div>
+
+<div id="hidden-subscribe-button" markdown="1" style="display: none;">
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+</div>

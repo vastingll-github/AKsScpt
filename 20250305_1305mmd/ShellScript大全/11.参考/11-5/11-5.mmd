@@ -1,0 +1,2237 @@
+<div markdown="1">
+
+<div id="site-title" markdown="1">
+
+[rcmdnk's blog](/)
+
+</div>
+
+</div>
+
+<div class="main-navigation" markdown="1">
+
+[](/cdn-cgi/l/email-protection#8cfeefe1e8e2e7ccebe1ede5e0a2efe3e1 "Mail")
+[](//twitter.com/rcmdnk "Twitter") [](//github.com/rcmdnk "GitHub")
+[](/atom.xml "RSS")
+<a href="//feedly.com/i/subscription/feed/https://rcmdnk.com/atom.xml"
+class="feedly-link" title="feedly"><span
+class="feedlyimg feedly"></span></a>
+<a href="#" class="add_bookmark" data-page_title="rcmdnk&#39;s blog"
+data-page_url="https://rcmdnk.com" title="Favorite"><em></em></a>
+
+<a href="/blog/archives/" class="link_btn">Archives</a>
+<a href="/share-checker.html" class="link_btn">Share Checker</a>
+<a href="/windows/" class="link_btn">Windows</a>
+<a href="/mac/" class="link_btn">Mac</a>
+<a href="/en/" class="link_btn">English Blog</a>
+
+</div>
+
+<div id="main" markdown="1">
+
+<div id="content" markdown="1">
+
+<div markdown="1" itemscope="" itemtype="https://schema.org/Blog">
+
+<div markdown="1">
+
+<div class="meta" markdown="1">
+
+<span class="byline"><span class="time">15 Jan 2023</span></span>
+
+1.  [Top](/)
+2.  <span class="breadcrumbs_separator"> ›
+    </span>[Computer](/blog/categories/computer/)
+3.  <span class="breadcrumbs_separator"> ›
+    </span>[Bash](/blog/tags/bash/)
+
+</div>
+
+# <a href="/blog/2023/01/15/computer-bash/"
+itemprop="url">シェルスクリプト(主にBash)で文字列前後のスペースを削除する</a> [シェルスクリプト主にbashで文字列前後のスペースを削除する]
+
+</div>
+
+<div class="share-button" markdown="1">
+
+-   <a
+    href="//b.hatena.ne.jp/entry/https://rcmdnk.com/blog/2023/01/15/computer-bash/"
+    target="_blank" title="Save to Hatebu"></a>
+
+    B! <span class="hatebuCount"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/"
+    count="0">0</span>
+
+-   <a
+    href="//twitter.com/intent/tweet?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B&amp;url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&amp;via=rcmdnk"
+    target="_blank" title="Share on Twitter"></a>
+
+    <span class="twitterCount"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/"
+    count="0">0</span>
+
+-   <a
+    href="//www.facebook.com/sharer.php?src=bm&amp;u=https://rcmdnk.com/blog/2023/01/15/computer-bash/&amp;t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B"
+    target="_blank" title="Share on Facebook"></a>
+
+    <span class="facebookCount"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/"
+    count="0">0</span>
+
+-   <a
+    href="//getpocket.com/edit?url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&amp;title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B"
+    target="_blank" title="Save to Pocket"></a>
+
+    <span class="pocketCount"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/"
+    count="0">0</span>
+
+</div>
+
+<div class="entry-content" markdown="1" itemprop="mainEntityOfPage">
+
+<div class="group" markdown="1" itemprop="description">
+
+<div class="amazon-img" markdown="1">
+
+<a
+href="//www.amazon.co.jp/gp/product/B0BB81WBGT?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B0BB81WBGT&amp;linkCode=shr&amp;tag=rcmdnk0c-22"
+rel="nofollow" target="_blank"><img
+src="https://images-na.ssl-images-amazon.com/images/I/61xOuGHlvzL._SS200_.jpg"
+itemprop="image"
+alt="7インチ カーブシザー トリミングシザー 下向き＆上向き兼用 丸い先端 曲がった刃 高級鍛造仕上 ペットハサミ 犬 猫 トリミング ペット用シザー 鋏 （革ケース付き）…" /></a>
+
+</div>
+
+シェルスクリプトの中で文字列の前後のスペースを削除する方法について。
+
+</div>
+
+<div class="group" markdown="1">
+
+-   <a href="#よくあるケース"
+    id="markdown-toc-よくあるケース">よくあるケース</a>
+-   <a href="#echoを使った削除"
+    id="markdown-toc-echoを使った削除">echoを使った削除</a>
+-   <a href="#sedを使った方法"
+    id="markdown-toc-sedを使った方法">sedを使った方法</a>
+-   <a href="#awkを使った方法"
+    id="markdown-toc-awkを使った方法">awkを使った方法</a>
+-   <a href="#trを使った方法"
+    id="markdown-toc-trを使った方法">trを使った方法</a>
+-   <a href="#シェルの変数展開を使う"
+    id="markdown-toc-シェルの変数展開を使う">シェルの変数展開を使う</a>
+-   <a href="#bashのglobを使う"
+    id="markdown-toc-bashのglobを使う">Bashのglobを使う</a>
+-   <a href="#実行時間" id="markdown-toc-実行時間">実行時間</a>
+-   <a href="#まとめ" id="markdown-toc-まとめ">まとめ</a>
+
+<div class="group" markdown="1">
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+## よくあるケース
+
+コマンドの出力の数字を使いたいけどその出力がきれいに見せるためにスペースを入れてくれてる場合など。
+
+BSDの`wc`なんかで
+
+    $ n=$("a b c|wc -w)
+
+とかすると`n`には` 3`が入ります。
+
+また、設定ファイルとかを読み込むようにする場合、
+先頭のスペースや行末のスペースは無視して良いこともあるかと思います。
+
+## echoを使った削除
+
+よくやるのが`echo`を使う方法。
+
+クォートせずに`echo`すると前後のスペース部分は削除されます。
+
+    $ x="  abc  "
+    $ echo "X${x}X"
+    X  abc  X
+    $ y=$(echo $x)
+    $ echo "X${y}X"
+    XabcX
+
+ただし、この方法だと間にスペースがある場合、それらがすべて1つに集約されます。
+
+    $ x="  a b  c   "
+    $ echo "X${x}X"
+    X  a b  c   X
+    $ y=$(echo $x)
+    $ echo "X${y}X"
+    Xa b cX
+
+もし文字列の間のスペースの数にも意味があるとするとこれだと困ります。
+
+一方で、もし、いくつかのスペース区切りの変数を取りたいが、間のスペースはいくつあっても一区切りとみなす、という感じであればむしろ便利に使える場面もあるかもしれません。
+
+また、この場合改行も消えます。
+
+    $ x=" a b
+    > c
+    > "
+    $ echo "X${x}X"
+    X a b
+    c
+    X
+    $ y=$(echo $x)
+    $ echo "X${y}X"
+    Xa b cX
+
+いずれにしろ、`echo`を使った方法は前後のスペースを削除するだけではなく、間のスペースにも影響がある、ということを知っておかないといけません。
+
+また、全角スペースがある場合には残ります。
+
+    $ x="  　a b  c　   "
+    $ echo "X${x}X"
+    X  　a b  c　   X
+    $ y=$(echo $x)
+    $ echo "X${y}X"
+    X　a b c　X
+
+ちなみにこの`echo`を使った方法は
+
+    $ y=$(xargs <<< $x)
+
+と、`xargs`に渡した場合でも同じ動作になります。
+
+## sedを使った方法
+
+`sed`で正規表現を使えば先頭の空白と末尾の空白のみを消すことができます。
+
+    $ x="  a b  c   "
+    $ echo "X${x}X"
+    X  a b  c   X
+    $ y=$(sed -r 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x) # For GNU sed
+    $ echo "X${y}X"
+    Xa b  cX
+
+`^[[:space:]]*`(**括弧は二重**)で先頭から0文字以上のスペースの連続、
+
+これで間の空白はそのままに外側の空白だけ全部削除できました。
+
+GNUの`sed`であれば
+
+    $ y=$(sed 's/^[[:space:]]*\|[[:space:]]*$//g' <<< $x) # For GNU sed
+
+でもOK。
+
+macOSなどBSD系であれば、
+
+    $ y=$(sed -E 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x) # For BSD sed
+
+`-E`オプションを使う必要があります。
+
+この辺、`sed`を使う際にはGNU/BSDの違いを意識しないといけないのでちょっと面倒です。
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a
+    href="//www.amazon.co.jp/gp/product/4873113598?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=4873113598&amp;linkCode=shr&amp;tag=rcmdnk0c-22"
+    rel="nofollow" target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/51cRxtwo7IL._SS90_CR0,0,120,90_.jpg"
+    alt="詳説 正規表現 第3版" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2015/07/19/computer-gnu-bsd/"
+    class="click_box_link">GNU/BSDでのsedにおける正規表現の扱いの違い</a>
+
+    </div>
+
+また、上では`[[:space:]]`を使っていますが、これであれば全角のスペースも削除されます。
+
+\` \`(半角スペースをそのまま書いたもの)を使うと全角は削除されません。
+
+    $ x="  　a b  c　   "
+    $ echo "X${x}X"
+    X  　a b  c　   X
+    $ y=$(sed -r 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x)
+    $ echo "X${y}X"
+    Xa b  cX
+    $ z=$(sed -r 's/^ *| *$//g' <<< $x)
+    $ echo "X${z}X"
+    X　a b  c　X
+
+なので、意図的に全角スペースを入れて残す必要がある場合を除いて`[[:space:]]`を使ったほうが確実です。
+
+見た目もスペースだとぱっと見、空いているのかどうか、も分かりづらかったりもするので`[[:space:]]`にしておいた方がわかりやすいです。
+
+コマンドラインでちょっとやる際には基本的に全角スペースは無いと思えばスペースを使ったほうが楽です。
+
+また、この`sed`の置換では改行は置換されません。
+
+## awkを使った方法
+
+`awk`でも`sed`と似たような感じで正規表現を使って削除できます。
+
+    $ x="  a b  c   "
+    $ echo "X${x}X"
+    X  a b  c   X
+    $ y=$(awk '{gsub(/^[[:space:]]+|[[:space:]]+$/,"")}1' <<< $x)
+    $ echo "X${y}X"
+    Xa b  cX
+
+ここでも`[[:space:]]`を使えば全角も含めて削除できます。
+
+また、`awk`もGNU/BSD版などがありますが、これに関しては同じように使えます。
+
+この`awk`も改行は置換しません。
+
+改行を`sed`や`awk`で置換しようと思うと結構面倒です。
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a
+    href="//www.amazon.co.jp/gp/product/B004D4Y302?ie=UTF8&amp;camp=1207&amp;creative=8411&amp;creativeASIN=B004D4Y302&amp;linkCode=shr&amp;tag=rcmdnk0c-22"
+    rel="nofollow" target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/51Emp42I29L._SS90_CR0,0,120,90_.jpg"
+    alt="sed &amp; awk (Nutshell Handbooks)" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2014/09/21/computer-bash/"
+    class="click_box_link">sedで改行を出力する</a>
+
+    </div>
+
+## trを使った方法
+
+`tr`は文字を削除することが出来ますが、該当するものすべて削除するので、文字列間のスペースも削除されます。
+
+    $ x="  　a b  c　   "
+    $ echo "X${x}X"
+    X  　a b  c　   X
+    $ y=$(tr -d '[:space:]　' <<< $x)
+    $ echo "X${y}X"
+    XabcX
+
+`-d`オプションで指定した文字列に含まれる文字をすべて削除するので、ここでは通常の半角スペースと全角スペース(クオート内の後ろの部分)を同時に指定して削除しています。
+
+スペースに関しては`[:space:]`(**ここでは括弧は一重**)も使えますが`tr`の場合は全角はこれでは削除できません。
+
+`tr`の`[:space:]`は`all horizontal or vertical whitespace`にあたるということで、このvertical
+whitespaceは基本的には改行にあたると考えて良くて、実際このコマンドだと改行も削除されます。
+
+    $ y=$(tr -d ' 　' <<< $x)
+
+のように通常のスペースを使って書くことも出来ますが、これだと改行は残ります。
+
+`tr`の方法は短く書けるので、間にスペースが絶対にこない、という場合には良いかもしれません。
+
+特に半角スペースや改行がないなら
+
+    $ y=$(tr -d ' ' <<< $x)
+
+で済むので。
+
+## シェルの変数展開を使う
+
+シェルの変数展開で一部を削除したりすることが出来るのでそれを使います。
+
+    $ x="  a b  c   "
+    $ echo "X${x}X"
+    X  a b  c   X
+    $ y="${x#"${x%%[![:space:]]*}"}"
+    $ y="${y%"${y##*[![:space:]]}"}"
+    $ echo "X${y}X"
+    Xa b  cX
+
+ここではまず、`${x%%...}`という展開方法を使って、後方から最長一致で該当する部分を削除する作業をしています。
+
+`[![:space:]]`(`!`が2重の括弧野中)がスペース**以外**を表すので、スペース以外の文字が出てからその後`*`で何でも、になります。
+
+シェルの正規表現では`*`は直前の文字の繰り返し、ではなく、0文字以上の任意の文字列に該当するので、こうすることで何らかのスペース以外の文字が出た部分からあと全部、になります。
+(ここでは`a b c `)
+
+で、その部分を削除したものになるので、`${x%%[![:space:]]*}`は` `(先頭の2つのスペース、になります。
+
+その上で、`${x#...}`で、前方から最小一致で該当する部分を削除する作業をします。
+中身が先頭のスペースなので、結果的に`${x#"${x%%[![:space:]]*}"}`全体は先頭の連続したスペースを除いたものになります。
+
+同様に、逆のことをやって`${y%"${y##*[![:space:]]}"}`では後ろの連続したスペースを除いたものになります。
+
+2段階が必要なのとそれぞれ展開を2段階やってるのでちょっと複雑になってしまいますが、
+このやり方だと全角スペースも改行も共に消えます。
+逆に文字列中のスペースはそのまま残ります。
+
+`[:space:]`の部分を通常の半角スペースにすれば全角スペースや改行を消さないものになります。
+
+これであればシェルの機能だけで行えるので、もし大量にこの作業を行うとすると`sed`などを使う場合に比べて大分速くなるというメリットもあり、一番きちんと使えると思ってます。
+
+## Bashのglobを使う
+
+上のシェルの変数展開はPOSIX準拠な手法になっています。
+
+一方で、Bashの拡張されたglobを使うとより簡潔に書くことが出来ます。
+
+これを使うためには`extglob`を有効にする必要があります。
+
+確認するには
+
+    $ shopt extglob
+    extglob         on
+
+となっていれば有効になっています。
+
+これが
+
+    $ shopt extglob
+    extglob         on
+
+となっている場合には
+
+    $ shopt -s extglob
+
+として`extglob`を有効にして上げる必要があります。
+
+無効にするのは
+
+    $ shopt -u extglob
+
+コマンドラインではおそらく有効になっている場合が多いかと思いますが、
+シェルスクリプトを実行する際には無効になっている事があるので、
+使うのであれば必ず`shopt`コマンドで有効する必要があります。
+
+有効だとして、やり方は以下のような感じ。
+
+    $ x="  a b  c   "
+    $ echo "X${x}X"
+    X  a b  c   X
+    $ y=${x##+([[:space:]])}
+    $ y=${y%%+([[:space:]])}
+    $ echo "X${y}X"
+    Xa b  cX
+
+ここでは`space`の周りの括弧は二重です。
+
+シェル展開同様全角スペースや改行も消えます。
+文字列中のスペースはそのままキープ。
+
+`[[:space:]]`の部分を通常のスペースにすれば半角スペースだけが削除されます。
+
+もし`extglob`の状態を保ったままやりたいときは、
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10</code></pre></td>
+<td class="code"><div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">set_extglob</span><span class="op">=</span>1</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">shopt</span> extglob <span class="op">&gt;</span>/dev/null <span class="kw">&amp;&amp;</span> <span class="va">set_extglob</span><span class="op">=</span>0</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">((</span><span class="va">set_extglob</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">shopt</span> <span class="at">-s</span> extglob</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">y</span><span class="op">=</span><span class="va">${x</span><span class="op">##</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">y</span><span class="op">=</span><span class="va">${y</span><span class="op">%%</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">((</span><span class="va">set_extglob</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">shopt</span> <span class="at">-u</span> extglob</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+みたいな感じで、`extglob`が無効な時だけ(`set_extglob=1`のまま)
+削除前に有効にして、削除後に戻すようにします。
+
+## 実行時間
+
+以下、実行時間の比較。
+`echo`と`tr`と、その他の`sed`や`glob`などは結果は違うものにはなりますが、
+とりあえず上でやったもので実行時間を見てみます。
+
+環境は
+
+-   WSL バージョン: 1.0.3.0
+-   OS: Ubuntu 18.04.6 LTS
+-   Bash: 5.2.15
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</code></pre></td>
+<td class="code"><div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="st">&quot;  　abc</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">def</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">ghi</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">　&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span>10000</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;echo&quot;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="va">$x)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;xargs&quot;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="fu">xargs</span> <span class="op">&lt;&lt;&lt;</span> <span class="va">$x)</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;sed&quot;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="fu">sed</span> <span class="at">-r</span> <span class="st">&#39;s/^[[:space:]]*|[[:space:]]*$//g&#39;</span> <span class="op">&lt;&lt;&lt;</span> <span class="va">$x)</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;awk&quot;</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="fu">awk</span> <span class="st">&#39;{gsub(/^[[:space:]]+|[[:space:]]+$/,&quot;&quot;)}1&#39;</span> <span class="op">&lt;&lt;&lt;</span> <span class="va">$x)</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;tr&quot;</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="fu">tr</span> <span class="at">-d</span> <span class="st">&#39;[:space:]　&#39;</span> <span class="op">&lt;&lt;&lt;</span> <span class="va">$x)</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;shell&quot;</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${x</span><span class="op">#</span><span class="st">&quot;</span><span class="va">${x</span><span class="op">%%</span>[![:space:]]<span class="pp">*</span><span class="va">}</span><span class="st">&quot;</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${y</span><span class="op">%</span><span class="st">&quot;</span><span class="va">${y</span><span class="op">##</span><span class="pp">*</span>[![:space:]]<span class="va">}</span><span class="st">&quot;</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;extglob&quot;</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="bu">shopt</span> <span class="at">-s</span> extglob</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">${x</span><span class="op">##</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">${y</span><span class="op">%%</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption><span>test.sh </span></figcaption>
+</figure>
+
+10,000回ずつ実行した時間の比較です。
+
+結果は
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</code></pre></td>
+<td class="code"><pre><code>echo
+X　abc def ghi 　X
+
+real    0m3.114s
+user    0m2.640s
+sys     0m0.845s
+
+============
+xargs
+X　abc def ghi 　X
+
+real    0m16.523s
+user    0m15.344s
+sys     0m1.606s
+
+============
+sed
+Xabc
+def
+ghiX
+
+real    0m10.863s
+user    0m10.095s
+sys     0m1.045s
+
+============
+awk
+Xabc
+def
+ghiX
+
+real    0m14.847s
+user    0m13.538s
+sys     0m1.714s
+
+============
+tr
+XabcdefghiX
+
+real    0m9.022s
+user    0m8.471s
+sys     0m1.280s
+
+============
+shell
+Xabc
+def
+ghiX
+
+real    0m0.250s
+user    0m0.240s
+sys     0m0.010s
+
+============
+extglob
+Xabc
+def
+ghiX
+
+real    0m1.526s
+user    0m1.482s
+sys     0m0.044s</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+ということでシェルの変数展開を使うものが圧倒的に速いです。
+
+やはりサブシェルを呼ばずに作業が出来ると極端に速くなることがわかります。
+また、extglobも少し時間がかかってます。
+
+意外と`echo` が速い。
+
+`xargs`が一番遅いくらいなのはちょっと予想外でした。
+
+また、シェルの変数展開とBashのglobの拡張を使ったものに関して
+100,000回に10倍増やして回してみると
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</code></pre></td>
+<td class="code"><pre><code>============
+shell
+Xabc
+def
+ghiX
+
+real    0m2.377s
+user    0m2.332s
+sys     0m0.045s
+
+============
+extglob
+Xabc
+def
+ghiX
+
+real    0m14.943s
+user    0m14.848s
+sys     0m0.095s</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+な感じで素直に10倍になった感じです。
+
+extglobでその時の状態によって一時的に有効にして戻すようなことをする場合、
+以下のようにやってみると
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</code></pre></td>
+<td class="code"><div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="st">&quot;  　abc</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">def</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">ghi</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">　&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span>100000</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;disable&quot;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">shopt</span> <span class="at">-u</span> extglob</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="va">set_extglob</span><span class="op">=</span>1</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="bu">shopt</span> extglob <span class="op">&gt;</span>/dev/null <span class="kw">&amp;&amp;</span> <span class="va">set_extglob</span><span class="op">=</span>0</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">set_extglob</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">shopt</span> <span class="at">-s</span> extglob</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">${x</span><span class="op">##</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">${y</span><span class="op">%%</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">set_extglob</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">shopt</span> <span class="at">-u</span> extglob</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ============</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;enable&quot;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">shopt</span> <span class="at">-s</span> extglob</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="va">set_extglob</span><span class="op">=</span>1</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="bu">shopt</span> extglob <span class="op">&gt;</span>/dev/null <span class="kw">&amp;&amp;</span> <span class="va">set_extglob</span><span class="op">=</span>0</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">set_extglob</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">shopt</span> <span class="at">-s</span> extglob</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">${x</span><span class="op">##</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">${y</span><span class="op">%%</span><span class="pp">+(</span>[[:space:]]<span class="pp">)</span><span class="va">}</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">set_extglob</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">shopt</span> <span class="at">-u</span> extglob</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</code></pre></td>
+<td class="code"><pre><code>disable
+
+real    0m16.223s
+user    0m15.908s
+sys     0m0.309s
+============
+enable
+
+real    0m15.797s
+user    0m15.535s
+sys     0m0.256s</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+といった感じでもともと有効な`enable`の方が0.5秒ほど速くなってるので
+`shopt`コマンドも全く影響ないわけではないですがあまり大きな差ではありません。
+
+また、もともと有効でチェックもしなかった場合からは0.5秒ほど遅くなっていますがこれもそれほど、な感じです。
+
+なので、汎用性を求めるのであればこのチェックを入れたものを使うのもありです。
+
+また、extglobもシェルの変数展開も、関数を別に用意して削除する、みたいなことも考えたいところですが、それをサブシェルで呼んでしまうと結局遅くなります。
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</code></pre></td>
+<td class="code"><div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="st">&quot;  　abc</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">def</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">ghi</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">　&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span>100000</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> get_y</span> <span class="kw">{</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">x</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">y</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${x</span><span class="op">#</span><span class="st">&quot;</span><span class="va">${x</span><span class="op">%%</span>[![:space:]]<span class="pp">*</span><span class="va">}</span><span class="st">&quot;</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${y</span><span class="op">%</span><span class="st">&quot;</span><span class="va">${y</span><span class="op">##</span><span class="pp">*</span>[![:space:]]<span class="va">}</span><span class="st">&quot;</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$y</span><span class="st">&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;shell&quot;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="va">y</span><span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="ex">get_y</span> <span class="st">&quot;</span><span class="va">$x</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;X</span><span class="va">${y}</span><span class="st">X&quot;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="va">$(</span><span class="ex">get_y</span> <span class="st">&quot;</span><span class="va">$x</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8</code></pre></td>
+<td class="code"><pre><code>shell
+Xabc
+def
+ghiX
+
+real    0m39.088s
+user    0m32.810s
+sys     0m10.279s</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+2秒ほどで済んでいたものが20倍近くかかって、`sed`とかよりも遅くなっています。
+
+サブシェルを使わずに
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</code></pre></td>
+<td class="code"><div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="st">&quot;  　abc</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">def</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">ghi</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">　&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span>100000</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> get_y</span> <span class="kw">{</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">x</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${x</span><span class="op">#</span><span class="st">&quot;</span><span class="va">${x</span><span class="op">%%</span>[![:space:]]<span class="pp">*</span><span class="va">}</span><span class="st">&quot;</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${y</span><span class="op">%</span><span class="st">&quot;</span><span class="va">${y</span><span class="op">##</span><span class="pp">*</span>[![:space:]]<span class="va">}</span><span class="st">&quot;</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;shell&quot;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="va">y</span><span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">get_y</span> <span class="st">&quot;</span><span class="va">$x</span><span class="st">&quot;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;X</span><span class="va">${y}</span><span class="st">X&quot;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> while :<span class="kw">;</span><span class="cf">do</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">get_y</span> <span class="st">&quot;</span><span class="va">$x</span><span class="st">&quot;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">((</span><span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">((</span><span class="va">i</span><span class="op">&gt;</span><span class="va">n</span><span class="kw">));</span><span class="cf">then</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+といった感じにグローバル変数に代入するような感じで使えば
+基本的には直接書いたのと同じことになります。
+
+<figure class="code">
+<div class="highlight">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="gutter"><pre class="line-numbers"><code>1
+2
+3
+4
+5
+6
+7
+8</code></pre></td>
+<td class="code"><pre><code>shell
+Xabc
+def
+ghiX
+
+real    0m3.459s
+user    0m3.459s
+sys     0m0.000s</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+
+引数の引き渡しとか関数の呼び出しの部分でオーバーヘッドがあるのか1秒くらい長くかかってしまいました。
+ただ、サブシェルにして`echo`とか`printf`で文字列を返すのに比べると格段に速い状態を保てます。
+
+## まとめ
+
+シェルスクリプトで前後のスペースを消すには、`echo`を使ってやるのが一番簡単ではあります。
+
+文字列中に空白は絶対になく、1回か2回程度行うだけ、というのであれば分かりやすいので`echo`でも十分かと。
+
+一方で文字列中のスペースを変更してしまうこともあるので、用途によっては使えないこともあるかもしれません。
+
+前後のスペースだけちゃんと消したい場合には、速度も考えると
+シェルの変数展開を使う方法が一番良さそうです。
+
+extglobを使った方法はより複雑な文字列操作が出来ますが、
+今回の用途であればPOSIXなシェル変数展開で十分でそちらの方が速い、ということでした。
+
+Ref:
+
+-   [string - How to trim whitespace from a Bash variable? - Stack
+    Overflow](https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable)
+-   [BashFAQ/067 - Greg’s Wiki](https://mywiki.wooledge.org/BashFAQ/067)
+
+<div class="related_posts part" markdown="1">
+
+### 
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+Sponsored Links
+
+</div>
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="meta" markdown="1">
+
+<div markdown="1" itemprop="publisher" itemscope=""
+itemtype="https://schema.org/Organization">
+
+<div markdown="1" itemprop="logo" itemscope=""
+itemtype="https://schema.org/ImageObject">
+
+</div>
+
+</div>
+
+<span class="byline">Posted by
+<span itemprop="author">rcmdnk</span></span>
+<span class="date-wrapper"><span class="date">15 Jan 2023</span></span>
+<span class="categories"> Category:
+<a href="/blog/categories/computer/" class="category"><span
+itemprop="articleSection">Computer</span></a> </span>
+<span class="tags"> Tagged as
+<span itemprop="keywords"><a href="/blog/tags/bash/" class="tag"><span>Bash</span></a></span>
+</span>
+
+</div>
+
+<div class="share-button share-big" markdown="1">
+
+-   <a
+    href="//b.hatena.ne.jp/entry/https://rcmdnk.com/blog/2023/01/15/computer-bash/"
+    target="_blank" title="Save to Hatebu"></a>
+
+    <span class="hatebuBig"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/">はてなブックマーク</span>
+
+-   <a
+    href="//twitter.com/intent/tweet?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B&amp;url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&amp;via=rcmdnk"
+    target="_blank" title="Share on Twitter"></a>
+
+    <span class="twitterBig"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/">Twitterでシェア</span>
+
+-   <a
+    href="//www.facebook.com/sharer.php?src=bm&amp;u=https://rcmdnk.com/blog/2023/01/15/computer-bash/&amp;t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B"
+    target="_blank" title="Share on Facebook"></a>
+
+    <span class="facebookBig"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/">Facebookでシェア</span>
+
+-   <a
+    href="//getpocket.com/edit?url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&amp;title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B"
+    target="_blank" title="Save to Pocket"></a>
+
+    <span class="pocketBig"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/">Pocketに保存</span>
+
+-   <a href="//feedly.com/i/subscription/feed/https://rcmdnk.com/atom.xml"
+    target="_blank" title="Follow with feedly"></a>
+
+    <span class="feedlyBig"
+    share-url="https://rcmdnk.com/blog/2023/01/15/computer-bash/">feedlyでフォロー</span>
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+Sponsored Links
+
+</div>
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+<div class="part" markdown="1">
+
+<div id="disqus_thread" markdown="1">
+
+</div>
+
+Please enable JavaScript to view the [comments powered by
+Disqus.](//disqus.com/?ref_noscript)
+
+</div>
+
+<a href="/blog/2023/01/14/computer-bash/" class="basic-alignment left"
+title="Previous Post: ログインシェルで使っているbashのバージョンなどをちゃんと確認する">«
+ログインシェルで使っているbashのバージョンなどをちゃんと確認する</a>
+<a href="/blog/2023/01/16/computer-bash/" class="basic-alignment right"
+title="Next Post: シェルスクリプトでちゃんと文字列に改行を入れ込む">シェルスクリプトでちゃんと文字列に改行を入れ込む
+»</a>
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+Sponsored Links
+
+</div>
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+<div class="section group" markdown="1">
+
+## About Me
+
+<div id="aboutme-logo" markdown="1">
+
+</div>
+
+<a href="/cdn-cgi/l/email-protection#4f3d2c222b21240f28222e2623612c2022"
+class="sidebar-about" title="Mail"><em></em></a>
+<a href="//twitter.com/rcmdnk" class="sidebar-about"
+title="Twitter"><em></em></a>
+<a href="//github.com/rcmdnk" class="sidebar-about"
+title="GitHub"><em></em></a>  
+<a href="https://rcmdnk.com/atom.xml" class="sidebar-about"
+title="RSS"><em></em></a>
+[<span class="feedlyimg feedly"></span>](//feedly.com/i/subscription/feed/https://rcmdnk.com/atom.xml)
+<a href="#" class="add_bookmark sidebar-about"
+data-page_title="rcmdnk&#39;s blog" data-page_url="https://rcmdnk.com"
+title="Favorite"><em></em></a>
+
+</div>
+
+[ほしいもの一覧](//www.amazon.co.jp/hz/wishlist/ls/28GLSLW5HE8L8?ref_=wl_share&tag=rcmdnk0c-22)
+
+<div class="section group" markdown="1">
+
+## GitHub Stats
+
+[![rcmdnk's GitHub
+stats](//github-readme-stats.vercel.app/api?username=rcmdnk&theme=graywhite&show_icons=true&count_private=false)](//github.com/rcmdnk)
+[![Top
+langs](//github-readme-stats.vercel.app/api/top-langs/?username=rcmdnk&layout=compact&langs_count=20&exclude_repo=octopress_jp,octopress_en,rcmdnk.github.io,en,octogray_test)](//github.com/rcmdnk)
+
+</div>
+
+<div class="section group" markdown="1">
+
+## Uptime monitor
+
+  
+
+<div class="title-small-thumbnail" markdown="1">
+
+[<img
+src="//github.com/rcmdnk/upptime/raw/master/graphs/rcmdnk-blog/response-time-week.png"
+width="120" alt="Response time graph" />](https://rcmdnk.com/upptime/history/rcmdnk-blog)
+
+</div>
+
+[![7-day Response time
+304](//img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/response-time-week.json)](https://rcmdnk.com/upptime/history/rcmdnk-blog)  
+[![1-year Response time
+242](//img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/response-time-year.json)](https://rcmdnk.com/upptime/history/rcmdnk-blog)  
+[![7-day uptime
+100.00%](//img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/uptime-week.json)](https://rcmdnk.com/upptime/history/rcmdnk-blog)  
+[![1-year uptime
+100.00%](//img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/uptime-year.json)](https://rcmdnk.com/upptime/history/rcmdnk-blog)  
+  
+Powered by [Upptime](//upptime.js.org/)
+
+</div>
+
+<div class="section" markdown="1">
+
+## [Recent Posts](/blog/archives/)
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [<img src="/images/post/thumbnail/20250224_obsidian_120_90.png"
+    class="small-thumbnail-img" width="120" height="90"
+    alt="20250224_obsidian_120_90" />](/blog/2025/02/24/computer-obsidian/)
+
+    </div>
+
+    <a href="/blog/2025/02/24/computer-obsidian/"
+    class="click_box_link">ObsidianをWindows/macOS/iOSでGit
+    (GitHub)、Remotely Save (Dropbox)を使って同期、管理する</a>
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [<img src="/images/post/thumbnail/20250127_api_120_90.jpg"
+    class="small-thumbnail-img" width="120" height="90"
+    alt="20250127_api_120_90" />](/blog/2025/01/27/computer-ai/)
+
+    </div>
+
+    <a href="/blog/2025/01/27/computer-ai/"
+    class="click_box_link">シェルスクリプトでなるべく外部依存を減らしてAIのAPIを使う</a>
+
+    </div>
+
+-   
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a href="//www.amazon.co.jp/gp/product/B0CM8RYF2Q" rel="nofollow"
+    target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/71kqUVeTCCL._SS90_CR0,0,120,90_.jpg"
+    alt="INNOCN 40インチワイドモニター WR40 PRO WQHD(3440x1440) HDR600@144hzゲーミングモニター HDMI Display Port USB-C 90W Freesync 高さ調整 スピーカー内蔵 VESA (40インチ HDR600)" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2025/01/26/computer-shopping/"
+    class="click_box_link">INNOCN 40インチウルトラワイドモニターWR40
+    PROを購入</a>
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a href="//www.amazon.co.jp/gp/product/B0CZQ8R1SS" rel="nofollow"
+    target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/51i7KhGXbwL._SS90_CR0,0,120,90_.jpg"
+    alt="17～49型 耐荷重2～20kg iggy（イギー）快適ワークのモニターアーム LS112 ブラック" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2025/01/25/computer-shopping/"
+    class="click_box_link">iggy LS112 モニターアーム</a>
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a href="//www.amazon.co.jp/gp/product/B0DBLKNYPY" rel="nofollow"
+    target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/71czGp0EbiL._SS90_CR0,0,120,90_.jpg"
+    alt="SwitchBot CO2センサー 二酸化炭素濃度計 温湿度計 アラーム - スイッチボット デジタル 大画面 高精度 CO2測定器 快適指数 天気予報 時計 卓上 カレンダー スマホ連動 アラート通知 グラフ記録 スマートホーム Alexa Google Home Siriに対応" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2025/01/06/comuter-iot/" class="click_box_link">SwitchBot
+    CO2センサーを使ってみた</a>
+
+    </div>
+
+</div>
+
+<div class="section" markdown="1">
+
+## Monthly Archives
+
+<div class="monthly_archive" markdown="1">
+
+-   <span class="monthly_archive_year_span">2025 (7)</span>
+    -   [FEB (1)](/blog/2025/02/)
+    -   [JAN (6)](/blog/2025/01/)
+-   <span class="monthly_archive_year_span">2024 (26)</span>
+    -   [NOV (4)](/blog/2024/11/)
+    -   [OCT (2)](/blog/2024/10/)
+    -   [SEP (4)](/blog/2024/09/)
+    -   [AUG (2)](/blog/2024/08/)
+    -   [JUL (2)](/blog/2024/07/)
+    -   [JUN (3)](/blog/2024/06/)
+    -   [MAY (2)](/blog/2024/05/)
+    -   [APR (2)](/blog/2024/04/)
+    -   [FEB (4)](/blog/2024/02/)
+    -   [JAN (1)](/blog/2024/01/)
+-   <span class="monthly_archive_year_span">2023 (56)</span>
+    -   [DEC (2)](/blog/2023/12/)
+    -   [NOV (4)](/blog/2023/11/)
+    -   [OCT (2)](/blog/2023/10/)
+    -   [SEP (5)](/blog/2023/09/)
+    -   [AUG (1)](/blog/2023/08/)
+    -   [JUL (2)](/blog/2023/07/)
+    -   [MAY (5)](/blog/2023/05/)
+    -   [APR (9)](/blog/2023/04/)
+    -   [MAR (8)](/blog/2023/03/)
+    -   [FEB (9)](/blog/2023/02/)
+    -   [JAN (9)](/blog/2023/01/)
+-   <span class="monthly_archive_year_span">2022 (51)</span>
+    -   [DEC (1)](/blog/2022/12/)
+    -   [NOV (1)](/blog/2022/11/)
+    -   [OCT (3)](/blog/2022/10/)
+    -   [SEP (6)](/blog/2022/09/)
+    -   [AUG (3)](/blog/2022/08/)
+    -   [JUL (3)](/blog/2022/07/)
+    -   [JUN (6)](/blog/2022/06/)
+    -   [MAY (3)](/blog/2022/05/)
+    -   [MAR (8)](/blog/2022/03/)
+    -   [FEB (9)](/blog/2022/02/)
+    -   [JAN (8)](/blog/2022/01/)
+-   <span class="monthly_archive_year_span">2021 (46)</span>
+    -   [DEC (3)](/blog/2021/12/)
+    -   [NOV (4)](/blog/2021/11/)
+    -   [OCT (4)](/blog/2021/10/)
+    -   [SEP (7)](/blog/2021/09/)
+    -   [AUG (2)](/blog/2021/08/)
+    -   [MAY (1)](/blog/2021/05/)
+    -   [APR (6)](/blog/2021/04/)
+    -   [MAR (9)](/blog/2021/03/)
+    -   [FEB (2)](/blog/2021/02/)
+    -   [JAN (8)](/blog/2021/01/)
+-   <span class="monthly_archive_year_span">2020 (58)</span>
+    -   [DEC (2)](/blog/2020/12/)
+    -   [NOV (1)](/blog/2020/11/)
+    -   [OCT (6)](/blog/2020/10/)
+    -   [SEP (4)](/blog/2020/09/)
+    -   [AUG (7)](/blog/2020/08/)
+    -   [JUL (4)](/blog/2020/07/)
+    -   [JUN (5)](/blog/2020/06/)
+    -   [MAY (4)](/blog/2020/05/)
+    -   [APR (6)](/blog/2020/04/)
+    -   [MAR (4)](/blog/2020/03/)
+    -   [FEB (3)](/blog/2020/02/)
+    -   [JAN (12)](/blog/2020/01/)
+-   <span class="monthly_archive_year_span">2019 (96)</span>
+    -   [DEC (5)](/blog/2019/12/)
+    -   [NOV (6)](/blog/2019/11/)
+    -   [OCT (17)](/blog/2019/10/)
+    -   [SEP (18)](/blog/2019/09/)
+    -   [AUG (25)](/blog/2019/08/)
+    -   [JUL (4)](/blog/2019/07/)
+    -   [JUN (3)](/blog/2019/06/)
+    -   [MAY (4)](/blog/2019/05/)
+    -   [APR (3)](/blog/2019/04/)
+    -   [MAR (4)](/blog/2019/03/)
+    -   [FEB (5)](/blog/2019/02/)
+    -   [JAN (2)](/blog/2019/01/)
+-   <span class="monthly_archive_year_span">2018 (70)</span>
+    -   [DEC (1)](/blog/2018/12/)
+    -   [NOV (5)](/blog/2018/11/)
+    -   [OCT (1)](/blog/2018/10/)
+    -   [SEP (8)](/blog/2018/09/)
+    -   [AUG (11)](/blog/2018/08/)
+    -   [JUL (4)](/blog/2018/07/)
+    -   [JUN (3)](/blog/2018/06/)
+    -   [MAY (6)](/blog/2018/05/)
+    -   [APR (10)](/blog/2018/04/)
+    -   [MAR (6)](/blog/2018/03/)
+    -   [FEB (8)](/blog/2018/02/)
+    -   [JAN (7)](/blog/2018/01/)
+-   <span class="monthly_archive_year_span">2017 (145)</span>
+    -   [DEC (2)](/blog/2017/12/)
+    -   [NOV (19)](/blog/2017/11/)
+    -   [OCT (19)](/blog/2017/10/)
+    -   [SEP (18)](/blog/2017/09/)
+    -   [AUG (13)](/blog/2017/08/)
+    -   [JUL (12)](/blog/2017/07/)
+    -   [JUN (8)](/blog/2017/06/)
+    -   [MAY (13)](/blog/2017/05/)
+    -   [APR (13)](/blog/2017/04/)
+    -   [MAR (7)](/blog/2017/03/)
+    -   [FEB (9)](/blog/2017/02/)
+    -   [JAN (12)](/blog/2017/01/)
+-   <span class="monthly_archive_year_span">2016 (150)</span>
+    -   [DEC (5)](/blog/2016/12/)
+    -   [NOV (7)](/blog/2016/11/)
+    -   [OCT (12)](/blog/2016/10/)
+    -   [SEP (13)](/blog/2016/09/)
+    -   [AUG (9)](/blog/2016/08/)
+    -   [JUL (9)](/blog/2016/07/)
+    -   [JUN (16)](/blog/2016/06/)
+    -   [MAY (10)](/blog/2016/05/)
+    -   [APR (13)](/blog/2016/04/)
+    -   [MAR (18)](/blog/2016/03/)
+    -   [FEB (30)](/blog/2016/02/)
+    -   [JAN (8)](/blog/2016/01/)
+-   <span class="monthly_archive_year_span">2015 (183)</span>
+    -   [DEC (8)](/blog/2015/12/)
+    -   [NOV (12)](/blog/2015/11/)
+    -   [OCT (17)](/blog/2015/10/)
+    -   [SEP (3)](/blog/2015/09/)
+    -   [AUG (8)](/blog/2015/08/)
+    -   [JUL (27)](/blog/2015/07/)
+    -   [JUN (31)](/blog/2015/06/)
+    -   [MAY (21)](/blog/2015/05/)
+    -   [APR (11)](/blog/2015/04/)
+    -   [MAR (19)](/blog/2015/03/)
+    -   [FEB (12)](/blog/2015/02/)
+    -   [JAN (14)](/blog/2015/01/)
+-   <span class="monthly_archive_year_span">2014 (194)</span>
+    -   [DEC (19)](/blog/2014/12/)
+    -   [NOV (22)](/blog/2014/11/)
+    -   [OCT (10)](/blog/2014/10/)
+    -   [SEP (14)](/blog/2014/09/)
+    -   [AUG (17)](/blog/2014/08/)
+    -   [JUL (24)](/blog/2014/07/)
+    -   [JUN (16)](/blog/2014/06/)
+    -   [MAY (26)](/blog/2014/05/)
+    -   [APR (4)](/blog/2014/04/)
+    -   [MAR (5)](/blog/2014/03/)
+    -   [FEB (20)](/blog/2014/02/)
+    -   [JAN (17)](/blog/2014/01/)
+-   <span class="monthly_archive_year_span">2013 (162)</span>
+    -   [DEC (20)](/blog/2013/12/)
+    -   [NOV (34)](/blog/2013/11/)
+    -   [OCT (15)](/blog/2013/10/)
+    -   [SEP (15)](/blog/2013/09/)
+    -   [AUG (12)](/blog/2013/08/)
+    -   [JUL (12)](/blog/2013/07/)
+    -   [JUN (17)](/blog/2013/06/)
+    -   [MAY (16)](/blog/2013/05/)
+    -   [APR (7)](/blog/2013/04/)
+    -   [MAR (14)](/blog/2013/03/)
+
+</div>
+
+</div>
+
+<div class="section" markdown="1">
+
+## Categories
+
+-   [Blog (139)](/blog/categories/blog/)
+-   [Computer (1036)](/blog/categories/computer/)
+-   [Life (69)](/blog/categories/life/)
+
+</div>
+
+<div class="section" markdown="1">
+
+## Tag Cloud
+
+<span id="tag-cloud"><a href="/blog/tags/aerofs/"
+style="font-size: 100.38585209003216%">AeroFS(2)</a>
+<a href="/blog/tags/ai/"
+style="font-size: 101.15755627009646%">AI(6)</a>
+<a href="/blog/tags/amazon/"
+style="font-size: 100.38585209003216%">Amazon(2)</a>
+<a href="/blog/tags/analytics/"
+style="font-size: 100.7717041800643%">Analytics(4)</a>
+<a href="/blog/tags/android/"
+style="font-size: 102.89389067524115%">Android(15)</a>
+<a href="/blog/tags/applescript/"
+style="font-size: 103.08681672025723%">AppleScript(16)</a>
+<a href="/blog/tags/asciinema/"
+style="font-size: 100.38585209003216%">Asciinema(2)</a>
+<a href="/blog/tags/autohotkey/"
+style="font-size: 105.59485530546624%">AutoHotkey(29)</a>
+<a href="/blog/tags/bash/"
+style="font-size: 121.9935691318328%">Bash(114)</a>
+<a href="/blog/tags/bitbucket/"
+style="font-size: 100.19292604501608%">Bitbucket(1)</a>
+<a href="/blog/tags/blog/"
+style="font-size: 100.38585209003216%">Blog(2)</a>
+<a href="/blog/tags/bookmarklet/"
+style="font-size: 100.7717041800643%">Bookmarklet(4)</a>
+<a href="/blog/tags/bootstrap/"
+style="font-size: 100.57877813504822%">Bootstrap(3)</a>
+<a href="/blog/tags/brew-file/"
+style="font-size: 111.18971061093248%">Brew-file(58)</a>
+<a href="/blog/tags/bsd/"
+style="font-size: 101.73633440514469%">BSD(9)</a>
+<a href="/blog/tags/c-cpp/"
+style="font-size: 100.38585209003216%">C-CPP(2)</a>
+<a href="/blog/tags/chocolatey/"
+style="font-size: 100.7717041800643%">Chocolatey(4)</a>
+<a href="/blog/tags/chrome/"
+style="font-size: 104.63022508038586%">Chrome(24)</a>
+<a href="/blog/tags/cli/"
+style="font-size: 100.19292604501608%">CLI(1)</a>
+<a href="/blog/tags/colinux/"
+style="font-size: 100.38585209003216%">coLinux(2)</a>
+<a href="/blog/tags/css/"
+style="font-size: 100.7717041800643%">CSS(4)</a>
+<a href="/blog/tags/cygwin/"
+style="font-size: 105.9807073954984%">Cygwin(31)</a>
+<a href="/blog/tags/dell/"
+style="font-size: 100.19292604501608%">Dell(1)</a>
+<a href="/blog/tags/desktop/"
+style="font-size: 100.38585209003216%">Desktop(2)</a>
+<a href="/blog/tags/diy/"
+style="font-size: 100.19292604501608%">DIY(1)</a>
+<a href="/blog/tags/docker/"
+style="font-size: 100.38585209003216%">Docker(2)</a>
+<a href="/blog/tags/dropbox/"
+style="font-size: 101.92926045016077%">Dropbox(10)</a>
+<a href="/blog/tags/emacs/"
+style="font-size: 100.57877813504822%">Emacs(3)</a>
+<a href="/blog/tags/english/"
+style="font-size: 100.96463022508038%">English(5)</a>
+<a href="/blog/tags/evernote/"
+style="font-size: 102.70096463022509%">Evernote(14)</a>
+<a href="/blog/tags/feedly/"
+style="font-size: 100.19292604501608%">feedly(1)</a>
+<a href="/blog/tags/firefox/"
+style="font-size: 111.38263665594856%">Firefox(59)</a>
+<a href="/blog/tags/gas/"
+style="font-size: 100.19292604501608%">GAS(1)</a>
+<a href="/blog/tags/geektool/"
+style="font-size: 100.57877813504822%">GeekTool(3)</a>
+<a href="/blog/tags/ginger/"
+style="font-size: 100.19292604501608%">Ginger(1)</a>
+<a href="/blog/tags/git/"
+style="font-size: 107.90996784565917%">Git(41)</a>
+<a href="/blog/tags/github/"
+style="font-size: 115.62700964630226%">GitHub(81)</a>
+<a href="/blog/tags/gmail/"
+style="font-size: 103.08681672025723%">Gmail(16)</a>
+<a href="/blog/tags/gnu/"
+style="font-size: 101.54340836012862%">GNU(8)</a>
+<a href="/blog/tags/go/"
+style="font-size: 100.57877813504822%">Go(3)</a>
+<a href="/blog/tags/google/"
+style="font-size: 103.85852090032154%">Google(20)</a>
+<a href="/blog/tags/gpt/"
+style="font-size: 100.96463022508038%">GPT(5)</a>
+<a href="/blog/tags/gpu/"
+style="font-size: 100.19292604501608%">GPU(1)</a>
+<a href="/blog/tags/hhkb/"
+style="font-size: 102.50803858520901%">HHKB(13)</a>
+<a href="/blog/tags/home/"
+style="font-size: 100.19292604501608%">Home(1)</a>
+<a href="/blog/tags/homebrew/"
+style="font-size: 118.71382636655949%">Homebrew(97)</a>
+<a href="/blog/tags/ifttt/"
+style="font-size: 102.31511254019293%">IFTTT(12)</a>
+<a href="/blog/tags/install/"
+style="font-size: 100.7717041800643%">Install(4)</a>
+<a href="/blog/tags/ios/"
+style="font-size: 100.38585209003216%">iOS(2)</a>
+<a href="/blog/tags/iot/"
+style="font-size: 112.15434083601286%">IoT(63)</a>
+<a href="/blog/tags/iphone/"
+style="font-size: 102.70096463022509%">iPhone(14)</a>
+<a href="/blog/tags/iterm2/"
+style="font-size: 100.7717041800643%">iTerm2(4)</a>
+<a href="/blog/tags/java/"
+style="font-size: 100.38585209003216%">Java(2)</a>
+<a href="/blog/tags/javascript/"
+style="font-size: 105.20900321543408%">JavaScript(27)</a>
+<a href="/blog/tags/jekyll/"
+style="font-size: 100.57877813504822%">Jekyll(3)</a>
+<a href="/blog/tags/jquery/"
+style="font-size: 100.7717041800643%">jQuery(4)</a>
+<a href="/blog/tags/karabiner/"
+style="font-size: 105.016077170418%">Karabiner(26)</a>
+<a href="/blog/tags/keyboard/"
+style="font-size: 100.19292604501608%">Keyboard(1)</a>
+<a href="/blog/tags/keyremap4macbook/"
+style="font-size: 101.54340836012862%">KeyRemap4MacBook(8)</a>
+<a href="/blog/tags/kramdown/"
+style="font-size: 100.19292604501608%">Kramdown(1)</a>
+<a href="/blog/tags/latex/"
+style="font-size: 100.19292604501608%">Latex(1)</a>
+<a href="/blog/tags/linux/"
+style="font-size: 113.31189710610933%">Linux(69)</a>
+<a href="/blog/tags/liquid/"
+style="font-size: 100.38585209003216%">Liquid(2)</a>
+<a href="/blog/tags/lubuntu/"
+style="font-size: 100.57877813504822%">Lubuntu(3)</a>
+<a href="/blog/tags/mac/" style="font-size: 160.0%">Mac(311)</a>
+<a href="/blog/tags/markdown/"
+style="font-size: 102.31511254019293%">Markdown(12)</a>
+<a href="/blog/tags/music/"
+style="font-size: 101.54340836012862%">Music(8)</a>
+<a href="/blog/tags/network/"
+style="font-size: 106.17363344051446%">Network(32)</a>
+<a href="/blog/tags/obsidian/"
+style="font-size: 100.7717041800643%">Obsidian(4)</a>
+<a href="/blog/tags/octopress/"
+style="font-size: 124.11575562700965%">Octopress(125)</a>
+<a href="/blog/tags/owncloud/"
+style="font-size: 100.38585209003216%">ownCloud(2)</a>
+<a href="/blog/tags/packagemanagement/"
+style="font-size: 100.57877813504822%">PackageManagement(3)</a>
+<a href="/blog/tags/pocket/"
+style="font-size: 100.7717041800643%">Pocket(4)</a>
+<a href="/blog/tags/poetry/"
+style="font-size: 100.57877813504822%">Poetry(3)</a>
+<a href="/blog/tags/powershell/"
+style="font-size: 101.54340836012862%">PowerShell(8)</a>
+<a href="/blog/tags/pr/"
+style="font-size: 100.57877813504822%">PR(3)</a>
+<a href="/blog/tags/prompt/"
+style="font-size: 100.57877813504822%">Prompt(3)</a>
+<a href="/blog/tags/putty/"
+style="font-size: 102.70096463022509%">PuTTY(14)</a>
+<a href="/blog/tags/pypi/"
+style="font-size: 100.19292604501608%">PyPi(1)</a>
+<a href="/blog/tags/python/"
+style="font-size: 113.89067524115755%">Python(72)</a>
+<a href="/blog/tags/qi/"
+style="font-size: 100.19292604501608%">Qi(1)</a>
+<a href="/blog/tags/rakuten/"
+style="font-size: 100.57877813504822%">Rakuten(3)</a>
+<a href="/blog/tags/raspberrypi/"
+style="font-size: 103.47266881028939%">RaspberryPi(18)</a>
+<a href="/blog/tags/ruby/"
+style="font-size: 102.70096463022509%">Ruby(14)</a>
+<a href="/blog/tags/screen/"
+style="font-size: 107.90996784565917%">screen(41)</a>
+<a href="/blog/tags/sentaku/"
+style="font-size: 102.70096463022509%">sentaku(14)</a>
+<a href="/blog/tags/shell/"
+style="font-size: 100.19292604501608%">Shell(1)</a>
+<a href="/blog/tags/shopping/"
+style="font-size: 109.83922829581994%">Shopping(51)</a>
+<a href="/blog/tags/slack/"
+style="font-size: 100.57877813504822%">Slack(3)</a>
+<a href="/blog/tags/svn/"
+style="font-size: 100.38585209003216%">SVN(2)</a>
+<a href="/blog/tags/teamviewer/"
+style="font-size: 100.96463022508038%">TeamViewer(5)</a>
+<a href="/blog/tags/thunderbird/"
+style="font-size: 100.38585209003216%">Thunderbird(2)</a>
+<a href="/blog/tags/tmux/"
+style="font-size: 101.35048231511254%">tmux(7)</a>
+<a href="/blog/tags/travisci/"
+style="font-size: 102.70096463022509%">TravisCI(14)</a>
+<a href="/blog/tags/trip/"
+style="font-size: 100.96463022508038%">Trip(5)</a>
+<a href="/blog/tags/ubuntu/"
+style="font-size: 100.7717041800643%">Ubuntu(4)</a>
+<a href="/blog/tags/vim/"
+style="font-size: 120.45016077170418%">Vim(106)</a>
+<a href="/blog/tags/vimperator/"
+style="font-size: 103.66559485530547%">Vimperator(19)</a>
+<a href="/blog/tags/web/"
+style="font-size: 101.15755627009646%">Web(6)</a>
+<a href="/blog/tags/wercker/"
+style="font-size: 101.15755627009646%">wercker(6)</a>
+<a href="/blog/tags/wimax/"
+style="font-size: 100.38585209003216%">WiMAX(2)</a>
+<a href="/blog/tags/windows/"
+style="font-size: 130.09646302250803%">Windows(156)</a>
+<a href="/blog/tags/word/"
+style="font-size: 100.19292604501608%">Word(1)</a>
+<a href="/blog/tags/yamy/"
+style="font-size: 101.35048231511254%">yamy(7)</a>
+<a href="/blog/tags/zsh/"
+style="font-size: 110.03215434083602%">Zsh(52)</a> </span>
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+Sponsored Links
+
+</div>
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+<div class="section" markdown="1">
+
+## Most Viewed Posts (Last Month)
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a href="//www.amazon.co.jp/gp/product/4542201295" rel="nofollow"
+    target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/412PAQ09H8L._SS90_CR0,0,120,90_.jpg"
+    alt="JIS漢字字典" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2020/08/02/computer-google/"
+    class="click_box_link">日本語含めてソートしたときに最初と最後に来る文字</a>  
+    <span class="views">2200 views</span>
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [<img src="/images/post/thumbnail/20240927_win3_120_90.jpg"
+    class="small-thumbnail-img" width="120" height="90"
+    alt="20240927_win3_120_90" />](/blog/2024/09/27/computer-windows-mac/)
+
+    </div>
+
+    <a href="/blog/2024/09/27/computer-windows-mac/"
+    class="click_box_link">Win/Macそれぞれで特定のウィンドウを最前面に固定する</a>  
+    <span class="views">766 views</span>
+
+    </div>
+
+-   
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [<img src="/images/post/thumbnail/20210301_property_120_90.jpg"
+    class="small-thumbnail-img" width="120" height="90"
+    alt="20210301_property_120_90" />](/blog/2021/03/01/computer-windows-network/)
+
+    </div>
+
+    <a href="/blog/2021/03/01/computer-windows-network/"
+    class="click_box_link">Windows
+    WSL2に外部から直接アクセスするための設定</a>  
+    <span class="views">486 views</span>
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a href="//www.amazon.co.jp/gp/product/4774163635" rel="nofollow"
+    target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/51tTEprSmyL._SS90_CR0,0,120,90_.jpg"
+    alt="文字 (ずかん)" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2023/01/16/computer-bash/"
+    class="click_box_link">シェルスクリプトでちゃんと文字列に改行を入れ込む</a>  
+    <span class="views">417 views</span>
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    <div class="amazon-img" markdown="1">
+
+    <a href="//www.amazon.co.jp/gp/product/B0BB81WBGT" rel="nofollow"
+    target="_blank"><img
+    src="https://images-na.ssl-images-amazon.com/images/I/61xOuGHlvzL._SS90_CR0,0,120,90_.jpg"
+    alt="7インチ カーブシザー トリミングシザー 下向き＆上向き兼用 丸い先端 曲がった刃 高級鍛造仕上 ペットハサミ 犬 猫 トリミング ペット用シザー 鋏 （革ケース付き）…" /></a>
+
+    </div>
+
+    </div>
+
+    <a href="/blog/2023/01/15/computer-bash/"
+    class="click_box_link">シェルスクリプト(主にBash)で文字列前後のスペースを削除する</a>  
+    <span class="views">391 views</span>
+
+    </div>
+
+</div>
+
+<div class="section" markdown="1">
+
+## [Hatebu Popular Posts](//b.hatena.ne.jp/entrylist?mode=rss&sort=count&url=https://rcmdnk.com)
+
+<div id="hatena-bookmark-widget" markdown="1">
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [![https%3A%2F%2Frcmdnk.com%2Fimages%2Fpost%2F20151112_dashbord](https://cdn-ak-scissors.b.st-hatena.com/image/square/91eb706331c1348d77b27f136d04fbc14db740e8/height=90;version=1;width=120/https%3A%2F%2Frcmdnk.com%2Fimages%2Fpost%2F20151112_dashbord.gif)](https://rcmdnk.com/blog/2015/11/12/computer-javascript-go/)
+
+    </div>
+
+    <a href="https://rcmdnk.com/blog/2015/11/12/computer-javascript-go/"
+    class="click_box_link hatena-bookmark-entrytitle">ターミナルにリッチなモニターを表示させる</a>  
+    ![n_hatebu](//b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2015/11/12/computer-javascript-go/)
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [![https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F515yALRXKzL.\_SS200\_](https://cdn-ak-scissors.b.st-hatena.com/image/square/8eaa2f6b56f9f9e0cb2903f6c778504528bdb47c/height=90;version=1;width=120/https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F515yALRXKzL._SS200_.jpg)](https://rcmdnk.com/blog/2014/02/19/computer-markdown/)
+
+    </div>
+
+    <a href="https://rcmdnk.com/blog/2014/02/19/computer-markdown/"
+    class="click_box_link hatena-bookmark-entrytitle">Markdownからスライド資料を作る</a>  
+    ![n_hatebu](//b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2014/02/19/computer-markdown/)
+
+    </div>
+
+-   
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [![https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F41GJBSC36XL.\_SS200\_](https://cdn-ak-scissors.b.st-hatena.com/image/square/a9d3c48f4c82948f5542b1cb956621c77bcdef9f/height=90;version=1;width=120/https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F41GJBSC36XL._SS200_.jpg)](https://rcmdnk.com/blog/2014/06/08/comptuer-linux-windows-putty/)
+
+    </div>
+
+    <a
+    href="https://rcmdnk.com/blog/2014/06/08/comptuer-linux-windows-putty/"
+    class="click_box_link hatena-bookmark-entrytitle">多段ssh設定のまとめ</a>  
+    ![n_hatebu](//b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2014/06/08/comptuer-linux-windows-putty/)
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [![https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F51ZUNX24fSL.\_SS200\_](https://cdn-ak-scissors.b.st-hatena.com/image/square/b4291e68cea231e6253bb5721537c4d7e5821b7b/height=90;version=1;width=120/https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F51ZUNX24fSL._SS200_.jpg)](https://rcmdnk.com/blog/2015/09/09/computer-remote/)
+
+    </div>
+
+    <a href="https://rcmdnk.com/blog/2015/09/09/computer-remote/"
+    class="click_box_link hatena-bookmark-entrytitle">ssh周りの設定、Tipsのまとめ</a>  
+    ![n_hatebu](//b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2015/09/09/computer-remote/)
+
+    </div>
+
+-   <div class="group" markdown="1">
+
+    <div class="title-small-thumbnail" markdown="1">
+
+    [![https%3A%2F%2Frcmdnk.com%2Fimages%2FMacApp%2FMacLogoMiddle](https://cdn-ak-scissors.b.st-hatena.com/image/square/cd11e980f25ed56eb77b5acbf99268e7b1ec51fe/height=90;version=1;width=120/https%3A%2F%2Frcmdnk.com%2Fimages%2FMacApp%2FMacLogoMiddle.jpg)](https://rcmdnk.com/mac/macapp/)
+
+    </div>
+
+    <a href="https://rcmdnk.com/mac/macapp/"
+    class="click_box_link hatena-bookmark-entrytitle">Mac用アプリ</a>  
+    ![n_hatebu](//b.hatena.ne.jp/entry/image/https://rcmdnk.com/mac/macapp/)
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+Sponsored Links
+
+</div>
+
+<div markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="center_wrapper" markdown="1">
+
+<div markdown="1">
+
+[Contact](/cdn-cgi/l/email-protection#fe8c9d939a9095be99939f9792d09d9193),
+[Privacy Policy](/privacy/)
+
+</div>
+
+<div markdown="1">
+
+Copyright © 2025 - rcmdnk - <span class="credit">Powered by
+[Octopress](https://octopress.org)</span> <span class="credit">, with
+theme [octogray](//github.com/rcmdnk/octogray)</span>
+
+</div>
+
+</div>
+
+}

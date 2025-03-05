@@ -1,0 +1,642 @@
+<div id="globalheader-container" markdown="1" brand="hatenablog"
+style="display: none">
+
+</div>
+
+<div id="container" markdown="1">
+
+<div id="container-inner" markdown="1">
+
+<div id="blog-title" markdown="1" brand="hatenablog">
+
+<div id="blog-title-inner" markdown="1">
+
+<div id="blog-title-content" markdown="1">
+
+# [Web開発における知見共有系ページ](https://job-info.hateblo.jp/) [title]
+
+</div>
+
+</div>
+
+</div>
+
+<div id="content" class="hfeed" markdown="1">
+
+<div id="content-inner" markdown="1">
+
+<div id="wrapper" markdown="1">
+
+<div id="main" markdown="1">
+
+<div id="main-inner" markdown="1">
+
+<div class="entry-inner" markdown="1">
+
+<div class="entry-header" markdown="1">
+
+<div class="date entry-date first" markdown="1">
+
+<a href="https://job-info.hateblo.jp/archive/2024/08/16"
+rel="nofollow"><span class="date-year">2024</span><span
+class="hyphen">-</span><span class="date-month">08</span><span
+class="hyphen">-</span><span class="date-day">16</span></a>
+
+</div>
+
+# <a href="https://job-info.hateblo.jp/entry/2024/08/16/233850"
+class="entry-title-link bookmark">シェルから他のシェルスクリプトを呼び出す方法</a> [シェルから他のシェルスクリプトを呼び出す方法]
+
+<div class="entry-categories categories" markdown="1">
+
+<a
+href="https://job-info.hateblo.jp/archive/category/%E3%82%B7%E3%82%A7%E3%83%AB"
+class="entry-category-link category-シェル">シェル</a>
+<a href="https://job-info.hateblo.jp/archive/category/Shell"
+class="entry-category-link category-Shell">Shell</a>
+
+</div>
+
+<div class="customized-header" markdown="1">
+
+<div class="entry-header-html" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="entry-content hatenablog-entry" markdown="1">
+
+-   [シェルから他のシェルスクリプトを呼び出す方法](#シェルから他のシェルスクリプトを呼び出す方法)
+    -   [1. シンプルな呼び出し](#1-シンプルな呼び出し)
+    -   [2. source コマンドを使用](#2-source-コマンドを使用)
+    -   [3. bash コマンドを使用](#3-bash-コマンドを使用)
+    -   [まとめ](#まとめ)
+
+<div class="section" markdown="1">
+
+### シェルから他のシェルスクリプトを呼び出す方法 [シェルから他のシェルスクリプトを呼び出す方法]
+
+シェルから他のシェルスクリプトを呼び出す方法はいくつかあります。  
+基本的な方法として、以下の3つが挙げられます。
+
+<div class="section" markdown="1">
+
+#### 1. シンプルな呼び出し [1-シンプルな呼び出し]
+
+シェルスクリプト内で、他のシェルスクリプトをそのまま呼び出すことができます。  
+例えば、script2.shをscript1.shから実行する場合、以下のように書きます。
+
+``` code
+#!/bin/bash
+
+# script1.shの内容
+echo "This is script1"
+# script2.shを呼び出し
+./script2.sh
+```
+
+この方法では、script2.shが実行され、その結果がscript1.shに返されます。  
+script2.shが実行された後、script1.shの次の行が実行されます。
+
+</div>
+
+<div class="section" markdown="1">
+
+#### 2. source コマンドを使用 [2-source-コマンドを使用]
+
+source
+コマンドを使用すると、他のシェルスクリプトを現在のシェルセッション内で実行できます。  
+これにより、呼び出されたスクリプト内の変数や関数が現在のシェルに引き継がれます。
+
+``` code
+#!/bin/bash
+
+# script1.shの内容
+echo "This is script1"
+# script2.shを呼び出し
+source ./script2.sh
+```
+
+この場合、script2.sh内で定義された変数や関数は、script1.shでも使用できます。  
+例えば、script2.shで変数VARを設定すると、script1.shでもその変数VARにアクセスできます。
+
+</div>
+
+<div class="section" markdown="1">
+
+#### 3. bash コマンドを使用 [3-bash-コマンドを使用]
+
+bashコマンドを使って、他のシェルスクリプトを新しいシェルプロセスで実行することもできます。  
+これにより、スクリプトを独立したプロセスで実行できます。
+
+``` code
+#!/bin/bash
+
+# script1.shの内容
+echo "This is script1"
+# script2.shを別プロセスで実行
+bash ./script2.sh
+```
+
+この方法では、script2.shは新しいシェルプロセスで実行されるため、script2.sh内の変数や関数はscript1.shに引き継がれません。  
+script2.shが終了すると、script1.shに制御が戻ります。
+
+</div>
+
+<div class="section" markdown="1">
+
+#### まとめ
+
+-   **シンプルな呼び出し**
+
+呼び出したスクリプトが終了すると次の行が実行される。
+
+-   **source コマンド**
+
+呼び出したスクリプトの変数や関数をそのまま使用できる。
+
+-   **bash コマンド**
+
+別のシェルプロセスでスクリプトを実行し、独立した環境を提供する。
+
+それぞれの方法には特性があり、目的に応じて適切な方法を選択することが重要です。
+
+</div>
+
+</div>
+
+</div>
+
+<div class="entry-tags-wrapper" markdown="1">
+
+<div class="entry-tags" markdown="1">
+
+</div>
+
+</div>
+
+<span class="author vcard"><span class="fn" load-nickname="1"
+user-name="tomotomo1129">tomotomo1129</span></span>
+<span class="entry-footer-time">[2024-08-16
+23:38](https://job-info.hateblo.jp/entry/2024/08/16/233850)</span>
+
+<div class="hatena-star-container" markdown="1" hatena-star-container=""
+hatena-star-url="https://job-info.hateblo.jp/entry/2024/08/16/233850"
+hatena-star-title="シェルから他のシェルスクリプトを呼び出す方法"
+hatena-star-variant="profile-icon"
+hatena-star-profile-url-template="https://blog.hatena.ne.jp/{username}/">
+
+</div>
+
+<div class="social-buttons" markdown="1">
+
+<div class="social-button-item" markdown="1">
+
+<a
+href="https://b.hatena.ne.jp/entry/s/job-info.hateblo.jp/entry/2024/08/16/233850"
+class="hatena-bookmark-button"
+data-hatena-bookmark-url="https://job-info.hateblo.jp/entry/2024/08/16/233850"
+data-hatena-bookmark-layout="vertical-balloon"
+data-hatena-bookmark-lang="ja"
+title="この記事をはてなブックマークに追加"><img
+src="https://b.st-hatena.com/images/entry-button/button-only.gif"
+style="border: none;" width="20" height="20"
+alt="この記事をはてなブックマークに追加" /></a>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<div class="fb-share-button" markdown="1" layout="box_count"
+data-href="https://job-info.hateblo.jp/entry/2024/08/16/233850">
+
+</div>
+
+</div>
+
+<div class="social-button-item" markdown="1">
+
+<a
+href="https://x.com/intent/tweet?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%8B%E3%82%89%E4%BB%96%E3%81%AE%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99%E6%96%B9%E6%B3%95+-+Web%E9%96%8B%E7%99%BA%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E7%9F%A5%E8%A6%8B%E5%85%B1%E6%9C%89%E7%B3%BB%E3%83%9A%E3%83%BC%E3%82%B8&amp;url=https%3A%2F%2Fjob-info.hateblo.jp%2Fentry%2F2024%2F08%2F16%2F233850"
+class="entry-share-button entry-share-button-twitter test-share-button-twitter"
+title="X（Twitter）で投稿する"></a>
+
+</div>
+
+</div>
+
+<div class="customized-footer" markdown="1">
+
+<div id="entry-footer-secondary-modules" class="entry-footer-modules"
+markdown="1">
+
+<div class="hatena-module hatena-module-related-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+関連記事
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/archive/2024/08/17"
+    rel="nofollow">2024-08-17</a>
+
+    </div>
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/17/192419"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルのsourceコマンド</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    シェルのsourceコマンド 使用方法 主な用途 注意点 例 シェルの…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/archive/2024/08/16"
+    rel="nofollow">2024-08-16</a>
+
+    </div>
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/16/231152"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルで定数宣言をする方法</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    シェルで定数宣言をする方法 1. readonly コマンドを使う 例: 2…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/archive/2024/08/16"
+    rel="nofollow">2024-08-16</a>
+
+    </div>
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/16/230651"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルでtry~catch構文を実装</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    シェルでtry\~catch構文を実装 1. エラーコードのチェック 2. tr…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/archive/2024/08/16"
+    rel="nofollow">2024-08-16</a>
+
+    </div>
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/16/230638"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルでメール送信処理を実装</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    シェルでメール送信処理を実装 1. mail コマンドを使用する方法…
+
+    </div>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <div class="urllist-date-link related-entries-date-link"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/archive/2024/08/16"
+    rel="nofollow">2024-08-16</a>
+
+    </div>
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/16/230552"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルのデバッグ方法</a>
+    <div class="urllist-entry-body related-entries-entry-body"
+    markdown="1">
+
+    シェルのデバッグ方法 1. -x オプションを使用する 2. set -x …
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="entry-footer-html" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="pager pager-permalink permalink" markdown="1">
+
+<span class="pager-prev">
+<a href="https://job-info.hateblo.jp/entry/2024/08/16/233907"
+rel="prev"><span class="pager-arrow">« </span>
+Linuxでaliasを設定する方法</a> </span> <span class="pager-next">
+<a href="https://job-info.hateblo.jp/entry/2024/08/16/231152"
+rel="next">シェルで定数宣言をする方法 <span class="pager-arrow">
+»</span></a> </span>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="box1-inner" markdown="1">
+
+</div>
+
+</div>
+
+<div id="box2-inner" markdown="1">
+
+<div class="hatena-module hatena-module-search-box" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+検索
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-html" markdown="1">
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-recent-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+[最新記事](https://job-info.hateblo.jp/archive)
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/11/23/212054"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">Swiftで@Stateを使用する例</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/11/23/211625"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">Swiftで、ボタンクリックで別のViewを表示させる方法</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/11/23/211151"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">Swiftの#Previewの使い方</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/09/19/222920"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">MySQLでREPLACEを使った置換</a>
+
+    </div>
+
+-   <div class="urllist-item-inner recent-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/09/19/140859"
+    class="urllist-title-link recent-entries-title-link urllist-title recent-entries-title">MySQLで正規表現の使い方</a>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-html" markdown="1">
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-related-entries" markdown="1">
+
+<div class="hatena-module-title" markdown="1">
+
+関連記事
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/17/192651"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルでnull判定の書き方</a>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/17/192623"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">シェルでタイムアウトの設定</a>
+
+    </div>
+
+-   <div class="urllist-item-inner related-entries-item-inner"
+    markdown="1">
+
+    <a href="https://job-info.hateblo.jp/entry/2024/08/17/192523"
+    class="urllist-title-link related-entries-title-link urllist-title related-entries-title">tailとlessコマンドの違い</a>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-html" markdown="1">
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+<div class="hatena-module hatena-module-entries-access-ranking"
+markdown="1" count="5" source="access" enable_customize_format="0"
+display_entry_category="0" display_entry_image="0"
+display_entry_image_size_width="100"
+display_entry_image_size_height="100" display_entry_body_length="0"
+display_entry_date="0" display_entry_title_length="20"
+restrict_entry_title_length="0" display_bookmark_count="0">
+
+<div class="hatena-module-title" markdown="1">
+
+注目記事
+
+</div>
+
+<div class="hatena-module-body" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="bottom-editarea" markdown="1">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="fb-root" markdown="1">
+
+</div>
+
+<div class="quote-box" markdown="1">
+
+<div class="tooltip-quote tooltip-quote-stock" markdown="1">
+
+</div>
+
+<div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet"
+markdown="1">
+
+<span class="js-tweet-quote" target="_blank" track-name="quote-tweet"
+track-once="">![](https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8 "引用して投稿する")</span>
+
+</div>
+
+</div>
+
+<div id="quote-stock-message-box" class="quote-stock-panel" markdown="1"
+style="position: absolute; z-index: 3000">
+
+<div id="quote-stock-succeeded-message" class="message-box" markdown="1"
+style="display: none">
+
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+</div>
+
+<div id="quote-login-required-message" class="message-box" markdown="1"
+style="display: none">
+
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+</div>
+
+<div id="quote-stock-failed-message" class="error-box" markdown="1"
+style="display: none">
+
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+</div>
+
+<div id="unstockable-quote-message-box" class="error-box" markdown="1"
+style="display: none; position: absolute; z-index: 3000;">
+
+限定公開記事のため引用できません。
+
+</div>
+
+</div>
+
+<div id="hidden-subscribe-button" markdown="1" style="display: none;">
+
+<div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+markdown="1">
+
+<a href="#" class="hatena-follow-button js-hatena-follow-button"><span
+class="subscribing"> <span class="foreground">読者です</span> <span
+class="background">読者をやめる</span> </span> <span
+class="unsubscribing" data-track-name="profile-widget-subscribe-button"
+data-track-once=""> <span class="foreground">読者になる</span> <span
+class="background">読者になる</span> </span></a>
+
+<div class="subscription-count-box js-subscription-count-box"
+markdown="1">
+
+<span class="subscription-count js-subscription-count"> </span>
+
+</div>
+
+</div>
+
+</div>
