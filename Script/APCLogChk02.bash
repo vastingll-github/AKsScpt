@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -x
-declare -A APLGEM
+#
 # declareの主なオプション（属性の定義、※1）
 # 短いオプション	意味
 # -a 名前	配列を定義する（※2）
@@ -12,8 +12,9 @@ declare -A APLGEM
 # -t 名前	トレース可能にする（関数に用いる）
 # -u 名前	変数の値を常に大文字にする
 # -x 名前	環境変数として定義する（定義と同時にexportされる）
+declare -A APLGEM
 
-# 定義：　　LogFormat フォーマットの定義 フォーマット名
+# 定義：LogFormat フォーマットの定義 フォーマット名
 #        記述場所 httpd.conf, VirtualHost 
 # 
 #        ・フォーマットは複数定義可能
@@ -194,7 +195,7 @@ APLGEM[%X]="%X:接続ステータス "
 #    - 運用状態のサーバーでは notice か warn
 #    - テスト状態であれば、 info か debug
 
-# 連想配列だある宣言
+# 連想配列宣言
 declare -A ESV
 
 PSV="PSHVAL"
@@ -234,11 +235,10 @@ function PSHVAL() {
       :
       fi
     else
-      # 呼出された行番号
+      # 呼出し行番号
       # 連想配列ESV[行番号]="PSHVAL $BJ2 $BJ2" をスペースで分割する。cf. ("${ESV[${dim}]}")
       #DVN=(${ESV[${BASH_LINENO[0]}]})
       # 強制的に改行を挿入。デバッグ用変数打出しを目立たせるため
-      #echo 
       # 呼出された打出し変数を表示する（大変だった）
       # ESV[行番号]="PSHVAL $fsch3 $FILENAME $CFNAME"のため以下
       echo -n "${DVN[${CNT}]}=[${i}] "
@@ -246,8 +246,8 @@ function PSHVAL() {
       CNT=`expr $CNT + 1`
     fi
   done
-  # 強制的に改行を挿入。デバッグ用変数打出しを目立たせるため
-  echo
+  # 強制的に改行を挿入。デバッグ用変数打出しを目立たせるため２行改行
+  echo -e "\n\n"
 }
 
 function del_kakko() {
@@ -271,9 +271,6 @@ for i in "${STPOUT[@]}"; do
     if [[ -v $TMPSV ]] ;then
       STPOUT01[$GNUM]+=" $GNUM"; STPOUT01[$GNUM]+=" $TMPSV"
     fi
-    ##else
-    ##  ESV[$GNUM]+=" ${PSV}"
-    ##fi
   elif [[ $i =~ \[@\] ]] ;then
     ESV[$GNUM]+=" ARRAYALL-${i}"; STPOUT01[$GNUM]+=" ${i}"
   elif [[ $i =~ \[[0-9]*\] ]] ;then
@@ -305,10 +302,9 @@ DETAILERLST=DetailErrList.result
 AHxEXISTLST=AHxxExist.result
 
 ### シェル変数打出し前処理
-# ログファイルの検索処理をする場所をカレントディレクトリ配下に作成する。
+# ログファイルの検索処理場所をカレントディレクトリ配下に作成する。
 # フォルダ権限等などエラー処理は無視。作業時間をミリ秒で表示し、どの時刻の設定ファイルか明確化する。
 DATETIME=`date +%Y%m%d_%H%M%S_%3N`
-
 APCLOGCHK="$DATETIME-LogChk"
 mkdir ./${APCLOGCHK}
 
@@ -337,6 +333,7 @@ cat ${APCLOGCHK}/${ERREXISTLST} | cut -d":" -f"$DTAIL_LOCATE01" >  ${APCLOGCHK}/
 
 echo "EXIT Now"
 exit 0
+
 ### 読み込む補助設定ファイルの一覧を取得する
 # httpd.conf ファイルの中から Include ディレクティブを使用することで補助設定ファイルを読み込む。
 # Include ディレクティブを使って読み込むように設定されている補助設定ファイル一覧取得には以下
