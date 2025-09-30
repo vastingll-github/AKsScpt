@@ -1,0 +1,546 @@
+[[globalheader-container]]
+
+https://y-kawaz.hatenadiary.org/[image:https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png[y-kawazの日記]]
+
+https://y-kawaz.hatenadiary.org/[y-kawazの日記]
+
+https://blog.hatena.ne.jp/y-kawaz/y-kawaz.hatenadiary.org/subscribe?utm_medium=button&utm_campaign=subscribe_blog&utm_source=blogs_topright_button[読者になる]
+
+[[container]]
+[[container-inner]]
+[[blog-title]]
+[[blog-title-inner]]
+[[blog-title-content]]
+[[title]]
+== https://y-kawaz.hatenadiary.org/[y-kawazの日記]
+
+[[content]]
+[[content-inner]]
+[[wrapper]]
+[[main]]
+[[main-inner]]
+[[google_afc_user_container_0]]
+
+この広告は、90日以上更新していないブログに表示しています。
+
+https://y-kawaz.hatenadiary.org/archive/2010/07/20[[.date-year]#2010#[.hyphen]#-#[.date-month]#07#[.hyphen]#-#[.date-day]#20#]
+
+== https://y-kawaz.hatenadiary.org/entry/20100720/1279607344[bashの配列変数に関するTips]
+
+https://y-kawaz.hatenadiary.org/archive/category/Linux[Linux]
+
+== 序文（飛ばしてよし）
+
+まず話は僕が書いてたhttps://d.hatena.ne.jp/keyword/%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8[スクリプト]で、引数から"最後の"値だけを分離したものを使いたかったってのが始まりです。 +
+最初の引数の分離なら shift
+でいけるんだが、最後をいきなり分離するのが直接は出来ないっぽいので、格闘の結果以下のように解決しました。
+
+[source,code,lang-sh]
+----
+#!/bin/sh
+ARGS=("$@")
+echo "最後以外: ${ARGS[@]:0:((${#ARGS[@]}-1))}"
+echo "最後のみ: ${ARGS[((${#ARGS[@]}-1))]}"
+echo "最後のみ: ${ARGS[-1]}" # bash-4.2 以降なら負のインデックスが使える!
+----
+
+以下が上記https://d.hatena.ne.jp/keyword/%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8[スクリプト]の実行結果です。
+
+....
+$ ./test.sh a b c d
+最後以外: a b c
+最後のみ: d
+....
+
+やっていることは、まず引数をARGVという配列変数に詰めなおして、その後配列変数に対するスライスや引数処理で欲しい値を取得してます。 +
+配列変数なんて滅多に扱わないだろうし特有の表現もあるしで、詳しくない人は意味不明ですよね(^^; +
+なので備忘録としてここで使ってるTipsを以下に纏めておきます。
+
+=== よく考えたら配列に詰め直す必要なかったわ
+
+[source,code,lang-sh]
+----
+#!/bin/sh
+echo "最後以外: " "${@:1:$#-1}"
+echo "最後のみ: " "${@:$#}"
+----
+
+引数処理だと$1に1番目の引数が入ってて、配列変数の場合だとインデックスは0から始まるから、インデックス処理が1個ずれるのがポイントだな。
+
+ちなみに文字列の一部として展開したい場合は@じゃなく以下のように*を使ったほうが良い。
+
+[source,code,lang-sh]
+----
+#!/bin/sh
+echo "最後以外: ${*:1:$#-1}"
+echo "最後のみ: ${*:$#}"
+----
+
+ちなみに上記2つのhttps://d.hatena.ne.jp/keyword/%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8[スクリプト]にを仮に
+atmark.sh と https://d.hatena.ne.jp/keyword/asterisk[asterisk].sh
+とした場合以下の様な違いが出るよ。
+
+[source,code,lang-sh]
+----
+sh atmark.sh a b c d
+# ↑これは↓こう解釈される
+echo "最後以外: a" "b" "c" 
+echo "最後のみ: d"
+
+sh asterisk.sh a b c d
+# ↑これは↓こう解釈される
+echo "最後以外: a b c" 
+echo "最後のみ: d"
+----
+
+== 普通の配列（インデックス配列）
+
+例を見たほうが早いと思うので早速…
+
+[source,code,lang-sh]
+----
+# 要素数3の配列を作成
+ARRAY=(a b "c c c")
+
+# 値の取得
+echo ${ARRAY[0]}  # -> a
+echo ${ARRAY[1]}  # -> b
+echo ${ARRAY[2]}  # -> c c c
+echo ${ARRAY[3]}  # -> (空)
+
+# 配列サイズの取得
+echo ${#ARRAY[@]}  # -> 3
+
+# 配列の全ての値を取得（@と*はダブルクオートで囲った時の動作が異なる）
+echo ${ARRAY[@]}    # echo a b c c c と同じ
+echo ${ARRAY[*]}    # echo a b c c c と同じ
+echo "${ARRAY[@]}"  # echo a b "c c c" と同じ
+echo "${ARRAY[*]}"  # echo "a b c c c" と同じ
+
+# 配列の値を書き換える
+ARRAY[0]=A  # -> ARRAY=(A b "c c c")
+
+# 配列に値をインデックス指定で追加する１（最後のインデックス+1のインデックスを指定する）
+ARRAY[3]=d  # -> ARRAY=(A b "c c c" d)
+
+# ループで回す１（ダブルクオートで囲まない場合は@も*も同じ動作で、全て空白展開された後に解釈される）
+for v in ${ARRAY[@]}; do
+  echo "$v"
+done
+# a
+# b
+# c
+# c
+# c
+
+# ループで回す２（[@]をダブルクオートで囲むと配列の値が１つずつ取り出せる）
+for v in "${ARRAY[@]}"; do
+  echo "$v"
+done
+# a
+# b
+# c c c
+
+# ループで回す３（[*]をダブルクオートで囲むと1つの文字列になるだけなので１回しかループしない）
+for v in "${ARRAY[*]}"; do
+  echo "$v"
+done
+# a b c c c
+
+# 配列に値をconcat的に追加する（複数の値を纏めて追加もできる）
+ARRAY+=(e)   # -> ARRAY=(A b "c c c" d e)
+ARRAY+=(f g) # -> ARRAY=(A b "c c c" d e f g)
+
+# 最後の値を取得する（配列サイズを取得する式を使って以下のようにすれば最後の値の取得もできます）
+echo ${ARRAY[((${#ARRAY[@]}-1))]}  # -> g
+
+# 配列をコピーする
+A2=("$ARRAY[@]")  # -> A2=(A b "c c c" d e f g)
+
+# 配列の一部分だけをスライスして取得する
+echo ${ARRAY[@]:0:2}  # -> A b (インデックス0から2個取り出す)
+echo ${ARRAY[@]:1:3}  # -> b c c c d (インデックス1から3個取り出す)
+echo ${ARRAY[@]:4}    # -> d e f g (第2引数を省略すると最後までの意)
+echo ${ARRAY[@]:-1}   # -> (空) (マイナス表現で最後の値を取得するようなことは残念ながら出来ません)
+
+# 配列の各値に対して置換や前方一致削除や後方一致削除等の式を適用することも可能です
+ARRAY=(/bin /usr/bin /usr/local/bin)
+echo ${ARRAY[@]/bin/lib}  # -> /lib /usr/lib /usr/local/lib (文字列置換)
+echo ${ARRAY[@]#*/}       # -> bin usr/bin usr/local/bin    (最短前方一致削除)
+echo ${ARRAY[@]##*/}      # -> bin bin bin                  (最長前方一致削除)
+echo ${ARRAY[@]%[a-z]*}   # -> /bi /usr/bi /usr/local/bi    (最短後方一致削除)
+echo ${ARRAY[@]%%[a-z]*}  # -> / / /                        (最長後方一致削除)
+
+# なんかキモイので僕は余り使わないが配列変数に引数無しでアクセスすると
+# 最初の値に対する操作と同じ意味になる。
+ARRAY=(a b c)
+echo $ARRAY        # -> a (最初の値が返される)
+ARRAY=A            # これは ARRAY[0]=A と同じ
+echo "${ARRAY[@]}" # -> A b c (最初の値だけが変更されている)
+
+# インデックスを飛ばすことも出来る
+ARRAY=(a b)
+ARRAY[100]=c
+echo ${ARRAY[0]}   # -> a
+echo ${ARRAY[1]}   # -> b
+echo ${ARRAY[2]}   # -> (空)
+echo ${ARRAY[100]} # -> c
+echo ${ARRAY[@]}   # -> a b c    # インデックス順で取得される
+echo ${#ARRAY[@]}  # -> 3        # 配列サイズはインデックスが飛んでても正しいサイズ
+echo ${!ARRAY[@]}  # -> 0 1 100  # キー一覧は飛んだ値になる
+----
+
+== https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]
+
+https://d.hatena.ne.jp/keyword/bash[bash]ではhttps://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]も使えます。[.deco]#※残念ながらhttps://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]はhttps://d.hatena.ne.jp/keyword/bash[bash]
+4.x以上でしか使えません。古いhttps://d.hatena.ne.jp/keyword/bash[bash]ではdeclare
+-Aをした時点でinvalid optionエラーになります。# +
+https://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]を使う場合は変数にhttps://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]だよーという属性を追加するためにdeclare
+-Aをしてやる必要があります。
+
+[source,code,lang-sh]
+----
+# 連想配列だよーと宣言(必須)
+declare -A HASH
+
+# 代入
+HASH[foo]=bar
+HASH[a]=1
+HASH[2]=ni # declare -Aで連想配列化されてる場合は数字添字も単に文字列キーとして扱われる
+
+# 利用
+echo ${HASH[foo]} # -> bar
+echo ${HASH[a]}   # -> 1
+echo ${HASH[2]}   # -> ni
+
+# まとめて代入も出来ます
+HASH=([one]=1 [two]=2 [three]=3)
+echo ${HASH[one]}   # -> 1
+echo ${HASH[two]}   # -> 2
+echo ${HASH[three]} # -> 3
+
+# 同じ書式で、declareと同時に初期化もできます
+declare -A H2=([tatuya]=dead [takuya]=alive [minami]=alive)
+
+# インデックス配列と同じようにconcat的な追加もできます
+HASH+=([four]=4 [five]=5) 
+
+# 値の列挙もインデックス配列と同じように[@]や[*]で出来ます(ただし順不同)
+echo ${HASH[@]} # -> 4 1 5 2 3
+
+# 配列サイズもインデックス配列の時と同じように#で出来ます
+echo ${#HASH[@]} # -> 5
+
+# キーの列挙も出来ます（ただし順不同）
+echo ${!HASH[@]} # -> four one five two three
+
+# 特定のキーを削除するには添字指定で unset すればよい
+unset HASH[one]
+echo ${HASH[@]}  # -> 4 5 2 3
+echo ${!HASH[@]} # -> four five two three
+
+# foreach的なループをしてみる
+for key in "${!HASH[@]}";do
+  value="${HASH[$key]}"
+  echo "$key is $value"
+done
+# four is 4
+# five is 5
+# two is 2
+# three is 3
+----
+
+== その他：配列な特殊変数
+
+配列変数の扱いからはちょっと外れるけど配列繋がりってことで…
+
+* $PIPESTATUS という特殊変数の紹介。知ってると結構便利。
+
+[source,code,lang-sh]
+----
+echo foo | grep foo | grep bar | cat
+echo ${PIPESTATUS[@]} # -> 0 0 1 0 (直前のパイプの各コマンドの終了コードが個別に取れる)
+echo foo | grep foo | grep bar | cat
+echo ${PIPESTATUS[2]} # -> 1 (配列変数なので一部のみを狙って取れる)
+----
+
+== さいごに
+
+慣れれば配列を使えるというのはやはり便利ではありますが、知らないとイミフなので他人が見る可能性のある各所に説明もしくは以下のようなコメントををつけておくのが無難でしょうｗ
+
+[source,code,lang-sh]
+----
+# 配列操作に関してはココを参照＞http://bit.ly/SLZ3Gx
+----
+
+[.author .vcard]#[.fn]#y-kawaz##
+[.entry-footer-time]#https://y-kawaz.hatenadiary.org/entry/20100720/1279607344[2010-07-20
+15:29]# [.entry-footer-subscribe]#
+https://blog.hatena.ne.jp/y-kawaz/y-kawaz.hatenadiary.org/subscribe?utm_campaign=subscribe_blog&utm_medium=button&utm_source=blogs_entry_footer[読者になる]
+#
+
+https://b.hatena.ne.jp/entry/s/y-kawaz.hatenadiary.org/entry/20100720/1279607344[image:https://b.st-hatena.com/images/entry-button/button-only.gif[この記事をはてなブックマークに追加,width=20,height=20]]
+
+https://x.com/intent/tweet?text=bash%E3%81%AE%E9%85%8D%E5%88%97%E5%A4%89%E6%95%B0%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8BTips+-+y-kawaz%E3%81%AE%E6%97%A5%E8%A8%98&url=https%3A%2F%2Fy-kawaz.hatenadiary.org%2Fentry%2F20100720%2F1279607344[]
+
+[[google_afc_user_container_1]]
+
+http://blog.hatena.ne.jp/guide/pro[広告を非表示にする]
+
+[[entry-footer-secondary-modules]]
+関連記事
+
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20110324/1300983699[image:https://cdn.image.st-hatena.com/image/square/e2aeeecaa517a636e116aa24b8c5a7caf2c5660f/backend=imagemagick;height=100;version=1;width=100/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fy-kawaz%2F20110325%2F20110325012003.jpg[東京Node学園1時限目行ってきましたメモ,title="東京Node学園1時限目行ってきましたメモ",width=100,height=100]]
+
+https://y-kawaz.hatenadiary.org/archive/2011/03/24[2011-03-24]
+
+https://y-kawaz.hatenadiary.org/entry/20110324/1300983699[東京Node学園1時限目行ってきましたメモ]
+
+Node.jsの勉強会イベント『東京Node学園1時限目』に行ってきま…
+* {blank}
++
+https://y-kawaz.hatenadiary.org/archive/2011/01/23[2011-01-23]
+
+https://y-kawaz.hatenadiary.org/entry/20110123/1295779916[Linuxでうっかりrm
+-rfしちゃったけど復活出来たよー＼(＾o＾)／]
+
+サーバのファイル整理作業をしていたところ…、 間違えてrm -rf…
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20100416/1271401890[image:https://cdn.image.st-hatena.com/image/square/ff4c3959a24f2d8383f2939997235eb84c1284d4/backend=imagemagick;height=100;version=1;width=100/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fy-kawaz%2F20100416%2F20100416154640.png[GAE/J使いの為のインデックス削除ツール,title="GAE/J使いの為のインデックス削除ツール",width=100,height=100]]
+
+https://y-kawaz.hatenadiary.org/archive/2010/04/16[2010-04-16]
+
+https://y-kawaz.hatenadiary.org/entry/20100416/1271401890[GAE/J使いの為のインデックス削除ツール]
+
+pythonで開発している場合は appcfg.py vacuum_indexes がある…
+* {blank}
++
+https://y-kawaz.hatenadiary.org/archive/2009/11/11[2009-11-11]
+
+https://y-kawaz.hatenadiary.org/entry/20091111/1257961854[Go言語を試す]
+
+昨日はたまたま休暇を取って1日外で遊んでいたので、Go言語の発…
+* {blank}
++
+https://y-kawaz.hatenadiary.org/archive/2009/08/26[2009-08-26]
+
+https://y-kawaz.hatenadiary.org/entry/20090826/1251267667[ls ~
+を晒してみる]
+
+そんことをしてる人が居たので自分もやってみた。 [kawaz@r2 ~]…
+
+* もっと読む
+
+[.leave-comment-title .js-leave-comment-title]#コメントを書く#
+
+[.pager-prev]#
+https://y-kawaz.hatenadiary.org/entry/20100723/1279884736[[.pager-arrow]#«
+# ツイッターの現在地を更新するWEBアプリ書…] # [.pager-next]#
+https://y-kawaz.hatenadiary.org/entry/20100712/1278927498[アメリカの表現規制ってこんな酷いの！？
+[.pager-arrow]# »#] #
+
+[[box1-inner]]
+
+[[box2-inner]]
+プロフィール
+
+https://y-kawaz.hatenadiary.org/about[image:https://cdn.profile-image.st-hatena.com/users/y-kawaz/profile.png[id:y-kawaz]]
+[.id]# https://y-kawaz.hatenadiary.org/about[id:y-kawaz] #
+
+link:#[[.subscribing]# [.foreground]#読者です#
+[.background]#読者をやめる# # [.unsubscribing]#
+[.foreground]#読者になる# [.background]#読者になる# #]
+
+__ [.underline]## [.subscription-count .js-subscription-count]# #
+
+https://y-kawaz.hatenadiary.org/about[このブログについて]
+
+検索
+
+リンク
+
+* https://hatena.blog/[はてなブログ]
+* https://hatena.blog/guide?via=200109[ブログをはじめる]
+* http://blog.hatenablog.com[週刊はてなブログ]
+* https://hatena.blog/guide/pro[はてなブログPro]
+
+https://y-kawaz.hatenadiary.org/archive[最新記事]
+
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20150111/1420981715[スマホ版はてなのコレな！]
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20150111/1420981713[スマホ版はてなのコレな！]
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20140331/1396250718[引っ越し、というか]
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20130319/1363672391[tmuxのステータスラインの色を起動したホスト毎に変える]
+* {blank}
++
+https://y-kawaz.hatenadiary.org/entry/20130308/1362735393[tmuxでマウスモードのON/OFFを単一キーで簡単に切り替えたい！]
+
+https://y-kawaz.hatenadiary.org/archive[月別アーカイブ]
+
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2015[2015]
+** https://y-kawaz.hatenadiary.org/archive/2015/01[2015 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2014[2014]
+** https://y-kawaz.hatenadiary.org/archive/2014/03[2014 / 3]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2013[2013]
+** https://y-kawaz.hatenadiary.org/archive/2013/03[2013 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2013/02[2013 / 2]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2012[2012]
+** https://y-kawaz.hatenadiary.org/archive/2012/06[2012 / 6]
+** https://y-kawaz.hatenadiary.org/archive/2012/05[2012 / 5]
+** https://y-kawaz.hatenadiary.org/archive/2012/03[2012 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2012/01[2012 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2011[2011]
+** https://y-kawaz.hatenadiary.org/archive/2011/11[2011 / 11]
+** https://y-kawaz.hatenadiary.org/archive/2011/10[2011 / 10]
+** https://y-kawaz.hatenadiary.org/archive/2011/09[2011 / 9]
+** https://y-kawaz.hatenadiary.org/archive/2011/07[2011 / 7]
+** https://y-kawaz.hatenadiary.org/archive/2011/06[2011 / 6]
+** https://y-kawaz.hatenadiary.org/archive/2011/05[2011 / 5]
+** https://y-kawaz.hatenadiary.org/archive/2011/04[2011 / 4]
+** https://y-kawaz.hatenadiary.org/archive/2011/03[2011 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2011/02[2011 / 2]
+** https://y-kawaz.hatenadiary.org/archive/2011/01[2011 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2010[2010]
+** https://y-kawaz.hatenadiary.org/archive/2010/12[2010 / 12]
+** https://y-kawaz.hatenadiary.org/archive/2010/11[2010 / 11]
+** https://y-kawaz.hatenadiary.org/archive/2010/10[2010 / 10]
+** https://y-kawaz.hatenadiary.org/archive/2010/09[2010 / 9]
+** https://y-kawaz.hatenadiary.org/archive/2010/08[2010 / 8]
+** https://y-kawaz.hatenadiary.org/archive/2010/07[2010 / 7]
+** https://y-kawaz.hatenadiary.org/archive/2010/06[2010 / 6]
+** https://y-kawaz.hatenadiary.org/archive/2010/04[2010 / 4]
+** https://y-kawaz.hatenadiary.org/archive/2010/03[2010 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2010/02[2010 / 2]
+** https://y-kawaz.hatenadiary.org/archive/2010/01[2010 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2009[2009]
+** https://y-kawaz.hatenadiary.org/archive/2009/12[2009 / 12]
+** https://y-kawaz.hatenadiary.org/archive/2009/11[2009 / 11]
+** https://y-kawaz.hatenadiary.org/archive/2009/10[2009 / 10]
+** https://y-kawaz.hatenadiary.org/archive/2009/09[2009 / 9]
+** https://y-kawaz.hatenadiary.org/archive/2009/08[2009 / 8]
+** https://y-kawaz.hatenadiary.org/archive/2009/07[2009 / 7]
+** https://y-kawaz.hatenadiary.org/archive/2009/06[2009 / 6]
+** https://y-kawaz.hatenadiary.org/archive/2009/05[2009 / 5]
+** https://y-kawaz.hatenadiary.org/archive/2009/04[2009 / 4]
+** https://y-kawaz.hatenadiary.org/archive/2009/03[2009 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2009/02[2009 / 2]
+** https://y-kawaz.hatenadiary.org/archive/2009/01[2009 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2008[2008]
+** https://y-kawaz.hatenadiary.org/archive/2008/12[2008 / 12]
+** https://y-kawaz.hatenadiary.org/archive/2008/11[2008 / 11]
+** https://y-kawaz.hatenadiary.org/archive/2008/10[2008 / 10]
+** https://y-kawaz.hatenadiary.org/archive/2008/09[2008 / 9]
+** https://y-kawaz.hatenadiary.org/archive/2008/08[2008 / 8]
+** https://y-kawaz.hatenadiary.org/archive/2008/07[2008 / 7]
+** https://y-kawaz.hatenadiary.org/archive/2008/06[2008 / 6]
+** https://y-kawaz.hatenadiary.org/archive/2008/05[2008 / 5]
+** https://y-kawaz.hatenadiary.org/archive/2008/04[2008 / 4]
+** https://y-kawaz.hatenadiary.org/archive/2008/03[2008 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2008/02[2008 / 2]
+** https://y-kawaz.hatenadiary.org/archive/2008/01[2008 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://y-kawaz.hatenadiary.org/archive/2007[2007]
+** https://y-kawaz.hatenadiary.org/archive/2007/12[2007 / 12]
+** https://y-kawaz.hatenadiary.org/archive/2007/10[2007 / 10]
+** https://y-kawaz.hatenadiary.org/archive/2007/08[2007 / 8]
+** https://y-kawaz.hatenadiary.org/archive/2007/07[2007 / 7]
+** https://y-kawaz.hatenadiary.org/archive/2007/05[2007 / 5]
+** https://y-kawaz.hatenadiary.org/archive/2007/04[2007 / 4]
+** https://y-kawaz.hatenadiary.org/archive/2007/03[2007 / 3]
+** https://y-kawaz.hatenadiary.org/archive/2007/02[2007 / 2]
+
+[[footer-inner]]
+== はてなブログをはじめよう！
+
+y-kawazさんは、はてなブログを使っています。あなたもはてなブログをはじめてみませんか？
+
+https://blog.hatena.ne.jp/register?via=200227[はてなブログをはじめる（無料）]
+
+https://hatena.blog/guide[はてなブログとは]
+
+https://y-kawaz.hatenadiary.org/[image:https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png[y-kawazの日記,width=16,height=16]
+[.footer-address-name]#y-kawazの日記#]
+
+Powered by https://hatena.blog/[Hatena Blog] |
+https://blog.hatena.ne.jp/-/abuse_report?target_url=https%3A%2F%2Fy-kawaz.hatenadiary.org%2Fentry%2F20100720%2F1279607344[ブログを報告する]
+
+[[fb-root]]
+
+__
+
+[.js-tweet-quote]#image:https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8[https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon,title="引用して投稿する"]#
+
+[[quote-stock-message-box]]
+[[quote-stock-succeeded-message]]
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+[[quote-login-required-message]]
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+[[quote-stock-failed-message]]
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+[[unstockable-quote-message-box]]
+限定公開記事のため引用できません。
+
+[[hidden-subscribe-button]]
+link:#[[.subscribing]# [.foreground]#読者です#
+[.background]#読者をやめる# # [.unsubscribing]#
+[.foreground]#読者になる# [.background]#読者になる# #]
+
+__ [.underline]## [.subscription-count .js-subscription-count]# #

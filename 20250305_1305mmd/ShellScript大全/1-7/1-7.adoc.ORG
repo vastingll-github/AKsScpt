@@ -1,0 +1,1025 @@
+[[GlobalHeader-react-component-1a1146c1-5b83-440c-b944-ba61f7215266]]
+link:/[image:data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNDI2LjU3IDEzMCIgYXJpYS1oaWRkZW49InRydWUiPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNDI2LjU3IDEzMCIgYXJpYS1oaWRkZW49InRydWUiPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==]]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
+
+link:/login?callback_action=login_or_signup&redirect_to=%2Fnil2%2Fitems%2F8a1544e206928c753a2e&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2Fnil2%2Fitems%2F8a1544e206928c753a2e&realm=qiita[Signup]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+. link:/[Trend]
+. link:/question-feed[Question]
+. link:/official-events[Official Event]
+. link:/official-columns[Official
+Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
+. link:/organizations[Organization]
+
+[[AlertMessage-react-component-369d04fe-5a62-491b-b843-9a2537e6613c]]
+
+[[PersonalArticlePage-react-component-192bb5d6-71c5-496a-af9e-843946a659d3]]
+image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+]
+
+link:/nil2/items/8a1544e206928c753a2e/likers[23]
+
+Go to list of users who liked
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=]
+
+[.style-1vem4tk]#17#
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMWIxY2Q1eiIgdmlld2JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJtMTEuNjggOC42MiA2LjU1LTcuNjJoLTEuNTVsLTUuNjkgNi42Mi00LjU1LTYuNjJoLTUuMjVsNi44OCAxMC4wMS02Ljg4IDcuOTloMS41NWw2LjAxLTYuOTkgNC44IDYuOTloNS4yNGwtNy4xMy0xMC4zOHptLTIuMTMgMi40Ny0uNy0xLTUuNTQtNy45MmgyLjM5bDQuNDcgNi40LjcgMSA1LjgyIDguMzJoLTIuMzlsLTQuNzUtNi43OXoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMWIxY2Q1eiIgdmlld2JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJtMTEuNjggOC42MiA2LjU1LTcuNjJoLTEuNTVsLTUuNjkgNi42Mi00LjU1LTYuNjJoLTUuMjVsNi44OCAxMC4wMS02Ljg4IDcuOTloMS41NWw2LjAxLTYuOTkgNC44IDYuOTloNS4yNGwtNy4xMy0xMC4zOHptLTIuMTMgMi40Ny0uNy0xLTUuNTQtNy45MmgyLjM5bDQuNDcgNi40LjcgMSA1LjgyIDguMzJoLTIuMzlsLTQuNzUtNi43OXoiPjwvcGF0aD48L3N2Zz4=]
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTU3eGoxZyIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDIwIDIwIiB3aWR0aD0iMjAiPjxwYXRoIGQ9Im0yMCAxMGMwLTUuNTItNC40OC0xMC0xMC0xMHMtMTAgNC40OC0xMCAxMGMwIDQuOTkgMy42NiA5LjEzIDguNDQgOS44OHYtNi45OWgtMi41NHYtMi44OWgyLjU0di0yLjJjMC0yLjUxIDEuNDktMy44OSAzLjc4LTMuODkgMS4wOSAwIDIuMjQuMiAyLjI0LjJ2Mi40NmgtMS4yNmMtMS4yNCAwLTEuNjMuNzctMS42MyAxLjU2djEuODhoMi43N2wtLjQ0IDIuODloLTIuMzN2Ni45OWM0Ljc4LS43NSA4LjQ0LTQuODkgOC40NC05Ljg4eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMy44OSAxMi44OS40NC0yLjg5aC0yLjc3di0xLjg4YzAtLjc5LjM5LTEuNTYgMS42My0xLjU2aDEuMjZ2LTIuNDZzLTEuMTQtLjItMi4yNC0uMmMtMi4yOCAwLTMuNzggMS4zOC0zLjc4IDMuODl2Mi4yaC0yLjU0djIuODloMi41NHY2Ljk5Yy41MS4wOCAxLjAzLjEyIDEuNTYuMTJzMS4wNS0uMDQgMS41Ni0uMTJ2LTYuOTloMi4zM3oiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTU3eGoxZyIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDIwIDIwIiB3aWR0aD0iMjAiPjxwYXRoIGQ9Im0yMCAxMGMwLTUuNTItNC40OC0xMC0xMC0xMHMtMTAgNC40OC0xMCAxMGMwIDQuOTkgMy42NiA5LjEzIDguNDQgOS44OHYtNi45OWgtMi41NHYtMi44OWgyLjU0di0yLjJjMC0yLjUxIDEuNDktMy44OSAzLjc4LTMuODkgMS4wOSAwIDIuMjQuMiAyLjI0LjJ2Mi40NmgtMS4yNmMtMS4yNCAwLTEuNjMuNzctMS42MyAxLjU2djEuODhoMi43N2wtLjQ0IDIuODloLTIuMzN2Ni45OWM0Ljc4LS43NSA4LjQ0LTQuODkgOC40NC05Ljg4eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMy44OSAxMi44OS40NC0yLjg5aC0yLjc3di0xLjg4YzAtLjc5LjM5LTEuNTYgMS42My0xLjU2aDEuMjZ2LTIuNDZzLTEuMTQtLjItMi4yNC0uMmMtMi4yOCAwLTMuNzggMS4zOC0zLjc4IDMuODl2Mi4yaC0yLjU0djIuODloMi41NHY2Ljk5Yy41MS4wOCAxLjAzLjEyIDEuNTYuMTJzMS4wNS0uMDQgMS41Ni0uMTJ2LTYuOTloMi4zM3oiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=]
+
+https://b.hatena.ne.jp/entry/s/qiita.com/nil2/items/8a1544e206928c753a2e[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMXV1N3UzdyIgdmlld2JveD0iMCAwIDIwIDIwIj48cmVjdCBoZWlnaHQ9IjE4IiByeD0iMy42NyIgd2lkdGg9IjE4IiB4PSIxIiB5PSIxIiBmaWxsPSIjMWQ5YmYwIj48L3JlY3Q+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0ibTExLjAxIDEwLjI5Yy0uMzMtLjM2LS43OC0uNTctMS4zNi0uNjEuNTItLjE0Ljg5LS4zNSAxLjEzLS42MnMuMzUtLjY0LjM1LTEuMTFjMC0uMzctLjA4LS42OS0uMjQtLjk3cy0uMzktLjUtLjY5LS42N2MtLjI2LS4xNS0uNTgtLjI1LS45NC0uMzEtLjM3LS4wNi0xLjAxLS4wOS0xLjkzLS4wOWgtMi4yNHY4LjE4aDIuMzFjLjkzIDAgMS42LS4wMyAyLjAxLS4wOXMuNzUtLjE3IDEuMDMtLjMyYy4zNC0uMTguNjEtLjQ0Ljc5LS43N3MuMjgtLjcyLjI4LTEuMTVjMC0uNjEtLjE2LTEuMDktLjQ5LTEuNDZ6bS0zLjg1LTIuNTdoLjQ4Yy41NSAwIC45My4wNiAxLjEyLjE5cy4yOS4zNC4yOS42NS0uMS41LS4zMS42M2MtLjIxLjEyLS41OC4xOC0xLjEzLjE4aC0uNDV2LTEuNjR6bTEuOSA0LjY5Yy0uMjIuMTMtLjU5LjItMS4xMi4yaC0uNzh2LTEuNzloLjgxYy41NCAwIC45MS4wNyAxLjExLjIuMi4xNC4zLjM4LjMuNzIgMCAuMzEtLjExLjUzLS4zMy42NnoiPjwvcGF0aD48cGF0aCBkPSJtMTMuODcgMTIuMDJjLS41NyAwLTEuMDQuNDYtMS4wNCAxLjA0cy40NiAxLjA0IDEuMDQgMS4wNCAxLjA0LS40NiAxLjA0LTEuMDQtLjQ2LTEuMDQtMS4wNC0xLjA0eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMi45NyA1LjkxaDEuOHY1LjQ1aC0xLjh6Ij48L3BhdGg+PC9nPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMXV1N3UzdyIgdmlld2JveD0iMCAwIDIwIDIwIj48cmVjdCBoZWlnaHQ9IjE4IiByeD0iMy42NyIgd2lkdGg9IjE4IiB4PSIxIiB5PSIxIiBmaWxsPSIjMWQ5YmYwIj48L3JlY3Q+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0ibTExLjAxIDEwLjI5Yy0uMzMtLjM2LS43OC0uNTctMS4zNi0uNjEuNTItLjE0Ljg5LS4zNSAxLjEzLS42MnMuMzUtLjY0LjM1LTEuMTFjMC0uMzctLjA4LS42OS0uMjQtLjk3cy0uMzktLjUtLjY5LS42N2MtLjI2LS4xNS0uNTgtLjI1LS45NC0uMzEtLjM3LS4wNi0xLjAxLS4wOS0xLjkzLS4wOWgtMi4yNHY4LjE4aDIuMzFjLjkzIDAgMS42LS4wMyAyLjAxLS4wOXMuNzUtLjE3IDEuMDMtLjMyYy4zNC0uMTguNjEtLjQ0Ljc5LS43N3MuMjgtLjcyLjI4LTEuMTVjMC0uNjEtLjE2LTEuMDktLjQ5LTEuNDZ6bS0zLjg1LTIuNTdoLjQ4Yy41NSAwIC45My4wNiAxLjEyLjE5cy4yOS4zNC4yOS42NS0uMS41LS4zMS42M2MtLjIxLjEyLS41OC4xOC0xLjEzLjE4aC0uNDV2LTEuNjR6bTEuOSA0LjY5Yy0uMjIuMTMtLjU5LjItMS4xMi4yaC0uNzh2LTEuNzloLjgxYy41NCAwIC45MS4wNyAxLjExLjIuMi4xNC4zLjM4LjMuNzIgMCAuMzEtLjExLjUzLS4zMy42NnoiPjwvcGF0aD48cGF0aCBkPSJtMTMuODcgMTIuMDJjLS41NyAwLTEuMDQuNDYtMS4wNCAxLjA0cy40NiAxLjA0IDEuMDQgMS4wNCAxLjA0LS40NiAxLjA0LTEuMDQtLjQ2LTEuMDQtMS4wNC0xLjA0eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMi45NyA1LjkxaDEuOHY1LjQ1aC0xLjh6Ij48L3BhdGg+PC9nPjwvc3ZnPg==]]
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+link:/nil2[]
+
+image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F82539%2Fprofile-images%2F1610017176?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=cb104e55ec9aa5a7a2b9713ae042e00f[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F82539%2Fprofile-images%2F1610017176?ixlib=rb-4.0,width=24,height=24]
+
+@nil2
+
+== Bash用の補完スクリプトの作り方
+
+* link:/tags/shellscript[ShellScript]
+* link:/tags/bash[Bash]
+* link:/tags/shell[shell]
+
+[.style-3k9iaf]#Last updated at 2024-04-13#[.style-3k9iaf]#Posted at
+2020-03-15#
+
+[[personal-public-article-body]]
+. Bash用の補完スクリプトの作り方
+. https://qiita.com/nil2/items/3ae0c06732af35a0f7f2[Bash用の補完スクリプトを実際に作ってみる(4種)]
+
+Bashにはプログラム補完という機能があり、 +
+このプログラム補完によって、タブ補完起動時にコマンドに応じた補完がされるようになっています。
+
+コマンドに応じた補完は全てのコマンドについて用意されている訳ではありませんが、 +
+補完スクリプトを作成することで、コマンドに応じた補完を追加することが可能です。
+
+この記事では、この補完スクリプトの作り方について解説します。
+
+== [#準備 .fragment]##link:#%E6%BA%96%E5%82%99[__]準備
+
+次のものが必要です。
+
+* Bash (バージョン4.x以上)
+* bash-completion (バージョン2.x以上)
+
+Linuxの場合は、Bashは確実に入っていますが、bash-completionが入っているかどうかはまちまちなので、 +
+もしbash-completionが入っていなければ、aptやdnf、pacmanといったパッケージマネージャを利用して、bash-completionをインストールしてください。
+
+Macの場合は、標準搭載のBashのバージョンが3.xであり、bash-completionも入っていないので、いくつか手順を踏む必要があります。 +
+Homebrewをインストールした上で、次のような手順でBashのバージョンを上げ、bash-completion@2をインストールしてください。^link:#fn-1[1]^
+^link:#fn-2[2]^ ^link:#fn-3[3]^
+
+....
+# 最新版のBash、bash-completion@2をインストール
+brew install bash
+brew install bash-completion@2
+
+# 使用可能なシェルの一覧に/usr/local/bin/bashを追加する
+sudo vim /etc/shells
+
+# デフォルトのシェルをHomebrewで入れたBashに変更する
+chsh -s /usr/local/bin/bash
+
+# ~/.bash_profileにbash-completionを読み込むための設定(矢印の下)を追加する
+vim ~/.bash_profile
+↓
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+....
+
+== [#補完スクリプトの作り方 .fragment]##link:#%E8%A3%9C%E5%AE%8C%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9[__]補完スクリプトの作り方
+
+補完スクリプトは単なるBashスクリプトです。 +
+補完スクリプトとして成立させるには次の2つを含める必要があります。
+
+. 補完関数の定義
+. 補完関数とコマンドの結びつけ
+
+例を見てみましょう。 +
+noteという、次のようにシェルスクリプトで書かれたコマンドがあったとします。 +
+このコマンドは`note edit <name>`でメモの編集、`note remove <name>`でメモの削除、`note list`でメモの一覧表示をする、というコマンドです。
+
+[.bold]#note#
+
+....
+#!/bin/sh
+set -eu
+
+cmd=$1
+shift
+case $cmd in
+    edit)
+        "${EDITOR:-vi}" -- "$HOME/.note/$1"
+        ;;
+    remove)
+        rm -- "$HOME/.note/$1"
+        ;;
+    list)
+        ls -- "$HOME/.note"
+        ;;
+    *)
+        printf "%s\n" "${0##*/}: $cmd: no such sub command" >&2
+        ;;
+esac
+....
+
+このnoteに対する補完スクリプトは次のようになります。
+
+[.bold]#note.bash#
+
+....
+# 1. 補完関数の定義
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+    
+    local defaultIFS=$' \t\n'
+    local IFS=$defaultIFS
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+        *)
+            case ${words[1]} in
+                edit)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                remove)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                list)
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+# 2. 補完関数とコマンドの結びつけ
+complete -F _note note
+....
+
+**1. 補完関数の定義**では、関数を定義します。 +
+補完関数はwordsやcwordなどの変数を読み取り、COMPREPLYという配列変数に補完候補リストをセットする関数です。 +
+補完関数の関数名は`_コマンド名`とします。
+
+**2.
+補完関数とコマンドの結びつけ**では、completeを用いて、先ほど定義した関数とコマンドを結びつけます。 +
+completeはコマンドに応じた補完の設定をするコマンドです。 +
+completeにはいくつかオプションがありますが、基本的には、`complete -F 補完関数名 コマンド名`という形で利用します。
+
+補完スクリプトでやることはこれだけです。 +
+これらを含むBashスクリプトを作成すれば、補完スクリプトが完成します。
+
+あとは、この補完スクリプトを何かしらの方法で読み込めば、 +
+該当のコマンドについてコマンドに応じた補完がされるようになります。
+
+補完スクリプトを読み込む方法は後述しますが、 +
+基本的には、補完スクリプトを`コマンド名.bash`という名前のファイルとして保存し、 +
+`~/.local/share/bash-completion/completions`の配下に置くようにします。 +
+そうすることで、該当のコマンドの引数を補完するタイミングで補完スクリプトが自動読み込みされるようになります。
+
+コマンド名が`note`の場合、次の場所に補完スクリプトを配置します。
+
+....
+~/.local/share/bash-completion/completions/note.bash
+(正確には${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/note.bashに配置すれば読み込まれます)
+....
+
+試作の段階では、編集の都度sourceするようにしたほうが試作しやすいので、 +
+完成してから`~/.local/share/bash-completion/completions`に配置するようにするとよいでしょう。
+
+コマンド名が`note`の場合、次のようなコマンドで補完スクリプトの読み込み・再読み込みができます。 +
+(コマンドはnote.bashを置いているディレクトリで実行します)
+
+....
+source note.bash
+....
+
+補完スクリプトのおおまかな作り方としてはこれぐらいです。 +
+あとは、補完スクリプトで使ういくつかのコマンド、関数、変数を覚えれば、補完スクリプトの自作ができるようになります。 +
+補完スクリプトで使ういくつかのコマンド、関数、変数を一つ一つ見ていきましょう。
+
+=== [#覚えるもの .fragment]##link:#%E8%A6%9A%E3%81%88%E3%82%8B%E3%82%82%E3%81%AE[__]覚えるもの
+
+覚える必要のあるものは次の5つです。
+
+* _init_completion
+** コマンドライン情報を取得する関数
+* COMPREPLY
+** 補完候補を格納する変数
+* compgen
+** 補完候補を絞り込むコマンド
+* compopt
+** 補完の設定を一時的に変えるコマンド
+* complete
+** 補完の設定をするコマンド
+
+別途、次の4つの補助関数も覚えておくと便利でしょう。
+
+* _filedir
+** ファイルパスを補完する関数
+* _command_offset
+** 別コマンドの引数を補完する関数
+* _parse_help
+** コマンドのロングオプション一覧を取得する補助関数
+* _longopt
+** ロングオプションを取るコマンド用の定義済みの補完関数
+
+一つ一つ見ていきましょう。
+
+==== [#_init_completion .fragment]##link:#_init_completion[__]_init_completion
+
+コマンドライン情報の取得+αを行う関数です。 +
+補完関数では最初にこれを使ってコマンドライン情報を取得します。^link:#fn-4[4]^
+^link:#fn-5[5]^
+
+....
+# 基本形式
+local cur prev words cword split
+_init_completion オプション || return
+
+# コマンドライン情報を取得する
+local cur prev words cword split
+_init_completion || return
+
+# ロングオプションの分割を有効にしてコマンドライン情報を取得する
+local cur prev words cword split
+_init_completion -s || return
+
+# 引数分割に:を使わないようにしてコマンドライン情報を取得する
+local cur prev words cword split
+_init_completion -n : || return
+....
+
+_init_completionはローカル変数宣言とセットで使用します。 +
+_init_completionが完了すると、次の5つの変数に値がセットされます。 +
+補完関数でどのような補完候補を生成するかはこれらの変数を見て決定します。
+
+[cols=",",options="header",]
+|===
+|変数 |内容
+|cur
+|カーソル位置の引数(-sオプションが指定されていてsplitがtrueだった場合はカーソル位置の引数の=の右半分)
+
+|prev
+|カーソル位置の一つ前の引数(-sオプションが指定されていてsplitがtrueだった場合はカーソル位置の引数の=の左半分)
+
+|words |引数一覧
+
+|cword |カーソル位置の引数の番号
+
+|split
+|カーソル位置の引数が--オプション名=値となっているかの真偽値(-sオプションが指定された場合のみ有効)
+|===
+
+(_init_completionについては最初はこれだけ覚えれば十分です。続きを読むのは後で問題ありません)
+
+`_init_completion || return`としていますが、 +
+これは次の3パターンのときに処理を進めず補完を完了させるためにこうしています。
+
+* 引数が$で始まっていたとき。シェル変数を補完する。
+* リダイレクト演算子の直後の引数だったとき。ファイルパスを補完する。
+* コマンドライン引数がなかったとき。何もしない。
+
+この3パターンのいずれにも該当しなければ処理が続行されます。
+
+また、_init_completionはオプションを指定しなくても使えますが、 +
+_init_completionはいくつかオプションを受け取るようになっており、 +
+状況にあわせて次の2つのオプションを利用します。
+
+* -n 引数分割に使わない文字一覧
+* -s
+
+-nは引数分割に使われる文字を減らすために使うオプションです。 +
+Bashは補完関数を呼び出す際にCOMP_WORDBREAKSという変数を見て、この変数に含まれている文字で引数一覧をさらに分割するようになっているのですが、 +
+COMP_WORDBREAKSには`=`と`:`が含まれているため、ddやscpなどの補完を行う際に問題が生じます。 +
+そのため、この引数に`=`や`:`、`=:`を指定して引数の分割を回避します。
+
+-sはロングオプションの値の補完を楽にするために使うオプションです。 +
+このオプションそ指定すると、カーソル位置の引数が`--オプション名=値`となっていたときに、curが`値`に、prevが`--オプション名`に、splitが`true`になるようになります。 +
+GNUのコマンドなどはオプションの値を`--オプション名 値`、`--オプション名=値`の2種類の形で受け取るようになっているので、 +
+そういったコマンドの補完を楽にするためにこの引数を指定します。
+
+一見するとどういう場面で指定するか迷うオプションですが、 +
+どのオプションを指定するかは次のようなフローチャートで決定できます。
+
+....
+--オプション名=値という形の引数を取る
+|
+|-(YES)-> :を値の区切り文字などに使う
+|         |
+|         |-(YES)-> [-s -n :を指定する]
+|         |
+|         `-(NO)--> [-sを指定する]
+|
+`-(NO)--> =を値の区切り文字などに使う
+          |
+          |-(YES)-> :を値の区切り文字などに使う
+          |         |
+          |         |-(YES)-> [-n =:を指定する]
+          |         |
+          |         `-(NO)--> [-n :を指定する]
+          |
+          `-(NO)--> :を値の区切り文字などに使う
+                    |
+                    |-(YES)-> [-n :を指定する]
+                    |
+                    `-(NO)--> [何も指定しない]
+....
+
+イディオムとして、 +
+-sオプションで有効になるsplitという変数は次のように使います。
+
+....
+case $prev in
+  --output)
+    _filedir
+    ;;
+esac
+$split && return
+....
+
+このようにすると、 +
+`--output`の次の引数のとき、`--output=`から始まる引数のときにファイルパスの補完が行われ、 +
+他のオプションの次の引数のときは素通りされ、 +
+他のオプションの`--オプション名=`から始まる引数のときは何もしないで終了するようになります。
+
+==== [#compreply .fragment]##link:#compreply[__]COMPREPLY
+
+補完候補を格納する配列変数です。 +
+補完関数ではこのCOMPREPLYに補完候補を格納します。
+
+....
+# 基本形式
+COMPREPLY=( 絞り込み済みの補完候補 )
+
+# edit、remove、listの3つを補完候補とする
+COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+
+# note listの出力結果を補完候補とする(''の中で$()を使っているのは誤記ではないです)
+COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") )
+
+# コマンド名を補完候補とする
+COMPREPLY=( $(compgen -A command -- "$cur") )
+....
+
+COMPREPLYに格納された値がそのまま補完時の補完候補となります。
+
+注意することとして、 +
+COMPREPLYに格納するのは補完候補全てではなく、絞り込み済みの補完候補である点に注意。 +
+compgenというコマンドを使って補完候補の絞り込みを行う必要があります。
+
+....
+# 誤った格納方法(全ての補完候補をCOMPREPLYに格納する)
+COMPREPLY=( edit remove list )
+
+# 正しい格納方法(絞り込んだ補完候補をCOMPREPLYに格納する)
+COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+....
+
+また、コマンドの出力結果を補完候補とする場合はIFSを制御しないと、 +
+空白混じりの行があったとき1行が2つや3つに分割されてしまい正しい補完候補が得られません。
+
+イディオムとして、 +
+コマンドの出力結果を補完候補とする場合は次のようにIFSを都度変更します。 +
+(defaultIFSとIFSの初期化は補完関数の最初のほうで1度だけ行っておけば十分です)
+
+....
+local defaultIFS=$' \t\n'
+local IFS=$defaultIFS
+
+IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+....
+
+このようにすると、 +
+COMPREPLYに値を代入するときだけIFSが改行文字だけになり、 +
+note
+listの出力結果が空白区切りの一覧ではなく改行区切りの一覧として扱われるようになります。
+
+==== [#compgen .fragment]##link:#compgen[__]compgen
+
+補完候補の絞り込みを行うコマンドです。 +
+補完関数ではCOMPREPLYに格納する補完候補を絞り込むために使います。
+
+....
+# 基本形式
+compgen 補完候補 -- カーソル位置の引数
+
+# edit、remove、listの3つを補完候補とする
+compgen -W 'edit remove list' -- "$cur"
+
+# note listの出力結果を補完候補とする(''の中で$()を使っているのは誤記ではないです)
+compgen -W '$(note list)' -- "$cur"
+
+# コマンド名を補完候補とする
+compgen -A command -- "$cur"
+....
+
+compgenの-W、-Aで指定した補完候補をカーソル位置の引数との先頭一致で絞り込みます。 +
+compgenを使わないケースもたまにありますが、compgenはクォート等も考慮してくれるので基本的にはcompgenを使うのが無難です。
+
+使うオプションは前述した-Wオプションと-Aオプションです。
+
+-Wオプションはワードリストを補完候補とするオプションです。 +
+ワードリストであるため、次のようにしてシェル変数やコマンド置換を使うことが可能です。 +
+(出力結果を補完候補とするときはCOMPREPLYの説明の通りIFSを制御する必要がある点に注意)
+
+....
+# 基本形式
+compgen -W 'ワードリスト' -- カーソル位置の引数
+
+# edit、remove、listの3つを補完候補とする
+compgen -W 'edit remove list' -- "$cur"
+
+# edit、remove、listの3つを補完候補とする
+local list=(edit remove list)
+compgen -W '"${list[@]}"' -- "$cur"
+
+# note listの出力結果を補完候補とする
+compgen -W '$(note list)' -- "$cur"
+....
+
+-Aオプションは組み込みの補完候補を補完候補とするオプションです。 +
+利用できる組み込みの補完候補の一覧は次のリンク先の-A
+actionのところにあります。 +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins
+
+....
+# 基本形式
+compgen -A アクション -- カーソル位置の引数
+
+# コマンドを補完候補とする
+compgen -A command -- "$cur"
+
+# シグナルを補完候補とする
+compgen -A signal -- "$cur"
+....
+
+==== [#compopt .fragment]##link:#compopt[__]compopt
+
+補完の挙動の設定を設定するコマンドです。 +
+補完関数ではnospaceオプションを有効化するために使います。^link:#fn-6[6]^
+
+....
+# 基本形式
+compopt -o 有効化するオプション
+
+# 補完終了時に補完候補の末尾のスペースを追加しない
+compopt -o nospace
+....
+
+compoptの-oオプションで指定したオプションが有効になります。 +
+compoptで有効化できるオプションは他にもありますが、基本的にはnospaceオプションを有効化するために使います。 +
+nospaceオプションは補完候補が1つだったときにつく末尾のスペースをつけないようにするオプションです。
+
+イディオムとして、 +
+nospaceオプションは次のように使います。
+
+....
+[[ $COMPREPLY == *= ]] && compopt -o nospace
+....
+
+このようにすると、 +
+補完候補が1つだけで補完候補が`--オプション名=`のように`=`で終わるものだったときに末尾のスペースがつかないようになります。
+
+==== [#complete .fragment]##link:#complete[__]complete
+
+コマンドに応じた補完の設定をするコマンドです。 +
+補完スクリプトでは補完関数とコマンドの結びつけに使います。
+
+....
+# 基本形式
+complete -F 補完関数名 コマンド名
+
+# _noteをnoteコマンドの補完関数として設定する
+complete -F _note note
+
+# _scalaをscalaコマンドの補完関数として設定する
+complete -F _scala scala
+....
+
+completeの-Fオプションで指定した補完関数が該当のコマンドの補完に使われるようになります。 +
+completeにはいくつかオプションがありますが、基本的にはこの形で使います。
+
+使いそうなオプションとなると-oオプションと-pオプションでしょうか。
+
+-oオプションを使うとcompoptで有効化できるオプションを最初から有効化することができます。 +
+defaultオプションとbashdefaultオプションは有効化しておくと補完候補が何もなかったときにデフォルトの補完を行うようになるので、コマンドによっては指定しておくと便利でしょう。
+
+....
+# _noteをnoteコマンドの補完関数として設定しつつ、_noteのフォールバック先としてReadlineデフォルトの補完とBashデフォルトの補完を使用する
+complete -F _note -o default -o bashdefault note
+....
+
+-pオプションを使うと補完の設定を確認できます。
+
+....
+# noteコマンドの補完の設定を表示する
+complete -p note
+....
+
+==== [#補助関数 .fragment]##link:#%E8%A3%9C%E5%8A%A9%E9%96%A2%E6%95%B0[__]補助関数
+
+===== [#_filedir .fragment]##link:#_filedir[__]_filedir
+
+ファイルパスを補完する関数です。 +
+呼び出すとCOMPREPLYに絞り込み済みの補完候補(ファイルパス)が入ります。 +
+ディレクトリのみを補完する場合は`_filedir -d`とします。
+
+....
+# ファイルパスを補完候補とする
+_filedir
+
+# ディレクトリパスを補完候補とする
+_filedir -d
+....
+
+===== [#_command_offset .fragment]##link:#_command_offset[__]_command_offset
+
+コマンドを引数に取るコマンドがあったとき、 +
+引数となるほうのコマンドの引数を補完する関数です。 +
+呼び出すとCOMPREPLYに絞り込み済みの補完候補(引数のコマンドの引数)が入ります。 +
+引数には何番目からが引数のコマンドなのかを指定します。
+
+....
+# 第1引数以降を引数のコマンドとして補完候補の生成を行う
+_command_offset 1
+
+# 第3引数以降を引数のコマンドとして補完候補の生成を行う
+_command_offset 3
+....
+
+===== [#_parse_help .fragment]##link:#_parse_help[__]_parse_help
+
+コマンドのヘルプ表示をざっくりと解析して、 +
+コマンドのオプション一覧を取得する関数です。compgenとセットで使います。 +
+全てのヘルプ表示に対応している訳ではありませんが、 +
+ものによってはこれだけでオプションの補完候補を得られます。
+
+....
+# sedのオプションを補完候補とする
+# (コマンド --helpでヘルプ表示がされるコマンドであれば、第一引数にコマンドを指定する)
+COMPREPLY=( $(compgen -W '$(_parse_help sed)' -- "$cur") )
+
+# sedのオプションを補完候補とする
+# (コマンド --helpでヘルプ表示がされないコマンドであれば、第一引数に-を指定し、パイプ等で標準入力からヘルプ表示を流し込むようにする)
+COMPREPLY=( $(compgen -W '$(sed --help 2>&1 | _parse_help -)' -- "$cur") )
+....
+
+===== [#_longopt .fragment]##link:#_longopt[__]_longopt
+
+定義済みの補完関数です。 +
+`コマンド --help`を実行して得られるヘルプ表示を解析して、ざっくりとした補完を行ってくれます。 +
+オプションとファイルパスのみを取る形のコマンドについてしか対応していませんが、 +
+ものによってはこれとcompleteだけで補完スクリプトが完成します。
+
+....
+# _longoptをzshコマンドの補完関数として設定する
+complete -F _longopt zsh
+
+# _longoptをnanoコマンドの補完関数として設定する
+complete -F _longopt nano
+....
+
+=== [#サンプル .fragment]##link:#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB[__]サンプル
+
+これらのことを踏まえて、noteコマンド用の補完スクリプトを1から作ってみます。 +
+まず、ベースとして_init_completionを呼び出すだけのもの書きます。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+}
+complete -F _note note
+....
+
+これでcur、words、cwordにアクセスできるようになりました。 +
+次に、第一引数はサブコマンドなので引数の番号が1のときはサブコマンドを補完するようにします。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+    esac
+}
+complete -F _note note
+....
+
+これで第一引数が補完されるようになりました。 +
+次に、第二引数以降は何を補完するのかはサブコマンド次第なので、 +
+サブコマンドごとに補完候補を変えるようにします。 +
+サブコマンドがeditのときと、removeのときはメモの名前が引数なのでnote
+listの出力を元にメモの名前を補完するようにします。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+        *)
+            case ${words[1]} in
+                edit)
+                    COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") )
+                    ;;
+                remove)
+                    COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") )
+                    ;;
+                list)
+                    ;;
+            esac
+            ;;
+    esac
+}
+complete -F _note note
+....
+
+これでサブコマンドの引数も補完されるようになりました。 +
+しかし、note listの出力結果を何もケアせずに利用しているため、 +
+これではメモの名前に空白が含まれていた場合に正しく補完がされません。 +
+そのため、note
+listの出力結果を空白区切りの一覧としてではなく、改行区切りの一覧として扱うためにIFSを制御するようにします。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+
+    local defaultIFS=$' \t\n'
+    local IFS=$defaultIFS
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+        *)
+            case ${words[1]} in
+                edit)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                remove)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                list)
+                    ;;
+            esac
+            ;;
+    esac
+}
+complete -F _note note
+....
+
+これで完成です。
+
+== [#補完スクリプトの提供の仕方 .fragment]##link:#%E8%A3%9C%E5%AE%8C%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E6%8F%90%E4%BE%9B%E3%81%AE%E4%BB%95%E6%96%B9[__]補完スクリプトの提供の仕方
+
+補完スクリプトが完成したら、 +
+それを提供できる形にしておきましょう。
+
+補完スクリプトを提供するやり方にはいくつか種類があります。
+
+基本的には後述するファイル式の方法がおすすめですが、 +
+補完スクリプトを提供するための方法は大まかに分けて2つあるので、場合によって使い分けるとよいと思います。
+
+=== [#1-ファイル式 .fragment]##link:#1-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%BC%8F[__]1. ファイル式
+
+補完スクリプトをファイルとして配布し、 +
+決められた場所に置いてもらうことで読み込んでもらう方法です。
+
+ユーザに次のディレクトリにファイルを置いてもらうことで、 +
+ユーザの環境で該当のコマンドについての補完が有効になります。^link:#fn-7[7]^
+^link:#fn-8[8]^ ^link:#fn-9[9]^
+
+....
+~/.local/share/bash-completion/completions
+(正確には${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions)
+....
+
+注意することとして、 +
+補完スクリプトのファイル名には決まりがある点に注意。 +
+ファイル名は次のいずれかの形式の名前にする必要があります。
+
+....
+コマンド名.bash
+コマンド名
+_コマンド名
+
+例)
+note.bash
+note
+_note
+....
+
+例として、`note`というコマンドに対応する補完スクリプトであれば、次の場所に置くことになるでしょう。
+
+....
+~/.local/share/bash-completion/completions/note.bash
+(正確には${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/note.bash)
+....
+
+基本的にはこの方法がおすすめです。 +
+補完スクリプトを置く場所を規定しているのはbash-completionであるため、 +
+bash-completionが入っていない環境では`~/.local/share/bash-completion/completions`に補完スクリプトを置いても補完スクリプトの自動読み込みがされませんが、 +
+補完を利用する環境でbash-completionを入れないというのはまれですし、_init_completionを使っている時点でbash-completionに依存しているため、この方式で問題ありません。
+
+=== [#2-eval式 .fragment]##link:#2-eval%E5%BC%8F[__]2. eval式
+
+コマンドに補完スクリプトの出力機能を組み込み、 +
+補完スクリプトをコマンド置換とevalで読み込んでもらう方法です。
+
+ユーザに次のような設定を~/.bashrc等に書いてもらうことで、 +
+ユーザの環境で該当のコマンドについての補完が有効になります。
+
+....
+command -v コマンド > /dev/null && eval "$(補完スクリプトを出力するためのコマンド)"
+....
+
+これは`command -v コマンド > /dev/null`でコマンドの有無をチェックし、 +
+コマンドがあれば、補完スクリプトを出力するコマンドを実行、コマンド置換で出力を文字列化し、evalで読み込む、という設定です。 +
+例えば、rbenvを使う際には`eval "$(rbenv init -)"`という設定を書いていると思いますが、それと似た設定になります(rbenv
+init
+-ではシェルのインテグレーションを有効にするスクリプトに加えて、補完スクリプトを読み込むスクリプトが出力されます)。
+
+例として、`note`というコマンドが`note complete シェル名`としたときに補完スクリプトを出力するようになっていたとすれば、 +
+次のような設定を書くことになるでしょう。
+
+....
+command -v note > /dev/null && eval "$(note complete bash)"
+....
+
+コマンドに機能を追加する必要があるため、 +
+無理にこの方法を採用することもないと思いますが、 +
+rbenvのように設定ファイルでevalをしてもらうタイミングがあるコマンドであるとか、 +
+コマンドラインアプリを作るライブラリに補完スクリプトを生成する機能があるとかであれば、 +
+この方法も選択肢に入れていいのかなと思います。
+
+== [#まとめ .fragment]##link:#%E3%81%BE%E3%81%A8%E3%82%81[__]まとめ
+
+このように、Bash用の補完スクリプトは作る上で覚えることが少なく、 +
+自作が結構しやすいものとなっています。
+
+とはいえ、実際に作ってみると、考慮したいことが色々と出てくることでしょう。 +
+ですが、デフォルトのgitの補完でさえも全部を考慮はできていませんし、 +
+クォートを含む補完候補の正確な取り扱いはBashの実装上ほぼ不可能です。 +
+なので、補完候補の空白をケアするぐらいで、あとは大体補完できていたらそれで大丈夫です。 +
+目安としては、bash-completion標準の補完スクリプトと同等程度の補完ができていれば、それで十分な品質だと思います。
+
+補完スクリプトの作り方、提供の仕方についてはこれぐらいなので、 +
+あとは、この記事の続きとなるhttps://qiita.com/nil2/items/3ae0c06732af35a0f7f2[Bash用の補完スクリプトを実際に作ってみる(4種)]や、 +
+下記の参考リンクにある情報を参照してBash用の補完を作ってみてください。
+
+== [#参考リンク .fragment]##link:#%E5%8F%82%E8%80%83%E3%83%AA%E3%83%B3%E3%82%AF[__]参考リンク
+
+=== [#公式 .fragment]##link:#%E5%85%AC%E5%BC%8F[__]公式
+
+bash-completionの公式リポジトリ +
+https://github.com/scop/bash-completion
+
+補完にまつわるBashの公式ドキュメント +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html +
+https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html
+
+bash-completionの公式リポジトリにはbash-completionのドキュメント、大量のサンプルがあり、とても参考になると思います。 +
+Bash本体の公式ドキュメントは必ずしも読む必要はありませんが、補完の詳細が気になったときに読むといいと思います。
+
+また、次のBashのマニュアルの日本語訳も参考になると思います。 +
+若干バージョンが古めですが、補完回りの仕組みは大きく変わっていないので、こちらを見ても問題ないと思います。 +
+compgen、compopt、completeの使い方が気になったときなどに参照するとよいでしょう。
+
+Man Page of BASH +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html
+
+=== [#記事 .fragment]##link:#%E8%A8%98%E4%BA%8B[__]記事
+
+説明がしっくりこない等あれば、 +
+他の記事を読んでみることもおすすめです。
+
+次に紹介する記事の執筆時期から事情が変わっている点は次の8点だけなので、 +
+これらの点に気を付ければ何も問題ありません。
+
+* Homebrewで`bash-completion`をインストールしない。代わりに`bash-completion@2`をインストールする。
+* `COMP_WORDS`、`COMP_CWORD`は直接使わない。代わりに`_init_completion`経由で使えるようになる変数を使う。
+* `_get_comp_words_by_ref`は使わない。代わりに`_init_completion`を使う(`_get_comp_words_by_ref`は`_init_completion`の内部で使用される)
+* compgenの-Wオプションの引数は""で囲わない。代わりに''で囲い。IFSを制御することによって補完候補の区切りを制御するようにする。
+* `compgen -f`と`compopt -o filenames`のセットは使わない。代わりに`_filedir`を使う。
+* 補完スクリプトは`/etc/bash_completion.d`に置かない(システム共通のものとして置く分にはOK)。代わりに`~/.local/share/bash-completion/completions`に置く。
+* 補完スクリプトは`/usr/share/bash-completion/completions`に置かない(make
+installやパッケージマネージャ経由で置く分にはOK)。代わりに`~/.local/share/bash-completion/completions`に置く。
+* 補完スクリプトは`~/bash_completion`に書かない(個人の設定を書く分にはOK)。代わりに`~/.local/share/bash-completion/completions`にファイルとして置く。
+
+Bashタブ補完自作入門 +
+https://blog.cybozu.io/entry/2016/09/26/080000
+
+Bashの補完について +
+https://rcmdnk.com/blog/2015/05/14/computer-linux-mac-bash/
+
+今回のお題 - Bash-Completion で複雑な補完をする +
+http://www.usupi.org/sysad/236.html
+
+bash なんて書いたことない人が補完関数をとりあえず自作する +
+https://qiita.com/sosuke/items/06b64068155ae4f8a853
+
+bash-completion を自分で作る。独自補完を作ってみた。 +
+https://takuya-1st.hatenablog.jp/entry/2016/02/10/175604
+
+bash-completion で自作コマンドのタブ補完に挑戦 +
+https://nujawak.online/blog/170/
+
+bash-completionで独自の補完関数を作成する方法（gistyのサブコマンドを補完するやつ書いてみた） +
+https://snaka72.hatenadiary.org/entry/20090930/1254316751
+
+初めてのオレオレbash補完 +
+https://blog.riywo.com/2012/08/27/235239/
+
+bash 補完 メモ +
+https://qiita.com/miyagaw61/items/7e9daba6c6882e703a53
+
+. {blank}
++
+[[fn-1]]
+bash-completionはBash3.x用、bash-completion@2はBash4.x以降用です。Bash3.xにはcompoptが無いなど補完を作る上でいくつか不都合があります。そのため、Bashのバージョンを上げるのに合わせてBash4.x以降に対応したbash-completion@2を入れるのが無難です。
+link:#fnref-1[↩]
+. {blank}
++
+[[fn-2]]
+https://itnext.io/upgrading-bash-on-macos-7138bd1066ba link:#fnref-2[↩]
+. {blank}
++
+[[fn-3]]
+https://formulae.brew.sh/formula/bash-completion@2 link:#fnref-3[↩]
+. {blank}
++
+[[fn-4]]
+COMP_WORDS、COMP_CWORDを直接使用してもいいのですが、後述する-sオプションや-nオプションで:や=を指定する必要のあるコマンドで後述するCOMP_WORDBREAKSによる引数分割が壁となる他、_init_completionがやってくれるケアがされません。そのため、_init_completionを使ってしまうほうが無難です。どうしても古いバージョンのBashに対応しないといけない等の事情がある場合は、curを$\{COMP_WORDS[COMP_CWORD]}、wordsをCOMP_WORDS、cwordをCOMP_CWORDと読み替えて読み進めてみてください。
+link:#fnref-4[↩]
+. {blank}
++
+[[fn-5]]
+_get_comp_words_by_refを使うやり方もありますが、_init_completionは_get_comp_words_by_refをラップするものとなっており、_get_comp_words_by_refを直接使うと_init_completionがやってくれるケアがなされないため、_init_completionのほうを使うのが無難です。
+link:#fnref-5[↩]
+. {blank}
++
+[[fn-6]]
+他にもfilenamesオプションを有効化するために使うこともあったのですが、filenamesオプションはファイルパスを補完するときにのみ有効化するオプションであり、そのときに使う_filedirがcompopt
+-o filenamesを内部的に呼び出すため、compopt -o
+filenamesを呼ぶタイミングが無いです。 link:#fnref-6[↩]
+. {blank}
++
+[[fn-7]]
+/etc/bash_completion.dに置いてもよいのですが、ここに置くと補完スクリプトが読み込まれるのが補完起動時ではなくシェル起動時になりシェルの起動速度に影響する点、/etc配下はシステムのディレクトリである点からおすすめしません。システム共通のものとして置く分には問題ないです。
+link:#fnref-7[↩]
+. {blank}
++
+[[fn-8]]
+/usr/share/bash-completion/completionsに置いてもよいのですが、ここに置くと補完スクリプトが読み込まれるタイミングは~/.local/share/bash-completion/completionsと同じにはなるものの、/usr配下はシステムのディレクトリである点からおすすめしません。make
+installやパッケージマネージャ経由で入れる分には問題ないです。その場合は、配置先のディレクトリは直パスではなく、pkg-config
+--variable=completionsdir
+bash-completionで出力されるパスを指定してください。HomebrewのFormulaであればbash_completion.installを使って補完スクリプトのパスを指定すればいいです。
+link:#fnref-8[↩]
+. {blank}
++
+[[fn-9]]
+~/.bash_completionに書いてもよいのですが、ディレクトリではなくファイルである点、ここに書くと補完スクリプトが読み込まれるのが補完起動時ではなくシェル起動時になりシェルの起動速度に影響する点からおすすめしません。個人の設定を書く分には問題ないです。
+link:#fnref-9[↩]
+
+image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+]
+
+link:/nil2/items/8a1544e206928c753a2e/likers[23]
+
+Go to list of users who liked
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=]
+
+[.style-1129w32]#17#
+
+link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##0]
+
+Go to list of comments
+
+Register as a new user and use Qiita more conveniently
+
+. You get articles that match your needs
+. You can efficiently read back useful information
+. You can use dark theme
+
+https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
+signing up]
+
+link:/signup?callback_action=login_or_signup&redirect_to=%2Fnil2%2Fitems%2F8a1544e206928c753a2e&realm=qiita[Sign
+up]link:/login?callback_action=login_or_signup&redirect_to=%2Fnil2%2Fitems%2F8a1544e206928c753a2e&realm=qiita[Login]
+
+image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+]
+
+link:/nil2/items/8a1544e206928c753a2e/likers[23]
+
+Go to list of users who liked
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=]
+
+[.style-1vem4tk]#17#
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[[GlobalFooter-react-component-3d96f8bb-0364-4085-befb-303e0ef916c6]]
+link:/[image:data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRvIHRvcCBRaWl0YSIgdmlld2JveD0iMCAwIDQyNi41NyAxMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMzMuNSIgY2xhc3M9InN0eWxlLTFnMGsxd2siPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRvIHRvcCBRaWl0YSIgdmlld2JveD0iMCAwIDQyNi41NyAxMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMzMuNSIgY2xhc3M9InN0eWxlLTFnMGsxd2siPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==]]
+
+How developers code is here.
+
+[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
+
+Guide & Help
+
+* link:/about[About]
+* link:/terms[Terms]
+* link:/privacy[Privacy]
+* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
+* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
+* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
+* https://help.qiita.com[Help]
+* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
+
+Contents
+
+* link:/release-notes[Release Note]
+* link:/official-events[Official Event]
+* link:/official-columns[Official Column]
+* link:/advent-calendar/2024[Advent Calendar]
+* link:/qiita-award[Qiita Award]
+* link:/white_papers/2024[Engineer White Paper]
+* link:/api/v2/docs[API]
+
+Official Accounts
+
+* https://x.com/qiita[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==][.style-15fzge]#@Qiita#]
+* https://x.com/qiita_milestone[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==][.style-15fzge]#@qiita_milestone#]
+* https://x.com/qiitapoi[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==][.style-15fzge]#@qiitapoi#]
+* https://www.facebook.com/qiita/[Facebook]
+* https://www.youtube.com/@qiita5366[YouTube]
+* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
+
+Our service
+
+* https://teams.qiita.com/[Qiita Team]
+* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
+Zine]
+* https://suzuri.jp/qiita[Official Shop]
+
+Company
+
+* https://corp.qiita.com/company[About Us]
+* https://corp.qiita.com/jobs/[Careers]
+* https://blog.qiita.com[Qiita Blog]
+* https://corp.qiita.com/releases/[News Release]
+
+[[Snackbar-react-component-aab322bb-4c54-4f15-be98-65e2ef765035]]
+
+[[LoginModal-react-component-d01b56e2-20fc-40d0-bdda-87e246c2958b]]
+
+[[dataContainer]]

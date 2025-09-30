@@ -1,0 +1,306 @@
+[[GlobalHeader-react-component-3adbe16c-32fd-48cc-b6f3-0653fa773acd]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_2.svg
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
+
+link:/login?callback_action=login_or_signup&redirect_to=%2FHumangas%2Fitems%2F7e54807420a3a3b08b91&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2FHumangas%2Fitems%2F7e54807420a3a3b08b91&realm=qiita[Signup]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+. link:/[Trend]
+. link:/question-feed[Question]
+. link:/official-events[Official Event]
+. link:/official-columns[Official
+Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
+. link:/organizations[Organization]
+
+[[AlertMessage-react-component-3a77710a-0c80-4358-b9fc-8b69cdbac867]]
+
+[[PersonalArticlePage-react-component-9abacd61-a9f8-4ecf-9d65-d1e5c8e33f86]]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_23.svg
+
+link:/Humangas/items/7e54807420a3a3b08b91/likers[4]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_29.svg
+
+[.style-1vem4tk]#6#
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_33.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_35.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_37.svg
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[.material-symbols-outlined .is-fill .style-1l7bzw8]#info#
+
+More than 5 years have passed since last update.
+
+link:/Humangas[]
+
+image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2Fprofile-images%2F1473684623?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=ee3b5601571e2e28a7d9d71b5e58f050[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2Fprofile-images%2F1473684623?ixlib=rb-4.0,width=24,height=24]
+
+@Humangas
+
+== Bashプロンプトを今更変更する：YYYY/MM/DD hh:mm:ss ユーザ@ホスト:カレントディレクトリ$（下線付き）
+
+* link:/tags/bash[Bash]
+* link:/tags/bashrc[bashrc]
+
+[.style-3k9iaf]#Last updated at 2016-02-20#[.style-3k9iaf]#Posted at
+2016-02-20#
+
+[[personal-public-article-body]]
+== [#とりあえず今はコレにしたyyyymmdd-hhmmss-ユーザホストカレントディレクトリ下線付き .fragment]##link:#%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BB%8A%E3%81%AF%E3%82%B3%E3%83%AC%E3%81%AB%E3%81%97%E3%81%9Fyyyymmdd-hhmmss-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%9B%E3%82%B9%E3%83%88%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%88%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E4%B8%8B%E7%B7%9A%E4%BB%98%E3%81%8D[__]とりあえず、今はコレにした：YYYY/MM/DD hhimage:https://cdn.qiita.com/emoji/twemoji/unicode/1f1f2-1f1f2.png[:flag_mm:,title=":flag_mm:",width=20,height=20]ss ユーザ@ホスト:カレントディレクトリ$（下線付き）
+
+....
+export PS1='\[\e[4m\]\D{%Y/%m/%d} \t \u@\h:\w\$\[\e[0m\] '
+....
+
+こんな感じになります。下線ついていると意外と見やすいです。 +
+https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2F8716ce7d-c1ee-d256-50e7-e77a0ae19792.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=61dcd3866e4dcff59ca41f7b8aa10021[image:https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2F8716ce7d-c1ee-d256-50e7-e77a0ae19792.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=61dcd3866e4dcff59ca41f7b8aa10021[スクリーンショット
+2016-02-20 14.05.59.png]]
+
+これを ~/.bashrcとかに書いておきます。
+
+== [#先に表示したい文字列を決める .fragment]##link:#%E5%85%88%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E6%96%87%E5%AD%97%E5%88%97%E3%82%92%E6%B1%BA%E3%82%81%E3%82%8B[__]先に表示したい文字列を決める
+
+`\[\e[4m\]`こういうのが、何か面倒くさそう。。てなるので、一旦無視します。こういうのは、文字装飾で必要なので表示したい文字列とは関係なし。後でいいです。
+
+このページ見れば、どういうのが表示出来るかだいたい分かります。
+
+* http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html[Bash
+Prompt HOWTO: > 2.5. Bash Prompt Escape Sequences]
+* http://www.atmarkit.co.jp/flinux/rensai/linuxtips/002cngprmpt.html[bashのプロンプトを変更するにはbashのプロンプトを変更するには]
+
+私のやつだと、文字装飾無視するとこうなります。
+
+....
+# 文字装飾なし
+export PS1='\D{%Y/%m/%d} \t \u@\h:\w\$ '
+
+# 文字装飾あり（完成形）
+export PS1='\[\e[4m\]\D{%Y/%m/%d} \t \u@\h:\w\$\[\e[0m\] '
+....
+
+* '全体をシングルクォーテーションで囲む'：お決まり
+* \D\{%Y/%m/%d}：YYYY/MM/DD
+* \t：hhimage:https://cdn.qiita.com/emoji/twemoji/unicode/1f1f2-1f1f2.png[:flag_mm:,title=":flag_mm:",width=20,height=20]ss
+* \u：ユーザ
+* \h：ホスト
+* \w：カレントディレクトリ
+* 空白・@・$は、ただ表示したい文字列
+
+== [#最後に表示文字列を装飾する .fragment]##link:#%E6%9C%80%E5%BE%8C%E3%81%AB%E8%A1%A8%E7%A4%BA%E6%96%87%E5%AD%97%E5%88%97%E3%82%92%E8%A3%85%E9%A3%BE%E3%81%99%E3%82%8B[__]最後に表示文字列を装飾する
+
+まず、`\[\e[4m\]`これが何なのか分解して、ざっと理解します。
+
+* 色の制御とかは、`\[`・・・`\]`で囲む（・・・に↓を入れる
+* 色の部分：`\e[色属性m`
+
+なので、あとは色属性のところを好きなようにチョイスすれば良いということです。 +
+`\[\e[0;32m\]`の`0;32`が純粋にその部分。
+
+では、0;32は何なのか？と言うと。。
+
+* 0は通常フォント、1とするとbold、4は下線、という感じ。
+* ;は区切り。なので、下線だけで色はいいわ。という場合は、4だけ書くという感じ。
+* 32の3が文字の色指定を表す。4とすると背景色、という感じ。
+* 32の2が具体的な色を表す。2だと緑、1だと赤、という感じ。
+
+私のやつで言うと、色は付けてなくて、下線だけの装飾ということになります（上の添付画像の通り）。
+
+3は何色でとかは、末尾の参考サイトなどに載ってます。
+
+=== [#ただここで注意装飾は設定したらしっぱなし .fragment]##link:#%E3%81%9F%E3%81%A0%E3%81%93%E3%81%93%E3%81%A7%E6%B3%A8%E6%84%8F%E8%A3%85%E9%A3%BE%E3%81%AF%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%89%E3%81%97%E3%81%A3%E3%81%B1%E3%81%AA%E3%81%97[__]ただ、ここで注意！：装飾は設定したらしっぱなし
+
+下線だけの装飾と言いつつ（`\[\e[4m\]`の部分）、最後にも`\[\e[0m\]`という装飾が付いてます。
+
+....
+export PS1='\[\e[4m\]\D{%Y/%m/%d} \t \u@\h:\w\$\[\e[0m\] '
+....
+
+なんでかというと、これが無いと下線つきっぱなしでこうなるからです。
+
+https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2Fc713c418-5c11-a2de-a3e6-3eb4655c448c.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=29d0d609d6a097fa61025c019a4d2522[image:https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2Fc713c418-5c11-a2de-a3e6-3eb4655c448c.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=29d0d609d6a097fa61025c019a4d2522[スクリーンショット
+2016-02-20 15.06.20.png]]
+
+なので、こっからは0＝通常フォント（装飾なし）でお願いします。という設定を最後にしているんです（つまり、リセット的な）。
+
+これで、本編終わり。
+
+== [#オマケ1さらにコマンド結果は色付きがいい .fragment]##link:#%E3%82%AA%E3%83%9E%E3%82%B11%E3%81%95%E3%82%89%E3%81%AB%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E7%B5%90%E6%9E%9C%E3%81%AF%E8%89%B2%E4%BB%98%E3%81%8D%E3%81%8C%E3%81%84%E3%81%84[__]オマケ1：さらに、コマンド結果は色付きがいい
+
+という場合は、こんな感じです。
+
+....
+# 下線＆コマンド結果は色付きで
+export PS1='\[\e[0m\]\[\e[4m\]\D{%Y/%m/%d} \t \u@\h:\w\$\[\e[0;32m\] '
+
+# 下線だけ（参考）
+export PS1='\[\e[4m\]\D{%Y/%m/%d} \t \u@\h:\w\$\[\e[0m\] '
+....
+
+https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2F9b6094ec-2abc-7945-89c3-f54c31fcf1c5.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=78826f1342c3692d78a3a20ab56720bd[image:https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F26565%2F9b6094ec-2abc-7945-89c3-f54c31fcf1c5.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=78826f1342c3692d78a3a20ab56720bd[スクリーンショット
+2016-02-20 15.14.01.png]]
+
+下線だけの場合との違いは以下だけです。色を始めにリセットしてるのがポイントです。
+
+* 最初に、`\[\e[0m\]`で、こっからまた文字色は色なしで（リセット的な）をやってます
+* 最後に、`\[\e[0;32m\]`で、文字色は32=緑でお願いしますをやってます（＝コマンド結果）
+
+== [#オマケ2でも全部一色は嫌でディレクトリとかは色変えたい .fragment]##link:#%E3%82%AA%E3%83%9E%E3%82%B12%E3%81%A7%E3%82%82%E5%85%A8%E9%83%A8%E4%B8%80%E8%89%B2%E3%81%AF%E5%AB%8C%E3%81%A7%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%A8%E3%81%8B%E3%81%AF%E8%89%B2%E5%A4%89%E3%81%88%E3%81%9F%E3%81%84[__]オマケ2：でも、全部一色は嫌でディレクトリとかは色変えたい
+
+その場合は、Bashプロンプトのカスタムではなくて、lsコマンドのカラー設定で対応したほうが良いと思います。UNIX系統によって、ちょっとやり方が違うみたいです。
+
+[cols="<,<,<",options="header",]
+|===
+|系統 |オプション |環境変数
+|BSD系（Mac） |-G |LSCOLORS
+|GNU系（Linux） |--color |LS_COLORS
+|===
+
+この辺が参考になります。
+
+* http://neko-mac.blogspot.jp/2015/03/mac_18.html[MACのターミナルで色つき表示色々]
+* http://www.itmedia.co.jp/help/tips/linux/l0372.html[ls実行時に表示される配色を変更したい]
+
+== [#なぜ今更やっぱ地味に便利だしあと残しておかないとすぐ忘れるから .fragment]##link:#%E3%81%AA%E3%81%9C%E4%BB%8A%E6%9B%B4%E3%82%84%E3%81%A3%E3%81%B1%E5%9C%B0%E5%91%B3%E3%81%AB%E4%BE%BF%E5%88%A9%E3%81%A0%E3%81%97%E3%81%82%E3%81%A8%E6%AE%8B%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8B%E3%81%AA%E3%81%84%E3%81%A8%E3%81%99%E3%81%90%E5%BF%98%E3%82%8C%E3%82%8B%E3%81%8B%E3%82%89[__]なぜ今更？：やっぱ地味に便利だし、あと残しておかないとすぐ忘れるから
+
+こういうことが出来ることはずっと前から知ってたんですが、意外とやらなかったりしてました。あるいはやっても次の現場で忘れてました。で、ちょっとした作業ログとかをコンソールからぺぺっと貼り付けたい時に、pwdとかdateとか打ったログが一緒になくて、「コレってどこで叩くだっけ？」とか、「いつやったやつだっけ？」とかなるので、気が向いてやることにした次第です（まぁ、プレーンテキストでコピペすると、下線とか色はなくなりますけどね）。あと、しばらくブログを書いてなかったので、何かまた再開するキッカケに。また面倒くさくなって書かなくなりそうだけど。。
+
+== [#他に参考にさせて頂いた記事 .fragment]##link:#%E4%BB%96%E3%81%AB%E5%8F%82%E8%80%83%E3%81%AB%E3%81%95%E3%81%9B%E3%81%A6%E9%A0%82%E3%81%84%E3%81%9F%E8%A8%98%E4%BA%8B[__]他に参考にさせて頂いた記事
+
+* https://jp.linux.com/news/linuxcom-exclusive/416957-lco20140519[Linuxで、bash
+プロンプトを素敵で実用的なものに変更する]
+* http://www.m-bsys.com/linux/echo-color-1[シェル -
+echoで文字に色をつける その1]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_199.svg
+
+link:/Humangas/items/7e54807420a3a3b08b91/likers[4]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_205.svg
+
+[.style-1129w32]#6#
+
+link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##0]
+
+Go to list of comments
+
+Register as a new user and use Qiita more conveniently
+
+. You get articles that match your needs
+. You can efficiently read back useful information
+. You can use dark theme
+
+https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
+signing up]
+
+link:/signup?callback_action=login_or_signup&redirect_to=%2FHumangas%2Fitems%2F7e54807420a3a3b08b91&realm=qiita[Sign
+up]link:/login?callback_action=login_or_signup&redirect_to=%2FHumangas%2Fitems%2F7e54807420a3a3b08b91&realm=qiita[Login]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_225.svg
+
+link:/Humangas/items/7e54807420a3a3b08b91/likers[4]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_231.svg
+
+[.style-1vem4tk]#6#
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[[GlobalFooter-react-component-f7aa5bad-4be9-479b-bb66-1d92ecec2245]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_252.svg
+
+How developers code is here.
+
+[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
+
+Guide & Help
+
+* link:/about[About]
+* link:/terms[Terms]
+* link:/privacy[Privacy]
+* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
+* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
+* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
+* https://help.qiita.com[Help]
+* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
+
+Contents
+
+* link:/release-notes[Release Note]
+* link:/official-events[Official Event]
+* link:/official-columns[Official Column]
+* link:/advent-calendar/2024[Advent Calendar]
+* link:/qiita-award[Qiita Award]
+* link:/white_papers/2024[Engineer White Paper]
+* link:/api/v2/docs[API]
+
+Official Accounts
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_281.svg
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_282.svg
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-7/11-7_283.svg
+* https://www.facebook.com/qiita/[Facebook]
+* https://www.youtube.com/@qiita5366[YouTube]
+* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
+
+Our service
+
+* https://teams.qiita.com/[Qiita Team]
+* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
+Zine]
+* https://suzuri.jp/qiita[Official Shop]
+
+Company
+
+* https://corp.qiita.com/company[About Us]
+* https://corp.qiita.com/jobs/[Careers]
+* https://blog.qiita.com[Qiita Blog]
+* https://corp.qiita.com/releases/[News Release]
+
+[[Snackbar-react-component-7dbc209a-474e-4699-96fa-4a37daff1739]]
+
+[[LoginModal-react-component-f8408b40-8d69-477d-86f3-7e30b13b4d15]]
+
+[[dataContainer]]

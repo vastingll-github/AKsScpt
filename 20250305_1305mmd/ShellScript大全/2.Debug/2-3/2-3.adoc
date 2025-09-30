@@ -1,0 +1,508 @@
+[[container]]
+[[header-container]]
+[[header-container-in]]
+[[header]]
+[[header-in]]
+
+https://yossi-note.com/[[.site-name-text]#よっしーノート#]
+
+[[navi-in]]
+
+[[content]]
+[[content-in]]
+[[main]]
+== bash入門：logging(ロギング)について -vol.6-
+
+[[pc_ad-3]]
+スポンサーリンク
+
+.bash入門：logging(ロギング)について -vol.6-
+image::https://yossi-note.com/wp-content/uploads/2023/12/331_introduction-to-bash-about-logging-vol-6.jpg[bash入門：logging(ロギング)について
+-vol.6-,width=780,height=410]
+
+[.cat-label .cat-label-6]#ノウハウ#
+
+https://x.com/intent/tweet?text=bash%E5%85%A5%E9%96%80%EF%BC%9Alogging%28%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-vol.6-&url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-logging-vol-6%2F[[.social-icon .icon-x-corp]##[.button-caption]#X#[.share-count .twitter-share-count .x-share-count]##]
+link://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-logging-vol-6%2F&t=bash%E5%85%A5%E9%96%80%EF%BC%9Alogging%28%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-vol.6-[[.social-icon .icon-facebook]##[.button-caption]#Facebook#[.share-count .facebook-share-count]##]
+link://b.hatena.ne.jp/entry/s/yossi-note.com/introduction-to-bash-about-logging-vol-6/[[.social-icon .icon-hatena]##[.button-caption]#はてブ#[.share-count .hatebu-share-count]##]
+//getpocket.com/edit?url=https://yossi-note.com/introduction-to-bash-about-logging-vol-6/[[.social-icon .icon-pocket]##[.button-caption]#Pocket#[.share-count .pocket-share-count]##]
+link://timeline.line.me/social-plugin/share?url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-logging-vol-6%2F[[.social-icon .icon-line]##[.button-caption]#LINE#[.share-count .line-share-count]##]
+[.sns-button .share-button .copy-button .copy-share-button-sq]#[.social-icon .icon-copy]##[.button-caption]#コピー#[.share-count .copy-share-count]###
+
+[.post-date]#[.fa .fa-clock-o]####2024.01.01#
+
+[.fa .fa-hourglass-half .hourglass-half-icon]####この記事は[.bold]##約6分##で読めます。
+
+.
+image::https://yossi-note.com/wp-content/themes/cocoon-master/images/man.png[よっしー]
+
+よっしー
+
+こんにちは。よっしーです(^^)
+
+今日は、bashにおけるlogging(ロギング)についてご紹介します。
+
+[[common_ad-2]]
+スポンサーリンク
+
+https://px.a8.net/svt/ejp?a8mat=3T2CEX+55R9IQ+1WP2+6GZCH[image:https://www28.a8.net/svt/bgt?aid=230216793312&wid=001&eno=01&mid=s00000008903001087000&mc=1[https://www28.a8.net/svt/bgt?aid=230216793312&wid=001&eno=01&mid=s00000008903001087000&mc=1,width=728,height=90]]
+image:https://www10.a8.net/0.gif?a8mat=3T2CEX+55R9IQ+1WP2+6GZCH[https://www10.a8.net/0,width=1,height=1]
+
+[[toc]]
+目次
+
+. link:#toc1[背景]
+. link:#toc2[実行環境について]
+. link:#toc3[概要]
+.. link:#toc4[作成ファイル一覧]
+.. link:#toc5[12_logging.sh]
+. link:#toc6[動作確認]
+. link:#toc7[解説]
+.. link:#toc8[12_logging.sh]
+. link:#toc9[おわりに]
+
+== [#toc1]#背景#
+
+bashにおけるlogging(ロギング)について調査する機会があったので、そのときの内容を備忘として残しました。
+
+この記事のソースは下記のサイトにアップしています。
+
+https://github.com/Gate-Yossi/Musica[]
+
+[.fa]##
+
+.
+image::https://opengraph.githubassets.com/6893cb925f4827927a592d7f3e28e3b372ddaa61df04ec224f5a8a3c8df425f9/Gate-Yossi/Musica[https://opengraph.githubassets.com/6893cb925f4827927a592d7f3e28e3b372ddaa61df04ec224f5a8a3c8df425f9/Gate-Yossi/Musica,width=160,height=90]
+
+GitHub - Gate-Yossi/Musica: 読み方：ムジカ
+
+読み方：ムジカ. Contribute to Gate-Yossi/Musica development by creating
+an account on GitHub.
+
+image:https://www.google.com/s2/favicons?domain=https://github.com/Gate-Yossi/Musica[https://www.google.com/s2/favicons?domain=https://github.com/Gate-Yossi/Musica,width=16,height=16]
+
+github.com
+
+== [#toc2]#実行環境について#
+
+実行環境は下記の記事を参考にお願いします。
+
+https://yossi-note.com/introduction-to-bash-building-a-development-environment-using-docker/[]
+
+[.fa]##
+
+.
+image::https://yossi-note.com/wp-content/uploads/2023/12/319.introduction-to-bash-building-a-development-environment-using-dockerpng-160x90.jpg[https://yossi-note.com/wp-content/uploads/2023/12/319.introduction-to-bash-building-a-development-environment-using-dockerpng-160x90,width=160,height=90]
+
+bash入門：Dockerによる開発環境の構築
+
+よっしーこんにちは。よっしーです(^^)今日は、Dockerによる開発環境の構築する方法についてご紹介します。背景bashの実行環境を揃える機会があったので、そのときの内容を備忘として残しました。この記事のソースは下記のサイトにアップしてい...
+
+image:https://www.google.com/s2/favicons?domain=https://yossi-note.com[https://www.google.com/s2/favicons?domain=https://yossi-note,width=16,height=16]
+
+yossi-note.com
+
+2023.12.20
+
+== [#toc3]#概要#
+
+本記事のロギングは、infoとdebug、warn、errorで使い分けるようにしました。また、色付けをしています。
+
+=== [#toc4]#作成ファイル一覧#
+
+下記のファイルを作成しました。
+
+[source,wp-block-code]
+----
+        new file:   local/work/12_logging/12_logging.sh
+----
+
+=== [#toc5]#12_logging.sh#
+
+[source,wp-block-code]
+----
+#!/usr/bin/env bash
+
+set -euCo pipefail
+
+readonly LOG_OUT=./stdout.log
+readonly LOG_ERR=./stderr.log
+
+exec 1> >(tee -a "$LOG_OUT")
+exec 2> >(tee -a "$LOG_ERR")
+
+function log_debug() {
+    lgg_msg=$(gen_log_msg 'DEBUG' "$*")
+    echo "${lgg_msg}"
+}
+
+function log_err() {
+    lgg_msg=$(gen_log_msg 'ERROR' "$*")
+    echo "${lgg_msg}" >&2
+}
+
+function gen_log_msg() {
+    printf "%s\t[%5s]\t%s" "$(date '+%Y/%m/%d %H:%M:%S.%3N')" "$1" "$2"
+}
+
+function trap_err() {
+    error_status=$?
+    msg=$(printf "エラー発生 \$?=%d %s %s:%d" ${error_status} "${BASH_SOURCE[0]}" "${FUNCNAME[1]}" ${BASH_LINENO[0]})
+    log_err "${msg}"
+}
+
+function trap_exit() {
+    msg=$(printf "終了時の処理 %s %s:%d" "${BASH_SOURCE[0]}" "${FUNCNAME[1]}" ${BASH_LINENO[0]})
+    log_debug "${msg}"
+}
+
+trap trap_err ERR
+
+trap trap_exit EXIT
+
+log_debug "$(which bash)"
+
+log_debug "$(bash --version)"
+
+# 標準エラーへの出力確認用
+ls dummy.txt
+
+echo "ここは表示されない"
+----
+
+== [#toc6]#動作確認#
+
+下記のコマンドを実行します。
+
+[source,wp-block-code,bash]
+----
+make build
+
+make up
+
+make login
+
+cd 12_logging
+
+chmod +x 12_logging.sh
+
+./12_logging.sh
+----
+
+下記のような出力になることを想定しています。
+
+.
+image::https://yossi-note.com/wp-content/uploads/2023/12/image-1024x324.png[https://yossi-note.com/wp-content/uploads/2023/12/image-1024x324,width=1024,height=324]
+
+== [#toc7]#解説#
+
+=== [#toc8]#12_logging.sh#
+
+このスクリプトは、カラー付きのログ出力、エラーハンドリング、スクリプト終了時の処理を組み合わせた
+Bash スクリプトです。以下に各部分の解説を示します：
+
+. `ESC="$(printf '\033')"`: エスケープシーケンスを `ESC`
+として定義しています。これは、後でログメッセージに色を付けるために使用されます。
+. `LOG_OUT=./stdout.log` および `LOG_ERR=./stderr.log`:
+標準出力と標準エラーのログファイルのパスを指定しています。
+. `exec 1> >(tee -a "$LOG_OUT")` および `exec 2> >(tee -a "$LOG_ERR")`:
+標準出力と標準エラーをそれぞれファイルにリダイレクトし、同時にその内容を標準出力と標準エラーにも表示します。
+. `function log_info() { ... }`, `function log_debug() { ... }`,
+`function log_warn() { ... }`, `function log_err() { ... }`:
+ログの種類によって異なる色でログを表示するための関数を定義しています。`gen_log_msg`関数を呼び出してログの整形を行います。
+. `function gen_log_msg() { ... }`:
+ログメッセージを整形する関数です。色や日時などを含むログメッセージを生成します。
+. `function trap_err() { ... }`:
+エラーが発生した際に呼び出される関数です。エラーのステータスや発生箇所の情報を取得し、`log_err`関数を呼び出してエラーログを記録します。
+. `function trap_exit() { ... }`:
+スクリプトが終了する際に呼び出される関数です。終了時の処理を行い、`log_debug`関数を呼び出してデバッグログを記録します。
+. `trap trap_err ERR`: `ERR`
+シグナルに対して、`trap_err`関数が呼び出されるように設定します。
+. `trap trap_exit EXIT`: `EXIT`
+シグナルに対して、`trap_exit`関数が呼び出されるように設定します。
+. `log_debug "$(which bash)"` および `log_debug "$(bash --version)"`:
+インストールされている Bash
+の実行ファイルのパスとバージョン情報をデバッグログに記録します。
+. `log_info "info test"` および `log_warn "warn test"`:
+インフォメーションとワーニングのログを出力します。
+. `ls dummy.txt`: 標準エラーへの出力確認用に、存在しないファイル
+`dummy.txt` を `ls`
+コマンドでリストします。この部分でエラーが発生し、`trap_err`関数が呼び出されてエラーログが記録されます。
+. `echo "ここは表示されない"`: 上記の `ls dummy.txt`
+でエラーが発生した場合、この行は実行されません。スクリプトはエラーが発生した時点で終了するため、この行は実行されません。
+
+== [#toc9]#おわりに #
+
+今日は、bashにおけるlogging(ロギング)についてご紹介しました。
+
+.
+image::https://yossi-note.com/wp-content/themes/cocoon-master/images/man.png[よっしー]
+
+よっしー
+
+何か質問や相談があれば、コメントをお願いします。また、エンジニア案件の相談にも随時対応していますので、お気軽にお問い合わせください。
+
+それでは、また明日お会いしましょう(^^)
+
+https://yossi-note.com/category/howto/[[.fa .fa-folder .cat-icon .tax-icon]####ノウハウ]
+
+https://yossi-note.com/tag/docker/[[.fa .fa-tag .tag-icon .tax-icon]####Docker]https://yossi-note.com/tag/shell/[[.fa .fa-tag .tag-icon .tax-icon]####shell]
+
+シェアする
+
+https://x.com/intent/tweet?text=bash%E5%85%A5%E9%96%80%EF%BC%9Alogging%28%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-vol.6-&url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-logging-vol-6%2F[[.social-icon .icon-x-corp]##[.button-caption]#X#[.share-count .twitter-share-count .x-share-count]##]
+link://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-logging-vol-6%2F&t=bash%E5%85%A5%E9%96%80%EF%BC%9Alogging%28%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+-vol.6-[[.social-icon .icon-facebook]##[.button-caption]#Facebook#[.share-count .facebook-share-count]##]
+link://b.hatena.ne.jp/entry/s/yossi-note.com/introduction-to-bash-about-logging-vol-6/[[.social-icon .icon-hatena]##[.button-caption]#はてブ#[.share-count .hatebu-share-count]##]
+//getpocket.com/edit?url=https://yossi-note.com/introduction-to-bash-about-logging-vol-6/[[.social-icon .icon-pocket]##[.button-caption]#Pocket#[.share-count .pocket-share-count]##]
+link://timeline.line.me/social-plugin/share?url=https%3A%2F%2Fyossi-note.com%2Fintroduction-to-bash-about-logging-vol-6%2F[[.social-icon .icon-line]##[.button-caption]#LINE#[.share-count .line-share-count]##]
+[.sns-button .share-button .copy-button .copy-share-button-sq]#[.social-icon .icon-copy]##[.button-caption]#コピー#[.share-count .copy-share-count]###
+
+よっしーをフォローする
+
+https://yossi-note.com/[[.icon-home-logo]##]
+https://twitter.com/GateYossi[[.icon-x-corp-logo]##]
+link://feedly.com/i/discover/sources/search/feed/https%3A%2F%2Fyossi-note.com[[.icon-feedly-logo]##[.follow-count .feedly-follow-count]##]
+https://yossi-note.com/feed/[[.icon-rss-logo]##]
+
+[[pc_ad-2]]
+スポンサーリンク
+
+[.fa .fa-pencil]##
+https://yossi-note.com/author/yossi_note/[[.post-author .vcard .author]#
+#]
+
+[.author-name .fn]#よっしー#
+
+== [.related-entry-main-heading .main-caption]# 関連記事 #
+
+https://yossi-note.com/how_to_visualize_apache_metrics_using_apache_exporter/[]
+
+image:https://yossi-note.com/wp-content/uploads/2023/04/76_How_to_visualize_Apache_metrics_using_Apache_Exporter-160x90.jpg[https://yossi-note.com/wp-content/uploads/2023/04/76_How_to_visualize_Apache_metrics_using_Apache_Exporter-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== Dockerで作る開発環境：Apache Exporterを使用してApacheのメトリクスを可視化する方法
+
+よっしーこんにちは。よっしーです(^^)今日は、dockerで構築した開発環境において、apacheのメトリクス情報をGrafanaで可視化する手順をご紹介します。実行環境この記事では、下記の記事で構築している開発環境を前提にしていますので...
+
+https://yossi-note.com/introduction-to-bash-when-performing-termination-processing-with-trap-retain-the-previous-termination-status/[]
+
+image:https://yossi-note.com/wp-content/uploads/2024/01/367-160x90.jpg[https://yossi-note.com/wp-content/uploads/2024/01/367-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== bash入門：trapで終了処理をする場合、直前の終了ステータスを保持しておく
+
+よっしーこんにちは。よっしーです(^^)今日は、bashにおける書き方についてご紹介します。背景bashにおける書き方について調査する機会がありましたので、その備忘として残しています。trapで終了処理をする理由trapで終了処理をする理由...
+
+https://yossi-note.com/coreigniter_environment_construction_method/[]
+
+image:https://yossi-note.com/wp-content/uploads/2023/04/57_CoreIgniter_environment_construction_method-160x90.jpg[https://yossi-note.com/wp-content/uploads/2023/04/57_CoreIgniter_environment_construction_method-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== CodeIgniterの環境構築方法：インストールからセットアップまで
+
+よっしーこんにちは。よっしーです(^^)今日は、docker で PHP
+をインストールした環境に
+CodeIgniterというPHPで書かれたオープンソースのWebアプリケーションフレームワークをインストールしたときの内容をご紹介します。...
+
+https://yossi-note.com/prepare_an_unimplemented_test_case_with_phpunit/[]
+
+image:https://yossi-note.com/wp-content/uploads/2023/08/185_https-yossi-note.comprepare_an_unimplemented_test_case_with_phpunit-160x90.jpg[https://yossi-note.com/wp-content/uploads/2023/08/185_https-yossi-note.comprepare_an_unimplemented_test_case_with_phpunit-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== PHP入門：PHPUnitで未実装のテストケースを用意する
+
+よっしーこんにちは。よっしーです(^^)今日は、PHPUnitで未実装のテストケースを用意する方法についてご紹介します。前提この記事は下記の記事をベースにしています。背景新しいテストケースクラスの作成に取り組む場合は、次のような空のテストメ...
+
+https://yossi-note.com/introduction-to-gcp-iac-using-terraform-vol-5/[]
+
+image:https://yossi-note.com/wp-content/uploads/2024/08/568-160x90.jpg[https://yossi-note.com/wp-content/uploads/2024/08/568-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== GCP入門： Terraform を使用した IaC -Vol.5-
+
+よっしーこんにちは。よっしーです(^^)今日は、TerraformでGCPのリソース作成について解説しています。背景前回の記事の続きになります。実施内容main.tfに下記のリソースを追記します。resource
+"google_compu...
+
+https://yossi-note.com/introduction-to-redis-how-to-delete-large-amounts-of-data/[]
+
+image:https://yossi-note.com/wp-content/uploads/2023/11/318_introduction-to-redis-how-to-delete-large-amounts-of-data-160x90.jpg[https://yossi-note.com/wp-content/uploads/2023/11/318_introduction-to-redis-how-to-delete-large-amounts-of-data-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== Redis入門：大量データを削除する方法
+
+よっしーこんにちは。よっしーです(^^)今日は、Redisで大量のテストデータを削除する方法についてご紹介します。背景Redisで大量のテストデータを削除する機会があったので、そのときの内容を備忘としてのこしました。下記のサイトを参考にしま...
+
+[[pager-post-navi]]
+https://yossi-note.com/introduction-to-bash-about-logging-vol-5/[]
+
+.
+image::https://yossi-note.com/wp-content/uploads/2023/12/330_introduction-to-bash-about-logging-vol-5-120x68.jpg[https://yossi-note.com/wp-content/uploads/2023/12/330_introduction-to-bash-about-logging-vol-5-120x68,width=120,height=68]
+
+bash入門：logging(ロギング)について -vol.5-
+
+https://yossi-note.com/introduction-to-bash-parallel-execution-of-functions-using-xargs/[]
+
+.
+image::https://yossi-note.com/wp-content/uploads/2023/12/332-120x68.jpg[https://yossi-note.com/wp-content/uploads/2023/12/332-120x68,width=120,height=68]
+
+bash入門：xargsを利用した関数の並列実行
+
+[[comment-area]]
+[[comments]]
+== コメント
+
+コメントを書き込む
+
+[[respond]]
+[[reply-title]]
+== コメントをどうぞ [.small]#link:/introduction-to-bash-about-logging-vol-6/#respond[コメントをキャンセル]#
+
+[#email-notes]#メールアドレスが公開されることはありません。#
+[.required]#※# が付いている欄は必須項目です
+
+コメント [.required]#※#
+
+名前 [.required]#※#
+
+メール [.required]#※#
+
+サイト
+
+次回のコメントで使用するためブラウザーに自分の名前、メールアドレス、サイトを保存する。
+
+image:https://yossi-note.com/wp-content/siteguard/701277363.png[CAPTCHA]
+
+上に表示された文字を入力してください。 +
+
+[[breadcrumb]]
+[.fa .fa-home .fa-fw]##https://yossi-note.com[[.breadcrumb-caption]#ホーム#]
+
+[.sp]#[.fa .fa-angle-right]###
+
+[.fa .fa-folder .fa-fw]##https://yossi-note.com/category/howto/[[.breadcrumb-caption]#ノウハウ#]
+
+[[sidebar]]
+検索
+
+検索
+
+== タグ
+
+https://yossi-note.com/tag/svelte/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Svelte#[.tag-link-count]#177#]
+https://yossi-note.com/tag/docker/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Docker#[.tag-link-count]#138#]
+https://yossi-note.com/tag/php/[[.tag-caption]#[.fa .fa-tag .tax-icon]####PHP#[.tag-link-count]#103#]
+https://yossi-note.com/tag/aws/[[.tag-caption]#[.fa .fa-tag .tax-icon]####AWS#[.tag-link-count]#64#]
+https://yossi-note.com/tag/shell/[[.tag-caption]#[.fa .fa-tag .tax-icon]####shell#[.tag-link-count]#62#]
+https://yossi-note.com/tag/gcp/[[.tag-caption]#[.fa .fa-tag .tax-icon]####GCP#[.tag-link-count]#58#]
+https://yossi-note.com/tag/terraform/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Terraform#[.tag-link-count]#56#]
+https://yossi-note.com/tag/%e4%bb%ae%e6%83%b3%e9%80%9a%e8%b2%a8/[[.tag-caption]#[.fa .fa-tag .tax-icon]####仮想通貨#[.tag-link-count]#56#]
+https://yossi-note.com/tag/%e8%b2%a0%e8%8d%b7%e8%a9%a6%e9%a8%93/[[.tag-caption]#[.fa .fa-tag .tax-icon]####負荷試験#[.tag-link-count]#52#]
+https://yossi-note.com/tag/k6/[[.tag-caption]#[.fa .fa-tag .tax-icon]####k6#[.tag-link-count]#44#]
+https://yossi-note.com/tag/mysql/[[.tag-caption]#[.fa .fa-tag .tax-icon]####MySQL#[.tag-link-count]#28#]
+https://yossi-note.com/tag/kubernetes/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Kubernetes#[.tag-link-count]#28#]
+https://yossi-note.com/tag/golang/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Golang#[.tag-link-count]#17#]
+https://yossi-note.com/tag/redis/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Redis#[.tag-link-count]#10#]
+https://yossi-note.com/tag/asdf/[[.tag-caption]#[.fa .fa-tag .tax-icon]####asdf#[.tag-link-count]#8#]
+https://yossi-note.com/tag/jmeter/[[.tag-caption]#[.fa .fa-tag .tax-icon]####JMeter#[.tag-link-count]#7#]
+https://yossi-note.com/tag/redmine/[[.tag-caption]#[.fa .fa-tag .tax-icon]####Redmine#[.tag-link-count]#6#]
+https://yossi-note.com/tag/mariadb/[[.tag-caption]#[.fa .fa-tag .tax-icon]####MariaDB#[.tag-link-count]#4#]
+https://yossi-note.com/tag/%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3/[[.tag-caption]#[.fa .fa-tag .tax-icon]####ブロックチェーン#[.tag-link-count]#2#]
+https://yossi-note.com/tag/brew/[[.tag-caption]#[.fa .fa-tag .tax-icon]####brew#[.tag-link-count]#1#]
+https://yossi-note.com/tag/%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3/[[.tag-caption]#[.fa .fa-tag .tax-icon]####セキュリティ#[.tag-link-count]#1#]
+https://yossi-note.com/tag/zsh/[[.tag-caption]#[.fa .fa-tag .tax-icon]####zsh#[.tag-link-count]#1#]
+https://yossi-note.com/tag/direnv/[[.tag-caption]#[.fa .fa-tag .tax-icon]####direnv#[.tag-link-count]#1#]
+
+== 最近の投稿
+
+* https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-16/[Svelte入門：リファレンス
+@sveltejs/kit -Vol.16-]
+* https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-15/[Svelte入門：リファレンス
+@sveltejs/kit -Vol.15-]
+* https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-14/[Svelte入門：リファレンス
+@sveltejs/kit -Vol.14-]
+* https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-13/[Svelte入門：リファレンス
+@sveltejs/kit -Vol.13-]
+* https://yossi-note.com/introduction-to-svelte-reference-sveltejs-kit-vol-12/[Svelte入門：リファレンス
+@sveltejs/kit -Vol.12-]
+
+== 最近のコメント
+
+. https://yossi-note.com/passkey_error_on_mercari/#comment-8[機種変更したらメルカリでパスキーエラーになったときのはなし]
+に https://yossi-note.com/[よっしー] より
+. https://yossi-note.com/passkey_error_on_mercari/#comment-7[機種変更したらメルカリでパスキーエラーになったときのはなし]
+に [.wp-block-latest-comments__comment-author]#よいしょ# より
+. https://yossi-note.com/introduction-to-php-run-at-any-date-and-time-with-timecop/#comment-6[PHP入門：timecopで任意の日時で動作させる]
+に https://yossi-note.com/[よっしー] より
+. https://yossi-note.com/introduction-to-php-run-at-any-date-and-time-with-timecop/#comment-5[PHP入門：timecopで任意の日時で動作させる]
+に [.wp-block-latest-comments__comment-author]#おかもと# より
+. https://yossi-note.com/passkey_error_on_mercari/#comment-4[機種変更したらメルカリでパスキーエラーになったときのはなし]
+に https://yossi-note.com/[よっしー] より
+
+== にほんブログ村
+
+https://blogmura.com/ranking/in?p_cid=11165451[image:https://b.blogmura.com/88_31.gif[ブログランキング・にほんブログ村へ,width=88,height=31]にほんブログ村]
+
+[[sidebar-scroll]]
+== アーカイブ
+
+* https://yossi-note.com/2025/03/[[.list-item-caption]#2025年3月#]
+* https://yossi-note.com/2025/02/[[.list-item-caption]#2025年2月#]
+* https://yossi-note.com/2025/01/[[.list-item-caption]#2025年1月#]
+* https://yossi-note.com/2024/12/[[.list-item-caption]#2024年12月#]
+* https://yossi-note.com/2024/11/[[.list-item-caption]#2024年11月#]
+* https://yossi-note.com/2024/10/[[.list-item-caption]#2024年10月#]
+* https://yossi-note.com/2024/09/[[.list-item-caption]#2024年9月#]
+* https://yossi-note.com/2024/08/[[.list-item-caption]#2024年8月#]
+* https://yossi-note.com/2024/07/[[.list-item-caption]#2024年7月#]
+* https://yossi-note.com/2024/06/[[.list-item-caption]#2024年6月#]
+* https://yossi-note.com/2024/05/[[.list-item-caption]#2024年5月#]
+* https://yossi-note.com/2024/04/[[.list-item-caption]#2024年4月#]
+* https://yossi-note.com/2024/03/[[.list-item-caption]#2024年3月#]
+* https://yossi-note.com/2024/02/[[.list-item-caption]#2024年2月#]
+* https://yossi-note.com/2024/01/[[.list-item-caption]#2024年1月#]
+* https://yossi-note.com/2023/12/[[.list-item-caption]#2023年12月#]
+* https://yossi-note.com/2023/11/[[.list-item-caption]#2023年11月#]
+* https://yossi-note.com/2023/10/[[.list-item-caption]#2023年10月#]
+* https://yossi-note.com/2023/09/[[.list-item-caption]#2023年9月#]
+* https://yossi-note.com/2023/08/[[.list-item-caption]#2023年8月#]
+* https://yossi-note.com/2023/07/[[.list-item-caption]#2023年7月#]
+* https://yossi-note.com/2023/06/[[.list-item-caption]#2023年6月#]
+* https://yossi-note.com/2023/05/[[.list-item-caption]#2023年5月#]
+* https://yossi-note.com/2023/04/[[.list-item-caption]#2023年4月#]
+* https://yossi-note.com/2023/03/[[.list-item-caption]#2023年3月#]
+* https://yossi-note.com/2023/02/[[.list-item-caption]#2023年2月#]
+
+== カテゴリー
+
+* https://yossi-note.com/category/pr/[[.list-item-caption]#PR#]
+* https://yossi-note.com/category/howto/[[.list-item-caption]#ノウハウ#]
+* https://yossi-note.com/category/init/[[.list-item-caption]#初期設定#]
+* https://yossi-note.com/category/%e5%8f%8e%e7%9b%8a%e5%8c%96/[[.list-item-caption]#収益化#]
+* https://yossi-note.com/category/uncategorized/[[.list-item-caption]#未分類#]
+* https://yossi-note.com/category/%e7%92%b0%e5%a2%83%e6%a7%8b%e7%af%89/[[.list-item-caption]#環境構築#]
+* https://yossi-note.com/category/glossary/[[.list-item-caption]#用語解説#]
+
+https://px.a8.net/svt/ejp?a8mat=3T2CEX+555TWY+50+2I4LK1[ +
+image:https://www26.a8.net/svt/bgt?aid=230216793311&wid=001&eno=01&mid=s00000000018015138000&mc=1[https://www26.a8.net/svt/bgt?aid=230216793311&wid=001&eno=01&mid=s00000000018015138000&mc=1,width=160,height=600]] +
+image:https://www17.a8.net/0.gif?a8mat=3T2CEX+555TWY+50+2I4LK1[https://www17.a8.net/0,width=1,height=1]
+
+[[footer-in]]
+https://yossi-note.com/[[.site-name-text]#よっしーノート#]
+
+[[navi-footer-in]]
+* [#menu-item-50]#https://yossi-note.com/sitemap/[サイトマップ]#
+* [#menu-item-35]#https://yossi-note.com/privacy-policy/[プライバシーポリシー]#
+* [#menu-item-39]#https://yossi-note.com/disclaimer/[免責事項]#
+* [#menu-item-29]#https://yossi-note.com/25-2/[お問い合わせ]#
+
+© 2023 よっしーノート.
+
+* https://yossi-note.com/sitemap/[[.custom-menu-icon .menu-icon]#[.fa .fa-star]###[.custom-menu-caption .menu-caption]#サイトマップ#]
+* https://yossi-note.com/privacy-policy/[[.custom-menu-icon .menu-icon]#[.fa .fa-star]###[.custom-menu-caption .menu-caption]#プライバシーポリシー#]
+* https://yossi-note.com/disclaimer/[[.custom-menu-icon .menu-icon]#[.fa .fa-star]###[.custom-menu-caption .menu-caption]#免責事項#]
+* https://yossi-note.com/25-2/[[.custom-menu-icon .menu-icon]#[.fa .fa-star]###[.custom-menu-caption .menu-caption]#お問い合わせ#]
+
+[[go-to-top]]
+[.fa .fa-angle-double-up]##
+
+タイトルとURLをコピーしました

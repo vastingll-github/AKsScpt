@@ -1,0 +1,433 @@
+[[__next]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_2.svg
+
+link:/memo[[.ContentStickyNavForMobile_avatarContainer__V3P_G]#image:https://lh3.googleusercontent.com/a/AATXAJxvkb1W9vTNRCrWRZdvEE8ohRZJMiNrPUuMfDdJ=s96-c[Koichiro
+Nakajima,width=38,height=38]#[.ContentStickyNavForMobile_displayName__cmEag]#Koichiro
+Nakajima#]
+
+[.Emoji_twemoji__hcxYF]#[.Emoji_twemojiImg__Oc6vR]###[.Emoji_nativeEmoji__GMBzX]##️⃣#
+
+== bashのプロンプト表示形式を設定する方法
+
+[.ArticleHeader_pubDate__gF_sc]#[.ArticleHeader_num__7Zpz0]##2021/10/06##に公開#
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_14.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_16.svg
+
+link:/topics/linux[]
+
+image:https://storage.googleapis.com/zenn-user-upload/topics/860a9eb1e4.png[https://storage.googleapis.com/zenn-user-upload/topics/860a9eb1e4]
+
+Linux
+
+link:/topics/bash[]
+
+image:https://storage.googleapis.com/zenn-user-upload/topics/a077a1927f.png[https://storage.googleapis.com/zenn-user-upload/topics/a077a1927f]
+
+Bash
+
+link:/tech-or-idea[]
+
+image:https://static.zenn.studio/images/drawing/tech-icon.svg[https://static.zenn.studio/images/drawing/tech-icon]
+
+tech
+
+[[bash%E3%81%AE%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E6%96%87%E5%AD%97%E5%88%97]]
+== link:#bash%E3%81%AE%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E6%96%87%E5%AD%97%E5%88%97[] bashのプロンプト文字列
+
+デフォルトのプロンプト文字列は表示が一色で見づらかったり、表示項目を増やしたり減らしたり、目的や自分の好みに合わせてプロンプト表示を変更すると便利です。ここではその設定方法をまとめます。
+
+[[%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0ps1]]
+== link:#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0ps1[] 環境変数PS1
+
+bashのプロンプト文字列は環境変数`PS1`で設定できます。
+
+[cols="^,",options="header",]
+|===
+|設定対象 |概要
+|表示項目（bash）
+|プロンプトに表示する項目（ユーザー名など）を`bashのエスケープシーケンス`で設定する。設定内容を解釈して実行するのは`bash`。
+
+|装飾（端末）
+|プロンプトの文字列の装飾（文字列の色や点滅など）を`ANSIエスケープコード`で設定する。設定内容を解釈して実行するのは端末（エミュレータ）。
+|===
+
+たとえば、RHEL8のデフォルトではユーザー名、ホスト名、現在のディレクトリが`[]`内に表示されています。この設定の`PS1`
+を`echo`コマンドで確認すると`[\u@\h \W]\$`が設定されていることがわかります。`PS1`を設定するには他の環境変数と同じように`export`コマンドを実行します。
+
+[source,language-bash]
+----
+[koichiro@cl01 ~]$ echo $PS1
+[\u@\h \W]\$
+[koichiro@cl01 ~]$ export PS1="[\u@\h \W]\$ "
+----
+
+これを個別ユーザーの`~/.bashrc`に書いておけばシェルが立ち上がる度に設定されます。RHEL系で全ユーザーに設定するには`/etc/profile.d`配下に`ps1.sh`のファイル名で書いておきます。（でもユーザー個別の`PS1`設定が`~/.bashrc`にあれば、そちらで上書きされます）
+
+[[%E8%87%AA%E5%88%86%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B]]
+== link:#%E8%87%AA%E5%88%86%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B[] 自分の設定例
+
+私はユーザー名、ホスト名、ディレクトリをそれぞれ色を分けて表示しています。 +
+image:https://res.cloudinary.com/zenn/image/fetch/s--snG7-M1Q--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_1200/https://storage.googleapis.com/zenn-user-upload/deployed-images/e5603eca2bfee25cbd6b475c.png%3Fsha%3D1c122b9651d0b94f7af3f8361c728eefd182f143[https://res.cloudinary.com/zenn/image/fetch/s--snG7-M1Q--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_1200/https://storage.googleapis.com/zenn-user-upload/deployed-images/e5603eca2bfee25cbd6b475c] +
+Ubuntuなどdebian系とRHEL系（CentOSなど）で書き方などが微妙に違うので両方について書いておきます。
+
+[[debian%E7%B3%BB]]
+=== link:#debian%E7%B3%BB[] debian系
+
+* `force_color_prompt=yes`を有効にします。一般ユーザーはデフォルトで有効になっていますが、rootユーザーはコメントアウトされています。
+* デフォルトの`PS1`をコメントアウトして、下記2つのどちらかを選んで使います。スクリーンショットなどを取るときにユーザー名とホスト名を表示したくない場合もあるので、その設定も用意し、必要な時以外はコメントアウトしています。
+
+[source,language-bash]
+----
+#~/.bashrc
+force_color_prompt=yes
+...
+PS1='${debian_chroot:+($debian_chroot)}\[\e[38;05;74m\]\u\[\e[00m\]@\[\e[38;05;250m\]\h\[\e[00m\]:\[\e[38;05;172m\]\w\[\e[00m\]\$ '
+#PS1='${debian_chroot:+($debian_chroot)}\[\e[38;05;172m\]\w\[\e[00m\]\$ '
+----
+
+[[rhel%E7%B3%BB]]
+=== link:#rhel%E7%B3%BB[] RHEL系
+
+各ユーザー毎の個別設定と全ユーザー対象のグローバル設定のカスタマイズができます。
+
+[source,language-bash]
+----
+#~/.bashrc
+#各ユーザー毎の個別設定
+export PS1='\[\e[38;05;74m\]\u\[\e[00m\]@\[\e[38;05;250m\]\h\[\e[00m\]:\[\e[38;05;172m\]\w\[\e[00m\]\$ '
+
+#/etc/profile.d/ps1.sh
+#全ユーザー対象のグローバル設定のカスタマイズ
+export PS1='\[\e[38;05;09m\]\u\[\e[00m\]@\[\e[38;05;250m\]\h\[\e[00m\]:\[\e[38;05;172m\]\w\[\e[00m\]\$ '
+#export PS1='\[\e[38;05;09m\]\w\[\e[00m\]\$ '
+----
+
+[[%E8%A1%A8%E7%A4%BA%E9%A0%85%E7%9B%AE-%E2%80%94-bash%E3%81%AE%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9]]
+== link:#%E8%A1%A8%E7%A4%BA%E9%A0%85%E7%9B%AE-%E2%80%94-bash%E3%81%AE%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9[] 表示項目 — bashのエスケープシーケンス
+
+プロンプト文字列に表示したい項目は`bashのエスケープシーケンス（特殊文字）`で指定します。
+
+[cols="^,",options="header",]
+|===
+|特殊文字 |プロンプト文字列として展開される内容
+|      `\a`       |ASCIIのベル文字（07）を出力する（ビープ音が鳴る）
+
+|`\d` |曜日 月 日の形式で日付を表示する
+
+|`\e`
+|ASCIIのエスケープ文字（033）を表示する。`\033`と書いてもちゃんと実行できる
+
+|`\h` |ホスト名を表示する
+
+|`\H` |ホスト名をFQDNで表示する
+
+|`\n` |改行する（New Line）
+
+|`\r` |復帰する（Carriage Return）
+
+|`\s` |シェルの名前を表示する
+
+|`\t` |現在時刻を24時間表記のHH:MM:SSで表示する
+
+|`\T` |現在時刻を12時間表記のHH:MM:SSで表示する
+
+|`\@` |現在時刻を12時間表記のHH:MM AM/PMで表示する
+
+|`\u` |現在のユーザー名を表示する
+
+|`\v` |bashのバージョンを表示する
+
+|`\V` |bashのリリースを表示する
+
+|`\w` |現在のディレクトリを絶対パスで表示する
+
+|`\W` |現在のディレクトリを表示する
+
+|`\!`
+|このコマンドの履歴番号を表示する（historyコマンドの番号に一致する）
+
+|`\#`
+|いま受付中のコマンドが、現在のシェルのセッション中に何番目に実行されたコマンドになるか通し番号で表示する
+
+|`\$` |実効UIDが0（root）の場合に#を表示し、それ以外の場合は$を表示する
+
+|`\[`
+|画面に表示しない非表示文字のシーケンスを開始する。これを使って文字の色などの制御シーケンスを埋め込むことができる
+
+|`\]` |非表示文字のシーケンスを終了する
+|===
+
+[[%E8%A3%85%E9%A3%BE%EF%BC%88%E8%89%B2%E3%81%AE%E6%8C%87%E5%AE%9A%E3%81%AA%E3%81%A9%EF%BC%89-%E2%80%94-ansi%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B3%E3%83%BC%E3%83%89]]
+== link:#%E8%A3%85%E9%A3%BE%EF%BC%88%E8%89%B2%E3%81%AE%E6%8C%87%E5%AE%9A%E3%81%AA%E3%81%A9%EF%BC%89-%E2%80%94-ansi%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B3%E3%83%BC%E3%83%89[] 装飾（色の指定など） — ANSIエスケープコード
+
+装飾対象の文字列の直前に`\[`で始まる非表示文字のシーケンスとして記述し、装飾対象の文字列の直後に`\e[0m`で装飾効果をリセットし、非表示文字のシーケンスを`\]`で終了します。
+
+一番下のスクリーンショットに実行例がありますが、たとえば`\e[5m\#\$\e[m\] `とすると、セッション中のコマンド実行番号と`$`に下線を引き、`$`の後ろにスペースを1つ取ります。`\e[m\]`で装飾効果をリセットしてあるので、ユーザーが入力するコマンドには下線は引かれません。
+
+ANSIエスケープコードにはカーソル位置を上下左右などに動かすCSI (Control
+Sequence Introducer)とSGR (Select Graphic
+Rendition)パラメーターがあり、プロンプトの表示を装飾するという意味ではSGRを利用することになります。
+
+[cols=",,",options="header",]
+|===
+|コード |名称 |概要
+|`\e[0m` |リセット
+|すべての指定内容を未設定状態に戻す。コード抜きで`\e[m`と記載すると`\e[0m`として扱われる。自分の設定例では分かりやすさを優先して`\e[00m`としている
+
+|`\e[1m` |ボールド |フォントが対応していれば太字になる
+
+|`\e[2m` |薄く表示 |フォントが対応していれば字を薄く表示する
+
+|`\e[3m` |イタリック |フォントが対応していれば太字になる
+
+|`\e[4m` |アンダーライン |下線を引く
+
+|`\e[5m` |ブリンク |点滅する
+
+|`\e[6m` |高速ブリンク |高速に点滅する（環境依存）
+
+|`\e[7m` |リバース |前景色と背景色を入れ替えて表示する
+
+|`\e[8m` |コンシール |文字列を隠す（環境依存）
+
+|`\e[9m` |クロスアウト |取り消し線（環境依存）
+
+|`\e[30m` |前景色の設定 |`#000000` ブラック
+
+|`\e[31m` |前景色の設定 |`#ff0000` レッド
+
+|`\e[32m` |前景色の設定 |`#00ff00` グリーン
+
+|`\e[33m` |前景色の設定 |`#ffff00` イエロー
+
+|`\e[34m` |前景色の設定 |`#0000ff` ブルー
+
+|`\e[35m` |前景色の設定 |`#ff00ff` マゼンタ
+
+|`\e[36m` |前景色の設定 |`#00ffff` シアン
+
+|`\e[37m` |前景色の設定 |`#ffffff` ホワイト
+
+|`\e[38m` |前景色の設定
+|色の拡張指定で引数を2つ取る。`05;x`のxに0~255のカラーインデックス。`2;r;g;b`も指定できるが端末が24bitカラー表示に対応している必要がある。自分の設定例では`05;x`でカラーインデックスを指定している
+
+|`\e[39m` |前景色の設定 |デフォルトにリセットする
+
+|`\e[40m` |後景色の設定 |`#000000` ブラック
+
+|`\e[41m` |後景色の設定 |`#ff0000` レッド
+
+|`\e[42m` |後景色の設定 |`#00ff00` グリーン
+
+|`\e[43m` |後景色の設定 |`#ffff00` イエロー
+
+|`\e[44m` |後景色の設定 |`#0000ff` ブルー
+
+|`\e[45m` |後景色の設定 |`#ff00ff` マゼンタ
+
+|`\e[46m` |後景色の設定 |`#00ffff` シアン
+
+|`\e[47m` |後景色の設定 |`#ffffff` ホワイト
+
+|`\e[48m` |後景色の設定
+|色の拡張指定で引数を2つ取る。`05;x`のxに0~255のカラーインデックス。`2;r;g;b`も指定できるが端末が24bitカラー表示に対応している必要がある。
+
+|`\e[49m` |後景色の設定 |デフォルトにリセットする
+|===
+
+[[ps1%E5%AE%9F%E8%A1%8C%E4%BE%8B]]
+== link:#ps1%E5%AE%9F%E8%A1%8C%E4%BE%8B[] PS1実行例
+
+[source,language-bash]
+----
+[koichiro@cl01 ~]$ export PS1="\a\$ "   #プロンプト表示が$だけになりビープ音が鳴る
+$ 
+$ export PS1="\d\$ "                    #曜日 月 日の形式で日付を表示する
+Mon Oct 04$ 
+Mon Oct 04$  export PS1="\e\$ "         #ASCIIのエスケープ文字（033）を表示する
+ 
+ export PS1="\h\$ "                     #ホスト名を表示する
+cl01$ 
+cl01$ export PS1="\H\$ "                #ホスト名をFQDNで表示する
+cl01.hvrmbp.local$ 
+cl01.hvrmbp.local$ export PS1="\n\$ "   #改行する
+
+$ 
+
+$ export PS1="\r\$ "                    #復帰する
+$ 
+$ export PS1="\s\$ "                    #シェルの名前を表示する
+-bash$ 
+-bash$ export PS1="\t\$ "               #現在時刻を24時間表記のHH:MM:SSで表示する
+23:38:47$ 
+23:38:48$ export PS1="\T\$ "            #現在時刻を12時間表記のHH:MM:SSで表示する
+11:38:51$ 
+11:38:52$ export PS1="\@\$ "            #現在時刻を12時間表記のHH:MM AM/PMで表示する
+11:40 PM$ 
+11:40 PM$ export PS1="\u\$ "            #現在のユーザー名を表示する
+koichiro$ 
+koichiro$ export PS1="\v\$ "            #bashのバージョンを表示する
+4.4$ 
+4.4$ export PS1="\V\$ "                 #bashのリリースを表示する
+4.4.20$ 
+4.4.20$ export PS1="\w\$ "              #現在のディレクトリを絶対パスで表示する（$HOMEは~で表示）
+~$ cd zenn/
+~/zenn$ 
+~/zenn$ cd articles/
+~/zenn/articles$ 
+~/zenn/articles$ cd /sys/class/net
+/sys/class/net$ 
+/sys/class/net$ export PS1="\W\$ "      #現在のディレクトリを表示する（$HOMEは~で表示）
+net$ 
+net$ cd
+~$ 
+~$ cd zenn/
+zenn$ cd articles/
+articles$ 
+articles$ cd
+~$  
+~$ export PS1="\!\$ "                   #このコマンドの履歴番号を表示する（historyコマンドの番号に一致する）
+  210  export PS1="\!\$ "
+  211  history 
+212$ 
+213$ export PS1="\#\$ "                 #現在のシェルのセッション中に実行されたコマンド番号を表示する
+22$
+22$ exit  
+logout
+Connection to 192.168.70.133 closed.
+% ssh cl01.hvrmbp.local
+Web console: https://cl01.hvrmbp.local:9090/ or https://192.168.70.133:9090/
+
+Last login: Tue Oct  5 10:08:20 2021 from 192.168.70.1
+koichiro@cl01:~$ export PS1="\#\$ "
+2$ 
+2$ export PS1="\$ "                    #実効UIDが0（root）の場合に#を表示し、それ以外の場合は$を表示する
+$ 
+$ export PS1="\[\$ "                    #非表示文字のシーケンスを開始する。これを使って文字の色などの制御シーケンスを埋め込むことができる
+$ 
+export PS1="\[]\$ "                     #非表示文字のシーケンスを終了する
+]$ 
+export PS1="\$ "
+$ export PS1="[\u@\h \W]\$ "            #RHEL8のデフォルト表示に戻す
+[koichiro@cl01 ~]$ 
+----
+
+装飾のANSIコードの実行例に関してはスクリーンショットでご覧ください。 +
+image:https://res.cloudinary.com/zenn/image/fetch/s--wUwur5DQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_1200/https://storage.googleapis.com/zenn-user-upload/deployed-images/1e7d6f57ace36af57df5bca1.png%3Fsha%3Da05747d0e7bbaa931ae04e9b566a7b953ed70b38[https://res.cloudinary.com/zenn/image/fetch/s--wUwur5DQ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_1200/https://storage.googleapis.com/zenn-user-upload/deployed-images/1e7d6f57ace36af57df5bca1]
+
+[[%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99]]
+== link:#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99[] 参考資料
+
+[.embed-block .zenn-embedded .zenn-embedded-card]##https://linuxjm.osdn.jp/html/GNU_bash/man1/bash.1.html +
+[.embed-block .zenn-embedded .zenn-embedded-card]##https://en.wikipedia.org/wiki/ANSI_escape_code
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_326.svg
+
+[[share]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_329.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_331.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_333.svg
+
+link:/memo[image:https://lh3.googleusercontent.com/a/AATXAJxvkb1W9vTNRCrWRZdvEE8ohRZJMiNrPUuMfDdJ=s96-c[Koichiro
+Nakajima,width=80,height=80]]
+
+link:/memo[Koichiro Nakajima]
+
+[.ProfileCard_follow__ng60N]##
+
+バッジを贈って著者を応援しよう
+
+バッジを受け取った著者にはZennから現金やAmazonギフトカードが還元されます。
+
+バッジを贈る
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_348.svg
+
+[[discuss]]
+== Discussion
+
+image:https://static.zenn.studio/images/drawing/discussion.png[https://static.zenn.studio/images/drawing/discussion,width=300]
+
+link:/memo[image:https://lh3.googleusercontent.com/a/AATXAJxvkb1W9vTNRCrWRZdvEE8ohRZJMiNrPUuMfDdJ=s96-c[Koichiro
+Nakajima,width=60,height=60]]
+
+link:/memo[Koichiro Nakajima]
+
+バッジを贈る
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_362.svg
+
+目次
+
+. link:#bash%E3%81%AE%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E6%96%87%E5%AD%97%E5%88%97[bashのプロンプト文字列]
+. link:#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0ps1[環境変数PS1]
+. link:#%E8%87%AA%E5%88%86%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B[自分の設定例]
+.. link:#debian%E7%B3%BB[debian系]
+.. link:#rhel%E7%B3%BB[RHEL系]
+. link:#%E8%A1%A8%E7%A4%BA%E9%A0%85%E7%9B%AE-%E2%80%94-bash%E3%81%AE%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9[表示項目
+— bashのエスケープシーケンス]
+. link:#%E8%A3%85%E9%A3%BE%EF%BC%88%E8%89%B2%E3%81%AE%E6%8C%87%E5%AE%9A%E3%81%AA%E3%81%A9%EF%BC%89-%E2%80%94-ansi%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B3%E3%83%BC%E3%83%89[装飾（色の指定など）
+— ANSIエスケープコード]
+. link:#ps1%E5%AE%9F%E8%A1%8C%E4%BE%8B[PS1実行例]
+. link:#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99[参考資料]
+
+[[related-contents]]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_380.svg
+
+エンジニアのための +
+情報共有コミュニティ
+
+== About
+
+* {blank}
++
+link:/about[Zennについて]
+* https://classmethod.jp[運営会社]
+* https://info.zenn.dev[お知らせ・リリース]
+* {blank}
++
+link:/events[イベント]
+
+== Guides
+
+* {blank}
++
+link:/manual[使い方]
+* {blank}
++
+link:/biz-lp[法人向けメニュー][.NewLabel_newLabelSecondary__6Iy_T .NewLabel_newLabel__Xva_r]#New#
+* {blank}
++
+link:/publications[Publication / Pro]
+* {blank}
++
+link:/faq[よくある質問]
+
+== Links
+
+* https://twitter.com/zenn_dev[X(Twitter)]
+* https://github.com/zenn-dev[GitHub]
+* {blank}
++
+link:/mediakit[メディアキット]
+
+== Legal
+
+* {blank}
++
+link:/terms[利用規約]
+* {blank}
++
+link:/privacy[プライバシーポリシー]
+* {blank}
++
+link:/terms/transaction-law[特商法表記]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/11.参考/11-8/11-8_431.svg
+
+[[modal-portal]]

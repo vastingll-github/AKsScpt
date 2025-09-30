@@ -1,0 +1,1658 @@
+[[site-title]]
+link:/[rcmdnk's blog]
+
+link:/cdn-cgi/l/email-protection#493b2a242d2722092e24282025672a2624[__]
+link://twitter.com/rcmdnk[__] link://github.com/rcmdnk[__]
+link:/atom.xml[__]
+//feedly.com/i/subscription/feed/https://rcmdnk.com/atom.xml[[.feedlyimg .feedly]##]
+link:#[__]
+
+link:/blog/archives/[Archives] link:/share-checker.html[Share Checker]
+link:/windows/[Windows] link:/mac/[Mac] link:/en/[English Blog]
+
+[[main]]
+[[content]]
+[.byline]#[.time]#15 Jan 2023##
+
+. link:/[Top]
+. [.breadcrumbs_separator]# › #link:/blog/categories/computer/[Computer]
+. [.breadcrumbs_separator]# › #link:/blog/tags/bash/[Bash]
+
+== link:/blog/2023/01/15/computer-bash/[シェルスクリプト(主にBash)で文字列前後のスペースを削除する]
+
+* //b.hatena.ne.jp/entry/https://rcmdnk.com/blog/2023/01/15/computer-bash/[]
++
+B! [.hatebuCount]#0#
+* //twitter.com/intent/tweet?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B&url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&via=rcmdnk[]
++
+__ [.twitterCount]#0#
+* //www.facebook.com/sharer.php?src=bm&u=https://rcmdnk.com/blog/2023/01/15/computer-bash/&t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B[]
++
+__ [.facebookCount]#0#
+* //getpocket.com/edit?url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B[]
++
+__ [.pocketCount]#0#
+
+link://www.amazon.co.jp/gp/product/B0BB81WBGT?ie=UTF8&camp=1207&creative=8411&creativeASIN=B0BB81WBGT&linkCode=shr&tag=rcmdnk0c-22[image:https://images-na.ssl-images-amazon.com/images/I/61xOuGHlvzL._SS200_.jpg[7インチ
+カーブシザー トリミングシザー 下向き＆上向き兼用 丸い先端 曲がった刃
+高級鍛造仕上 ペットハサミ 犬 猫 トリミング ペット用シザー 鋏
+（革ケース付き）…]]
+
+シェルスクリプトの中で文字列の前後のスペースを削除する方法について。
+
+* link:#よくあるケース[よくあるケース]
+* link:#echoを使った削除[echoを使った削除]
+* link:#sedを使った方法[sedを使った方法]
+* link:#awkを使った方法[awkを使った方法]
+* link:#trを使った方法[trを使った方法]
+* link:#シェルの変数展開を使う[シェルの変数展開を使う]
+* link:#bashのglobを使う[Bashのglobを使う]
+* link:#実行時間[実行時間]
+* link:#まとめ[まとめ]
+
+[.underline]##
+
+== よくあるケース
+
+コマンドの出力の数字を使いたいけどその出力がきれいに見せるためにスペースを入れてくれてる場合など。
+
+BSDの`wc`なんかで
+
+....
+$ n=$("a b c|wc -w)
+....
+
+とかすると`n`には` 3`が入ります。
+
+また、設定ファイルとかを読み込むようにする場合、
+先頭のスペースや行末のスペースは無視して良いこともあるかと思います。
+
+== echoを使った削除
+
+よくやるのが`echo`を使う方法。
+
+クォートせずに`echo`すると前後のスペース部分は削除されます。
+
+....
+$ x="  abc  "
+$ echo "X${x}X"
+X  abc  X
+$ y=$(echo $x)
+$ echo "X${y}X"
+XabcX
+....
+
+ただし、この方法だと間にスペースがある場合、それらがすべて1つに集約されます。
+
+....
+$ x="  a b  c   "
+$ echo "X${x}X"
+X  a b  c   X
+$ y=$(echo $x)
+$ echo "X${y}X"
+Xa b cX
+....
+
+もし文字列の間のスペースの数にも意味があるとするとこれだと困ります。
+
+一方で、もし、いくつかのスペース区切りの変数を取りたいが、間のスペースはいくつあっても一区切りとみなす、という感じであればむしろ便利に使える場面もあるかもしれません。
+
+また、この場合改行も消えます。
+
+....
+$ x=" a b
+> c
+> "
+$ echo "X${x}X"
+X a b
+c
+X
+$ y=$(echo $x)
+$ echo "X${y}X"
+Xa b cX
+....
+
+いずれにしろ、`echo`を使った方法は前後のスペースを削除するだけではなく、間のスペースにも影響がある、ということを知っておかないといけません。
+
+また、全角スペースがある場合には残ります。
+
+....
+$ x="  　a b  c　   "
+$ echo "X${x}X"
+X  　a b  c　   X
+$ y=$(echo $x)
+$ echo "X${y}X"
+X　a b c　X
+....
+
+ちなみにこの`echo`を使った方法は
+
+....
+$ y=$(xargs <<< $x)
+....
+
+と、`xargs`に渡した場合でも同じ動作になります。
+
+== sedを使った方法
+
+`sed`で正規表現を使えば先頭の空白と末尾の空白のみを消すことができます。
+
+....
+$ x="  a b  c   "
+$ echo "X${x}X"
+X  a b  c   X
+$ y=$(sed -r 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x) # For GNU sed
+$ echo "X${y}X"
+Xa b  cX
+....
+
+`^[[:space:]]*`(*括弧は二重*)で先頭から0文字以上のスペースの連続、
+
+これで間の空白はそのままに外側の空白だけ全部削除できました。
+
+GNUの`sed`であれば
+
+....
+$ y=$(sed 's/^[[:space:]]*\|[[:space:]]*$//g' <<< $x) # For GNU sed
+....
+
+でもOK。
+
+macOSなどBSD系であれば、
+
+....
+$ y=$(sed -E 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x) # For BSD sed
+....
+
+`-E`オプションを使う必要があります。
+
+この辺、`sed`を使う際にはGNU/BSDの違いを意識しないといけないのでちょっと面倒です。
+
+* {blank}
++
+link://www.amazon.co.jp/gp/product/4873113598?ie=UTF8&camp=1207&creative=8411&creativeASIN=4873113598&linkCode=shr&tag=rcmdnk0c-22[image:https://images-na.ssl-images-amazon.com/images/I/51cRxtwo7IL._SS90_CR0,0,120,90_.jpg[詳説
+正規表現 第3版]]
+
+link:/blog/2015/07/19/computer-gnu-bsd/[GNU/BSDでのsedにおける正規表現の扱いの違い]
+
+また、上では`[[:space:]]`を使っていますが、これであれば全角のスペースも削除されます。
+
+` `(半角スペースをそのまま書いたもの)を使うと全角は削除されません。
+
+....
+$ x="  　a b  c　   "
+$ echo "X${x}X"
+X  　a b  c　   X
+$ y=$(sed -r 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x)
+$ echo "X${y}X"
+Xa b  cX
+$ z=$(sed -r 's/^ *| *$//g' <<< $x)
+$ echo "X${z}X"
+X　a b  c　X
+....
+
+なので、意図的に全角スペースを入れて残す必要がある場合を除いて`[[:space:]]`を使ったほうが確実です。
+
+見た目もスペースだとぱっと見、空いているのかどうか、も分かりづらかったりもするので`[[:space:]]`にしておいた方がわかりやすいです。
+
+コマンドラインでちょっとやる際には基本的に全角スペースは無いと思えばスペースを使ったほうが楽です。
+
+また、この`sed`の置換では改行は置換されません。
+
+== awkを使った方法
+
+`awk`でも`sed`と似たような感じで正規表現を使って削除できます。
+
+....
+$ x="  a b  c   "
+$ echo "X${x}X"
+X  a b  c   X
+$ y=$(awk '{gsub(/^[[:space:]]+|[[:space:]]+$/,"")}1' <<< $x)
+$ echo "X${y}X"
+Xa b  cX
+....
+
+ここでも`[[:space:]]`を使えば全角も含めて削除できます。
+
+また、`awk`もGNU/BSD版などがありますが、これに関しては同じように使えます。
+
+この`awk`も改行は置換しません。
+
+改行を`sed`や`awk`で置換しようと思うと結構面倒です。
+
+* {blank}
++
+link://www.amazon.co.jp/gp/product/B004D4Y302?ie=UTF8&camp=1207&creative=8411&creativeASIN=B004D4Y302&linkCode=shr&tag=rcmdnk0c-22[image:https://images-na.ssl-images-amazon.com/images/I/51Emp42I29L._SS90_CR0,0,120,90_.jpg[sed
+& awk (Nutshell Handbooks)]]
+
+link:/blog/2014/09/21/computer-bash/[sedで改行を出力する]
+
+== trを使った方法
+
+`tr`は文字を削除することが出来ますが、該当するものすべて削除するので、文字列間のスペースも削除されます。
+
+....
+$ x="  　a b  c　   "
+$ echo "X${x}X"
+X  　a b  c　   X
+$ y=$(tr -d '[:space:]　' <<< $x)
+$ echo "X${y}X"
+XabcX
+....
+
+`-d`オプションで指定した文字列に含まれる文字をすべて削除するので、ここでは通常の半角スペースと全角スペース(クオート内の後ろの部分)を同時に指定して削除しています。
+
+スペースに関しては`[:space:]`(*ここでは括弧は一重*)も使えますが`tr`の場合は全角はこれでは削除できません。
+
+`tr`の`[:space:]`は`all horizontal or vertical whitespace`にあたるということで、このvertical
+whitespaceは基本的には改行にあたると考えて良くて、実際このコマンドだと改行も削除されます。
+
+....
+$ y=$(tr -d ' 　' <<< $x)
+....
+
+のように通常のスペースを使って書くことも出来ますが、これだと改行は残ります。
+
+`tr`の方法は短く書けるので、間にスペースが絶対にこない、という場合には良いかもしれません。
+
+特に半角スペースや改行がないなら
+
+....
+$ y=$(tr -d ' ' <<< $x)
+....
+
+で済むので。
+
+== シェルの変数展開を使う
+
+シェルの変数展開で一部を削除したりすることが出来るのでそれを使います。
+
+....
+$ x="  a b  c   "
+$ echo "X${x}X"
+X  a b  c   X
+$ y="${x#"${x%%[![:space:]]*}"}"
+$ y="${y%"${y##*[![:space:]]}"}"
+$ echo "X${y}X"
+Xa b  cX
+....
+
+ここではまず、`${x%%...}`という展開方法を使って、後方から最長一致で該当する部分を削除する作業をしています。
+
+`[![:space:]]`(`!`が2重の括弧野中)がスペース**以外**を表すので、スペース以外の文字が出てからその後`*`で何でも、になります。
+
+シェルの正規表現では`*`は直前の文字の繰り返し、ではなく、0文字以上の任意の文字列に該当するので、こうすることで何らかのスペース以外の文字が出た部分からあと全部、になります。
+(ここでは`a b c `)
+
+で、その部分を削除したものになるので、`${x%%[![:space:]]*}`は` `(先頭の2つのスペース、になります。
+
+その上で、`${x#...}`で、前方から最小一致で該当する部分を削除する作業をします。
+中身が先頭のスペースなので、結果的に`${x#"${x%%[![:space:]]*}"}`全体は先頭の連続したスペースを除いたものになります。
+
+同様に、逆のことをやって`${y%"${y##*[![:space:]]}"}`では後ろの連続したスペースを除いたものになります。
+
+2段階が必要なのとそれぞれ展開を2段階やってるのでちょっと複雑になってしまいますが、
+このやり方だと全角スペースも改行も共に消えます。
+逆に文字列中のスペースはそのまま残ります。
+
+`[:space:]`の部分を通常の半角スペースにすれば全角スペースや改行を消さないものになります。
+
+これであればシェルの機能だけで行えるので、もし大量にこの作業を行うとすると`sed`などを使う場合に比べて大分速くなるというメリットもあり、一番きちんと使えると思ってます。
+
+== Bashのglobを使う
+
+上のシェルの変数展開はPOSIX準拠な手法になっています。
+
+一方で、Bashの拡張されたglobを使うとより簡潔に書くことが出来ます。
+
+これを使うためには`extglob`を有効にする必要があります。
+
+確認するには
+
+....
+$ shopt extglob
+extglob         on
+....
+
+となっていれば有効になっています。
+
+これが
+
+....
+$ shopt extglob
+extglob         on
+....
+
+となっている場合には
+
+....
+$ shopt -s extglob
+....
+
+として`extglob`を有効にして上げる必要があります。
+
+無効にするのは
+
+....
+$ shopt -u extglob
+....
+
+コマンドラインではおそらく有効になっている場合が多いかと思いますが、
+シェルスクリプトを実行する際には無効になっている事があるので、
+使うのであれば必ず`shopt`コマンドで有効する必要があります。
+
+有効だとして、やり方は以下のような感じ。
+
+....
+$ x="  a b  c   "
+$ echo "X${x}X"
+X  a b  c   X
+$ y=${x##+([[:space:]])}
+$ y=${y%%+([[:space:]])}
+$ echo "X${y}X"
+Xa b  cX
+....
+
+ここでは`space`の周りの括弧は二重です。
+
+シェル展開同様全角スペースや改行も消えます。
+文字列中のスペースはそのままキープ。
+
+`[[:space:]]`の部分を通常のスペースにすれば半角スペースだけが削除されます。
+
+もし`extglob`の状態を保ったままやりたいときは、
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+----
+
+a|
+[source,bash]
+----
+set_extglob=1
+shopt extglob >/dev/null && set_extglob=0
+if ((set_extglob));then
+  shopt -s extglob
+fi
+y=${x##+([[:space:]])}
+y=${y%%+([[:space:]])}
+if ((set_extglob));then
+  shopt -u extglob
+fi
+----
+
+|===
+
+みたいな感じで、`extglob`が無効な時だけ(`set_extglob=1`のまま)
+削除前に有効にして、削除後に戻すようにします。
+
+== 実行時間
+
+以下、実行時間の比較。
+`echo`と`tr`と、その他の`sed`や`glob`などは結果は違うものにはなりますが、
+とりあえず上でやったもので実行時間を見てみます。
+
+環境は
+
+* WSL バージョン: 1.0.3.0
+* OS: Ubuntu 18.04.6 LTS
+* Bash: 5.2.15
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+----
+
+a|
+[source,bash]
+----
+#!/usr/bin/env bash
+
+x="  　abc
+def
+ghi
+　"
+
+n=10000
+
+echo "echo"
+i=1
+time while :;do
+  y=$(echo $x)
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo
+echo ============
+
+echo "xargs"
+i=1
+time while :;do
+  y=$(xargs <<< $x)
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo
+echo ============
+
+echo "sed"
+i=1
+time while :;do
+  y=$(sed -r 's/^[[:space:]]*|[[:space:]]*$//g' <<< $x)
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo
+echo ============
+
+echo "awk"
+i=1
+time while :;do
+  y=$(awk '{gsub(/^[[:space:]]+|[[:space:]]+$/,"")}1' <<< $x)
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo
+echo ============
+
+echo "tr"
+i=1
+time while :;do
+  y=$(tr -d '[:space:]　' <<< $x)
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo
+echo ============
+
+echo "shell"
+i=1
+time while :;do
+  y="${x#"${x%%[![:space:]]*}"}"
+  y="${y%"${y##*[![:space:]]}"}"
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo
+echo ============
+
+echo "extglob"
+shopt -s extglob
+i=1
+time while :;do
+  y=${x##+([[:space:]])}
+  y=${y%%+([[:space:]])}
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+----
+
+|===
+
+10,000回ずつ実行した時間の比較です。
+
+結果は
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+----
+
+a|
+....
+echo
+X　abc def ghi 　X
+
+real    0m3.114s
+user    0m2.640s
+sys     0m0.845s
+
+============
+xargs
+X　abc def ghi 　X
+
+real    0m16.523s
+user    0m15.344s
+sys     0m1.606s
+
+============
+sed
+Xabc
+def
+ghiX
+
+real    0m10.863s
+user    0m10.095s
+sys     0m1.045s
+
+============
+awk
+Xabc
+def
+ghiX
+
+real    0m14.847s
+user    0m13.538s
+sys     0m1.714s
+
+============
+tr
+XabcdefghiX
+
+real    0m9.022s
+user    0m8.471s
+sys     0m1.280s
+
+============
+shell
+Xabc
+def
+ghiX
+
+real    0m0.250s
+user    0m0.240s
+sys     0m0.010s
+
+============
+extglob
+Xabc
+def
+ghiX
+
+real    0m1.526s
+user    0m1.482s
+sys     0m0.044s
+....
+
+|===
+
+ということでシェルの変数展開を使うものが圧倒的に速いです。
+
+やはりサブシェルを呼ばずに作業が出来ると極端に速くなることがわかります。
+また、extglobも少し時間がかかってます。
+
+意外と`echo` が速い。
+
+`xargs`が一番遅いくらいなのはちょっと予想外でした。
+
+また、シェルの変数展開とBashのglobの拡張を使ったものに関して
+100,000回に10倍増やして回してみると
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+----
+
+a|
+....
+============
+shell
+Xabc
+def
+ghiX
+
+real    0m2.377s
+user    0m2.332s
+sys     0m0.045s
+
+============
+extglob
+Xabc
+def
+ghiX
+
+real    0m14.943s
+user    0m14.848s
+sys     0m0.095s
+....
+
+|===
+
+な感じで素直に10倍になった感じです。
+
+extglobでその時の状態によって一時的に有効にして戻すようなことをする場合、
+以下のようにやってみると
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+----
+
+a|
+[source,bash]
+----
+#!/usr/bin/env bash
+
+x="  　abc
+def
+ghi
+　"
+
+n=100000
+
+echo "disable"
+
+shopt -u extglob
+i=1
+set_extglob=1
+time while :;do
+  shopt extglob >/dev/null && set_extglob=0
+  if ((set_extglob));then
+    shopt -s extglob
+  fi
+  y=${x##+([[:space:]])}
+  y=${y%%+([[:space:]])}
+  if ((set_extglob));then
+    shopt -u extglob
+  fi
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+
+echo ============
+echo "enable"
+shopt -s extglob
+i=1
+set_extglob=1
+time while :;do
+  shopt extglob >/dev/null && set_extglob=0
+  if ((set_extglob));then
+    shopt -s extglob
+  fi
+  y=${x##+([[:space:]])}
+  y=${y%%+([[:space:]])}
+  if ((set_extglob));then
+    shopt -u extglob
+  fi
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+----
+
+|===
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+----
+
+a|
+....
+disable
+
+real    0m16.223s
+user    0m15.908s
+sys     0m0.309s
+============
+enable
+
+real    0m15.797s
+user    0m15.535s
+sys     0m0.256s
+....
+
+|===
+
+といった感じでもともと有効な`enable`の方が0.5秒ほど速くなってるので
+`shopt`コマンドも全く影響ないわけではないですがあまり大きな差ではありません。
+
+また、もともと有効でチェックもしなかった場合からは0.5秒ほど遅くなっていますがこれもそれほど、な感じです。
+
+なので、汎用性を求めるのであればこのチェックを入れたものを使うのもありです。
+
+また、extglobもシェルの変数展開も、関数を別に用意して削除する、みたいなことも考えたいところですが、それをサブシェルで呼んでしまうと結局遅くなります。
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+----
+
+a|
+[source,bash]
+----
+#!/usr/bin/env bash
+
+x="  　abc
+def
+ghi
+　"
+
+n=100000
+
+function get_y {
+  local x="$1"
+  local y="${x#"${x%%[![:space:]]*}"}"
+  y="${y%"${y##*[![:space:]]}"}"
+  echo "$y"
+}
+
+echo "shell"
+y=""
+i=1
+y=$(get_y "$x")
+echo "X${y}X"
+time while :;do
+  y=$(get_y "$x")
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+----
+
+|===
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+----
+
+a|
+....
+shell
+Xabc
+def
+ghiX
+
+real    0m39.088s
+user    0m32.810s
+sys     0m10.279s
+....
+
+|===
+
+2秒ほどで済んでいたものが20倍近くかかって、`sed`とかよりも遅くなっています。
+
+サブシェルを使わずに
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+----
+
+a|
+[source,bash]
+----
+#!/usr/bin/env bash
+
+x="  　abc
+def
+ghi
+　"
+
+n=100000
+
+function get_y {
+  local x="$1"
+  y="${x#"${x%%[![:space:]]*}"}"
+  y="${y%"${y##*[![:space:]]}"}"
+}
+
+echo "shell"
+y=""
+i=1
+get_y "$x"
+echo "X${y}X"
+time while :;do
+  get_y "$x"
+  ((i++))
+  if ((i>n));then
+    break
+  fi
+done
+----
+
+|===
+
+といった感じにグローバル変数に代入するような感じで使えば
+基本的には直接書いたのと同じことになります。
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+[source,line-numbers]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+----
+
+a|
+....
+shell
+Xabc
+def
+ghiX
+
+real    0m3.459s
+user    0m3.459s
+sys     0m0.000s
+....
+
+|===
+
+引数の引き渡しとか関数の呼び出しの部分でオーバーヘッドがあるのか1秒くらい長くかかってしまいました。
+ただ、サブシェルにして`echo`とか`printf`で文字列を返すのに比べると格段に速い状態を保てます。
+
+== まとめ
+
+シェルスクリプトで前後のスペースを消すには、`echo`を使ってやるのが一番簡単ではあります。
+
+文字列中に空白は絶対になく、1回か2回程度行うだけ、というのであれば分かりやすいので`echo`でも十分かと。
+
+一方で文字列中のスペースを変更してしまうこともあるので、用途によっては使えないこともあるかもしれません。
+
+前後のスペースだけちゃんと消したい場合には、速度も考えると
+シェルの変数展開を使う方法が一番良さそうです。
+
+extglobを使った方法はより複雑な文字列操作が出来ますが、
+今回の用途であればPOSIXなシェル変数展開で十分でそちらの方が速い、ということでした。
+
+Ref:
+
+* https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable[string
+- How to trim whitespace from a Bash variable? - Stack Overflow]
+* https://mywiki.wooledge.org/BashFAQ/067[BashFAQ/067 - Greg’s Wiki]
+
+=== 
+
+[.underline]##
+
+Sponsored Links
+
+[.underline]##
+
+[.byline]#Posted by rcmdnk# [.date-wrapper]#[.date]#15 Jan 2023##
+[.categories]# Category: link:/blog/categories/computer/[Computer] #
+[.tags]# Tagged as link:/blog/tags/bash/[Bash] #
+
+* //b.hatena.ne.jp/entry/https://rcmdnk.com/blog/2023/01/15/computer-bash/[]
++
+[.hatebuBig]#はてなブックマーク#
+* //twitter.com/intent/tweet?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B&url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&via=rcmdnk[]
++
+[.twitterBig]#Twitterでシェア#
+* //www.facebook.com/sharer.php?src=bm&u=https://rcmdnk.com/blog/2023/01/15/computer-bash/&t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B[]
++
+[.facebookBig]#Facebookでシェア#
+* //getpocket.com/edit?url=https://rcmdnk.com/blog/2023/01/15/computer-bash/&title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%28%E4%B8%BB%E3%81%ABBash%29%E3%81%A7%E6%96%87%E5%AD%97%E5%88%97%E5%89%8D%E5%BE%8C%E3%81%AE%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B[]
++
+[.pocketBig]#Pocketに保存#
+* //feedly.com/i/subscription/feed/https://rcmdnk.com/atom.xml[]
++
+[.feedlyBig]#feedlyでフォロー#
+
+Sponsored Links
+
+[.underline]##
+
+[[disqus_thread]]
+
+Please enable JavaScript to view the
+link://disqus.com/?ref_noscript[comments powered by Disqus.]
+
+link:/blog/2023/01/14/computer-bash/[«
+ログインシェルで使っているbashのバージョンなどをちゃんと確認する]
+link:/blog/2023/01/16/computer-bash/[シェルスクリプトでちゃんと文字列に改行を入れ込む
+»]
+
+Sponsored Links
+
+[.underline]##
+
+== About Me
+
+[[aboutme-logo]]
+
+link:/cdn-cgi/l/email-protection#4735242a23292c07202a262e2b6924282a[__]
+link://twitter.com/rcmdnk[__] link://github.com/rcmdnk[__] +
+https://rcmdnk.com/atom.xml[__]
+//feedly.com/i/subscription/feed/https://rcmdnk.com/atom.xml[[.feedlyimg .feedly]##]
+link:#[__]
+
+link://www.amazon.co.jp/hz/wishlist/ls/28GLSLW5HE8L8?ref_=wl_share&tag=rcmdnk0c-22[ほしいもの一覧]
+
+== GitHub Stats
+
+link://github.com/rcmdnk[image://github-readme-stats.vercel.app/api?username=rcmdnk&theme=graywhite&show_icons=true&count_private=false[rcmdnk's
+GitHub stats]]
+link://github.com/rcmdnk[image://github-readme-stats.vercel.app/api/top-langs/?username=rcmdnk&layout=compact&langs_count=20&exclude_repo=octopress_jp,octopress_en,rcmdnk.github.io,en,octogray_test[Top
+langs]]
+
+== Uptime monitor
+
+ +
+
+https://rcmdnk.com/upptime/history/rcmdnk-blog[image://github.com/rcmdnk/upptime/raw/master/graphs/rcmdnk-blog/response-time-week.png[Response
+time graph,width=120]]
+
+https://rcmdnk.com/upptime/history/rcmdnk-blog[image://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/response-time-week.json[7-day
+Response time 289]] +
+https://rcmdnk.com/upptime/history/rcmdnk-blog[image://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/response-time-year.json[1-year
+Response time 242]] +
+https://rcmdnk.com/upptime/history/rcmdnk-blog[image://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/uptime-week.json[7-day
+uptime 100.00%]] +
+https://rcmdnk.com/upptime/history/rcmdnk-blog[image://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rcmdnk/upptime/master/api/rcmdnk-blog/uptime-year.json[1-year
+uptime 100.00%]] +
+ +
+Powered by link://upptime.js.org/[Upptime]
+
+== link:/blog/archives/[Recent Posts]
+
+* {blank}
++
+link:/blog/2025/02/24/computer-obsidian/[image:/images/post/thumbnail/20250224_obsidian_120_90.png[20250224_obsidian_120_90,width=120,height=90]]
+
+link:/blog/2025/02/24/computer-obsidian/[ObsidianをWindows/macOS/iOSでGit
+(GitHub)、Remotely Save (Dropbox)を使って同期、管理する]
+* {blank}
++
+link:/blog/2025/01/27/computer-ai/[image:/images/post/thumbnail/20250127_api_120_90.jpg[20250127_api_120_90,width=120,height=90]]
+
+link:/blog/2025/01/27/computer-ai/[シェルスクリプトでなるべく外部依存を減らしてAIのAPIを使う]
+* [.underline]##
+* {blank}
++
+link://www.amazon.co.jp/gp/product/B0CM8RYF2Q[image:https://images-na.ssl-images-amazon.com/images/I/71kqUVeTCCL._SS90_CR0,0,120,90_.jpg[INNOCN
+40インチワイドモニター WR40 PRO WQHD(3440x1440)
+HDR600@144hzゲーミングモニター HDMI Display Port USB-C 90W Freesync
+高さ調整 スピーカー内蔵 VESA (40インチ HDR600)]]
+
+link:/blog/2025/01/26/computer-shopping/[INNOCN
+40インチウルトラワイドモニターWR40 PROを購入]
+* {blank}
++
+link://www.amazon.co.jp/gp/product/B0CZQ8R1SS[image:https://images-na.ssl-images-amazon.com/images/I/51i7KhGXbwL._SS90_CR0,0,120,90_.jpg[17～49型
+耐荷重2～20kg iggy（イギー）快適ワークのモニターアーム LS112 ブラック]]
+
+link:/blog/2025/01/25/computer-shopping/[iggy LS112 モニターアーム]
+* {blank}
++
+link://www.amazon.co.jp/gp/product/B0DBLKNYPY[image:https://images-na.ssl-images-amazon.com/images/I/71czGp0EbiL._SS90_CR0,0,120,90_.jpg[SwitchBot
+CO2センサー 二酸化炭素濃度計 温湿度計 アラーム - スイッチボット デジタル
+大画面 高精度 CO2測定器 快適指数 天気予報 時計 卓上 カレンダー
+スマホ連動 アラート通知 グラフ記録 スマートホーム Alexa Google Home
+Siriに対応]]
+
+link:/blog/2025/01/06/comuter-iot/[SwitchBot CO2センサーを使ってみた]
+
+== Monthly Archives
+
+* [.monthly_archive_year_span]#2025 (7)#
+** link:/blog/2025/02/[FEB (1)]
+** link:/blog/2025/01/[JAN (6)]
+* [.monthly_archive_year_span]#2024 (26)#
+** link:/blog/2024/11/[NOV (4)]
+** link:/blog/2024/10/[OCT (2)]
+** link:/blog/2024/09/[SEP (4)]
+** link:/blog/2024/08/[AUG (2)]
+** link:/blog/2024/07/[JUL (2)]
+** link:/blog/2024/06/[JUN (3)]
+** link:/blog/2024/05/[MAY (2)]
+** link:/blog/2024/04/[APR (2)]
+** link:/blog/2024/02/[FEB (4)]
+** link:/blog/2024/01/[JAN (1)]
+* [.monthly_archive_year_span]#2023 (56)#
+** link:/blog/2023/12/[DEC (2)]
+** link:/blog/2023/11/[NOV (4)]
+** link:/blog/2023/10/[OCT (2)]
+** link:/blog/2023/09/[SEP (5)]
+** link:/blog/2023/08/[AUG (1)]
+** link:/blog/2023/07/[JUL (2)]
+** link:/blog/2023/05/[MAY (5)]
+** link:/blog/2023/04/[APR (9)]
+** link:/blog/2023/03/[MAR (8)]
+** link:/blog/2023/02/[FEB (9)]
+** link:/blog/2023/01/[JAN (9)]
+* [.monthly_archive_year_span]#2022 (51)#
+** link:/blog/2022/12/[DEC (1)]
+** link:/blog/2022/11/[NOV (1)]
+** link:/blog/2022/10/[OCT (3)]
+** link:/blog/2022/09/[SEP (6)]
+** link:/blog/2022/08/[AUG (3)]
+** link:/blog/2022/07/[JUL (3)]
+** link:/blog/2022/06/[JUN (6)]
+** link:/blog/2022/05/[MAY (3)]
+** link:/blog/2022/03/[MAR (8)]
+** link:/blog/2022/02/[FEB (9)]
+** link:/blog/2022/01/[JAN (8)]
+* [.monthly_archive_year_span]#2021 (46)#
+** link:/blog/2021/12/[DEC (3)]
+** link:/blog/2021/11/[NOV (4)]
+** link:/blog/2021/10/[OCT (4)]
+** link:/blog/2021/09/[SEP (7)]
+** link:/blog/2021/08/[AUG (2)]
+** link:/blog/2021/05/[MAY (1)]
+** link:/blog/2021/04/[APR (6)]
+** link:/blog/2021/03/[MAR (9)]
+** link:/blog/2021/02/[FEB (2)]
+** link:/blog/2021/01/[JAN (8)]
+* [.monthly_archive_year_span]#2020 (58)#
+** link:/blog/2020/12/[DEC (2)]
+** link:/blog/2020/11/[NOV (1)]
+** link:/blog/2020/10/[OCT (6)]
+** link:/blog/2020/09/[SEP (4)]
+** link:/blog/2020/08/[AUG (7)]
+** link:/blog/2020/07/[JUL (4)]
+** link:/blog/2020/06/[JUN (5)]
+** link:/blog/2020/05/[MAY (4)]
+** link:/blog/2020/04/[APR (6)]
+** link:/blog/2020/03/[MAR (4)]
+** link:/blog/2020/02/[FEB (3)]
+** link:/blog/2020/01/[JAN (12)]
+* [.monthly_archive_year_span]#2019 (96)#
+** link:/blog/2019/12/[DEC (5)]
+** link:/blog/2019/11/[NOV (6)]
+** link:/blog/2019/10/[OCT (17)]
+** link:/blog/2019/09/[SEP (18)]
+** link:/blog/2019/08/[AUG (25)]
+** link:/blog/2019/07/[JUL (4)]
+** link:/blog/2019/06/[JUN (3)]
+** link:/blog/2019/05/[MAY (4)]
+** link:/blog/2019/04/[APR (3)]
+** link:/blog/2019/03/[MAR (4)]
+** link:/blog/2019/02/[FEB (5)]
+** link:/blog/2019/01/[JAN (2)]
+* [.monthly_archive_year_span]#2018 (70)#
+** link:/blog/2018/12/[DEC (1)]
+** link:/blog/2018/11/[NOV (5)]
+** link:/blog/2018/10/[OCT (1)]
+** link:/blog/2018/09/[SEP (8)]
+** link:/blog/2018/08/[AUG (11)]
+** link:/blog/2018/07/[JUL (4)]
+** link:/blog/2018/06/[JUN (3)]
+** link:/blog/2018/05/[MAY (6)]
+** link:/blog/2018/04/[APR (10)]
+** link:/blog/2018/03/[MAR (6)]
+** link:/blog/2018/02/[FEB (8)]
+** link:/blog/2018/01/[JAN (7)]
+* [.monthly_archive_year_span]#2017 (145)#
+** link:/blog/2017/12/[DEC (2)]
+** link:/blog/2017/11/[NOV (19)]
+** link:/blog/2017/10/[OCT (19)]
+** link:/blog/2017/09/[SEP (18)]
+** link:/blog/2017/08/[AUG (13)]
+** link:/blog/2017/07/[JUL (12)]
+** link:/blog/2017/06/[JUN (8)]
+** link:/blog/2017/05/[MAY (13)]
+** link:/blog/2017/04/[APR (13)]
+** link:/blog/2017/03/[MAR (7)]
+** link:/blog/2017/02/[FEB (9)]
+** link:/blog/2017/01/[JAN (12)]
+* [.monthly_archive_year_span]#2016 (150)#
+** link:/blog/2016/12/[DEC (5)]
+** link:/blog/2016/11/[NOV (7)]
+** link:/blog/2016/10/[OCT (12)]
+** link:/blog/2016/09/[SEP (13)]
+** link:/blog/2016/08/[AUG (9)]
+** link:/blog/2016/07/[JUL (9)]
+** link:/blog/2016/06/[JUN (16)]
+** link:/blog/2016/05/[MAY (10)]
+** link:/blog/2016/04/[APR (13)]
+** link:/blog/2016/03/[MAR (18)]
+** link:/blog/2016/02/[FEB (30)]
+** link:/blog/2016/01/[JAN (8)]
+* [.monthly_archive_year_span]#2015 (183)#
+** link:/blog/2015/12/[DEC (8)]
+** link:/blog/2015/11/[NOV (12)]
+** link:/blog/2015/10/[OCT (17)]
+** link:/blog/2015/09/[SEP (3)]
+** link:/blog/2015/08/[AUG (8)]
+** link:/blog/2015/07/[JUL (27)]
+** link:/blog/2015/06/[JUN (31)]
+** link:/blog/2015/05/[MAY (21)]
+** link:/blog/2015/04/[APR (11)]
+** link:/blog/2015/03/[MAR (19)]
+** link:/blog/2015/02/[FEB (12)]
+** link:/blog/2015/01/[JAN (14)]
+* [.monthly_archive_year_span]#2014 (194)#
+** link:/blog/2014/12/[DEC (19)]
+** link:/blog/2014/11/[NOV (22)]
+** link:/blog/2014/10/[OCT (10)]
+** link:/blog/2014/09/[SEP (14)]
+** link:/blog/2014/08/[AUG (17)]
+** link:/blog/2014/07/[JUL (24)]
+** link:/blog/2014/06/[JUN (16)]
+** link:/blog/2014/05/[MAY (26)]
+** link:/blog/2014/04/[APR (4)]
+** link:/blog/2014/03/[MAR (5)]
+** link:/blog/2014/02/[FEB (20)]
+** link:/blog/2014/01/[JAN (17)]
+* [.monthly_archive_year_span]#2013 (162)#
+** link:/blog/2013/12/[DEC (20)]
+** link:/blog/2013/11/[NOV (34)]
+** link:/blog/2013/10/[OCT (15)]
+** link:/blog/2013/09/[SEP (15)]
+** link:/blog/2013/08/[AUG (12)]
+** link:/blog/2013/07/[JUL (12)]
+** link:/blog/2013/06/[JUN (17)]
+** link:/blog/2013/05/[MAY (16)]
+** link:/blog/2013/04/[APR (7)]
+** link:/blog/2013/03/[MAR (14)]
+
+== Categories
+
+* link:/blog/categories/blog/[Blog (139)]
+* link:/blog/categories/computer/[Computer (1036)]
+* link:/blog/categories/life/[Life (69)]
+
+== Tag Cloud
+
+[#tag-cloud]#link:/blog/tags/aerofs/[AeroFS(2)]
+link:/blog/tags/ai/[AI(6)] link:/blog/tags/amazon/[Amazon(2)]
+link:/blog/tags/analytics/[Analytics(4)]
+link:/blog/tags/android/[Android(15)]
+link:/blog/tags/applescript/[AppleScript(16)]
+link:/blog/tags/asciinema/[Asciinema(2)]
+link:/blog/tags/autohotkey/[AutoHotkey(29)]
+link:/blog/tags/bash/[Bash(114)]
+link:/blog/tags/bitbucket/[Bitbucket(1)] link:/blog/tags/blog/[Blog(2)]
+link:/blog/tags/bookmarklet/[Bookmarklet(4)]
+link:/blog/tags/bootstrap/[Bootstrap(3)]
+link:/blog/tags/brew-file/[Brew-file(58)] link:/blog/tags/bsd/[BSD(9)]
+link:/blog/tags/c-cpp/[C-CPP(2)]
+link:/blog/tags/chocolatey/[Chocolatey(4)]
+link:/blog/tags/chrome/[Chrome(24)] link:/blog/tags/cli/[CLI(1)]
+link:/blog/tags/colinux/[coLinux(2)] link:/blog/tags/css/[CSS(4)]
+link:/blog/tags/cygwin/[Cygwin(31)] link:/blog/tags/dell/[Dell(1)]
+link:/blog/tags/desktop/[Desktop(2)] link:/blog/tags/diy/[DIY(1)]
+link:/blog/tags/docker/[Docker(2)] link:/blog/tags/dropbox/[Dropbox(10)]
+link:/blog/tags/emacs/[Emacs(3)] link:/blog/tags/english/[English(5)]
+link:/blog/tags/evernote/[Evernote(14)]
+link:/blog/tags/feedly/[feedly(1)] link:/blog/tags/firefox/[Firefox(59)]
+link:/blog/tags/gas/[GAS(1)] link:/blog/tags/geektool/[GeekTool(3)]
+link:/blog/tags/ginger/[Ginger(1)] link:/blog/tags/git/[Git(41)]
+link:/blog/tags/github/[GitHub(81)] link:/blog/tags/gmail/[Gmail(16)]
+link:/blog/tags/gnu/[GNU(8)] link:/blog/tags/go/[Go(3)]
+link:/blog/tags/google/[Google(20)] link:/blog/tags/gpt/[GPT(5)]
+link:/blog/tags/gpu/[GPU(1)] link:/blog/tags/hhkb/[HHKB(13)]
+link:/blog/tags/home/[Home(1)] link:/blog/tags/homebrew/[Homebrew(97)]
+link:/blog/tags/ifttt/[IFTTT(12)] link:/blog/tags/install/[Install(4)]
+link:/blog/tags/ios/[iOS(2)] link:/blog/tags/iot/[IoT(63)]
+link:/blog/tags/iphone/[iPhone(14)] link:/blog/tags/iterm2/[iTerm2(4)]
+link:/blog/tags/java/[Java(2)]
+link:/blog/tags/javascript/[JavaScript(27)]
+link:/blog/tags/jekyll/[Jekyll(3)] link:/blog/tags/jquery/[jQuery(4)]
+link:/blog/tags/karabiner/[Karabiner(26)]
+link:/blog/tags/keyboard/[Keyboard(1)]
+link:/blog/tags/keyremap4macbook/[KeyRemap4MacBook(8)]
+link:/blog/tags/kramdown/[Kramdown(1)] link:/blog/tags/latex/[Latex(1)]
+link:/blog/tags/linux/[Linux(69)] link:/blog/tags/liquid/[Liquid(2)]
+link:/blog/tags/lubuntu/[Lubuntu(3)] link:/blog/tags/mac/[Mac(311)]
+link:/blog/tags/markdown/[Markdown(12)] link:/blog/tags/music/[Music(8)]
+link:/blog/tags/network/[Network(32)]
+link:/blog/tags/obsidian/[Obsidian(4)]
+link:/blog/tags/octopress/[Octopress(125)]
+link:/blog/tags/owncloud/[ownCloud(2)]
+link:/blog/tags/packagemanagement/[PackageManagement(3)]
+link:/blog/tags/pocket/[Pocket(4)] link:/blog/tags/poetry/[Poetry(3)]
+link:/blog/tags/powershell/[PowerShell(8)] link:/blog/tags/pr/[PR(3)]
+link:/blog/tags/prompt/[Prompt(3)] link:/blog/tags/putty/[PuTTY(14)]
+link:/blog/tags/pypi/[PyPi(1)] link:/blog/tags/python/[Python(72)]
+link:/blog/tags/qi/[Qi(1)] link:/blog/tags/rakuten/[Rakuten(3)]
+link:/blog/tags/raspberrypi/[RaspberryPi(18)]
+link:/blog/tags/ruby/[Ruby(14)] link:/blog/tags/screen/[screen(41)]
+link:/blog/tags/sentaku/[sentaku(14)] link:/blog/tags/shell/[Shell(1)]
+link:/blog/tags/shopping/[Shopping(51)] link:/blog/tags/slack/[Slack(3)]
+link:/blog/tags/svn/[SVN(2)] link:/blog/tags/teamviewer/[TeamViewer(5)]
+link:/blog/tags/thunderbird/[Thunderbird(2)]
+link:/blog/tags/tmux/[tmux(7)] link:/blog/tags/travisci/[TravisCI(14)]
+link:/blog/tags/trip/[Trip(5)] link:/blog/tags/ubuntu/[Ubuntu(4)]
+link:/blog/tags/vim/[Vim(106)]
+link:/blog/tags/vimperator/[Vimperator(19)] link:/blog/tags/web/[Web(6)]
+link:/blog/tags/wercker/[wercker(6)] link:/blog/tags/wimax/[WiMAX(2)]
+link:/blog/tags/windows/[Windows(156)] link:/blog/tags/word/[Word(1)]
+link:/blog/tags/yamy/[yamy(7)] link:/blog/tags/zsh/[Zsh(52)] #
+
+Sponsored Links
+
+[.underline]##
+
+== Most Viewed Posts (Last Month)
+
+* {blank}
++
+link://www.amazon.co.jp/gp/product/4542201295[image:https://images-na.ssl-images-amazon.com/images/I/412PAQ09H8L._SS90_CR0,0,120,90_.jpg[JIS漢字字典]]
+
+link:/blog/2020/08/02/computer-google/[日本語含めてソートしたときに最初と最後に来る文字] +
+[.views]#2207 views#
+* {blank}
++
+link:/blog/2024/09/27/computer-windows-mac/[image:/images/post/thumbnail/20240927_win3_120_90.jpg[20240927_win3_120_90,width=120,height=90]]
+
+link:/blog/2024/09/27/computer-windows-mac/[Win/Macそれぞれで特定のウィンドウを最前面に固定する] +
+[.views]#756 views#
+* [.underline]##
+* {blank}
++
+link:/blog/2021/03/01/computer-windows-network/[image:/images/post/thumbnail/20210301_property_120_90.jpg[20210301_property_120_90,width=120,height=90]]
+
+link:/blog/2021/03/01/computer-windows-network/[Windows
+WSL2に外部から直接アクセスするための設定] +
+[.views]#466 views#
+* {blank}
++
+link://www.amazon.co.jp/gp/product/4774163635[image:https://images-na.ssl-images-amazon.com/images/I/51tTEprSmyL._SS90_CR0,0,120,90_.jpg[文字
+(ずかん)]]
+
+link:/blog/2023/01/16/computer-bash/[シェルスクリプトでちゃんと文字列に改行を入れ込む] +
+[.views]#432 views#
+* {blank}
++
+link://www.amazon.co.jp/gp/product/B0BB81WBGT[image:https://images-na.ssl-images-amazon.com/images/I/61xOuGHlvzL._SS90_CR0,0,120,90_.jpg[7インチ
+カーブシザー トリミングシザー 下向き＆上向き兼用 丸い先端 曲がった刃
+高級鍛造仕上 ペットハサミ 犬 猫 トリミング ペット用シザー 鋏
+（革ケース付き）…]]
+
+link:/blog/2023/01/15/computer-bash/[シェルスクリプト(主にBash)で文字列前後のスペースを削除する] +
+[.views]#390 views#
+
+== //b.hatena.ne.jp/entrylist?mode=rss&sort=count&url=https://rcmdnk.com[Hatebu Popular Posts]
+
+[[hatena-bookmark-widget]]
+* {blank}
++
+https://rcmdnk.com/blog/2015/11/12/computer-javascript-go/[image:https://cdn-ak-scissors.b.st-hatena.com/image/square/91eb706331c1348d77b27f136d04fbc14db740e8/height=90;version=1;width=120/https%3A%2F%2Frcmdnk.com%2Fimages%2Fpost%2F20151112_dashbord.gif[https%3A%2F%2Frcmdnk.com%2Fimages%2Fpost%2F20151112_dashbord]]
+
+https://rcmdnk.com/blog/2015/11/12/computer-javascript-go/[ターミナルにリッチなモニターを表示させる] +
+image://b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2015/11/12/computer-javascript-go/[n_hatebu]
+* {blank}
++
+https://rcmdnk.com/blog/2014/02/19/computer-markdown/[image:https://cdn-ak-scissors.b.st-hatena.com/image/square/8eaa2f6b56f9f9e0cb2903f6c778504528bdb47c/height=90;version=1;width=120/https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F515yALRXKzL._SS200_.jpg[https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F515yALRXKzL._SS200_]]
+
+https://rcmdnk.com/blog/2014/02/19/computer-markdown/[Markdownからスライド資料を作る] +
+image://b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2014/02/19/computer-markdown/[n_hatebu]
+* [.underline]##
+* {blank}
++
+https://rcmdnk.com/blog/2014/06/08/comptuer-linux-windows-putty/[image:https://cdn-ak-scissors.b.st-hatena.com/image/square/a9d3c48f4c82948f5542b1cb956621c77bcdef9f/height=90;version=1;width=120/https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F41GJBSC36XL._SS200_.jpg[https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F41GJBSC36XL._SS200_]]
+
+https://rcmdnk.com/blog/2014/06/08/comptuer-linux-windows-putty/[多段ssh設定のまとめ] +
+image://b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2014/06/08/comptuer-linux-windows-putty/[n_hatebu]
+* {blank}
++
+https://rcmdnk.com/blog/2015/09/09/computer-remote/[image:https://cdn-ak-scissors.b.st-hatena.com/image/square/b4291e68cea231e6253bb5721537c4d7e5821b7b/height=90;version=1;width=120/https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F51ZUNX24fSL._SS200_.jpg[https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F51ZUNX24fSL._SS200_]]
+
+https://rcmdnk.com/blog/2015/09/09/computer-remote/[ssh周りの設定、Tipsのまとめ] +
+image://b.hatena.ne.jp/entry/image/https://rcmdnk.com/blog/2015/09/09/computer-remote/[n_hatebu]
+* {blank}
++
+https://rcmdnk.com/mac/macapp/[image:https://cdn-ak-scissors.b.st-hatena.com/image/square/cd11e980f25ed56eb77b5acbf99268e7b1ec51fe/height=90;version=1;width=120/https%3A%2F%2Frcmdnk.com%2Fimages%2FMacApp%2FMacLogoMiddle.jpg[https%3A%2F%2Frcmdnk.com%2Fimages%2FMacApp%2FMacLogoMiddle]]
+
+https://rcmdnk.com/mac/macapp/[Mac用アプリ] +
+image://b.hatena.ne.jp/entry/image/https://rcmdnk.com/mac/macapp/[n_hatebu]
+
+Sponsored Links
+
+[.underline]##
+
+link:/cdn-cgi/l/email-protection#4d3f2e202923260d2a202c2421632e2220[Contact],
+link:/privacy/[Privacy Policy]
+
+Copyright © 2025 - rcmdnk - [.credit]#Powered by
+https://octopress.org[Octopress]# [.credit]#, with theme
+link://github.com/rcmdnk/octogray[octogray]#
+
+}

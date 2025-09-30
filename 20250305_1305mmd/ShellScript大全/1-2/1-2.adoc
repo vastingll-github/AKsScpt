@@ -1,0 +1,645 @@
+[[__next]]
+link:/[image:data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDM3Ny40IDg4LjMiIGFyaWEtbGFiZWw9Ilplbm4gfCDjgqjjg7Pjgrjjg4vjgqLjga7jgZ/jgoHjga7mg4XloLHlhbHmnInjgrPjg5/jg6Xjg4vjg4bjgqMiIGNsYXNzPSJaZW5uTG9nb19sb2dvU3ZnX195T2hjZyIgaGVpZ2h0PSIyMiI+PHRpdGxlPlplbm48L3RpdGxlPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTIzMyw1Ni44aC0zOWMwLjUsMy41LDIuMiw2LjgsNC44LDkuMmMyLjcsMi4zLDYuMiwzLjUsOS44LDMuNGMyLjgsMCw1LjYtMC41LDguMi0xLjdjMi41LTEuMSw0LjgtMi44LDYuNS01bDguMiw5LjUgYy0yLjUsMy40LTUuNyw2LjEtOS41LDcuOWMtNC42LDIuMi05LjYsMy4zLTE0LjcsMy4yYy01LjcsMC4xLTExLjQtMS4yLTE2LjUtNGMtNC41LTIuNS04LjItNi4zLTEwLjctMTAuOXMtMy44LTkuOC0zLjctMTUuMXYtMi4yIGMtMC4xLTUuNywxLjEtMTEuMywzLjUtMTYuNWMyLjItNC43LDUuNy04LjYsMTAuMS0xMS4zYzQuNy0yLjgsMTAuMS00LjIsMTUuNS00LjFjNS4yLTAuMSwxMC4zLDEuMSwxNC45LDMuNyBjNC4xLDIuNSw3LjQsNi4yLDkuNCwxMC41YzIuMiw1LjEsMy4zLDEwLjUsMy4yLDE2LjFWNTYuOHogTTIxNi4xLDQzLjljMC4xLTIuOS0wLjktNS43LTIuOC03LjljLTEuOC0xLjktNC40LTIuOS03LjktMi45IGMtMi45LTAuMS01LjgsMS4xLTcuNywzLjJjLTIsMi42LTMuMyw1LjctMy42LDloMjJWNDMuOXoiPjwvcGF0aD48cGF0aCBkPSJNMTI4LjMsNjcuOWgzNi4xdjE0LjdoLTU2LjlWNzJsMzUuOC01NC4zaC0zNi4yVjIuOWg1Ni42djEwLjRMMTI4LjMsNjcuOXoiPjwvcGF0aD48cGF0aCBkPSJNMjQ4LjgsNTAuN2MwLTE5LjEsMTIuNy0yOS4yLDI4LjItMjkuMnMyNy45LDEwLjEsMjcuOSwyOS4yVjgyaC0xNlY1MS40YzAtMTAuNi00LjgtMTYuMS0xMi0xNi4xcy0xMi40LDUuNS0xMi40LDE2LjEgdjMwLjdoLTE1LjhMMjQ4LjgsNTAuN0wyNDguOCw1MC43eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMjAuMyw1MC43YzAtMTkuMSwxMi43LTI5LjIsMjguMi0yOS4yczI3LjksMTAuMSwyNy45LDI5LjJWODJoLTE2VjUxLjRjMC0xMC42LTQuOC0xNi4xLTEyLTE2LjFTMzM2LDQwLjgsMzM2LDUxLjR2MzAuNyBoLTE1LjhMMzIwLjMsNTAuN0wzMjAuMyw1MC43eiI+PC9wYXRoPjwvZz48cGF0aCBmaWxsPSIjM0VBOEZGIiBjbGFzcz0ic3QwIiBkPSJNMi40LDgzLjNoMTdjMC45LDAsMS43LTAuNSwyLjItMS4yTDY4LjQsNS4yQzY5LDQuMiw2OC4zLDMsNjcuMSwzSDUxYy0wLjgsMC0xLjUsMC40LTEuOSwxLjFMMS42LDgxLjkgQzEuMyw4Mi41LDEuNyw4My4zLDIuNCw4My4zeiI+PC9wYXRoPjxwYXRoIGZpbGw9IiMzRUE4RkYiIGNsYXNzPSJzdDAiIGQ9Ik02MSw4Mi4xbDIyLjEtMzUuNWMwLjctMS4xLTAuMS0yLjUtMS40LTIuNUg2NS43Yy0wLjYsMC0xLjIsMC4zLTEuNSwwLjhMNDEuNSw4MS4yYy0wLjYsMC45LDAuMSwyLjEsMS4yLDIuMSBoMTYuM0M1OS44LDgzLjMsNjAuNiw4Mi45LDYxLDgyLjF6Ij48L3BhdGg+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDM3Ny40IDg4LjMiIGFyaWEtbGFiZWw9Ilplbm4gfCDjgqjjg7Pjgrjjg4vjgqLjga7jgZ/jgoHjga7mg4XloLHlhbHmnInjgrPjg5/jg6Xjg4vjg4bjgqMiIGNsYXNzPSJaZW5uTG9nb19sb2dvU3ZnX195T2hjZyIgaGVpZ2h0PSIyMiI+PHRpdGxlPlplbm48L3RpdGxlPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTIzMyw1Ni44aC0zOWMwLjUsMy41LDIuMiw2LjgsNC44LDkuMmMyLjcsMi4zLDYuMiwzLjUsOS44LDMuNGMyLjgsMCw1LjYtMC41LDguMi0xLjdjMi41LTEuMSw0LjgtMi44LDYuNS01bDguMiw5LjUgYy0yLjUsMy40LTUuNyw2LjEtOS41LDcuOWMtNC42LDIuMi05LjYsMy4zLTE0LjcsMy4yYy01LjcsMC4xLTExLjQtMS4yLTE2LjUtNGMtNC41LTIuNS04LjItNi4zLTEwLjctMTAuOXMtMy44LTkuOC0zLjctMTUuMXYtMi4yIGMtMC4xLTUuNywxLjEtMTEuMywzLjUtMTYuNWMyLjItNC43LDUuNy04LjYsMTAuMS0xMS4zYzQuNy0yLjgsMTAuMS00LjIsMTUuNS00LjFjNS4yLTAuMSwxMC4zLDEuMSwxNC45LDMuNyBjNC4xLDIuNSw3LjQsNi4yLDkuNCwxMC41YzIuMiw1LjEsMy4zLDEwLjUsMy4yLDE2LjFWNTYuOHogTTIxNi4xLDQzLjljMC4xLTIuOS0wLjktNS43LTIuOC03LjljLTEuOC0xLjktNC40LTIuOS03LjktMi45IGMtMi45LTAuMS01LjgsMS4xLTcuNywzLjJjLTIsMi42LTMuMyw1LjctMy42LDloMjJWNDMuOXoiPjwvcGF0aD48cGF0aCBkPSJNMTI4LjMsNjcuOWgzNi4xdjE0LjdoLTU2LjlWNzJsMzUuOC01NC4zaC0zNi4yVjIuOWg1Ni42djEwLjRMMTI4LjMsNjcuOXoiPjwvcGF0aD48cGF0aCBkPSJNMjQ4LjgsNTAuN2MwLTE5LjEsMTIuNy0yOS4yLDI4LjItMjkuMnMyNy45LDEwLjEsMjcuOSwyOS4yVjgyaC0xNlY1MS40YzAtMTAuNi00LjgtMTYuMS0xMi0xNi4xcy0xMi40LDUuNS0xMi40LDE2LjEgdjMwLjdoLTE1LjhMMjQ4LjgsNTAuN0wyNDguOCw1MC43eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMjAuMyw1MC43YzAtMTkuMSwxMi43LTI5LjIsMjguMi0yOS4yczI3LjksMTAuMSwyNy45LDI5LjJWODJoLTE2VjUxLjRjMC0xMC42LTQuOC0xNi4xLTEyLTE2LjFTMzM2LDQwLjgsMzM2LDUxLjR2MzAuNyBoLTE1LjhMMzIwLjMsNTAuN0wzMjAuMyw1MC43eiI+PC9wYXRoPjwvZz48cGF0aCBmaWxsPSIjM0VBOEZGIiBjbGFzcz0ic3QwIiBkPSJNMi40LDgzLjNoMTdjMC45LDAsMS43LTAuNSwyLjItMS4yTDY4LjQsNS4yQzY5LDQuMiw2OC4zLDMsNjcuMSwzSDUxYy0wLjgsMC0xLjUsMC40LTEuOSwxLjFMMS42LDgxLjkgQzEuMyw4Mi41LDEuNyw4My4zLDIuNCw4My4zeiI+PC9wYXRoPjxwYXRoIGZpbGw9IiMzRUE4RkYiIGNsYXNzPSJzdDAiIGQ9Ik02MSw4Mi4xbDIyLjEtMzUuNWMwLjctMS4xLTAuMS0yLjUtMS40LTIuNUg2NS43Yy0wLjYsMC0xLjIsMC4zLTEuNSwwLjhMNDEuNSw4MS4yYy0wLjYsMC45LDAuMSwyLjEsMS4yLDIuMSBoMTYuM0M1OS44LDgzLjMsNjAuNiw4Mi45LDYxLDgyLjF6Ij48L3BhdGg+PC9zdmc+]]
+
+link:/portinc[[.ContentStickyNavForMobile_avatarContainer__V3P_G]#image:https://storage.googleapis.com/zenn-user-upload/avatar/accd4ec98b.jpeg[portinc,width=38,height=38]#[.ContentStickyNavForMobile_displayName__cmEag]#portinc#]
+
+[.Emoji_twemoji__hcxYF]#[.Emoji_twemojiImg__Oc6vR]###[.Emoji_nativeEmoji__GMBzX]#🐈#
+
+== bashスクリプトのベストプラクティスを調査した
+
+[.ArticleHeader_pubDate__gF_sc]#[.ArticleHeader_num__7Zpz0]##2023/04/04##に公開#
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iTGlrZUJ1dHRvbl9zdmdMaWtlX19HbDBTeiIgdmlld2JveD0iMCAwIDExMCAxMTAiPjxwYXRoIGNsYXNzPSJMaWtlQnV0dG9uX3N2Z0xpa2VMaW5lX19mOXR4UiIgZD0iTTczLDI0YTIzLjc4LDIzLjc4LDAsMCwwLTE1Ljg5LDYuMTksMy4xNCwzLjE0LDAsMCwxLTQuMTgsMEEyMy44MSwyMy44MSwwLDAsMCwzNywyNGEyMiwyMiwwLDAsMC0yMiwyMmMwLDE2LjY3LDE5LjY0LDMyLjgyLDI1LjExLDM3LjkzLDIuODQsMi42NSw2LjE1LDUuNjQsOC45Miw4LjEzYTguOSw4LjksMCwwLDAsMTEuOSwwYzIuNzctMi40OSw2LjA3LTUuNDgsOC45MS04LjEzQzc1LjM3LDc4LjgxLDk1LDYyLjY2LDk1LDQ2QTIyLDIyLDAsMCwwLDczLDI0WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZUlubmVyX191aWV4UyIgZD0iTTY2LjI1LDc2LjQyYy0uNzEuNjQtMS4zMiwxLjItMS44MiwxLjY3LTIuNTEsMi4zMy01LjM5LDUtNy45NCw3LjI1YTIuMjEsMi4yMSwwLDAsMS0zLDBDNTEsODMsNDguMSw4MC40Miw0NS41OSw3OC4wOWMtLjUtLjQ3LTEuMTItMS0xLjgyLTEuNjdDMzguMDksNzEuMjksMjMsNTcuNjcsMjMsNDZBMTQsMTQsMCwwLDEsMzcsMzJhMTUuOTIsMTUuOTIsMCwwLDEsMTEuNjUsNS4yM2w0LjczLDVhMi4yLDIuMiwwLDAsMCwzLjIzLDBsNC43Mi01QTE2LjA2LDE2LjA2LDAsMCwxLDczLDMyLDE0LDE0LDAsMCwxLDg3LDQ2Qzg3LDU3LjY3LDcxLjkzLDcxLjI5LDY2LjI1LDc2LjQyWiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PGcgY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZURlY29yYXRpb25fXzc4VWpCIj48Y2lyY2xlIGN4PSI0MS41IiBjeT0iOS41IiBmaWxsPSIjM2VhOGZmIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijk4LjUiIGN5PSIyNi41IiBmaWxsPSIjZmZkYzZlIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTkiIGZpbGw9IiNjMDY3ZjQiIHI9IjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijc3IiBjeT0iOSIgZmlsbD0iI2Y3NjY4NSIgcj0iNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjYuNSIgY3k9IjkyLjUiIGZpbGw9IiNmNzY2ODUiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTA1LjUiIGN5PSI0OC41IiBmaWxsPSIjYzA2N2Y0IiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQuNSIgY3k9IjYwLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTQuNSIgY3k9IjczLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTYuNSIgY3k9Ijc1LjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzguNSIgY3k9IjkxLjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PC9nPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iTGlrZUJ1dHRvbl9zdmdMaWtlX19HbDBTeiIgdmlld2JveD0iMCAwIDExMCAxMTAiPjxwYXRoIGNsYXNzPSJMaWtlQnV0dG9uX3N2Z0xpa2VMaW5lX19mOXR4UiIgZD0iTTczLDI0YTIzLjc4LDIzLjc4LDAsMCwwLTE1Ljg5LDYuMTksMy4xNCwzLjE0LDAsMCwxLTQuMTgsMEEyMy44MSwyMy44MSwwLDAsMCwzNywyNGEyMiwyMiwwLDAsMC0yMiwyMmMwLDE2LjY3LDE5LjY0LDMyLjgyLDI1LjExLDM3LjkzLDIuODQsMi42NSw2LjE1LDUuNjQsOC45Miw4LjEzYTguOSw4LjksMCwwLDAsMTEuOSwwYzIuNzctMi40OSw2LjA3LTUuNDgsOC45MS04LjEzQzc1LjM3LDc4LjgxLDk1LDYyLjY2LDk1LDQ2QTIyLDIyLDAsMCwwLDczLDI0WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZUlubmVyX191aWV4UyIgZD0iTTY2LjI1LDc2LjQyYy0uNzEuNjQtMS4zMiwxLjItMS44MiwxLjY3LTIuNTEsMi4zMy01LjM5LDUtNy45NCw3LjI1YTIuMjEsMi4yMSwwLDAsMS0zLDBDNTEsODMsNDguMSw4MC40Miw0NS41OSw3OC4wOWMtLjUtLjQ3LTEuMTItMS0xLjgyLTEuNjdDMzguMDksNzEuMjksMjMsNTcuNjcsMjMsNDZBMTQsMTQsMCwwLDEsMzcsMzJhMTUuOTIsMTUuOTIsMCwwLDEsMTEuNjUsNS4yM2w0LjczLDVhMi4yLDIuMiwwLDAsMCwzLjIzLDBsNC43Mi01QTE2LjA2LDE2LjA2LDAsMCwxLDczLDMyLDE0LDE0LDAsMCwxLDg3LDQ2Qzg3LDU3LjY3LDcxLjkzLDcxLjI5LDY2LjI1LDc2LjQyWiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PGcgY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZURlY29yYXRpb25fXzc4VWpCIj48Y2lyY2xlIGN4PSI0MS41IiBjeT0iOS41IiBmaWxsPSIjM2VhOGZmIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijk4LjUiIGN5PSIyNi41IiBmaWxsPSIjZmZkYzZlIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTkiIGZpbGw9IiNjMDY3ZjQiIHI9IjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijc3IiBjeT0iOSIgZmlsbD0iI2Y3NjY4NSIgcj0iNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjYuNSIgY3k9IjkyLjUiIGZpbGw9IiNmNzY2ODUiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTA1LjUiIGN5PSI0OC41IiBmaWxsPSIjYzA2N2Y0IiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQuNSIgY3k9IjYwLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTQuNSIgY3k9IjczLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTYuNSIgY3k9Ijc1LjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzguNSIgY3k9IjkxLjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PC9nPjwvc3ZnPg==]
+
+https://twitter.com/intent/tweet?url=https://zenn.dev/portinc/articles/bash-best-practice&text=bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%82%92%E8%AA%BF%E6%9F%BB%E3%81%97%E3%81%9F%EF%BD%9Cportinc&hashtags=zenn[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzFfMTgpIj48cGF0aCBkPSJNMTYuMDY4NyAxMS43MzU2TDI2LjEyIDBIMjMuNzM4MkwxNS4wMTA2IDEwLjE4OTlMOC4wMzk4OCAwSDBMMTAuNTQxMSAxNS40MDg5TDAgMjcuNzE1NUgyLjM4MTk5TDExLjU5ODUgMTYuOTU0NkwxOC45NjAxIDI3LjcxNTVIMjdMMTYuMDY4MSAxMS43MzU2SDE2LjA2ODdaTTEyLjgwNjIgMTUuNTQ0N0wxMS43MzgyIDE0LjAxMDNMMy4yNDAyNSAxLjgwMTA2SDYuODk4ODRMMTMuNzU2OCAxMS42NTQzTDE0LjgyNDggMTMuMTg4N0wyMy43MzkzIDI1Ljk5NjNIMjAuMDgwN0wxMi44MDYyIDE1LjU0NTJWMTUuNTQ0N1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzFfMTgiPjxyZWN0IHdpZHRoPSIyNyIgaGVpZ2h0PSIyNy43Mjk3IiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjwvY2xpcHBhdGg+PC9kZWZzPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzFfMTgpIj48cGF0aCBkPSJNMTYuMDY4NyAxMS43MzU2TDI2LjEyIDBIMjMuNzM4MkwxNS4wMTA2IDEwLjE4OTlMOC4wMzk4OCAwSDBMMTAuNTQxMSAxNS40MDg5TDAgMjcuNzE1NUgyLjM4MTk5TDExLjU5ODUgMTYuOTU0NkwxOC45NjAxIDI3LjcxNTVIMjdMMTYuMDY4MSAxMS43MzU2SDE2LjA2ODdaTTEyLjgwNjIgMTUuNTQ0N0wxMS43MzgyIDE0LjAxMDNMMy4yNDAyNSAxLjgwMTA2SDYuODk4ODRMMTMuNzU2OCAxMS42NTQzTDE0LjgyNDggMTMuMTg4N0wyMy43MzkzIDI1Ljk5NjNIMjAuMDgwN0wxMi44MDYyIDE1LjU0NTJWMTUuNTQ0N1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzFfMTgiPjxyZWN0IHdpZHRoPSIyNyIgaGVpZ2h0PSIyNy43Mjk3IiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjwvY2xpcHBhdGg+PC9kZWZzPjwvc3ZnPg==]]http://www.facebook.com/sharer.php?u=https://zenn.dev/portinc/articles/bash-best-practice[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjkiIHZpZXdib3g9IjAgMCAyOCAyOSIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzJfMjEpIj48cGF0aCBkPSJNMjggMTQuNzgxMkMyOCA3LjAyMDg0IDIxLjczMTkgMC43Mjk3MzYgMTQgMC43Mjk3MzZDNi4yNjgwOCAwLjcyOTczNiAwIDcuMDIwODQgMCAxNC43ODEyQzAgMjEuMzcwNyA0LjUyMDMyIDI2LjkwMDIgMTAuNjE4MiAyOC40MTg5VjE5LjA3NTNINy43MzEzNlYxNC43ODEySDEwLjYxODJWMTIuOTMwOUMxMC42MTgyIDguMTQ4MzMgMTIuNzc0NyA1LjkzMTU4IDE3LjQ1MyA1LjkzMTU4QzE4LjM0IDUuOTMxNTggMTkuODcwNSA2LjEwNjM3IDIwLjQ5NjYgNi4yODA2MVYxMC4xNzI5QzIwLjE2NjIgMTAuMTM4IDE5LjU5MjIgMTAuMTIwNiAxOC44NzkzIDEwLjEyMDZDMTYuNTgzOCAxMC4xMjA2IDE1LjY5NjggMTAuOTkzNSAxNS42OTY4IDEzLjI2MjVWMTQuNzgxMkgyMC4yNjk4TDE5LjQ4NDEgMTkuMDc1M0gxNS42OTY4VjI4LjcyOTdDMjIuNjI5IDI3Ljg4OTUgMjguMDAwNiAyMS45NjU0IDI4LjAwMDYgMTQuNzgxMkgyOFoiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzJfMjEiPjxyZWN0IHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC43Mjk3MzYpIj48L3JlY3Q+PC9jbGlwcGF0aD48L2RlZnM+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjkiIHZpZXdib3g9IjAgMCAyOCAyOSIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzJfMjEpIj48cGF0aCBkPSJNMjggMTQuNzgxMkMyOCA3LjAyMDg0IDIxLjczMTkgMC43Mjk3MzYgMTQgMC43Mjk3MzZDNi4yNjgwOCAwLjcyOTczNiAwIDcuMDIwODQgMCAxNC43ODEyQzAgMjEuMzcwNyA0LjUyMDMyIDI2LjkwMDIgMTAuNjE4MiAyOC40MTg5VjE5LjA3NTNINy43MzEzNlYxNC43ODEySDEwLjYxODJWMTIuOTMwOUMxMC42MTgyIDguMTQ4MzMgMTIuNzc0NyA1LjkzMTU4IDE3LjQ1MyA1LjkzMTU4QzE4LjM0IDUuOTMxNTggMTkuODcwNSA2LjEwNjM3IDIwLjQ5NjYgNi4yODA2MVYxMC4xNzI5QzIwLjE2NjIgMTAuMTM4IDE5LjU5MjIgMTAuMTIwNiAxOC44NzkzIDEwLjEyMDZDMTYuNTgzOCAxMC4xMjA2IDE1LjY5NjggMTAuOTkzNSAxNS42OTY4IDEzLjI2MjVWMTQuNzgxMkgyMC4yNjk4TDE5LjQ4NDEgMTkuMDc1M0gxNS42OTY4VjI4LjcyOTdDMjIuNjI5IDI3Ljg4OTUgMjguMDAwNiAyMS45NjU0IDI4LjAwMDYgMTQuNzgxMkgyOFoiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzJfMjEiPjxyZWN0IHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC43Mjk3MzYpIj48L3JlY3Q+PC9jbGlwcGF0aD48L2RlZnM+PC9zdmc+]]https://b.hatena.ne.jp/add?mode=confirm&url=https://zenn.dev/portinc/articles/bash-best-practice&title=bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%82%92%E8%AA%BF%E6%9F%BB%E3%81%97%E3%81%9F%EF%BD%9Cportinc[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjQ5OTkgMC43Mjk3MzZIMjEuNTAwMUMyNC41Mzc2IDAuNzI5NzM2IDI3IDMuMTkyMTMgMjcgNi4yMjk2NFYyMi4yMjk4QzI3IDI1LjI2NzMgMjQuNTM3NiAyNy43Mjk3IDIxLjUwMDEgMjcuNzI5N0g1LjQ5OTlDMi40NjIzOSAyNy43Mjk3IDAgMjUuMjY3MyAwIDIyLjIyOThWNi4yMjk2NEMwIDMuMTkyMTMgMi40NjIzOSAwLjcyOTczNiA1LjQ5OTkgMC43Mjk3MzZaTTEyLjk4IDEzLjc0NzJDMTMuODUyMSAxMy44MTM2IDE0LjUzMTkgMTQuMTIwOSAxNS4wMjEyIDE0LjY2NzNWMTQuNjY3OUMxNS41MTIgMTUuMjEyNyAxNS43NTcyIDE1Ljk0NDQgMTUuNzU3MiAxNi44NTQzQzE1Ljc1NzIgMTcuNTEyNiAxNS42MiAxOC4wODc3IDE1LjM0MzYgMTguNTg2N0MxNS4wNjkyIDE5LjA4NCAxNC42NzU2IDE5LjQ3MTIgMTQuMTYwNCAxOS43NDMzQzEzLjc0NDEgMTkuOTY1OCAxMy4yMjg5IDIwLjEyNzggMTIuNjE1NSAyMC4yMjQ1QzEyLjAwMSAyMC4zMTc5IDEwLjk5NjYgMjAuMzY2NSA5LjYwMzkgMjAuMzY2NUg2LjEzNjU2VjguMDkzOTJIOS41MDE4NEMxMC44ODU5IDguMDkzOTIgMTEuODUwMyA4LjEzODc1IDEyLjQwMTYgOC4yMjYyM0MxMi45NTAzIDguMzE2OTUgMTMuNDIwNiA4LjQ3MDMgMTMuODE2NCA4LjY4NzkyQzE0LjI2OSA4LjkzOTAyIDE0LjYxMjkgOS4yNzQzNyAxNC44NTI3IDkuNjkzNDFDMTUuMDg2NSAxMC4xMTUxIDE1LjIwNjkgMTAuNjAyOCAxNS4yMDY5IDExLjE1NDZDMTUuMjA2OSAxMS44NTEyIDE1LjAzMDkgMTIuNDA1MyAxNC42NzYxIDEyLjgxM0MxNC4zMTk3IDEzLjIyNjEgMTMuNzU2IDEzLjUzNTUgMTIuOTggMTMuNzQ3MlpNOS45NjE5MiAxMC44MTQ0SDkuMjQzNzJIOS4yNDMxOFYxMy4yNzY4SDkuOTExMTZDMTAuNzM1MiAxMy4yNzY4IDExLjI5ODQgMTMuMTg1NiAxMS42MDczIDEzLjAwNThDMTEuOTEyNCAxMi44MjI3IDEyLjA2NjMgMTIuNTI3MyAxMi4wNjYzIDEyLjA2NjdDMTIuMDY2MyAxMS42MDYxIDExLjkyMTYgMTEuMjgyMSAxMS42Mzc1IDExLjA5NDdDMTEuMzQ5NyAxMC45MDg0IDEwLjc5MTkgMTAuODE0NCA5Ljk2MTkyIDEwLjgxNDRaTTEwLjQxMjggMTguMTUxNEMxMS4yMDI4IDE4LjE1MTQgMTEuNzY2MSAxOC4wNTMxIDEyLjA5MjggMTcuODUyM1YxNy44NTI4QzEyLjQyMjcgMTcuNjUzIDEyLjU4NjMgMTcuMzIwOSAxMi41ODYzIDE2Ljg1ODFDMTIuNTg2MyAxNi4zNDA4IDEyLjQzNjcgMTUuOTgwNiAxMi4xMzM4IDE1Ljc3NjVDMTEuODM1NyAxNS41NzI0IDExLjI3NDcgMTUuNDcwMyAxMC40NjMgMTUuNDcwM0g5LjI0MzcyVjE4LjE1MTRIMTAuNDEyOFpNMTkuMzA5MyAxNy4yNTdDMTguNDUwMiAxNy4yNTcgMTcuNzU0NyAxNy45NTI1IDE3Ljc1NDcgMTguODExMUMxNy43NTQ3IDE5LjY2OTcgMTguNDUwNyAyMC4zNjU4IDE5LjMwOTMgMjAuMzY1OEMyMC4xNjc5IDIwLjM2NTggMjAuODYzNCAxOS42Njk3IDIwLjg2MzQgMTguODExMUMyMC44NjM0IDE3Ljk1MjUgMjAuMTY2OCAxNy4yNTcgMTkuMzA5MyAxNy4yNTdaTTE3Ljk1OTMgOC4wOTMxOEgyMC42NTkzVjE2LjI3NTNIMTcuOTU5M1Y4LjA5MzE4WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjQ5OTkgMC43Mjk3MzZIMjEuNTAwMUMyNC41Mzc2IDAuNzI5NzM2IDI3IDMuMTkyMTMgMjcgNi4yMjk2NFYyMi4yMjk4QzI3IDI1LjI2NzMgMjQuNTM3NiAyNy43Mjk3IDIxLjUwMDEgMjcuNzI5N0g1LjQ5OTlDMi40NjIzOSAyNy43Mjk3IDAgMjUuMjY3MyAwIDIyLjIyOThWNi4yMjk2NEMwIDMuMTkyMTMgMi40NjIzOSAwLjcyOTczNiA1LjQ5OTkgMC43Mjk3MzZaTTEyLjk4IDEzLjc0NzJDMTMuODUyMSAxMy44MTM2IDE0LjUzMTkgMTQuMTIwOSAxNS4wMjEyIDE0LjY2NzNWMTQuNjY3OUMxNS41MTIgMTUuMjEyNyAxNS43NTcyIDE1Ljk0NDQgMTUuNzU3MiAxNi44NTQzQzE1Ljc1NzIgMTcuNTEyNiAxNS42MiAxOC4wODc3IDE1LjM0MzYgMTguNTg2N0MxNS4wNjkyIDE5LjA4NCAxNC42NzU2IDE5LjQ3MTIgMTQuMTYwNCAxOS43NDMzQzEzLjc0NDEgMTkuOTY1OCAxMy4yMjg5IDIwLjEyNzggMTIuNjE1NSAyMC4yMjQ1QzEyLjAwMSAyMC4zMTc5IDEwLjk5NjYgMjAuMzY2NSA5LjYwMzkgMjAuMzY2NUg2LjEzNjU2VjguMDkzOTJIOS41MDE4NEMxMC44ODU5IDguMDkzOTIgMTEuODUwMyA4LjEzODc1IDEyLjQwMTYgOC4yMjYyM0MxMi45NTAzIDguMzE2OTUgMTMuNDIwNiA4LjQ3MDMgMTMuODE2NCA4LjY4NzkyQzE0LjI2OSA4LjkzOTAyIDE0LjYxMjkgOS4yNzQzNyAxNC44NTI3IDkuNjkzNDFDMTUuMDg2NSAxMC4xMTUxIDE1LjIwNjkgMTAuNjAyOCAxNS4yMDY5IDExLjE1NDZDMTUuMjA2OSAxMS44NTEyIDE1LjAzMDkgMTIuNDA1MyAxNC42NzYxIDEyLjgxM0MxNC4zMTk3IDEzLjIyNjEgMTMuNzU2IDEzLjUzNTUgMTIuOTggMTMuNzQ3MlpNOS45NjE5MiAxMC44MTQ0SDkuMjQzNzJIOS4yNDMxOFYxMy4yNzY4SDkuOTExMTZDMTAuNzM1MiAxMy4yNzY4IDExLjI5ODQgMTMuMTg1NiAxMS42MDczIDEzLjAwNThDMTEuOTEyNCAxMi44MjI3IDEyLjA2NjMgMTIuNTI3MyAxMi4wNjYzIDEyLjA2NjdDMTIuMDY2MyAxMS42MDYxIDExLjkyMTYgMTEuMjgyMSAxMS42Mzc1IDExLjA5NDdDMTEuMzQ5NyAxMC45MDg0IDEwLjc5MTkgMTAuODE0NCA5Ljk2MTkyIDEwLjgxNDRaTTEwLjQxMjggMTguMTUxNEMxMS4yMDI4IDE4LjE1MTQgMTEuNzY2MSAxOC4wNTMxIDEyLjA5MjggMTcuODUyM1YxNy44NTI4QzEyLjQyMjcgMTcuNjUzIDEyLjU4NjMgMTcuMzIwOSAxMi41ODYzIDE2Ljg1ODFDMTIuNTg2MyAxNi4zNDA4IDEyLjQzNjcgMTUuOTgwNiAxMi4xMzM4IDE1Ljc3NjVDMTEuODM1NyAxNS41NzI0IDExLjI3NDcgMTUuNDcwMyAxMC40NjMgMTUuNDcwM0g5LjI0MzcyVjE4LjE1MTRIMTAuNDEyOFpNMTkuMzA5MyAxNy4yNTdDMTguNDUwMiAxNy4yNTcgMTcuNzU0NyAxNy45NTI1IDE3Ljc1NDcgMTguODExMUMxNy43NTQ3IDE5LjY2OTcgMTguNDUwNyAyMC4zNjU4IDE5LjMwOTMgMjAuMzY1OEMyMC4xNjc5IDIwLjM2NTggMjAuODYzNCAxOS42Njk3IDIwLjg2MzQgMTguODExMUMyMC44NjM0IDE3Ljk1MjUgMjAuMTY2OCAxNy4yNTcgMTkuMzA5MyAxNy4yNTdaTTE3Ljk1OTMgOC4wOTMxOEgyMC42NTkzVjE2LjI3NTNIMTcuOTU5M1Y4LjA5MzE4WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PC9zdmc+]]
+
+link:/topics/bash[]
+
+image:https://storage.googleapis.com/zenn-user-upload/topics/a077a1927f.png[https://storage.googleapis.com/zenn-user-upload/topics/a077a1927f]
+
+Bash
+
+link:/topics/shell[]
+
+image:https://storage.googleapis.com/zenn-user-upload/topics/c8d33e6510.jpeg[https://storage.googleapis.com/zenn-user-upload/topics/c8d33e6510]
+
+shell
+
+link:/tech-or-idea[]
+
+image:https://static.zenn.studio/images/drawing/tech-icon.svg[https://static.zenn.studio/images/drawing/tech-icon]
+
+tech
+
+[[%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB]]
+== link:#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB[] はじめに
+
+ポートのSREを担当している @taiki.noda です。
+
+弊社で実施しているインフラ勉強会でbashスクリプトについて調査したので、今回はそれを紹介したいと思います。
+
+まずなぜこの内容を調査したのかについて３点
+
+* bashでのシェルスクリプトは簡単に利用できるが、バグを生みやすく、可読性の低くなりやすい言語
+* 複雑な処理は他の言語（Go,
+Python等）を使った方が良いが、現状色々な箇所で使われているので、メンテナンス性の高い書き方等調べたい
+* 弊社で使われているシェルスクリプトの書き方を考慮した上で、社内で使えるテンプレートを作成・コーディング規約的なものを作ろうと思った
+
+[[%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A7%8B%E6%88%90]]
+== link:#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A7%8B%E6%88%90[] ファイルの構成
+
+[[%E3%82%B7%E3%83%90%E3%83%B3%E3%81%AF%23!%2Fbin%2Fsh%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%23!%2Fbin%2Fbash]]
+=== link:#%E3%82%B7%E3%83%90%E3%83%B3%E3%81%AF%23!%2Fbin%2Fsh%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%23!%2Fbin%2Fbash[] シバンは#!/bin/shではなく#!/bin/bash
+
+* 特にshを使うというわけではないなら、bashを明示する
+
+[[%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%86%92%E9%A0%AD%E3%81%AB%E7%94%A8%E9%80%94%E3%83%BB%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E6%98%8E%E8%A8%98]]
+=== link:#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%86%92%E9%A0%AD%E3%81%AB%E7%94%A8%E9%80%94%E3%83%BB%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E6%98%8E%E8%A8%98[] ファイルの冒頭に用途・使い方を明記
+
+[source,language-shell]
+----
+#!/bin/bash
+#
+# Perform hot backups of Oracle databases.
+----
+
+[[%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%8C%96%E3%81%99%E3%82%8B]]
+=== link:#%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%8C%96%E3%81%99%E3%82%8B[] 関数を使用してコードをモジュール化する
+
+* 関数を使用すると、用途がわかりやすく、読みやすいコードが書ける
+* 汎用的に使いまわせる形で書ける
+
+[source,language-shell]
+----
+function my_func(){
+    command1;
+    command2;
+}
+my_func
+----
+
+[[%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%80%81function%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AF%E3%81%97%E3%81%A3%E3%81%8B%E3%82%8A%E3%81%A8%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E8%A8%98%E8%BF%B0%E3%81%99%E3%82%8B]]
+=== link:#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%80%81function%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AF%E3%81%97%E3%81%A3%E3%81%8B%E3%82%8A%E3%81%A8%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E8%A8%98%E8%BF%B0%E3%81%99%E3%82%8B[] コマンド、functionを作成するときはしっかりとコメントを記述する
+
+* 複雑な処理は読み解くことが困難なため、実行内容などをコメントする
+* そのスクリプト・コマンドの用途・使い方・利用上の注意点
+* 引数やオプションの定義
+
+[[usage()%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B]]
+=== link:#usage()%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B[] usage()関数を作成する
+
+* スクリプトの使い方をスクリプト内に記載する
+
+[source,language-shell]
+----
+function usage() {
+cat <<EOS
+Usage:  $0 <arg1> <arg2> <arg3>
+
+ arg1  aaaaaaaa
+ arg2  bbbbbbb
+ arg3  ccccccc
+
+EOS
+  exit 1
+}
+
+if [[ $# != 3 ]]; then
+      usage
+fi
+----
+
+[[%E9%96%A2%E6%95%B0%E3%81%AF%E5%AE%9A%E6%95%B0%E3%81%AE%E3%81%99%E3%81%90%E4%B8%8B%E3%81%AB%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B]]
+=== link:#%E9%96%A2%E6%95%B0%E3%81%AF%E5%AE%9A%E6%95%B0%E3%81%AE%E3%81%99%E3%81%90%E4%B8%8B%E3%81%AB%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B[] 関数は定数のすぐ下にまとめる
+
+* 関数と関数の間に実行コードがあるとコードを追いかけるのが難しくなる
+
+[[main%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B]]
+=== link:#main%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B[] main関数を作成する
+
+* 短いscriptであれば不要だが、一つ以上の関数を含む長さのscriptの場合はmain関数を作成する
+* main関数を一番下に置いてスクリプトの最後でそれを呼び出すように記述する
+* main関数の実行を`if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then`でブロックし、scriptを直接実行した時のみ処理を行うようにする
+
+== link:#tips[] Tips
+
+[[shellcheck%2C-shfmt-%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B]]
+=== link:#shellcheck%2C-shfmt-%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B[] ShellCheck, shfmt を入れる
+
+* ShellCheck は、バグの要因になり得る記述を検知し警告してくれる、Shell
+の Linter
+* shfmt は、スクリプト内の記述を設定したルールにしたがって整形してくれる
+Formatter
+
+==== link:#install[] install
+
+[source,language-shell]
+----
+% brew install shellcheck shfmt
+% shellcheck ./sample.sh # shellcheck実行
+% shfmt -w ./sample.sh # shfmt実行、整形して保存
+----
+
+==== link:#vscode-plugin[] VSCode Plugin
+
+どちらもVSCodeの拡張機能が存在するので、VSCodeユーザの方は入れることをおすすめします。
+
+* https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck[shellcheck]
+* https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format[shfmt]
+
+[[%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E6%96%87%E6%B3%95%E3%82%92%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B]]
+=== link:#%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E6%96%87%E6%B3%95%E3%82%92%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B[] シェルの文法をチェックする
+
+* 実行時に`-n`を付与することでシェルを実行せず文法チェックができる
+
+[source,language-shell]
+----
+# bash -n miss.sh #文法エラーあり
+miss.sh: line 4: syntax error near unexpected token `done'
+miss.sh: line 4: `done'
+----
+
+[[%E3%83%91%E3%82%A4%E3%83%97%E3%81%A7%E6%B8%A1%E3%81%97%E3%81%9F%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AE%E7%B5%82%E4%BA%86%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%92%E3%81%BF%E3%82%8B]]
+=== link:#%E3%83%91%E3%82%A4%E3%83%97%E3%81%A7%E6%B8%A1%E3%81%97%E3%81%9F%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AE%E7%B5%82%E4%BA%86%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%92%E3%81%BF%E3%82%8B[] パイプで渡したコマンドの終了ステータスをみる
+
+* 通常`$?`では最後に実行したコマンドの終了ステータスしか見ることができない
+* パイプで渡したコマンドの終了ステータスが見たいときは、`PIPESTATUS`を見ればよい
+
+[source,language-shell]
+----
+# echo ${PIPESTATUS[@]}
+0 0 0 0 0
+----
+
+[[%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%88%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E8%A8%AD%E5%AE%9A]]
+=== link:#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%88%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E8%A8%AD%E5%AE%9A[] スクリプトのカレントディレクトリ設定
+
+* 他の関連ファイル・ログ等を作成する場合に、このディレクトリを起点に色々相対パスで指定できる
+
+[source,language-shell]
+----
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+LOG=$SCRIPT_DIR/tst.log
+----
+
+[[%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AF%E6%A8%99%E6%BA%96%E3%82%A8%E3%83%A9%E3%83%BC%E5%87%BA%E5%8A%9B%E3%81%AB%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B]]
+=== link:#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AF%E6%A8%99%E6%BA%96%E3%82%A8%E3%83%A9%E3%83%BC%E5%87%BA%E5%8A%9B%E3%81%AB%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B[] エラーメッセージは標準エラー出力に出力する
+
+* エラーメッセージと他のステータス情報を一緒に出力する関数を作成すると便利
+
+[source,language-shell]
+----
+function err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+}
+
+if ! do_something; then
+  err "Unable to do_something"
+  exit 1
+fi
+----
+
+[[%E3%82%88%E3%82%8A%E8%89%AF%E3%81%84%E6%9B%B8%E3%81%8D%E6%96%B9]]
+== link:#%E3%82%88%E3%82%8A%E8%89%AF%E3%81%84%E6%9B%B8%E3%81%8D%E6%96%B9[] より良い書き方
+
+[[if%E6%96%87%E3%81%AF%5B%E3%80%9C%5D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%5B%5B%E3%80%9C%5D%5D%E3%82%92%E4%BD%BF%E3%81%86]]
+=== link:#if%E6%96%87%E3%81%AF%5B%E3%80%9C%5D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%5B%5B%E3%80%9C%5D%5D%E3%82%92%E4%BD%BF%E3%81%86[] if文は[〜]ではなく[[〜]]を使う
+
+* [[の方が安全で機能が豊富
+
+....
+[[ は && が使える
+[[ は || が使える
+[[ は -e FILEが使える
+[[ は -eq が使える
+[[ は = でglob マッチが使える
+[[ は =~ の 正規表現マッチが使える
+[[ は < で文字列長さ比較ができる
+....
+
+* グロビングや単語分割がないため、[[
+]]の中にある=の左辺をクオートする必要がない
+* 空の変数も正しく扱われる
+
+[[%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E7%BD%AE%E6%8F%9B%E3%81%AF%24(cmd)%E3%82%92%E4%BD%BF%E3%81%86]]
+=== link:#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E7%BD%AE%E6%8F%9B%E3%81%AF%24(cmd)%E3%82%92%E4%BD%BF%E3%81%86[] コマンド置換は$(cmd)を使う
+
+* `cmd`と$(cmd)で２通りの記法があるが、$(cmd)で記述する
+* 理由は$(cmd)ならネストできる
+* あと `cmd`は見にくい
+
+[source,language-bash]
+----
+VAL=`echo "hoge"`
+VAL=$(echo "hoge")
+----
+
+[[%E5%AE%9A%E6%95%B0%E3%81%AF%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8A%E5%B0%82%E7%94%A8%E3%81%AB%E3%81%99%E3%82%8B]]
+=== link:#%E5%AE%9A%E6%95%B0%E3%81%AF%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8A%E5%B0%82%E7%94%A8%E3%81%AB%E3%81%99%E3%82%8B[] 定数は読み取り専用にする
+
+* 想定外の値の上書きを防止するため、上書きする必要がない値は読み取り専用で定義する
+* bashでは以下で定義すると定数になる
+
+[source,language-bash]
+----
+declare -r val1
+readonly val1
+local -r val1
+----
+
+* それぞれの違いは、`declare -r`と`local -r`は関数内で定義した場合スコープが関数内で、`readonly`はスコープがグローバルになる
+* 個人的には、グローバル定数を`readonly`で定義、ローカル定数を`local -r`で定義するとわかりやすいと思います。
+
+[[%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AE%E5%91%BD%E5%90%8D]]
+=== link:#%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AE%E5%91%BD%E5%90%8D[] 変数名の命名
+
+* snake caseで命名する (例: use_this_format、OUTPUT_DIR)
+* グローバルな変数・定数は全て大文字(例:
+OUTPUT_DIR)、ファイルの先頭で宣言する
+* ローカル変数は小文字で先頭に_をつける (例: _use_this_format)
+
+[[%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AFeuc%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B]]
+=== link:#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AFeuc%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B[] オプションは`euC`をつける
+
+[source,language-shell]
+----
+#!/bin/bash
+
+# 最初に設定
+set -euC
+
+echo "myscript"
+----
+
+* シバンのところにも記述できるがbashコマンドで直接実行するときにオプションが機能しなくなるのでsetで指定する方が良い
+
+[[-e%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3]]
+==== link:#-e%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3[] `-e`オプション
+
+* スクリプト中のコマンドがエラーになった場合にスクリプトを停止する +
+※`grep`
+`ls`などが0件になる場合に終了コード0以外になるので、一時的に`-e`を解除する必要がある
+
+[[-u%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3]]
+==== link:#-u%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3[] `-u`オプション
+
+* 未定義変数を使おうとするとエラー終了するようになる
+* 変数名のタイプミスや初期化わすれでの変数の利用などを防ぐことができる
+* 以下のようにデフォルト値を指定すれば回避できる
+
+[source,language-shell]
+----
+"${VAL1:-}"
+----
+
+[[-c%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3]]
+==== link:#-c%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3[] `-C`オプション
+
+* リダイレクトでのファイル上書き時にエラー終了するようになる
+* リダイレクトでファイルを生成するときに想定外に上書きしてしまうことを防ぐことができる
+* 以下のようにすれば回避できる
+
+[source,language-shell]
+----
+echo "Hello" >| file1.txt
+----
+
+[[%E9%85%8D%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AF%E3%80%8C%22%E3%80%8D%E3%81%A7%E5%BF%85%E3%81%9A%E5%9B%B2%E3%81%86]]
+=== link:#%E9%85%8D%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AF%E3%80%8C%22%E3%80%8D%E3%81%A7%E5%BF%85%E3%81%9A%E5%9B%B2%E3%81%86[] 配列変数を展開するときは「"」で必ず囲う
+
+* 値に半角スペースを含む場合に囲うかどうかで挙動が変わる
+
+[source,language-shell]
+----
+# 以下のようにコマンド実行した場合
+# myfunc 100 200 "foo bar" 300
+
+# 以下２つのfor文の結果が異なる
+
+for i in $@; do echo $i; done
+#=> 100
+#=> 200
+#=> foo
+#=> bar
+#=> 300
+
+for i in "$@"; do echo $i; done
+#=> 100
+#=> 200
+#=> foo bar
+#=> 300
+----
+
+[[eval%E3%81%AF%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84]]
+=== link:#eval%E3%81%AF%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84[] evalは使わない
+
+* なにが実行されたのかわかりにくい
+* 成功したのかどうかがわからない
+* 変数へ代入すると、その変数がなにであったかを確認することなく設定してしまう
+
+[source,language-shell]
+----
+# What does this set?
+# Did it succeed? In part or whole?
+eval $(set_my_variables)
+
+# What happens if one of the returned values has a space in it?
+variable="$(eval some_function)"
+----
+
+[[%E3%83%91%E3%82%A4%E3%83%97%E5%87%BA%E5%8A%9B%E3%82%92while%E3%81%A7%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E3%82%88%E3%82%8A%E3%80%81%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%BD%AE%E6%8F%9B%E3%82%84readarray%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B]]
+=== link:#%E3%83%91%E3%82%A4%E3%83%97%E5%87%BA%E5%8A%9B%E3%82%92while%E3%81%A7%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E3%82%88%E3%82%8A%E3%80%81%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%BD%AE%E6%8F%9B%E3%82%84readarray%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B[] パイプ出力をwhileで読み込むより、プロセス置換やreadarrayを使用する
+
+* whileスコープ内で変数代入しても、ループを抜けると消えてしまう
+* パイプで接続された各々のコマンドはサブシェル（別プロセス）を作成して実行される
+* shell変数は一つのプロセス内でしか共有できないため、その内容を他のプロセスから見ることはできない
+
+[source,language-shell]
+----
+last_line='NULL'
+your_command | while read -r line; do
+  if [[ -n "${line}" ]]; then
+    last_line="${line}"
+  fi
+done
+
+# This will always output 'NULL'!
+echo "${last_line}"
+----
+
+* プロセス置換もサブシェルを作成するが、サブシェルからwhileにリダイレクトすることが可能
+
+[source,language-shell]
+----
+last_line='NULL'
+while read line; do
+  if [[ -n "${line}" ]]; then
+    last_line="${line}"
+  fi
+done < <(your_command)
+
+# This will output the last non-empty line from your_command
+echo "${last_line}"
+----
+
+* readarrayはbashの組み込みのコマンド
+* readarrayを使用して、コマンドの出力を配列に読み込み、ループする
+
+[source,language-shell]
+----
+last_line='NULL'
+readarray -t lines < <(your_command)
+for line in "${lines[@]}"; do
+  if [[ -n "${line}" ]]; then
+    last_line="${line}"
+  fi
+done
+echo "${last_line}"
+----
+
+[[%E7%AE%97%E8%A1%93%E6%BC%94%E7%AE%97%E3%81%A7%E3%81%AF((-...-))%E3%81%8B%24((-...-))%E3%82%92%E4%BD%BF%E3%81%86]]
+=== link:#%E7%AE%97%E8%A1%93%E6%BC%94%E7%AE%97%E3%81%A7%E3%81%AF((-...-))%E3%81%8B%24((-...-))%E3%82%92%E4%BD%BF%E3%81%86[] 算術演算では`(( ... ))`か`$(( ... ))`を使う
+
+* `let`, `$[ ... ]`, `expr`は使用しない
+* `<`, `>`は`[[ ... ]]`の中では数値比較ではなく、辞書式比較を行う
+* 数値比較には`[[ ... ]]`ではなく`(( ... ))`を用いる
+* シェルの組み込み演算は`expr`より何倍も速い
+* `$(( ... ))`内では`${var}`, `$var`は必要ない（`var`で良い）
+
+[source,language-shell]
+----
+# Do some complicated computations.
+# Note that normal arithmetic operator precedence is observed.
+hr=2
+min=5
+sec=30
+echo $(( hr * 3600 + min * 60 + sec )) # prints 7530 as expected
+----
+
+[[%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AA%E3%81%84%E3%81%AE%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AF%E3%83%AB%E3%83%BC%E3%83%97%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E5%A4%89%E6%95%B0%E3%81%AB%E4%BC%BC%E3%81%9F%E5%90%8D%E5%89%8D%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B]]
+=== link:#%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AA%E3%81%84%E3%81%AE%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AF%E3%83%AB%E3%83%BC%E3%83%97%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E5%A4%89%E6%95%B0%E3%81%AB%E4%BC%BC%E3%81%9F%E5%90%8D%E5%89%8D%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B[] ループないの変数名はループしている変数に似た名前をつける
+
+[source,language-shell]
+----
+for zone in "${zones[@]}"; do
+  something_with "${zone}"
+done
+----
+
+[[%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88]]
+== link:#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88[] テンプレート
+
+[source,language-shell]
+----
+#!/bin/bash
+#
+# 例) MySQLのダンプファイル取得
+# マスキング処理を実行
+# S3にアップロード
+
+# オプションを付与する
+set -euC
+
+# グローバル定数の定義 
+readonly SCRIPT_DIR=$(cd $(dirname $0);pwd)
+readonly GLOBAL_CONST="GLOBAL_CONST"
+
+# 関数や変数ファイルの読み込み
+source $SCRIPT_DIR/functions.sh
+
+#
+# 関数定義
+#
+
+# usage関数を作成
+function usage() {
+cat <<EOS
+Usage:  $0 <arg1> <arg2> <arg3>
+
+ arg1  aaaaaaaa
+ arg2  bbbbbbb
+ arg3  ccccccc
+
+EOS
+  exit 1
+}
+
+# 引数を受け取る関数を作成
+function parse_args(){
+  if [[ #? != 3 ]]; then
+    usage
+  fi
+  readonly ARG1="$1"
+  readonly ARG2="$2"
+  readonly ARG3="$3"
+}
+
+# commandを実行
+#
+# $1: ローカル変数
+# 出力: ~~~
+function my_func() {
+  # ローカル定数
+  local -r _local_const="$1"
+  command "$local_const"
+  echo "~~~"
+}
+
+# main関数
+
+function main(){
+  local -r _arg1="$1"
+  local -r _arg2="$2"
+  local -r _arg3="$3"
+
+  my_func "$_arg1"
+}
+
+# entry point
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  parse_args "$@"
+  main "$ARG1" "$ARG2" "$ARG3"
+fi
+----
+
+[[%E5%8F%82%E8%80%83]]
+== link:#%E5%8F%82%E8%80%83[] 参考
+
+bashスクリプトについてみていきました。 +
+最初にも言ったのですが、やはり複雑な処理は他の言語に任せるのが良さそうです。 +
+今後は他の言語を使った運用スクリプトなどもみていきたいと思いました。
+
+参考になれば幸いです。
+
+[[%E5%8F%82%E8%80%83-1]]
+== link:#%E5%8F%82%E8%80%83-1[] 参考
+
+* https://note.com/navitime_tech/n/n0675e103bafa
+* https://takuya-1st.hatenablog.jp/entry/2017/01/02/163036
+* https://www.m3tech.blog/entry/2018/08/21/bash-scripting
+* https://qiita.com/mashumashu/items/bbc3a79bc779fe8c4f99
+* https://genzouw.com/entry/2019/02/01/081707/733/
+* https://footaku.hatenablog.com/entry/2018/09/03/140000
+* https://qiita.com/mashumashu/items/f5b5ff62fef8af0859c5
+* https://yakst.com/ja/posts/2929
+* https://qiita.com/rsooo/items/ef1d036bcc7282a66d7d
+* https://google.github.io/styleguide/shellguide.html
+
+[[share]]
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iTGlrZUJ1dHRvbl9zdmdMaWtlX19HbDBTeiIgdmlld2JveD0iMCAwIDExMCAxMTAiPjxwYXRoIGNsYXNzPSJMaWtlQnV0dG9uX3N2Z0xpa2VMaW5lX19mOXR4UiIgZD0iTTczLDI0YTIzLjc4LDIzLjc4LDAsMCwwLTE1Ljg5LDYuMTksMy4xNCwzLjE0LDAsMCwxLTQuMTgsMEEyMy44MSwyMy44MSwwLDAsMCwzNywyNGEyMiwyMiwwLDAsMC0yMiwyMmMwLDE2LjY3LDE5LjY0LDMyLjgyLDI1LjExLDM3LjkzLDIuODQsMi42NSw2LjE1LDUuNjQsOC45Miw4LjEzYTguOSw4LjksMCwwLDAsMTEuOSwwYzIuNzctMi40OSw2LjA3LTUuNDgsOC45MS04LjEzQzc1LjM3LDc4LjgxLDk1LDYyLjY2LDk1LDQ2QTIyLDIyLDAsMCwwLDczLDI0WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZUlubmVyX191aWV4UyIgZD0iTTY2LjI1LDc2LjQyYy0uNzEuNjQtMS4zMiwxLjItMS44MiwxLjY3LTIuNTEsMi4zMy01LjM5LDUtNy45NCw3LjI1YTIuMjEsMi4yMSwwLDAsMS0zLDBDNTEsODMsNDguMSw4MC40Miw0NS41OSw3OC4wOWMtLjUtLjQ3LTEuMTItMS0xLjgyLTEuNjdDMzguMDksNzEuMjksMjMsNTcuNjcsMjMsNDZBMTQsMTQsMCwwLDEsMzcsMzJhMTUuOTIsMTUuOTIsMCwwLDEsMTEuNjUsNS4yM2w0LjczLDVhMi4yLDIuMiwwLDAsMCwzLjIzLDBsNC43Mi01QTE2LjA2LDE2LjA2LDAsMCwxLDczLDMyLDE0LDE0LDAsMCwxLDg3LDQ2Qzg3LDU3LjY3LDcxLjkzLDcxLjI5LDY2LjI1LDc2LjQyWiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PGcgY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZURlY29yYXRpb25fXzc4VWpCIj48Y2lyY2xlIGN4PSI0MS41IiBjeT0iOS41IiBmaWxsPSIjM2VhOGZmIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijk4LjUiIGN5PSIyNi41IiBmaWxsPSIjZmZkYzZlIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTkiIGZpbGw9IiNjMDY3ZjQiIHI9IjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijc3IiBjeT0iOSIgZmlsbD0iI2Y3NjY4NSIgcj0iNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjYuNSIgY3k9IjkyLjUiIGZpbGw9IiNmNzY2ODUiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTA1LjUiIGN5PSI0OC41IiBmaWxsPSIjYzA2N2Y0IiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQuNSIgY3k9IjYwLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTQuNSIgY3k9IjczLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTYuNSIgY3k9Ijc1LjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzguNSIgY3k9IjkxLjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PC9nPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iTGlrZUJ1dHRvbl9zdmdMaWtlX19HbDBTeiIgdmlld2JveD0iMCAwIDExMCAxMTAiPjxwYXRoIGNsYXNzPSJMaWtlQnV0dG9uX3N2Z0xpa2VMaW5lX19mOXR4UiIgZD0iTTczLDI0YTIzLjc4LDIzLjc4LDAsMCwwLTE1Ljg5LDYuMTksMy4xNCwzLjE0LDAsMCwxLTQuMTgsMEEyMy44MSwyMy44MSwwLDAsMCwzNywyNGEyMiwyMiwwLDAsMC0yMiwyMmMwLDE2LjY3LDE5LjY0LDMyLjgyLDI1LjExLDM3LjkzLDIuODQsMi42NSw2LjE1LDUuNjQsOC45Miw4LjEzYTguOSw4LjksMCwwLDAsMTEuOSwwYzIuNzctMi40OSw2LjA3LTUuNDgsOC45MS04LjEzQzc1LjM3LDc4LjgxLDk1LDYyLjY2LDk1LDQ2QTIyLDIyLDAsMCwwLDczLDI0WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZUlubmVyX191aWV4UyIgZD0iTTY2LjI1LDc2LjQyYy0uNzEuNjQtMS4zMiwxLjItMS44MiwxLjY3LTIuNTEsMi4zMy01LjM5LDUtNy45NCw3LjI1YTIuMjEsMi4yMSwwLDAsMS0zLDBDNTEsODMsNDguMSw4MC40Miw0NS41OSw3OC4wOWMtLjUtLjQ3LTEuMTItMS0xLjgyLTEuNjdDMzguMDksNzEuMjksMjMsNTcuNjcsMjMsNDZBMTQsMTQsMCwwLDEsMzcsMzJhMTUuOTIsMTUuOTIsMCwwLDEsMTEuNjUsNS4yM2w0LjczLDVhMi4yLDIuMiwwLDAsMCwzLjIzLDBsNC43Mi01QTE2LjA2LDE2LjA2LDAsMCwxLDczLDMyLDE0LDE0LDAsMCwxLDg3LDQ2Qzg3LDU3LjY3LDcxLjkzLDcxLjI5LDY2LjI1LDc2LjQyWiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PGcgY2xhc3M9Ikxpa2VCdXR0b25fc3ZnTGlrZURlY29yYXRpb25fXzc4VWpCIj48Y2lyY2xlIGN4PSI0MS41IiBjeT0iOS41IiBmaWxsPSIjM2VhOGZmIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijk4LjUiIGN5PSIyNi41IiBmaWxsPSIjZmZkYzZlIiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTkiIGZpbGw9IiNjMDY3ZjQiIHI9IjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9Ijc3IiBjeT0iOSIgZmlsbD0iI2Y3NjY4NSIgcj0iNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjYuNSIgY3k9IjkyLjUiIGZpbGw9IiNmNzY2ODUiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTA1LjUiIGN5PSI0OC41IiBmaWxsPSIjYzA2N2Y0IiByPSIzLjUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQuNSIgY3k9IjYwLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjMuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTQuNSIgY3k9IjczLjUiIGZpbGw9IiMzZWE4ZmYiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTYuNSIgY3k9Ijc1LjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzguNSIgY3k9IjkxLjUiIGZpbGw9IiNmZmRjNmUiIHI9IjEuNSI+PC9jaXJjbGU+PC9nPjwvc3ZnPg==]
+
+image:data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMjcgMjciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMTIuNzQsMjAuNTMsMy40OCwxMS4zNWEuNzUuNzUsMCwwLDEsMC0xLjA3TDQuNzEsOS4wNWEuNzUuNzUsMCwwLDEsMS4wNywwbDcuNDksNy40MSw3LjQ5LTcuNDFhLjc0Ljc0LDAsMCwxLDEuMDYsMGwxLjI0LDEuMjNhLjc3Ljc3LDAsMCwxLDAsMS4wN0wxMy44LDIwLjUzQS43NC43NCwwLDAsMSwxMi43NCwyMC41M1oiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMjcgMjciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMTIuNzQsMjAuNTMsMy40OCwxMS4zNWEuNzUuNzUsMCwwLDEsMC0xLjA3TDQuNzEsOS4wNWEuNzUuNzUsMCwwLDEsMS4wNywwbDcuNDksNy40MSw3LjQ5LTcuNDFhLjc0Ljc0LDAsMCwxLDEuMDYsMGwxLjI0LDEuMjNhLjc3Ljc3LDAsMCwxLDAsMS4wN0wxMy44LDIwLjUzQS43NC43NCwwLDAsMSwxMi43NCwyMC41M1oiPjwvcGF0aD48L3N2Zz4=]
+
+https://twitter.com/intent/tweet?url=https://zenn.dev/portinc/articles/bash-best-practice&text=bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%82%92%E8%AA%BF%E6%9F%BB%E3%81%97%E3%81%9F%EF%BD%9Cportinc&hashtags=zenn[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzFfMTgpIj48cGF0aCBkPSJNMTYuMDY4NyAxMS43MzU2TDI2LjEyIDBIMjMuNzM4MkwxNS4wMTA2IDEwLjE4OTlMOC4wMzk4OCAwSDBMMTAuNTQxMSAxNS40MDg5TDAgMjcuNzE1NUgyLjM4MTk5TDExLjU5ODUgMTYuOTU0NkwxOC45NjAxIDI3LjcxNTVIMjdMMTYuMDY4MSAxMS43MzU2SDE2LjA2ODdaTTEyLjgwNjIgMTUuNTQ0N0wxMS43MzgyIDE0LjAxMDNMMy4yNDAyNSAxLjgwMTA2SDYuODk4ODRMMTMuNzU2OCAxMS42NTQzTDE0LjgyNDggMTMuMTg4N0wyMy43MzkzIDI1Ljk5NjNIMjAuMDgwN0wxMi44MDYyIDE1LjU0NTJWMTUuNTQ0N1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzFfMTgiPjxyZWN0IHdpZHRoPSIyNyIgaGVpZ2h0PSIyNy43Mjk3IiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjwvY2xpcHBhdGg+PC9kZWZzPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzFfMTgpIj48cGF0aCBkPSJNMTYuMDY4NyAxMS43MzU2TDI2LjEyIDBIMjMuNzM4MkwxNS4wMTA2IDEwLjE4OTlMOC4wMzk4OCAwSDBMMTAuNTQxMSAxNS40MDg5TDAgMjcuNzE1NUgyLjM4MTk5TDExLjU5ODUgMTYuOTU0NkwxOC45NjAxIDI3LjcxNTVIMjdMMTYuMDY4MSAxMS43MzU2SDE2LjA2ODdaTTEyLjgwNjIgMTUuNTQ0N0wxMS43MzgyIDE0LjAxMDNMMy4yNDAyNSAxLjgwMTA2SDYuODk4ODRMMTMuNzU2OCAxMS42NTQzTDE0LjgyNDggMTMuMTg4N0wyMy43MzkzIDI1Ljk5NjNIMjAuMDgwN0wxMi44MDYyIDE1LjU0NTJWMTUuNTQ0N1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzFfMTgiPjxyZWN0IHdpZHRoPSIyNyIgaGVpZ2h0PSIyNy43Mjk3IiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjwvY2xpcHBhdGg+PC9kZWZzPjwvc3ZnPg==]]http://www.facebook.com/sharer.php?u=https://zenn.dev/portinc/articles/bash-best-practice[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjkiIHZpZXdib3g9IjAgMCAyOCAyOSIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzJfMjEpIj48cGF0aCBkPSJNMjggMTQuNzgxMkMyOCA3LjAyMDg0IDIxLjczMTkgMC43Mjk3MzYgMTQgMC43Mjk3MzZDNi4yNjgwOCAwLjcyOTczNiAwIDcuMDIwODQgMCAxNC43ODEyQzAgMjEuMzcwNyA0LjUyMDMyIDI2LjkwMDIgMTAuNjE4MiAyOC40MTg5VjE5LjA3NTNINy43MzEzNlYxNC43ODEySDEwLjYxODJWMTIuOTMwOUMxMC42MTgyIDguMTQ4MzMgMTIuNzc0NyA1LjkzMTU4IDE3LjQ1MyA1LjkzMTU4QzE4LjM0IDUuOTMxNTggMTkuODcwNSA2LjEwNjM3IDIwLjQ5NjYgNi4yODA2MVYxMC4xNzI5QzIwLjE2NjIgMTAuMTM4IDE5LjU5MjIgMTAuMTIwNiAxOC44NzkzIDEwLjEyMDZDMTYuNTgzOCAxMC4xMjA2IDE1LjY5NjggMTAuOTkzNSAxNS42OTY4IDEzLjI2MjVWMTQuNzgxMkgyMC4yNjk4TDE5LjQ4NDEgMTkuMDc1M0gxNS42OTY4VjI4LjcyOTdDMjIuNjI5IDI3Ljg4OTUgMjguMDAwNiAyMS45NjU0IDI4LjAwMDYgMTQuNzgxMkgyOFoiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzJfMjEiPjxyZWN0IHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC43Mjk3MzYpIj48L3JlY3Q+PC9jbGlwcGF0aD48L2RlZnM+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjkiIHZpZXdib3g9IjAgMCAyOCAyOSIgZmlsbD0ibm9uZSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzJfMjEpIj48cGF0aCBkPSJNMjggMTQuNzgxMkMyOCA3LjAyMDg0IDIxLjczMTkgMC43Mjk3MzYgMTQgMC43Mjk3MzZDNi4yNjgwOCAwLjcyOTczNiAwIDcuMDIwODQgMCAxNC43ODEyQzAgMjEuMzcwNyA0LjUyMDMyIDI2LjkwMDIgMTAuNjE4MiAyOC40MTg5VjE5LjA3NTNINy43MzEzNlYxNC43ODEySDEwLjYxODJWMTIuOTMwOUMxMC42MTgyIDguMTQ4MzMgMTIuNzc0NyA1LjkzMTU4IDE3LjQ1MyA1LjkzMTU4QzE4LjM0IDUuOTMxNTggMTkuODcwNSA2LjEwNjM3IDIwLjQ5NjYgNi4yODA2MVYxMC4xNzI5QzIwLjE2NjIgMTAuMTM4IDE5LjU5MjIgMTAuMTIwNiAxOC44NzkzIDEwLjEyMDZDMTYuNTgzOCAxMC4xMjA2IDE1LjY5NjggMTAuOTkzNSAxNS42OTY4IDEzLjI2MjVWMTQuNzgxMkgyMC4yNjk4TDE5LjQ4NDEgMTkuMDc1M0gxNS42OTY4VjI4LjcyOTdDMjIuNjI5IDI3Ljg4OTUgMjguMDAwNiAyMS45NjU0IDI4LjAwMDYgMTQuNzgxMkgyOFoiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzJfMjEiPjxyZWN0IHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC43Mjk3MzYpIj48L3JlY3Q+PC9jbGlwcGF0aD48L2RlZnM+PC9zdmc+]]https://b.hatena.ne.jp/add?mode=confirm&url=https://zenn.dev/portinc/articles/bash-best-practice&title=bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%82%92%E8%AA%BF%E6%9F%BB%E3%81%97%E3%81%9F%EF%BD%9Cportinc[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjQ5OTkgMC43Mjk3MzZIMjEuNTAwMUMyNC41Mzc2IDAuNzI5NzM2IDI3IDMuMTkyMTMgMjcgNi4yMjk2NFYyMi4yMjk4QzI3IDI1LjI2NzMgMjQuNTM3NiAyNy43Mjk3IDIxLjUwMDEgMjcuNzI5N0g1LjQ5OTlDMi40NjIzOSAyNy43Mjk3IDAgMjUuMjY3MyAwIDIyLjIyOThWNi4yMjk2NEMwIDMuMTkyMTMgMi40NjIzOSAwLjcyOTczNiA1LjQ5OTkgMC43Mjk3MzZaTTEyLjk4IDEzLjc0NzJDMTMuODUyMSAxMy44MTM2IDE0LjUzMTkgMTQuMTIwOSAxNS4wMjEyIDE0LjY2NzNWMTQuNjY3OUMxNS41MTIgMTUuMjEyNyAxNS43NTcyIDE1Ljk0NDQgMTUuNzU3MiAxNi44NTQzQzE1Ljc1NzIgMTcuNTEyNiAxNS42MiAxOC4wODc3IDE1LjM0MzYgMTguNTg2N0MxNS4wNjkyIDE5LjA4NCAxNC42NzU2IDE5LjQ3MTIgMTQuMTYwNCAxOS43NDMzQzEzLjc0NDEgMTkuOTY1OCAxMy4yMjg5IDIwLjEyNzggMTIuNjE1NSAyMC4yMjQ1QzEyLjAwMSAyMC4zMTc5IDEwLjk5NjYgMjAuMzY2NSA5LjYwMzkgMjAuMzY2NUg2LjEzNjU2VjguMDkzOTJIOS41MDE4NEMxMC44ODU5IDguMDkzOTIgMTEuODUwMyA4LjEzODc1IDEyLjQwMTYgOC4yMjYyM0MxMi45NTAzIDguMzE2OTUgMTMuNDIwNiA4LjQ3MDMgMTMuODE2NCA4LjY4NzkyQzE0LjI2OSA4LjkzOTAyIDE0LjYxMjkgOS4yNzQzNyAxNC44NTI3IDkuNjkzNDFDMTUuMDg2NSAxMC4xMTUxIDE1LjIwNjkgMTAuNjAyOCAxNS4yMDY5IDExLjE1NDZDMTUuMjA2OSAxMS44NTEyIDE1LjAzMDkgMTIuNDA1MyAxNC42NzYxIDEyLjgxM0MxNC4zMTk3IDEzLjIyNjEgMTMuNzU2IDEzLjUzNTUgMTIuOTggMTMuNzQ3MlpNOS45NjE5MiAxMC44MTQ0SDkuMjQzNzJIOS4yNDMxOFYxMy4yNzY4SDkuOTExMTZDMTAuNzM1MiAxMy4yNzY4IDExLjI5ODQgMTMuMTg1NiAxMS42MDczIDEzLjAwNThDMTEuOTEyNCAxMi44MjI3IDEyLjA2NjMgMTIuNTI3MyAxMi4wNjYzIDEyLjA2NjdDMTIuMDY2MyAxMS42MDYxIDExLjkyMTYgMTEuMjgyMSAxMS42Mzc1IDExLjA5NDdDMTEuMzQ5NyAxMC45MDg0IDEwLjc5MTkgMTAuODE0NCA5Ljk2MTkyIDEwLjgxNDRaTTEwLjQxMjggMTguMTUxNEMxMS4yMDI4IDE4LjE1MTQgMTEuNzY2MSAxOC4wNTMxIDEyLjA5MjggMTcuODUyM1YxNy44NTI4QzEyLjQyMjcgMTcuNjUzIDEyLjU4NjMgMTcuMzIwOSAxMi41ODYzIDE2Ljg1ODFDMTIuNTg2MyAxNi4zNDA4IDEyLjQzNjcgMTUuOTgwNiAxMi4xMzM4IDE1Ljc3NjVDMTEuODM1NyAxNS41NzI0IDExLjI3NDcgMTUuNDcwMyAxMC40NjMgMTUuNDcwM0g5LjI0MzcyVjE4LjE1MTRIMTAuNDEyOFpNMTkuMzA5MyAxNy4yNTdDMTguNDUwMiAxNy4yNTcgMTcuNzU0NyAxNy45NTI1IDE3Ljc1NDcgMTguODExMUMxNy43NTQ3IDE5LjY2OTcgMTguNDUwNyAyMC4zNjU4IDE5LjMwOTMgMjAuMzY1OEMyMC4xNjc5IDIwLjM2NTggMjAuODYzNCAxOS42Njk3IDIwLjg2MzQgMTguODExMUMyMC44NjM0IDE3Ljk1MjUgMjAuMTY2OCAxNy4yNTcgMTkuMzA5MyAxNy4yNTdaTTE3Ljk1OTMgOC4wOTMxOEgyMC42NTkzVjE2LjI3NTNIMTcuOTU5M1Y4LjA5MzE4WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjgiIHZpZXdib3g9IjAgMCAyNyAyOCIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjQ5OTkgMC43Mjk3MzZIMjEuNTAwMUMyNC41Mzc2IDAuNzI5NzM2IDI3IDMuMTkyMTMgMjcgNi4yMjk2NFYyMi4yMjk4QzI3IDI1LjI2NzMgMjQuNTM3NiAyNy43Mjk3IDIxLjUwMDEgMjcuNzI5N0g1LjQ5OTlDMi40NjIzOSAyNy43Mjk3IDAgMjUuMjY3MyAwIDIyLjIyOThWNi4yMjk2NEMwIDMuMTkyMTMgMi40NjIzOSAwLjcyOTczNiA1LjQ5OTkgMC43Mjk3MzZaTTEyLjk4IDEzLjc0NzJDMTMuODUyMSAxMy44MTM2IDE0LjUzMTkgMTQuMTIwOSAxNS4wMjEyIDE0LjY2NzNWMTQuNjY3OUMxNS41MTIgMTUuMjEyNyAxNS43NTcyIDE1Ljk0NDQgMTUuNzU3MiAxNi44NTQzQzE1Ljc1NzIgMTcuNTEyNiAxNS42MiAxOC4wODc3IDE1LjM0MzYgMTguNTg2N0MxNS4wNjkyIDE5LjA4NCAxNC42NzU2IDE5LjQ3MTIgMTQuMTYwNCAxOS43NDMzQzEzLjc0NDEgMTkuOTY1OCAxMy4yMjg5IDIwLjEyNzggMTIuNjE1NSAyMC4yMjQ1QzEyLjAwMSAyMC4zMTc5IDEwLjk5NjYgMjAuMzY2NSA5LjYwMzkgMjAuMzY2NUg2LjEzNjU2VjguMDkzOTJIOS41MDE4NEMxMC44ODU5IDguMDkzOTIgMTEuODUwMyA4LjEzODc1IDEyLjQwMTYgOC4yMjYyM0MxMi45NTAzIDguMzE2OTUgMTMuNDIwNiA4LjQ3MDMgMTMuODE2NCA4LjY4NzkyQzE0LjI2OSA4LjkzOTAyIDE0LjYxMjkgOS4yNzQzNyAxNC44NTI3IDkuNjkzNDFDMTUuMDg2NSAxMC4xMTUxIDE1LjIwNjkgMTAuNjAyOCAxNS4yMDY5IDExLjE1NDZDMTUuMjA2OSAxMS44NTEyIDE1LjAzMDkgMTIuNDA1MyAxNC42NzYxIDEyLjgxM0MxNC4zMTk3IDEzLjIyNjEgMTMuNzU2IDEzLjUzNTUgMTIuOTggMTMuNzQ3MlpNOS45NjE5MiAxMC44MTQ0SDkuMjQzNzJIOS4yNDMxOFYxMy4yNzY4SDkuOTExMTZDMTAuNzM1MiAxMy4yNzY4IDExLjI5ODQgMTMuMTg1NiAxMS42MDczIDEzLjAwNThDMTEuOTEyNCAxMi44MjI3IDEyLjA2NjMgMTIuNTI3MyAxMi4wNjYzIDEyLjA2NjdDMTIuMDY2MyAxMS42MDYxIDExLjkyMTYgMTEuMjgyMSAxMS42Mzc1IDExLjA5NDdDMTEuMzQ5NyAxMC45MDg0IDEwLjc5MTkgMTAuODE0NCA5Ljk2MTkyIDEwLjgxNDRaTTEwLjQxMjggMTguMTUxNEMxMS4yMDI4IDE4LjE1MTQgMTEuNzY2MSAxOC4wNTMxIDEyLjA5MjggMTcuODUyM1YxNy44NTI4QzEyLjQyMjcgMTcuNjUzIDEyLjU4NjMgMTcuMzIwOSAxMi41ODYzIDE2Ljg1ODFDMTIuNTg2MyAxNi4zNDA4IDEyLjQzNjcgMTUuOTgwNiAxMi4xMzM4IDE1Ljc3NjVDMTEuODM1NyAxNS41NzI0IDExLjI3NDcgMTUuNDcwMyAxMC40NjMgMTUuNDcwM0g5LjI0MzcyVjE4LjE1MTRIMTAuNDEyOFpNMTkuMzA5MyAxNy4yNTdDMTguNDUwMiAxNy4yNTcgMTcuNzU0NyAxNy45NTI1IDE3Ljc1NDcgMTguODExMUMxNy43NTQ3IDE5LjY2OTcgMTguNDUwNyAyMC4zNjU4IDE5LjMwOTMgMjAuMzY1OEMyMC4xNjc5IDIwLjM2NTggMjAuODYzNCAxOS42Njk3IDIwLjg2MzQgMTguODExMUMyMC44NjM0IDE3Ljk1MjUgMjAuMTY2OCAxNy4yNTcgMTkuMzA5MyAxNy4yNTdaTTE3Ljk1OTMgOC4wOTMxOEgyMC42NTkzVjE2LjI3NTNIMTcuOTU5M1Y4LjA5MzE4WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PC9zdmc+]]
+
+link:/portinc[image:https://storage.googleapis.com/zenn-user-upload/avatar/accd4ec98b.jpeg[portinc,width=80,height=80]]
+
+link:/portinc[portinc]
+
+ポート公式のエンジニアのブログです！
+
+[.ProfileCard_follow__ng60N]##https://www.theport.jp/[image:data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDI3IDI3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNyAyNyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgYXJpYS1sYWJlbD0i44Oq44Oz44KvIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik05LjYsMjMuOWMtMy42LDAtNi41LTMtNi41LTYuNmMwLTEuNywwLjctMy40LDEuOS00LjZsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41bC0yLjMsMi4zIGMtMS43LDEuNy0xLjcsNC40LDAsNi4xczQuNCwxLjcsNi4xLDBsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41TDE0LjMsMjJDMTMsMjMuMiwxMS40LDIzLjksOS42LDIzLjl6ICBNMTAuNiwxNy41Yy0wLjYsMC0xLjEtMC41LTEuMS0xLjFjMC0wLjMsMC4xLTAuNiwwLjMtMC44bDUuOC01LjhjMC40LTAuNCwxLjEtMC40LDEuNiwwYzAuNCwwLjQsMC40LDEuMSwwLDEuNmwtNS44LDUuOCBDMTEuMiwxNy40LDEwLjksMTcuNSwxMC42LDE3LjV6IE0xOC45LDE2LjljLTAuMywwLTAuNi0wLjEtMC44LTAuM2MtMC40LTAuNC0wLjQtMS4xLDAtMS42bDIuMy0yLjNjMS43LTEuNywxLjctNC40LDAtNi4xIGMtMS43LTEuNy00LjQtMS43LTYuMSwwTDEyLDguOWMtMC41LDAuNC0xLjIsMC40LTEuNi0wLjFjLTAuNC0wLjQtMC40LTEsMC0xLjVMMTIuNyw1YzIuNi0yLjYsNi43LTIuNiw5LjIsMHMyLjYsNi43LDAsOS4yIGwtMi4zLDIuNEMxOS40LDE2LjgsMTkuMSwxNi45LDE4LjksMTYuOXoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDI3IDI3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNyAyNyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgYXJpYS1sYWJlbD0i44Oq44Oz44KvIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik05LjYsMjMuOWMtMy42LDAtNi41LTMtNi41LTYuNmMwLTEuNywwLjctMy40LDEuOS00LjZsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41bC0yLjMsMi4zIGMtMS43LDEuNy0xLjcsNC40LDAsNi4xczQuNCwxLjcsNi4xLDBsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41TDE0LjMsMjJDMTMsMjMuMiwxMS40LDIzLjksOS42LDIzLjl6ICBNMTAuNiwxNy41Yy0wLjYsMC0xLjEtMC41LTEuMS0xLjFjMC0wLjMsMC4xLTAuNiwwLjMtMC44bDUuOC01LjhjMC40LTAuNCwxLjEtMC40LDEuNiwwYzAuNCwwLjQsMC40LDEuMSwwLDEuNmwtNS44LDUuOCBDMTEuMiwxNy40LDEwLjksMTcuNSwxMC42LDE3LjV6IE0xOC45LDE2LjljLTAuMywwLTAuNi0wLjEtMC44LTAuM2MtMC40LTAuNC0wLjQtMS4xLDAtMS42bDIuMy0yLjNjMS43LTEuNywxLjctNC40LDAtNi4xIGMtMS43LTEuNy00LjQtMS43LTYuMSwwTDEyLDguOWMtMC41LDAuNC0xLjIsMC40LTEuNi0wLjFjLTAuNC0wLjQtMC40LTEsMC0xLjVMMTIuNyw1YzIuNi0yLjYsNi43LTIuNiw5LjIsMHMyLjYsNi43LDAsOS4yIGwtMi4zLDIuNEMxOS40LDE2LjgsMTkuMSwxNi45LDE4LjksMTYuOXoiPjwvcGF0aD48L3N2Zz4=]]
+
+[[discuss]]
+== Discussion
+
+image:https://static.zenn.studio/images/drawing/discussion.png[https://static.zenn.studio/images/drawing/discussion,width=300]
+
+link:/portinc[image:https://storage.googleapis.com/zenn-user-upload/avatar/accd4ec98b.jpeg[portinc,width=60,height=60]]
+
+link:/portinc[portinc]
+
+https://www.theport.jp/[image:data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDI3IDI3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNyAyNyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgYXJpYS1sYWJlbD0i44Oq44Oz44KvIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik05LjYsMjMuOWMtMy42LDAtNi41LTMtNi41LTYuNmMwLTEuNywwLjctMy40LDEuOS00LjZsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41bC0yLjMsMi4zIGMtMS43LDEuNy0xLjcsNC40LDAsNi4xczQuNCwxLjcsNi4xLDBsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41TDE0LjMsMjJDMTMsMjMuMiwxMS40LDIzLjksOS42LDIzLjl6ICBNMTAuNiwxNy41Yy0wLjYsMC0xLjEtMC41LTEuMS0xLjFjMC0wLjMsMC4xLTAuNiwwLjMtMC44bDUuOC01LjhjMC40LTAuNCwxLjEtMC40LDEuNiwwYzAuNCwwLjQsMC40LDEuMSwwLDEuNmwtNS44LDUuOCBDMTEuMiwxNy40LDEwLjksMTcuNSwxMC42LDE3LjV6IE0xOC45LDE2LjljLTAuMywwLTAuNi0wLjEtMC44LTAuM2MtMC40LTAuNC0wLjQtMS4xLDAtMS42bDIuMy0yLjNjMS43LTEuNywxLjctNC40LDAtNi4xIGMtMS43LTEuNy00LjQtMS43LTYuMSwwTDEyLDguOWMtMC41LDAuNC0xLjIsMC40LTEuNi0wLjFjLTAuNC0wLjQtMC40LTEsMC0xLjVMMTIuNyw1YzIuNi0yLjYsNi43LTIuNiw5LjIsMHMyLjYsNi43LDAsOS4yIGwtMi4zLDIuNEMxOS40LDE2LjgsMTkuMSwxNi45LDE4LjksMTYuOXoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDI3IDI3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNyAyNyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgYXJpYS1sYWJlbD0i44Oq44Oz44KvIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik05LjYsMjMuOWMtMy42LDAtNi41LTMtNi41LTYuNmMwLTEuNywwLjctMy40LDEuOS00LjZsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41bC0yLjMsMi4zIGMtMS43LDEuNy0xLjcsNC40LDAsNi4xczQuNCwxLjcsNi4xLDBsMi4zLTIuM2MwLjUtMC40LDEuMi0wLjQsMS42LDAuMWMwLjQsMC40LDAuNCwxLDAsMS41TDE0LjMsMjJDMTMsMjMuMiwxMS40LDIzLjksOS42LDIzLjl6ICBNMTAuNiwxNy41Yy0wLjYsMC0xLjEtMC41LTEuMS0xLjFjMC0wLjMsMC4xLTAuNiwwLjMtMC44bDUuOC01LjhjMC40LTAuNCwxLjEtMC40LDEuNiwwYzAuNCwwLjQsMC40LDEuMSwwLDEuNmwtNS44LDUuOCBDMTEuMiwxNy40LDEwLjksMTcuNSwxMC42LDE3LjV6IE0xOC45LDE2LjljLTAuMywwLTAuNi0wLjEtMC44LTAuM2MtMC40LTAuNC0wLjQtMS4xLDAtMS42bDIuMy0yLjNjMS43LTEuNywxLjctNC40LDAtNi4xIGMtMS43LTEuNy00LjQtMS43LTYuMSwwTDEyLDguOWMtMC41LDAuNC0xLjIsMC40LTEuNi0wLjFjLTAuNC0wLjQtMC40LTEsMC0xLjVMMTIuNyw1YzIuNi0yLjYsNi43LTIuNiw5LjIsMHMyLjYsNi43LDAsOS4yIGwtMi4zLDIuNEMxOS40LDE2LjgsMTkuMSwxNi45LDE4LjksMTYuOXoiPjwvcGF0aD48L3N2Zz4=]]
+
+ポート公式のエンジニアのブログです！
+
+目次
+
+. link:#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB[はじめに]
+. link:#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A7%8B%E6%88%90[ファイルの構成]
+.. link:#%E3%82%B7%E3%83%90%E3%83%B3%E3%81%AF%23!%2Fbin%2Fsh%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%23!%2Fbin%2Fbash[シバンは#!/bin/shではなく#!/bin/bash]
+.. link:#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%86%92%E9%A0%AD%E3%81%AB%E7%94%A8%E9%80%94%E3%83%BB%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E6%98%8E%E8%A8%98[ファイルの冒頭に用途・使い方を明記]
+.. link:#%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%8C%96%E3%81%99%E3%82%8B[関数を使用してコードをモジュール化する]
+.. link:#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%80%81function%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AF%E3%81%97%E3%81%A3%E3%81%8B%E3%82%8A%E3%81%A8%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E8%A8%98%E8%BF%B0%E3%81%99%E3%82%8B[コマンド、functionを作成するときはしっかりとコメントを記述する]
+.. link:#usage()%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B[usage()関数を作成する]
+.. link:#%E9%96%A2%E6%95%B0%E3%81%AF%E5%AE%9A%E6%95%B0%E3%81%AE%E3%81%99%E3%81%90%E4%B8%8B%E3%81%AB%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B[関数は定数のすぐ下にまとめる]
+.. link:#main%E9%96%A2%E6%95%B0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B[main関数を作成する]
+. link:#tips[Tips]
+.. link:#shellcheck%2C-shfmt-%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B[ShellCheck&#44;
+shfmt を入れる]
+.. link:#%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E6%96%87%E6%B3%95%E3%82%92%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B[シェルの文法をチェックする]
+.. link:#%E3%83%91%E3%82%A4%E3%83%97%E3%81%A7%E6%B8%A1%E3%81%97%E3%81%9F%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AE%E7%B5%82%E4%BA%86%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%92%E3%81%BF%E3%82%8B[パイプで渡したコマンドの終了ステータスをみる]
+.. link:#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%88%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E8%A8%AD%E5%AE%9A[スクリプトのカレントディレクトリ設定]
+.. link:#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AF%E6%A8%99%E6%BA%96%E3%82%A8%E3%83%A9%E3%83%BC%E5%87%BA%E5%8A%9B%E3%81%AB%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B[エラーメッセージは標準エラー出力に出力する]
+. link:#%E3%82%88%E3%82%8A%E8%89%AF%E3%81%84%E6%9B%B8%E3%81%8D%E6%96%B9[より良い書き方]
+.. link:#if%E6%96%87%E3%81%AF%5B%E3%80%9C%5D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%5B%5B%E3%80%9C%5D%5D%E3%82%92%E4%BD%BF%E3%81%86[if文は[〜]ではなく[[〜]]を使う]
+.. link:#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E7%BD%AE%E6%8F%9B%E3%81%AF%24(cmd)%E3%82%92%E4%BD%BF%E3%81%86[コマンド置換は$(cmd)を使う]
+.. link:#%E5%AE%9A%E6%95%B0%E3%81%AF%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8A%E5%B0%82%E7%94%A8%E3%81%AB%E3%81%99%E3%82%8B[定数は読み取り専用にする]
+.. link:#%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AE%E5%91%BD%E5%90%8D[変数名の命名]
+.. link:#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AFeuc%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B[オプションはeuCをつける]
+.. link:#%E9%85%8D%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AF%E3%80%8C%22%E3%80%8D%E3%81%A7%E5%BF%85%E3%81%9A%E5%9B%B2%E3%81%86[配列変数を展開するときは「"」で必ず囲う]
+.. link:#eval%E3%81%AF%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84[evalは使わない]
+.. link:#%E3%83%91%E3%82%A4%E3%83%97%E5%87%BA%E5%8A%9B%E3%82%92while%E3%81%A7%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E3%82%88%E3%82%8A%E3%80%81%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%BD%AE%E6%8F%9B%E3%82%84readarray%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B[パイプ出力をwhileで読み込むより、プロセス置換やreadarrayを使用する]
+.. link:#%E7%AE%97%E8%A1%93%E6%BC%94%E7%AE%97%E3%81%A7%E3%81%AF((-...-))%E3%81%8B%24((-...-))%E3%82%92%E4%BD%BF%E3%81%86[算術演算では((
+... ))か$(( ... ))を使う]
+.. link:#%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AA%E3%81%84%E3%81%AE%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AF%E3%83%AB%E3%83%BC%E3%83%97%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E5%A4%89%E6%95%B0%E3%81%AB%E4%BC%BC%E3%81%9F%E5%90%8D%E5%89%8D%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B[ループないの変数名はループしている変数に似た名前をつける]
+. link:#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88[テンプレート]
+. link:#%E5%8F%82%E8%80%83[参考]
+. link:#%E5%8F%82%E8%80%83-1[参考]
+
+[[related-contents]]
+
+link:/[image:data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDM3Ny40IDg4LjMiIGFyaWEtbGFiZWw9Ilplbm4gfCDjgqjjg7Pjgrjjg4vjgqLjga7jgZ/jgoHjga7mg4XloLHlhbHmnInjgrPjg5/jg6Xjg4vjg4bjgqMiIGNsYXNzPSJaZW5uTG9nb19sb2dvU3ZnX195T2hjZyIgaGVpZ2h0PSIyMCIgd2lkdGg9Ijg1Ij48dGl0bGU+WmVubjwvdGl0bGU+PGcgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMjMzLDU2LjhoLTM5YzAuNSwzLjUsMi4yLDYuOCw0LjgsOS4yYzIuNywyLjMsNi4yLDMuNSw5LjgsMy40YzIuOCwwLDUuNi0wLjUsOC4yLTEuN2MyLjUtMS4xLDQuOC0yLjgsNi41LTVsOC4yLDkuNSBjLTIuNSwzLjQtNS43LDYuMS05LjUsNy45Yy00LjYsMi4yLTkuNiwzLjMtMTQuNywzLjJjLTUuNywwLjEtMTEuNC0xLjItMTYuNS00Yy00LjUtMi41LTguMi02LjMtMTAuNy0xMC45cy0zLjgtOS44LTMuNy0xNS4xdi0yLjIgYy0wLjEtNS43LDEuMS0xMS4zLDMuNS0xNi41YzIuMi00LjcsNS43LTguNiwxMC4xLTExLjNjNC43LTIuOCwxMC4xLTQuMiwxNS41LTQuMWM1LjItMC4xLDEwLjMsMS4xLDE0LjksMy43IGM0LjEsMi41LDcuNCw2LjIsOS40LDEwLjVjMi4yLDUuMSwzLjMsMTAuNSwzLjIsMTYuMVY1Ni44eiBNMjE2LjEsNDMuOWMwLjEtMi45LTAuOS01LjctMi44LTcuOWMtMS44LTEuOS00LjQtMi45LTcuOS0yLjkgYy0yLjktMC4xLTUuOCwxLjEtNy43LDMuMmMtMiwyLjYtMy4zLDUuNy0zLjYsOWgyMlY0My45eiI+PC9wYXRoPjxwYXRoIGQ9Ik0xMjguMyw2Ny45aDM2LjF2MTQuN2gtNTYuOVY3MmwzNS44LTU0LjNoLTM2LjJWMi45aDU2LjZ2MTAuNEwxMjguMyw2Ny45eiI+PC9wYXRoPjxwYXRoIGQ9Ik0yNDguOCw1MC43YzAtMTkuMSwxMi43LTI5LjIsMjguMi0yOS4yczI3LjksMTAuMSwyNy45LDI5LjJWODJoLTE2VjUxLjRjMC0xMC42LTQuOC0xNi4xLTEyLTE2LjFzLTEyLjQsNS41LTEyLjQsMTYuMSB2MzAuN2gtMTUuOEwyNDguOCw1MC43TDI0OC44LDUwLjd6Ij48L3BhdGg+PHBhdGggZD0iTTMyMC4zLDUwLjdjMC0xOS4xLDEyLjctMjkuMiwyOC4yLTI5LjJzMjcuOSwxMC4xLDI3LjksMjkuMlY4MmgtMTZWNTEuNGMwLTEwLjYtNC44LTE2LjEtMTItMTYuMVMzMzYsNDAuOCwzMzYsNTEuNHYzMC43IGgtMTUuOEwzMjAuMyw1MC43TDMyMC4zLDUwLjd6Ij48L3BhdGg+PC9nPjxwYXRoIGZpbGw9IiMzRUE4RkYiIGNsYXNzPSJzdDAiIGQ9Ik0yLjQsODMuM2gxN2MwLjksMCwxLjctMC41LDIuMi0xLjJMNjguNCw1LjJDNjksNC4yLDY4LjMsMyw2Ny4xLDNINTFjLTAuOCwwLTEuNSwwLjQtMS45LDEuMUwxLjYsODEuOSBDMS4zLDgyLjUsMS43LDgzLjMsMi40LDgzLjN6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzNFQThGRiIgY2xhc3M9InN0MCIgZD0iTTYxLDgyLjFsMjIuMS0zNS41YzAuNy0xLjEtMC4xLTIuNS0xLjQtMi41SDY1LjdjLTAuNiwwLTEuMiwwLjMtMS41LDAuOEw0MS41LDgxLjJjLTAuNiwwLjksMC4xLDIuMSwxLjIsMi4xIGgxNi4zQzU5LjgsODMuMyw2MC42LDgyLjksNjEsODIuMXoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgdmlld2JveD0iMCAwIDM3Ny40IDg4LjMiIGFyaWEtbGFiZWw9Ilplbm4gfCDjgqjjg7Pjgrjjg4vjgqLjga7jgZ/jgoHjga7mg4XloLHlhbHmnInjgrPjg5/jg6Xjg4vjg4bjgqMiIGNsYXNzPSJaZW5uTG9nb19sb2dvU3ZnX195T2hjZyIgaGVpZ2h0PSIyMCIgd2lkdGg9Ijg1Ij48dGl0bGU+WmVubjwvdGl0bGU+PGcgZmlsbD0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMjMzLDU2LjhoLTM5YzAuNSwzLjUsMi4yLDYuOCw0LjgsOS4yYzIuNywyLjMsNi4yLDMuNSw5LjgsMy40YzIuOCwwLDUuNi0wLjUsOC4yLTEuN2MyLjUtMS4xLDQuOC0yLjgsNi41LTVsOC4yLDkuNSBjLTIuNSwzLjQtNS43LDYuMS05LjUsNy45Yy00LjYsMi4yLTkuNiwzLjMtMTQuNywzLjJjLTUuNywwLjEtMTEuNC0xLjItMTYuNS00Yy00LjUtMi41LTguMi02LjMtMTAuNy0xMC45cy0zLjgtOS44LTMuNy0xNS4xdi0yLjIgYy0wLjEtNS43LDEuMS0xMS4zLDMuNS0xNi41YzIuMi00LjcsNS43LTguNiwxMC4xLTExLjNjNC43LTIuOCwxMC4xLTQuMiwxNS41LTQuMWM1LjItMC4xLDEwLjMsMS4xLDE0LjksMy43IGM0LjEsMi41LDcuNCw2LjIsOS40LDEwLjVjMi4yLDUuMSwzLjMsMTAuNSwzLjIsMTYuMVY1Ni44eiBNMjE2LjEsNDMuOWMwLjEtMi45LTAuOS01LjctMi44LTcuOWMtMS44LTEuOS00LjQtMi45LTcuOS0yLjkgYy0yLjktMC4xLTUuOCwxLjEtNy43LDMuMmMtMiwyLjYtMy4zLDUuNy0zLjYsOWgyMlY0My45eiI+PC9wYXRoPjxwYXRoIGQ9Ik0xMjguMyw2Ny45aDM2LjF2MTQuN2gtNTYuOVY3MmwzNS44LTU0LjNoLTM2LjJWMi45aDU2LjZ2MTAuNEwxMjguMyw2Ny45eiI+PC9wYXRoPjxwYXRoIGQ9Ik0yNDguOCw1MC43YzAtMTkuMSwxMi43LTI5LjIsMjguMi0yOS4yczI3LjksMTAuMSwyNy45LDI5LjJWODJoLTE2VjUxLjRjMC0xMC42LTQuOC0xNi4xLTEyLTE2LjFzLTEyLjQsNS41LTEyLjQsMTYuMSB2MzAuN2gtMTUuOEwyNDguOCw1MC43TDI0OC44LDUwLjd6Ij48L3BhdGg+PHBhdGggZD0iTTMyMC4zLDUwLjdjMC0xOS4xLDEyLjctMjkuMiwyOC4yLTI5LjJzMjcuOSwxMC4xLDI3LjksMjkuMlY4MmgtMTZWNTEuNGMwLTEwLjYtNC44LTE2LjEtMTItMTYuMVMzMzYsNDAuOCwzMzYsNTEuNHYzMC43IGgtMTUuOEwzMjAuMyw1MC43TDMyMC4zLDUwLjd6Ij48L3BhdGg+PC9nPjxwYXRoIGZpbGw9IiMzRUE4RkYiIGNsYXNzPSJzdDAiIGQ9Ik0yLjQsODMuM2gxN2MwLjksMCwxLjctMC41LDIuMi0xLjJMNjguNCw1LjJDNjksNC4yLDY4LjMsMyw2Ny4xLDNINTFjLTAuOCwwLTEuNSwwLjQtMS45LDEuMUwxLjYsODEuOSBDMS4zLDgyLjUsMS43LDgzLjMsMi40LDgzLjN6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzNFQThGRiIgY2xhc3M9InN0MCIgZD0iTTYxLDgyLjFsMjIuMS0zNS41YzAuNy0xLjEtMC4xLTIuNS0xLjQtMi41SDY1LjdjLTAuNiwwLTEuMiwwLjMtMS41LDAuOEw0MS41LDgxLjJjLTAuNiwwLjksMC4xLDIuMSwxLjIsMi4xIGgxNi4zQzU5LjgsODMuMyw2MC42LDgyLjksNjEsODIuMXoiPjwvcGF0aD48L3N2Zz4=]]
+
+エンジニアのための +
+情報共有コミュニティ
+
+== About
+
+* {blank}
++
+link:/about[Zennについて]
+* https://classmethod.jp[運営会社]
+* https://info.zenn.dev[お知らせ・リリース]
+* {blank}
++
+link:/events[イベント]
+
+== Guides
+
+* {blank}
++
+link:/manual[使い方]
+* {blank}
++
+link:/biz-lp[法人向けメニュー][.NewLabel_newLabelSecondary__6Iy_T .NewLabel_newLabel__Xva_r]#New#
+* {blank}
++
+link:/publications[Publication / Pro]
+* {blank}
++
+link:/faq[よくある質問]
+
+== Links
+
+* https://twitter.com/zenn_dev[X(Twitter)]
+* https://github.com/zenn-dev[GitHub]
+* {blank}
++
+link:/mediakit[メディアキット]
+
+== Legal
+
+* {blank}
++
+link:/terms[利用規約]
+* {blank}
++
+link:/privacy[プライバシーポリシー]
+* {blank}
++
+link:/terms/transaction-law[特商法表記]
+
+https://classmethod.jp/[image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTE1IiBoZWlnaHQ9IjI1IiB2aWV3Ym94PSIwIDAgMjcxIDYwIiBjbGFzcz0iQXBwRm9vdGVyX2NsYXNzbWV0aG9kTG9nb19fMVJGdVYiPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yXzkwKSI+PHBhdGggZD0iTTI2NC42MzYgMy4xNjE3QzI2NS40NzUgMy4xNjEyOCAyNjYuMjc5IDMuNDkzOTMgMjY2Ljg3MyA0LjA4NjUxQzI2Ny40NjYgNC42NzkwOSAyNjcuOCA1LjQ4MzA5IDI2Ny44MDEgNi4zMjE3NVY1My4wNzAzQzI2Ny44MDEgNTMuNTY2OCAyNjcuNzAzIDU0LjA1ODUgMjY3LjUxMyA1NC41MTcxQzI2Ny4zMjMgNTQuOTc1OCAyNjcuMDQ1IDU1LjM5MjYgMjY2LjY5NCA1NS43NDM3QzI2Ni4zNDIgNTYuMDk0OCAyNjUuOTI2IDU2LjM3MzMgMjY1LjQ2NyA1Ni41NjMzQzI2NS4wMDggNTYuNzUzMyAyNjQuNTE3IDU2Ljg1MSAyNjQuMDIgNTYuODUxSDYuOTMxMzJDNS45Mjg2MSA1Ni44NTEgNC45NjY5NyA1Ni40NTI3IDQuMjU3OTUgNTUuNzQzN0MzLjU0ODkyIDU1LjAzNDcgMy4xNTA2IDU0LjA3MyAzLjE1MDYgNTMuMDcwM1Y2LjkzMTM5QzMuMTUwNiA1LjkyODY4IDMuNTQ4OTIgNC45NjcwNCA0LjI1Nzk1IDQuMjU4MDJDNC45NjY5NyAzLjU0ODk5IDUuOTI4NjEgMy4xNTA2NyA2LjkzMTMyIDMuMTUwNjdIMjI1LjA1QzIyNS4xMzcgMy4xNTE3OCAyMjUuMjIxIDMuMTcwNTMgMjI1LjMgMy4yMDU3NUMyMjUuMzc5IDMuMjQwOTcgMjI1LjQ0OSAzLjI5MTkyIDIyNS41MDcgMy4zNTU0NkwyMzMuOTg3IDEyLjc2QzIzNC4yOCAxMy4wNTQxIDIzNC42MjggMTMuMjg3NSAyMzUuMDExIDEzLjQ0NjdDMjM1LjM5NCAxMy42MDYgMjM1LjgwNSAxMy42ODggMjM2LjIyIDEzLjY4OEMyMzYuNjM1IDEzLjY4OCAyMzcuMDQ2IDEzLjYwNiAyMzcuNDI5IDEzLjQ0NjdDMjM3LjgxMiAxMy4yODc1IDIzOC4xNiAxMy4wNTQxIDIzOC40NTMgMTIuNzZMMjQ2LjkzMyAzLjM1MjMxQzI0Ni45OSAzLjI4Nzc4IDI0Ny4wNjEgMy4yMzYxNiAyNDcuMTM5IDMuMjAwODZDMjQ3LjIxOCAzLjE2NTU1IDI0Ny4zMDMgMy4xNDczNyAyNDcuMzkgMy4xNDc1MkgyNjQuNjVMMjY0LjYzNiAzLjE2MTdaTTI2NC42MzYgNy4xNzA5NWUtMDVIMjQ2LjFDMjQ2LjAwNiAwLjAwMDc1OTg0NSAyNDUuOTE0IDAuMDIwNTM1OSAyNDUuODI4IDAuMDU4MTg4QzI0NS43NDIgMC4wOTU4NDAxIDI0NS42NjUgMC4xNTA1NzUgMjQ1LjYwMiAwLjIxOTAzOEwyMzcuMzQ3IDkuMzk1MTZDMjM3LjMzNCA5LjQwNzU3IDIzNy4zMjMgOS40MjEzIDIzNy4zMTMgOS40MzYxMUMyMzcuMDE4IDkuNzI0NzUgMjM2LjYyMiA5Ljg4NjQyIDIzNi4yMSA5Ljg4NjQyQzIzNS43OTcgOS44ODY0MiAyMzUuNDAyIDkuNzI0NzUgMjM1LjEwNyA5LjQzNjExQzIzNS4wOTQgOS40MjQyNiAyMzUuMDgyIDkuNDEwNDUgMjM1LjA3MiA5LjM5NTE2TDIyNi44NDMgMC4yMzk1MTdDMjI2Ljc3NSAwLjE2MjkyMiAyMjYuNjkxIDAuMTAxODkgMjI2LjU5NyAwLjA2MDU3MTdDMjI2LjUwNCAwLjAxOTI1MzYgMjI2LjQwMiAtMC4wMDEzODA5OSAyMjYuMyA3LjE3MDk1ZS0wNUg2LjkzMTMyQzUuMDkzMDIgNy4xNzA5NWUtMDUgMy4zMzAwMSAwLjczMDMzMyAyLjAzMDE0IDIuMDMwMjFDMC43MzAyNjIgMy4zMzAwOCAwIDUuMDkzMDkgMCA2LjkzMTM5TDAgNTMuMDcxOUMwIDU0LjkxMDIgMC43MzAyNjIgNTYuNjczMiAyLjAzMDE0IDU3Ljk3MzFDMy4zMzAwMSA1OS4yNzMgNS4wOTMwMiA2MC4wMDMyIDYuOTMxMzIgNjAuMDAzMkgyNjQuMDJDMjY1Ljg1OCA2MC4wMDMyIDI2Ny42MjEgNTkuMjczIDI2OC45MjEgNTcuOTczMUMyNzAuMjIxIDU2LjY3MzIgMjcwLjk1MSA1NC45MTAyIDI3MC45NTEgNTMuMDcxOVY2LjMxNTQ1QzI3MC45NDkgNC42NDExNCAyNzAuMjgzIDMuMDM2MDIgMjY5LjA5OSAxLjg1MjFDMjY3LjkxNiAwLjY2ODE5MyAyNjYuMzEgMC4wMDIxNTU5OSAyNjQuNjM2IDcuMTcwOTVlLTA1WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTI5Ljk2NTMgMjMuODg2M0MzMC4wNzY5IDIzLjg4OTUgMzAuMTg2NiAyMy45MTYxIDMwLjI4NzMgMjMuOTY0NEMzMC4zODggMjQuMDEyNiAzMC40Nzc1IDI0LjA4MTMgMzAuNTUwMSAyNC4xNjYyQzMwLjYyMjYgMjQuMjUxIDMwLjY3NjYgMjQuMzUwMSAzMC43MDg2IDI0LjQ1NzFDMzAuNzQwNSAyNC41NjQxIDMwLjc0OTggMjQuNjc2NiAzMC43MzU3IDI0Ljc4NzNWMjguMzU1NEMzMC43MzU3IDI4Ljg1IDMwLjQ2NzkgMjkuMDc2OSAyOS45NjUzIDI5LjA3NjlIMjIuNjAwOEMxOC40NDgzIDI5LjA3NjkgMTcuODE1IDMwLjQ3ODkgMTcuODE1IDM2LjE2NTdDMTcuODE1IDQxLjg1MjYgMTguNDQ1MiA0My4yNTQ2IDIyLjYwMDggNDMuMjU0NkgyOS45NjUzQzMwLjQ2IDQzLjI1NDYgMzAuNzM1NyA0My40ODE0IDMwLjczNTcgNDMuOTM1MVY0Ny41NDU3QzMwLjczNTcgNDguMDg5MiAzMC40Njc5IDQ4LjMxNiAyOS45NjUzIDQ4LjQwNThDMjcuNTM2NyA0OC44NTM4IDI1LjA3MDMgNDkuMDY0OCAyMi42MDA4IDQ5LjAzNTlDMTIuOTgyIDQ5LjAzNTkgMTEuMTMyNiA0Ni4xMDc0IDExLjEzMjYgMzYuMTY0MkMxMS4xMzI2IDI2LjIyMDkgMTIuOTgyIDIzLjI5NTUgMjIuNjAwOCAyMy4yOTU1QzI1LjA2ODEgMjMuMjcyOSAyNy41MzI1IDIzLjQ2ODQgMjkuOTY1MyAyMy44OCIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTM5Ljc2MzcgMTcuNjcwMUMzOS45MzA4IDE3LjY3MDEgNDAuMDkxMSAxNy43MzY1IDQwLjIwOTMgMTcuODU0N0M0MC4zMjc0IDE3Ljk3MjkgNDAuMzkzOCAxOC4xMzMxIDQwLjM5MzggMTguMzAwM1Y0OC40Mzg5QzQwLjM5MzggNDguNjA2IDQwLjMyNzQgNDguNzY2MyA0MC4yMDkzIDQ4Ljg4NDVDNDAuMDkxMSA0OS4wMDI2IDM5LjkzMDggNDkuMDY5IDM5Ljc2MzcgNDkuMDY5SDM0LjM4NzJDMzQuMjk3IDQ5LjA3NTYgMzQuMjA2NCA0OS4wNjI2IDM0LjEyMTYgNDkuMDMxMUMzNC4wMzY4IDQ4Ljk5OTUgMzMuOTU5OCA0OC45NTAxIDMzLjg5NTkgNDguODg2MUMzMy44MzE5IDQ4LjgyMjEgMzMuNzgyNSA0OC43NDUyIDMzLjc1MDkgNDguNjYwNEMzMy43MTkzIDQ4LjU3NTYgMzMuNzA2NCA0OC40ODUgMzMuNzEzIDQ4LjM5NDhWMTguMzQ0NEMzMy43MDY5IDE4LjI1OCAzMy43MTg3IDE4LjE3MTMgMzMuNzQ3NyAxOC4wODk3QzMzLjc3NjYgMTguMDA4IDMzLjgyMjEgMTcuOTMzMyAzMy44ODEyIDE3Ljg3QzMzLjk0MDMgMTcuODA2NyAzNC4wMTE4IDE3Ljc1NjMgMzQuMDkxMyAxNy43MjJDMzQuMTcwOCAxNy42ODc2IDM0LjI1NjUgMTcuNjY5OSAzNC4zNDMxIDE3LjY3MDFIMzkuNzYzN1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik0xNjkuMTU2IDM1Ljg1N1YzNy4yNTlDMTY5LjE1NiAzOC4xNjAxIDE2OC44ODggMzguNDc2NyAxNjcuNzExIDM4LjQ3NjdIMTUzLjUzM0MxNTMuNjIzIDQyLjU0MSAxNTQuNzA5IDQzLjI2MjQgMTU4LjYzNiA0My4yNjI0SDE2Ni42NzlDMTY2Ljg0NiA0My4yNjI0IDE2Ny4wMDcgNDMuMzI4OCAxNjcuMTI1IDQzLjQ0N0MxNjcuMjQzIDQzLjU2NTIgMTY3LjMwOSA0My43MjU1IDE2Ny4zMDkgNDMuODkyNlY0Ny42NzMzQzE2Ny4zMiA0Ny44NTM2IDE2Ny4yNiA0OC4wMzEgMTY3LjE0MyA0OC4xNjgyQzE2Ny4wMjUgNDguMzA1NCAxNjYuODU5IDQ4LjM5MTcgMTY2LjY3OSA0OC40MDlDMTYzLjgzMSA0OC44ODY2IDE2MC45NDUgNDkuMDk3NiAxNTguMDU4IDQ5LjAzOTFDMTQ4LjkzNCA0OS4wMzkxIDE0Ni43MTYgNDYuNDY4MiAxNDYuNzE2IDM2LjE2NzNDMTQ2LjcxNiAyNS44NjY0IDE0OC45MjkgMjMuMjk1NSAxNTguMDU4IDIzLjI5NTVDMTY3LjE4NyAyMy4yOTU1IDE2OS4xMjEgMjUuNzc4MiAxNjkuMTY4IDM1Ljg1MDdNMTUzLjQ5OSAzNC4wOTExSDE2Mi40MzdDMTYyLjM4OCAzMC4xMTY2IDE2MS4zNSAyOS4wNzg1IDE1OC4wNTggMjkuMDc4NUMxNTQuNzY1IDI5LjA3ODUgMTUzLjU0IDMwLjExNjYgMTUzLjQ5OSAzNC4wOTExWiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTE4My4wNTYgNDMuMjkwOEgxODEuMDdDMTc5LjA4MyA0My4yOTA4IDE3OC40MDkgNDIuOTMzMiAxNzguNDA5IDQwLjk4NzdWMjkuMTQ2MkgxODIuNzA2QzE4Mi43OTMgMjkuMTQ0OSAxODIuODc5IDI5LjEyNiAxODIuOTU4IDI5LjA5MDdDMTgzLjAzNyAyOS4wNTUzIDE4My4xMDggMjkuMDA0MyAxODMuMTY3IDI4Ljk0MDdDMTgzLjIyNiAyOC44NzcxIDE4My4yNzEgMjguODAyMiAxODMuMyAyOC43MjA2QzE4My4zMyAyOC42Mzg5IDE4My4zNDIgMjguNTUyMiAxODMuMzM3IDI4LjQ2NTdWMjMuOTU1NkMxODMuMzM3IDIzLjc4ODUgMTgzLjI3IDIzLjYyODIgMTgzLjE1MiAyMy41MUMxODMuMDM0IDIzLjM5MTkgMTgyLjg3NCAyMy4zMjU1IDE4Mi43MDYgMjMuMzI1NUgxNzguNDA5VjE4LjI5NzFDMTc4LjQwNyAxOC4xMzA4IDE3OC4zMzkgMTcuOTcxOSAxNzguMjIyIDE3Ljg1NDJDMTc4LjEwNCAxNy43MzY2IDE3Ny45NDUgMTcuNjY5NCAxNzcuNzc5IDE3LjY2N0gxNzIuMzU1QzE3Mi4xODggMTcuNjY3IDE3Mi4wMjggMTcuNzMzNCAxNzEuOTEgMTcuODUxNUMxNzEuNzkxIDE3Ljk2OTcgMTcxLjcyNSAxOC4xMyAxNzEuNzI1IDE4LjI5NzFWNDMuMjQyQzE3MS43MjUgNDguOTM1MSAxNzUuMjQ2IDQ5LjA3MDYgMTc5LjEyOSA0OS4wNzA2QzE4MC40MTggNDkuMDYzMSAxODEuNzA0IDQ4LjkyNyAxODIuOTY2IDQ4LjY2NDJDMTgzLjA3MiA0OC42NjExIDE4My4xNzYgNDguNjM1NiAxODMuMjcyIDQ4LjU4OTNDMTgzLjM2NyA0OC41NDMxIDE4My40NTIgNDguNDc3MiAxODMuNTIgNDguMzk2QzE4My41ODggNDguMzE0NyAxODMuNjM4IDQ4LjIyIDE4My42NjcgNDguMTE4QzE4My42OTYgNDguMDE1OSAxODMuNzAzIDQ3LjkwOSAxODMuNjg4IDQ3LjgwNFY0My45NjM1QzE4My42OTQgNDMuODc3MSAxODMuNjgyIDQzLjc5MDQgMTgzLjY1MyA0My43MDg4QzE4My42MjQgNDMuNjI3MSAxODMuNTc5IDQzLjU1MjQgMTgzLjUyIDQzLjQ4OTFDMTgzLjQ2IDQzLjQyNTggMTgzLjM4OSA0My4zNzU0IDE4My4zMDkgNDMuMzQxMUMxODMuMjMgNDMuMzA2NyAxODMuMTQ0IDQzLjI4OSAxODMuMDU4IDQzLjI4OTIiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik0yMzQuNTUxIDM2LjE2NzNDMjM0LjU1MSA0Ni40NjAzIDIzMi40MjYgNDkuMDM5MSAyMjMuMDM0IDQ5LjAzOTFDMjEzLjY0MiA0OS4wMzkxIDIxMS41MTcgNDYuNDY4MiAyMTEuNTE3IDM2LjE2NzNDMjExLjUxNyAyNS44NjY0IDIxMy42ODMgMjMuMjk1NSAyMjMuMDM0IDIzLjI5NTVDMjMyLjM4NSAyMy4yOTU1IDIzNC41NTEgMjUuODI1NSAyMzQuNTUxIDM2LjE2NzNaTTIxOC4yNDggMzYuMTY3M0MyMTguMjQ4IDQxLjg2MDQgMjE4LjkyMiA0My4yNTYxIDIyMy4wMzQgNDMuMjU2MUMyMjcuMTQ2IDQzLjI1NjEgMjI3Ljg2NyA0MS44NTQxIDIyNy44NjcgMzYuMTY3M0MyMjcuODY3IDMwLjQ4MDUgMjI3LjE5MyAyOS4wNzg1IDIyMy4wMzQgMjkuMDc4NUMyMTguODc1IDI5LjA3ODUgMjE4LjI0OCAzMC40ODA1IDIxOC4yNDggMzYuMTY3M1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik0yMDIuNTY2IDIzLjY1OTRDMTk5LjM3OCAyMy4xNzQ1IDE5Ni4xMzUgMjMuMTc0NSAxOTIuOTQ3IDIzLjY1OTRWMTguMzAzNEMxOTIuOTQ3IDE4LjEzNjMgMTkyLjg4MSAxNy45NzYgMTkyLjc2MyAxNy44NTc4QzE5Mi42NDUgMTcuNzM5NyAxOTIuNDg0IDE3LjY3MzMgMTkyLjMxNyAxNy42NzMzSDE4Ni44OTJDMTg2LjcyNSAxNy42NzMzIDE4Ni41NjUgMTcuNzM5NyAxODYuNDQ2IDE3Ljg1NzhDMTg2LjMyOCAxNy45NzYgMTg2LjI2MiAxOC4xMzYzIDE4Ni4yNjIgMTguMzAzNFY0OC4zOTE2QzE4Ni4yNTYgNDguNDc4IDE4Ni4yNjggNDguNTY0NyAxODYuMjk2IDQ4LjY0NjNDMTg2LjMyNSA0OC43Mjc5IDE4Ni4zNzEgNDguODAyNyAxODYuNDMgNDguODY2QzE4Ni40ODkgNDguOTI5MiAxODYuNTYxIDQ4Ljk3OTYgMTg2LjY0IDQ5LjAxNEMxODYuNzIgNDkuMDQ4NCAxODYuODA1IDQ5LjA2NjEgMTg2Ljg5MiA0OS4wNjU4SDE5Mi4zMTdDMTkyLjQ4NCA0OS4wNjU4IDE5Mi42NDUgNDguOTk5NSAxOTIuNzYzIDQ4Ljg4MTNDMTkyLjg4MSA0OC43NjMxIDE5Mi45NDcgNDguNjAyOCAxOTIuOTQ3IDQ4LjQzNTdWMzYuMTc5OUMxOTIuOTQ3IDMxLjM1OTUgMTkzLjA4NCAyOS4wOTEgMTk3LjczMyAyOS4wOTFDMjAyLjM4MiAyOS4wOTEgMjAyLjU5NSAzMS4zNTk1IDIwMi41NjYgMzYuMTc5OUMyMDIuNTM4IDQxLjA2MzMgMjAyLjU2NiA0OC40Mzg5IDIwMi41NjYgNDguNDM4OUMyMDIuNTY2IDQ4LjYwNiAyMDIuNjMzIDQ4Ljc2NjMgMjAyLjc1MSA0OC44ODQ0QzIwMi44NjkgNDkuMDAyNiAyMDMuMDI5IDQ5LjA2OSAyMDMuMTk2IDQ5LjA2OUgyMDguNjIyQzIwOC43ODkgNDkuMDY5IDIwOC45NDkgNDkuMDAyNiAyMDkuMDY3IDQ4Ljg4NDRDMjA5LjE4NSA0OC43NjYzIDIwOS4yNTIgNDguNjA2IDIwOS4yNTIgNDguNDM4OVYzNC45MjEyQzIwOS4yNTIgMjcuNjc0OSAyMDcuNTA1IDI0LjU1MjYgMjAyLjU2OCAyMy42NTE1IiBmaWxsPSJjdXJyZW50Q29sb3IiPjwvcGF0aD48cGF0aCBkPSJNMjU5LjEzOCAxNy40NDQ5QzI1OS4yMjUgMTcuNDM4OCAyNTkuMzExIDE3LjQ1MDYgMjU5LjM5MyAxNy40Nzk2QzI1OS40NzUgMTcuNTA4NSAyNTkuNTQ5IDE3LjU1NCAyNTkuNjEzIDE3LjYxMzFDMjU5LjY3NiAxNy42NzIyIDI1OS43MjYgMTcuNzQzNyAyNTkuNzYxIDE3LjgyMzJDMjU5Ljc5NSAxNy45MDI3IDI1OS44MTMgMTcuOTg4NCAyNTkuODEzIDE4LjA3NVY0Ni4zODMxQzI1OS44MTMgNDcuNjY4NiAyNTkuMjY5IDQ4LjEzMDEgMjU3LjkyMiA0OC4zNzc1QzI1NC45NTEgNDguODMyNyAyNTEuOTQ5IDQ5LjA2NSAyNDguOTQzIDQ5LjA3MjJDMjM5LjI0MSA0OS4wNzIyIDIzNy4yNDggNDYuNDAzNiAyMzcuMjQ4IDM2LjI0OTJDMjM3LjI0OCAyNi4wOTQ4IDIzOS4yNTUgMjMuMzMxOCAyNDguMjM2IDIzLjMzMThDMjQ5Ljg3NyAyMy4yODUyIDI1MS41MTkgMjMuMzc0OCAyNTMuMTQ2IDIzLjU5OTZWMTguMTExMkMyNTMuMTQyIDE4LjAyNiAyNTMuMTU1IDE3Ljk0MDggMjUzLjE4NSAxNy44NjA5QzI1My4yMTUgMTcuNzgxIDI1My4yNjEgMTcuNzA3OSAyNTMuMzIgMTcuNjQ2MkMyNTMuMzc4IDE3LjU4NDUgMjUzLjQ0OSAxNy41MzU0IDI1My41MjggMTcuNTAxOEMyNTMuNjA2IDE3LjQ2ODMgMjUzLjY5MSAxNy40NTExIDI1My43NzYgMTcuNDUxMkgyNTkuMTZMMjU5LjEzOCAxNy40NDQ5Wk0yNDkuMDY2IDI5LjE1NDFDMjQ0LjUwNyAyOS4xNTQxIDI0My45MTYgMzAuMzcxOCAyNDMuOTE2IDM2LjIwMkMyNDMuOTE2IDQxLjUzMTIgMjQ0LjI4IDQzLjI5MDggMjQ4Ljc5MiA0My4yOTA4QzI1MC4yNDEgNDMuMjg5MyAyNTEuNjg5IDQzLjE4NCAyNTMuMTI0IDQyLjk3NThWMjkuMTU0MUgyNDkuMDZIMjQ5LjA2NloiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik02NC4yMjk3IDMxLjA2NDlWNDUuNzY1NkM2NC4yMjk3IDQ3LjQ0OTYgNjMuOTg4NyA0OC4wNjI0IDYxLjUzNDMgNDguNDJDNTguNzAzIDQ4LjgyMDcgNTUuODQ3OSA0OS4wMzEyIDUyLjk4ODMgNDkuMDUwMUM0Ni4yMTQ2IDQ5LjA1MDEgNDIuNjQ2NSA0OC4zMjg2IDQyLjU1ODMgNDEuMjM5OEM0Mi42NDgxIDM1LjE0MDIgNDUuODExMyAzMy44MzU5IDUxLjgxMzIgMzMuODM1OUg1Ny41NDczVjMyLjIwMDdDNTcuNTQ3MyAzMC4wMzQ3IDU2LjE5MjUgMjkuMDg2MyA1My4zMDUgMjkuMDg2M0g0NS4xMjQ1QzQ1LjAzODMgMjkuMDg1MiA0NC45NTMyIDI5LjA2NjYgNDQuODc0NCAyOS4wMzE4QzQ0Ljc5NTUgMjguOTk2OSA0NC43MjQ1IDI4Ljk0NjUgNDQuNjY1NyAyOC44ODM1QzQ0LjYwNjggMjguODIwNSA0NC41NjEzIDI4Ljc0NjMgNDQuNTMxOSAyOC42NjUzQzQ0LjUwMjQgMjguNTg0MyA0NC40ODk3IDI4LjQ5ODIgNDQuNDk0MyAyOC40MTIxVjI0LjcwNTRDNDQuNDkwMSAyNC41MjgxIDQ0LjU1MjQgMjQuMzU1NyA0NC42NjkxIDI0LjIyMjFDNDQuNzg1NyAyNC4wODg2IDQ0Ljk0ODIgMjQuMDAzNiA0NS4xMjQ1IDIzLjk4MzlDNDcuODIwNiAyMy40ODgyIDUwLjU1OTQgMjMuMjYyNCA1My4zMDAzIDIzLjMwOTdDNjIuMjM4NSAyMy4zMDk3IDY0LjIyNjUgMjYuMTk3MiA2NC4yMjY1IDMxLjA3OTFNNTIuMzUxOSAzOC4xNjc5QzUwLjAwNzkgMzguMTY3OSA0OS4xODg3IDM4LjkzODMgNDkuMTg4NyA0MC44Nzc0QzQ5LjE4ODcgNDMuMDQzNSA1MC4xNzk2IDQzLjYzNDIgNTMuMDI2MiA0My42MzQyQzU0LjU0NCA0My42NDQyIDU2LjA1ODYgNDMuNDkyMSA1Ny41NDQxIDQzLjE4MDVWMzguMTY3OUg1Mi4zNTE5WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTc2LjYwMjEgMjguNzYxOEg4NS45OTRDODYuMDc5OCAyOC43NTk0IDg2LjE2NDMgMjguNzM5OSA4Ni4yNDI1IDI4LjcwNDdDODYuMzIwNyAyOC42Njk0IDg2LjM5MTIgMjguNjE4OSA4Ni40NDk4IDI4LjU1NjJDODYuNTA4NCAyOC40OTM1IDg2LjU1NCAyOC40MTk4IDg2LjU4MzkgMjguMzM5NEM4Ni42MTM4IDI4LjI1ODkgODYuNjI3NSAyOC4xNzMzIDg2LjYyNDEgMjguMDg3NlYyNC40MDkzQzg2LjYwOTMgMjQuMjE5NyA4Ni41MTk4IDI0LjA0MzcgODYuMzc1NCAyMy45MkM4Ni4yMzEgMjMuNzk2MyA4Ni4wNDM0IDIzLjczNDkgODUuODUzOCAyMy43NDkyQzg0LjMwNjkgMjMuNTkxNyA4Mi4yMDIzIDIzLjQyNjMgNzkuNjkyOCAyMy4zNTA3Qzc4Ljk1NzIgMjMuMzE2IDc2Ljc2NDMgMjMuMzAxOCA3Ni41MDI4IDIzLjMwMThDNzAuNzY4OCAyMy4zMDE4IDY2Ljg4NDEgMjQuNjU2NiA2Ni44ODQxIDI5Ljg5NlYzMC42MTc1QzY2LjcxNzYgMzIuMTMwMiA2Ny4xMDczIDMzLjY1MTggNjcuOTgwNCAzNC44OTgzQzY4Ljg1MzUgMzYuMTQ0NyA3MC4xNTAzIDM3LjAzMDkgNzEuNjI4OSAzNy4zOTEzQzcxLjYyODkgMzcuMzkxMyA3OC4wMTY3IDM5LjY4MDIgNzguMjIzMSAzOS43NjM3Qzc5LjIyMDIgNDAuMjU4MyA3OS41Nzc4IDQwLjgwMTggNzkuNTc3OCA0MS40OTY1VjQxLjk1MDJDNzkuNTc3OCA0My4wNzgxIDc4LjY3NjggNDMuNTcyOCA3Ni45MTcxIDQzLjU3MjhINjcuNTI2OEM2Ny40NDAyIDQzLjU3NDMgNjcuMzU0OCA0My41OTM0IDY3LjI3NTcgNDMuNjI4N0M2Ny4xOTY2IDQzLjY2NDEgNjcuMTI1NSA0My43MTUxIDY3LjA2NjcgNDMuNzc4N0M2Ny4wMDc4IDQzLjg0MjMgNjYuOTYyNCA0My45MTcxIDY2LjkzMzIgNDMuOTk4NkM2Ni45MDQgNDQuMDgwMiA2Ni44OTE2IDQ0LjE2NjggNjYuODk2NyA0NC4yNTMzVjQ3LjkxMTFDNjYuODk2NyA0OC4xMzE3IDY3LjAzMzcgNDguNTQxMyA2Ny42NjcgNDguNTg1NEM2OS4yMTM5IDQ4Ljc0MjkgNzEuMzE4NSA0OC45MDgzIDczLjgyOCA0OC45ODM5Qzc0LjU2MzYgNDkuMDE4NiA3Ni43NTY1IDQ5LjAzMjggNzcuMDE4IDQ5LjAzMjhDODIuNzUyIDQ5LjAzMjggODYuNjM2NyA0Ny42NzggODYuNjM2NyA0Mi40Mzg2VjQxLjcxNzFDODYuODAzMiA0MC4yMDQ0IDg2LjQxMzUgMzguNjgyOCA4NS41NDA0IDM3LjQzNjNDODQuNjY3MyAzNi4xODk4IDgzLjM3MDUgMzUuMzAzNyA4MS44OTE5IDM0Ljk0MzNDODEuODkxOSAzNC45NDMzIDc1LjUwNDEgMzIuNjU0NCA3NS4yOTc3IDMyLjU3MDlDNzQuMzAwNiAzMi4wNzYyIDczLjk0MyAzMS41MzI4IDczLjk0MyAzMC44MzgxVjMwLjM3NDlDNzMuOTQzIDI5LjI0NyA3NC44NDQxIDI4Ljc0NiA3Ni42MDM3IDI4Ljc0NiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTk4Ljc5MzMgMjguNzYxOEgxMDguMTg1QzEwOC4yNzEgMjguNzU5NCAxMDguMzU1IDI4LjczOTkgMTA4LjQzNCAyOC43MDQ3QzEwOC41MTIgMjguNjY5NCAxMDguNTgyIDI4LjYxODkgMTA4LjY0MSAyOC41NTYyQzEwOC43IDI4LjQ5MzUgMTA4Ljc0NSAyOC40MTk4IDEwOC43NzUgMjguMzM5NEMxMDguODA1IDI4LjI1ODkgMTA4LjgxOSAyOC4xNzMzIDEwOC44MTUgMjguMDg3NlYyNC40MDkzQzEwOC44IDI0LjIxOTcgMTA4LjcxMSAyNC4wNDM3IDEwOC41NjcgMjMuOTJDMTA4LjQyMiAyMy43OTYzIDEwOC4yMzUgMjMuNzM0OSAxMDguMDQ1IDIzLjc0OTJDMTA2LjQ5OCAyMy41OTE3IDEwNC4zOTQgMjMuNDI2MyAxMDEuODg0IDIzLjM1MDdDMTAxLjE0OCAyMy4zMTYgOTguOTU1NiAyMy4zMDE4IDk4LjY5NDEgMjMuMzAxOEM5Mi45NiAyMy4zMDE4IDg5LjA3NTMgMjQuNjU2NiA4OS4wNzUzIDI5Ljg5NlYzMC42MTc1Qzg4LjkwODggMzIuMTMwMiA4OS4yOTg1IDMzLjY1MTggOTAuMTcxNiAzNC44OTgzQzkxLjA0NDcgMzYuMTQ0NyA5Mi4zNDE2IDM3LjAzMDkgOTMuODIwMSAzNy4zOTEzQzkzLjgyMDEgMzcuMzkxMyAxMDAuMjA4IDM5LjY4MDIgMTAwLjQxNCAzOS43NjM3QzEwMS40MTEgNDAuMjU4MyAxMDEuNzY5IDQwLjgwMTggMTAxLjc2OSA0MS40OTY1VjQxLjk1MDJDMTAxLjc2OSA0My4wNzgxIDEwMC44NjggNDMuNTcyOCA5OS4xMDg0IDQzLjU3MjhIODkuNzE2NEM4OS42Mjk4IDQzLjU3NDMgODkuNTQ0NCA0My41OTM0IDg5LjQ2NTMgNDMuNjI4N0M4OS4zODYzIDQzLjY2NDEgODkuMzE1MiA0My43MTUxIDg5LjI1NjMgNDMuNzc4N0M4OS4xOTc0IDQzLjg0MjMgODkuMTUyMSA0My45MTcxIDg5LjEyMjkgNDMuOTk4NkM4OS4wOTM2IDQ0LjA4MDIgODkuMDgxMiA0NC4xNjY4IDg5LjA4NjMgNDQuMjUzM1Y0Ny45MTExQzg5LjA4NjMgNDguMTMxNyA4OS4yMjM0IDQ4LjU0MTMgODkuODU2NiA0OC41ODU0QzkxLjQwMzYgNDguNzQyOSA5My41MDgyIDQ4LjkwODMgOTYuMDE3NiA0OC45ODM5Qzk2Ljc1MzMgNDkuMDE4NiA5OC45NDYxIDQ5LjAzMjggOTkuMjA3NiA0OS4wMzI4QzEwNC45NDIgNDkuMDMyOCAxMDguODI2IDQ3LjY3OCAxMDguODI2IDQyLjQzODZWNDEuNzE3MUMxMDguOTkzIDQwLjIwNDQgMTA4LjYwMyAzOC42ODI4IDEwNy43MyAzNy40MzYzQzEwNi44NTcgMzYuMTg5OCAxMDUuNTYgMzUuMzAzNyAxMDQuMDgyIDM0Ljk0MzNDMTA0LjA4MiAzNC45NDMzIDk3LjY5MzggMzIuNjU0NCA5Ny40ODc0IDMyLjU3MDlDOTYuNDkwMiAzMi4wNzYyIDk2LjEzMjYgMzEuNTMyOCA5Ni4xMzI2IDMwLjgzODFWMzAuMzc0OUM5Ni4xMzI2IDI5LjI0NyA5Ny4wMzM3IDI4Ljc0NiA5OC43OTMzIDI4Ljc0NiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTEzNC4zNDUgMjMuMzE2QzEzMi4xMDYgMjMuMTg3NiAxMjkuODY4IDIzLjU3ODUgMTI3LjgwNiAyNC40NTgxQzEyNS43NSAyMy41NTU5IDEyMy41MDYgMjMuMTY0IDEyMS4yNjcgMjMuMzE2QzExMy4xODEgMjMuMzE2IDExMS4zODYgMjUuNzk4NyAxMTEuMzg2IDM0LjEzMlY0OC40MTM3QzExMS4zODYgNDguNTgwOCAxMTEuNDUzIDQ4Ljc0MTEgMTExLjU3MSA0OC44NTkyQzExMS42ODkgNDguOTc3NCAxMTEuODQ5IDQ5LjA0MzggMTEyLjAxNiA0OS4wNDM4SDExNy40MjhDMTE3LjU5NCA0OS4wNDEzIDExNy43NTMgNDguOTc0MiAxMTcuODcgNDguODU2NUMxMTcuOTg4IDQ4LjczODkgMTE4LjA1NSA0OC41OCAxMTguMDU4IDQ4LjQxMzdWMzUuODQ0NEMxMTguMDU4IDMwLjM3ODEgMTE4LjU3MyAyOS4zMTk1IDEyMS4yNjIgMjkuMTE5NEMxMjMuNzY1IDI5LjMwNTMgMTI0LjM4NCAzMC4yMzk0IDEyNC40NiAzNC43OTA1VjQ4LjQwNDJDMTI0LjQ2NiA0OC41NzA5IDEyNC41MzYgNDguNzI4OSAxMjQuNjU1IDQ4Ljg0NkMxMjQuNzczIDQ4Ljk2MzEgMTI0LjkzMiA0OS4wMzA0IDEyNS4wOTkgNDkuMDM0M0gxMzAuNTFDMTMwLjY3OCA0OS4wMzQzIDEzMC44MzggNDguOTY3OSAxMzAuOTU2IDQ4Ljg0OThDMTMxLjA3NCA0OC43MzE2IDEzMS4xNDEgNDguNTcxMyAxMzEuMTQxIDQ4LjQwNDJWMzQuNzkyMUMxMzEuMjE2IDMwLjIzMzEgMTMxLjgzNSAyOS4yOTkgMTM0LjMzOCAyOS4xMTMxQzEzNy4wMjcgMjkuMzEzMiAxMzcuNTQzIDMwLjM3MzMgMTM3LjU0MyAzNS44MzgxVjQ4LjQwNzRDMTM3LjU0MyA0OC41NzQ1IDEzNy42MDkgNDguNzM0OCAxMzcuNzI3IDQ4Ljg1MjlDMTM3Ljg0NSA0OC45NzExIDEzOC4wMDYgNDkuMDM3NSAxMzguMTczIDQ5LjAzNzVIMTQzLjU4NEMxNDMuNzUgNDkuMDM1NCAxNDMuOTA5IDQ4Ljk2ODQgMTQ0LjAyNyA0OC44NTA3QzE0NC4xNDUgNDguNzMyOSAxNDQuMjEyIDQ4LjU3MzggMTQ0LjIxNCA0OC40MDc0VjM0LjEyNTdDMTQ0LjIxNCAyNS43OTI0IDE0Mi40NjEgMjMuMzA5NyAxMzQuMzM0IDIzLjMwOTciIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzJfOTAiPjxyZWN0IHdpZHRoPSIyNzAuOTUxIiBoZWlnaHQ9IjYwIiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjwvY2xpcHBhdGg+PC9kZWZzPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTE1IiBoZWlnaHQ9IjI1IiB2aWV3Ym94PSIwIDAgMjcxIDYwIiBjbGFzcz0iQXBwRm9vdGVyX2NsYXNzbWV0aG9kTG9nb19fMVJGdVYiPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yXzkwKSI+PHBhdGggZD0iTTI2NC42MzYgMy4xNjE3QzI2NS40NzUgMy4xNjEyOCAyNjYuMjc5IDMuNDkzOTMgMjY2Ljg3MyA0LjA4NjUxQzI2Ny40NjYgNC42NzkwOSAyNjcuOCA1LjQ4MzA5IDI2Ny44MDEgNi4zMjE3NVY1My4wNzAzQzI2Ny44MDEgNTMuNTY2OCAyNjcuNzAzIDU0LjA1ODUgMjY3LjUxMyA1NC41MTcxQzI2Ny4zMjMgNTQuOTc1OCAyNjcuMDQ1IDU1LjM5MjYgMjY2LjY5NCA1NS43NDM3QzI2Ni4zNDIgNTYuMDk0OCAyNjUuOTI2IDU2LjM3MzMgMjY1LjQ2NyA1Ni41NjMzQzI2NS4wMDggNTYuNzUzMyAyNjQuNTE3IDU2Ljg1MSAyNjQuMDIgNTYuODUxSDYuOTMxMzJDNS45Mjg2MSA1Ni44NTEgNC45NjY5NyA1Ni40NTI3IDQuMjU3OTUgNTUuNzQzN0MzLjU0ODkyIDU1LjAzNDcgMy4xNTA2IDU0LjA3MyAzLjE1MDYgNTMuMDcwM1Y2LjkzMTM5QzMuMTUwNiA1LjkyODY4IDMuNTQ4OTIgNC45NjcwNCA0LjI1Nzk1IDQuMjU4MDJDNC45NjY5NyAzLjU0ODk5IDUuOTI4NjEgMy4xNTA2NyA2LjkzMTMyIDMuMTUwNjdIMjI1LjA1QzIyNS4xMzcgMy4xNTE3OCAyMjUuMjIxIDMuMTcwNTMgMjI1LjMgMy4yMDU3NUMyMjUuMzc5IDMuMjQwOTcgMjI1LjQ0OSAzLjI5MTkyIDIyNS41MDcgMy4zNTU0NkwyMzMuOTg3IDEyLjc2QzIzNC4yOCAxMy4wNTQxIDIzNC42MjggMTMuMjg3NSAyMzUuMDExIDEzLjQ0NjdDMjM1LjM5NCAxMy42MDYgMjM1LjgwNSAxMy42ODggMjM2LjIyIDEzLjY4OEMyMzYuNjM1IDEzLjY4OCAyMzcuMDQ2IDEzLjYwNiAyMzcuNDI5IDEzLjQ0NjdDMjM3LjgxMiAxMy4yODc1IDIzOC4xNiAxMy4wNTQxIDIzOC40NTMgMTIuNzZMMjQ2LjkzMyAzLjM1MjMxQzI0Ni45OSAzLjI4Nzc4IDI0Ny4wNjEgMy4yMzYxNiAyNDcuMTM5IDMuMjAwODZDMjQ3LjIxOCAzLjE2NTU1IDI0Ny4zMDMgMy4xNDczNyAyNDcuMzkgMy4xNDc1MkgyNjQuNjVMMjY0LjYzNiAzLjE2MTdaTTI2NC42MzYgNy4xNzA5NWUtMDVIMjQ2LjFDMjQ2LjAwNiAwLjAwMDc1OTg0NSAyNDUuOTE0IDAuMDIwNTM1OSAyNDUuODI4IDAuMDU4MTg4QzI0NS43NDIgMC4wOTU4NDAxIDI0NS42NjUgMC4xNTA1NzUgMjQ1LjYwMiAwLjIxOTAzOEwyMzcuMzQ3IDkuMzk1MTZDMjM3LjMzNCA5LjQwNzU3IDIzNy4zMjMgOS40MjEzIDIzNy4zMTMgOS40MzYxMUMyMzcuMDE4IDkuNzI0NzUgMjM2LjYyMiA5Ljg4NjQyIDIzNi4yMSA5Ljg4NjQyQzIzNS43OTcgOS44ODY0MiAyMzUuNDAyIDkuNzI0NzUgMjM1LjEwNyA5LjQzNjExQzIzNS4wOTQgOS40MjQyNiAyMzUuMDgyIDkuNDEwNDUgMjM1LjA3MiA5LjM5NTE2TDIyNi44NDMgMC4yMzk1MTdDMjI2Ljc3NSAwLjE2MjkyMiAyMjYuNjkxIDAuMTAxODkgMjI2LjU5NyAwLjA2MDU3MTdDMjI2LjUwNCAwLjAxOTI1MzYgMjI2LjQwMiAtMC4wMDEzODA5OSAyMjYuMyA3LjE3MDk1ZS0wNUg2LjkzMTMyQzUuMDkzMDIgNy4xNzA5NWUtMDUgMy4zMzAwMSAwLjczMDMzMyAyLjAzMDE0IDIuMDMwMjFDMC43MzAyNjIgMy4zMzAwOCAwIDUuMDkzMDkgMCA2LjkzMTM5TDAgNTMuMDcxOUMwIDU0LjkxMDIgMC43MzAyNjIgNTYuNjczMiAyLjAzMDE0IDU3Ljk3MzFDMy4zMzAwMSA1OS4yNzMgNS4wOTMwMiA2MC4wMDMyIDYuOTMxMzIgNjAuMDAzMkgyNjQuMDJDMjY1Ljg1OCA2MC4wMDMyIDI2Ny42MjEgNTkuMjczIDI2OC45MjEgNTcuOTczMUMyNzAuMjIxIDU2LjY3MzIgMjcwLjk1MSA1NC45MTAyIDI3MC45NTEgNTMuMDcxOVY2LjMxNTQ1QzI3MC45NDkgNC42NDExNCAyNzAuMjgzIDMuMDM2MDIgMjY5LjA5OSAxLjg1MjFDMjY3LjkxNiAwLjY2ODE5MyAyNjYuMzEgMC4wMDIxNTU5OSAyNjQuNjM2IDcuMTcwOTVlLTA1WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTI5Ljk2NTMgMjMuODg2M0MzMC4wNzY5IDIzLjg4OTUgMzAuMTg2NiAyMy45MTYxIDMwLjI4NzMgMjMuOTY0NEMzMC4zODggMjQuMDEyNiAzMC40Nzc1IDI0LjA4MTMgMzAuNTUwMSAyNC4xNjYyQzMwLjYyMjYgMjQuMjUxIDMwLjY3NjYgMjQuMzUwMSAzMC43MDg2IDI0LjQ1NzFDMzAuNzQwNSAyNC41NjQxIDMwLjc0OTggMjQuNjc2NiAzMC43MzU3IDI0Ljc4NzNWMjguMzU1NEMzMC43MzU3IDI4Ljg1IDMwLjQ2NzkgMjkuMDc2OSAyOS45NjUzIDI5LjA3NjlIMjIuNjAwOEMxOC40NDgzIDI5LjA3NjkgMTcuODE1IDMwLjQ3ODkgMTcuODE1IDM2LjE2NTdDMTcuODE1IDQxLjg1MjYgMTguNDQ1MiA0My4yNTQ2IDIyLjYwMDggNDMuMjU0NkgyOS45NjUzQzMwLjQ2IDQzLjI1NDYgMzAuNzM1NyA0My40ODE0IDMwLjczNTcgNDMuOTM1MVY0Ny41NDU3QzMwLjczNTcgNDguMDg5MiAzMC40Njc5IDQ4LjMxNiAyOS45NjUzIDQ4LjQwNThDMjcuNTM2NyA0OC44NTM4IDI1LjA3MDMgNDkuMDY0OCAyMi42MDA4IDQ5LjAzNTlDMTIuOTgyIDQ5LjAzNTkgMTEuMTMyNiA0Ni4xMDc0IDExLjEzMjYgMzYuMTY0MkMxMS4xMzI2IDI2LjIyMDkgMTIuOTgyIDIzLjI5NTUgMjIuNjAwOCAyMy4yOTU1QzI1LjA2ODEgMjMuMjcyOSAyNy41MzI1IDIzLjQ2ODQgMjkuOTY1MyAyMy44OCIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTM5Ljc2MzcgMTcuNjcwMUMzOS45MzA4IDE3LjY3MDEgNDAuMDkxMSAxNy43MzY1IDQwLjIwOTMgMTcuODU0N0M0MC4zMjc0IDE3Ljk3MjkgNDAuMzkzOCAxOC4xMzMxIDQwLjM5MzggMTguMzAwM1Y0OC40Mzg5QzQwLjM5MzggNDguNjA2IDQwLjMyNzQgNDguNzY2MyA0MC4yMDkzIDQ4Ljg4NDVDNDAuMDkxMSA0OS4wMDI2IDM5LjkzMDggNDkuMDY5IDM5Ljc2MzcgNDkuMDY5SDM0LjM4NzJDMzQuMjk3IDQ5LjA3NTYgMzQuMjA2NCA0OS4wNjI2IDM0LjEyMTYgNDkuMDMxMUMzNC4wMzY4IDQ4Ljk5OTUgMzMuOTU5OCA0OC45NTAxIDMzLjg5NTkgNDguODg2MUMzMy44MzE5IDQ4LjgyMjEgMzMuNzgyNSA0OC43NDUyIDMzLjc1MDkgNDguNjYwNEMzMy43MTkzIDQ4LjU3NTYgMzMuNzA2NCA0OC40ODUgMzMuNzEzIDQ4LjM5NDhWMTguMzQ0NEMzMy43MDY5IDE4LjI1OCAzMy43MTg3IDE4LjE3MTMgMzMuNzQ3NyAxOC4wODk3QzMzLjc3NjYgMTguMDA4IDMzLjgyMjEgMTcuOTMzMyAzMy44ODEyIDE3Ljg3QzMzLjk0MDMgMTcuODA2NyAzNC4wMTE4IDE3Ljc1NjMgMzQuMDkxMyAxNy43MjJDMzQuMTcwOCAxNy42ODc2IDM0LjI1NjUgMTcuNjY5OSAzNC4zNDMxIDE3LjY3MDFIMzkuNzYzN1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik0xNjkuMTU2IDM1Ljg1N1YzNy4yNTlDMTY5LjE1NiAzOC4xNjAxIDE2OC44ODggMzguNDc2NyAxNjcuNzExIDM4LjQ3NjdIMTUzLjUzM0MxNTMuNjIzIDQyLjU0MSAxNTQuNzA5IDQzLjI2MjQgMTU4LjYzNiA0My4yNjI0SDE2Ni42NzlDMTY2Ljg0NiA0My4yNjI0IDE2Ny4wMDcgNDMuMzI4OCAxNjcuMTI1IDQzLjQ0N0MxNjcuMjQzIDQzLjU2NTIgMTY3LjMwOSA0My43MjU1IDE2Ny4zMDkgNDMuODkyNlY0Ny42NzMzQzE2Ny4zMiA0Ny44NTM2IDE2Ny4yNiA0OC4wMzEgMTY3LjE0MyA0OC4xNjgyQzE2Ny4wMjUgNDguMzA1NCAxNjYuODU5IDQ4LjM5MTcgMTY2LjY3OSA0OC40MDlDMTYzLjgzMSA0OC44ODY2IDE2MC45NDUgNDkuMDk3NiAxNTguMDU4IDQ5LjAzOTFDMTQ4LjkzNCA0OS4wMzkxIDE0Ni43MTYgNDYuNDY4MiAxNDYuNzE2IDM2LjE2NzNDMTQ2LjcxNiAyNS44NjY0IDE0OC45MjkgMjMuMjk1NSAxNTguMDU4IDIzLjI5NTVDMTY3LjE4NyAyMy4yOTU1IDE2OS4xMjEgMjUuNzc4MiAxNjkuMTY4IDM1Ljg1MDdNMTUzLjQ5OSAzNC4wOTExSDE2Mi40MzdDMTYyLjM4OCAzMC4xMTY2IDE2MS4zNSAyOS4wNzg1IDE1OC4wNTggMjkuMDc4NUMxNTQuNzY1IDI5LjA3ODUgMTUzLjU0IDMwLjExNjYgMTUzLjQ5OSAzNC4wOTExWiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTE4My4wNTYgNDMuMjkwOEgxODEuMDdDMTc5LjA4MyA0My4yOTA4IDE3OC40MDkgNDIuOTMzMiAxNzguNDA5IDQwLjk4NzdWMjkuMTQ2MkgxODIuNzA2QzE4Mi43OTMgMjkuMTQ0OSAxODIuODc5IDI5LjEyNiAxODIuOTU4IDI5LjA5MDdDMTgzLjAzNyAyOS4wNTUzIDE4My4xMDggMjkuMDA0MyAxODMuMTY3IDI4Ljk0MDdDMTgzLjIyNiAyOC44NzcxIDE4My4yNzEgMjguODAyMiAxODMuMyAyOC43MjA2QzE4My4zMyAyOC42Mzg5IDE4My4zNDIgMjguNTUyMiAxODMuMzM3IDI4LjQ2NTdWMjMuOTU1NkMxODMuMzM3IDIzLjc4ODUgMTgzLjI3IDIzLjYyODIgMTgzLjE1MiAyMy41MUMxODMuMDM0IDIzLjM5MTkgMTgyLjg3NCAyMy4zMjU1IDE4Mi43MDYgMjMuMzI1NUgxNzguNDA5VjE4LjI5NzFDMTc4LjQwNyAxOC4xMzA4IDE3OC4zMzkgMTcuOTcxOSAxNzguMjIyIDE3Ljg1NDJDMTc4LjEwNCAxNy43MzY2IDE3Ny45NDUgMTcuNjY5NCAxNzcuNzc5IDE3LjY2N0gxNzIuMzU1QzE3Mi4xODggMTcuNjY3IDE3Mi4wMjggMTcuNzMzNCAxNzEuOTEgMTcuODUxNUMxNzEuNzkxIDE3Ljk2OTcgMTcxLjcyNSAxOC4xMyAxNzEuNzI1IDE4LjI5NzFWNDMuMjQyQzE3MS43MjUgNDguOTM1MSAxNzUuMjQ2IDQ5LjA3MDYgMTc5LjEyOSA0OS4wNzA2QzE4MC40MTggNDkuMDYzMSAxODEuNzA0IDQ4LjkyNyAxODIuOTY2IDQ4LjY2NDJDMTgzLjA3MiA0OC42NjExIDE4My4xNzYgNDguNjM1NiAxODMuMjcyIDQ4LjU4OTNDMTgzLjM2NyA0OC41NDMxIDE4My40NTIgNDguNDc3MiAxODMuNTIgNDguMzk2QzE4My41ODggNDguMzE0NyAxODMuNjM4IDQ4LjIyIDE4My42NjcgNDguMTE4QzE4My42OTYgNDguMDE1OSAxODMuNzAzIDQ3LjkwOSAxODMuNjg4IDQ3LjgwNFY0My45NjM1QzE4My42OTQgNDMuODc3MSAxODMuNjgyIDQzLjc5MDQgMTgzLjY1MyA0My43MDg4QzE4My42MjQgNDMuNjI3MSAxODMuNTc5IDQzLjU1MjQgMTgzLjUyIDQzLjQ4OTFDMTgzLjQ2IDQzLjQyNTggMTgzLjM4OSA0My4zNzU0IDE4My4zMDkgNDMuMzQxMUMxODMuMjMgNDMuMzA2NyAxODMuMTQ0IDQzLjI4OSAxODMuMDU4IDQzLjI4OTIiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik0yMzQuNTUxIDM2LjE2NzNDMjM0LjU1MSA0Ni40NjAzIDIzMi40MjYgNDkuMDM5MSAyMjMuMDM0IDQ5LjAzOTFDMjEzLjY0MiA0OS4wMzkxIDIxMS41MTcgNDYuNDY4MiAyMTEuNTE3IDM2LjE2NzNDMjExLjUxNyAyNS44NjY0IDIxMy42ODMgMjMuMjk1NSAyMjMuMDM0IDIzLjI5NTVDMjMyLjM4NSAyMy4yOTU1IDIzNC41NTEgMjUuODI1NSAyMzQuNTUxIDM2LjE2NzNaTTIxOC4yNDggMzYuMTY3M0MyMTguMjQ4IDQxLjg2MDQgMjE4LjkyMiA0My4yNTYxIDIyMy4wMzQgNDMuMjU2MUMyMjcuMTQ2IDQzLjI1NjEgMjI3Ljg2NyA0MS44NTQxIDIyNy44NjcgMzYuMTY3M0MyMjcuODY3IDMwLjQ4MDUgMjI3LjE5MyAyOS4wNzg1IDIyMy4wMzQgMjkuMDc4NUMyMTguODc1IDI5LjA3ODUgMjE4LjI0OCAzMC40ODA1IDIxOC4yNDggMzYuMTY3M1oiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik0yMDIuNTY2IDIzLjY1OTRDMTk5LjM3OCAyMy4xNzQ1IDE5Ni4xMzUgMjMuMTc0NSAxOTIuOTQ3IDIzLjY1OTRWMTguMzAzNEMxOTIuOTQ3IDE4LjEzNjMgMTkyLjg4MSAxNy45NzYgMTkyLjc2MyAxNy44NTc4QzE5Mi42NDUgMTcuNzM5NyAxOTIuNDg0IDE3LjY3MzMgMTkyLjMxNyAxNy42NzMzSDE4Ni44OTJDMTg2LjcyNSAxNy42NzMzIDE4Ni41NjUgMTcuNzM5NyAxODYuNDQ2IDE3Ljg1NzhDMTg2LjMyOCAxNy45NzYgMTg2LjI2MiAxOC4xMzYzIDE4Ni4yNjIgMTguMzAzNFY0OC4zOTE2QzE4Ni4yNTYgNDguNDc4IDE4Ni4yNjggNDguNTY0NyAxODYuMjk2IDQ4LjY0NjNDMTg2LjMyNSA0OC43Mjc5IDE4Ni4zNzEgNDguODAyNyAxODYuNDMgNDguODY2QzE4Ni40ODkgNDguOTI5MiAxODYuNTYxIDQ4Ljk3OTYgMTg2LjY0IDQ5LjAxNEMxODYuNzIgNDkuMDQ4NCAxODYuODA1IDQ5LjA2NjEgMTg2Ljg5MiA0OS4wNjU4SDE5Mi4zMTdDMTkyLjQ4NCA0OS4wNjU4IDE5Mi42NDUgNDguOTk5NSAxOTIuNzYzIDQ4Ljg4MTNDMTkyLjg4MSA0OC43NjMxIDE5Mi45NDcgNDguNjAyOCAxOTIuOTQ3IDQ4LjQzNTdWMzYuMTc5OUMxOTIuOTQ3IDMxLjM1OTUgMTkzLjA4NCAyOS4wOTEgMTk3LjczMyAyOS4wOTFDMjAyLjM4MiAyOS4wOTEgMjAyLjU5NSAzMS4zNTk1IDIwMi41NjYgMzYuMTc5OUMyMDIuNTM4IDQxLjA2MzMgMjAyLjU2NiA0OC40Mzg5IDIwMi41NjYgNDguNDM4OUMyMDIuNTY2IDQ4LjYwNiAyMDIuNjMzIDQ4Ljc2NjMgMjAyLjc1MSA0OC44ODQ0QzIwMi44NjkgNDkuMDAyNiAyMDMuMDI5IDQ5LjA2OSAyMDMuMTk2IDQ5LjA2OUgyMDguNjIyQzIwOC43ODkgNDkuMDY5IDIwOC45NDkgNDkuMDAyNiAyMDkuMDY3IDQ4Ljg4NDRDMjA5LjE4NSA0OC43NjYzIDIwOS4yNTIgNDguNjA2IDIwOS4yNTIgNDguNDM4OVYzNC45MjEyQzIwOS4yNTIgMjcuNjc0OSAyMDcuNTA1IDI0LjU1MjYgMjAyLjU2OCAyMy42NTE1IiBmaWxsPSJjdXJyZW50Q29sb3IiPjwvcGF0aD48cGF0aCBkPSJNMjU5LjEzOCAxNy40NDQ5QzI1OS4yMjUgMTcuNDM4OCAyNTkuMzExIDE3LjQ1MDYgMjU5LjM5MyAxNy40Nzk2QzI1OS40NzUgMTcuNTA4NSAyNTkuNTQ5IDE3LjU1NCAyNTkuNjEzIDE3LjYxMzFDMjU5LjY3NiAxNy42NzIyIDI1OS43MjYgMTcuNzQzNyAyNTkuNzYxIDE3LjgyMzJDMjU5Ljc5NSAxNy45MDI3IDI1OS44MTMgMTcuOTg4NCAyNTkuODEzIDE4LjA3NVY0Ni4zODMxQzI1OS44MTMgNDcuNjY4NiAyNTkuMjY5IDQ4LjEzMDEgMjU3LjkyMiA0OC4zNzc1QzI1NC45NTEgNDguODMyNyAyNTEuOTQ5IDQ5LjA2NSAyNDguOTQzIDQ5LjA3MjJDMjM5LjI0MSA0OS4wNzIyIDIzNy4yNDggNDYuNDAzNiAyMzcuMjQ4IDM2LjI0OTJDMjM3LjI0OCAyNi4wOTQ4IDIzOS4yNTUgMjMuMzMxOCAyNDguMjM2IDIzLjMzMThDMjQ5Ljg3NyAyMy4yODUyIDI1MS41MTkgMjMuMzc0OCAyNTMuMTQ2IDIzLjU5OTZWMTguMTExMkMyNTMuMTQyIDE4LjAyNiAyNTMuMTU1IDE3Ljk0MDggMjUzLjE4NSAxNy44NjA5QzI1My4yMTUgMTcuNzgxIDI1My4yNjEgMTcuNzA3OSAyNTMuMzIgMTcuNjQ2MkMyNTMuMzc4IDE3LjU4NDUgMjUzLjQ0OSAxNy41MzU0IDI1My41MjggMTcuNTAxOEMyNTMuNjA2IDE3LjQ2ODMgMjUzLjY5MSAxNy40NTExIDI1My43NzYgMTcuNDUxMkgyNTkuMTZMMjU5LjEzOCAxNy40NDQ5Wk0yNDkuMDY2IDI5LjE1NDFDMjQ0LjUwNyAyOS4xNTQxIDI0My45MTYgMzAuMzcxOCAyNDMuOTE2IDM2LjIwMkMyNDMuOTE2IDQxLjUzMTIgMjQ0LjI4IDQzLjI5MDggMjQ4Ljc5MiA0My4yOTA4QzI1MC4yNDEgNDMuMjg5MyAyNTEuNjg5IDQzLjE4NCAyNTMuMTI0IDQyLjk3NThWMjkuMTU0MUgyNDkuMDZIMjQ5LjA2NloiIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjxwYXRoIGQ9Ik02NC4yMjk3IDMxLjA2NDlWNDUuNzY1NkM2NC4yMjk3IDQ3LjQ0OTYgNjMuOTg4NyA0OC4wNjI0IDYxLjUzNDMgNDguNDJDNTguNzAzIDQ4LjgyMDcgNTUuODQ3OSA0OS4wMzEyIDUyLjk4ODMgNDkuMDUwMUM0Ni4yMTQ2IDQ5LjA1MDEgNDIuNjQ2NSA0OC4zMjg2IDQyLjU1ODMgNDEuMjM5OEM0Mi42NDgxIDM1LjE0MDIgNDUuODExMyAzMy44MzU5IDUxLjgxMzIgMzMuODM1OUg1Ny41NDczVjMyLjIwMDdDNTcuNTQ3MyAzMC4wMzQ3IDU2LjE5MjUgMjkuMDg2MyA1My4zMDUgMjkuMDg2M0g0NS4xMjQ1QzQ1LjAzODMgMjkuMDg1MiA0NC45NTMyIDI5LjA2NjYgNDQuODc0NCAyOS4wMzE4QzQ0Ljc5NTUgMjguOTk2OSA0NC43MjQ1IDI4Ljk0NjUgNDQuNjY1NyAyOC44ODM1QzQ0LjYwNjggMjguODIwNSA0NC41NjEzIDI4Ljc0NjMgNDQuNTMxOSAyOC42NjUzQzQ0LjUwMjQgMjguNTg0MyA0NC40ODk3IDI4LjQ5ODIgNDQuNDk0MyAyOC40MTIxVjI0LjcwNTRDNDQuNDkwMSAyNC41MjgxIDQ0LjU1MjQgMjQuMzU1NyA0NC42NjkxIDI0LjIyMjFDNDQuNzg1NyAyNC4wODg2IDQ0Ljk0ODIgMjQuMDAzNiA0NS4xMjQ1IDIzLjk4MzlDNDcuODIwNiAyMy40ODgyIDUwLjU1OTQgMjMuMjYyNCA1My4zMDAzIDIzLjMwOTdDNjIuMjM4NSAyMy4zMDk3IDY0LjIyNjUgMjYuMTk3MiA2NC4yMjY1IDMxLjA3OTFNNTIuMzUxOSAzOC4xNjc5QzUwLjAwNzkgMzguMTY3OSA0OS4xODg3IDM4LjkzODMgNDkuMTg4NyA0MC44Nzc0QzQ5LjE4ODcgNDMuMDQzNSA1MC4xNzk2IDQzLjYzNDIgNTMuMDI2MiA0My42MzQyQzU0LjU0NCA0My42NDQyIDU2LjA1ODYgNDMuNDkyMSA1Ny41NDQxIDQzLjE4MDVWMzguMTY3OUg1Mi4zNTE5WiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTc2LjYwMjEgMjguNzYxOEg4NS45OTRDODYuMDc5OCAyOC43NTk0IDg2LjE2NDMgMjguNzM5OSA4Ni4yNDI1IDI4LjcwNDdDODYuMzIwNyAyOC42Njk0IDg2LjM5MTIgMjguNjE4OSA4Ni40NDk4IDI4LjU1NjJDODYuNTA4NCAyOC40OTM1IDg2LjU1NCAyOC40MTk4IDg2LjU4MzkgMjguMzM5NEM4Ni42MTM4IDI4LjI1ODkgODYuNjI3NSAyOC4xNzMzIDg2LjYyNDEgMjguMDg3NlYyNC40MDkzQzg2LjYwOTMgMjQuMjE5NyA4Ni41MTk4IDI0LjA0MzcgODYuMzc1NCAyMy45MkM4Ni4yMzEgMjMuNzk2MyA4Ni4wNDM0IDIzLjczNDkgODUuODUzOCAyMy43NDkyQzg0LjMwNjkgMjMuNTkxNyA4Mi4yMDIzIDIzLjQyNjMgNzkuNjkyOCAyMy4zNTA3Qzc4Ljk1NzIgMjMuMzE2IDc2Ljc2NDMgMjMuMzAxOCA3Ni41MDI4IDIzLjMwMThDNzAuNzY4OCAyMy4zMDE4IDY2Ljg4NDEgMjQuNjU2NiA2Ni44ODQxIDI5Ljg5NlYzMC42MTc1QzY2LjcxNzYgMzIuMTMwMiA2Ny4xMDczIDMzLjY1MTggNjcuOTgwNCAzNC44OTgzQzY4Ljg1MzUgMzYuMTQ0NyA3MC4xNTAzIDM3LjAzMDkgNzEuNjI4OSAzNy4zOTEzQzcxLjYyODkgMzcuMzkxMyA3OC4wMTY3IDM5LjY4MDIgNzguMjIzMSAzOS43NjM3Qzc5LjIyMDIgNDAuMjU4MyA3OS41Nzc4IDQwLjgwMTggNzkuNTc3OCA0MS40OTY1VjQxLjk1MDJDNzkuNTc3OCA0My4wNzgxIDc4LjY3NjggNDMuNTcyOCA3Ni45MTcxIDQzLjU3MjhINjcuNTI2OEM2Ny40NDAyIDQzLjU3NDMgNjcuMzU0OCA0My41OTM0IDY3LjI3NTcgNDMuNjI4N0M2Ny4xOTY2IDQzLjY2NDEgNjcuMTI1NSA0My43MTUxIDY3LjA2NjcgNDMuNzc4N0M2Ny4wMDc4IDQzLjg0MjMgNjYuOTYyNCA0My45MTcxIDY2LjkzMzIgNDMuOTk4NkM2Ni45MDQgNDQuMDgwMiA2Ni44OTE2IDQ0LjE2NjggNjYuODk2NyA0NC4yNTMzVjQ3LjkxMTFDNjYuODk2NyA0OC4xMzE3IDY3LjAzMzcgNDguNTQxMyA2Ny42NjcgNDguNTg1NEM2OS4yMTM5IDQ4Ljc0MjkgNzEuMzE4NSA0OC45MDgzIDczLjgyOCA0OC45ODM5Qzc0LjU2MzYgNDkuMDE4NiA3Ni43NTY1IDQ5LjAzMjggNzcuMDE4IDQ5LjAzMjhDODIuNzUyIDQ5LjAzMjggODYuNjM2NyA0Ny42NzggODYuNjM2NyA0Mi40Mzg2VjQxLjcxNzFDODYuODAzMiA0MC4yMDQ0IDg2LjQxMzUgMzguNjgyOCA4NS41NDA0IDM3LjQzNjNDODQuNjY3MyAzNi4xODk4IDgzLjM3MDUgMzUuMzAzNyA4MS44OTE5IDM0Ljk0MzNDODEuODkxOSAzNC45NDMzIDc1LjUwNDEgMzIuNjU0NCA3NS4yOTc3IDMyLjU3MDlDNzQuMzAwNiAzMi4wNzYyIDczLjk0MyAzMS41MzI4IDczLjk0MyAzMC44MzgxVjMwLjM3NDlDNzMuOTQzIDI5LjI0NyA3NC44NDQxIDI4Ljc0NiA3Ni42MDM3IDI4Ljc0NiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTk4Ljc5MzMgMjguNzYxOEgxMDguMTg1QzEwOC4yNzEgMjguNzU5NCAxMDguMzU1IDI4LjczOTkgMTA4LjQzNCAyOC43MDQ3QzEwOC41MTIgMjguNjY5NCAxMDguNTgyIDI4LjYxODkgMTA4LjY0MSAyOC41NTYyQzEwOC43IDI4LjQ5MzUgMTA4Ljc0NSAyOC40MTk4IDEwOC43NzUgMjguMzM5NEMxMDguODA1IDI4LjI1ODkgMTA4LjgxOSAyOC4xNzMzIDEwOC44MTUgMjguMDg3NlYyNC40MDkzQzEwOC44IDI0LjIxOTcgMTA4LjcxMSAyNC4wNDM3IDEwOC41NjcgMjMuOTJDMTA4LjQyMiAyMy43OTYzIDEwOC4yMzUgMjMuNzM0OSAxMDguMDQ1IDIzLjc0OTJDMTA2LjQ5OCAyMy41OTE3IDEwNC4zOTQgMjMuNDI2MyAxMDEuODg0IDIzLjM1MDdDMTAxLjE0OCAyMy4zMTYgOTguOTU1NiAyMy4zMDE4IDk4LjY5NDEgMjMuMzAxOEM5Mi45NiAyMy4zMDE4IDg5LjA3NTMgMjQuNjU2NiA4OS4wNzUzIDI5Ljg5NlYzMC42MTc1Qzg4LjkwODggMzIuMTMwMiA4OS4yOTg1IDMzLjY1MTggOTAuMTcxNiAzNC44OTgzQzkxLjA0NDcgMzYuMTQ0NyA5Mi4zNDE2IDM3LjAzMDkgOTMuODIwMSAzNy4zOTEzQzkzLjgyMDEgMzcuMzkxMyAxMDAuMjA4IDM5LjY4MDIgMTAwLjQxNCAzOS43NjM3QzEwMS40MTEgNDAuMjU4MyAxMDEuNzY5IDQwLjgwMTggMTAxLjc2OSA0MS40OTY1VjQxLjk1MDJDMTAxLjc2OSA0My4wNzgxIDEwMC44NjggNDMuNTcyOCA5OS4xMDg0IDQzLjU3MjhIODkuNzE2NEM4OS42Mjk4IDQzLjU3NDMgODkuNTQ0NCA0My41OTM0IDg5LjQ2NTMgNDMuNjI4N0M4OS4zODYzIDQzLjY2NDEgODkuMzE1MiA0My43MTUxIDg5LjI1NjMgNDMuNzc4N0M4OS4xOTc0IDQzLjg0MjMgODkuMTUyMSA0My45MTcxIDg5LjEyMjkgNDMuOTk4NkM4OS4wOTM2IDQ0LjA4MDIgODkuMDgxMiA0NC4xNjY4IDg5LjA4NjMgNDQuMjUzM1Y0Ny45MTExQzg5LjA4NjMgNDguMTMxNyA4OS4yMjM0IDQ4LjU0MTMgODkuODU2NiA0OC41ODU0QzkxLjQwMzYgNDguNzQyOSA5My41MDgyIDQ4LjkwODMgOTYuMDE3NiA0OC45ODM5Qzk2Ljc1MzMgNDkuMDE4NiA5OC45NDYxIDQ5LjAzMjggOTkuMjA3NiA0OS4wMzI4QzEwNC45NDIgNDkuMDMyOCAxMDguODI2IDQ3LjY3OCAxMDguODI2IDQyLjQzODZWNDEuNzE3MUMxMDguOTkzIDQwLjIwNDQgMTA4LjYwMyAzOC42ODI4IDEwNy43MyAzNy40MzYzQzEwNi44NTcgMzYuMTg5OCAxMDUuNTYgMzUuMzAzNyAxMDQuMDgyIDM0Ljk0MzNDMTA0LjA4MiAzNC45NDMzIDk3LjY5MzggMzIuNjU0NCA5Ny40ODc0IDMyLjU3MDlDOTYuNDkwMiAzMi4wNzYyIDk2LjEzMjYgMzEuNTMyOCA5Ni4xMzI2IDMwLjgzODFWMzAuMzc0OUM5Ni4xMzI2IDI5LjI0NyA5Ny4wMzM3IDI4Ljc0NiA5OC43OTMzIDI4Ljc0NiIgZmlsbD0iY3VycmVudENvbG9yIj48L3BhdGg+PHBhdGggZD0iTTEzNC4zNDUgMjMuMzE2QzEzMi4xMDYgMjMuMTg3NiAxMjkuODY4IDIzLjU3ODUgMTI3LjgwNiAyNC40NTgxQzEyNS43NSAyMy41NTU5IDEyMy41MDYgMjMuMTY0IDEyMS4yNjcgMjMuMzE2QzExMy4xODEgMjMuMzE2IDExMS4zODYgMjUuNzk4NyAxMTEuMzg2IDM0LjEzMlY0OC40MTM3QzExMS4zODYgNDguNTgwOCAxMTEuNDUzIDQ4Ljc0MTEgMTExLjU3MSA0OC44NTkyQzExMS42ODkgNDguOTc3NCAxMTEuODQ5IDQ5LjA0MzggMTEyLjAxNiA0OS4wNDM4SDExNy40MjhDMTE3LjU5NCA0OS4wNDEzIDExNy43NTMgNDguOTc0MiAxMTcuODcgNDguODU2NUMxMTcuOTg4IDQ4LjczODkgMTE4LjA1NSA0OC41OCAxMTguMDU4IDQ4LjQxMzdWMzUuODQ0NEMxMTguMDU4IDMwLjM3ODEgMTE4LjU3MyAyOS4zMTk1IDEyMS4yNjIgMjkuMTE5NEMxMjMuNzY1IDI5LjMwNTMgMTI0LjM4NCAzMC4yMzk0IDEyNC40NiAzNC43OTA1VjQ4LjQwNDJDMTI0LjQ2NiA0OC41NzA5IDEyNC41MzYgNDguNzI4OSAxMjQuNjU1IDQ4Ljg0NkMxMjQuNzczIDQ4Ljk2MzEgMTI0LjkzMiA0OS4wMzA0IDEyNS4wOTkgNDkuMDM0M0gxMzAuNTFDMTMwLjY3OCA0OS4wMzQzIDEzMC44MzggNDguOTY3OSAxMzAuOTU2IDQ4Ljg0OThDMTMxLjA3NCA0OC43MzE2IDEzMS4xNDEgNDguNTcxMyAxMzEuMTQxIDQ4LjQwNDJWMzQuNzkyMUMxMzEuMjE2IDMwLjIzMzEgMTMxLjgzNSAyOS4yOTkgMTM0LjMzOCAyOS4xMTMxQzEzNy4wMjcgMjkuMzEzMiAxMzcuNTQzIDMwLjM3MzMgMTM3LjU0MyAzNS44MzgxVjQ4LjQwNzRDMTM3LjU0MyA0OC41NzQ1IDEzNy42MDkgNDguNzM0OCAxMzcuNzI3IDQ4Ljg1MjlDMTM3Ljg0NSA0OC45NzExIDEzOC4wMDYgNDkuMDM3NSAxMzguMTczIDQ5LjAzNzVIMTQzLjU4NEMxNDMuNzUgNDkuMDM1NCAxNDMuOTA5IDQ4Ljk2ODQgMTQ0LjAyNyA0OC44NTA3QzE0NC4xNDUgNDguNzMyOSAxNDQuMjEyIDQ4LjU3MzggMTQ0LjIxNCA0OC40MDc0VjM0LjEyNTdDMTQ0LjIxNCAyNS43OTI0IDE0Mi40NjEgMjMuMzA5NyAxMzQuMzM0IDIzLjMwOTciIGZpbGw9ImN1cnJlbnRDb2xvciI+PC9wYXRoPjwvZz48ZGVmcz48Y2xpcHBhdGggaWQ9ImNsaXAwXzJfOTAiPjxyZWN0IHdpZHRoPSIyNzAuOTUxIiBoZWlnaHQ9IjYwIiBmaWxsPSJ3aGl0ZSI+PC9yZWN0PjwvY2xpcHBhdGg+PC9kZWZzPjwvc3ZnPg==]]
+
+[[modal-portal]]

@@ -1,0 +1,522 @@
+[[body_wrap]]
+[[sp_menu]]
+__
+
+MENU
+
+* https://infra-exp.com/[____ホーム]
+* https://infra-exp.com/category/linux/[____Linux]
+* https://infra-exp.com/category/windows/[____Windows]
+* https://infra-exp.com/category/excel/[____Excel]
+
+[[header]]
+https://infra-exp.com/[image:https://infra-exp.com/wp-content/uploads/2024/03/InfraExperience_rogo.png[インフラエクスペリエンス,width=1600,height=360]]
+
+* https://infra-exp.com/[[.ttl]#____ホーム#]
+* https://infra-exp.com/category/linux/[[.ttl]#____Linux#]
+* https://infra-exp.com/category/windows/[[.ttl]#____Windows#]
+* https://infra-exp.com/category/excel/[[.ttl]#____Excel#]
+* __
+
+__ [.c-iconBtn__label]#検索#
+
+__ [.c-iconBtn__label]#メニュー#
+
+* https://infra-exp.com/[____ホーム]
+* https://infra-exp.com/category/linux/[____Linux]
+* https://infra-exp.com/category/windows/[____Windows]
+* https://infra-exp.com/category/excel/[____Excel]
+
+[[fix_header]]
+https://infra-exp.com/[image:https://infra-exp.com/wp-content/uploads/2024/03/InfraExperience_rogo.png[インフラエクスペリエンス,width=1600,height=360]]
+
+* https://infra-exp.com/[[.ttl]#____ホーム#]
+* https://infra-exp.com/category/linux/[[.ttl]#____Linux#]
+* https://infra-exp.com/category/windows/[[.ttl]#____Windows#]
+* https://infra-exp.com/category/excel/[[.ttl]#____Excel#]
+* __
+
+[[breadcrumb]]
+. https://infra-exp.com/[[.__home .icon-home]# ホーム#]
+. https://infra-exp.com/category/linux/[Linux]
+. [.p-breadcrumb__text]#【Linux】シェルスクリプトで使える比較演算子の使い方まとめ#
+
+[[content]]
+[[pickup_banner]]
+
+[[main_content]]
+== 【Linux】シェルスクリプトで使える比較演算子の使い方まとめ
+
+[.__y]#2024# [.__md]#3/24#
+
+https://infra-exp.com/category/linux/[Linux]
+
+https://infra-exp.com/tag/linux/[Linux]
+https://infra-exp.com/tag/rhel7/[RHEL7]
+https://infra-exp.com/tag/rhel8/[RHEL8]
+https://infra-exp.com/tag/rhel9/[RHEL9]
+https://infra-exp.com/tag/%e3%82%b7%e3%82%a7%e3%83%ab%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88/[シェルスクリプト]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/11/bash-relation-operator-icatch.png[シェルスクリプトで使える比較演算子の使い方まとめ,width=1200,height=630]
+
+[cols="",options="header",]
+|===
+|[.swl-cell-text-centered]#__ この記事を読むと・・・#
+|[.swl-inline-list]#シェルスクリプトで使える比較演算子が理解できる#
+|===
+
+[.p-toc__ttl]#目次#
+
+== シェルスクリプトで使える比較演算子一覧
+
+Linuxのシェルスクリプトでは、様々な比較演算子が利用できます。 +
+これらを上手に組み合わせることで、条件分岐やループなどの制御構造を構築することができます。 +
+以下に、よく使用される比較演算子をまとめました。
+
+[.p-blogCard__caption]#あわせて読みたい#
+
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==,width=320,height=180]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/11/bash-if-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/11/bash-if-icatch-300x158,width=320,height=180]
+
+https://infra-exp.com/bash-if/[【Linux】if文を使ってシェルスクリプトにて条件分岐する方法]
+[.p-blogCard__excerpt]#この記事を読むと・・・シェルスクリプトでif文を使って条件分岐させる方法が理解できる
+【if文】基本書式
+if文は、プログラム内で特定の条件に基づいて処理を分岐させ…#
+
+=== 数値比較演算子
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|数値A -eq 数値B |数値Aと数値Bが等しければ真
+|数値A -ne 数値B |数値Aと数値Bが等しくなければ真
+|数値A -gt 数値B |数値Aが数値Bより大きければ真
+|数値A -lt 数値B |数値Aが数値Bより小さければ真
+|数値A -ge 数値B |数値Aが数値B以上であれば真
+|数値A -le 数値B |数値Aが数値B以下であれば真
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -eq "$B" ]; then
+    echo "変数 A と B は等しいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -ne "$B" ]; then
+    echo "変数 A と B は等しくありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -gt "$B" ]; then
+    echo "変数 A は変数 B より大きいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -lt "$B" ]; then
+    echo "変数 A は変数 B より小さいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -ge "$B" ]; then
+    echo "変数 A は変数 B 以上です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -le "$B" ]; then
+    echo "変数 A は変数 B 以下または等しいです"
+fi
+----
+
+=== 文字列比較演算子
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|文字列1 = 文字列str2 |文字列1と文字列2が等しければ真
+|文字列1 != 文字列str2 |文字列1と文字列2が等しくなければ真
+|-z 文字列 |文字列の長さが0であれば真
+|-n 文字列 |文字列の長さが0より大きければ真
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$str1" = "$str2" ]; then
+    echo "文字列 str1 と str2 は等しいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$str1" != "$str2" ]; then
+    echo "文字列 str1 と str2 は等しくありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -z "$str" ]; then
+    echo "文字列 str は長さがゼロです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -n "$str" ]; then
+    echo "文字列 str は長さがゼロでないです"
+fi
+----
+
+=== ファイルチェック演算子
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|-e ファイル |ファイルであれば真
+|-f ファイル |通常ファイルなら真
+|-r ファイル |読み取り可能であれば真
+|-w ファイル |書き込み可能であれば真
+|-x ファイル |実行可能であれば真
+|-d ファイル |ディレクトリであれば真
+|-s ファイル |ファイルが存在し、空でなければ真
+|-L ファイル |ファイルがシンボリックリンクならば真
+|ファイル1 -nt ファイル2 |ファイル1がファイル2より新しければ真
+|ファイル1 -ot ファイル2 |ファイル1がファイル2より古ければ真
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -e "$file" ]; then
+    echo "ファイル file は存在します"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -f "$file" ]; then
+    echo "ファイル $file は通常のファイルです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -r "$file" ]; then
+    echo "ファイル file は読み込み可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -w "$file" ]; then
+    echo "ファイル file は書き込み可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -x "$file" ]; then
+    echo "ファイル file は実行可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -d "$dir" ]; then
+    echo "ディレクトリ $dir は存在します"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -s "$file" ]; then
+    echo "ファイル $file はゼロバイトではありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ ! -L "$file" ]; then
+    echo "ファイル $file はシンボリックリンクではありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$file1" -nt "$file2" ]; then
+    echo "ファイル $file1 はファイル $file2 より新しいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$file1" -ot "$file2" ]; then
+    echo "ファイル $file1 はファイル $file2 より古いです"
+fi
+----
+
+=== 条件式の結合
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|条件1 -a 条件2 |両方の条件式が真であれば真（and条件）
+|条件1 -o 条件2 |いずれかの条件式が真であれば真（or条件)
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -e "$file" -a -r "$file" ]; then
+    echo "ファイル $file は存在し、読み込み可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -e "$file" -o -w "$file" ]; then
+    echo "ファイル $file は存在するか、書き込み可能です"
+fi
+----
+
+https://infra-exp.com/category/linux/[Linux]
+
+https://infra-exp.com/tag/linux/[Linux]
+https://infra-exp.com/tag/rhel7/[RHEL7]
+https://infra-exp.com/tag/rhel8/[RHEL8]
+https://infra-exp.com/tag/rhel9/[RHEL9]
+https://infra-exp.com/tag/%e3%82%b7%e3%82%a7%e3%83%ab%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88/[シェルスクリプト]
+
+[.__text]# よかったらシェアしてね！ #
+
+* https://twitter.com/intent/tweet?url=https%3A%2F%2Finfra-exp.com%2Fbash-relation-operator%2F&text=%E3%80%90Linux%E3%80%91%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E6%AF%94%E8%BC%83%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%BE%E3%81%A8%E3%82%81[__]
+* link://b.hatena.ne.jp/add?mode=confirm&url=https%3A%2F%2Finfra-exp.com%2Fbash-relation-operator%2F[__]
+* https://getpocket.com/edit?url=https%3A%2F%2Finfra-exp.com%2Fbash-relation-operator%2F&title=%E3%80%90Linux%E3%80%91%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E6%AF%94%E8%BC%83%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%BE%E3%81%A8%E3%82%81[__]
+* https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Finfra-exp.com%2Fbash-relation-operator%2F&text=%E3%80%90Linux%E3%80%91%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E6%AF%94%E8%BC%83%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%BE%E3%81%A8%E3%82%81[__]
+* [.c-urlcopy__content]#
+image:data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJzd2wtc3ZnLWNvcHkgYy1zaGFyZUJ0bnNfX2ljb24gLXRvLWNvcHkiIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Ym94PSIwIDAgNDggNDgiIHJvbGU9ImltZyIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0zOCw1LjVoLTljMC0yLjgtMi4yLTUtNS01cy01LDIuMi01LDVoLTljLTIuMiwwLTQsMS44LTQsNHYzM2MwLDIuMiwxLjgsNCw0LDRoMjhjMi4yLDAsNC0xLjgsNC00di0zMyAgICAgICAgICAgICAgIEM0Miw3LjMsNDAuMiw1LjUsMzgsNS41eiBNMjQsMy41YzEuMSwwLDIsMC45LDIsMnMtMC45LDItMiwycy0yLTAuOS0yLTJTMjIuOSwzLjUsMjQsMy41eiBNMzgsNDIuNUgxMHYtMzNoNXYzYzAsMC42LDAuNCwxLDEsMWgxNiAgICAgICAgICAgICAgYzAuNiwwLDEtMC40LDEtMXYtM2g1TDM4LDQyLjV6Ij48L3BhdGg+PHBvbHlnb24gcG9pbnRzPSIyNCwzNyAzMi41LDI4IDI3LjUsMjggMjcuNSwyMCAyMC41LDIwIDIwLjUsMjggMTUuNSwyOCAiPjwvcG9seWdvbj48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJzd2wtc3ZnLWNvcHkgYy1zaGFyZUJ0bnNfX2ljb24gLXRvLWNvcHkiIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Ym94PSIwIDAgNDggNDgiIHJvbGU9ImltZyIgYXJpYS1oaWRkZW49InRydWUiIGZvY3VzYWJsZT0iZmFsc2UiPjxwYXRoIGQ9Ik0zOCw1LjVoLTljMC0yLjgtMi4yLTUtNS01cy01LDIuMi01LDVoLTljLTIuMiwwLTQsMS44LTQsNHYzM2MwLDIuMiwxLjgsNCw0LDRoMjhjMi4yLDAsNC0xLjgsNC00di0zMyAgICAgICAgICAgICAgIEM0Miw3LjMsNDAuMiw1LjUsMzgsNS41eiBNMjQsMy41YzEuMSwwLDIsMC45LDIsMnMtMC45LDItMiwycy0yLTAuOS0yLTJTMjIuOSwzLjUsMjQsMy41eiBNMzgsNDIuNUgxMHYtMzNoNXYzYzAsMC42LDAuNCwxLDEsMWgxNiAgICAgICAgICAgICAgYzAuNiwwLDEtMC40LDEtMXYtM2g1TDM4LDQyLjV6Ij48L3BhdGg+PHBvbHlnb24gcG9pbnRzPSIyNCwzNyAzMi41LDI4IDI3LjUsMjggMjcuNSwyMCAyMC41LDIwIDIwLjUsMjggMTUuNSwyOCAiPjwvcG9seWdvbj48L3N2Zz4=]
+image:data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJzd2wtc3ZnLWNvcGllZCBjLXNoYXJlQnRuc19faWNvbiAtY29waWVkIiB3aWR0aD0iMWVtIiBoZWlnaHQ9IjFlbSIgdmlld2JveD0iMCAwIDQ4IDQ4IiByb2xlPSJpbWciIGFyaWEtaGlkZGVuPSJ0cnVlIiBmb2N1c2FibGU9ImZhbHNlIj48cGF0aCBkPSJNMzgsNS41aC05YzAtMi44LTIuMi01LTUtNXMtNSwyLjItNSw1aC05Yy0yLjIsMC00LDEuOC00LDR2MzNjMCwyLjIsMS44LDQsNCw0aDI4YzIuMiwwLDQtMS44LDQtNHYtMzMgICAgICAgICAgICAgIEM0Miw3LjMsNDAuMiw1LjUsMzgsNS41eiBNMjQsMy41YzEuMSwwLDIsMC45LDIsMnMtMC45LDItMiwycy0yLTAuOS0yLTJTMjIuOSwzLjUsMjQsMy41eiBNMzgsNDIuNUgxMHYtMzNoNXYzYzAsMC42LDAuNCwxLDEsMWgxNiAgICAgICAgICAgICAgYzAuNiwwLDEtMC40LDEtMXYtM2g1VjQyLjV6Ij48L3BhdGg+PHBvbHlnb24gcG9pbnRzPSIzMS45LDIwLjIgMjIuMSwzMC4xIDE3LjEsMjUuMSAxNC4yLDI4IDIyLjEsMzUuOCAzNC44LDIzLjEgIj48L3BvbHlnb24+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJzd2wtc3ZnLWNvcGllZCBjLXNoYXJlQnRuc19faWNvbiAtY29waWVkIiB3aWR0aD0iMWVtIiBoZWlnaHQ9IjFlbSIgdmlld2JveD0iMCAwIDQ4IDQ4IiByb2xlPSJpbWciIGFyaWEtaGlkZGVuPSJ0cnVlIiBmb2N1c2FibGU9ImZhbHNlIj48cGF0aCBkPSJNMzgsNS41aC05YzAtMi44LTIuMi01LTUtNXMtNSwyLjItNSw1aC05Yy0yLjIsMC00LDEuOC00LDR2MzNjMCwyLjIsMS44LDQsNCw0aDI4YzIuMiwwLDQtMS44LDQtNHYtMzMgICAgICAgICAgICAgIEM0Miw3LjMsNDAuMiw1LjUsMzgsNS41eiBNMjQsMy41YzEuMSwwLDIsMC45LDIsMnMtMC45LDItMiwycy0yLTAuOS0yLTJTMjIuOSwzLjUsMjQsMy41eiBNMzgsNDIuNUgxMHYtMzNoNXYzYzAsMC42LDAuNCwxLDEsMWgxNiAgICAgICAgICAgICAgYzAuNiwwLDEtMC40LDEtMXYtM2g1VjQyLjV6Ij48L3BhdGg+PHBvbHlnb24gcG9pbnRzPSIzMS45LDIwLjIgMjIuMSwzMC4xIDE3LjEsMjUuMSAxNC4yLDI4IDIyLjEsMzUuOCAzNC44LDIzLjEgIj48L3BvbHlnb24+PC9zdmc+]
+#
++
+URLをコピーしました！
+
+[[after_article]]
+* image:data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==,width=160,height=90]
++
+image:https://infra-exp.com/wp-content/uploads/2023/11/bash-if-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/11/bash-if-icatch-300x158]
++
+[.p-pnLinks__title]#【Linux】if文を使ってシェルスクリプトにて条件分岐する方法#
+* image:data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==,width=160,height=90]
++
+image:https://infra-exp.com/wp-content/uploads/2023/12/ln-command-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/12/ln-command-icatch-300x158]
++
+[.p-pnLinks__title]#【Linux】lnコマンドの使い方（オプションあり）#
+
+== おすすめ記事
+
+* https://infra-exp.com/bash-if/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[if文を使ってシェルスクリプトにて条件分岐する方法,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/11/bash-if-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/11/bash-if-icatch-300x158]
++
+【Linux】if文を使ってシェルスクリプトにて条件分岐する方法
+* https://infra-exp.com/linux-permission/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[ファイルとディレクトリーのパーミッション(rwx)の違い,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/10/linux-permission-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/10/linux-permission-icatch-300x158]
++
+【Linux】ファイルとディレクトリーのパーミッション(rwx)の違い
+* https://infra-exp.com/linux_locale_change/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[Linuxで言語（ロケール）を英語に変更する方法,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/02/linux_locale_change-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/02/linux_locale_change-icatch-300x158]
++
+【Linux】言語（ロケール）を英語に変更する方法
+* https://infra-exp.com/rhel_remotessh/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[oot
+ユーザーでリモートログイン（ssh接続）を許可拒否する方法,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/03/rhel_remotessh-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/03/rhel_remotessh-icatch-300x158]
++
+【Linux】rootユーザーのリモートログイン（ssh接続）を許可/拒否する方法
+* https://infra-exp.com/userdel-command/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[userdelコマンドの使い方,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/12/userdel-command-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/12/userdel-command-icatch-300x158]
++
+【Linux】userdelコマンドの使い方（オプションあり）
+* https://infra-exp.com/linux-rsyslog-messages/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[messagesにプライオリティを表示する方法,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/12/linux-rsyslog-messages-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/12/linux-rsyslog-messages-icatch-300x158]
++
+【Linux】/var/log/messagesにinfo、errなどのプライオリティを表示する方法
+* https://infra-exp.com/linux-echo-doublequotation/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[echoコマンド実行時に文字列としてダブルクォーテーションを使う方法,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/10/linux-echo-doublequotation-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/10/linux-echo-doublequotation-icatch-300x158]
++
+【Linux】echoコマンド実行時に文字列としてダブルクォーテーション「”」を使う方法
+* https://infra-exp.com/linux-dnf-makecache-service-failed/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[dnf-makecache.service
+Failed解消する方法,width=300,height=158]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/12/linux-dnf-makecache-service-failed-icatch-300x158.png[https://infra-exp.com/wp-content/uploads/2023/12/linux-dnf-makecache-service-failed-icatch-300x158]
++
+【Linux】「systemd[1]:dnf-makecache.service: Failed with result
+‘exit-code’.」を解消する方法
+
+[[media_image-2]]
+カテゴリー
+
+https://infra-exp.com/category/os/linux/[image:https://infra-exp.com/wp-content/uploads/2023/10/Linuxカテゴリー-300x158.png[Linuxカテゴリー,width=300,height=158]]
+
+[[media_image-3]]
+https://infra-exp.com/category/os/windows/[image:https://infra-exp.com/wp-content/uploads/2023/10/Windowsカテゴリー-300x158.png[Windowsカテゴリー,width=300,height=158]]
+
+[[media_image-4]]
+https://infra-exp.com/linux-command-reference/[image:https://infra-exp.com/wp-content/uploads/2024/03/linux-command-reference-icatch-300x158.png[Linux
+コマンドリファレンス（アルファベット順）,width=300,height=158]]
+
+[[swell_popular_posts-2]]
+人気記事
+
+* https://infra-exp.com/linux_ip/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[LinuxでIPアドレスを設定・変更・確認する方法,width=1200,height=630]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/03/linux_ip-icatch.png[https://infra-exp.com/wp-content/uploads/2023/03/linux_ip-icatch]
++
+【Linux】IPアドレスをコマンドで設定・変更・確認する方法
+* https://infra-exp.com/linux_static_route/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[Linuxで静的ルーティングを追加・削除・確認する方法,width=1200,height=630]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/04/linux_static_route-icatch.png[https://infra-exp.com/wp-content/uploads/2023/04/linux_static_route-icatch]
++
+【Linux】静的ルーティングをコマンドで追加・削除・確認する方法
+* https://infra-exp.com/linux_versioncheck/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[linuxのOSバージョンを確認する方法,width=1200,height=630]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/02/linux_versioncheck-icatch.png[https://infra-exp.com/wp-content/uploads/2023/02/linux_versioncheck-icatch]
++
+【Linux】OSバージョンを確認する方法
+* https://infra-exp.com/sakura_editor_changecolor/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[サクラエディタで背景色と文字色を変更してダークモードにする方法,width=1200,height=630]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/03/sakura_editor_changecolor-icatch.png[https://infra-exp.com/wp-content/uploads/2023/03/sakura_editor_changecolor-icatch]
++
+サクラエディタで背景色と文字色を変更してダークモードにする方法
+* https://infra-exp.com/excelvba_auto_capture/[]
++
+.
+image::data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==[ExcelVBA（マクロ）でキャプチャ画像を自動でシートに貼り付ける方法,width=1200,height=630]
+
+.
+image::https://infra-exp.com/wp-content/uploads/2023/03/excelvba_auto_capture-icatch.png[https://infra-exp.com/wp-content/uploads/2023/03/excelvba_auto_capture-icatch]
++
+【Excel】ExcelVBA（マクロ）でキャプチャ画像を自動でシートに貼り付けるツールを作成してみた
+
+[[tag_cloud-2]]
+キーワード
+
+https://infra-exp.com/tag/excel/[Excel]
+https://infra-exp.com/tag/excelvba/[ExcelVBA]
+https://infra-exp.com/tag/linuc/[LinuC]
+https://infra-exp.com/tag/linux/[Linux]
+https://infra-exp.com/tag/network/[Network]
+https://infra-exp.com/tag/rhel7/[RHEL7]
+https://infra-exp.com/tag/rhel8/[RHEL8]
+https://infra-exp.com/tag/rhel9/[RHEL9]
+https://infra-exp.com/tag/teams/[Teams]
+https://infra-exp.com/tag/teraterm/[TeraTerm]
+https://infra-exp.com/tag/virtualbox/[VirtualBox]
+https://infra-exp.com/tag/vmware/[VMware]
+https://infra-exp.com/tag/windows/[Windows]
+https://infra-exp.com/tag/windows11/[Windows11]
+https://infra-exp.com/tag/windows%e8%a8%ad%e5%ae%9a/[WIndows設定]
+https://infra-exp.com/tag/winshot/[WinShot]
+https://infra-exp.com/tag/%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3/[アプリケーション]
+https://infra-exp.com/tag/%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%82%ac%e3%82%a4%e3%83%89/[インストールガイド]
+https://infra-exp.com/tag/%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89/[コマンド]
+https://infra-exp.com/tag/%e3%82%b5%e3%82%af%e3%83%a9%e3%82%a8%e3%83%87%e3%82%a3%e3%82%bf/[サクラエディタ]
+https://infra-exp.com/tag/%e3%82%b7%e3%82%a7%e3%83%ab%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88/[シェルスクリプト]
+https://infra-exp.com/tag/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2/[ソフトウェア]
+https://infra-exp.com/tag/%e6%95%b0%e5%bc%8f%e3%81%a8%e9%96%a2%e6%95%b0/[数式と関数]
+https://infra-exp.com/tag/%e8%87%aa%e5%8b%95%e5%8c%96/[自動化]
+https://infra-exp.com/tag/%e8%b3%87%e6%a0%bc%e8%a9%a6%e9%a8%93/[資格試験]
+
+* https://infra-exp.com/[ホーム]
+* https://infra-exp.com/privacy-policy/[プライバシーポリシー]
+* https://infra-exp.com/inquiry/[お問い合わせ]
+
+© InfraExperience
+
+[[fix_bottom_menu]]
+* __ メニュー
+* https://infra-exp.com/[__ホーム]
+* https://infra-exp.com/privacy-policy/[__プライバシーポリシー]
+* https://infra-exp.com/inquiry/[__お問い合わせ]
+* __ 検索
+* __ 目次
+* __ トップへ
+
+__ [.c-fixBtn__label]#目次#
+
+__ [.c-fixBtn__label]#トップへ#
+
+[[search_modal]]
+
+__ 閉じる
+
+[[index_modal]]
+
+[.p-toc__ttl]#目次#
+
+__ 閉じる

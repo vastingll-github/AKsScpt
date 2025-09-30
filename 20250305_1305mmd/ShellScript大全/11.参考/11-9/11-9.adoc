@@ -1,0 +1,466 @@
+__
+
+== https://www.softel.co.jp/blogs/tech/[SOFTELメモ] Developer's blog
+
+https://www.softel.co.jp/?mc[会社概要]
+https://www.softel.co.jp/blogs/tech/?b[ブログ]
+https://www.softel.co.jp/blogs/tech/form[調査依頼]
+https://www.softel.co.jp/recruit?m[採用情報]
+https://www.softel.co.jp/recruit?mm[...]
+
+https://www.softel.co.jp/recruit?utm_source=recbnr02&utm_medium=Web&utm_campaign=recruit[image:https://www.softel.co.jp/blogs/tech/wordpress/wp-content/uploads/img/rb102.jpg[技術者募集中]]
+
+== 【bash】プロンプトの表示を変える
+
+https://twitter.com/share[Tweet]
+
+http://b.hatena.ne.jp/entry/https://www.softel.co.jp/blogs/tech/archives/2659[image:https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png[このエントリーをはてなブックマークに追加,width=20,height=20]]
+
+Category
+https://www.softel.co.jp/blogs/tech/archives/category/linux[linux]
+2011/09/17
+
+=== 問題
+
+bashのプロンプトが非常に長くなって、見づらいのですが、何とかなりませんか。
+
+[source,code]
+----
+[admin@host123456:/etc/apache2/sites-available]$
+----
+
+=== 答え
+
+bashでは、PS1という環境変数によってプロンプトを定義している。
+
+デフォルトでは、下のような表示。
+
+[source,code]
+----
+ユーザー名@ホスト名:パス（長くなったりする） $
+----
+
+exportコマンドでPS1を変更すれば、プロンプトが変わる。
+
+１、一般的なの（ユーザー＠ホスト名 パス $）
+
+[source,code]
+----
+export PS1='[\u@\h \W]\$ '
+↓
+[admin@xxxhost log]$
+----
+
+２、すっきり $ だけにしたいとき
+
+[source,code]
+----
+export PS1='$ '
+↓
+$ 
+----
+
+３、長いけどdebianでsuしたときのデフォルト？
+
+[source,code]
+----
+export PS1="\${debian_chroot:+(\$debian_chroot)}\\u@\\h:\\w\\\$ "
+↓
+apache@localhost:/usr/local/bin$
+----
+
+４、ユーザー名とホスト名は知りたい
+
+[source,code]
+----
+export PS1='\u@\h \$ '
+↓
+root@server123 # 
+----
+
+５、現在のディレクトリがわかればよい
+
+[source,code]
+----
+export PS1='\W $ '
+↓
+tmp $ 
+----
+
+６、時間が見えるとありがたい
+
+[source,code]
+----
+export PS1='\t \u@\h $ '
+↓
+12:44:27 apache@www12345 $
+----
+
+==== 使用できる特殊な文字一覧
+
+[cols=",",]
+|===
+|\a |ASCIIのベル文字（07）を表示する（ビープ音を鳴らす）
+
+|\d |「曜 日 月 日」の形式（例：Fri Jan 5）で日付を表示する
+
+|\e |ASCIIのエスケープ文字（033）を表示する
+
+|\h |ホスト名のうち最初の「.」までの部分を表示する
+
+|\H |ホスト名を表示する
+
+|\n |改行する
+
+|\r |復帰する
+
+|\s |シェルの名前を表示する
+
+|\t |現在の時刻を24時間の「HH:MM:SS」形式で表示する
+
+|\T |現在の時刻を12時間の「HH:MM:SS」形式で表示する
+
+|\@ |現在の時刻を12時間の「am/pm」形式で表示する
+
+|\u |現在のユーザー名を表示する
+
+|\v |bashのバージョンを表示する
+
+|\V |bashのリリースを表示する
+
+|\w
+|現在の作業ディレクトリを、ユーザーのホームディレクトリからの絶対パスで表示する
+
+|\W |現在の作業ディレクトリを表示する
+
+|\! |このコマンドの履歴番号を表示する
+
+|\#
+|このコマンドのコマンド番号（現在のシェルのセッション中に実行されたコマンドのシーケンスにおける位置）を表示する
+
+|\$ |実効UIDが0の場合に#となり、それ以外の場合に$となる
+
+|\nnn |8進数nnnに対応する文字を表示する
+
+|\\ |バックスラッシュを表示する
+
+|\[
+|非表示文字のシーケンスを開始する。これを使って、プロンプト中に端末の制御シーケンスを埋め込むことができる
+
+|\] |非表示文字のシーケンスを終了する
+|===
+
+https://twitter.com/share[Tweet]
+
+http://b.hatena.ne.jp/entry/https://www.softel.co.jp/blogs/tech/archives/2659[image:https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png[このエントリーをはてなブックマークに追加,width=20,height=20]]
+
+« https://www.softel.co.jp/blogs/tech/archives/3030[Unicode版
+文字コード表]  
+
+https://www.softel.co.jp/blogs/tech/archives/3042[spfレコードの書き方（一例）]
+»
+
+[.underline]##
+
+=== 関連するメモ
+
+[.underline]##
+
+[[comments]]
+=== コメント
+
+[[comments-post]]
+Name
+
+Mail（非公開）
+
+Website
+
+Comment
+
+[[sidebar]]
+== Tags
+
+https://www.softel.co.jp/blogs/tech/archives/tag/access[access]
+https://www.softel.co.jp/blogs/tech/archives/tag/algorithm[algorithm]
+https://www.softel.co.jp/blogs/tech/archives/tag/aws[aws]
+https://www.softel.co.jp/blogs/tech/archives/tag/bash[bash]
+https://www.softel.co.jp/blogs/tech/archives/tag/bootstrap[bootstrap]
+https://www.softel.co.jp/blogs/tech/archives/tag/canvas[canvas]
+https://www.softel.co.jp/blogs/tech/archives/tag/composer[composer]
+https://www.softel.co.jp/blogs/tech/archives/tag/data[data]
+https://www.softel.co.jp/blogs/tech/archives/tag/debian[debian]
+https://www.softel.co.jp/blogs/tech/archives/tag/docker[docker]
+https://www.softel.co.jp/blogs/tech/archives/tag/eclipse[eclipse]
+https://www.softel.co.jp/blogs/tech/archives/tag/elasticsearch[Elasticsearch]
+https://www.softel.co.jp/blogs/tech/archives/tag/excel[excel]
+https://www.softel.co.jp/blogs/tech/archives/tag/facebook[facebook]
+https://www.softel.co.jp/blogs/tech/archives/tag/fastcgi[FastCGI]
+https://www.softel.co.jp/blogs/tech/archives/tag/firefox[firefox]
+https://www.softel.co.jp/blogs/tech/archives/tag/git[git]
+https://www.softel.co.jp/blogs/tech/archives/tag/http[HTTP]
+https://www.softel.co.jp/blogs/tech/archives/tag/hyper-v[Hyper-V]
+https://www.softel.co.jp/blogs/tech/archives/tag/ie[ie]
+https://www.softel.co.jp/blogs/tech/archives/tag/ie10[IE10]
+https://www.softel.co.jp/blogs/tech/archives/tag/iis[IIS]
+https://www.softel.co.jp/blogs/tech/archives/tag/jquery[jQuery]
+https://www.softel.co.jp/blogs/tech/archives/tag/json[json]
+https://www.softel.co.jp/blogs/tech/archives/tag/kvm[kvm]
+https://www.softel.co.jp/blogs/tech/archives/tag/laravel[laravel]
+https://www.softel.co.jp/blogs/tech/archives/tag/openvz[OpenVZ]
+https://www.softel.co.jp/blogs/tech/archives/tag/pc%e3%83%81%e3%83%a5%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0[PCチューニング]
+https://www.softel.co.jp/blogs/tech/archives/tag/pdf[PDF]
+https://www.softel.co.jp/blogs/tech/archives/tag/pdflib[pdflib]
+https://www.softel.co.jp/blogs/tech/archives/tag/php4[php4]
+https://www.softel.co.jp/blogs/tech/archives/tag/sqlite[SQLite]
+https://www.softel.co.jp/blogs/tech/archives/tag/subversion[subversion]
+https://www.softel.co.jp/blogs/tech/archives/tag/ubuntu[ubuntu]
+https://www.softel.co.jp/blogs/tech/archives/tag/vnc[vnc]
+https://www.softel.co.jp/blogs/tech/archives/tag/vue[vue]
+https://www.softel.co.jp/blogs/tech/archives/tag/wkhtmltopdf[wkhtmltopdf]
+https://www.softel.co.jp/blogs/tech/archives/tag/wsl[WSL]
+https://www.softel.co.jp/blogs/tech/archives/tag/wsl2[WSL2]
+https://www.softel.co.jp/blogs/tech/archives/tag/%e3%82%b3%e3%83%bc%e3%83%89%e6%96%ad%e7%89%87[コード断片]
+https://www.softel.co.jp/blogs/tech/archives/tag/%e3%83%ac%e3%83%b3%e3%82%bf%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90%e3%83%bc[レンタルサーバー]
+https://www.softel.co.jp/blogs/tech/archives/tag/%e6%ad%a3%e8%a6%8f%e8%a1%a8%e7%8f%be[正規表現]
+https://www.softel.co.jp/blogs/tech/archives/tag/%e7%bd%ae%e3%81%8f%e3%81%a0%e3%81%91%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab[置くだけインストール]
+https://www.softel.co.jp/blogs/tech/archives/tag/%e8%aa%ad%e3%81%bf%e6%96%b9[読み方]
+https://www.softel.co.jp/blogs/tech/archives/tag/%e8%aa%ad%e3%81%bf%e7%89%a9[読み物]
+
+== Categories
+
+* https://www.softel.co.jp/blogs/tech/archives/category/ai[AI]
+* https://www.softel.co.jp/blogs/tech/archives/category/apache[apache]
+* https://www.softel.co.jp/blogs/tech/archives/category/bookmark[bookmark]
+* https://www.softel.co.jp/blogs/tech/archives/category/css[css]
+* https://www.softel.co.jp/blogs/tech/archives/category/develop[develop]
+* https://www.softel.co.jp/blogs/tech/archives/category/docker[docker]
+* https://www.softel.co.jp/blogs/tech/archives/category/drupal[drupal]
+* https://www.softel.co.jp/blogs/tech/archives/category/eclipse[eclipse]
+* https://www.softel.co.jp/blogs/tech/archives/category/git[git]
+* https://www.softel.co.jp/blogs/tech/archives/category/google-apps-script[google
+apps script]
+* https://www.softel.co.jp/blogs/tech/archives/category/hardware[hardware]
+* https://www.softel.co.jp/blogs/tech/archives/category/html5[html5]
+* https://www.softel.co.jp/blogs/tech/archives/category/javascript[JavaScript]
+* https://www.softel.co.jp/blogs/tech/archives/category/jqueryplugin[jQueryPlugin]
+* https://www.softel.co.jp/blogs/tech/archives/category/linux[linux]
+* https://www.softel.co.jp/blogs/tech/archives/category/memo[memo]
+* https://www.softel.co.jp/blogs/tech/archives/category/mysql[MySQL]
+* https://www.softel.co.jp/blogs/tech/archives/category/network[network]
+* https://www.softel.co.jp/blogs/tech/archives/category/oauth[OAuth]
+* https://www.softel.co.jp/blogs/tech/archives/category/office[office]
+* https://www.softel.co.jp/blogs/tech/archives/category/oracle[Oracle]
+* https://www.softel.co.jp/blogs/tech/archives/category/php[php]
+* https://www.softel.co.jp/blogs/tech/archives/category/report[report]
+* https://www.softel.co.jp/blogs/tech/archives/category/security[security]
+* https://www.softel.co.jp/blogs/tech/archives/category/software[software]
+* https://www.softel.co.jp/blogs/tech/archives/category/sqlserver[SQLServer]
+* https://www.softel.co.jp/blogs/tech/archives/category/subversion[subversion]
+* https://www.softel.co.jp/blogs/tech/archives/category/vba[vba]
+* https://www.softel.co.jp/blogs/tech/archives/category/vim[vim]
+* https://www.softel.co.jp/blogs/tech/archives/category/webservice[webservice]
+* https://www.softel.co.jp/blogs/tech/archives/category/windows[windows]
+* https://www.softel.co.jp/blogs/tech/archives/category/wordpress[WordPress]
+* https://www.softel.co.jp/blogs/tech/archives/category/xen[xen]
+* https://www.softel.co.jp/blogs/tech/archives/category/uncategorized[未分類]
+
+[[wp-sidebar-archives]]
+== Archives
+
+* https://www.softel.co.jp/blogs/tech/archives/date/2025/02[2025年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/12[2024年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/10[2024年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/09[2024年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/07[2024年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/05[2024年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/04[2024年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/03[2024年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/02[2024年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2024/01[2024年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/12[2023年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/11[2023年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/10[2023年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/09[2023年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/08[2023年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/07[2023年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/06[2023年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/05[2023年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/04[2023年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/03[2023年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/02[2023年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2023/01[2023年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/12[2022年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/11[2022年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/10[2022年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/09[2022年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/08[2022年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/07[2022年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/06[2022年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/05[2022年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/04[2022年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/03[2022年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/02[2022年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2022/01[2022年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/12[2021年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/11[2021年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/10[2021年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/09[2021年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/07[2021年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/06[2021年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/05[2021年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/04[2021年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/03[2021年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/02[2021年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2021/01[2021年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/12[2020年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/11[2020年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/10[2020年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/09[2020年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/08[2020年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/06[2020年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/05[2020年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/04[2020年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/03[2020年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/02[2020年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2020/01[2020年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/12[2019年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/11[2019年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/10[2019年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/09[2019年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/08[2019年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/07[2019年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/06[2019年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/05[2019年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/04[2019年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/03[2019年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/02[2019年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2019/01[2019年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/12[2018年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/11[2018年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/10[2018年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/09[2018年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/08[2018年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/07[2018年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/06[2018年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/05[2018年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/04[2018年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/03[2018年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/02[2018年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2018/01[2018年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/12[2017年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/11[2017年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/10[2017年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/09[2017年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/08[2017年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/07[2017年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/06[2017年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/05[2017年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/04[2017年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/03[2017年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/02[2017年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2017/01[2017年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/12[2016年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/11[2016年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/10[2016年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/09[2016年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/08[2016年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/07[2016年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/06[2016年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/05[2016年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/04[2016年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/03[2016年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/02[2016年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2016/01[2016年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/12[2015年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/11[2015年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/10[2015年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/09[2015年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/08[2015年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/07[2015年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/06[2015年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/05[2015年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/04[2015年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/03[2015年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/02[2015年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2015/01[2015年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/12[2014年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/11[2014年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/10[2014年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/09[2014年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/08[2014年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/07[2014年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/06[2014年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/05[2014年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/04[2014年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/03[2014年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/02[2014年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2014/01[2014年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/12[2013年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/11[2013年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/10[2013年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/09[2013年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/08[2013年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/07[2013年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/06[2013年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/05[2013年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/04[2013年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/03[2013年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/02[2013年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2013/01[2013年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/12[2012年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/11[2012年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/10[2012年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/09[2012年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/08[2012年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/07[2012年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/06[2012年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/05[2012年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/04[2012年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/03[2012年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/02[2012年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2012/01[2012年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/12[2011年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/11[2011年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/10[2011年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/09[2011年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/08[2011年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/07[2011年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/06[2011年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/04[2011年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/03[2011年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/02[2011年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2011/01[2011年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/12[2010年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/11[2010年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/10[2010年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/09[2010年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/08[2010年8月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/07[2010年7月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/06[2010年6月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/05[2010年5月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/04[2010年4月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/03[2010年3月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/02[2010年2月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2010/01[2010年1月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2009/12[2009年12月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2009/11[2009年11月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2009/10[2009年10月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2009/09[2009年9月]
+* https://www.softel.co.jp/blogs/tech/archives/date/2009/08[2009年8月]
+
+== Link
+
+* https://www.suruzo.biz/[通販する蔵]
+* http://www.softel.co.jp/blogs/staff/[ソフテル スタッフブログ]
+* http://www.softel.co.jp/labs/[Softel Labs.]
+* https://twitter.com/softelmemo[softelmemo@twitter]
+* https://www.facebook.com/softelmemo[softelmemo@facebook]
+
+== Meta
+
+* https://www.softel.co.jp/blogs/tech/wordpress/wp-login.php[ログイン]
+* https://www.softel.co.jp/blogs/tech/feed[Site Feed]
+* https://www.softel.co.jp/blogs/tech/comments/feed[Comments Feed]
+
+https://www.softel.co.jp/[システム開発の株式会社ソフテル]

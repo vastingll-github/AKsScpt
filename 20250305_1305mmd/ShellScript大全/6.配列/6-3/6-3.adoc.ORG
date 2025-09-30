@@ -1,0 +1,1074 @@
+[[GlobalHeader-react-component-843efc29-c765-4925-8c15-58dfda7cbae4]]
+link:/[image:data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNDI2LjU3IDEzMCIgYXJpYS1oaWRkZW49InRydWUiPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgNDI2LjU3IDEzMCIgYXJpYS1oaWRkZW49InRydWUiPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==]]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
+
+link:/login?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Signup]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+. link:/[Trend]
+. link:/question-feed[Question]
+. link:/official-events[Official Event]
+. link:/official-columns[Official
+Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
+. link:/organizations[Organization]
+
+[[AlertMessage-react-component-2c7ff171-208a-4399-9729-174c892b15e4]]
+
+[[PersonalArticlePage-react-component-f7c67918-e61c-4bc5-8383-0fd557f7c953]]
+image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+]
+
+link:/ko1nksm/items/bfe95cc72eb8ec31c11f/likers[11]
+
+Go to list of users who liked
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=]
+
+[.style-1vem4tk]#9#
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMWIxY2Q1eiIgdmlld2JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJtMTEuNjggOC42MiA2LjU1LTcuNjJoLTEuNTVsLTUuNjkgNi42Mi00LjU1LTYuNjJoLTUuMjVsNi44OCAxMC4wMS02Ljg4IDcuOTloMS41NWw2LjAxLTYuOTkgNC44IDYuOTloNS4yNGwtNy4xMy0xMC4zOHptLTIuMTMgMi40Ny0uNy0xLTUuNTQtNy45MmgyLjM5bDQuNDcgNi40LjcgMSA1LjgyIDguMzJoLTIuMzlsLTQuNzUtNi43OXoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMWIxY2Q1eiIgdmlld2JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJtMTEuNjggOC42MiA2LjU1LTcuNjJoLTEuNTVsLTUuNjkgNi42Mi00LjU1LTYuNjJoLTUuMjVsNi44OCAxMC4wMS02Ljg4IDcuOTloMS41NWw2LjAxLTYuOTkgNC44IDYuOTloNS4yNGwtNy4xMy0xMC4zOHptLTIuMTMgMi40Ny0uNy0xLTUuNTQtNy45MmgyLjM5bDQuNDcgNi40LjcgMSA1LjgyIDguMzJoLTIuMzlsLTQuNzUtNi43OXoiPjwvcGF0aD48L3N2Zz4=]
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTU3eGoxZyIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDIwIDIwIiB3aWR0aD0iMjAiPjxwYXRoIGQ9Im0yMCAxMGMwLTUuNTItNC40OC0xMC0xMC0xMHMtMTAgNC40OC0xMCAxMGMwIDQuOTkgMy42NiA5LjEzIDguNDQgOS44OHYtNi45OWgtMi41NHYtMi44OWgyLjU0di0yLjJjMC0yLjUxIDEuNDktMy44OSAzLjc4LTMuODkgMS4wOSAwIDIuMjQuMiAyLjI0LjJ2Mi40NmgtMS4yNmMtMS4yNCAwLTEuNjMuNzctMS42MyAxLjU2djEuODhoMi43N2wtLjQ0IDIuODloLTIuMzN2Ni45OWM0Ljc4LS43NSA4LjQ0LTQuODkgOC40NC05Ljg4eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMy44OSAxMi44OS40NC0yLjg5aC0yLjc3di0xLjg4YzAtLjc5LjM5LTEuNTYgMS42My0xLjU2aDEuMjZ2LTIuNDZzLTEuMTQtLjItMi4yNC0uMmMtMi4yOCAwLTMuNzggMS4zOC0zLjc4IDMuODl2Mi4yaC0yLjU0djIuODloMi41NHY2Ljk5Yy41MS4wOCAxLjAzLjEyIDEuNTYuMTJzMS4wNS0uMDQgMS41Ni0uMTJ2LTYuOTloMi4zM3oiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTU3eGoxZyIgaGVpZ2h0PSIyMCIgdmlld2JveD0iMCAwIDIwIDIwIiB3aWR0aD0iMjAiPjxwYXRoIGQ9Im0yMCAxMGMwLTUuNTItNC40OC0xMC0xMC0xMHMtMTAgNC40OC0xMCAxMGMwIDQuOTkgMy42NiA5LjEzIDguNDQgOS44OHYtNi45OWgtMi41NHYtMi44OWgyLjU0di0yLjJjMC0yLjUxIDEuNDktMy44OSAzLjc4LTMuODkgMS4wOSAwIDIuMjQuMiAyLjI0LjJ2Mi40NmgtMS4yNmMtMS4yNCAwLTEuNjMuNzctMS42MyAxLjU2djEuODhoMi43N2wtLjQ0IDIuODloLTIuMzN2Ni45OWM0Ljc4LS43NSA4LjQ0LTQuODkgOC40NC05Ljg4eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMy44OSAxMi44OS40NC0yLjg5aC0yLjc3di0xLjg4YzAtLjc5LjM5LTEuNTYgMS42My0xLjU2aDEuMjZ2LTIuNDZzLTEuMTQtLjItMi4yNC0uMmMtMi4yOCAwLTMuNzggMS4zOC0zLjc4IDMuODl2Mi4yaC0yLjU0djIuODloMi41NHY2Ljk5Yy41MS4wOCAxLjAzLjEyIDEuNTYuMTJzMS4wNS0uMDQgMS41Ni0uMTJ2LTYuOTloMi4zM3oiIGZpbGw9IiNmZmZmZmYiPjwvcGF0aD48L3N2Zz4=]
+
+https://b.hatena.ne.jp/entry/s/qiita.com/ko1nksm/items/bfe95cc72eb8ec31c11f[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMXV1N3UzdyIgdmlld2JveD0iMCAwIDIwIDIwIj48cmVjdCBoZWlnaHQ9IjE4IiByeD0iMy42NyIgd2lkdGg9IjE4IiB4PSIxIiB5PSIxIiBmaWxsPSIjMWQ5YmYwIj48L3JlY3Q+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0ibTExLjAxIDEwLjI5Yy0uMzMtLjM2LS43OC0uNTctMS4zNi0uNjEuNTItLjE0Ljg5LS4zNSAxLjEzLS42MnMuMzUtLjY0LjM1LTEuMTFjMC0uMzctLjA4LS42OS0uMjQtLjk3cy0uMzktLjUtLjY5LS42N2MtLjI2LS4xNS0uNTgtLjI1LS45NC0uMzEtLjM3LS4wNi0xLjAxLS4wOS0xLjkzLS4wOWgtMi4yNHY4LjE4aDIuMzFjLjkzIDAgMS42LS4wMyAyLjAxLS4wOXMuNzUtLjE3IDEuMDMtLjMyYy4zNC0uMTguNjEtLjQ0Ljc5LS43N3MuMjgtLjcyLjI4LTEuMTVjMC0uNjEtLjE2LTEuMDktLjQ5LTEuNDZ6bS0zLjg1LTIuNTdoLjQ4Yy41NSAwIC45My4wNiAxLjEyLjE5cy4yOS4zNC4yOS42NS0uMS41LS4zMS42M2MtLjIxLjEyLS41OC4xOC0xLjEzLjE4aC0uNDV2LTEuNjR6bTEuOSA0LjY5Yy0uMjIuMTMtLjU5LjItMS4xMi4yaC0uNzh2LTEuNzloLjgxYy41NCAwIC45MS4wNyAxLjExLjIuMi4xNC4zLjM4LjMuNzIgMCAuMzEtLjExLjUzLS4zMy42NnoiPjwvcGF0aD48cGF0aCBkPSJtMTMuODcgMTIuMDJjLS41NyAwLTEuMDQuNDYtMS4wNCAxLjA0cy40NiAxLjA0IDEuMDQgMS4wNCAxLjA0LS40NiAxLjA0LTEuMDQtLjQ2LTEuMDQtMS4wNC0xLjA0eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMi45NyA1LjkxaDEuOHY1LjQ1aC0xLjh6Ij48L3BhdGg+PC9nPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMXV1N3UzdyIgdmlld2JveD0iMCAwIDIwIDIwIj48cmVjdCBoZWlnaHQ9IjE4IiByeD0iMy42NyIgd2lkdGg9IjE4IiB4PSIxIiB5PSIxIiBmaWxsPSIjMWQ5YmYwIj48L3JlY3Q+PGcgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0ibTExLjAxIDEwLjI5Yy0uMzMtLjM2LS43OC0uNTctMS4zNi0uNjEuNTItLjE0Ljg5LS4zNSAxLjEzLS42MnMuMzUtLjY0LjM1LTEuMTFjMC0uMzctLjA4LS42OS0uMjQtLjk3cy0uMzktLjUtLjY5LS42N2MtLjI2LS4xNS0uNTgtLjI1LS45NC0uMzEtLjM3LS4wNi0xLjAxLS4wOS0xLjkzLS4wOWgtMi4yNHY4LjE4aDIuMzFjLjkzIDAgMS42LS4wMyAyLjAxLS4wOXMuNzUtLjE3IDEuMDMtLjMyYy4zNC0uMTguNjEtLjQ0Ljc5LS43N3MuMjgtLjcyLjI4LTEuMTVjMC0uNjEtLjE2LTEuMDktLjQ5LTEuNDZ6bS0zLjg1LTIuNTdoLjQ4Yy41NSAwIC45My4wNiAxLjEyLjE5cy4yOS4zNC4yOS42NS0uMS41LS4zMS42M2MtLjIxLjEyLS41OC4xOC0xLjEzLjE4aC0uNDV2LTEuNjR6bTEuOSA0LjY5Yy0uMjIuMTMtLjU5LjItMS4xMi4yaC0uNzh2LTEuNzloLjgxYy41NCAwIC45MS4wNyAxLjExLjIuMi4xNC4zLjM4LjMuNzIgMCAuMzEtLjExLjUzLS4zMy42NnoiPjwvcGF0aD48cGF0aCBkPSJtMTMuODcgMTIuMDJjLS41NyAwLTEuMDQuNDYtMS4wNCAxLjA0cy40NiAxLjA0IDEuMDQgMS4wNCAxLjA0LS40NiAxLjA0LTEuMDQtLjQ2LTEuMDQtMS4wNC0xLjA0eiI+PC9wYXRoPjxwYXRoIGQ9Im0xMi45NyA1LjkxaDEuOHY1LjQ1aC0xLjh6Ij48L3BhdGg+PC9nPjwvc3ZnPg==]]
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[.material-symbols-outlined .is-fill .style-1l7bzw8]#info#
+
+More than 3 years have passed since last update.
+
+link:/ko1nksm[]
+
+image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F54918%2Fprofile-images%2F1473693528?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=0964fa6812034922ec2b40404d3ddde1[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F54918%2Fprofile-images%2F1473693528?ixlib=rb-4.0,width=24,height=24]
+
+@ko1nksm[.style-15fzge]##(Koichi Nakashima)##
+
+== シェルスクリプトの配列・連想配列の書き方まとめ（全POSIXシェル対応、実装の違いと考察）
+
+* link:/tags/shellscript[ShellScript]
+* link:/tags/bash[Bash]
+* link:/tags/zsh[Zsh]
+* link:/tags/ksh[ksh]
+
+[.style-3k9iaf]#Last updated at 2021-09-06#[.style-3k9iaf]#Posted at
+2021-08-20#
+
+[[personal-public-article-body]]
+== [#はじめに .fragment]##link:#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB[__]はじめに
+
+POSIX
+シェルでは配列や連想配列の機能は標準化されていませんが、多くのシェルで拡張機能として使うことができます。しかしながらシェルやバージョンによって実装されている機能は異なっており、適切な書き方か分かりづらいです。そこで記事では配列や連想配列の違いと使い方をまとめています。またどうしてそのような違いがあるのかを考察も行っています。（「考察」なので正しい情報ではなく私の考えです。調べればどこかに書いてあるかもしれませんが調べていません。）
+
+先に一般的な結論を言っておくと、シェルスクリプトで配列や連想配列を使うのは避けたほうが良いです。dash
+などの純粋な POSIX
+シェルでは使えませんし、標準入出力でデータを渡せば配列が必要になることは少ないはずです。それでもシェルスクリプトで配列を使いたい場合は、この記事を参考に特定のシェルとバージョンを前提とした方が良いでしょう。複数の異なるシェルに対応しようするのは意外と大変です。もし複数のシェルに対応するなら配列操作用のライブラリを作ってでラップした方が良いでしょう。
+
+というか、そもそもこれは ShellSpec
+の配列サポートと将来私が作る予定の複数シェル対応の配列操作ライブラリのための調査資料です。
+
+== [#注意点 .fragment]##link:#%E6%B3%A8%E6%84%8F%E7%82%B9[__]注意点
+
+=== [#typeset-declare-local-の違い .fragment]##link:#typeset-declare-local-%E3%81%AE%E9%81%95%E3%81%84[__]`typeset`, `declare`, `local` の違い
+
+この記事ではどのシェルでも使用可能で汎用的な `typeset`
+コマンドに統一して調べていますが `typeset` の代わりに `declare` や
+`local` を使うことも出来るはずです。`declare` は `typeset`
+の別名ですが一部のシェルでは使用できません。また `local`
+も本質的には「ローカル属性を追加する
+`typeset`」であり配列や連想配列を定義するための `-a` / `-A`
+オプションも使えるはずです。同様の理由で `readonly`
+などのhttps://qiita.com/ko1nksm/items/fa38a0f7134615284eb2[宣言ユーティリティ]も使用できると思いますが
+`typeset` 以外は調べていません。
+
+*補足*
+https://unix.stackexchange.com/questions/66007/what-is-the-difference-between-declare-and-typeset[ここ]より
+bash で `typeset`
+は非推奨となったのだと思っていたのですが、改めて調べた所 bash 4.3 以前の
+`help typeset` では確かに Obsolete と表示されるのですが 4.4 以降では
+synonym に変わってるので非推奨でなくなったのかもしれません。
+
+=== [#バージョンについて .fragment]##link:#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6[__]バージョンについて
+
+配列・連想配列が使えるバージョンは実際のシェルや
+https://hub.docker.com/r/fidian/multishell/[fidian/multishell]
+やドキュメントを元に出来る限り正確に調べているつもりですが、すべてのバージョンを手元に用意しているわけではなく多少バージョンがずれている可能性があるので注意してください。個人的にはどれがどのあたりから使えるようになったかだいたい把握できれば十分なのです。
+
+== [#歴史 .fragment]##link:#%E6%AD%B4%E5%8F%B2[__]歴史
+
+各シェルで配列や連想配列の機能は統一されていませんが、気まぐれで実装を決定することはあまりありません。通常はその時点で最善と考えた方法で実装しているはずです。シェルの歴史を知ることはなぜこのような実装を選択したのかを読み取る手がかりになります。
+
+[cols=",,",options="header",]
+|===
+|シェル |配列実装 |補足
+|csh |1978 頃 |Bourne シェル / POSIX シェルではない
+
+|Bourne |なし |初版 1979 年。配列機能はない
+
+|ksh88 |1983 頃 |最初の公開版は 1986 年。プロプライエタリで ksh88
+はソースコード非公開
+
+|pdksh |1989 頃 |初版 1987 年。ksh88 のクローン。oksh、mksh がフォーク
+
+|ksh93 |1993 頃 |ksh88 から改良された配列実装
+
+|bash |1996 v2.0 |初版 1989 年。配列は ksh93
+のサブセットに近い。連想配列は 4.0 (2009) から
+
+|zsh |1996 v2.0 |初版 1990 年。配列は csh がルーツ。連想配列は 3.1.6
+(1999) から
+
+|yash |2008 v2.1 |配列は独自
+|===
+
+. csh
+は最初から配列を実装していたようです。正確にはドキュメントには配列ではなくリストと書かれています。
+. ksh88
+が初期の配列機能を実装しました。しかし使いづらいという意見が出たよう（未確認）で
+POSIX では採用されませんでした。
+. pdksh が ksh88 のパブリックドメイン版のクローンとして誕生しました。
+.. pdksh から oksh、mksh などのフォークが生まれています。これらは ksh88
+と同様の実装となっています
+.. mksh は現時点では ksh88
+に近い実装ですが、http://www.mirbsd.org/mksh.htm#plans[将来の計画]から
+ksh93 相当の実装を目指していると思われます
+. ksh93 が ksh88
+を大幅に配列を改良しました。同時に連想配列や複合変数なども実装しています。
+. bash が ksh93 を参考にしつつ配列を実装し bash 4.0
+では連想配列も実装します。ksh93
+に近いですが全てを実装しているわけではなくサブセットに近いです
+. zsh が配列を実装しましたが csh に近い実装になっています。これは zsh
+が元々 csh の機能を持った ksh
+のようなシェルを目指していたからだと思われます
+. yash
+は時代的に他のシェルを参考にしていると思われますが、独自の配列機能（zsh
+に近い？）を実装しています。
+
+補足
+
+* Bourne シェル (1979 年) および、純粋な POSIX シェルに近い ash
+系（dash、FreeBSD sh、NetBSD sh、busybox ash）には配列はありません
+* oksh とは OpenBSD ksh (`/bin/sh`) のことです
+* pdksh は古いシェルで使われていないため今回のまとめからは外しましたが
+oksh とほぼ同じだと思われます
+* posh は pdksh
+のフォークであり一部の配列機能が使えますが、プロジェクトの方針より削除漏れと判断し配列対応には含めていません
+* https://minnie.tuhs.org/cgi-bin/utree.pl?file=2BSD/src/csh[2BSD csh
+のソースコード]
+* https://www.zsh.org/mla/users/2021/msg00367.html[古い zsh
+のソースコードへのリンク]
+
+== [#配列-array .fragment]##link:#%E9%85%8D%E5%88%97-array[__]配列 (Array)
+
+=== [#インデックス番号 .fragment]##link:#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]インデックス番号
+
+[cols=",,,,,,,",options="header",]
+|===
+| |ksh88 |oksh |mksh |ksh93 |bash |zsh |yash
+|最初のインデックス番号 |0 |0 |0 |0 |0 |1 (or 0) |1
+
+|配列名だけ指定した場合 |要素 0 |要素 0 |要素 0 |要素 0 |要素 0
+|配列全体 |配列全体
+
+|離散的なインデックス番号 |Yes |Yes |Yes |Yes |Yes |No |No
+
+|最大インデックス番号 |4095 |2^31-1 |2^32-1 |2^22-1 |2^63-1 |不明 |不明
+|===
+
+==== [#最初のインデックス番号 .fragment]##link:#%E6%9C%80%E5%88%9D%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]最初のインデックス番号
+
+インデックス番号が 0 から始まるもの（bash、ksh、mksh、oksh）と 1
+から始めるもの（zsh、yash）があります。zsh が 1
+から始まることに疑問を感じる人が多いようですが、そこにはちゃんと理由があります。まず遠い昔、Bourne
+シェルと csh が同じ時期に開発されました。zsh
+の開発はそれからしばらく後ですが、https://github.com/llua/zsh-1.0[zsh
+1.0 の README]には次のように書かれています。
+
+____
+I borrowed _heavily_ from ksh, bash, tcsh, sh, and csh, as +
+well as adding a few (IMHO) useful features. zsh was at first intended +
+to be a subset of csh for the Commodore Amiga, but the project sort of +
+ballooned; now I want it to be a cross between ksh and tcsh.
+____
+
+zsh は当初は csh のサブセットとして開発されています。(t)csh は Bourne
+シェルよりもジョブ制御や履歴機能に優れており csh
+の機能が欲しい人のための Bourne シェルという立ち位置だったようです（参照
+https://zsh.sourceforge.io/FAQ/zshfaq02.html[zsh の FAQ]。後に Bourne
+シェルの後継とも言える ksh88
+が登場しジョブ制御や履歴機能が実装されました。その後は zsh 1.0 (1990) の
+README からも分かる通り zsh を ksh と tcsh
+を合わせたものにしようと目標が変化したようです。https://www.zsh.org/mla/users/2021/msg00368.html[あるユーザーの意見]では
+zsh 2.5 (1994) 頃は zsh を ksh
+の完全なクローンにしようという派閥もあったようです（そしてそれは失敗しました）。ここから少なくとも初期の設計は
+zsh は csh の設計からもたらされたということがわかります。csh
+には最初から配列が実装されていましたがインデックス番号 1
+から始まります。
+
+さて csh はその名の通り C 言語に似ているシェルとされています（正直な所 C
+言語に似てるとは思えませんが）。しかし C 言語では配列のインデックスは 0
+から始まります。ここにある種の矛盾があるのですが、私はおそらく csh
+では配列として実装してないのだと考えています。その根拠は `man csh`
+には配列（`array`）という単語ではなく単語リスト（`wordlist`）
+という単語が使われているからです。リストの厳密な定義は言語によって様々ですが
+csh
+においてはコマンドの引数リストを一般化したものが単語リストなのではないかと考えています。
+
+csh のコマンドの引数リストの仕様は C 言語の `main` の引数である `argv`
+を踏まえています。C 言語の `argv[0]` にはプログラム名が入り、引数は 1
+番目から順に `argv[1]`、`argv[2]`... に格納されます。csh にも `argv`
+配列変数があり引数は 1 番目から順に `argv[1]`、`argv[2]`...
+に格納されます。`argv[1]` は `$1` からも参照することができます。csh には
+`argv[0]` は存在しませんが他のシェルと同じくプログラム名は `$0`
+から参照することができます。この引数リストを変更したい場合は
+`set argv=(a b c)` と `argv`
+配列変数を変更します。時にはこの引数リストを別の変数に入れておきたいこともあるでしょう。その場合には
+`set orig=($argv)` と書きます。当然ですが `orig`
+配列のインデックス番号と引数リストが代入された `argv`
+配列のインデックス番号は一致しています。
+
+csh の仕様は配列として考えれば　1 から始まるのは C
+言語とは違うと感じますが `argv` の仕様が元になっていると考えれば C
+言語と同じであり、配列はこの引数リストを扱うための単語リストとして考えれば実に合理的な設計なのです。csh
+の配列が 1 から始まる理由を突き詰めると、なぜ C 言語の `argv[0]`
+にはプログラム名が含まれるのか？という話につながります。おそらくその答えは
+`argv`
+は引数だけのリストではなくコマンドライン全体の単語リストだからです。
+
+さて話を zsh に戻すと、zsh は csh
+のサブセットとして開発が始まったのですから、csh
+の仕様を採用していても不思議ではありません。配列は zsh 2.0
+で実装されましたが csh と同じく `argv` 変数も実装されています。csh
+ユーザーのためにはこれらの仕様も同じ方が良いでしょう。インデックス番号が
+1 から始まることに何も不思議はありません。また ksh
+のクローンを目指していたこともあり `setopt KSH_ARRAYS` で ksh 互換の 0
+から始まるインデックス番号に変更できるようにした理由も理解できます。
+
+一方、bash や ksh88 はなぜインデックス番号が 0
+から始まるのか？という疑問が残ります。bash は ksh88
+の仕様をコピーしたと考えられるので問題は ksh88 です。その答えは ksh は
+Bourne シェルに C
+言語の文法を取り入れたものだからだと私は考えています。Bourne
+シェルはその設計に ALGOLの影響を受けており（開発者が ALGOL68
+用コンパイラに関わった人で `if` の反対の `fi` や `case` の反対の `esac`
+は ALOGL がルーツ。参考
+https://qiita.com/ko1nksm/items/4a64aebd7f45e98f5def[Unix/Linux
+シェル考古学
+～シェルスクリプトが本物のプログラミング言語である理由～]）で開発者のスティーブン・ボーンはこれ以上の機能追加は複雑になるからやめたと言うほど、Bourne
+シェルはシェルとして完成されたものだと考えています。一方 ksh
+の開発者のデビット・コーンは「https://qiita.com/ko1nksm/items/ceca986ae025b2f8c957[夢のシェルスクリプト言語
+KornShell (ksh93)
+〜すごいぞ！型とクラスは本当にあったんだ！〜]」の記事で紹介したように
+ksh93 に数々のスクリプト言語としての機能を追加しました。ksh88
+はこれよりも少ないですがそれでもいくつかの機能が含まれています。例えば
+`if (( 10 > 0 )); then echo ok; fi` や
+`for ((i=1; i<=10; i++)); do echo $i; done` は C
+言語スタイルの文法と言えるでしょう。つまり ksh は 2 人
+の別々の考えを持ったシェル開発者の思想が混ざったシェルなのです。つまり
+ksh 以降は csh よりも C 言語に近いシェルになったわけです。ksh の配列が C
+言語がルーツであると考えればインデックス番号が 0
+から始まるのも不思議ではありません。C 言語に近いとされる csh
+の配列のインデックスが 1 から始まり、csh と対比される Bourne
+シェルの後継である ksh や bash の配列が 0
+から始まるという逆転現象はこれで説明が付きます。
+
+yash に関しては ksh や zsh
+よりもずっと後に開発されているのでどちらかがルーツであるとは言えないと思います。POSIX
+シェルの標準ができたよりも後に開発が始まってるので、最初から POSIX
+シェル準拠で開発されており、その上で他のシェルを参考にした結果、よりよい実装として
+zsh に近い設計（例えばインデックス番号が 1
+から始まる）で独自の配列機能を選択したのだろうと考えています。例えば位置パラメータが
+1 から始まるので配列も 1 からとか `${ary[2,-2]}` が配列の「前から 2
+番目から後ろから 2 番目」という意味になるなどインデックス番号が 1
+から始まった方が合理的である理由は他にもあります。
+
+==== [#配列名だけ指定した場合 .fragment]##link:#%E9%85%8D%E5%88%97%E5%90%8D%E3%81%A0%E3%81%91%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88[__]配列名だけ指定した場合
+
+配列名だけを指定した場合に、インデックス番号 0
+の要素を指す場合と、配列全体を指す場合の 2
+通りの実装があります。個人的には配列名だけを指定した場合は配列全体を意味する方が合理的だと考えています。csh、zsh、yash
+ではこのように機能します。しかしながら C
+言語においては、配列のアドレス(`ary`)は 配列の 0
+番目の要素のアドレス（`&ary[0]`）と一致します。そのため C
+言語の配列がルーツとなっている ksh とそれを真似たシェルでは `ary` と
+`ary[0]` を同じ意味にしたと考えられます。なお ksh88、pdksh、mksh
+では変数を `var=1` と定義した後に `var[0]` と参照すると `var`
+が配列に変化してしまうことに注意してください（とはいえそんなことをすることはないでしょう）。
+
+....
+# ksh88、pdksh、oksh、mksh の場合
+$ var=abc
+$ set | grep ^var # この時点では配列ではないが
+var=abc
+
+$ echo "${var[0]}" # 配列としてアクセスすると
+abc
+
+$ set | grep ^var # 配列に変わってしまう
+var[0]=abc
+....
+
+==== [#離散的なインデックス番号 .fragment]##link:#%E9%9B%A2%E6%95%A3%E7%9A%84%E3%81%AA%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]離散的なインデックス番号
+
+例えば `ary[10]=1`
+を実行した後の要素数は何個になるのか？という話です。zsh では 1 〜 9
+の要素が自動的に作成されるため離散的なインデックス番号を持った配列を作ることはできません。また
+yash はそもそも `ary[10]=1`
+という形で配列の要素を設定することができません。一方
+ksh88、oksh、mksh、ksh93、bash
+では飛び飛びのインデックス番号を持った配列を作ることが可能です。ただし
+ksh93
+ではインデックス番号に大きな数字を指定すると時間がかかるため内部の実装はすべての要素のメモリが確保されていると思われます。ksh88
+でも連続的に確保されている可能性が高いですが最大配列サイズが制限されておりソースコードが確認できない為不明です。
+
+==== [#最大インデックス番号 .fragment]##link:#%E6%9C%80%E5%A4%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]最大インデックス番号
+
+Solaris 10 での ksh88 の配列の最大サイズは 4096 でしたが古いシステムでは
+1024 の場合もあるようです。pdksh の場合は
+1024でした。（当時の）システム上の性能や実装上のパフォーマンスの点から制限をかけていたと見られます。添字に算術式が使えることから整数計算で扱える範囲という制限もあるはずです。mksh
+の場合は整数計算が 32 bit で行われるため配列の添字も 32 bit
+の範囲のようです。bash も同様のようです。zsh と yash
+も同じだと思いますがメモリ確保に時間がかるため調べていません。かなり大きなサイズが扱えることは確認しています。
+
+=== [#配列の定義方法 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E5%AE%9A%E7%BE%A9%E6%96%B9%E6%B3%95[__]配列の定義方法
+
+配列を定義する方法は複数あります。そのまとめとともにその特徴からどういう考えで設計されたのかを考察します。
+
+[cols=",,,,,,,",options="header",]
+|===
+| |ksh88 |oksh |mksh |ksh93 |bash |zsh |yash
+|`set -A ary 1 2 3` |88 |all |all |93 |- |2.0 |-
+|`ary[I]=1 ary[J]=2 ary[K]=3` |88 |all |all |93 |2.02 |2.0 |-
+|`ary=(1 2 3)` |- |- |R30 |93 |2.02 |2.0 |2.1
+|`ary=([I]=1 [J]=2 [K]=3)` |- |- |- |- |2.02 |5.5 |-
+|`typeset -a ary=([I]=1 [J]=2 [K]=3)` |- |- |- |93 |2.02 |5.5 |-
+|`typeset -a ary=(1 2 3)` |- |- |- |93 |2.02 |5.1 |-
+|`typeset -a ary='(1 2 3)'` |- |- |- |- |2.02 |- |-
+|`array ary 1 2 3` |- |- |- |- |- |- |2.1
+|===
+
+参考 csh では `set ary=(1 2 3)`
+
+==== [#set--a-ary-1-2-3 .fragment]##link:++#set--a-ary-1-2-3++[__]`set -A ary 1 2 3`
+
+最初に配列が登場した ksh88 で実装された方法で `set -A ary 1 2 3`
+という書き方で配列を定義します。この書き方のメリットは、それまでの
+Bourne シェルと互換性がある構文だという点です。例えば `ary=(1 2 3)`
+という書き方は Bourne
+シェルだとシンタックスエラーになってしまうためパーサーに手を入れる必要があります。一方
+`set -A ary 1 2 3` という書き方は、単に `set` に `-A`
+オプションが追加されただけなのでパーサーに手を入れる必要はありません。また位置パラメーター
+`$@` への設定でも `set -- 1 2 3`
+という書き方をするので自然な拡張である言えるでしょう。
+
+ksh93 は ksh88 の後継シェルなので互換性の点から `set -A`
+に対応する必要があります。同様に ksh88 のクローンである pdksh
+とそのフォークである oksh、mksh も対応する必要があります。zsh も ksh
+の文法を取り入れているため対応したとしても不思議ではありません。bash
+が対応していないのが意外でしたが、これは bash に配列を取り入れた 2.0
+(1996) の時点ですでに ksh93 がリリースされており `set -A`
+の上位互換である `typeset -a ary=(1 2 3)`
+をこの時点で実装したためだと思われます。
+
+==== [#aryi1-aryj2-aryk3 .fragment]##link:#aryi1-aryj2-aryk3[__]`ary[I]=1 ary[J]=2 ary[K]=3`
+
+実は ksh88 は配列の定義方法として `set -A`
+だけの実装では足りません。なぜなら `set`
+コマンドの出力に適していないからです。`set` コマンドの出力は `変数名=値`
+という形式であり、シェルに再入力することによって変数の定義ができるように設計されています。`set`
+コマンドの出力の候補として `ary=(1 2 3)` が考えられますが、これは Bourne
+シェルと互換性がありません。厳密に言えば `ary[I]=1` も変数名に使えない
+`[ ]`
+が含まれているので互換性はないのですが、使用できる文字を変えるだけなので比較的実装は簡単と言えます。
+
+配列に対応している全てのシェルで、添字の部分に算術式が使えることに注意してください。つまり
+`ary[2 * 3]=1` や `ary[var]=1` (`var` は文字列ではなく変数名)
+という書き方は有効です。
+
+yash が対応していないのが少々不思議です。`array`
+コマンドを使ってできるのでおそらく必要ないと判断したのだと思いますが、他のシェルとの互換性のために実装しても良さそうな気がします。実装しない理由はあまり思いつきません。`ary[I]=1`
+という書き方でインデックス番号を指定して代入することはできませんが配列の要素が空の場合に限り
+`: "${ary[I]:=1}"`
+という書き方でインデックス番号を指定して代入することは可能です。
+
+==== [#ary1-2-3 .fragment]##link:#ary1-2-3[__]`ary=(1 2 3)`
+
+ksh93
+ではより使いやすくするために新しい構文を使った配列定義が作られました。これは
+Bourne シェルとは互換性がなく、また純粋な POSIX
+シェルとも互換性がありません。そのため非対応のシェルで実行するとシンタックスエラーが発生する可能性があります。この構文には
+pdksh 系である mksh でも R30 (2007) で対応しました。他 bash、zsh、yash
+でも対応しています。
+
+変数代入前に `ary`
+に連想配列属性をつけないように注意してください。連想配列属性がついている場合は代入は連想配列の定義（キーと値のペア）として扱われます。
+
+==== [#aryi1-j2-k3 .fragment]##link:#aryi1-j2-k3[__]`ary=([I]=1 [J]=2 [K]=3)`
+
+この形式には bash と zsh が対応しています。ksh93
+の場合は一見動くように見えるかもしれませんが連想配列を作ります。困ったことに
+ksh93 ではインデックス番号が 0 から連続していない配列を作った後に `set`
+コマンドで配列を表示すると従来の `ary[I]=1`
+形式ではなくこの形式で出力するように変わったのですが、それをシェルに再入力すると連想配列になってしまいます。シェルに再入力するような場合には
+`typeset` の出力を使うべきとは言え一貫性がないと感じます。bash と zsh
+では配列を作成しますが逆に連想配列は作成できません。つまり移植性を考えるとこの書き方は避けたほうが良いということになります。
+
+....
+# ksh93 の場合
+$ ary[1]=1 ary[2]=2 ary[10]=10
+$ typeset -p ary # 配列が定義されている
+typeset -a ary=([1]=1 [2]=2 [10]=10)
+
+$ set
+...
+ary=([1]=1 [2]=2 [10]=10)
+$ ary=([1]=1 [2]=2 [10]=10) # set の出力を再入力する
+$ typeset -p ary # 連想配列が定義されている
+typeset -A ary=([1]=1 [10]=10 [2]=2)
+....
+
+zsh の対応は 5.5 (2018)
+からと少し遅めなので注意が必要です。配列に限らず（つまり連想配列も含む）`[キー]=値`
+という形式に対応したのが 5.5 からです。
+
+==== [#typeset--a-aryi1-j2-k3 .fragment]##link:++#typeset--a-aryi1-j2-k3++[__]`typeset -a ary=([I]=1 [J]=2 [K]=3)`
+
+ksh93 とそれに続いた bash、zsh
+で使える方法で、もっとも冗長的（明示的）な書き方です。インデックス番号は連続していなくても構いません。ksh93
+では配列に対して配列属性を持つようになりました。これは ksh88
+時代にはなかったものです。変数が配列か連想配列かの違いで添字の解釈が変わるので注意してください。配列の場合は添字は算術式と解釈されるため
+`${ary[5+5]}` は インデックス番号 10
+の要素を参照します。連想配列の場合は文字列として解釈されるため `5+5`
+というキーの要素を参照します。
+
+==== [#typeset--a-ary1-2-3 .fragment]##link:++#typeset--a-ary1-2-3++[__]`typeset -a ary=(1 2 3)`
+
+インデックス番号が下限から連続している場合に使える前項の書き方の省略形です。配列属性を明示的につける書き方ですが、さらに省略した
+`ary=(1 2 3)` の方が移植性が高い（mksh と yash
+でも対応している）ので特に必要がないのであれば使わなくて良い書き方だと思います。
+
+==== [#typeset--a-ary1-2-3-1 .fragment]##link:++#typeset--a-ary1-2-3-1++[__]`typeset -a ary='(1 2 3)'`
+
+配列の値をクォートで括って指定することもできます。なぜこの形式に対応したのか不思議に思うかもしれませんが、私はこれを
+`set -A ary 1 2 3`
+の代わりとして実装したものだと考えています。`set -A ary 1 2 3` の特徴は
+Bourne シェルでもシンタックスエラーにならないという所です。bash
+が配列に対応したのは 2.0
+ですが当然それ以前のバージョンとの互換性も必要です。その場合にシンタックスエラーを起こさない書き方として実装されたのがこれではないかと考えています。もちろん今さらそんな古い
+bash
+に対応する意味はありませんのでこの形式を使う必要はありません。https://www.gnu.org/software/bash/manual/html_node/Shell-Compatibility-Mode.html[ここ]
+によると非推奨となっているようです。
+
+==== [#array .fragment]##link:#array[__]`array`
+
+この書き方は yash でのみ使えます。yash は配列の定義自体は `ary=(1 2 3)`
+で行うことができますが、それに対する `array` コマンドのメリットは
+`set -A ary 1 2 3` と同じく Bourne シェル / 純粋な POSIX
+シェルでもシンタックスエラーにならないという点です。`array`
+コマンドは配列の要素を変更したり追加したり削除したりすることができますが、yash
+は POSIX 準拠を重視しているため純粋な POSIX
+シェルでもシンタックスエラーにならない方法としてこれを採用したのではないかと推測しています。そして
+`ary=(1 2 3)` は他のシェルとの互換性を目的としたものなのでしょう。
+
+=== [#配列の添字-subscript .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E6%B7%BB%E5%AD%97-subscript[__]配列の添字 (subscript)
+
+[cols=",,,,,,,",options="header",]
+|===
+| |ksh88 |oksh |mksh |ksh93 |bash |zsh |yash
+|`${ary[*]}` |all |all |all |all |all |all |all
+|`${ary[@]}` |all |all |all |all |all |all |all
+|`${ary[N]}` |all |all |all |all |all |all |all
+|`${ary[N,M]}` |- |- |- |- |- |2.0 |2.1
+|`${ary[*]:P:L}` |- |- |- |93 |2.02 |5.0 |-
+|`${ary[@]:P:L}` |- |- |- |93 |2.02 |5.0 |-
+|`${ary[I][J]}` |- |- |- |93 |- |2.0 |-
+|===
+
+==== [#ary--ary .fragment]##link:++#ary--ary++[__]`${ary[*]}` / `${ary[@]}`
+
+配列の全要素を参照するための添字で全てのシェルで対応しています。構文的には位置パラメーターの
+`$*` や `$@` に配列変数名をつけた形になっています。
+
+==== [#aryn .fragment]##link:#aryn[__]`${ary[N]}`
+
+配列の指定した要素を参照するための添字でこれも全てのシェルで対応しています。
+
+....
+ary=(1 2 3 4 5)
+echo "${ary[2]}" # => 3 (zsh や yash では 2)
+....
+
+指定した変数が配列でない場合は、zsh と yash では文字の位置を意味します。
+
+....
+# zsh と yash の場合
+var=abcde
+echo "${var[3]}" # => c
+....
+
+zsh と yash 以外は、配列ではない変数を配列として参照すると要素数 1
+の配列であるかのように扱われます。
+
+....
+# zsh と yash 以外 の場合
+var=abcde # var=(abcde) とみなされる
+echo "${var[0]}" # => abcde
+echo "${var[3]}" # => unset
+....
+
+yash の場合は `${ary[N]}` は `${ary[N,N]}`
+のように扱われリストを返します。これが意味することは要素がない場合は 0
+個の要素として扱われるということです。
+
+....
+ary=(a b c)
+length() { echo $#; }
+length "${ary[5]}" # => 0（他のシェルでは 1）
+....
+
+添字には算術式を使用することができます。
+
+....
+ary=(1 2 3 4 5)
+echo "${ary[1+2]}" # => "${ary[3]}" を参照する
+....
+
+==== [#arynm .fragment]##link:#arynm[__]`${ary[N,M]}`
+
+zsh と yash
+はこの書き方で配列の部分配列（リスト）を取得することができます。
+
+....
+# zsh と yash の場合
+ary=(1 2 3 4 5)
+echo "${ary[2,3]}" # 2 3
+....
+
+ただし yash と zsh では微妙な違いがあります。yash
+の場合は必ず複数の要素として扱われます。
+
+....
+printf '%s\n' "${ary[2,3]}"
+# 2
+# 3
+....
+
+zsh 場合でも "" を使わない場合（デフォルト = `SH_WORD_SPLIT`
+無効状態）は同じになりますが、"" を使用すると 1
+つの要素として扱われます。
+
+....
+printf '%s\n' ${ary[2,3]}
+# 2
+# 3
+
+printf '%s\n' "${ary[2,3]}"
+# 2 3
+....
+
+これを回避するには以下のどちらかを使用する必要があります。
+
+....
+printf '%s\n' "${(@)ary[2,3]}"
+printf '%s\n' "${ary[2,3][@]}"
+....
+
+変数が配列ではない場合は指定した範囲の文字列を返します
+
+....
+# zsh と yash の場合
+var=abcde
+echo "${var[2,3]}" # => bc
+....
+
+注意点ですが 実は zsh と yash 以外でも `${ary[N,M]}`
+という書き方は動きます。しかし意味が異なります。前項の添字には算術式が使えるということを思い出してください。他のシェルではカンマ演算子として扱われ最後に評価された値となります。つまり
+`${ary[N,M]}` は `${ary[M]}` と同じ意味です。ちなみに dash (0.5.11.4) と
+yash (2.51) はカンマ演算子に対応しておらず、zsh
+は添字でカンマ演算子とみなすためには()が必要です。
+
+....
+# zsh と yash 以外の場合
+ary=(1 2 3 4 5)
+echo "${ary[2,3]}" # $((2,3)) = 3 なので、${ary[3]} を参照する
+
+# これが必要になることはないと思うが zsh で添字でカンマ演算子を使う場合は()で括る
+# echo "${ary[(2,3)]}"
+....
+
+なお参考までですが (t)csh で部分配列を得るためには `${ary[N-M]}`
+という書式を使用します。
+
+==== [#arypl--arypl .fragment]##link:++#arypl--arypl++[__]`${ary[*]:P:L}` / `${ary[@]:P:L}`
+
+添字ではなく変数展開ですが、zsh と yash だけでなく ksh93 と bash
+でも部分配列の取得はできますよということでここに記載しておきます。指定する数字はインデックス番号ではなく位置と長さなので注意してください。ksh93、bash、zsh
+すべてで最初の要素が 1 です。
+
+....
+arr=(1 2 3 4 5)
+printf "%s\n" "${arr[@]:2:3}"
+# 3
+# 4
+# 5
+....
+
+位置にマイナスの値をすると後ろからの位置を意味します。一番最後の要素が
+-1 です。また長さを省略すると残りすべての要素となります。
+
+....
+arr=(1 2 3 4 5)
+printf "%s\n" "${arr[@]: -3}" # - の前にスペースを入れること
+# 3
+# 4
+# 5
+....
+
+==== [#aryij .fragment]##link:#aryij[__]`${ary[I][J]}`
+
+この構文に対応しているのは ksh93 と zsh ですが意味が全く異なります。
+
+ksh93
+では配列の配列を定義することができます。これはその配列の配列を参照するための構文です。
+
+....
+ary=(a (1 2 3) c)
+echo "${ary[1][1]}" # => 2
+....
+
+zsh では複数の要素を返す添字（`[@]`,
+`[N,M]`）を使った場合の結果はリストとなるため、さらに添字をつなげることができます。
+
+....
+ary=(a1 b2 c3 d4 e5)
+echo "${ary[2,4]}" # => b2 c3 d4 のリスト
+echo "${ary[2,4][1,2]}" # => b2 cc のリスト
+echo "${ary[2,4][1,2][1,1]}" # => b2 のリスト
+
+echo "${ary[2,4][1,2][1]}" # => b2 (単一の要素を返す場合は文字列として取得する)
+echo "${ary[2,4][1,2][1][2]}" # => 2 （文字列として 2 文字目を返す）
+....
+
+その他のシェルではシンタックスエラーになります。
+
+=== [#配列のインデックス一覧 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E4%B8%80%E8%A6%A7[__]配列のインデックス一覧
+
+[cols=",,,,,,,",options="header",]
+|===
+| |ksh88 |oksh |mksh |ksh93 |bash |zsh |yash
+|`${!ary[*]}` |- |- |R39 |93 |3.00 |- |-
+|`${!ary[@]}` |- |- |R39 |93 |3.00 |- |-
+|===
+
+==== [#ary--ary-1 .fragment]##link:++#ary--ary-1++[__]`${!ary[*]}` / `${!ary[@]}`
+
+zsh と yash
+では連続するインデックス番号しか使えないのでインデックス一覧を取得する必要はありません。その他のシェルでは離散的なインデックス番号が使えるためインデックス一覧が必要になる場合が出てきます。（一般的には離散的なインデックス番号が多数必要になる時点で配列を使うのは間違ってる可能性が高いですが。）
+
+ksh、pdksh、oksh、古い mksh
+ではインデックス一覧を取得する方法がありません。ksh や pdksh
+では配列の最大数が多くても 4096 程度であるため 0
+から探索しても問題ないと思いますが oksh や mksh
+では大きなインデックス番号になる可能性があるため `set`
+の出力をパースする必要が出てくるでしょう。
+
+bash でも同様ですが流石に 2.0
+系は使われてないので通常は考慮する必要はありません。ただしパースする必要がある場合は、`set`
+または `typeset` の出力が `ary=([0]="1" [10]="10")`
+という形式となるためパースが難しくなるかもしれません。（`ary=(..)`
+という文字を取り除いて `set`
+で位置パラメータに安全に設定できれば簡単にできるかもしれません。）
+
+=== [#配列の要素数 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0[__]配列の要素数
+
+[cols=",,,,,,,",options="header",]
+|===
+| |ksh88 |oksh |mksh |ksh93 |bash |zsh |yash
+|`${#ary}` |- |- |- |- |- |2.0 |-
+|`${#ary[*]}` |88 |all |all |93 |2.02 |2.0 |-
+|`${#ary[@]}` |88 |all |all |93 |2.02 |2.0 |-
+|`${ary[#]}` |- |- |- |- |- |- |2.1
+|===
+
+==== [#ary .fragment]##link:#ary[__]`${#ary}`
+
+この書き方で配列の要素数を取得できるのは zsh
+だけです。その他のシェルは以下のような意味を持ちます。
+
+ksh88、oksh、mksh、ksh93、bash の場合は `ary` は `ary[0]`
+と同じ意味です。つまり配列の最初の要素の文字列の長さを取得します。
+
+....
+ary=(12 123 1234)
+echo "${#ary}" # => 2
+....
+
+yash の場合は `ary`
+は配列の全要素を意味し、全要素の文字列の長さを要素ごとに取得します。
+
+....
+ary=(12 123 1234)
+echo "${#ary}" # => 2 3 4 （それぞれの要素の文字列の長さ）
+....
+
+==== [#ary--ary-2 .fragment]##link:++#ary--ary-2++[__]`${#ary[*]}` / `${#ary[@]}`
+
+yash 以外はこの方法で配列の要素数を取得することができます。yash
+の場合は全要素の文字列の長さを要素ごとに取得します。yash
+だけが異なりますが個人的には yash の動作の方が一貫性があると感じます。
+
+....
+ary=(12 123 1234)
+echo "${#ary[@]}" # => 2 3 4 （それぞれの要素の文字列の長さ）
+echo "${#ary[*]}" # => 11 （全要素を IFS 区切りで結合した文字列の長さ）
+....
+
+==== [#ary-1 .fragment]##link:#ary-1[__]`${ary[#]}`
+
+yash での要素数の取得の仕方です。
+
+....
+ary=(12 123 1234)
+echo "${ary[#]}" # => 3
+....
+
+=== [#配列の加工 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E5%8A%A0%E5%B7%A5[__]配列の加工
+
+[cols=",,,,,,,",options="header",]
+|===
+| |ksh88 |oksh |mksh |ksh93 |bash |zsh |yash
+|`+=(a b c)` |- |- |R40 |93 |3.1 |4.2 |-
+|`array -i ary 1 2 3` |- |- |- |- |- |- |2.1
+|===
+
+==== [#a-b-c .fragment]##link:#a-b-c[__]`+=(a b c)`
+
+既存の配列に後に複数の要素を追加します。前や任意の場所に追加する場合は
+`set -A ary 1 "${ary[@]}" 2` や `ary=(1 "${ary[@]"} 3)`
+のようにします。この方法であれば ksh88
+や古いシェルでも動作します。未検証ですがメモリコピーを減らせる分
+`+=(a b c)` の方が速いかもしれません。
+
+==== [#array--i-ary-1-2-3 .fragment]##link:++#array--i-ary-1-2-3++[__]`array -i ary 1 2 3`
+
+yash の場合は `array`
+コマンドを使用して任意の場所に値を追加したり、値を削除することができます。
+
+....
+$ array --help
+array: 配列を操作する
+
+構文:
+  array               # 配列の一覧を表示する
+  array 名前 [値...]  # 配列に値を設定する
+  array -d 名前 [インデックス...]
+  array -i 名前 インデックス [値...]
+  array -s 名前 インデックス 値
+
+オプション:
+  -d       --delete
+  -i       --insert
+  -s       --set
+           --help
+
+詳しくは: man yash
+....
+
+=== [#要素の削除 .fragment]##link:#%E8%A6%81%E7%B4%A0%E3%81%AE%E5%89%8A%E9%99%A4[__]要素の削除
+
+要素の削除はインデックスを指定して `unset`
+で行うことができます。複数の要素の削除やインデックス番号を詰めたりしたい場合はコードを書く必要があるでしょう。個人的には
+yash の `array`
+コマンドと互換のライブラリ関数を作るのが良いのではないかと考えています。
+
+=== [#配列の変数展開 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E5%A4%89%E6%95%B0%E5%B1%95%E9%96%8B[__]配列の変数展開
+
+zsh
+であれば変数展開を行って高度な配列演算を行うことができます。変数展開については別の記事でまとめる予定です。
+
+== [#連想配列-associative-array .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97-associative-array[__]連想配列 (Associative array)
+
+連想配列は、現在 ksh93、bash、zsh のみが対応しています。mksh と yash
+も対応が検討されているようですが現時点では対応していません。なお対応してないシェルは一覧から省いています。
+
+=== [#連想配列の定義方法 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E5%AE%9A%E7%BE%A9%E6%96%B9%E6%B3%95[__]連想配列の定義方法
+
+[cols=",,,",options="header",]
+|===
+| |ksh93 |bash |zsh
+|`hash=([a]=1 [b]=2)` |all |- |-
+|`typeset -A hash=([a]=1 [b]=2)` |all |4.0 |5.5
+|`typeset -A hash='([a]=1 [b]=2)'` |- |4.0 |-
+|`typeset -A hash; hash=(a 1 b 2)` |- |5.1 |3.1.6
+|`typeset -A hash=(a 1 b 2)` |- |5.1 |5.1
+|===
+
+==== [#hasha1-b2 .fragment]##link:#hasha1-b2[__]`hash=([a]=1 [b]=2)`
+
+この書き方は bash と zsh
+でも動きますが、連想配列属性がついていない場合は配列を定義します（ `[a]`
+の部分が算術式として解釈されます）。また ksh93
+の場合は常に連想配列を定義します。使用する場合は先に `typeset -A`
+で連想配列属性をつけておくべきでしょう。
+
+==== [#typeset--a-hasha1-b2 .fragment]##link:++#typeset--a-hasha1-b2++[__]`typeset -A hash=([a]=1 [b]=2)`
+
+bash では連想配列に対応した 4.0 (2009) から使える書き方ですが zsh では
+5.5 (2018) まで使えなかった書き方です。zsh
+の古いバージョンを除けば、全てのシェルで対応しています。zsh
+でこの書き方への対応が遅くなったのは `typeset` コマンドの引数に `=(...)`
+の構文が使えるようにするための対応と連想配列のキー `[...]=`
+の構文が使えるようにする対応の二段階の対応が必要だったからではないかと推測しています。bash
+は ksh との互換性を重視していたためか `=(...)` と `[...]=`
+への対応は配列に対応した 2.0 の時点ですでに完了していました。
+
+==== [#typeset--a-hasha1-b2-1 .fragment]##link:++#typeset--a-hasha1-b2-1++[__]`typeset -A hash='([a]=1 [b]=2)'`
+
+bash
+のみが対応しています。値が文字列となっているのでおそらく非対応シェルに読み込んでもシンタックスエラーにならないようにするための構文だと思われますが必要になることは殆どないでしょう。https://www.gnu.org/software/bash/manual/html_node/Shell-Compatibility-Mode.html[ここ]
+によると非推奨となっているようです。
+
+==== [#typeset--a-hash-hasha-1-b-2 .fragment]##link:++#typeset--a-hash-hasha-1-b-2++[__]`typeset -A hash; hash=(a 1 b 2)`
+
+zsh が連想配列に対応した 3.1.6 (1999) から使える書き方です。`typeset` と
+変数代入の 2 つの命令に分けて実行します。zsh は bash
+よりも先に連想配列に対応しましたが、キーと値を交互に並べるという独特な方法を採用しています。次項の
+`typeset -A hash=(a 1 b 2)` に対応するにはコマンドの引数に `=(...)`
+という構文が使用できなければいけません。一方 `hash=(a 1 b 2)` は zsh 2.0
+の時点で対応している配列を定義するときの書き方と同じです。つまりパーサーを修正を入れることなく連想配列に対応する方法としてこの書き方が選ばれたのではないかと推測しています。
+
+bash でも 5.1.0 (2020) でこの書き方に対応しましたが、おそらく zsh
+との互換性を向上させるのが目的だと思われます。
+
+==== [#typeset--a-hasha-1-b-2 .fragment]##link:++#typeset--a-hasha-1-b-2++[__]`typeset -A hash=(a 1 b 2)`
+
+zsh 5.1 (2015) でコマンドの引数に `=(...)`
+の構文が使えるようになったことで対応した書き方だと思われます。`typeset -A hash; hash=(a 1 b 2)`
+よりも少し便利とは言え古い zsh では対応できない上に新しいシェルでは
+`typeset -A hash=([a]=1 [b]=2)`
+が使えるのであまり出番のない書き方な気がします。
+
+=== [#連想配列の添字 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E6%B7%BB%E5%AD%97[__]連想配列の添字
+
+[cols=",,,",options="header",]
+|===
+| |ksh93 |bash |zsh
+|`${hash[*]]}` |all |4.0 |3.1.6
+|`${hash[@]]}` |all |4.0 |3.1.6
+|`${hash[KEY]}` |all |4.0 |3.1.6
+|===
+
+==== [#hashkey .fragment]##link:#hashkey[__]`${hash[KEY]}`
+
+全てのシェルでこの書き方です。
+
+==== [#hash--hash .fragment]##link:++#hash--hash++[__]`${hash[*]]}` / `${hash[@]]}`
+
+連想配列の全ての要素の値を取得します。
+
+=== [#連想配列のキー一覧 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E3%82%AD%E3%83%BC%E4%B8%80%E8%A6%A7[__]連想配列のキー一覧
+
+[cols=",,,",options="header",]
+|===
+| |ksh93 |bash |zsh
+|`${!hash[*]}` |all |4.0 |-
+|`${!hash[@]}` |all |4.0 |-
+|`${(k)hash[*]}` |- |- |3.1.6
+|`${(k)hash[@]}` |- |- |3.1.6
+|===
+
+==== [#hash--hash-1 .fragment]##link:++#hash--hash-1++[__]`${!hash[*]}` / `${!hash[@]}`
+
+ksh93 と bash で使えるのはこの書き方です。
+
+==== [#khash--khash .fragment]##link:++#khash--khash++[__]`${(k)hash[*]}` / `${(k)hash[@]}`
+
+zsh では
+パラメータ展開フラグを利用することでキー一覧を取得することができます。
+
+=== [#連想配列の要素数 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0[__]連想配列の要素数
+
+[cols=",,,",options="header",]
+|===
+| |ksh93 |bash |zsh
+|`${#hash}` |- |- |3.1.6
+|`${#hash[*]}` |all |4.0 |3.1.6
+|`${#hash[@]}` |all |4.0 |3.1.6
+|===
+
+==== [#hash .fragment]##link:#hash[__]`${#hash}`
+
+zsh でのみ使える方法です。これは配列と同じで `hash` は `hash[@]`
+として扱われるため連想配列の全ての要素の値の数を数えます。次項の方法を使えば良いので使う必要はないでしょう。
+
+....
+typeset -A hash=([a]=1 [b]=2 [c]=3)
+echo "${#hash}" # => 3
+....
+
+なお ksh93 と bash では `hash[0]` として扱われます。つまり連想配列の中に
+`0`
+というキーがあればその値の文字列の長さを返します。（もちろん使い道はありません）
+
+....
+typeset -A hash=([a]=1 [b]=12 [c]=123 [0]=abcde)
+echo "${#hash}" # => 5 （hash[0] = abcde の文字列の長さ）
+....
+
+==== [#hash--hash-2 .fragment]##link:++#hash--hash-2++[__]`${#hash[*]}` / `${#hash[@]}`
+
+ksh93、bash、zsh 全てで使える配列の要素数を取得する方法です。
+
+=== [#配列から連想配列への変換 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B[__]配列から連想配列への変換
+
+ksh93
+では配列から連想配列に変換することができます（逆は当然できません）。面白いですがこれが便利な場面はまず無いでしょう。
+
+....
+$ typeset -a ary=(a b c)
+$ typeset -p
+typeset -a ary=(a b c)
+...
+
+$ typeset -A ary
+$ typeset -p
+typeset -A ary=([0]=a [1]=b [2]=c)
+
+$ typeset -a ary
+ksh: typeset: cannot change associative array ary to index array
+....
+
+== [#さいごに .fragment]##link:#%E3%81%95%E3%81%84%E3%81%94%E3%81%AB[__]さいごに
+
+実装ごとの差異多すぎ・・・。ksh88 と oksh
+はほぼ同じと考えたとしても、配列は 6
+パターンあります。それに加えて純粋な POSIX
+シェル用のポリフィルを作ろうとしたら 7
+パターンですか。それに比べて連想配列は実装しているシェルも少なくたった 3
+パターンなので楽そうですね（マヒ）。
+
+image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+]
+
+link:/ko1nksm/items/bfe95cc72eb8ec31c11f/likers[11]
+
+Go to list of users who liked
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=]
+
+[.style-1129w32]#9#
+
+link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##2]
+
+Go to list of comments
+
+Register as a new user and use Qiita more conveniently
+
+. You get articles that match your needs
+. You can efficiently read back useful information
+. You can use dark theme
+
+https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
+signing up]
+
+link:/signup?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Sign
+up]link:/login?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Login]
+
+image:data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+[data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdib3g9IjAgMCA2NCA2NCIgY2xhc3M9InN0eWxlLWZ0bnMyNiI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMTkiIGNsYXNzPSJjaXJjbGUiPjwvY2lyY2xlPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzAuNTg2NSA0MS4xMzc4QzMxLjMyNzIgNDEuODIyMSAzMi42NzIyIDQxLjgzMTkgMzMuNDEyOSA0MS4xNTc0TDMzLjQ3MTggNDEuMTAzN0MzOC41NTU0IDM2LjQ3MTMgNDEuODgxOSAzMy40NDAxIDQxLjc0NiAyOS42NjE5QzQxLjY4NzUgMjguMDAwMSA0MC44Mzk2IDI2LjQwNjggMzkuNDY1NCAyNS40Njg0QzM3LjM3NDMgMjQuMDMwNSAzNC44ODQxIDI0LjQ0NjIgMzMuMTAzOCAyNS43MzMzQzMyLjY5MzYgMjYuMDI5OSAzMi4zMjEgMjYuMzcyOCAzMS45OTk3IDI2Ljc1QzMxLjY3ODMgMjYuMzcyNyAzMS4zMDU2IDI2LjAzIDMwLjg5NTIgMjUuNzMzOEMyOS4xMTUgMjQuNDQ5MSAyNi42MjUgMjQuMDM4NSAyNC41MzQxIDI1LjQ2ODRDMjMuMTU5OSAyNi40MDY4IDIyLjMxMiAyOC4wMDAxIDIyLjI1MzUgMjkuNjYxOUMyMi4xMjY4IDMzLjQ1NDYgMjUuNDY5NyAzNi40OTQ3IDMwLjU4NjUgNDEuMTM3OFpNMjMuNzUyNiAyOS43MTMzQzIzLjc5NTMgMjguNTExMSAyNC40MTQ0IDI3LjM2NjUgMjUuMzggMjYuNzA3MUwyNS4zODA4IDI2LjcwNjVDMjcuMTQ5MiAyNS40OTczIDI5LjQ5MjYgMjYuMTIgMzAuODU3OSAyNy43MjI3TDMxLjU0MyAyOC41MjdDMzEuNzgyNiAyOC44MDgyIDMyLjIxNjkgMjguODA4MiAzMi40NTY1IDI4LjUyN0wzMy4xNDE2IDI3LjcyMjdDMzQuNTEwMiAyNi4xMTYxIDM2Ljg1MTUgMjUuNDkxNCAzOC42MTU1IDI2LjcwNDRMMzguNjE5NSAyNi43MDcxQzM5LjU4NTUgMjcuMzY2NyA0MC4yMDQ2IDI4LjUxMiA0MC4yNDY5IDI5LjcxNDZMNDAuMjQ3IDI5LjcxNThDNDAuMjk2OSAzMS4xMDM2IDM5LjczIDMyLjQ2NDcgMzguMzgwNCAzNC4xNDM1QzM3LjAwOTEgMzUuODQ5MiAzNC45OTM4IDM3LjY4NzQgMzIuNDAzIDQwLjA0ODNDMzIuMzYzNiA0MC4wODQyIDMyLjIzMTQgNDAuMTU4NyAzMi4wMTAzIDQwLjE1NzJDMzEuNzg5OCA0MC4xNTU2IDMxLjY1MTIgNDAuMDc5MiAzMS42MDQ0IDQwLjAzNkwzMS41OTk1IDQwLjAzMTVMMzEuNTk0NSA0MC4wMjdDMjkuMDA0OCAzNy42NzcgMjYuOTkxOSAzNS44NDMyIDI1LjYyMjUgMzQuMTQwOEMyNC4yNzUyIDMyLjQ2NTcgMjMuNzA2NiAzMS4xMDM0IDIzLjc1MjYgMjkuNzEzM1oiIGNsYXNzPSJoZWFydC1zdHJva2UiPjwvcGF0aD48cGF0aCBkPSJNMzMuNDEyOSA0MS4xNTc0QzMyLjY3MjIgNDEuODMxOSAzMS4zMjcyIDQxLjgyMjEgMzAuNTg2NSA0MS4xMzc4QzI1LjQ2OTcgMzYuNDk0NyAyMi4xMjY4IDMzLjQ1NDYgMjIuMjUzNSAyOS42NjE5QzIyLjMxMiAyOC4wMDAxIDIzLjE1OTkgMjYuNDA2OCAyNC41MzQxIDI1LjQ2ODRDMjcuMTA3MSAyMy43MDg5IDMwLjI4NDQgMjQuNzM2MyAzMS45OTk3IDI2Ljc1QzMzLjcxNTEgMjQuNzM2MyAzNi44OTI0IDIzLjY5OTEgMzkuNDY1NCAyNS40Njg0QzQwLjgzOTYgMjYuNDA2OCA0MS42ODc1IDI4LjAwMDEgNDEuNzQ2IDI5LjY2MTlDNDEuODgyNCAzMy40NTQ2IDM4LjUyOTcgMzYuNDk0NyAzMy40MTI5IDQxLjE1NzRaIiBjbGFzcz0iaGVhcnQtZmlsbCI+PC9wYXRoPjxnIGNsYXNzPSJwYXJ0aWNsZXMiIHN0eWxlPSItLXJvdGF0ZTozMGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjEwMmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjE3NGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjI0NmRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PGcgY2xhc3M9InBhcnRpY2xlcyIgc3R5bGU9Ii0tcm90YXRlOjMxOGRlZyI+PGNpcmNsZSBjeD0iMjkiIGN5PSIxOSIgcj0iMyIgZmlsbD0idmFyKC0tY29sb3IteWVsbG93NjApIiBjbGFzcz0icGFydGljbGUiIHN0eWxlPSItLXg6MjY7LS15Ojc7LS1kdXJhdGlvbjoxNTBtcyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMzUiIGN5PSIyMyIgcj0iMiIgZmlsbD0idmFyKC0tY29sb3ItYmx1ZTYwKSIgY2xhc3M9InBhcnRpY2xlIiBzdHlsZT0iLS14OjM3Oy0teToxMDstLWR1cmF0aW9uOjIwMG1zIj48L2NpcmNsZT48L2c+PC9zdmc+]
+
+link:/ko1nksm/items/bfe95cc72eb8ec31c11f/likers[11]
+
+Go to list of users who liked
+
+image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtMTAwdHUwciIgaGVpZ2h0PSIzMiIgdmlld2JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNNi41IDVIMjUuNUMyNS43NzYxIDUgMjYgNS4yMjM4NiAyNiA1LjVWNi41QzI2IDYuNzc2MTQgMjUuNzc2MSA3IDI1LjUgN0g2LjVDNi4yMjM4NiA3IDYgNi43NzYxNCA2IDYuNVY1LjVDNiA1LjIyMzg2IDYuMjIzODYgNSA2LjUgNVpNMjQgMTlWMTEuNUMyNCAxMS4zNjc0IDIzLjk0NzMgMTEuMjQwMiAyMy44NTM2IDExLjE0NjRDMjMuNzU5OCAxMS4wNTI3IDIzLjYzMjYgMTEgMjMuNSAxMUg4LjVDOC4zNjczOSAxMSA4LjI0MDIxIDExLjA1MjcgOC4xNDY0NSAxMS4xNDY0QzguMDUyNjggMTEuMjQwMiA4IDExLjM2NzQgOCAxMS41VjE5QzggMjAuODU2NSA4LjczNzUgMjIuNjM3IDEwLjA1MDMgMjMuOTQ5N0MxMS4zNjMgMjUuMjYyNSAxMy4xNDM1IDI2IDE1IDI2SDE3QzE4Ljg1NjUgMjYgMjAuNjM3IDI1LjI2MjUgMjEuOTQ5NyAyMy45NDk3QzIzLjI2MjUgMjIuNjM3IDI0IDIwLjg1NjUgMjQgMTlaTTYuNTg1NzkgOS41ODU3OUM2Ljk2MDg2IDkuMjEwNzEgNy40Njk1NyA5IDggOUgyNEMyNC41MzA0IDkgMjUuMDM5MSA5LjIxMDcxIDI1LjQxNDIgOS41ODU3OUMyNS43ODkzIDkuOTYwODYgMjYgMTAuNDY5NiAyNiAxMVYxOUMyNiAyMS4zODY5IDI1LjA1MTggMjMuNjc2MSAyMy4zNjQgMjUuMzY0QzIxLjY3NjEgMjcuMDUxOCAxOS4zODY5IDI4IDE3IDI4SDE1QzEyLjYxMzEgMjggMTAuMzIzOSAyNy4wNTE4IDguNjM2MDQgMjUuMzY0QzYuOTQ4MjEgMjMuNjc2MSA2IDIxLjM4NjkgNiAxOVYxMUM2IDEwLjQ2OTYgNi4yMTA3MSA5Ljk2MDg2IDYuNTg1NzkgOS41ODU3OVoiPjwvcGF0aD48L3N2Zz4=]
+
+[.style-1vem4tk]#9#
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[[GlobalFooter-react-component-83b500cc-b3d3-4385-bd0a-be33d5210ced]]
+link:/[image:data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRvIHRvcCBRaWl0YSIgdmlld2JveD0iMCAwIDQyNi41NyAxMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMzMuNSIgY2xhc3M9InN0eWxlLTFnMGsxd2siPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRvIHRvcCBRaWl0YSIgdmlld2JveD0iMCAwIDQyNi41NyAxMzAiIHdpZHRoPSIxMTAiIGhlaWdodD0iMzMuNSIgY2xhc3M9InN0eWxlLTFnMGsxd2siPjxjaXJjbGUgY3g9IjE2Ny4wOCIgY3k9IjIxLjQiIHI9IjEyLjI4Ij48L2NpcmNsZT48cGF0aCBkPSJNMjUwLjgxIDI5LjY2aDIzLjQ4djE4LjloLTIzLjQ4eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDAuNzYgMTA1LjI2YTIyLjIzIDIyLjIzIDAgMDEtNi4yNi0uODYgMTIuNjggMTIuNjggMCAwMS01LjE3LTMgMTQuNDEgMTQuNDEgMCAwMS0zLjU2LTUuNzYgMjggMjggMCAwMS0xLjMtOS4yMlY0OC41NmgyOS42MXYtMTguOWgtMjkuNTJWMy4yOWgtMjAuMTd2ODMuMzRxMCAxMS4xNiAyLjgzIDE4LjI3YTI3LjcxIDI3LjcxIDAgMDA3LjcgMTEuMiAyNi44NiAyNi44NiAwIDAwMTEuNDMgNS42MiA0Ny41NiA0Ny41NiAwIDAwMTIuMzQgMS41M2gxNS4xNnYtMTh6TTAgNjEuN2E1OC42IDU4LjYgMCAwMTUtMjQuMjFBNjIuMjYgNjIuMjYgMCAwMTE4LjczIDE3LjkgNjMuNzIgNjMuNzIgMCAwMTM5IDQuNzggNjQuOTMgNjQuOTMgMCAwMTY0IDBhNjUgNjUgMCAwMTI0Ljg1IDQuNzggNjQuMjQgNjQuMjQgMCAwMTIwLjM4IDEzLjEyQTYyIDYyIDAgMDExMjMgMzcuNDlhNTguNiA1OC42IDAgMDE1IDI0LjIxIDU4LjM0IDU4LjM0IDAgMDEtNCAyMS40NiA2Mi44IDYyLjggMCAwMS0xMC45MSAxOC4xNmwxMS4xIDExLjFhMTAuMyAxMC4zIDAgMDEwIDE0LjUyIDEwLjI5IDEwLjI5IDAgMDEtMTQuNjQgMGwtMTIuMjItMTIuNDFhNjUgNjUgMCAwMS0xNS43OCA2LjY1IDY2LjMyIDY2LjMyIDAgMDEtMTcuNTUgMi4zIDY0LjYzIDY0LjYzIDAgMDEtNDUuMjMtMThBNjIuODIgNjIuODIgMCAwMTUgODUuODEgNTguMyA1OC4zIDAgMDEwIDYxLjd6bTIxLjY0LjA4YTQzLjEzIDQzLjEzIDAgMDAxMi40MiAzMC42MyA0Mi4yMyA0Mi4yMyAwIDAwMTMuNDMgOS4wOUE0MS4zMSA0MS4zMSAwIDAwNjQgMTA0LjhhNDIgNDIgMCAwMDMwLTEyLjM5IDQyLjM3IDQyLjM3IDAgMDA5LTEzLjY0IDQzLjQzIDQzLjQzIDAgMDAzLjMtMTcgNDMuNzcgNDMuNzcgMCAwMC0zLjMtMTdBNDEuNyA0MS43IDAgMDA4MC41NSAyMiA0MS43OCA0MS43OCAwIDAwNjQgMTguNjggNDEuMzEgNDEuMzEgMCAwMDQ3LjQ5IDIyYTQyLjM3IDQyLjM3IDAgMDAtMTMuNDMgOS4wOCA0My4zNyA0My4zNyAwIDAwLTEyLjQyIDMwLjd6TTMzMS44OSA3OGE0Ny41OSA0Ny41OSAwIDAxMy4zLTE3LjczIDQzLjIyIDQzLjIyIDAgMDE5LjM0LTE0LjQ3QTQ0LjI1IDQ0LjI1IDAgMDEzNTkgMzZhNDcuODIgNDcuODIgMCAwMTE4LjgxLTMuNTggNDIuNzIgNDIuNzIgMCAwMTkuMjYgMSA0Ni41IDQ2LjUgMCAwMTguMjIgMi41OCA0MCA0MCAwIDAxNyAzLjg0IDQ0LjM5IDQ0LjM5IDAgMDE1LjcxIDQuNjNsMS4yMi05LjQ3aDE3LjM1djg1LjgzaC0xNy4zNWwtMS4xNy05LjQyYTQyLjU0IDQyLjU0IDAgMDEtNS44NCA0LjY3IDQzLjExIDQzLjExIDAgMDEtNyAzLjc5IDQ0Ljg2IDQ0Ljg2IDAgMDEtOC4xNyAyLjU5IDQzIDQzIDAgMDEtOS4yMiAxQTQ3Ljk0IDQ3Ljk0IDAgMDEzNTkgMTE5LjlhNDMuMyA0My4zIDAgMDEtMTQuNDctOS43MSA0NC4xNyA0NC4xNyAwIDAxLTkuMzQtMTQuNDcgNDcgNDcgMCAwMS0zLjMtMTcuNzJ6bTIwLjI3LS4wOGEyOS4xNiAyOS4xNiAwIDAwMi4xNyAxMS4zNCAyNyAyNyAwIDAwNS45MiA4Ljg4IDI2LjY5IDI2LjY5IDAgMDA4Ljc2IDUuNzYgMjkuMTkgMjkuMTkgMCAwMDIxLjQ0IDAgMjYuMTEgMjYuMTEgMCAwMDguNzItNS43NiAyNy41NyAyNy41NyAwIDAwNS44OC04Ljg0IDI5IDI5IDAgMDAyLjE2LTExLjM4IDI4LjYyIDI4LjYyIDAgMDAtMi4xNi0xMS4yMiAyNi41NyAyNi41NyAwIDAwLTUuOTMtOC44IDI3LjY4IDI3LjY4IDAgMDAtMTkuNTEtNy45IDI4LjI5IDI4LjI5IDAgMDAtMTAuNzcgMi4wNSAyNi4xOSAyNi4xOSAwIDAwLTguNzEgNS43NSAyNy4wOCAyNy4wOCAwIDAwLTUuODQgOC44IDI4Ljk0IDI4Ljk0IDAgMDAtMi4xMyAxMS4zMXptLTE5NC45Ny0zMC41aDE5Ljc4djczLjU0aC0xOS43OHptNDkuMjUgMGgxOS43OHY3My41NGgtMTkuNzh6Ij48L3BhdGg+PGNpcmNsZSBjeD0iMjE2LjMzIiBjeT0iMjEuNCIgcj0iMTIuMjgiPjwvY2lyY2xlPjwvc3ZnPg==]]
+
+How developers code is here.
+
+[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
+
+Guide & Help
+
+* link:/about[About]
+* link:/terms[Terms]
+* link:/privacy[Privacy]
+* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
+* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
+* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
+* https://help.qiita.com[Help]
+* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
+
+Contents
+
+* link:/release-notes[Release Note]
+* link:/official-events[Official Event]
+* link:/official-columns[Official Column]
+* link:/advent-calendar/2024[Advent Calendar]
+* link:/qiita-award[Qiita Award]
+* link:/white_papers/2024[Engineer White Paper]
+* link:/api/v2/docs[API]
+
+Official Accounts
+
+* https://x.com/qiita[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==][.style-15fzge]#@Qiita#]
+* https://x.com/qiita_milestone[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==][.style-15fzge]#@qiita_milestone#]
+* https://x.com/qiitapoi[image:data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==[data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3R5bGUtb3gzYWc5IiB2aWV3Ym94PSIwIDAgMjAgMjAiIGFyaWEtbGFiZWw9IlgoVHdpdHRlcikiPjxwYXRoIGQ9Im0xMS42OCA4LjYyIDYuNTUtNy42MmgtMS41NWwtNS42OSA2LjYyLTQuNTUtNi42MmgtNS4yNWw2Ljg4IDEwLjAxLTYuODggNy45OWgxLjU1bDYuMDEtNi45OSA0LjggNi45OWg1LjI0bC03LjEzLTEwLjM4em0tMi4xMyAyLjQ3LS43LTEtNS41NC03LjkyaDIuMzlsNC40NyA2LjQuNyAxIDUuODIgOC4zMmgtMi4zOWwtNC43NS02Ljc5eiI+PC9wYXRoPjwvc3ZnPg==][.style-15fzge]#@qiitapoi#]
+* https://www.facebook.com/qiita/[Facebook]
+* https://www.youtube.com/@qiita5366[YouTube]
+* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
+
+Our service
+
+* https://teams.qiita.com/[Qiita Team]
+* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
+Zine]
+* https://suzuri.jp/qiita[Official Shop]
+
+Company
+
+* https://corp.qiita.com/company[About Us]
+* https://corp.qiita.com/jobs/[Careers]
+* https://blog.qiita.com[Qiita Blog]
+* https://corp.qiita.com/releases/[News Release]
+
+[[Snackbar-react-component-5a264737-fbb7-4dfa-93ff-4080c428de0f]]
+
+[[LoginModal-react-component-226b40df-34e0-4938-95a2-46f3a7f606e8]]
+
+[[dataContainer]]

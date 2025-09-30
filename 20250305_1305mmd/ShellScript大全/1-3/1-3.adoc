@@ -1,0 +1,1223 @@
+. [Shellの基礎知識]
+
+#ヒアドキュメント#
+
+== 【Shellでヒアドキュメント】複数行テキスト出力を簡単に！
+
+シェルスクリプトで、複数行のテキストをファイル出力し、それを読込ませたい場合、一行ずつechoするよりヒアドキュメントを記述すればすっきりと書けてコードの可読性を上げる事が出来ます。
+
+
+[[here-document1]]
+=== ヒアドキュメントとは？
+
+ヒアドキュメントは、コマンドの標準入力に複数行の文書を入力する書式コマンドです。
+
+複数行の文書を即座に作成して、これをコマンドの標準入力にリダイレクトしたことがあります。その時、このヒアドキュメントは非常に便利です。
+
+[.st-minihukidashi-arrow]##[.st-minihukidashi-flexbox]#コマンドの書式#
+
+__
+
+*「コマンド」　<<[-]　EOF* +
+*＜ヒアドキュメント本文＞* +
+*EOF・・・*
+
+ヒアドキュメントでは、次の行の行頭から終了文字列（EOF）が現れる直前の行までをヒアドキュメント本文とし、その内容がコマンドの標準入力にリダイレクトされます。
+
+「<<」の右側の終了文字列（EOF）がクォート「'」されている場合は、ヒアドキュメント本文の展開は行われず、変数を処理できません。
+
+__
+
+始まりの文字はEOF固定と言うわけではなく好きな文字を設定する事が可能ですが、「EOF（エンドオブファイル）」が一般的です。
+
+[[rtoc-2]]
+==== 標準入力へリダイレクト
+
+下記の書式は、「'」で囲んだ場合のヒアドキュメントと囲まない場合の2つのパターン記載しています。
+
+str="あいうえお"  +
+ +
+#クォーテーションで囲んだヒアドキュメント +
+$ cat << 'EOF' +
+$\{str} 　　　　👈 変数 +
+hoge +
+fuga +
+EOF +
+ +
+#クォーテーションで囲まないヒアドキュメント（変数展開） +
+$ cat << EOF +
+$\{str}　　　　👈 変数 +
+hoge +
+fuga +
+EOF
+
+2つのパターンのヒアドキュメントを実行してみます。
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650]]
+[.crayon-title]#here document comp#
+
+[width="100%",cols=50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## str="あいうえお"#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-2]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat << 'EOF'#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-3]]
+[.crayon-o]#>#[.crayon-h]#
+#[.crayon-sy]#$#[.crayon-sy]#\{#[.crayon-v]#str#[.crayon-sy]#}#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-4]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-e]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-5]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-e]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-6]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-e]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-7]]
+[.crayon-sy]#$#[.crayon-sy]#\{#[.crayon-v]#str#[.crayon-sy]#}#　　　　👈[.crayon-h]##
+##変数が展開されていない
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-8]]
+[.crayon-e]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-9]]
+[.crayon-e]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-10]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-11]]
+[.crayon-sy]#[#[.crayon-e]#root#[.crayon-sy]#@#[.crayon-e]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## cat << EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-12]]
+[.crayon-o]#>#[.crayon-h]#
+#[.crayon-sy]#$#[.crayon-sy]#\{#[.crayon-v]#str#[.crayon-sy]#}#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-13]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-14]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-15]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-i]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-16]]
+あいうえお　　　👈[.crayon-h]## ##変数が展開されている
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-17]]
+[.crayon-e]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-18]]
+[.crayon-i]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c8fb255818650-19]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]###
+
+|===
+
+クォーテーションで囲んだヒアドキュメントは変数展開を行いません。逆にクォーテーションで囲まないヒアドキュメントは変数展開を行っていることが分かります。
+
+____メモ
+
+設定を行う対象が、1台2台なら設定ファイルを直接手書きで編集するのも良いのですが、実際のプロジェクトでは300台のサーバーを設定するなど普通にあります。ヒアドキュメントを習得することで、省力化を測ることができます！
+
+[[rtoc-3]]
+==== ヒアドキュメントのインデント
+
+ヒアドキュメントを扱う際に、必ず聞かれる質問第一位が「インデントが設定できない！」と言う問題です。タブを使ってインデントする場合、コマンドが正しく実行できません。
+
+ ヒアドキュメントの終了文字列（例:
+EOF）は、必ず行頭に記述する必要があります。終了文字列の前にタブや半角スペースを含めると、シェルはそれを終了文字列として認識しません。
+
+一方で、<<-
+を使用すると、ヒアドキュメント本体の各行の行頭にあるタブ文字を無視することができます。ただし、この機能は終了文字列には適用されません。
+
+スペース：⬜️ +
+ +
+$ str="文字列" +
+$ cat <<- EOF +
+⬜️$\{str} +
+⬜️hoge +
+⬜️fuga +
+EOF 👈 終了文字列は常に行頭に書く
+
+____終了文字列について
+
+* *終了文字列の位置*: +
+ヒアドキュメントの終了文字列（例:
+EOF）は、行頭に記述する必要があります。 
+* *インデントの影響*: +
+終了文字列の前にタブやスペースなどのインデントがあると、シェルはそれを終了文字列として認識しません。 
+* *<<- の効果*: +
+<<-
+を使用すると、ヒアドキュメント本体の各行の行頭にあるタブ文字を無視できますが、終了文字列自体には影響を与えません。
+
+===== 正しい例１(ヒアドキュメント本体の行頭をタブでインデント)
+
+タブ：🟪 +
+ +
+cat <<- EOF +
+🟪ここはヒアドキュメント本文です。 +
+EOF
+
+*出力結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c90a048808573]]
+[.crayon-title]#here document ok#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c90a048808573-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat <<- EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c90a048808573-2]]
+[.crayon-o]#>#[.crayon-h]## ##ここはヒアドキュメント本文です。
+
+[[urvanov-syntax-highlighter-67cba5b55c90a048808573-3]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-i]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c90a048808573-4]]
+ここはヒアドキュメント本文です。[.crayon-h]## ##👈[.crayon-h]##
+##タブは無視されて行頭から文字列が反映されている
+
+|===
+
+上記の例では、ヒアドキュメント本体の各行は**タブ**でインデントされていますが、<<-
+によりそのタブは無視されます。実行結果にタブが無視されて行頭から文字列が反映されます。
+
+===== 正しい例２(hereドキュメント本体の行頭をスペースでインデント)
+
+スペース：⬜️ +
+ +
+cat <<- EOF +
+⬜️ここはヒアドキュメント本文です。 +
+EOF
+
+*出力結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c90f993524461]]
+[.crayon-title]#here document ok#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c90f993524461-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat <<- EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c90f993524461-2]]
+[.crayon-o]#>#[.crayon-h]## ##ここはヒアドキュメント本体です。
+
+[[urvanov-syntax-highlighter-67cba5b55c90f993524461-3]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-i]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c90f993524461-4]]
+　　ここはヒアドキュメント本体です。👈[.crayon-h]##
+##スペースは無視されない
+
+|===
+
+上記の例では、ヒアドキュメント本体の各行は**スペース**でインデントされていますが、<<-
+はスペースを無視しません。実行結果にスペース分の空白が反映されます。
+
+===== 間違った例１ (終了文字列の前にタブ)
+
+ヒアドキュメントの誤った使い方例（終了文字列の前にタブ）
+
+スペース：⬜️ +
+タブ：🟪 +
+ +
+cat <<- EOF +
+⬜️ここはヒアドキュメント本文です。 +
+🟪 👈 EOFの行は認識されない
+
+*出力結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c911112112786]]
+[.crayon-title]#here document ng#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c911112112786-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat <<- EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c911112112786-2]]
+[.crayon-o]#>#[.crayon-h]##   ##ここはヒアドキュメント本文です。
+
+[[urvanov-syntax-highlighter-67cba5b55c911112112786-3]]
+[.crayon-o]#>#[.crayon-h]#  #[.crayon-v]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c911112112786-4]]
+[.crayon-o]#>#[.crayon-h]# #
+
+|===
+
+終了文字列（例:
+EOF）の前に**タブ**が含まれている場合、シェルはそれを終了文字列として認識しません。その結果、ヒアドキュメントの終了を認識できず、スクリプトは待受状態のままとなります。
+
+===== 間違った例２(終了文字列の前にスペース)
+
+ヒアドキュメントの誤った使い方例（終了文字列の前にスペース）
+
+タブ：🟪 +
+ +
+cat <<- EOF +
+⬜️ここはヒアドキュメント本文です。 +
+⬜️ 👈 EOFこの行は認識されない
+
+*出力結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c913631425441]]
+[.crayon-title]#here document ng#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c913631425441-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat <<- EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c913631425441-2]]
+[.crayon-o]#>#[.crayon-h]##   ##ここはヒアドキュメント本文です。
+
+[[urvanov-syntax-highlighter-67cba5b55c913631425441-3]]
+[.crayon-o]#>#[.crayon-h]#  #[.crayon-v]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c913631425441-4]]
+[.crayon-o]#>#[.crayon-h]# #
+
+|===
+
+終了文字列（例:
+EOF）の前に**スペース**が含まれている場合、シェルはそれを終了文字列として認識しません。その結果、ヒアドキュメントの終了を認識できず、スクリプトは待受状態のままとなります。
+
+終了文字列（例:
+EOF）は必ず行頭に記述してください。スペースやタブが含まれていると、終了文字列として認識されません。
+
+[[here-document2]]
+=== ヒアドキュメントを使ったサンプルスクリプト
+
+ヒアドキュメントを使うことで、シェルスクリプトで複数行の文字列を簡単に扱えるようになります。
+
+[[rtoc-5]]
+==== 簡単な文字列出力例
+
+以下はヒアドキュメントを使って複数行の文字列を表示するシンプルな例です。
+
+cat < +
+これはヒアドキュメントの基本例です。 +
+複数行の文字列を簡単に扱うことができます。 +
+EOF
+
+*出力結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177]]
+[.crayon-title]#result1#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat <<EOF    #
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-2]]
+これはヒアドキュメントの基本例です。[.crayon-h]#    #
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-3]]
+複数行の文字列を簡単に扱うことができます。[.crayon-h]#    #
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-4]]
+[.crayon-i]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-5]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-6]]
+これはヒアドキュメントの基本例です。
+
+[[urvanov-syntax-highlighter-67cba5b55c915083357177-7]]
+複数行の文字列を簡単に扱うことができます。
+
+|===
+
+[[rtoc-6]]
+==== 設定ファイルの生成
+
+ヒアドキュメントを使えば、スクリプト内で設定ファイルを簡単に生成することができます。
+
+cat < config.txt +
+[Settings] +
+theme=dark +
+timeout=30 +
+EOF
+
+*生成されるファイル内容*
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178]]
+[.crayon-title]#result 2#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat <<EOF > config.txt#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-2]]
+[.crayon-o]#>#[.crayon-h]#
+#[.crayon-sy]#[#[.crayon-v]#Settings#[.crayon-sy]#]#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-3]]
+[.crayon-o]#>#[.crayon-h]#
+#[.crayon-v]#theme#[.crayon-o]#=#[.crayon-v]#dark#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-4]]
+[.crayon-o]#>#[.crayon-h]#
+#[.crayon-v]#timeout#[.crayon-o]#=#[.crayon-cn]#30#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-5]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-i]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-6]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-7]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#-#[.crayon-sy]#]#[.crayon-p]## cat config.txt#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-8]]
+[.crayon-sy]#[#[.crayon-v]#Settings#[.crayon-sy]#]#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-9]]
+[.crayon-v]#theme#[.crayon-o]#=#[.crayon-e]#dark#
+
+[[urvanov-syntax-highlighter-67cba5b55c917235831178-10]]
+[.crayon-v]#timeout#[.crayon-o]#=#[.crayon-cn]#30#
+
+|===
+
+[[rtoc-7]]
+==== SQLクエリの実行
+
+以下は、データベース操作を自動化する際の例です。このスクリプトは、ユーザー情報を取得し、特定の条件に基づいて更新します。
+
+mysql -u username -p database <<EOF +
+SELECT * FROM users WHERE age > 30; +
+UPDATE users SET active = 1 WHERE last_login > '2023-01-01'; +
+EOF
+
+*クエリの実行結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532]]
+[.crayon-title]#result 3#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-1]]
+[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#-#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#-#[.crayon-o]#+#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-2]]
+[.crayon-o]#\|#[.crayon-h]# #[.crayon-v]#ID#[.crayon-h]#
+#[.crayon-o]#\|#[.crayon-h]# #[.crayon-v]#Name#[.crayon-h]#  
+#[.crayon-o]#\|#[.crayon-h]# #[.crayon-v]#Age#[.crayon-h]#
+#[.crayon-o]#\|#[.crayon-h]#
+#[.crayon-v]#Active#[.crayon-h]#      #[.crayon-o]#\|#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-3]]
+[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#-#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#-#[.crayon-o]#+#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-4]]
+[.crayon-o]#\|#[.crayon-h]#  #[.crayon-cn]#1#[.crayon-h]#
+#[.crayon-o]#\|#[.crayon-h]#
+#[.crayon-v]#Alice#[.crayon-h]#  #[.crayon-o]#\|#[.crayon-h]#  #[.crayon-cn]#35#[.crayon-h]#
+#[.crayon-o]#\|#[.crayon-h]# #[.crayon-cn]#0#[.crayon-h]#          
+#[.crayon-o]#\|#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-5]]
+[.crayon-o]#\|#[.crayon-h]#  #[.crayon-cn]#2#[.crayon-h]#
+#[.crayon-o]#\|#[.crayon-h]#
+#[.crayon-v]#Bob#[.crayon-h]#    #[.crayon-o]#\|#[.crayon-h]#  #[.crayon-cn]#40#[.crayon-h]#
+#[.crayon-o]#\|#[.crayon-h]# #[.crayon-cn]#1#[.crayon-h]#          
+#[.crayon-o]#\|#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-6]]
+[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#-#[.crayon-o]#+#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#--#[.crayon-o]#-#[.crayon-o]#+#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-7]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-8]]
+[.crayon-v]#mysql#[.crayon-o]#>#[.crayon-h]# #[.crayon-e]#UPDATE
+#[.crayon-e]#users #[.crayon-e]#SET #[.crayon-v]#active#[.crayon-h]#
+#[.crayon-o]#=#[.crayon-h]# #[.crayon-cn]#1#[.crayon-h]#
+#[.crayon-e]#WHERE #[.crayon-v]#last_login#[.crayon-h]#
+#[.crayon-o]#>#[.crayon-h]# #[.crayon-s]#'2023-01-01'#[.crayon-sy]#;#
+
+[[urvanov-syntax-highlighter-67cba5b55c919001072532-9]]
+[.crayon-e]#Query #[.crayon-v]#OK#[.crayon-sy]#,#[.crayon-h]#
+#[.crayon-cn]#1#[.crayon-h]# #[.crayon-e]#row #[.crayon-v]#affected#
+
+|===
+
+[[rtoc-8]]
+==== FTPスクリプトの自動化
+
+ヒアドキュメントを活用することで、FTPクライアントを自動化し、ファイルのアップロードやダウンロードを効率化できます。
+
+ftp -n <<EOF +
+open ftp.example.com +
+user username password +
+put localfile.txt +
+bye +
+EOF
+
+*説明* +
+ftp -n: 自動ログインを無効化（スクリプト内でログイン情報を提供）。 +
+open ftp.example.com: FTPサーバーに接続。 +
+user username password: ユーザー名とパスワードで認証。 +
+put localfile.txt: ローカルファイル localfile.txt
+をサーバーにアップロード。 +
+bye: 接続を終了。 +
+ +
+*実行結果* +
+FTPサーバーにファイルが正しくアップロードされます。 +
+自動化により、手動で行う手間が省けます。
+
+[[rtoc-9]]
+==== サーバー設定の簡略化
+
+ヒアドキュメントは、サーバー構成ファイルや設定ファイルの生成にも役立ちます。複雑な設定内容を簡単にスクリプト化できます。
+
+cat <<EOF > /etc/httpd/conf.d/example.conf +
+<VirtualHost *:80> +
+  ServerName example.com +
+  DocumentRoot /var/www/html +
+  ErrorLog /var/log/httpd/example.com-error.log +
+  CustomLog /var/log/httpd/example.com-access.log combined +
+</VirtualHost> +
+EOF
+
+*説明* +
+cat <<EOF > /etc/httpd/conf.d/example.conf:
+設定内容を指定したファイルに書き込み。 +
+<VirtualHost> ブロック内に、サーバー名やログの設定を記述。 +
+ +
+*実行結果* +
+/etc/httpd/conf.d/example.conf
+に仮想ホスト設定ファイルが生成されます。 +
+サーバー再起動後、example.com が適切に動作します。
+
+[[here-document3]]
+=== ヒアドキュメントを補完する便利なコマンド
+
+ヒアドキュメントは複数行の文字列を簡単に扱える便利な機能ですが、その効果をさらに高めるには、他のシェルコマンドと組み合わせることが重要です。
+
+ここでは、ヒアドキュメントを補完し、シェルスクリプトでの作業を効率化するための便利なコマンドを紹介します。これらのコマンドを活用すれば、スクリプトの作成やデータの操作がさらに柔軟で簡単になります
+
+[[rtoc-11]]
+==== echoコマンドとの違い
+
+「ヒアドキュメント」以外にも、「echo」コマンドを使って標準出力を行うことが可能です。echo
+コマンドは、引数として指定された文字列を出力するシンプルなコマンドで、複数行の出力を行いたい場合、少し工夫が必要です。
+
+最も単純な方法は、echo
+コマンドを複数回実行することです。例えば、次のように記述すれば、各コマンドごとに改行されます。
+
+$ echo hoge +
+$ echo fuga +
+$ echo doga
+
+しかし、複数行を出力する際に、1行ずつ echo
+コマンドを実行するのは冗長に感じられる場合があります。このような場合、echo
+コマンドの -e
+オプションを使用することで、改行コードを含む文字列を一度に出力できます。
+
+$ echo -e "hoge\nfuga\ndoga"
+
+*「echo」コマンドの実行結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c91b099210279]]
+[.crayon-title]#echo -e 1#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c91b099210279-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## echo -e "hoge\nfuga\ndoga"#
+
+[[urvanov-syntax-highlighter-67cba5b55c91b099210279-2]]
+[.crayon-e]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c91b099210279-3]]
+[.crayon-e]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c91b099210279-4]]
+[.crayon-i]#doga#
+
+[[urvanov-syntax-highlighter-67cba5b55c91b099210279-5]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]###
+
+|===
+
+実行結果の出力が「hoge」「fuga」「doga」と3行に分かれて出力されています。
+
+これは ""（ダブルクォーテーション）の中に \n
+が含まれており、Bashでエスケープ文字として解釈されたため、改行コードとして出力された結果です。
+
+ちなみに今度は「""（ダブルクォーテーション）」が無い状態と「-e」オプションが無い状態で実行してみます。
+
+# 「""（ダブルクォーテーション）」が無い状態 +
+$ echo -e hoge\nfuga\ndoga +
+ +
+# 「-e」オプションが無い状態 +
+$ echo "hoge\nfuga\ndoga"
+
+*実行結果*
+
+[[urvanov-syntax-highlighter-67cba5b55c91e059815626]]
+[.crayon-title]#echo state check#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c91e059815626-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## echo -e hoge\nfuga\ndoga#
+
+[[urvanov-syntax-highlighter-67cba5b55c91e059815626-2]]
+[.crayon-i]#hogenfugandoga#
+
+[[urvanov-syntax-highlighter-67cba5b55c91e059815626-3]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## echo "hoge\nfuga\ndoga"#
+
+[[urvanov-syntax-highlighter-67cba5b55c91e059815626-4]]
+[.crayon-v]#hoge#[.crayon-sy]#\#[.crayon-v]#nfuga#[.crayon-sy]#\#[.crayon-i]#ndoga#
+
+[[urvanov-syntax-highlighter-67cba5b55c91e059815626-5]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]###
+
+|===
+
+このようにechoコマンドだけでも複数行のテキスト出力は出来ますが、多くの行を入力するときには不便かつ可読性も落ちてしまいます。
+
+[.st-minihukidashi-arrow]##[.st-minihukidashi-flexbox]#ココに注意#
+
+__
+
+シェルの種類によっては、-eオプションは使用できないものもあるので、スクリプトを書くときの環境、シェルには注意してください。
+
+[[rtoc-12]]
+==== ファイルへ出力する方法
+
+ヒアドキュメントを使って、ファイルへ複数行のテキスト出力を行いたい場合はどうすればよいでしょうか？
+
+これまでの例では、catは
+入力元を明示しない場合は、標準入力から入力を受け付けるため、ヒアドキュメントは標準入力として扱われている事が分かります。
+
+入力があれば出力先を指定するのがcatコマンドの文法のため、以下のようにファイルへリダイレクトする、という処理を記述すればファイルへ出力することが可能です。
+
+下記にファイル出力する場合の記述をしてみます。
+
+# ヒアドキュメントを使ってファイルへ出力する +
+$ cat << EOF > ./aaa.txt +
+hoge +
+fuga +
+EOF
+
+余談ですが、echo
+コマンドでヒアドキュメントの書式を用いたとしても、期待した結果は得られません。echo
+コマンドは標準入力を処理せず、引数として渡された文字列をそのまま出力するだけです。そのため、ヒアドキュメントの形式を引数として指定しても、改行コードや終了文字列が解釈されず、入力した内容がそのまま出力されます。
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932]]
+[.crayon-title]#here document 2#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## cat << EOF > ./aaa.txt#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-2]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-3]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-4]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-i]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-5]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## ls -l#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-6]]
+[.crayon-o]#-#[.crayon-v]#rw#[.crayon-o]#-#[.crayon-v]#r#[.crayon-o]#--#[.crayon-v]#r#[.crayon-o]#--#[.crayon-sy]#.#[.crayon-h]#
+#[.crayon-cn]#1#[.crayon-h]# #[.crayon-e]#root
+#[.crayon-i]#root#[.crayon-h]#        
+#[.crayon-cn]#10#[.crayon-h]#  #[.crayon-cn]##4##月[.crayon-h]##
+##[.crayon-cn]#16#[.crayon-h]#
+#[.crayon-cn]#10#[.crayon-o]#:#[.crayon-cn]#42#[.crayon-h]#
+#[.crayon-v]#aaa#[.crayon-sy]#.#[.crayon-i]#txt#　👈[.crayon-h]##
+##ファイルが作成されている
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-7]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## cat
+aaa.txt　👈　ファイルの中身を確認#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-8]]
+[.crayon-e]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c921317739932-9]]
+[.crayon-v]#fuga#
+
+|===
+
+この特性をうまく使いこなせば、OSの設定ファイル等の面倒な設定が一発で、差し替え可能となります。
+
+https://www.pmi-sfbac.org/add_yum[]
+
+image:https://www.google.com/s2/favicons?domain=www.pmi-sfbac.org[https://www.google.com/s2/favicons?domain=www.pmi-sfbac,width=16,height=16]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2016%2016%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2016%2016%22%3E%3C/svg%3E,width=16,height=16]
+
+Beエンジニア
+
+.
+image:://www.pmi-sfbac.org/wp-content/uploads/2020/06/shell-logo-150x150.png[//www.pmi-sfbac.org/wp-content/uploads/2020/06/shell-logo-150x150,width=100,height=108]
+
+.
+image::data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20108%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20108%22%3E%3C/svg%3E,width=100,height=108]
+
+【Shell-Tips】ISOメディアをマウントしてYumを設定する。
+
+https://www.pmi-sfbac.org/add_yum
+
+実際の現場での作業は、セキュリティ確保のためインターネットとの接続を遮断されていることも多々あります。また、昨今のサーバーは仮想化が進み、
+データセンタへリモート接続を行いサーバーの構築を行うことが主流になっています。ISOメディアをマウントしてYumを設定する。リモート接続の場合、必ず問題になるのがメディアのマウントです。昨今は、何処のベンダーもISOメディアをダウンロードすることが可能となっています。この記事では、ダウンロードしたISOメディアをマウントして、yumの設定を自動で行うスクリプトをご紹介し...
+
+[[rtoc-13]]
+==== catコマンドを利用したヒアドキュメントの記述
+
+cat
+コマンドは標準入力を受け付けるため、ヒアドキュメントと組み合わせて使われることが多いですが、それ以外にもさまざまな用途があります。
+
+例えば、ヒアドキュメントは通常、標準入力として扱われるため、その内容を直接変数に保存することはできません。しかし、cat
+コマンドをコマンド置換（バッククォートまたは $()
+を使用）で変数に設定し、その入力としてヒアドキュメントを記述することで、内容を変数に保存することが可能です。
+
+# 宣言した変数内へコマンド置換でcatコマンドを変数に設定 +
+$ TEST=$(cat << EOF +
+hoge +
+fuga +
+EOF +
+)
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364]]
+[.crayon-title]#here document 3#
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+a|
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-1]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## TEST=$(cat << EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-2]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#hoge#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-3]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-4]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-v]#EOF#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-5]]
+[.crayon-o]#>#[.crayon-h]# #[.crayon-sy]#)#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-6]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]## echo $TEST#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-7]]
+[.crayon-e]#hoge #[.crayon-i]#fuga#
+
+[[urvanov-syntax-highlighter-67cba5b55c923583961364-8]]
+[.crayon-sy]#[#[.crayon-v]#root#[.crayon-sy]#@#[.crayon-v]#CentOS7#[.crayon-h]#
+#[.crayon-o]#~#[.crayon-sy]#]#[.crayon-p]###
+
+|===
+
+ちなみに「echo
+$TEST」をダブルクォーテーションでくくると改行されて表示されます。
+
+[[rtoc-14]]
+=== まとめ
+
+ヒアドキュメントの使い方について、説明してきました。ヒアドキュメントは、使い方によっては非常にパワフルで書式なコマンドとなります。
+
+サーバーOSの設定ファイルから、スクリプトの外部ファイルの操作まで、ヒアドキュメントの存在はかなり重宝します。ヒアドキュメントを覚えておいて、損はありません！　積極的に覚えていきましょう！
+
+'''''
+
+この記事を読んだら、次は
+**「【Shellの基礎知識】関数の基本と応用｜書式と戻り値を解説」**を読むのがおすすめです！
+
+https://www.pmi-sfbac.org/func-format-return-value[]
+
+image:https://www.google.com/s2/favicons?domain=www.pmi-sfbac.org[https://www.google.com/s2/favicons?domain=www.pmi-sfbac,width=16,height=16]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2016%2016%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2016%2016%22%3E%3C/svg%3E,width=16,height=16]
+
+Beエンジニア
+
+.
+image:://www.pmi-sfbac.org/wp-content/uploads/2025/01/9357b26ffcc762d5975aed0bc446c30e-150x150.png[//www.pmi-sfbac.org/wp-content/uploads/2025/01/9357b26ffcc762d5975aed0bc446c30e-150x150,width=100,height=108]
+
+.
+image::data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20108%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20108%22%3E%3C/svg%3E,width=100,height=108]
+
+【Shellの基礎知識】関数の基本と応用｜書式と戻り値を解説
+
+https://www.pmi-sfbac.org/func-format-return-value
+
+一般的なプログラム言語でいう関数と同様、シェルスクリプトでも関数を定義する事が可能です。シェル関数は古くから組み込まれた、非常によく使われる機能です。ある名称で関数として定義し、一連のコマンドを処理させるだけのことです。コマンド実行や変数定義などが可能なため、複数回同じ処理を行う場合は、関数に置き換え簡潔なコーディングとするのが良いでしょう。シェルスクリプトで関数を使うメリットとは？シェルスクリプトを活用する上で、関数を導入することには多くのメリットがあります。コードの効率性や保守性を高める...
+
+* __[.snstext]#Twitter#
+* link://www.facebook.com/sharer.php?src=bm&u=https%3A%2F%2Fwww.pmi-sfbac.org%2Fhere-document%2F&t=%E3%80%90Shell%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9F%A5%E8%AD%98%E3%80%91%E8%A4%87%E6%95%B0%E8%A1%8C%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%87%BA%E5%8A%9B%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB%EF%BC%81%E3%83%92%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%B4%BB%E7%94%A8%E6%B3%95[__[.snstext]#Share#]
+* __[.snstext]#Pocket#
+* //b.hatena.ne.jp/entry/https://www.pmi-sfbac.org/here-document/[__[.snstext]#Hatena#]
+* link://line.me/R/msg/text/?%E3%80%90Shell%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9F%A5%E8%AD%98%E3%80%91%E8%A4%87%E6%95%B0%E8%A1%8C%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%87%BA%E5%8A%9B%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB%EF%BC%81%E3%83%92%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%B4%BB%E7%94%A8%E6%B3%95%0Ahttps%3A%2F%2Fwww.pmi-sfbac.org%2Fhere-document%2F[__[.snstext]#LINE#]
+* link:#[__[.snstext]#URLコピー#]
+
+[.p-entry]#よく読まれている記事#
+
+https://www.pmi-sfbac.org/shell-shellscript/[image:https://www.pmi-sfbac.org/wp-content/uploads/2020/06/0e0040573344b7bc9be7d4146703c2e1.png[https://www.pmi-sfbac.org/wp-content/uploads/2020/06/0e0040573344b7bc9be7d4146703c2e1,width=640,height=336]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20336%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20336%22%3E%3C/svg%3E,width=640,height=336]]
+[.poprank-no]#1#::
+  ====== https://www.pmi-sfbac.org/shell-shellscript/[【IT入門】シェルとシェルスクリプトの違いとは？シェルの種類について]
+  +
+  IT入門シリーズ 🟢 STEP 1:
+  ITの基礎を知る（ITとは何か？）├─【IT入門】ITとは？仕組みや活用方法をわかりやすく解説├─【IT入門】インターネットとは？仕組み・使い方を
+  ...
+
+https://www.pmi-sfbac.org/linux-basics/[image:https://www.pmi-sfbac.org/wp-content/uploads/2020/04/1942320b0bb23e55dcb744ad40954a9f.png[https://www.pmi-sfbac.org/wp-content/uploads/2020/04/1942320b0bb23e55dcb744ad40954a9f,width=640,height=335]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]]
+[.poprank-no]#2#::
+  ====== https://www.pmi-sfbac.org/linux-basics/[【Linuxの基礎知識】Linuxとは？基本概要と仕組みをわかりやすく解説！]
+  +
+  「私たちが日々利用しているスマートフォンやインターネット、そしてスーパーコンピュータやクラウドサービス――これらの多くがLinuxの力で動いていることをご存じですか？無料で使えるだけでなく、高い柔軟性
+  ...
+
+https://www.pmi-sfbac.org/shell-script-basics/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/c15da16a67c9674387e3c12633d35b70.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/01/c15da16a67c9674387e3c12633d35b70,width=640,height=335]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]]
+[.poprank-no]#3#::
+  ====== https://www.pmi-sfbac.org/shell-script-basics/[【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本]
+  +
+  Shellスクリプト基礎知識（全13記事+2）
+  ├─【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本├─【Shellの基礎知識】変数と特殊変数の使い方｜初心者向け解説├─【She
+  ...
+
+__-https://www.pmi-sfbac.org/category/skill/shell-started/[Shell
+の基礎知識] +
+__-https://www.pmi-sfbac.org/tag/shell%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88/[Shellスクリプト],
+https://www.pmi-sfbac.org/tag/%e5%88%9d%e5%bf%83%e8%80%85%e5%90%91%e3%81%91/[初心者向け],
+https://www.pmi-sfbac.org/tag/%e5%bf%9c%e7%94%a8/[応用],
+https://www.pmi-sfbac.org/tag/%e6%96%87%e5%ad%97%e5%88%97%e7%bd%ae%e6%8f%9b/[文字列置換],
+https://www.pmi-sfbac.org/tag/%e5%9f%ba%e7%a4%8e/[基礎],
+https://www.pmi-sfbac.org/tag/%e8%a4%87%e6%95%b0%e8%a1%8c%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e5%87%ba%e5%8a%9b/[複数行テキスト出力]
+
+https://www.pmi-sfbac.org/author/bepro/[[.fn]#author#]
+
+=== [.point-in]#関連記事#
+
+image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/605ca8fc7a2b2c5d05b9558663b441bf.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/01/605ca8fc7a2b2c5d05b9558663b441bf,width=640,height=335]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]
+
+==== https://www.pmi-sfbac.org/builtin-command/[【Shellの基礎知識】組み込みコマンドの活用法｜最適化テクニック]
+
+Shellスクリプト基礎知識（全13記事+2）
+├─【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本├─【Shellの基礎知識】変数と特殊変数の使い方｜初心者向け解説├─【Shellの基礎知識】Shell演算子の完全ガイド｜基礎から応用まで├─【Shellの基礎知識】条件分岐『if』『case』の使い方を解説├─【Shellの基礎知識】ループ処理の基本｜効率化と応用例を解説├─【Shellの基礎知識】文字列置換の基本と応用｜初心者向け解説├─【Shellの基礎知識】複数行テキスト出力
+...
+
+image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/f69f16004027aea8841d2fb05cbaa2e5.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/01/f69f16004027aea8841d2fb05cbaa2e5,width=640,height=335]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]
+
+==== https://www.pmi-sfbac.org/conditional-branch/[【Shellの基礎知識】条件分岐『if』『case』の使い方を解説]
+
+Shellスクリプト基礎知識（全13記事+2）
+├─【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本├─【Shellの基礎知識】変数と特殊変数の使い方｜初心者向け解説├─【Shellの基礎知識】Shell演算子の完全ガイド｜基礎から応用まで├─【Shellの基礎知識】条件分岐『if』『case』の使い方を解説├─【Shellの基礎知識】ループ処理の基本｜効率化と応用例を解説├─【Shellの基礎知識】文字列置換の基本と応用｜初心者向け解説├─【Shellの基礎知識】複数行テキスト出力
+...
+
+image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/729b50c13c232333e85029c9706d7e33.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/01/729b50c13c232333e85029c9706d7e33,width=640,height=335]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]
+
+==== https://www.pmi-sfbac.org/redirect/[【Shellの基礎知識】リダイレクトの基本｜標準入出力とエラー出力]
+
+Shellスクリプト基礎知識（全13記事+2）
+├─【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本├─【Shellの基礎知識】変数と特殊変数の使い方｜初心者向け解説├─【Shellの基礎知識】Shell演算子の完全ガイド｜基礎から応用まで├─【Shellの基礎知識】条件分岐『if』『case』の使い方を解説├─【Shellの基礎知識】ループ処理の基本｜効率化と応用例を解説├─【Shellの基礎知識】文字列置換の基本と応用｜初心者向け解説├─【Shellの基礎知識】複数行テキスト出力
+...
+
+image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/54e4c6d5a57b65457c8de6779e5506c6.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/01/54e4c6d5a57b65457c8de6779e5506c6,width=640,height=335]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]
+
+==== https://www.pmi-sfbac.org/string-replacement/[【Shellの基礎知識】文字列置換の基本と応用｜初心者向け解説]
+
+Shellスクリプト基礎知識（全13記事+2）
+├─【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本├─【Shellの基礎知識】変数と特殊変数の使い方｜初心者向け解説├─【Shellの基礎知識】Shell演算子の完全ガイド｜基礎から応用まで├─【Shellの基礎知識】条件分岐『if』『case』の使い方を解説├─【Shellの基礎知識】ループ処理の基本｜効率化と応用例を解説├─【Shellの基礎知識】文字列置換の基本と応用｜初心者向け解説├─【Shellの基礎知識】複数行テキスト出力
+...
+
+image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/bfe1dc585d63577dacdefe2967e1f4ff.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/01/bfe1dc585d63577dacdefe2967e1f4ff,width=640,height=335]
+
+image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]
+
+==== https://www.pmi-sfbac.org/arithmetic-comparison/[【Shellの基礎知識】Shell演算子の完全ガイド｜基礎から応用まで]
+
+Shellスクリプト基礎知識（全13記事+2）
+├─【Shellの基礎知識】Shellスクリプト入門｜初心者が押さえる基本├─【Shellの基礎知識】変数と特殊変数の使い方｜初心者向け解説├─【Shellの基礎知識】Shell演算子の完全ガイド｜基礎から応用まで├─【Shellの基礎知識】条件分岐『if』『case』の使い方を解説├─【Shellの基礎知識】ループ処理の基本｜効率化と応用例を解説├─【Shellの基礎知識】文字列置換の基本と応用｜初心者向け解説├─【Shellの基礎知識】複数行テキスト出力
+...
+
+https://www.pmi-sfbac.org/linux-directory-fsystem/[]
+
+__
+image:https://www.pmi-sfbac.org/wp-content/uploads/2020/04/504500a2adb9727e5ce6f4a3ac733072-100x100.png[https://www.pmi-sfbac.org/wp-content/uploads/2020/04/504500a2adb9727e5ce6f4a3ac733072-100x100,width=60,height=60]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2060%2060%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2060%2060%22%3E%3C/svg%3E,width=60,height=60]
+[.st-prev-title]#【Linuxの基礎知識】ファイルシステムを極める！ディレクトリ構造とその関連性を解説#
+
+https://www.pmi-sfbac.org/linux-directory/[]
+
+[.st-prev-title]#【Linuxの基礎知識】ディレクトリとファイル操作を完全マスター！初心者向けガイド#
+image:https://www.pmi-sfbac.org/wp-content/uploads/2020/04/a957c823cc8415145b391cd1251842c4-100x100.png[https://www.pmi-sfbac.org/wp-content/uploads/2020/04/a957c823cc8415145b391cd1251842c4-100x100,width=60,height=60]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2060%2060%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2060%2060%22%3E%3C/svg%3E,width=60,height=60]
+__
+
+[[side]]
+[[mybox]]
+[[search-4]]
+記事検索
+
+[[search]]
+
+[[newentry_widget-4]]
+新着記事
+
+https://www.pmi-sfbac.org/programmercollege/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/02/5838a6a08d99c62133c4911486ec70d2.jpg[https://www.pmi-sfbac.org/wp-content/uploads/2025/02/5838a6a08d99c62133c4911486ec70d2,width=400,height=400]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20400%20400%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20400%20400%22%3E%3C/svg%3E,width=400,height=400]]::
+  ====== https://www.pmi-sfbac.org/programmercollege/[【プログラマカレッジ】受講料0円の理由と評判を徹底解説！]
+
+https://www.pmi-sfbac.org/javafx-gui-app-tutorial/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/03/dc92146ea5f5f4cadee7eaf2e2a5147f.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/03/dc92146ea5f5f4cadee7eaf2e2a5147f,width=640,height=335]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]]::
+  ====== https://www.pmi-sfbac.org/javafx-gui-app-tutorial/[【Javaの基礎知識】JavaFXでGUIアプリ作成入門！基本から実践まで！]
+
+https://www.pmi-sfbac.org/todo-update-connection-pool/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/03/ced9214966015b06be63ba2c69a640a7.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/03/ced9214966015b06be63ba2c69a640a7,width=640,height=335]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]]::
+  ====== https://www.pmi-sfbac.org/todo-update-connection-pool/[【Javaの基礎知識】Todoアプリの更新制御＆コネクションプール導入！]
+
+https://www.pmi-sfbac.org/jdbc-db-connection-basics/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/03/643caf1928c8a25b8d02e6ed32e655d5.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/03/643caf1928c8a25b8d02e6ed32e655d5,width=640,height=335]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]]::
+  ====== https://www.pmi-sfbac.org/jdbc-db-connection-basics/[【Javaの基礎知識】JDBCを使ったTodoアプリのDB連携と実装手順]
+
+https://www.pmi-sfbac.org/mysql-docker-management/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/03/a3a19ec48937af579297adeea9d14442.png[https://www.pmi-sfbac.org/wp-content/uploads/2025/03/a3a19ec48937af579297adeea9d14442,width=640,height=335]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E[data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20640%20335%22%3E%3C/svg%3E,width=640,height=335]]::
+  ====== https://www.pmi-sfbac.org/mysql-docker-management/[【Javaの基礎知識】DockerでMySQL環境を構築！]
+
+[[categories-2]]
+カテゴリー
+
+* https://www.pmi-sfbac.org/category/it-beginner-last-temple/[[.cat-item-label]#IT初心者駆け込み寺
+(31)#]
+** https://www.pmi-sfbac.org/category/it-beginner-last-temple/it-basics/[[.cat-item-label]#STEP
+1: ITの基礎知識 (5)#]
+** https://www.pmi-sfbac.org/category/it-beginner-last-temple/pc-basics/[[.cat-item-label]#STEP
+2: PCの基礎知識 (6)#]
+** https://www.pmi-sfbac.org/category/it-beginner-last-temple/programming-concepts/[[.cat-item-label]#STEP
+3: プログラム知識 (7)#]
+** https://www.pmi-sfbac.org/category/it-beginner-last-temple/it-advanced/[[.cat-item-label]#STEP
+4: IT技術の知識 (5)#]
+** https://www.pmi-sfbac.org/category/it-beginner-last-temple/it-career/[[.cat-item-label]#STEP
+5: IT業界の知識 (6)#]
+* https://www.pmi-sfbac.org/category/occupation/[[.cat-item-label]#ITエンジニア
+(67)#]
+** https://www.pmi-sfbac.org/category/occupation/it-engineer-career/[[.cat-item-label]#ITエンジニア転職戦略
+(6)#]
+** https://www.pmi-sfbac.org/category/occupation/it-engineer-growth/[[.cat-item-label]#ITエンジニアキャリア
+(8)#]
+** https://www.pmi-sfbac.org/category/occupation/it-engineer-jobs/[[.cat-item-label]#ITエンジニア職種ガイド
+(27)#]
+** https://www.pmi-sfbac.org/category/occupation/freelance-strategy/[[.cat-item-label]#フリーランス・副業戦略
+(3)#]
+** https://www.pmi-sfbac.org/category/occupation/age/[[.cat-item-label]#年代別就職・転職術
+(12)#]
+*** https://www.pmi-sfbac.org/category/occupation/age/programmer-age/[[.cat-item-label]#プログラマー
+(7)#]
+*** https://www.pmi-sfbac.org/category/occupation/age/infra-age/[[.cat-item-label]#インフラエンジニア
+(5)#]
+** https://www.pmi-sfbac.org/category/occupation/interview/[[.cat-item-label]#面接対策・注意事項
+(11)#]
+* https://www.pmi-sfbac.org/category/knowledge/[[.cat-item-label]#エンジニアの知識
+(16)#]
+** https://www.pmi-sfbac.org/category/knowledge/design-docs-architecture/[[.cat-item-label]#設計・アーキテクト
+(10)#]
+** https://www.pmi-sfbac.org/category/knowledge/ai-engineer/[[.cat-item-label]#AIエンジニアリング
+(5)#]
+* https://www.pmi-sfbac.org/category/skill/[[.cat-item-label]#スキルアップ
+(74)#]
+** https://www.pmi-sfbac.org/category/skill/linux-started/[[.cat-item-label]#Linux
+の基礎知識 (17)#]
+** https://www.pmi-sfbac.org/category/skill/java-started/[[.cat-item-label]#Java
+の基礎知識 (18)#]
+** https://www.pmi-sfbac.org/category/skill/shell-started/[[.cat-item-label]#Shell
+の基礎知識 (26)#]
+*** https://www.pmi-sfbac.org/category/skill/shell-started/shell-tips/[[.cat-item-label]#Shell-Tips
+(12)#]
+** https://www.pmi-sfbac.org/category/skill/server-construct/[[.cat-item-label]#仮想サーバー構築
+(11)#]
+* https://www.pmi-sfbac.org/category/freelance/[[.cat-item-label]#フリーランス
+(44)#]
+** https://www.pmi-sfbac.org/category/freelance/freelance-engineer/[[.cat-item-label]#フリーランスエンジニア
+(10)#]
+** https://www.pmi-sfbac.org/category/freelance/business-process/[[.cat-item-label]#フリーランスの確定申告
+(9)#]
+** https://www.pmi-sfbac.org/category/freelance/notebook/[[.cat-item-label]#フリーランス
+の 手帳術 (10)#]
+** https://www.pmi-sfbac.org/category/freelance/freelance-knowledge/[[.cat-item-label]#フリーランスの事前知識
+(8)#]
+** https://www.pmi-sfbac.org/category/freelance/freelance-workspace/[[.cat-item-label]#フリーランスの仕事場所
+(5)#]
+* https://www.pmi-sfbac.org/category/it-school/[[.cat-item-label]#おすすめITスクール
+(1)#]
+
+[[text-2]]
+運営者情報
+
+運営者のBeproです。
+
+IT業界に携わって20年以上。現在はシステムエンジニア兼プレイングマネージャとしてプロジェクトに従事しています。 +
+https://www.pmi-sfbac.org/about/[詳細はこちら]
+
+[[st_custom_html_ad_widget-2]]
+人気の記事
+
+[[block-2]]
+
+[[scrollad]]
+
+[[footer]]
+[[footer-wrapper]]
+[[footer-in]]
+* [#menu-item-75]#https://www.pmi-sfbac.org/about/[運営者情報]#
+* [#menu-item-2666]#https://www.pmi-sfbac.org/policy/[プライバシーポリシー]#
+
+[[st-footer-logo-wrapper]]
+[[st-text-logo]]
+== https://www.pmi-sfbac.org/[image:https://www.pmi-sfbac.org/wp-content/uploads/2025/01/logo_eng_400x80.webp[Beエンジニア,width=400,height=80]image:data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20400%2080%22%3E%3C/svg%3E[Beエンジニア,width=400,height=80]]
+
+https://www.pmi-sfbac.org/[未経験からエンジニアになるための勉強方法やエンジニア業界への志望動機や転職術、気になる年収まで、業界情報を現役エンジニアがわかりやすく解説]
+
+[.small]#© 2025 Beエンジニア#
+
+[[page-top]]
+link:#wrapper[]

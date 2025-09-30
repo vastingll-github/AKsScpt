@@ -1,0 +1,770 @@
+[[container]]
+[[header-container]]
+[[header-container-in]]
+[[header]]
+[[header-in]]
+https://linuxcommand.net/[[.site-name-text]#Linuxコマンド.NET#]
+
+[[navi-in]]
+* [#menu-item-3925]#https://linuxcommand.net/[]#
++
+HOME
+* [#menu-item-3926]#https://linuxcommand.net/command-list/[]#
++
+Linuxコマンド一覧
+* [#menu-item-3927]#https://linuxcommand.net/latest/[]#
++
+新着記事
+* [#menu-item-3928]#https://linuxcommand.net/sitemap/[]#
++
+全記事一覧
+* [#menu-item-3929]#https://linuxcommand.net/privacy-policy/[]#
++
+プライバシーポリシー
+* [#menu-item-3930]#https://linuxcommand.net/contact/[]#
++
+Contact
+
+[[content-top]]
+[[content-top-in]]
+スポンサーリンク
+
+[.small]#このページにはアドセンス広告またはアフィリエイト広告が含まれています#
+
+[[content]]
+[[content-in]]
+[[main]]
+== tee - 複数のファイルに出力をリダイレクトする
+
+スポンサーリンク
+
+[.underline]##
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2018/02/tee.jpg[tee,width=300,height=300]
+
+[.cat-label .cat-label-17]#Linuxコマンド#
+
+https://x.com/intent/tweet?text=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B&url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F[[.social-icon .icon-x-corp]##[.button-caption]#X#[.share-count .twitter-share-count .x-share-count]##]
+link://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flinuxcommand.net%2Ftee%2F&t=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B[[.social-icon .icon-facebook]##[.button-caption]#Facebook#[.share-count .facebook-share-count]##]
+link://b.hatena.ne.jp/entry/s/linuxcommand.net/tee/[[.social-icon .icon-hatena]##[.button-caption]#はてブ#[.share-count .hatebu-share-count]##]
+//getpocket.com/edit?url=https://linuxcommand.net/tee/[[.social-icon .icon-pocket]##[.button-caption]#Pocket#[.share-count .pocket-share-count]##]
+link://timeline.line.me/social-plugin/share?url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F[[.social-icon .icon-line]##[.button-caption]#LINE#[.share-count .line-share-count]##]
+
+[.post-date]#[.fa .fa-clock-o]##[.entry-date .date .published]###
+
+2018.02.06[.post-update]##[.fa .fa-history]####2018.05.08##
+
+teeコマンドは標準入力を標準出力に書き出すだけではなく、引数にした複数のファイルにも書き出すことができます。teeコマンドは、別のコマンドの実行結果をファイル書き出すだけではなく標準出力でも確認したいときや、一つのコマンドの実行結果を使用して、複数の処理に分岐させたいときに利用できます。
+
+[#more-1680]##
+
+[[toc_container]]
+目次
+
+* link:#tee[[.toc_number .toc_depth_1]#1# teeコマンドの利用例]
+** link:#i[[.toc_number .toc_depth_2]#1.1#
+実行結果を同時にファイルと標準出力に出力]
+** link:#tee_-a[[.toc_number .toc_depth_2]#1.2#
+teeコマンドで出力するファイルに追記で出力 (-aオプション)]
+* link:#tee-2[[.toc_number .toc_depth_1]#2# teeコマンドのテクニック]
+** link:#tee-3[[.toc_number .toc_depth_2]#2.1#
+標準エラー出力もteeコマンドで出力]
+** link:#i-2[[.toc_number .toc_depth_2]#2.2#
+プロセス置換を用いてコマンドを処理]
+** link:#exec[[.toc_number .toc_depth_2]#2.3#
+execコマンドでファイルディスクリプタを変換]
+* link:#i-3[[.toc_number .toc_depth_1]#3# 参考]
+
+スポンサーリンク
+
+[.underline]##
+
+[.underline]##
+
+== [#tee]#teeコマンドの利用例#
+
+=== [#i]#実行結果を同時にファイルと標準出力に出力#
+
+teeコマンドは、パイプを用いて、別のコマンドの実行結果をファイルと標準出力に出力することができます。ただし、teeコマンドで指定したファイルは存在しない場合は作成され、存在する場合は上書きされます。
+
+[.keyboard-key]#*コマンド例と実行結果*#
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-1]]
+$echo 'tee test' \| tee file1 file2
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-2]]
+tee test
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-3]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-4]]
+$cat file1
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-5]]
+tee test
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-6]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-7]]
+$cat file2
+
+[[urvanov-syntax-highlighter-67cba5c831dc0392686086-8]]
+tee test
+
+|===
+
+ 
+
+ 
+
+ 
+
+=== [#tee_-a]#teeコマンドで出力するファイルに追記で出力 +
+(-aオプション)#
+
+-aオプションを用いると、teeコマンドで指定したファイルを上書きではなく、追記で出力していくことができます。ログファイルなどに利用する場合に便利なオプションになります。
+
+[.keyboard-key]#*コマンド例と実行結果*#
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-1]]
+$cat file1
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-2]]
+tee test
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-3]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-4]]
+$echo 'tee -a option test' \| tee -a file1
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-5]]
+tee -a option test
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-6]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-7]]
+$cat file1
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-8]]
+tee test
+
+[[urvanov-syntax-highlighter-67cba5c831dc4565890193-9]]
+tee -a option test
+
+|===
+
+ 
+
+ 
+
+ 
+
+== [#tee-2]#teeコマンドのテクニック#
+
+=== [#tee-3]#標準エラー出力もteeコマンドで出力#
+
+リダイレクトの構文は
+
+[[urvanov-syntax-highlighter-67cba5c831dc5429719261]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dc5429719261-1]]
+[n]>word
+
+|===
+
+になり、nは数字で、ファイル記述子(ファイルディスクリプタ,file
+descriptor)を表します。 +
+ファイル記述子は基本的に、0が標準入力、1が標準出力、2が標準エラー出力を表します。 +
+wordはファイルを表します。出力の場合、nが省略された場合は1が指定されます。
+
+また、リダイレクトの複製の構文は
+
+[[urvanov-syntax-highlighter-67cba5c831dc7673778932]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dc7673778932-1]]
+[n]>&word
+
+|===
+
+で、この場合のwordは数字でファイル記述子を表します。これはwordのファイル記述子の出力先が、nのファイル記述子の出力先と同じになります。
+
+teeコマンドで標準エラーも同時に出力したい場合は、teeコマンドで通す前のコマンドに対して、標準エラー出力を標準出力にするリダイレクトを行います。 +
+つまり、リダイレクトの方法は以下のようになります。
+
+[[urvanov-syntax-highlighter-67cba5c831dc8210197401]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dc8210197401-1]]
+command 2>&1
+
+|===
+
+ 
+
+[.keyboard-key]#*コマンド例と実行結果*#
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-1]]
+$bash print.sh \| tee file
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-2]]
+This is stderr
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-3]]
+This is stdout
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-4]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-5]]
+$cat file
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-6]]
+This is stdout
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-7]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-8]]
+$bash print.sh 2>&1 \| tee file
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-9]]
+This is stdout
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-10]]
+This is stderr
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-11]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-12]]
+$cat file
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-13]]
+This is stdout
+
+[[urvanov-syntax-highlighter-67cba5c831dc9210781463-14]]
+This is stderr
+
+|===
+
+ 
+
+[.keyboard-key]#*print.sh*#
+
+[[urvanov-syntax-highlighter-67cba5c831dca765065832]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dca765065832-1]]
+#/bin/bash
+
+[[urvanov-syntax-highlighter-67cba5c831dca765065832-2]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5c831dca765065832-3]]
+echo 'This is stdout'
+
+[[urvanov-syntax-highlighter-67cba5c831dca765065832-4]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5c831dca765065832-5]]
+echo 'This is stderr' >&2
+
+|===
+
+ 
+
+ 
+
+ 
+
+=== [#i-2]#プロセス置換を用いてコマンドを処理#
+
+プロセス置換(Process
+Substitution)は、Bashの機能でプロセスを入力ファイルや出力ファイルのように利用できます。プロセス置換で用いたプロセスは非同期で実行されます。プロセス置換の構文は以下のようになります。
+
+[[urvanov-syntax-highlighter-67cba5c831dcb339807904]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dcb339807904-1]]
+<(list)
+
+[[urvanov-syntax-highlighter-67cba5c831dcb339807904-2]]
+>(list)
+
+|===
+
+このプロセス置換とteeコマンドを組み合わせると大きなファイルを何度も読み込むことなく、複数の処理を行うことができます。
+
+ここの例では、ファイルの圧縮と圧縮前のファイルのいくつかのチェックサムを行います。また、チェックサムや圧縮ができているかの簡単なチェックも行っています。
+
+[.keyboard-key]#*コマンド例と実行結果*#
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-1]]
+$cat archive.tar \| tee >(sha1sum > archive_sha1sum) >(md5sum >
+archive_md5sum) \| gzip > archive.tar.gz
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-2]]
+$ls
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-3]]
+archive.tar  archive.tar.gz  archive_md5sum  archive_sha1sum
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-4]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-5]]
+$cat archive.tar \| md5sum -c archive_md5sum
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-6]]
+-: 完了
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-7]]
+$cat archive.tar \| sha1sum -c archive_sha1sum
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-8]]
+-: 完了
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-9]]
+$gzip -t -v archive.tar.gz
+
+[[urvanov-syntax-highlighter-67cba5c831dcc165690519-10]]
+archive.tar.gz:     OK
+
+|===
+
+ 
+
+ 
+
+ 
+
+=== [#exec]#execコマンドでファイルディスクリプタを変換#
+
+execコマンドは組み込みコマンドで、コマンドが指定された場合、新しいプロセスを作成せずに現在のシェルに置き換えてコマンドを実行します。
+
+しかし、execコマンドでコマンドを指定せずにリダイレクトのみを行うと現在のシェルのリダイレクトの設定を変更できます。これを用いるとシェルスクリプトで実行結果のログやエラーのログを取りやすくなります。
+
+[.keyboard-key]#*tee_log.sh*#
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-1]]
+#/bin/bash
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-2]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-3]]
+exec 1> >(tee stdout.log)
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-4]]
+exec 2> >(tee stderr.log >&2)
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-5]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-6]]
+echo 'This is stdout'
+
+[[urvanov-syntax-highlighter-67cba5c831dcd916342997-7]]
+echo 'This is stderr' >&2
+
+|===
+
+[.keyboard-key]#*コマンド例と実行結果*#
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965]]
+[.crayon-title]##
+
+[width="100%",cols="50%,50%",]
+|===
+a|
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+a|
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-1]]
+$bash tee_log.sh
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-2]]
+$This is stdout
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-3]]
+This is stderr
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-4]]
+ 
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-5]]
+$cat stdout.log
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-6]]
+This is stdout
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-7]]
+$
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-8]]
+$cat stderr.log
+
+[[urvanov-syntax-highlighter-67cba5c831dce598679965-9]]
+This is stderr
+
+|===
+
+ 
+
+このログの取り方の欠点としては、プロセス置換で処理するコマンドがバックグラウンドで動作し、シェルスクリプトの終了が分かりずらくなるかもしれません。
+
+image:https://linuxcommand.net/wp-content/uploads/2018/02/tee-process-substitute.jpg[tee-process-substitute,width=300,height=112]
+
+ 
+
+ 
+
+ 
+
+== [#i-3]#参考#
+
+https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html#tee-invocation[GNU
+Coreutils: tee invocation]
+
+https://www.gnu.org/software/bash/manual/[GNU Bash manual]
+
+https://linuxcommand.net/category/linux-command/[[.fa .fa-folder .cat-icon .tax-icon]####Linuxコマンド]
+
+https://x.com/intent/tweet?text=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B&url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F[[.social-icon .icon-x-corp]##[.button-caption]#X#[.share-count .twitter-share-count .x-share-count]##]
+link://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flinuxcommand.net%2Ftee%2F&t=tee+-+%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B[[.social-icon .icon-facebook]##[.button-caption]#Facebook#[.share-count .facebook-share-count]##]
+link://b.hatena.ne.jp/entry/s/linuxcommand.net/tee/[[.social-icon .icon-hatena]##[.button-caption]#はてブ#[.share-count .hatebu-share-count]##]
+//getpocket.com/edit?url=https://linuxcommand.net/tee/[[.social-icon .icon-pocket]##[.button-caption]#Pocket#[.share-count .pocket-share-count]##]
+link://timeline.line.me/social-plugin/share?url=https%3A%2F%2Flinuxcommand.net%2Ftee%2F[[.social-icon .icon-line]##[.button-caption]#LINE#[.share-count .line-share-count]##]
+
+[.fa .fa-pencil]##
+https://linuxcommand.net[[.post-author .vcard .author]# #]
+
+[.author-name .fn]#Linuxコマンド.NET#
+
+[[breadcrumb]]
+[.fa .fa-home .fa-fw]##https://linuxcommand.net[[.breadcrumb-caption]#ホーム#]
+
+[.sp]#[.fa .fa-angle-right]###
+
+[.fa .fa-folder .fa-fw]##https://linuxcommand.net/category/linux-command/[[.breadcrumb-caption]#Linuxコマンド#]
+
+[[sidebar]]
+== サイト内検索
+
+== 人気記事
+
+https://linuxcommand.net/read/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2017/12/read.jpg[https://linuxcommand.net/wp-content/uploads/2017/12/read,width=68,height=68]
+
+read - 標準入力から変数に代入する
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2017.12.18#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2024.12.10#
+
+https://linuxcommand.net/bash-special-parameters/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2017/07/knowhow.jpg[https://linuxcommand.net/wp-content/uploads/2017/07/knowhow,width=68,height=68]
+
+Bashの$@,$#などの$から始まる特殊な変数について
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2020.06.14#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2020.06.16#
+
+https://linuxcommand.net/du/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2017/08/du.jpg[https://linuxcommand.net/wp-content/uploads/2017/08/du,width=68,height=68]
+
+du - ファイルやディレクトリのサイズを表示
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2017.08.29#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2018.05.08#
+
+https://linuxcommand.net/make-options/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2018/04/make.jpg[https://linuxcommand.net/wp-content/uploads/2018/04/make,width=68,height=68]
+
+makeコマンドのオプションについて
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2018.05.01#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2018.05.04#
+
+https://linuxcommand.net/objdump/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2018/07/objdump.jpg[https://linuxcommand.net/wp-content/uploads/2018/07/objdump,width=68,height=68]
+
+objdump - オブジェクトファイルの情報を表示する
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2018.08.02#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2020.06.22#
+
+https://linuxcommand.net/patch/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2018/04/patch.jpg[https://linuxcommand.net/wp-content/uploads/2018/04/patch,width=68,height=68]
+
+patch - ファイルにパッチファイルを適用する
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2018.04.06#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2018.05.08#
+
+https://linuxcommand.net/printf/[]
+
+.
+image::https://linuxcommand.net/wp-content/uploads/2018/03/printf.jpg[https://linuxcommand.net/wp-content/uploads/2018/03/printf,width=68,height=68]
+
+printf - フォーマット形式で文字列を表示する
+
+[.popular-entry-card-post-date .widget-entry-card-post-date .post-date]#2018.03.09#[.popular-entry-card-update-date .widget-entry-card-update-date .post-update]#2018.05.08#
+
+== サイトメニュー
+
+* [#menu-item-3931]#https://linuxcommand.net/[HOME]#
+* [#menu-item-3940]#https://linuxcommand.net/latest/[新着記事]#
+* [#menu-item-3932]#https://linuxcommand.net/command-list/[Linuxコマンド一覧]#
+* [#menu-item-3718]#https://linuxcommand.net/shell-and-shell-script/[シェルとシェルスクリプト]#
+* [#menu-item-3720]#https://linuxcommand.net/text-processing-and-utilities/[テキスト処理とユーティリティ]#
+* [#menu-item-3725]#https://linuxcommand.net/user-account/[ユーザアカウント]#
+* [#menu-item-3723]#https://linuxcommand.net/file-operation-and-file-system/[ファイル操作とファイルシステム]#
+* [#menu-item-3719]#https://linuxcommand.net/system-infomation-and-process-management/[システム情報とプロセス管理]#
+* [#menu-item-3727]#https://linuxcommand.net/computer-terminal/[端末関係]#
+* [#menu-item-3722]#https://linuxcommand.net/computer-network/[ネットワーク]#
+* [#menu-item-3721]#https://linuxcommand.net/database-system/[データベース]#
+* [#menu-item-3724]#https://linuxcommand.net/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0%e9%96%a2%e9%80%a3/[プログラミング関連]#
+* [#menu-item-3726]#https://linuxcommand.net/image-and-graph/[画像・グラフ]#
+* [#menu-item-3888]#https://linuxcommand.net/package-management/[パッケージ管理]#
+* [#menu-item-3938]#https://linuxcommand.net/privacy-policy/[プライバシーポリシー]#
+* [#menu-item-3939]#https://linuxcommand.net/contact/[Contact]#
+* [#menu-item-3933]#https://linuxcommand.net/sitemap/[全記事一覧]#
+
+== カテゴリー
+
+* https://linuxcommand.net/category/cgi/[[.list-item-caption]#CGI#]
+* https://linuxcommand.net/category/linux/[[.list-item-caption]#Linux#]
+* https://linuxcommand.net/category/linux-command/[[.list-item-caption]#Linuxコマンド#]
+* https://linuxcommand.net/category/know-how/[[.list-item-caption]#Linuxコマンドのノウハウ#]
+* https://linuxcommand.net/category/make/[[.list-item-caption]#make#]
+* https://linuxcommand.net/category/perl/[[.list-item-caption]#Perl#]
+* https://linuxcommand.net/category/python/[[.list-item-caption]#Python#]
+* https://linuxcommand.net/category/windows/[[.list-item-caption]#Windows#]
+* https://linuxcommand.net/category/%e3%81%8a%e3%81%99%e3%81%99%e3%82%81%e3%81%ae%e6%9c%ac/[[.list-item-caption]#おすすめの本#]
+* https://linuxcommand.net/category/other/[[.list-item-caption]#その他#]
+* https://linuxcommand.net/category/%e3%82%b7%e3%82%a7%e3%83%ab%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88/[[.list-item-caption]#シェルスクリプト#]
+* https://linuxcommand.net/category/programming/[[.list-item-caption]#プログラミング言語#]
+
+[[sidebar-scroll]]
+== 目次
+
+* link:#tee[[.toc_number .toc_depth_1]#1# teeコマンドの利用例]
+** link:#i[[.toc_number .toc_depth_2]#1.1#
+実行結果を同時にファイルと標準出力に出力]
+** link:#tee_-a[[.toc_number .toc_depth_2]#1.2#
+teeコマンドで出力するファイルに追記で出力 (-aオプション)]
+* link:#tee-2[[.toc_number .toc_depth_1]#2# teeコマンドのテクニック]
+** link:#tee-3[[.toc_number .toc_depth_2]#2.1#
+標準エラー出力もteeコマンドで出力]
+** link:#i-2[[.toc_number .toc_depth_2]#2.2#
+プロセス置換を用いてコマンドを処理]
+** link:#exec[[.toc_number .toc_depth_2]#2.3#
+execコマンドでファイルディスクリプタを変換]
+* link:#i-3[[.toc_number .toc_depth_1]#3# 参考]
+
+[[footer-in]]
+https://linuxcommand.net/[[.site-name-text]#Linuxコマンド.NET#]
+
+[[navi-footer-in]]
+
+© 2017-2025 Linuxコマンド.NET.

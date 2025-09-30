@@ -1,0 +1,663 @@
+[[outputFrame]]
+
+[[masterBody]]
+[[masterBodyOut]]
+[[masterBodyIn]]
+[[g_nav]]
+[[g_nav_o]]
+[[g_nav_i]]
+[[g_btn_menu]]
+
+ƒ?ƒfƒBƒA
+
+[[g_logo]]
+https://atmarkit.itmedia.co.jp/[image://image.itmedia.co.jp/images/logo/pcvheader_ait.png[IT,width=90,height=43]]
+
+https://atmarkit.itmedia.co.jp/ait/series/search/[]
+
+˜A?Úˆê——
+
+https://atmarkit.itmedia.co.jp/ait/series/1567/[]
+
+˜A?Ú‚Ü‚Æ‚ß“Ç‚Ý?—IT eBook
+
+https://atmarkit.itmedia.co.jp/ait/subtop/features/ranking/index.html[]
+
+‹LŽ–ƒ‰ƒ“ƒLƒ“ƒO
+
+https://atmarkit.itmedia.co.jp/ait/subtop/features/special/index.html[]
+
+?—IT Special
+
+https://atmarkit.itmedia.co.jp/ait/subtop/features/seminar/index.html[]
+
+ƒZƒ~ƒi?[
+
+https://wp.techtarget.itmedia.co.jp/[]
+
+ƒzƒ?ƒCƒgƒy?[ƒp?[
+
+https://atmarkit.itmedia.co.jp/ait/subtop/cloud.html[]
+
+ƒNƒ‰ƒEƒh
+
+https://atmarkit.itmedia.co.jp/ait/subtop/ai.html[]
+
+AI IoT
+
+https://atmarkit.itmedia.co.jp/ait/subtop/devops.html[]
+
+ƒAƒWƒƒƒCƒ‹/DevOps
+
+https://atmarkit.itmedia.co.jp/ait/subtop/security.html[]
+
+ƒZƒLƒ…ƒŠƒeƒB
+
+https://atmarkit.itmedia.co.jp/ait/subtop/jibun/index.html[]
+
+ƒLƒƒƒŠƒA&ƒXƒLƒ‹
+
+https://atmarkit.itmedia.co.jp/ait/subtop/win/index.html[]
+
+Windows
+
+https://atmarkit.itmedia.co.jp/ait/subtop/di/index.html[]
+
+?‰?E’†‹‰ŽÒŒü‚¯AI
+
+javascript:void(0);[]
+
+‚»‚Ì‘¼
+
+* https://atmarkit.itmedia.co.jp/ait/subtop/server/index.html[]
++
+Server & Storage
+* https://atmarkit.itmedia.co.jp/ait/subtop/ux/index.html[]
++
+HTML5 + UX
+* https://atmarkit.itmedia.co.jp/ait/subtop/smart/index.html[]
++
+Smart & Social
+* https://atmarkit.itmedia.co.jp/ait/subtop/coding/index.html[]
++
+Coding Edge
+* https://atmarkit.itmedia.co.jp/ait/subtop/java/index.html[]
++
+Java Agile
+* https://atmarkit.itmedia.co.jp/ait/subtop/db/index.html[]
++
+Database Expert
+* https://atmarkit.itmedia.co.jp/ait/subtop/linux/index.html[]
++
+Linux ?• OSS
+* https://atmarkit.itmedia.co.jp/ait/subtop/network/index.html[]
++
+Master of IP Network
+* https://atmarkit.itmedia.co.jp/ait/subtop/security/index.html[]
++
+Security & Trust
+* https://atmarkit.itmedia.co.jp/ait/subtop/testtools/index.html[]
++
+Test & Tools
+* https://atmarkit.itmedia.co.jp/ait/subtop/dotnet/index.html[]
++
+Insider.NET
+* https://el.jibun.atmarkit.co.jp/index.html[]
++
+ƒuƒ?ƒO
+
+https://atmarkit.itmedia.co.jp/ait/subtop/4ai/[]
+
+*New! AI‚ð?ì‚è“®‚©‚µŽç‚è?¶‚©‚·*
+
+https://atmarkit.itmedia.co.jp/ait/subtop/lowcodenocode/[]
+
+ƒ??[ƒR?[ƒh/ƒm?[ƒR?[ƒh
+
+https://atmarkit.itmedia.co.jp/ait/subtop/cloudnative/[]
+
+ƒNƒ‰ƒEƒhƒlƒCƒeƒBƒu
+
+https://atmarkit.itmedia.co.jp/ait/subtop/features/server/ms_win_2025.html[]
+
+Microsoft&Windows
+
+https://atmarkit.itmedia.co.jp/ait/subtop/features/theme/index.html[]
+
+‚»‚Ì‘¼‚Ì“Á?W
+
+[[g_btn_member]]
+
+javascript:void(0);[]
+
+[[masterBodyOuter]]
+[[masterBodyInner]]
+[[masterHeader]]
+[[globalHeader]]
+[[globalHeaderMiddle]]
+[[globalHeaderMiddle]]
+[[SuperBanner]]
+[[PC_SuperBanner]]
+
+[[globalHeaderBottom]]
+[[localPankuzu]]
+. https://atmarkit.itmedia.co.jp/[?—IT]
+. https://atmarkit.itmedia.co.jp/ait/subtop/cloud.html[ƒNƒ‰ƒEƒh]
+. https://atmarkit.itmedia.co.jp/ait/subtop/linux/[Linux ?• OSS]
+. [#lastPankuzu]##
+
+[[masterContents]]
+[[globalContents]]
+[[masterMain]]
+[[tmplNews]]
+[[tmplNewsIn]]
+[[cmsTitle]]
+== [.title__maintext]#ŠÖ?”‚Í‹¤’Ê•”•i‚É‚È‚é#_?FƒXƒeƒbƒv?EƒoƒC?EƒXƒeƒbƒv?EƒVƒFƒ‹ƒXƒNƒŠƒvƒg?i6?j_
+
+[[cmsAbstract]]
+ƒvƒ?ƒOƒ‰ƒ€‚ð‘g‚ñ‚Å‚¢‚­‚Æ?A‚È‚ñ‚Ç‚à“¯‚¶‚æ‚¤‚È?ˆ—?‚ðŒJ‚è•Ô‚·‚±‚Æ‚ª‚ ‚è‚Ü‚·?B—á‚¦‚Î?A‰æ–Ê‚ÉŒˆ‚Ü‚Á‚½ƒtƒH?[ƒ}ƒbƒg‚Å•\Ž¦‚·‚é?A‚Æ‚¢‚Á‚½‹@”\‚È‚Ç‚Å‚·?B‚±‚¤‚µ‚½‚æ‚­Žg‚¤‹@”\‚ðŠÖ?”‚Æ‚µ‚Ä‚Ü‚Æ‚ß‚é‚±‚Æ‚Í?AƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Å‚à‰Â”\‚Å‚·?B
+
+[[cmsDate]]
+[.arrow]#»# [#update]#2000”N11ŒŽ23“ú 00Žž00•ª ŒöŠJ#
+
+[[cmsByline]]
+[[byline]]
+[https://www.itmedia.co.jp/author/204013/[‚³‚©‚¢‚Ð‚ë‚ ‚«]?C?—IT]
+
+[[cmsBody]]
+[[masterSocialbuttonTop]]
+[[msbTopOut]]
+
+[[cx_8c916abbe950fc96a9ab208db38a5206318f529e]]
+
+[[cmsMark]]
+
+== ƒ†?[ƒU?[’è‹`ŠÖ?”‚ÌŽg‚¢•û
+
+?@?¡‰ñ‚ÍŠÖ?”‚Ì‚¨˜b‚ð‚µ‚Ü‚µ‚å‚¤?BƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Å‚àŠÖ?”‚ªŽg‚¦‚Ü‚·?B‚Æ‚±‚ë‚Å?uŠÖ?”?v‚Æ‚Í‚È‚ñ‚Å‚µ‚å‚¤‚©?H
+’Ê?íƒvƒ?ƒOƒ‰ƒ€‚Ì?¢ŠE‚ÅŠÖ?”‚Æ‚¢‚¤‚Æ?A‚Ù‚©‚Ìƒvƒ?ƒOƒ‰ƒ€‚©‚çŒÄ‚Î‚ê‚é?u‹¤’Ê•”•i?v‚Ì‚±‚Æ‚ðŽw‚µ‚Ü‚·‚Ë?BƒIƒuƒWƒFƒNƒgŽwŒüƒvƒ?ƒOƒ‰ƒ~ƒ“ƒO?iC++?AJava‚È‚Ç?j‚Ì•?‹y‚ÅŒÃ‚¢Œ¾—t‚É‚È‚Á‚Ä‚µ‚Ü‚¢‚Ü‚µ‚½‚ª?A?Ì‚Í?uƒTƒuƒ‹?[ƒeƒBƒ“?v‚È‚Ç‚ÆŒÄ‚ñ‚Å‚¢‚Ü‚µ‚½?B‚à‚¿‚ë‚ñŒµ–§‚ÈˆÓ–¡‚Å‚Í?­‚µˆá‚¤‚Æ‚±‚ë‚à‚ ‚è‚è‚Ü‚·‚ª?B
+
+?@‚Å‚ÍƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Ì?¢ŠE‚Å‚Í‚Ç‚¤‚Å‚µ‚å‚¤?H
+‚±‚±‚Å‚àŠÖ?”‚Í“¯‚¶‚æ‚¤‚ÉƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚©‚çŒÄ‚Î‚ê‚é‹¤’Ê•”•i‚Ì‚±‚Æ‚Å‚·?BƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚©‚çŒÄ‚Î‚ê‚é‚à‚Ì‚Æ‚¢‚¤‚Æ?H
+‚»‚¤‚Å‚·ƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Ì?¢ŠE‚Å‚Í?AŠÖ?”‚Í‚½‚¾‚ÌƒRƒ}ƒ“ƒh‚Æ“¯‚¶ˆµ‚¢‚Æ‚È‚é‚Ì‚Å‚·?BŽÀ‚ÍŠÖ?”‚ÍƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚¾‚¯‚Å‚È‚­ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“?iƒCƒ“ƒ^ƒ‰ƒNƒeƒBƒu‚ÈƒVƒFƒ‹?j‚Å‚àŽg—p‚Å‚«‚Ü‚·?B‚Å‚Í‘?‘¬‚â‚Á‚Ä‚Ý‚Ü‚µ‚å‚¤?B
+
+[source,prettyprint]
+----
+hello () {
+echo $1
+}
+----
+
+?@‚±‚ê‚ð?ufunc_hello?v‚Æ‚¢‚¤ƒtƒ@ƒCƒ‹‚É‹L?q‚µ‚ÄƒZ?[ƒu‚µ‚Ü‚·?BŠÖ?”‚ð?AŒ»?Ý‹N“®‚µ‚Ä‚¢‚éƒVƒFƒ‹‚É“o˜^‚µ‚Ä‚Ý‚Ü‚µ‚å‚¤?BƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚©‚çˆÈ‰º‚Ì‚æ‚¤‚ÉŽÀ?s‚µ‚Ü‚·?B
+
+[source,prettyprint]
+----
+$ . func_hello
+----
+
+?@ƒsƒŠƒIƒh?i.?j‚Ì‚ ‚Æ‚ÉƒXƒy?[ƒX‚ð‹ó‚¯‚Ä?A?ã‹L‚Å?ì?¬‚µ‚½ƒtƒ@ƒCƒ‹–¼‚ð‹L?q‚µ‚Ü‚·?Bƒtƒ@ƒCƒ‹func_hello‚ÉŽÀ?sŒ ‚ð‚Â‚¯‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñ?B‚Ü‚½CƒVƒFƒ‹‚È‚Ç‚Æ“¯‚¶‚æ‚¤‚ÉsourceƒRƒ}ƒ“ƒh‚ðŽg‚Á‚Ä‚à“¯‚¶‚±‚Æ‚ª‚Å‚«‚Ü‚·?B
+
+[source,prettyprint]
+----
+$ source func_hello
+----
+
+‚±‚ê‚ÅŠÖ?”‚Ì“o˜^‚ª‚Å‚«‚Ü‚µ‚½?B‘?‘¬“o˜^‚µ‚½ŠÖ?”‚ðŽÀ?s‚µ‚Ä‚Ý‚Ü‚µ‚å‚¤
+
+[source,prettyprint]
+----
+$ hello "Hello World"
+Hello World
+----
+
+?@‚±‚ê‚Í‘æ2?Í‚Å‚â‚Á‚½‚æ‚¤‚É?AƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Æ‚µ‚ÄŽÀ?s‚µ‚½?ê?‡‚Æ“¯‚¶‚Å‚µ‚å‚¤‚©?H
+ŽÀ‚ÍŒ©‚½–Ú‚Í“¯‚¶‚Å‚·‚ª?A?­‚µ‚¾‚¯ˆá‚¢‚Ü‚·?BƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚ð‹N“®‚µ‚½?ê?‡‚Í?A‹N“®‚·‚é‘O‚ÌƒVƒFƒ‹‚Æ‚Í•Ê‚ÌƒVƒFƒ‹‚ª‹N“®‚³‚ê?AŽw’è‚³‚ê‚½ƒXƒNƒŠƒvƒg‚ªŽÀ?s‚³‚ê‚Ü‚·‚ª?AŠÖ?”‚Ì?ê?‡‚ÍŽÀ?s‚µ‚½ƒVƒFƒ‹“à‚Å‹N“®‚³‚ê‚Ü‚·?B‚»‚¤‚¢‚Á‚½ˆÓ–¡‚ÅŠÖ?”‚ÍŽ©•ª‚Å?V‚½‚È?u“à•”ƒRƒ}ƒ“ƒh?v‚ð?ì?¬‚µ‚½‚Ì‚Æ“¯‚¶?ó‹µ‚Æ‚È‚é‚Ì‚Å‚·?B
+
+[[col400]]
+[#r5fig1.gif]##image:https://image.itmedia.co.jp/ait/articles/0011/23/r5fig1.gif[ÖÆAÊÌVFXNvgðÄÑo·ÌÍA±Ìæ¤É®ìªÙÈÁÄ¢é,width=300,height=280]
+[.small]#*ŠÖ?”‚Æ?A•Ê‚ÌƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚ðŒÄ‚Ñ?o‚·‚Ì‚Í?A‚±‚Ì‚æ‚¤‚É“®?ì‚ªˆÙ‚È‚Á‚Ä‚¢‚é*#
+
+?@‚à‚µ?ã‹L‚Å?ì?¬‚µ‚½ƒtƒ@ƒCƒ‹ func_hello ‚ÉŽÀ?sŒ ?ichmod
++x?j‚ð•t—^‚µ‚Ä’¼?ÚŽÀ?s‚µ‚½‚ç?A‚Ç‚¤‚È‚é‚Å‚µ‚å‚¤‚©?H
+ƒeƒXƒg‚Ì‚½‚ß‚Éˆá‚¤ŠÖ?”–¼‚ð“o˜^‚µ‚Ä‚Ý‚Ü‚·?Bƒtƒ@ƒCƒ‹–¼‚ð?ufunc_hello2?v?AŠÖ?”–¼‚ðhello2‚Æ‚µ‚Ü‚·?B
+
+[source,prettyprint]
+----
+func_hello2Ìg
+hello2 () {
+echo $1
+}
+$ chmod +x func_hello2
+$ ./func_hello2
+$ hello2 "Hello WORLD"
+bash: hello2: command not found
+----
+
+?@ƒsƒŠƒIƒh?i.?j‚âsourceƒRƒ}ƒ“ƒh‚ðŽg‚¤‘ã‚í‚è‚ÉŽÀ?sŒ ‚ð•t‚¯‚Ä?A‘O‰ñ‚Å‚â‚Á‚½‚æ‚¤‚Éfunc_hello2‚ðŽÀ?s‚µ‚Ä‚Ý‚Ü‚µ‚½?BƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚ÌŽÀ?s‚»‚Ì‚à‚Ì‚Í‚¤‚Ü‚­‚¢‚Á‚½‚æ‚¤‚Å‚·‚ª?A?ã‹L‚ÌŒ‹‰Ê‚ðŒ©‚é‚©‚¬‚èŠÖ?”‚Í‚½‚¾‚µ‚­“o˜^‚³‚ê‚Ä‚¢‚È‚¢‚æ‚¤‚Å‚·?B
+
+?@‚±‚ê‚Í‚È‚º‚©‚Æ‚¢‚¤‚Æ?A?æ‚Ù‚Ç‚à‚·‚±‚µ?G‚ê‚½‚æ‚¤‚ÉƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Æ‚µ‚ÄŽÀ?s‚³‚ê‚½ƒRƒ}ƒ“ƒh‚Í?A‚Ü‚¸•Ê‚Ìƒvƒ?ƒZƒX‚Æ‚µ‚Äbash‚ð‹N“®‚µ‚Ü‚·?B?ã‹L‚Å‚Í?V‚½‚É‹N“®‚³‚ê‚½ƒVƒFƒ‹‚É‘Î‚µ‚ÄŠÖ?”hello2‚ª“o˜^‚³‚ê?AƒVƒFƒ‹ƒXƒNƒŠƒvƒgfunc_hello2‚ª?I—¹‚µ?AŒ³‚ÌƒVƒFƒ‹‚É–ß‚Á‚Ä—ˆ‚½Žž“_‚Å?Á‚¦‚Ä‚È‚­‚È‚Á‚Ä‚µ‚Ü‚Á‚½‚Æ‚¢‚¤‚±‚Æ‚Å‚·?B
+
+?@Œ³‚ÌƒVƒFƒ‹?i?eƒVƒFƒ‹?j‚É‚Æ‚Á‚Ä‚Ý‚Ä‚Î?A‹N“®‚³‚ê‚½ƒVƒFƒ‹?iŽq‚Ç‚àƒVƒFƒ‹?j‚Ì’†‚Å‚Ç‚Ì‚æ‚¤‚ÈŠÖ?”‚ª?V‚½‚É“o˜^‚³‚ê‚æ‚¤‚ª?A’m‚ç‚Ê‘¶‚º‚Ê‚È‚Ì‚Å?A?ã‹L‚Ì‚æ‚¤‚É?ucommand
+not
+find?v‚Æ‚¢‚¤•\Ž¦‚É‚È‚Á‚½‚µ‚Ü‚Á‚½‚í‚¯‚Å‚·?B‚Å‚·‚©‚ç?AŠÖ?”‚ð“o˜^‚·‚éŽž‚Í?A?uƒsƒŠƒIƒh‚©source‚ðŽg‚Á‚Ä?s‚È‚¤?v‚ÆŠo‚¦‚Ä‚¨‚¢‚Ä‚¨‚¯‚Î‚æ‚¢‚ÆŽv‚¢‚Ü‚·?B
+
+?@ƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚ÅŠÖ?”‚ðŽg‚¤‚½‚ß‚É?AŠeƒVƒFƒ‹‚²‚Æ‚É‚©‚È‚ç‚¸“o˜^‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢‚Ì‚Í–Ê“|‚È?ê?‡‚ª‚ ‚è‚Ü‚·?B‚»‚Ì‚æ‚¤‚È?ê?‡‚É‚Í?A?eƒVƒFƒ‹‚Å“o˜^‚µ‚½ŠÖ?”‚ðŽq‚Ç‚à‚Éˆø‚«Œp‚®‚æ‚¤‚É‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·?B‘O‰ñŒä?Ð‰î‚µ‚½•Ï?”‚Ì?ê?‡‚Æ“¯‚¶‚æ‚¤‚É?uexport?v‚ðŽg‚¢‚Ü‚·?B
+
+[source,prettyprint]
+----
+$ export -f hello
+----
+
+?@‚±‚¤‚·‚é‚±‚Æ‚É‚æ‚è?A?¡Œã‚±‚ÌƒVƒFƒ‹‚æ‚èŽÀ?s‚·‚éƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Å‚àŠÖ?”‚ðŽg—p‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·?B‚±‚Ì‹@”\‚Í‚à‚Æ‚à‚Æ‚Ìƒ\{?[ƒ“ƒVƒFƒ‹?ish?j‚É‚Í‚È‚­?Abash‚É‚æ‚éŠg’£‹@”\‚Å‚·?B
+
+== ˆø?”‚ÌŽæ‚èˆµ‚¢
+
+?@ŠÖ?”‚É‘Î‚µ‚Ä?AŽÀ?s‚³‚ê‚é?ê–Ê‚É‚æ‚Á‚Ä‚¢‚ë‚¢‚ë‚Èˆø?”‚ð“n‚·‚É‚Í‚Ç‚¤‚·‚ê‚Î‚¢‚¢‚Ì‚Å‚µ‚å‚¤‚©?H
+ŽÀ‚Í?ã‚Ì—á‚Å‚·‚Å‚É?s‚È‚Á‚Ä‚¢‚é‚Æ‚¨‚è?AŠÖ?”‚ªŽÀ?s‚³‚ê‚½‚Æ‚«‚É“n‚³‚ê‚½ŠÖ?”‚Í?A$1?A$2?A$3?c?c‚ÅŽQ?Æ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·?B‚±‚ê‚Í‘O‰ñ?Ð‰î‚µ‚½‚Æ‚¨‚è?AƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Éˆø?”‚ð“n‚·?ê?‡‚Æ‘S‚­“¯‚¶‚â‚è‚©‚½‚Å‚·?B
+
+?@func_argtest‚Æ‚¢‚¤ƒtƒ@ƒCƒ‹–¼‚ÅˆÈ‰º‚Ì‚æ‚¤‚ÈŠÖ?”‚ð?ì?¬‚µ‚Ä‚Ý‚Ü‚·?B
+
+[source,prettyprint]
+----
+argtest () {
+  i=1
+  while [ "$1" != "" ] ; do
+    echo "Argument $i is " $1
+    shift 1
+    i=`expr $i + 1`
+  done
+}
+----
+
+“o˜^‚µ‚ÄŽÀ?s‚µ‚Ä‚Ý‚Ü‚µ‚å‚¤?B
+
+[source,prettyprint]
+----
+$ source func_argtest
+$ argtest a b c d
+Argument 1 is a
+Argument 2 is b
+Argument 3 is c
+Argument 4 is d
+----
+
+?@“Á‚É“ï‚µ‚¢‚Æ‚±‚ë‚Í‚ ‚è‚Ü‚¹‚ñ‚Ë?B?ushift?vƒRƒ}ƒ“ƒh“™‚ÌŽg‚¢•û‚Í‘O‰ñ‚Ì?uhttp://www.atmarkit.co.jp../shell05/parameter.html[ƒVƒFƒ‹‚Ì•Ï?”‚ÉŠµ‚ê‚é]?v‚ðŽQ?Æ‚µ‚Ä‚­‚¾‚³‚¢?B
+
+== ŠÖ?”‚Æ•Ï?”
+
+?@ŠÖ?”‚Í?ã‹L‚Å?à–¾‚µ‚Ü‚µ‚½‚Æ‚¨‚è?AŒÄ‚Ñ?o‚µ‚½ƒVƒFƒ‹‚Ì“à•”‚ÅŽÀ?s‚³‚ê‚Ü‚·?B‚»‚Ì‚½‚ß?AŠÖ?”“à‚É‚¨‚¢‚Ä‚à‹N“®‚µ‚½ƒVƒFƒ‹‚Ì•Ï?”‚ð(export‚µ‚È‚­‚Ä‚à?jŽQ?Æ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·?B‚Ü‚½ŠÖ?”“à‚Å?Ý’è‚µ‚½•Ï?”‚ÍŒ³‚ÌƒVƒFƒ‹‚Å‚àŽQ?Æ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·?B‚Â‚Ü‚èŒÄ?oŒ³ƒVƒFƒ‹‚ÆŠÖ?”‚Í•Ï?”‚ð‹¤—L‚µ‚Ä‚¢‚é‚Ì‚Å‚·?B‚±‚Ì‚±‚Æ‚Í•Ö—˜‚È”½–Ê?AŠÖ?”“à‚ÅŽg—p‚³‚ê‚½•Ï?”‚ªŒÄ?oŒ³ƒVƒFƒ‹‚Å‚àŽg‚í‚ê‚Ä‚¢‚½?ê?‡‚Í?A‚»‚Ì’l‚ÍŠÖ?”‚ÌŽÀ?sŒã‚É?‘‚«Š·‚¦‚ç‚ê‚Ä‚µ‚Ü‚¤Ž–‘Ô‚ª”­?¶‚µ‚¦‚Ü‚·?B‚±‚ê‚Íƒvƒ?ƒOƒ‰ƒ€Œ¾Œê“I‚ÉŒ©‚Ä‚à•Ï?”‚Ì?uƒJƒvƒZƒ‹‰»?v‚ª‚Å‚«‚È‚¢‚Æ‚¢‚¤‚±‚Æ‚É‚È‚è?A—\‘ª‚³‚ê‚È‚¢Ž–‘Ô‚ª‹N‚«‚é‰Â”\?«‚ª‚ ‚è‚Ü‚·?BƒfƒoƒbƒO‚à”ñ?í‚É‚â‚è‚É‚­‚­‚È‚è‚Ü‚·?B‚±‚ê‚ð”ð‚¯‚é‚½‚ß?Abash‚É‚Í?ulocal?v‚Æ‚¢‚¤ŠÖ?”—p‚ÌƒRƒ}ƒ“ƒh‚ª—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·?BŽg‚¢•û‚ÍŠÈ’P‚Å?AˆÈ‰º‚Ì‚æ‚¤‚É?u?éŒ¾?v‚·‚é‚¾‚¯‚Å‚·?B
+
+[source,prettyprint]
+----
+local name
+----
+
+‚Ü‚½‚Í’l‚Ì‘ã“ü‚àˆê??‚É‚â‚Á‚Ä‚µ‚Ü‚¤‚±‚Æ‚à‚Å‚«‚Ü‚·?B
+
+[source,prettyprint]
+----
+local name=value
+----
+
+‚±‚Ì‚æ‚¤‚É‚µ‚Ä‚¨‚¯‚Î?A•Ï?”name‚Í‚±‚ÌŠÖ?”“à‚¾‚¯‚ÅŽQ?Æ‚Å‚«‚éƒ??[ƒJƒ‹•Ï?”‚Æ‚È‚è?A‹N“®Œ³‚ÌƒVƒFƒ‹‚Ì•Ï?”‚ð?‘‚«Š·‚¦‚Ä‚µ‚Ü‚¤‚±‚Æ‚Í‚ ‚è‚Ü‚¹‚ñ?BŠÖ?”“à‚Å•Ï?”‚ðŽg—p‚·‚é?ê?‡‚Í?A‚Å‚«‚é‚¾‚¯‚±‚Ìlocal‚ðŽg‚¤‚æ‚¤‚É‚µ‚Ü‚µ‚å‚¤?B?ã‹L‚Ì—á‚Ìargtest‚ðˆÈ‰º‚Ì‚æ‚¤‚É?C?³‚µ‚Ä‚¨‚«‚Ü‚·?B
+
+[source,prettyprint]
+----
+argtest () {
+  local i=1
+  while [ "$1" != "" ] ; do
+    echo "Argument $i is " $1
+    shift 1
+    i=`expr $i + 1`
+  done
+}
+----
+
+== alias‚ÆŠÖ?”
+
+?@bash‚É‚Í‚bƒVƒFƒ‹(csh)‚Æ“¯‚¶‚æ‚¤‚É?ualias?v‚ªƒTƒ|?[ƒg‚³‚ê‚Ä‚¢‚Ü‚·?B‚±‚ê‚Í“ü—Í‚³‚ê‚½ƒRƒ}ƒ“ƒh‚ð•ÏŠ·‚µ‚ÄŽÀ?s‚·‚é‚à‚Ì‚Å?A“ü—Í‚ðŠÈ—ª‰»‚³‚ê‚é‚½‚ß‚É‚æ‚­Žg‚í‚ê‚Ü‚·?B—á‚¦‚Î?A
+
+[source,prettyprint]
+----
+alias ls='ls -CF --color=tty'
+----
+
+‚Æ‚µ‚Ä‚¨‚­‚Æ?AƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚âƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚©‚çls‚ðŽÀ?s‚µ‚½?ê?‡‚ÉŽÀ?s‚³‚ê‚é‘O‚É
+
+[source,prettyprint]
+----
+$ ls -CF --color=tty
+----
+
+‚Ì‚æ‚¤‚É’u‚«Š·‚¦‚ç‚ê‚ÄŽÀ?s‚³‚ê‚Ü‚·?B‚±‚ê‚àŽÀ?s‘O‚É’u‚«Š·‚¦‚ª?s‚È‚í‚ê‚Ü‚·?B‚à‚¿‚ë‚ñls‚ÌŒã‚Éˆø?”‚ð?‘‚­‚±‚Æ‚à‚Å‚«‚Ü‚·?B‚±‚Ìalias‹@”\‚Í‚bƒVƒFƒ‹‚Æ‚ÌŒÝŠ·?«‚Ì‚½‚ß‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·?B‚Æ‚¢‚¤‚æ‚è‚à‚bƒVƒFƒ‹ƒ†?[ƒU‚ªbash‚ÉˆÚ?s‚·‚é?ê?‡‚Ì‚½‚ß‚¾‚¯‚¾‚Æ?l‚¦‚Ä‚æ‚¢‚©‚ÆŽv‚¢‚Ü‚·?Bbash‚ðŠÜ‚Þƒ\{?[ƒ“ƒVƒFƒ‹‚É‚ÍŠÖ?”‚ª—pˆÓ‚³‚ê‚Ä‚¢‚é‚½‚ß?Aalias‚æ‚è?_“î?«‚É‚Æ‚ñ‚¾ŠÖ?”‚ðŽg‚¤•û‚ª‚¸‚Á‚Æ•Ö—˜‚È‚Ì‚Å‚·?B?ã‹L‚Ì—á‚ðŠÖ?”‚Å‹L?q‚·‚é‚ÆˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·?B
+
+[source,prettyprint]
+----
+ls () { command ls -CF --color=tty $@ ; }
+----
+
+ŠÖ?”‚ð‚P?s‚Å?‘‚¢‚Ä‚µ‚Ü‚¤?ê?‡‚É‚Í?ÅŒã‚É(;)ƒZƒ~ƒRƒ?ƒ“‚ª•K—v‚Å‚·?A’?ˆÓ‚µ‚Ä‚­‚¾‚³‚¢?B‚Ü‚½ŠÖ?”‚Å‚Íˆø?”‚ð?ˆ—?‚·‚é•K—v‚ª‚ ‚é‚Ì‚Å?A?ÅŒã‚É?u**$@**?v‚ª•K—v‚Å‚·?B‚±‚ê‚Í‘O‰ñ‚Ì•Ï?”‚Ì‚Æ‚±‚ë‚Å‚Å‚Ä‚«‚Ü‚µ‚½‚ª?A—^‚¦‚ç‚ê‚½ˆø?”‚ð‚»‚Ì‚Ü‚Ü—…—ñ‚·‚é•Ï?”‚Å‚·?B‚»‚µ‚Ä?u**command**?v‚Æ‚¢‚¤ƒRƒ}ƒ“ƒh‚ª‚Å‚Ä‚«‚Ü‚µ‚½?B‚±‚ê‚Í“o˜^‚³‚ê‚Ä‚¢‚éŠÖ?”?uˆÈŠO?v‚ÌƒRƒ}ƒ“ƒh‚ðŽÀ?s‚·‚é?A‚Æ‚¢‚¤ƒRƒ}ƒ“ƒh‚Å‚·?B‚Â‚Ü‚èŠÖ?”‚ÍŽÀ?s‚Ì—D?æ“x‚ª?‚‚¢‚½‚ß?A‚È‚É‚àŽw’è‚µ‚È‚¢‚ÆŠÖ?”“à‚Å‚àŠÖ?”‚Ì?u**ls**?v‚ðŒÄ‚ñ‚Å‚µ‚Ü‚¢‚Ü‚·?B‚±‚ê‚Å‚Í–³ŒÀƒ‹?[ƒv‚É‚Í‚¢‚Á‚Ä‚µ‚Ü‚¢‚Ü‚·‚Ì‚Å?A?ucommand?v‚ðŽg‚Á‚ÄŠÖ?”‚ð‹N“®‚µ‚È‚¢‚æ‚¤‚É‚µ‚Ä‚¢‚é‚Ì‚Å‚·?B‚à‚¿‚ë‚ñƒtƒ‹ƒpƒX(/bin/ls)‚ÅŽw’è‚µ‚Ä‚à‚©‚Ü‚¢‚Ü‚¹‚ñ?B‚±‚¿‚ç‚Ì•û‚ª•?’Ê‚¾‚ÆŽv‚¢‚Ü‚·?B?¡‚Ü‚Å‚bƒVƒFƒ‹‚ðŽg‚Á‚Ä‚¢‚½?l‚Åalias‚É“é?õ‚Ý‚ª‚ ‚é?l‚à?A?™?X‚ÉŠÖ?”‚ÉˆÚ?s‚µ‚Ä‚¢‚­‚æ‚¤‚É‚µ‚Ü‚µ‚å‚¤?B
+
+== ŠÖ?”‚Ì–ß‚è’l
+
+?@?”‚Í‚»‚ÌŽÀ?sŒ‹‰Ê‚ð?u–ß‚è’l?v‚ÉƒZƒbƒg‚µ‚Ä•Ô‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·?BŠÖ?”‚Ì–ß‚è’l‚ÍŠÖ?”“à‚Å?ÅŒã‚ÉŽÀ?s‚³‚ê‚½ƒRƒ}ƒ“ƒh‚Ì–ß‚è’l‚Æ‚È‚è‚Ü‚·?B‚Ü‚½return‚ðŽg‚¦‚Î–¾Ž¦“I‚É–ß‚è’l‚ðƒZƒbƒg‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·?B‚Ü‚½‘¼‚ÌƒRƒ}ƒ“ƒh‚Æ“¯‚¶‚æ‚¤‚ÉŒÄ‚Ñ?o‚µ‚½ƒVƒFƒ‹‚É‚¨‚¢‚Ä‚Í?u$??v‚Å–ß‚è’l‚ðŽQ?Æ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·?B‘O?o‚ÌŠÖ?”argtest‚ð?­‚µ?‘‚«Š·‚¦‚Ä‚Ý‚Ü‚µ‚å‚¤?B
+
+[source,prettyprint]
+----
+argtest () {
+  [ $# -ne 0 ] || echo "There is no argument." ; return 1
+  local i=1
+  while [ "$1" != "" ] ; do
+    echo "Argument $i is " $1
+    shift 1
+    i=`expr $i + 1`
+  done
+  return 0
+}
+----
+
+?­‚µ•Ï‚í‚Á‚½?‘‚«•û‚ð‚µ‚Ä‚Ý‚Ü‚µ‚½?B
+
+[source,prettyprint]
+----
+[ $# -ne 0 ] || echo "There is no argument." ; return 1
+----
+
+Œ©‚½‚ß‚ª‚í‚©‚è‚É‚­‚¢‚Ì‚Å‚ ‚Ü‚è‚¨Š©‚ß‚Í‚µ‚È‚¢‚Ì‚Å‚·‚ª?AƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚É‚¨‚¯‚é“`“?“I‚È?‘‚«•û‚Å‚à‚ ‚è‚Ü‚·?B[]‚Ì’†‚Í?ðŒ?Ž®‚Ì•]‰¿‚ª?s‚È‚í‚ê‚Ü‚·?B||
+‚Í‘O‚Ì?ðŒ?Ž®‚ª?u‹U?v‚Ì?ê?‡‚ÉˆÈ?~?i‰E‘¤?j‚ÌƒRƒ}ƒ“ƒh‚ðŽÀ?s‚·‚é‚Æ‚¢‚¤ˆÓ–¡‚Å‚·?B
+
+[source,prettyprint]
+----
+[ ð® ] || i±±ÌR}hÍðªuUvÈçÀs³êé)
+[ ð® ] && (±±ÌR}hÍðªu^vÈçÀs³êé)
+----
+
+‚Æ‚È‚è‚Ü‚·?B–\{‘è‚Æ?­‚µ‚¸‚ê‚Ä‚µ‚Ü‚¢‚Ü‚µ‚½‚ª?A?ã?q‚ÌŠÖ?”‚Ì‚P?s‚ß‚Å‚Í?uˆø?”‚Ì?”($#)‚ª‚O‚Å‚È‚¢?v‚Æ‚¢‚¤?ðŒ?Ž®‚ª?u‹U?v‚È‚ç?A‚Â‚Ü‚èˆø?”‚ª‚O‚È‚çŒã‚ë‚ÌƒRƒ}ƒ“ƒh‚ªŽÀ?s‚³‚ê–ß‚è’l‚P‚Å?I—¹‚µ‚Ü‚·?B‚»‚êˆÈŠO‚Ì?ê?‡‚Íˆø?”•\Ž¦‚ªŽÀ?s‚³‚ê?A–ß‚è’l‚O‚Å?³?í?I—¹(return
+0)‚µ‚Ä‚¢‚Ü‚·?B‚È‚¨?A(;)ƒZƒ~ƒRƒ?ƒ“‚Í‚P?s‚ÉƒRƒ}ƒ“ƒh‚ð‘±‚¯‚Ä‹L?q‚·‚é?ê?‡‚ÉŽg—p‚·‚é‹æ?Ø‚è•¶Žš‚Å‚·?B‚½‚¾’P‚É?¶‚©‚ç‰E‚Ö?‡”Ô‚ÉƒRƒ}ƒ“ƒh‚ªŽÀ?s‚³‚ê‚Ü‚·?B
+
+?@
+?ðŒ?Ž®‚Ì•”•ª‚ÍƒVƒFƒ‹‚Ì“à•”ƒRƒ}ƒ“ƒh?utest?v‚ª‘O‚É?È—ª‚³‚ê‚Ä‚¢‚é‚Æ?l‚¦‚ê‚Î‚í‚©‚è‚â‚·‚¢‚Å‚µ‚å‚¤?B?ðŒ?Ž®‚Ì‹L?q•û–@‚É‚Â‚¢‚Ä‚Í?A‘O?Í?u?§Œä•¶‚Å“¹?æˆÄ“à?v‚ðŽQ?Æ‚µ‚Ä‚Ý‚Ä‚­‚¾‚³‚¢?B
+
+?@‚±‚±‚Ü‚Å‚ÅƒVƒFƒ‹‚âƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚ÉŠÖ‚·‚éŠî–\{“I‚È‹@”\‚Ì‰ð?à‚ð?I—¹‚µ?AŽŸ‰ñ‚Í?­‚µŽÀ‘H“I‚È‹ï‘Ì—á‚ð‚ ‚°‚Ä‰ð?à‚µ‚Ä‚¢‚«‚½‚¢‚ÆŽv‚¢‚Ü‚·?B
+
+link://www.atmarkit.co.jp/flinux/rensai/shell07/oracle.html[*?uŽŸ‰ñ?v‚Ö*]
+
+ +
+
+*https://atmarkit.itmedia.co.jp/ait/kw/step_by_step_shellscript.html[?uƒXƒeƒbƒv?EƒoƒC?EƒXƒeƒbƒv?EƒVƒFƒ‹ƒXƒNƒŠƒvƒg?vƒoƒbƒNƒiƒ“ƒo?[]*
+
+* https://atmarkit.itmedia.co.jp/ait/articles/0012/06/news001.html[Oracle‚Ìƒf?[ƒ^‚àƒVƒFƒ‹‚Å]
+* https://atmarkit.itmedia.co.jp/ait/articles/0011/23/news002.html[ŠÖ?”‚Í‹¤’Ê•”•i‚É‚È‚é]
+* https://atmarkit.itmedia.co.jp/ait/articles/0010/19/news003.html[ƒVƒFƒ‹‚Ì•Ï?”‚ÉŠµ‚ê‚é]
+* https://atmarkit.itmedia.co.jp/ait/articles/0009/20/news001.html[?§Œä•¶‚Å“¹ˆÄ“à]
+* https://atmarkit.itmedia.co.jp/ait/articles/0008/30/news001.html[•W?€“ü?o—Í‚·‚è‚©‚¦‚ÌƒeƒNƒjƒbƒN]
+* https://atmarkit.itmedia.co.jp/ait/articles/0007/27/news002.html[2‚Â‚ÌŠç‚ðŽ?‚Âƒ\ƒtƒgƒEƒFƒA?FƒVƒFƒ‹]
+* https://atmarkit.itmedia.co.jp/ait/articles/0007/27/news001.html[ŽÀ?s‚·‚é‚É‚ÍƒpƒX‚ª•K—v]
+
+[[endlinkConnection]]
+== ŠÖ˜A‹LŽ–
+
+* [#endlink-art1]#link://www.atmarkit.co.jp/flinux/special/php5/php5a.html[“Á?W?FƒIƒuƒWƒFƒNƒgŽwŒü‚É?¶‚Ü‚ê•Ï‚í‚éPHP5?m‘O•Ò?n]#
+* [#endlink-art2]#link://www.atmarkit.co.jp/flinux/special/kylix/kylix01.html[“Á?W?FWindowsŠJ”­ŽÒ‚É‘¡‚é
+Kylix‚Ì‘S–e]#
+* [#endlink-art3]#link://www.atmarkit.co.jp/flinux/special/kylix2/kylix2_01.html[“Á?W?FKylixƒvƒ?ƒOƒ‰ƒ~ƒ“ƒO?ì–@]#
+* [#endlink-art4]#link://www.atmarkit.co.jp/flinux/index/indexfiles/phpindex.html[˜A?Ú?FPHP4‚Å?ì‚éWeb-DBƒVƒXƒeƒ€?i‘S5‰ñ?j]#
+* [#endlink-art5]#link://www.atmarkit.co.jp/flinux/index/indexfiles/shellsindex.html[˜A?Ú?FƒXƒeƒbƒv?EƒoƒC?EƒXƒeƒbƒv¥ƒVƒFƒ‹ƒXƒNƒŠƒvƒg?i‘S7‰ñ?j]#
+* [#endlink-art6]#link://www.atmarkit.co.jp/flinux/index/indexfiles/webservindex.html[˜A?Ú?FKylix
+3‚ÆDB2‚Å?ì‚éWebƒT?[ƒrƒX?EƒAƒvƒŠ?i‘S5‰ñ?j]#
+
+[[cmsCopyright]]
+Copyright © ITmedia, Inc. All Rights Reserved.
+
+[[InRead]]
+[[PC_InRead]]
+
+[[AITcmsHoleBodyEnd]]
+
+[[BelowArtLink]]
+Special[.gam_prmark]##PR##
+
+[[PC_BelowArtLink_1]]
+
+[[PC_BelowArtLink_2]]
+
+[[PC_BelowArtLink_3]]
+
+[[PC_BelowArtLink_4]]
+
+[[PC_BelowArtLink_5]]
+
+[[PC_BelowArtLink_6]]
+
+[[PC_BelowArtLink_7]]
+
+[[PC_BelowArtLink_8]]
+
+[[PC_BelowArtLink_9]]
+
+[[PC_BelowArtLink_10]]
+
+[[PC_BelowArtLink_11]]
+
+[[PC_BelowArtLink_12]]
+
+[[PC_BelowArtLink_13]]
+
+[[PC_BelowArtLink_14]]
+
+[[PC_BelowArtLink_15]]
+
+[[PC_BelowArtLink_16]]
+
+[[cx_article]]
+[[cx_059ed995df8dcb125e5a15866d9432745356347e]]
+
+[[cx_c8713ce0e99b85eda19d62559ed07a10ee7be13c]]
+
+[[itikw2km_ait]]
+
+[[adspaceISALC]]
+
+[[cx_recommend_rm40192]]
+[[logly-lift-4307211]]
+
+[[cx_recommend_rm42673]]
+[[logly-lift-4307211]]
+
+[[colBoxSideButtons]]
+[[colBoxSideButtonsInner]]
+[[colBoxSideButtonsPrint]]
+
+[[colBoxSideButtonsAlert]]
+
+[[cmsPrcredit]]
+
+[[body_insert_ad]]
+
+[[cceMaskCampaignWidget]]
+
+[[cceOfferCampaignWidget]]
+
+[[cmsSeriesList]]
+
+[[masterSub]]
+[[new_globalHeaderSearch]]
+
+ŒŸ?õ
+
+[[cx_ait-rightcol-wp]]
+
+[[RcolRectangle]]
+[[PC_rcol-Rectangle]]
+
+[[ForumText]]
+ƒXƒ|ƒ“ƒT?[‚©‚ç‚Ì‚¨’m‚ç‚¹[.gam_prmark]##PR##
+
+[[PC_ForumText_1]]
+
+[[PC_ForumText_2]]
+
+[[SideLink]]
+Special[.gam_prmark]##PR##
+
+[[PC_SideLink_1]]
+
+[[PC_SideLink_2]]
+
+[[PC_SideLink_3]]
+
+[[PC_SideLink_4]]
+
+[[PC_SideLink_5]]
+
+[[PC_SideLink_6]]
+
+[[PC_SideLink_7]]
+
+[[PC_SideLink_8]]
+
+[[PC_SideLink_9]]
+
+[[PC_SideLink_10]]
+
+[[PC_SideLink_11]]
+
+[[PC_SideLink_12]]
+
+[[PC_SideLink_13]]
+
+[[PC_SideLink_14]]
+
+[[PC_SideLink_15]]
+
+[[PC_SideLink_16]]
+
+[[PC_SideLink_17]]
+
+[[PC_SideLink_18]]
+
+[[PC_SideLink_19]]
+
+[[PC_SideLink_20]]
+
+[[colBoxArticleRanking]]
+
+[[colBoxAitEbook]]
+== ?—IT eBook
+
+https://atmarkit.itmedia.co.jp/ait/articles/2503/03/news024.html#utm_medium=rightcol_ebook&utm_content=imglink1[image:https://image.itmedia.co.jp/ait/images/htmlgen/parts_top_rightAitEbook1__1_1740879322.jpg[PythonÌ¶ñ»èiisn\bh³K\»jð}X^[µæ¤I@³¿ÌdqÐwðIPython@¶ñ`FbNÒx,width=80,height=60]]
+
+== https://atmarkit.itmedia.co.jp/ait/articles/2503/03/news024.html#utm_medium=rightcol_ebook&utm_content=textlink1[Python‚Ì•¶Žš—ñ”»’è?iisŒnƒ?ƒ\ƒbƒh?•?³‹K•\Œ»?j‚ðƒ}ƒXƒ^?[‚µ‚æ‚¤?I?@–³—¿‚Ì“dŽq?‘?Ð?w‰ðŒˆ?IPython?@•¶Žš—ñƒ`ƒFƒbƒN•Ò?x]
+
+https://atmarkit.itmedia.co.jp/ait/articles/2502/26/news009.html#utm_medium=rightcol_ebook&utm_content=imglink2[image:https://image.itmedia.co.jp/ait/images/htmlgen/parts_top_rightAitEbook1__1_1740488816.jpg[¼z»Â«ð©R©ÝÉé½ßÌt@[XgXebvI@¼zfBXNìî\{PowerShellR}hbgW,width=80,height=60]]
+
+== https://atmarkit.itmedia.co.jp/ait/articles/2502/26/news009.html#utm_medium=rightcol_ebook&utm_content=textlink2[‰¼‘z‰»ŠÂ‹«‚ðŽ©—RŽ©?Ý‚É‘€‚é‚½‚ß‚Ìƒtƒ@?[ƒXƒgƒXƒeƒbƒv?I?@‰¼‘zƒfƒBƒXƒN‘€?ìŠî–\{PowerShellƒRƒ}ƒ“ƒhƒŒƒbƒg?W]
+
+https://atmarkit.itmedia.co.jp/ait/articles/2502/10/news009.html#utm_medium=rightcol_ebook&utm_content=imglink3[image:https://image.itmedia.co.jp/ait/images/htmlgen/parts_top_rightAitEbook1__1_1738930570.jpg[PDFÌÖÈg¢û©ç¢è²ÆÜÅwPDFpÌqgW
+Vol.1x,width=80,height=60]]
+
+== https://atmarkit.itmedia.co.jp/ait/articles/2502/10/news009.html#utm_medium=rightcol_ebook&utm_content=textlink3[PDF‚Ì•Ö—˜‚ÈŽg‚¢•û‚©‚ç?¢‚è‚²‚Æ‚Ü‚Å?wPDFŠˆ—p‚Ìƒqƒ“ƒg?W Vol.1?x]
+
+https://atmarkit.itmedia.co.jp/ait/articles/2501/23/news004.html#utm_medium=rightcol_ebook&utm_content=imglink4[image:https://image.itmedia.co.jp/ait/images/htmlgen/parts_top_rightAitEbook1__1_1737607226.jpg[îVX±»m[R[hÌÍðø«o¹@ÅKc[IèÆ^pÌÉÓªª©é³¿eBook,width=80,height=60]]
+
+== https://atmarkit.itmedia.co.jp/ait/articles/2501/23/news004.html#utm_medium=rightcol_ebook&utm_content=textlink4[?îƒVƒX‚±‚»ƒm?[ƒR?[ƒh‚Ì—Í‚ðˆø‚«?o‚¹?@?Å“Kƒc?[ƒ‹‘I’è‚Æ‰^—p‚Ì‹ÉˆÓ‚ª•ª‚©‚é–³—¿eBook]
+
+»
+https://atmarkit.itmedia.co.jp/ait/series/1567/#utm_medium=rightcol_ebook&utm_content=toindex[ˆê——ƒy?[ƒW‚Ö]
+
+[[colBoxteemasitebanner]]
+’?–Ú‚Ìƒe?[ƒ}
+
+https://atmarkit.itmedia.co.jp/ait/subtop/4ai/[image:https://image.itmedia.co.jp/ait/images/htmlgen/rc_teemasitebanner_1_1738561567.png[4AI
+by IT - AIðìèA®©µAçèA¶©·,width=300,height=40]]
+
+https://atmarkit.itmedia.co.jp//ait/subtop/features/server/ms_win_2025.html[image:https://image.itmedia.co.jp/ait/images/htmlgen/rc_teemasitebanner_1_1731676654.png[Microsoft
+WindowsÅOü2025,width=300,height=40]]
+
+https://atmarkit.itmedia.co.jp/ait/subtop/features/smart/ai4se.html[image:https://image.itmedia.co.jp/ait/images/htmlgen/rc_teemasitebanner_1_1687348083.png[AI
+for GWjAO,width=300,height=40]]
+
+https://atmarkit.itmedia.co.jp/ait/subtop/lowcodenocode/[image:https://image.itmedia.co.jp/ait/images/htmlgen/rc_teemasitebanner_3_1731676654.png[[R[h^m[R[h
+Zg by IT - ITGWjAªrWlXÌSÅô·égDÖ,width=300,height=40]]
+
+https://atmarkit.itmedia.co.jp/ait/subtop/cloudnative/[image:https://image.itmedia.co.jp/ait/images/htmlgen/rc_teemasitebanner_4_1731676654.png[Cloud
+Native Central by IT - XP[uÈ\ÍðgDÉ,width=300,height=40]]
+
+[[GeneralAD]]
+ƒVƒXƒeƒ€ŠJ”­ƒmƒEƒnƒE ?y”­’?ƒiƒr?z[.gam_prmark]##PR##
+
+[[PC_GeneralAD_1]]
+
+[[PC_GeneralAD_2]]
+
+[[PC_GeneralAD_3]]
+
+[[colBoxEditorInfo]]
+== •Ò?W•”‚©‚ç‚Ì‚¨’m‚ç‚¹
+
+https://rd.itmedia.co.jp/86iO#utm_source=ait&utm_content=rightcolumn_info[3/12?`13?y–³—¿ƒIƒ“ƒ‰ƒCƒ“ƒZƒ~ƒi?[?zƒ}ƒl?[ƒtƒHƒ??[ƒhƒrƒWƒlƒXƒJƒ“ƒpƒj?[
+BizOps–\{•”
+“à?¼Œ÷ˆêŽ??yŠî’²?u‰‰?@ƒNƒ‰ƒEƒhƒlƒCƒeƒBƒu‚ÅŽÀŒ»‚·‚é?A‹¤’ÊDB‚Ì‰Û‘è‰ðŒˆ
+?`“?‰€‚Ì?¾‚¢ƒA?[ƒLƒeƒNƒ`ƒƒ?`?z?AƒAƒWƒƒƒCƒ‹ƒR?[ƒ`
+kyon_mmŽ??yŠî’²?u‰‰?@DevSecOps‚ÆAIŠˆ—p?z‚à‚ ‚è‚Ü‚·?B?—IT Cloud Native
+Week 2025 “~?uŠR‚Á‚Õ‚¿‚©‚ç”‡‚¢?ã‚ª‚é?vƒNƒ‰ƒEƒhƒlƒCƒeƒBƒu‚Ì?¶‚©‚µ•û]
+
+[[RcolFeatures]]
+‚ ‚È‚½‚É‚¨‚·‚·‚ß‚Ì‹LŽ–[.gam_prmark]#PR#
+
+[[PC_rcol-Features_1]]
+
+[[PC_rcol-Features_2]]
+
+[[PC_rcol-Features_3]]
+
+[[mediaFooter]]
+[[mediaFooterBgArea]]
+
+@IT‚É‚Â‚¢‚Ä
+
+* https://atmarkit.itmedia.co.jp/aboutus/contact_us/contact_us.html[‚¨–â‚¢?‡‚í‚¹]
+* https://go.itmedia.co.jp/l/291242/2022-08-17/2b9nm9r[?L??‚É‚Â‚¢‚Ä]
+* https://go.itmedia.co.jp/l/291242/2022-09-11/2bjg5ck[?Ì—p?L??‚É‚Â‚¢‚Ä]
+* https://atmarkit.itmedia.co.jp/ait/subtop/termofuse.html[—˜—p‹K–ñ]
+* https://atmarkit.itmedia.co.jp/ait/subtop/copyright.html[’˜?ìŒ ?EƒŠƒ“ƒN?E–Æ?ÓŽ–?€]
+* https://atmarkit.itmedia.co.jp/info/sitemap/sitemap.html[ƒTƒCƒgƒ}ƒbƒv]
+
+RSS‚É‚Â‚¢‚Ä
+
+* https://corp.itmedia.co.jp/media/rss_list/[?—IT‚ÌRSSˆê——]
+
+ƒAƒCƒeƒBƒ?ƒfƒBƒAID‚É‚Â‚¢‚Ä
+
+* https://id.itmedia.co.jp/info/campaign/all_id.html[ƒAƒCƒeƒBƒ?ƒfƒBƒAID‚Æ‚Í]
+
+ƒ??[ƒ‹ƒ}ƒKƒWƒ““o˜^
+
+?—IT‚Ìƒ??[ƒ‹ƒ}ƒKƒWƒ“‚Í?A
+‚à‚¿‚ë‚ñ?A‚·‚×‚Ä–³—¿‚Å‚·?B‚º‚Ðƒ??[ƒ‹ƒ}ƒKƒWƒ“‚ð‚²?w“Ç‚­‚¾‚³‚¢?B
+
+[[registerButton]]
+link://atmarkit.itmedia.co.jp/ait/subtop/info/lp/ait_new.html[?\‚µ?ž‚Ýƒy?[ƒW‚Ö]
+
+[[masterFooter]]
+[[globalFooter]]
+[[footerBgArea]]
+
+[[globalFooterCorp]]
+[[globalFooterCorpIn]]
+https://corp.itmedia.co.jp/[image:https://image.itmedia.co.jp/images/logo/170_itmedia_bgw.gif[ACeBfBA®ïÐ,width=170,height=28]]ITmedia‚ÍƒAƒCƒeƒBƒ?ƒfƒBƒAŠ”Ž®‰ïŽÐ‚Ì“o˜^?¤•W‚Å‚·?B
+
+https://corp.itmedia.co.jp/media/[ƒ?ƒfƒBƒAˆê——] |
+https://corp.itmedia.co.jp/media/sns/[ŒöŽ®SNS] |
+https://corp.itmedia.co.jp/ad/[?L??ˆÄ“à] |
+https://corp.itmedia.co.jp/corp/inquiry/[‚¨–â‚¢?‡‚í‚¹] |
+https://corp.itmedia.co.jp/corp/privacy/privacy/[ƒvƒ‰ƒCƒoƒV?[ƒ|ƒŠƒV?[] |
+https://corp.itmedia.co.jp/media/rss_list/[RSS] |
+https://corp.itmedia.co.jp/[‰^‰c‰ïŽÐ] |
+https://corp.itmedia.co.jp/recruit/[?Ì—p?î•ñ] |
+https://www.itmedia.co.jp/info/rule/recommended.html[?„?§ŠÂ‹«]
+
+[[BEACON]]
+[[N]]
+
+image:https://www.facebook.com/tr?id=185005748502834&ev=PageView&noscript=1[https://www.facebook.com/tr?id=185005748502834&ev=PageView&noscript=1,width=1,height=1]

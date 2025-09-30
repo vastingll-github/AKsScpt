@@ -1,0 +1,398 @@
+[[header]]
+[[head-in]]
+[[head-parallax]]
+https://genzouw.com/[ゲンゾウ用ポストイット]
+
+シェル / Bash / Linux / Kubernetes / Docker / Git /
+クラウドのtipsを発信。
+
+[[primary]]
+[[main]]
+[[core]]
+. __https://genzouw.com/[ホーム]_>_
+. __https://genzouw.com/entry/category/bash/[Bash]
+
+[[mainEntity]]
+[[article-header]]
+== シェルスクリプトで引数でループする処理を書くときは “$\{@}” は不要だった
+
+__[.date .published]#2021-06-21#__[.date]##
+
+2022-01-28[.category .items]##[.first-item]#__https://genzouw.com/entry/category/bash/[Bash]###
+
+[[sns-tops]]
+* //twitter.com/share?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88&url=https://genzouw.com/entry/2021/06/21/080007/2665/[__[.snsname]#Twitter#[.snsfcnt .twitter-count]#__#]
+* //www.facebook.com/sharer/sharer.php?u=https://genzouw.com/entry/2021/06/21/080007/2665/&t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88[__[.snsname]#Facebook#[.snsfcnt .facebook-count]#__#]
+* //b.hatena.ne.jp/add?mode=confirm&url=https://genzouw.com/entry/2021/06/21/080007/2665/&title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88[_B!_[.snsname]#Hatena#[.snsfcnt .hatena-count]#1#]
+* //lineit.line.me/share/ui?url=https://genzouw.com/entry/2021/06/21/080007/2665/#/[__[.snsname]#LINE#[.snsfcnt .line-count]#_Send_#]
+* //line.me/R/msg/text/?%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88%0D%0Ahttps://genzouw.com/entry/2021/06/21/080007/2665/[__[.snsname]#LINE#[.snsfcnt .line-count]#_Send_#]
+* https://genzouw.com/feed/[__[.snsname]#RSS#[.snsfcnt .rss-count]#-#]
+
+[[toc_container]]
+[.toc_title]#Contents#
+
+* link:#toc_id_1[[.toc_number .toc_depth_1]#1.# はじめに]
+* link:#toc_id_2[[.toc_number .toc_depth_1]#2.# 検証環境]
+* link:#toc_id_3[[.toc_number .toc_depth_1]#3.#
+今まで記述してた「コマンドライン引数」を使ったループ処理]
+* link:#toc_id_4[[.toc_number .toc_depth_1]#4.#
+「コマンドライン引数」を使ったループ処理に `"${@}"` の記載は不要]
+* link:#toc_id_5[[.toc_number .toc_depth_1]#5.# ひとこと]
+
+== [#toc_id_1]#はじめに#
+
+個人的にはシェルスクリプトでループ処理を書くと速度が出ず、また記載が冗長となるためあまり使いません。
+
+それでも分岐処理を含めて繰り返し処理したい場合にはループを書くことがあります。
+
+シェルスクリプト実行時に渡される「コマンドライン引数」でループを回すこともありますが、先日今まで書いていた処理がもっとかんたんに書けることを知りました。
+
+== [#toc_id_2]#検証環境#
+
+[source,bash]
+----
+$ uname -moi
+x86_64 x86_64 GNU/Linux
+
+$ head -n 2 /etc/os-release
+NAME="CentOS Linux"
+VERSION="7 (Core)"
+
+$ bash -version | head -n 1
+GNU bash, version 4.2.46(2)-release (x86_64-redhat-linux-gnu)
+----
+
+== [#toc_id_3]#今まで記述してた「コマンドライン引数」を使ったループ処理#
+
+今までコマンドライン引数を使ったループ処理を記述したい場合には、 `for`
+と `"${@}"` 変数を使って記述していました。
+
+以下がそのコードになります。
+
+[source,bash]
+----
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o noclobber
+
+for I in "${@}"; do
+  echo "$I"
+done
+----
+
+`test1.sh` という名前で保存し、実行してみます。
+
+[source,bash]
+----
+# 実行権限を与えてあげましょう
+$ chmod 700 test1.sh
+
+# 実行
+$ ./test1.sh a b "c d" " e "
+a
+b
+c d
+ e
+----
+
+第 3 引数、第 4
+引数にはスペースを含んでいるため、ダブルクォート(`"`)で囲んでやる必要があります。 +
+また、参照する際にも `"${@}"` という形式で `for`
+構文に渡してやる必要があります。
+
+上記 2
+点が大事なポイントですし、「知らないとハマるよね(ドヤァ」と思っていました。
+
+_つい先日までは。_
+
+== [#toc_id_4]#「コマンドライン引数」を使ったループ処理に `"${@}"` の記載は不要#
+
+先日、別の方が作成されているシェルスクリプトを拝見することがありました。
+
+そこで書かれているループ処理の一部を抜粋すると、以下のようになっていました。
+
+[source,bash]
+----
+for I; do
+  ...
+done
+----
+
+*「あれ？、 `in` 以降が記載されていない？」*
+
+スクリプトでやろうとしていることを見ると、コマンドライン引数を受け取りループを回すというものでした。
+
+*「もしかして、 `"${@}"` いらない？」*
+
+`"${@}"` は書かなくても良かったみたいです。 +
+先程のループ処理のコードは以下と同義になります。
+
+[source,bash]
+----
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o noclobber
+
+for I; do
+  echo "$I"
+done
+----
+
+`test2.sh` という名前で保存し、実行してみます。
+
+[source,bash]
+----
+# 実行権限を与えてあげましょう
+$ chmod 700 test2.sh
+
+# 実行
+$ ./test2.sh a b "c d" " e "
+a
+b
+c d
+ e
+----
+
+全く同じ結果が出力されていますね。
+
+ポイントはミスりそうな記述 `"${@}"`
+を書かなくてもいいし、覚える必要もないという点です。
+
+== [#toc_id_5]#ひとこと#
+
+人から学べることはたくさんありますね。
+
+シェルの勉強会、いつも参加したいなぁと思っているんですが、子供が 5
+人もいると土日はいつも大変な妻の代わりにこどもの面倒をみる必要があり、参加は難しい。
+
+平日の定時以降にやってくれると嬉しいなぁ。
+
+* https://usptomo.doorkeeper.jp/[USP 友の会 | Doorkeeper] [.ext_icon]##
+
+__[.date .published]#2021-06-21#__[.date]##
+
+2022-01-28[.category .items]##[.first-item]#__https://genzouw.com/entry/category/bash/[Bash]###
+
+'''''
+
+== よろしければシェアお願いします
+
+[[sns-bottoms]]
+* //twitter.com/share?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88&url=https://genzouw.com/entry/2021/06/21/080007/2665/[__[.snsname]#Twitter#[.snsfcnt .twitter-count]#__#]
+* //www.facebook.com/sharer/sharer.php?u=https://genzouw.com/entry/2021/06/21/080007/2665/&t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88[__[.snsname]#Facebook#[.snsfcnt .facebook-count]#__#]
+* //b.hatena.ne.jp/add?mode=confirm&url=https://genzouw.com/entry/2021/06/21/080007/2665/&title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88[_B!_[.snsname]#Hatena#[.snsfcnt .hatena-count]#1#]
+* //lineit.line.me/share/ui?url=https://genzouw.com/entry/2021/06/21/080007/2665/#/[__[.snsname]#LINE#[.snsfcnt .line-count]#_Send_#]
+* //line.me/R/msg/text/?%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A7%E5%BC%95%E6%95%B0%E3%81%A7%E3%83%AB%E3%83%BC%E3%83%97%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%A8%E3%81%8D%E3%81%AF%20%E2%80%9C%24%7B%40%7D%E2%80%9D%20%E3%81%AF%E4%B8%8D%E8%A6%81%E3%81%A0%E3%81%A3%E3%81%9F%20%7C%20%E3%82%B2%E3%83%B3%E3%82%BE%E3%82%A6%E7%94%A8%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A4%E3%83%83%E3%83%88%0D%0Ahttps://genzouw.com/entry/2021/06/21/080007/2665/[__[.snsname]#LINE#[.snsfcnt .line-count]#_Send_#]
+* https://genzouw.com/feed/[__[.snsname]#RSS#[.snsfcnt .rss-count]#-#]
+
+[[pnavi]]
+https://genzouw.com/entry/2021/06/24/190227/2670/[image:https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png[https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100,width=100,height=100]]
+
+trコマンドで改行をカンマに変換すると","とだけ表示されてびっくりした話
+
+____Next
+
+https://genzouw.com/entry/2021/06/20/093317/2668/[image:https://genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921-100x100.png[https://genzouw.com/wp-content/uploads/2019/03/PinClipart.com_christmas-program-clipart_1178921-100x100,width=100,height=100]]
+
+Vimでファイル編集中にスペルミス(typo)を検出するためにvim-codespellを導入してみた
+
+____Prev
+
+[[related-box]]
+== ____関連記事
+
+[[related]]
+https://genzouw.com/entry/2019/04/28/103524/1416/[image:https://genzouw.com/wp-content/uploads/2019/02/Image-0031-02-17-07-21-39-100x100.png[https://genzouw.com/wp-content/uploads/2019/02/Image-0031-02-17-07-21-39-100x100,width=100,height=100]]
+
+=== https://genzouw.com/entry/2019/04/28/103524/1416/[Amazon DynamoDBのプライマリーキーの２つのタイプについて理解できたことをまとめました]
+
+はじめに Amazon DynamoDBの構成要素について理解できたことをまとめ ...
+
+https://genzouw.com/entry/2021/01/27/213700/2152/[image:https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png[https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100,width=100,height=100]]
+
+=== https://genzouw.com/entry/2021/01/27/213700/2152/[sudoでシェルスクリプトを実行した際にPATHが正しく引き継がれない場合の対処]
+
+はじめに sudo
+コマンドを使ってシェルスクリプトを実行した際に、実行ユーザの ...
+
+https://genzouw.com/entry/2020/01/18/113034/1894/[image:https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png[https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100,width=100,height=100]]
+
+=== https://genzouw.com/entry/2020/01/18/113034/1894/[Bashシェルスクリプトで文字列変数を部分的に切り出す（substring）]
+
+はじめに Bash シェルスクリプトで 変数 に格納されている文字列を部分的に切
+...
+
+https://genzouw.com/entry/2021/03/29/212845/2528/[image:https://genzouw.com/wp-content/uploads/2021/03/Image-2021-03-25-10-07-23-100x100.jpg[https://genzouw.com/wp-content/uploads/2021/03/Image-2021-03-25-10-07-23-100x100,width=100,height=100]]
+
+=== https://genzouw.com/entry/2021/03/29/212845/2528/[Bashシェルで「1000 以下の回文素数で最大のものを示せ」を問いてみる]
+
+はじめに 前回のエントリで 素数をワンライナーで求める
+というネタをやりました。 ...
+
+https://genzouw.com/entry/2013/06/04/223158/36/[image:https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100.png[https://genzouw.com/wp-content/uploads/2019/02/kisspng-bash-shell-command-line-interface-ls-5ae067b4a53005.9908964615246560526766-100x100,width=100,height=100]]
+
+=== https://genzouw.com/entry/2013/06/04/223158/36/[UbuntuやCentOSでBashログイン後に「warning: setlocale: LC_ALL: cannot change locale (ja_JP.UTF-8)」が表示された場合の対処]
+
+はじめに 新しく導入したばかりの Linux サーバーに Bash でログインし ...
+
+[[comments]]
+== ____ディスカッション
+
+=== ____コメント一覧
+
+まだ、コメントがありません
+
+[[respond]]
+[[reply-title]]
+=== コメントを残す[.small]##link:/entry/2021/06/21/080007/2665/#respond[コメントをキャンセル]##
+
+[[respond]]
+[[reply-title]]
+=== コメントを残す [.small]#link:/jetpack-comment/?blogid=168055164&postid=2665&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=gravatar_default&greeting=%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E6%AE%8B%E3%81%99&jetpack_comments_nonce=653dbdae7f&greeting_reply=%25s+%E3%81%B8%E8%BF%94%E4%BF%A1%E3%81%99%E3%82%8B&color_scheme=light&lang=ja&jetpack_version=14.4&iframe_unique_id=1&show_cookie_consent=10&has_cookie_consent=0&is_current_user_subscribed=0&token_key=%3Bnormal%3B&sig=f64477f8f3529342a30cd6919045a8520867b6c1#respond[コメントをキャンセル]#
+
+Δ
+
+[[trackback]]
+== ____この記事のトラックバックURL
+
+[[sidebar]]
+[[side]]
+[[side-fixed]]
+[[custom_html-5]]
+== プロフィール
+
+image:https://i0.wp.com/pbs.twimg.com/profile_images/2609827576/labg844jza6utj641nvb_400x400.jpeg?resize=180%2C180&ssl=1[プロフィール,width=180,height=180]
+
+https://twitter.com/genzouw[@genzouw]
+
+5人の子供を持つのおとうちゃん。
+
+参考になりましたら、*シェア*、*コメント*、**https://www.paypal.com/paypalme/my/profile[支援]**をいただけると励みになります！
+
+システム構築の**相談**ものります。mailto:genzouw@gmail.com[[.bold]#お問い合わせ#]____はこちら。
+
+[[custom_html-11]]
+== Youtubeはじめました
+
+[[custom_html-14]]
+== 学習をサポートします
+
+https://menta.work/user/14625[image:https://i0.wp.com/genzouw.com/wp-content/uploads/2021/05/menta.png?ssl=1[menta-icon]]
+
+[[custom_html-13]]
+== Go言語 始めました
+
+https://go.genzouw.com/[image:https://i0.wp.com/go.genzouw.com/wp-content/uploads/2021/03/file_type_go_gopher_icon_130571.png?ssl=1[Go言語用ポストイット]Go言語用ポストイット]
+
+[[search-2]]
+[[search]]
+
+[[custom_html-9]]
+== 自作サービス紹介
+
+* https://hyakunin.genzouw.com/[ひゃくにんいっしゅをおぼえよう(子供向け)]
+* https://kanji.genzouw.com/[かんじをおぼえよう(子供向け)]
+* https://golly.genzouw.com/[Golly - 投票サービス]
+
+[[tag_cloud-3]]
+== カテゴリー
+
+https://genzouw.com/entry/category/amazon/[Amazon[.tag-link-count]##
+(18)##]https://genzouw.com/entry/category/aws/[AWS[.tag-link-count]##
+(21)##]https://genzouw.com/entry/category/bash/[Bash[.tag-link-count]##
+(265)##]https://genzouw.com/entry/category/centos/[CentOS[.tag-link-count]##
+(52)##]https://genzouw.com/entry/category/chatgpt/[ChatGPT[.tag-link-count]##
+(4)##]https://genzouw.com/entry/category/ci-cd/[CI/CD[.tag-link-count]##
+(3)##]https://genzouw.com/entry/category/cygwin/[Cygwin[.tag-link-count]##
+(9)##]https://genzouw.com/entry/category/diary/[Diary[.tag-link-count]##
+(33)##]https://genzouw.com/entry/category/docker/[Docker[.tag-link-count]##
+(49)##]https://genzouw.com/entry/category/eclipse/[Eclipse[.tag-link-count]##
+(3)##]https://genzouw.com/entry/category/facebook/[Facebook[.tag-link-count]##
+(8)##]https://genzouw.com/entry/category/gae/[GAE[.tag-link-count]##
+(6)##]https://genzouw.com/entry/category/gaelyk/[Gaelyk[.tag-link-count]##
+(2)##]https://genzouw.com/entry/category/gcp/[GCP[.tag-link-count]##
+(15)##]https://genzouw.com/entry/category/geb/[Geb[.tag-link-count]##
+(3)##]https://genzouw.com/entry/category/git/[Git[.tag-link-count]##
+(32)##]https://genzouw.com/entry/category/github/[GitHub[.tag-link-count]##
+(22)##]https://genzouw.com/entry/category/github-actions/[Github
+Actions[.tag-link-count]##
+(7)##]https://genzouw.com/entry/category/gradle/[Gradle[.tag-link-count]##
+(8)##]https://genzouw.com/entry/category/grails/[Grails[.tag-link-count]##
+(39)##]https://genzouw.com/entry/category/griffon/[Griffon[.tag-link-count]##
+(17)##]https://genzouw.com/entry/category/groovy/[Groovy[.tag-link-count]##
+(192)##]https://genzouw.com/entry/category/java/[Java[.tag-link-count]##
+(38)##]https://genzouw.com/entry/category/javascript/[JavaScript[.tag-link-count]##
+(25)##]https://genzouw.com/entry/category/jedit/[jEdit[.tag-link-count]##
+(10)##]https://genzouw.com/entry/category/junit/[JUnit[.tag-link-count]##
+(2)##]https://genzouw.com/entry/category/kubernetes/[Kubernetes[.tag-link-count]##
+(12)##]https://genzouw.com/entry/category/linux/[Linux[.tag-link-count]##
+(104)##]https://genzouw.com/entry/category/mac/[Mac[.tag-link-count]##
+(10)##]https://genzouw.com/entry/category/mysql/[MySQL[.tag-link-count]##
+(4)##]https://genzouw.com/entry/category/php/[PHP[.tag-link-count]##
+(7)##]https://genzouw.com/entry/category/postgresql/[PostgreSQL[.tag-link-count]##
+(3)##]https://genzouw.com/entry/category/ruby/[Ruby[.tag-link-count]##
+(4)##]https://genzouw.com/entry/category/ssh/[SSH[.tag-link-count]##
+(4)##]https://genzouw.com/entry/category/terraform/[Terraform[.tag-link-count]##
+(4)##]https://genzouw.com/entry/category/twitter/[Twitter[.tag-link-count]##
+(3)##]https://genzouw.com/entry/category/twittet/[Twittet[.tag-link-count]##
+(69)##]https://genzouw.com/entry/category/ubuntu/[Ubuntu[.tag-link-count]##
+(74)##]https://genzouw.com/entry/category/vim/[Vim[.tag-link-count]##
+(18)##]https://genzouw.com/entry/category/web/[Web[.tag-link-count]##
+(5)##]https://genzouw.com/entry/category/wordpress/[WordPress[.tag-link-count]##
+(6)##]https://genzouw.com/entry/category/yaml/[YAML[.tag-link-count]##
+(2)##]https://genzouw.com/entry/category/zsh/[Zsh[.tag-link-count]##
+(11)##]https://genzouw.com/entry/category/%e3%81%a4%e3%81%b6%e3%82%84%e3%81%8d/[つぶやき[.tag-link-count]##
+(2)##]https://genzouw.com/entry/category/%e6%9c%aa%e5%88%86%e9%a1%9e/[未分類[.tag-link-count]##
+(27)##]
+
+[[archives-2]]
+== アーカイブ
+
+アーカイブ月を選択 2023年12月 (4) 2023年8月 (1) 2023年5月 (2) 2023年4月
+(10) 2023年3月 (9) 2023年2月 (13) 2022年10月 (5) 2022年8月 (5) 2022年7月
+(4) 2022年6月 (1) 2022年5月 (1) 2022年4月 (1) 2022年3月 (2) 2022年2月
+(5) 2022年1月 (10) 2021年9月 (4) 2021年8月 (4) 2021年7月 (9) 2021年6月
+(9) 2021年5月 (10) 2021年4月 (6) 2021年3月 (18) 2021年2月 (12) 2021年1月
+(10) 2020年11月 (2) 2020年10月 (6) 2020年9月 (4) 2020年8月 (1) 2020年6月
+(3) 2020年5月 (6) 2020年4月 (6) 2020年3月 (3) 2020年2月 (8) 2020年1月
+(13) 2019年12月 (9) 2019年11月 (1) 2019年10月 (2) 2019年9月 (4)
+2019年8月 (5) 2019年7月 (10) 2019年6月 (11) 2019年5月 (13) 2019年4月
+(16) 2019年3月 (19) 2019年2月 (21) 2019年1月 (10) 2016年4月 (1)
+2016年1月 (1) 2015年12月 (3) 2015年11月 (5) 2014年7月 (3) 2014年5月 (1)
+2013年11月 (1) 2013年10月 (2) 2013年6月 (5) 2013年5月 (14) 2013年4月
+(11) 2013年3月 (8) 2013年2月 (11) 2013年1月 (19) 2012年12月 (21)
+2012年10月 (2) 2012年9月 (1) 2012年8月 (3) 2012年7月 (3) 2012年2月 (2)
+2012年1月 (4) 2011年12月 (2) 2011年11月 (11) 2011年10月 (9) 2011年5月
+(6) 2011年3月 (1) 2011年2月 (2) 2010年12月 (4) 2010年11月 (1) 2010年9月
+(1) 2010年8月 (9) 2010年7月 (6) 2010年6月 (2) 2010年5月 (14) 2010年4月
+(6) 2010年2月 (7) 2010年1月 (7) 2009年11月 (14) 2009年10月 (8) 2009年8月
+(5) 2009年7月 (12) 2009年6月 (9) 2009年5月 (11) 2009年4月 (14) 2009年3月
+(26) 2009年2月 (9) 2009年1月 (16) 2008年12月 (19) 2008年11月 (23)
+2008年10月 (19) 2008年9月 (16) 2008年8月 (4) 2008年7月 (1) 2008年6月 (1)
+2008年5月 (1) 2008年3月 (1) 2008年2月 (3) 2008年1月 (4) 2007年12月 (4)
+
+[[recent-posts-2]]
+== 最近の投稿
+
+* https://genzouw.com/entry/2023/12/30/091144/3607/[Bashの組み込みコマンド
+“bc” を使ってみる]
+* https://genzouw.com/entry/2023/12/29/083812/3595/[シェルスクリプトで標準出力と標準エラー出力を入れ替える]
+* https://genzouw.com/entry/2023/12/20/110833/3592/[Github Copilot in
+the CLI を使ってみる]
+* https://genzouw.com/entry/2023/12/08/000027/3572/[生物の進化から学ぶシステムの進化
+– Timee Advent Calendar 2023]
+* https://genzouw.com/entry/2023/08/16/174745/3549/[OIDCを使ってGithub
+ActionsからAWSにアクセスする仕組みについて理解を整理してみた]
+
+[[footer]]
+[[copyright]]
+Copyright © 2007-2025 ゲンゾウ用ポストイット All Rights Reserved.
+
+WordPress Luxeritas Theme is provided by
+"https://thk.kanzae.net/[Thought is free]".
+
+[[wp-footer]]
+[[page-top]]
+__[.ptop]# PAGE TOP#

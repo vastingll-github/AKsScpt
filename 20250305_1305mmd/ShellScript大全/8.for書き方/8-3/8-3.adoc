@@ -1,0 +1,341 @@
+[[GlobalHeader-react-component-4bd2ab97-05ae-4a98-9e13-7ec3dc6ea1e4]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_2.svg
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
+
+link:/login?callback_action=login_or_signup&redirect_to=%2Fytyng%2Fitems%2Fd7afe80ef9da7aa8b721&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2Fytyng%2Fitems%2Fd7afe80ef9da7aa8b721&realm=qiita[Signup]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+. link:/[Trend]
+. link:/question-feed[Question]
+. link:/official-events[Official Event]
+. link:/official-columns[Official
+Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
+. link:/organizations[Organization]
+
+[[AlertMessage-react-component-014f94c4-71e9-41df-ab14-a9c0cba1a6eb]]
+
+[[PersonalArticlePage-react-component-40913e65-8796-4331-8cb8-342614f24913]]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_23.svg
+
+link:/ytyng/items/d7afe80ef9da7aa8b721/likers[144]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_29.svg
+
+[.style-1vem4tk]#120#
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_33.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_35.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_37.svg
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[.material-symbols-outlined .is-fill .style-1l7bzw8]#info#
+
+More than 1 year has passed since last update.
+
+link:/ytyng[]
+
+image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F68302%2Fprofile-images%2F1473697800?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=a793ed39a1489a8e8aa08590aec6a9ef[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F68302%2Fprofile-images%2F1473697800?ixlib=rb-4.0,width=24,height=24]
+
+@ytyng[.style-1e7czb6]##inlink:/organizations/torico[image:https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2Facb34bd37ac675ca9b4b13738ce976cc22d9154b%2Foriginal.jpg%3F1553221297?ixlib=rb-4.0.0&auto=compress%2Cformat&s=5d3ff02a13d9f9c3805160527caed448[https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2Facb34bd37ac675ca9b4b13738ce976cc22d9154b%2Foriginal.jpg%3F1553221297?ixlib=rb-4.0,width=20,height=20][.style-8uhtka]#株式会社TORICO#]##
+
+== Bashでいろいろループする
+
+* link:/tags/bash[Bash]
+* link:/tags/%e3%83%ab%e3%83%bc%e3%83%97[ループ]
+
+[.style-3k9iaf]#Last updated at 2023-01-16#[.style-3k9iaf]#Posted at
+2016-05-19#
+
+[[personal-public-article-body]]
+== [#配列をハードコーディングしてループ .fragment]##link:#%E9%85%8D%E5%88%97%E3%82%92%E3%83%8F%E3%83%BC%E3%83%89%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%97%E3%81%A6%E3%83%AB%E3%83%BC%E3%83%97[__]配列をハードコーディングしてループ
+
+....
+items=(
+    "altair"
+    "betelgeuse"
+    "canopus"
+)
+
+for item in "${items[@]}" ; do
+    echo "[ ${item} ]"
+done
+....
+
+=== [#ハードコーディング-パターン2 .fragment]##link:#%E3%83%8F%E3%83%BC%E3%83%89%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0-%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B32[__]ハードコーディング パターン2
+
+....
+items[0]="altair"
+items[1]="betelgeuse"
+items[2]="canopus"
+
+for item in "${items[@]}" ; do
+    echo "[ ${item} ]"
+done
+....
+
+== [#連番を生成してループ .fragment]##link:#%E9%80%A3%E7%95%AA%E3%82%92%E7%94%9F%E6%88%90%E3%81%97%E3%81%A6%E3%83%AB%E3%83%BC%E3%83%97[__]連番を生成してループ
+
+....
+for i in {1..10} ; do
+    echo ${i}
+done
+....
+
+....
+for i in `seq 1 10`; do
+    echo ${i}
+done
+....
+
+== [#ファイル一覧をループ .fragment]##link:#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%B8%80%E8%A6%A7%E3%82%92%E3%83%AB%E3%83%BC%E3%83%97[__]ファイル一覧をループ
+
+....
+for file_name in * ;do
+    echo ${file_name}
+done
+....
+
+....
+files=(`ls -1 somedir/`)
+for file_name in "${files[@]}"; do
+    echo ${file_name}
+done
+....
+
+== [#引数をすべてループ .fragment]##link:#%E5%BC%95%E6%95%B0%E3%82%92%E3%81%99%E3%81%B9%E3%81%A6%E3%83%AB%E3%83%BC%E3%83%97[__]引数をすべてループ
+
+....
+for arg; do
+  echo ${arg}
+done
+....
+
+....
+for arg in "$@"; do
+  echo ${arg}
+done
+....
+
+....
+$ ./hoge.sh altair betelgeuse canopus
+....
+
+Thanks to: link:/akinomyoga[@akinomyoga], link:/mpyw[@mpyw]
+
+== [#ファイルを読み込んで1行づつループ .fragment]##link:#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%93%E3%81%A71%E8%A1%8C%E3%81%A5%E3%81%A4%E3%83%AB%E3%83%BC%E3%83%97[__]ファイルを読み込んで1行づつループ
+
+....
+while read line ; do
+    echo ${line}
+
+done < ${DATAFILE}
+....
+
+== [#二次元表 .fragment]##link:#%E4%BA%8C%E6%AC%A1%E5%85%83%E8%A1%A8[__]二次元表
+
+....
+#!/usr/bin/env bash
+
+# iOS 公開用に PNG 画像のアイコンサイズを変更するスクリプト
+
+sizes=(
+"29 29"
+"40 40"
+"50 50"
+"57 57"
+"58 29@2x"
+"60 60"
+"72 72"
+"76 76"
+"80 40@2x"
+"87 29@3x"
+"100 50@2x"
+"114 57@2x"
+"120 60@2x"
+"144 72@2x"
+"152 76@2x"
+"167 83.5@2x"
+"180 60@3x"
+)
+
+if [ ! "${1}" ]; then
+    echo "usage: ${0} <image-file>"
+    exit 1
+fi
+
+bn=`basename ${1}`
+bn=${bn%.*}
+DN=`dirname ${1}`
+for size in "${sizes[@]}"; do
+    s=(${size})
+    out_file=${bn}_${s[1]}.png
+    echo ${s[0]} ${out_file}
+    # sips --resampleWidth ${s[0]} --out ${out_file} ${1}
+    convert -resize ${s[0]}x ${1} ${out_file}
+done
+....
+
+=== [#zsh-の場合 .fragment]##link:#zsh-%E3%81%AE%E5%A0%B4%E5%90%88[__]zsh の場合
+
+....
+#!/usr/bin/env zsh
+
+# ↓これを書いておく
+setopt SH_WORD_SPLIT
+
+servers=(
+  "1 user@server1.example.com"
+  "2 user@server2.example.com"
+)
+
+for row in "${servers[@]}"; do
+  echo '========================'
+  s=(${row})
+  echo ${s[1]}
+  echo ${s[2]}
+done
+....
+
+==== [#結果 .fragment]##link:#%E7%B5%90%E6%9E%9C[__]結果
+
+....
+========================
+1
+user@server1.example.com
+========================
+2
+user@server2.example.com
+....
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_234.svg
+
+link:/ytyng/items/d7afe80ef9da7aa8b721/likers[144]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_240.svg
+
+[.style-1129w32]#120#
+
+link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##2]
+
+Go to list of comments
+
+Register as a new user and use Qiita more conveniently
+
+. You get articles that match your needs
+. You can efficiently read back useful information
+. You can use dark theme
+
+https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
+signing up]
+
+link:/signup?callback_action=login_or_signup&redirect_to=%2Fytyng%2Fitems%2Fd7afe80ef9da7aa8b721&realm=qiita[Sign
+up]link:/login?callback_action=login_or_signup&redirect_to=%2Fytyng%2Fitems%2Fd7afe80ef9da7aa8b721&realm=qiita[Login]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_260.svg
+
+link:/ytyng/items/d7afe80ef9da7aa8b721/likers[144]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_266.svg
+
+[.style-1vem4tk]#120#
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[[GlobalFooter-react-component-d52cc514-0dc6-4153-824a-df582de64703]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_287.svg
+
+How developers code is here.
+
+[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
+
+Guide & Help
+
+* link:/about[About]
+* link:/terms[Terms]
+* link:/privacy[Privacy]
+* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
+* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
+* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
+* https://help.qiita.com[Help]
+* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
+
+Contents
+
+* link:/release-notes[Release Note]
+* link:/official-events[Official Event]
+* link:/official-columns[Official Column]
+* link:/advent-calendar/2024[Advent Calendar]
+* link:/qiita-award[Qiita Award]
+* link:/white_papers/2024[Engineer White Paper]
+* link:/api/v2/docs[API]
+
+Official Accounts
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_316.svg
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_317.svg
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/8.for書き方/8-3/8-3_318.svg
+* https://www.facebook.com/qiita/[Facebook]
+* https://www.youtube.com/@qiita5366[YouTube]
+* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
+
+Our service
+
+* https://teams.qiita.com/[Qiita Team]
+* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
+Zine]
+* https://suzuri.jp/qiita[Official Shop]
+
+Company
+
+* https://corp.qiita.com/company[About Us]
+* https://corp.qiita.com/jobs/[Careers]
+* https://blog.qiita.com[Qiita Blog]
+* https://corp.qiita.com/releases/[News Release]
+
+[[Snackbar-react-component-3393a9ed-55d5-4bcd-87d1-d30f28014005]]
+
+[[LoginModal-react-component-a5ce3348-d910-4f18-9528-f9be650815d9]]
+
+[[dataContainer]]

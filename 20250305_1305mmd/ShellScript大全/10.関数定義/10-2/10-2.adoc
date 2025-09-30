@@ -1,0 +1,244 @@
+[[globalheader-container]]
+
+[[container]]
+[[container-inner]]
+[[blog-title]]
+[[blog-title-inner]]
+[[blog-title-content]]
+[[title]]
+== https://shellscript_encyclopedia.github.com/[ShellScript大全]
+
+[[content]]
+[[content-inner]]
+[[wrapper]]
+[[main]]
+[[main-inner]]
+
+
+https://job-info.hateblo.jp/archive/category/%E3%82%B7%E3%82%A7%E3%83%AB[シェル]
+https://job-info.hateblo.jp/archive/category/Shell[Shell]
+
+[.underline]##
+
+* link:#シェルから他のシェルスクリプトを呼び出す方法[シェルから他のシェルスクリプトを呼び出す方法]
+** link:#1-シンプルな呼び出し[1. シンプルな呼び出し]
+** link:#2-source-コマンドを使用[2. source コマンドを使用]
+** link:#3-bash-コマンドを使用[3. bash コマンドを使用]
+** link:#まとめ[まとめ]
+
+[[シェルから他のシェルスクリプトを呼び出す方法]]
+== シェルから他のシェルスクリプトを呼び出す方法
+
+シェルから他のシェルスクリプトを呼び出す方法はいくつかあります。 +
+基本的な方法として、以下の3つが挙げられます。
+
+[[1-シンプルな呼び出し]]
+=== 1. シンプルな呼び出し
+
+シェルスクリプト内で、他のシェルスクリプトをそのまま呼び出すことができます。 +
+例えば、script2.shをscript1.shから実行する場合、以下のように書きます。
+
+[source,code,lang-sh]
+----
+#!/bin/bash
+
+# script1.shの内容
+echo "This is script1"
+# script2.shを呼び出し
+./script2.sh
+----
+
+この方法では、script2.shが実行され、その結果がscript1.shに返されます。 +
+script2.shが実行された後、script1.shの次の行が実行されます。
+
+[[2-source-コマンドを使用]]
+=== 2. source コマンドを使用
+
+source
+コマンドを使用すると、他のシェルスクリプトを現在のシェルセッション内で実行できます。 +
+これにより、呼び出されたスクリプト内の変数や関数が現在のシェルに引き継がれます。
+
+[source,code,lang-sh]
+----
+#!/bin/bash
+
+# script1.shの内容
+echo "This is script1"
+# script2.shを呼び出し
+source ./script2.sh
+----
+
+この場合、script2.sh内で定義された変数や関数は、script1.shでも使用できます。 +
+例えば、script2.shで変数VARを設定すると、script1.shでもその変数VARにアクセスできます。
+
+[[3-bash-コマンドを使用]]
+=== 3. bash コマンドを使用
+
+bashコマンドを使って、他のシェルスクリプトを新しいシェルプロセスで実行することもできます。 +
+これにより、スクリプトを独立したプロセスで実行できます。
+
+[source,code,lang-sh]
+----
+#!/bin/bash
+
+# script1.shの内容
+echo "This is script1"
+# script2.shを別プロセスで実行
+bash ./script2.sh
+----
+
+この方法では、script2.shは新しいシェルプロセスで実行されるため、script2.sh内の変数や関数はscript1.shに引き継がれません。 +
+script2.shが終了すると、script1.shに制御が戻ります。
+
+=== まとめ
+
+* *シンプルな呼び出し*
+
+呼び出したスクリプトが終了すると次の行が実行される。
+
+* *source コマンド*
+
+呼び出したスクリプトの変数や関数をそのまま使用できる。
+
+* *bash コマンド*
+
+別のシェルプロセスでスクリプトを実行し、独立した環境を提供する。
+
+それぞれの方法には特性があり、目的に応じて適切な方法を選択することが重要です。
+
+[.author .vcard]#[.fn]#tomotomo1129##
+[.entry-footer-time]#https://job-info.hateblo.jp/entry/2024/08/16/233850[2024-08-16
+23:38]#
+
+https://b.hatena.ne.jp/entry/s/job-info.hateblo.jp/entry/2024/08/16/233850[image:https://b.st-hatena.com/images/entry-button/button-only.gif[この記事をはてなブックマークに追加,width=20,height=20]]
+
+https://x.com/intent/tweet?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%8B%E3%82%89%E4%BB%96%E3%81%AE%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99%E6%96%B9%E6%B3%95+-+Web%E9%96%8B%E7%99%BA%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E7%9F%A5%E8%A6%8B%E5%85%B1%E6%9C%89%E7%B3%BB%E3%83%9A%E3%83%BC%E3%82%B8&url=https%3A%2F%2Fjob-info.hateblo.jp%2Fentry%2F2024%2F08%2F16%2F233850[]
+
+[[entry-footer-secondary-modules]]
+関連記事
+
+* {blank}
++
+https://job-info.hateblo.jp/archive/2024/08/17[2024-08-17]
+
+https://job-info.hateblo.jp/entry/2024/08/17/192419[シェルのsourceコマンド]
+
+シェルのsourceコマンド 使用方法 主な用途 注意点 例 シェルの…
+* {blank}
++
+https://job-info.hateblo.jp/archive/2024/08/16[2024-08-16]
+
+https://job-info.hateblo.jp/entry/2024/08/16/231152[シェルで定数宣言をする方法]
+
+シェルで定数宣言をする方法 1. readonly コマンドを使う 例: 2…
+* {blank}
++
+https://job-info.hateblo.jp/archive/2024/08/16[2024-08-16]
+
+https://job-info.hateblo.jp/entry/2024/08/16/230651[シェルでtry~catch構文を実装]
+
+シェルでtry~catch構文を実装 1. エラーコードのチェック 2. tr…
+* {blank}
++
+https://job-info.hateblo.jp/archive/2024/08/16[2024-08-16]
+
+https://job-info.hateblo.jp/entry/2024/08/16/230638[シェルでメール送信処理を実装]
+
+シェルでメール送信処理を実装 1. mail コマンドを使用する方法…
+* {blank}
++
+https://job-info.hateblo.jp/archive/2024/08/16[2024-08-16]
+
+https://job-info.hateblo.jp/entry/2024/08/16/230552[シェルのデバッグ方法]
+
+シェルのデバッグ方法 1. -x オプションを使用する 2. set -x …
+
+[.underline]##
+
+[.pager-prev]#
+https://job-info.hateblo.jp/entry/2024/08/16/233907[[.pager-arrow]#« #
+Linuxでaliasを設定する方法] # [.pager-next]#
+https://job-info.hateblo.jp/entry/2024/08/16/231152[シェルで定数宣言をする方法
+[.pager-arrow]# »#] #
+
+[[box1-inner]]
+
+[[box2-inner]]
+検索
+
+[.underline]##
+
+https://job-info.hateblo.jp/archive[最新記事]
+
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/11/23/212054[Swiftで@Stateを使用する例]
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/11/23/211625[Swiftで、ボタンクリックで別のViewを表示させる方法]
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/11/23/211151[Swiftの#Previewの使い方]
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/09/19/222920[MySQLでREPLACEを使った置換]
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/09/19/140859[MySQLで正規表現の使い方]
+
+[.underline]##
+
+関連記事
+
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/08/17/192651[シェルでnull判定の書き方]
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/08/17/192623[シェルでタイムアウトの設定]
+* {blank}
++
+https://job-info.hateblo.jp/entry/2024/08/17/192523[tailとlessコマンドの違い]
+
+[.underline]##
+
+注目記事
+
+[[bottom-editarea]]
+[.underline]##
+
+[[fb-root]]
+
+__
+
+[.js-tweet-quote]#image:https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8[https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon,title="引用して投稿する"]#
+
+[[quote-stock-message-box]]
+[[quote-stock-succeeded-message]]
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+[[quote-login-required-message]]
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+[[quote-stock-failed-message]]
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+[[unstockable-quote-message-box]]
+限定公開記事のため引用できません。
+
+[[hidden-subscribe-button]]
+link:#[[.subscribing]# [.foreground]#読者です#
+[.background]#読者をやめる# # [.unsubscribing]#
+[.foreground]#読者になる# [.background]#読者になる# #]
+
+__ [.underline]## [.subscription-count .js-subscription-count]# #

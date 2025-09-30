@@ -1,0 +1,943 @@
+[[globalheader-container]]
+
+[[container]]
+[[container-inner]]
+[[blog-title]]
+[[blog-title-inner]]
+[[blog-title-content]]
+[[title]]
+== https://blog.cybozu.io/[Cybozu Inside Out | サイボウズエンジニアのブログ]
+
+[[content]]
+[[content-inner]]
+[[wrapper]]
+[[main]]
+[[main-inner]]
+https://blog.cybozu.io/archive/2016/09/26[[.date-year]#2016#[.hyphen]#-#[.date-month]#09#[.hyphen]#-#[.date-day]#26#]
+
+== https://blog.cybozu.io/entry/2016/09/26/080000[Bashタブ補完自作入門]
+
+https://blog.cybozu.io/archive/category/Linux[Linux]
+
+ドーモ、SREチームの湯谷(https://twitter.com/yutannihilation[@yutannihilation])です。最近気になるモジュラーシンセはIntellijelです。
+
+上司がhttp://blog.cybozu.io/entry/cybozu-go-cmd[いい感じのコマンドをつくるという記事]を書いていましたが、いい感じのコマンドにはいい感じのタブ補完を付けたくなります。この記事ではBashのタブ補完を自作する方法を紹介します。
+
+== タブ補完の仕組み
+
+Bashのタブ補完自体はBashに組み込まれている仕組みです（参考：http://www.gnu.org/software/bash/manual/bash.html#Programmable-Completion[Bash
+Reference Manual - 8.6 Programmable
+Completion]）。`complete`というBashの組み込み関数によって補完方法（`compspec(completion specification)`と言うらしいです）が規定されていて、これがタブなどによって起動されます。
+
+タブ補完は、`ls`ならファイル名、`cd`ならディレクトリ名、というようにコマンドに応じたものが設定されています。最近のLinuxディストリビューションでは多くのコマンドで快適にタブ補完ができますが、それはhttps://github.com/scop/bash-completion[bash-completion]というパッケージのおかげです。
+
+このパッケージが用意してくれている数々の補完関数は、`/usr/share/bash-completion/completions`以下に配置されていることが多いです（このパスはディストリビューションやbash-completionのバージョンによっても異なります）。たとえば、`man`の補完方法は`/usr/share/bash-completion/completions/man`に定義されています。見てみましょう。
+
+[source,code,lang-sh]
+----
+$ cat /usr/share/bash-completion/completions/man
+# man(1) completion                                        -*- shell-script -*-
+
+[[ $OSTYPE == *@(darwin|freebsd|solaris|cygwin|openbsd)* ]] || _userland GNU \
+    || return 1
+
+_man()
+{
+    local cur prev words cword split
+    _init_completion -s -n : || return
+
+...略...
+
+    __ltrim_colon_completions "$cur"
+    return 0
+} &&
+complete -F _man man apropos whatis
+
+# ex: ts=4 sw=4 et filetype=sh
+----
+
+`_man()`というシェル関数が定義され、それに続いて`complete`コマンドが実行されています。`-F`は、補完するための関数を指定するオプションです。これによって、`man`コマンドと`apropos`コマンドと`whatis`コマンドは`_man()`という関数によって補完が行われるように設定されています。
+
+ユーザがタブを押すと、`_man()`に`COMP_CWORD`とか`COMP_WORDS`といった変数（後述）で今のコマンドラインに入力されている文字が渡されます。`_man()`はそこから候補を絞り込んだ結果を、`COMPREPLY`という変数で返します。それがタブ補完の候補として表示される、という流れです。
+
+== はじめの一歩
+
+まず、候補として`one`と`two`を表示するシンプルな関数`_dummy()`をつくってみます。候補のリストを`COMPREPLY`という変数に入れると、補完候補として表示されるようになります。
+
+[source,code,lang-sh]
+----
+$ _dummy() { COMPREPLY=(one two); }
+----
+
+これを`man`コマンドの補完方法に指定します。
+
+[source,code,lang-sh]
+----
+$ complete -F _dummy man
+----
+
+これで`man`コマンドは`_dummy`関数でタブ補完されるようになりました。ここで、
+
+[source,code,lang-sh]
+----
+$ man <TAB>
+----
+
+と打つと、以下のように候補が表示されるはずです。
+
+[source,code,lang-sh]
+----
+$ man
+one  two
+----
+
+でも上の`_dummy()`だと、コマンドラインの状態はお構いなしに同じ候補しか表示しません。
+
+[source,code,lang-sh]
+----
+$ man o<TAB>
+one  two
+$ man one<TAB>
+one  two
+----
+
+`o`まで打ったら候補は`one`だけになってほしいですよね。そのために`_dummy()`は、今のコマンドラインの状態を受け取って、候補の絞り込みをする必要があります。
+
+== 補完候補の絞り込み
+
+これには、`COMP_CWORD`・`COMP_WORDS`という変数と`compgen`というコマンドを使います。
+
+=== `COMP_CWORD`・`COMP_WORDS`
+
+この変数には、それぞれ以下の値が入っています。
+
+* `COMP_CWORD`: 今カーソルがあるワードは何語目か
+* `COMP_WORDS`: コマンドラインのワードのリスト
+
+たとえば、以下のように`COMP_CWORD`と`COMP_WORDS`を`echo`する関数を設定してみます。
+
+[source,code,lang-sh]
+----
+$ _dummy()
+{
+  echo
+  echo COMP_CWORD: ${COMP_CWORD}
+  echo COMP_WORDS: ${COMP_WORDS[@]}
+}
+----
+
+これでタブを押すと、以下のような結果になります。`COMP_CWORD`と`COMP_WORDS`にどのような変数が渡っているかイメージが付くでしょうか。カーソルの直前がワードのときと空白のときで結果が異なる点には注意が必要です。
+
+[source,code,lang-sh]
+----
+$ man <TAB>
+COMP_CWORD: 1
+COMP_WORDS: man
+----
+
+[source,code,lang-sh]
+----
+$ man test test2<TAB>
+COMP_CWORD: 2
+COMP_WORDS: man test test2
+----
+
+[source,code,lang-sh]
+----
+$ man test test2 <TAB>
+COMP_CWORD: 3
+COMP_WORDS: man test test2
+----
+
+=== `_get_comp_words_by_ref()`
+
+現在カーソルがあるワードは`${COMP_WORDS[${COMP_CWORD}]}`、そのひとつ前は`${COMP_WORDS[${COMP_CWORD}-1]}`といったかたちでアクセスすることができます。でも、ちょっと長くて見づらいです。`_get_comp_words_by_ref()`という便利関数を使うと、現在カーソルがあるワードは`$cur`、ひとつ前のワードは`$prev`、ワード数は`$cword`という変数に入ります。
+
+こんな感じです。
+
+[source,code,lang-sh]
+----
+$ _dummy()
+{
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  echo
+  echo cur: ${cur}
+  echo prev: ${prev}
+  echo cword: ${cword}
+}
+
+$ man arg1 arg2<TAB>
+cur: arg2
+prev: arg1
+cword: 2
+----
+
+こうした便利関数はやはりbash-completionパッケージによって提供されているもので、`/usr/share/bash-completion/bash_completion`に定義されています。定義が気になる場合はこのファイルを覗いてみましょう。（例えば`_get_comp_words_by_ref`の定義はhttps://github.com/scop/bash-completion/blob/c16826ee35ecb405fe87007404d0fb846ad61a15/bash_completion#L343-L369[このあたり]です）
+
+=== `compgen`
+
+`compgen`は、オプションによって出てくる補完候補から、引数とマッチ（基本的に前方一致）するものだけを絞り込むコマンドです。各オプションは`man 7 bash-builtins`に詳しく書かれています。ここでは主要なオプションだけ紹介します。
+
+* `-W`
+
+`-W`は、変換候補となる文字列のリストを指定するオプションです。以下のように、指定した文字列リストから、引数と前方一致するものだけに絞り込んでリストアップしてくれます。
+
+[source,code,lang-sh]
+----
+$ compgen -W "one two once twice" --
+one
+two
+once
+twice
+$ compgen -W "one two once twice" -- o
+one
+once
+$ compgen -W "one two once twice" -- onc
+once
+----
+
+* `-c`/`-f`/`-d`
+
+自前で文字列のリストを与えなくても、コマンドのリストとか、ファイルのリストとかを補完候補にすることができるオプションです。`-c`はコマンド（と実行ファイル、ディレクトリ）、`-f`はファイル、`-d`はディレクトリを補完するようになります。たとえば、以下のように`-c`オプションに`man`という引数を与えると、`man`から始まるコマンドがリストアップされます。
+
+[source,code,lang-sh]
+----
+$ compgen -c -- man
+mandb
+manpage-alert
+man
+manpath
+----
+
+=== 補完してみる
+
+`compgen`を使うと、`dummy()`は現在のコマンドラインの文字を使って候補を絞り込んだ補完ができるようになります。
+
+[source,code,lang-sh]
+----
+$ _dummy()
+{
+  local cur prev opts
+  _get_comp_words_by_ref -n : cur prev
+  opts="one two once twice"
+
+  COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+}
+----
+
+こんな感じの動きです。
+
+[source,code,lang-sh]
+----
+$ man <TAB>
+once   one    twice  two
+$ man on<TAB>
+once  one
+----
+
+ようやく補完できました。めでたしめでたし！（たったこれだけしか補完できない`_dummy()`に飽きたら、`complete -r man`でデフォルトの補完に戻すことができます）
+
+== 例：go-apt-cacher の補完
+
+具体例として、APT専用のキャッシュプロキシhttp://blog.cybozu.io/entry/2016/07/19/103000[go-apt-cacher]のタブ補完をつくってみましょう。
+
+`go-apt-cacher`には以下のオプションがあります（バージョン1.2.2時点）。オプションによって補完すべきものが違います。`-f`と`-logfile`はファイル名をとり、`-logformat`と`-loglevel`はそれぞれ固有の選択肢をとります。
+
+[source,code,lang-sh]
+----
+$ go-apt-cacher -h
+Usage of go-apt-cacher:
+  -f string
+        configuration file name (default "/etc/go-apt-cacher.toml")
+  -logfile string
+        Log filename
+  -logformat string
+        Log format [plain,logfmt,json]
+  -loglevel string
+        Log level [critical,error,warning,info,debug]
+----
+
+まず、`go-apt-cacher -`まで入力してタブを押すとオプションが補完されるようにしてみましょう。オプションはコマンドの直後、つまり`$cword`が1の位置にきます。このときはオプションのリストを`compgen`の`-W`に指定して補完するようにします。
+
+[source,code,lang-sh]
+----
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+----
+
+次に、オプションが`-logformat`の場合は`plain`、`logfmt`、`json`のいずれかが、`-loglevel`の場合は`critical`、`error`、`warning`、`info`、`debug`が補完されるようにしてみましょう。カーソルがオプションの次に来ているときは、`$prev`にオプションが入るのでこれを条件分岐に使うといいでしょう。
+
+[source,code,lang-sh]
+----
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+  elif [ "${cword}" -eq 2 ]; then
+    if [ "${prev}" = "-logformat" ]; then
+      COMPREPLY=( $(compgen -W "plain logfmt json" -- "${cur}") )
+    elif [ "${prev}" = "-loglevel" ]; then
+      COMPREPLY=( $(compgen -W "critical error warning info debug" -- "${cur}") )
+    fi
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+----
+
+さらに、オプションが`-logfile`や`-f`のときにはファイルへのパスが補完されるようにしてみます。ファイルの補完には`compgen`の`-f`オプションを使います。`compopt -o filenames`は、ディレクトリ名には`/`を付けてくれるようにするおまじないです（詳しいことが気になる方は`man 7 bash-builtins`を読んでください）。
+
+[source,code,lang-sh]
+----
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+
+  elif [ "${cword}" -eq 2 ]; then
+    if [ "${prev}" = "-logformat" ]; then
+      COMPREPLY=( $(compgen -W "plain logfmt json" -- "${cur}") )
+    elif [ "${prev}" = "-loglevel" ]; then
+      COMPREPLY=( $(compgen -W "critical error warning info debug" -- "${cur}") )
+    elif [ "${prev}" = "-logfile" -o "${prev}" = "-f" ]; then
+      compopt -o filenames
+      COMPREPLY=( $(compgen -f -- "${cur}") )
+    fi
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+----
+
+これで完成です。
+
+この例は`compgen`の`-W`と`-f`しか使いませんでしたが、最終的に`COMPREPLY`に候補のリストを渡せば何をしてもかまいません。やり方は様々です。`/usr/share/bash-completion/completions/`下に良い例がたくさんあるので、探求心の強い方は参考にしてみてください。
+
+== 補完関数の置き場所
+
+個人的に使うものであれば`~/.bash_completion`というファイルをつくって書いておけば、ログイン時に自動で読み込まれます。
+
+パッケージなどに含める場合であれば、bash-completionパッケージが使っている`/usr/share/bash-completion/completions`などに置くのが良いでしょう。このパスは、`pkg-config --variable=completionsdir bash-completion`というコマンドで調べることができます。詳しくはhttps://github.com/scop/bash-completion#faq[bash-completionのFAQ]を参照してください。
+
+== まとめ
+
+みなさまの快適なBash生活の一助となれば幸いです。
+
+サイボウズではBashやビアバッシュが好きなエンジニアを募集しています。SREの募集要項はhttp://cybozu.co.jp/company/job/recruitment/list/sre.html[こちら]です。
+
+[.author .vcard]#[.fn]#cybozuinsideout##
+[.entry-footer-time]#https://blog.cybozu.io/entry/2016/09/26/080000[2016-09-26
+08:00]#
+
+[[entry-footer-secondary-modules]]
+
+[[fb-root]]
+
+http://b.hatena.ne.jp/entry/https://blog.cybozu.io/entry/2016/09/26/080000[image:https://b.st-hatena.com/images/entry-button/button-only@2x.png[このエントリーをはてなブックマークに追加,width=20,height=20]]
+
+https://twitter.com/share[Tweet]
+
+[.pager-prev]#
+https://blog.cybozu.io/entry/internship-2016-qa-security[[.pager-arrow]#«
+# サイボウズサマーインターン2016 報告その…] # [.pager-next]#
+https://blog.cybozu.io/entry/internship-2016-web-application-development[サイボウズサマーインターン2016
+報告その… [.pager-arrow]# »#] #
+
+[[box1-inner]]
+
+[[box2-inner]]
+Profile
+
+https://blog.cybozu.io/about[image:https://cdn.profile-image.st-hatena.com/users/cybozuinsideout/profile.png?1671431787[id:cybozuinsideout]]
+[.id]# https://blog.cybozu.io/about[id:cybozuinsideout]
+https://blog.hatena.ne.jp/guide/corporation[_はてなブログ for DevBlog_]
+#
+
+最終更新: 2025-03-07 17:00
+
+link:#[[.subscribing]# [.foreground]#読者です#
+[.background]#読者をやめる# # [.unsubscribing]#
+[.foreground]#読者になる# [.background]#読者になる# #]
+
+__ [.underline]## [.subscription-count .js-subscription-count]# #
+
+https://blog.cybozu.io/about[このブログについて]
+
+リンク
+
+* {blank}
++
+https://tech.cybozu.io/[image:https://tech.cybozu.io/favicon-32x32.png[https://tech.cybozu.io/favicon-32x32,width=24,height=24]Cybozu
+Tech - ポータルサイト]
+* {blank}
++
+https://blog.kintone.io/[image:https://blog.kintone.io/icon/favicon[https://blog.kintone.io/icon/favicon,width=24,height=24]Kintone
+Engineering Blog]
+* {blank}
++
+https://tech.cybozu.vn/[image:https://tech.cybozu.vn/favicon-32x32.png[https://tech.cybozu.vn/favicon-32x32,width=24,height=24]Cybozu
+Vietnam Tech Sharing]
+* {blank}
++
+https://twitter.com/cybozuinsideout[image:https://abs.twimg.com/favicons/twitter.3.ico[https://abs.twimg.com/favicons/twitter.3,width=24,height=24]X
+(旧Twitter) - CybozuInsideOut]
+* {blank}
++
+https://cybozu.connpass.com/[image:https://connpass.com/static/img/favicon.ico[https://connpass.com/static/img/favicon,width=24,height=24]connpass
+- Cybozu Inside Out]
+* {blank}
++
+https://speakerdeck.com/cybozuinsideout/[image:https://d1eu30co0ohy4w.cloudfront.net/assets/favicon-bdd5839d46040a50edf189174e6f7aacc8abb3aaecd56a4711cf00d820883f47.png[https://d1eu30co0ohy4w.cloudfront.net/assets/favicon-bdd5839d46040a50edf189174e6f7aacc8abb3aaecd56a4711cf00d820883f47,width=24,height=24]Speaker
+Deck - cybozuinsideout]
+* {blank}
++
+https://www.youtube.com/c/cybozuinsideout[image:https://www.youtube.com/s/desktop/25bf5aae/img/favicon_32x32.png[https://www.youtube.com/s/desktop/25bf5aae/img/favicon_32x32,width=24,height=24] YouTube
+- cybozuinsideout]
+* {blank}
++
+https://cybozu.github.io/summer-blog-fes-2024/[image:https://cybozu.github.io/summer-blog-fes-2024/favicon.png[https://cybozu.github.io/summer-blog-fes-2024/favicon,width=24,height=24]CYBOZU
+SUMMER BLOG FES '24]
+* {blank}
++
+https://blog.cybozu.io/advent_calendar_2022[image:https://cdn-ak.f.st-hatena.com/images/fotolife/c/cybozuinsideout/20230529/20230529185416.png[https://cdn-ak.f.st-hatena.com/images/fotolife/c/cybozuinsideout/20230529/20230529185416,width=24,height=24] Cybozu
+Advent Calendar 2022]
+
+X (旧Twitter)
+
+https://twitter.com/cybozuinsideout?ref_src=twsrc%5Etfw[Tweets by
+cybozuinsideout]
+
+https://blog.cybozu.io/archive[最新記事]
+
+* {blank}
++
+https://blog.cybozu.io/entry/2025/03/07/170000[image:https://cdn.image.st-hatena.com/image/square/e1d925c4f53b61e230fe0777c23af83844bdf556/backend=imagemagick;height=140;version=1;width=250/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fyellow-sabotech%2F20250226%2F20250226132623.png[『モバイルまつり』と題してモバイルエンジニアが集合し、交流会とOSTをしました！,title="『モバイルまつり』と題してモバイルエンジニアが集合し、交流会とOSTをしました！",width=250,height=140]]
+
+https://blog.cybozu.io/archive/2025/03/07[2025-03-07]
+
+https://blog.cybozu.io/entry/2025/03/07/170000[『モバイルまつり』と題してモバイルエンジニアが集合…]
+
+こんにちは！kintoneのAndroidエンジニア、トニオ（@tonionagauzzi）です。
+今回は、サイボウズのAndroid…
+* {blank}
++
+https://blog.cybozu.io/entry/2025/02/26/112000[image:https://cdn.image.st-hatena.com/image/square/00fa050e84154d539982a4af8425c1f0aae23a2f/backend=imagemagick;height=140;version=1;width=250/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fm%2Fmehm8128%2F20250218%2F20250218181757.png[25新卒エンジニア5人の内定者アルバイト体験記,title="25新卒エンジニア5人の内定者アルバイト体験記",width=250,height=140]]
+
+https://blog.cybozu.io/archive/2025/02/26[2025-02-26]
+
+https://blog.cybozu.io/entry/2025/02/26/112000[25新卒エンジニア5人の内定者アルバイト体験記]
+
+こんにちは、サイボウズ 25卒エンジニアチームです。
+今回、サイボウズの25卒エンジニアの中で内定者アル…
+* {blank}
++
+https://blog.cybozu.io/entry/2025/02/21/140000[image:https://cdn.image.st-hatena.com/image/square/551f319e5fb358f451e0a09a9d4092b95683ba34/backend=imagemagick;height=140;version=1;width=250/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fy%2Fyellow-sabotech%2F20250217%2F20250217214752.png[コドモンとサイボウズで、XPとスクラムのアプローチの違いを語るイベントを開催しました！,title="コドモンとサイボウズで、XPとスクラムのアプローチの違いを語るイベントを開催しました！",width=250,height=140]]
+
+https://blog.cybozu.io/archive/2025/02/21[2025-02-21]
+
+https://blog.cybozu.io/entry/2025/02/21/140000[コドモンとサイボウズで、XPとスクラムのアプローチ…]
+
+こんにちは。kintone開発のAndroidエンジニア、トニオ（@tonionagauzzi）です。
+本日は、株式会社コドモン…
+
+検索
+
+カテゴリー
+
+* https://blog.cybozu.io/archive/category/AI[AI (4)]
+* https://blog.cybozu.io/archive/category/Android[Android (31)]
+* https://blog.cybozu.io/archive/category/Arduino[Arduino (1)]
+* https://blog.cybozu.io/archive/category/Argo%20CD[Argo CD (8)]
+* https://blog.cybozu.io/archive/category/AWS[AWS (14)]
+* https://blog.cybozu.io/archive/category/C%2FC%2B%2B[C/C++ (24)]
+* https://blog.cybozu.io/archive/category/Ceph[Ceph (4)]
+* https://blog.cybozu.io/archive/category/CI%2FCD[CI/CD (9)]
+* https://blog.cybozu.io/archive/category/Design%20Systems[Design
+Systems (2)]
+* https://blog.cybozu.io/archive/category/DevOps[DevOps (1)]
+* https://blog.cybozu.io/archive/category/DOGO[DOGO (4)]
+* https://blog.cybozu.io/archive/category/DX[DX (2)]
+* https://blog.cybozu.io/archive/category/Elasticsearch[Elasticsearch
+(2)]
+* https://blog.cybozu.io/archive/category/EngineeringProductivity[EngineeringProductivity
+(12)]
+* https://blog.cybozu.io/archive/category/Flutter[Flutter (1)]
+* https://blog.cybozu.io/archive/category/Garoon[Garoon (22)]
+* https://blog.cybozu.io/archive/category/Gemini[Gemini (1)]
+* https://blog.cybozu.io/archive/category/GitHubActions[GitHubActions
+(4)]
+* https://blog.cybozu.io/archive/category/Go[Go (18)]
+* https://blog.cybozu.io/archive/category/Google%20I%2FO[Google I/O (2)]
+* https://blog.cybozu.io/archive/category/iOS[iOS (28)]
+* https://blog.cybozu.io/archive/category/Java[Java (23)]
+* https://blog.cybozu.io/archive/category/JavaScript[JavaScript (26)]
+* https://blog.cybozu.io/archive/category/kintone[kintone (57)]
+* https://blog.cybozu.io/archive/category/Kotlin[Kotlin (8)]
+* https://blog.cybozu.io/archive/category/KotlinFest[KotlinFest (2)]
+* https://blog.cybozu.io/archive/category/Kubernetes[Kubernetes (41)]
+* https://blog.cybozu.io/archive/category/Linux[Linux (25)]
+* https://blog.cybozu.io/archive/category/Maneki[Maneki (5)]
+* https://blog.cybozu.io/archive/category/Meetup[Meetup (15)]
+* https://blog.cybozu.io/archive/category/MySQL[MySQL (15)]
+* https://blog.cybozu.io/archive/category/Neco[Neco (62)]
+* https://blog.cybozu.io/archive/category/Network[Network (6)]
+* https://blog.cybozu.io/archive/category/Next.js[Next.js (2)]
+* https://blog.cybozu.io/archive/category/Node.js[Node.js (3)]
+* https://blog.cybozu.io/archive/category/npm[npm (4)]
+* https://blog.cybozu.io/archive/category/OSC[OSC (2)]
+* https://blog.cybozu.io/archive/category/OST[OST (3)]
+* https://blog.cybozu.io/archive/category/PHP[PHP (14)]
+* https://blog.cybozu.io/archive/category/PM[PM (3)]
+* https://blog.cybozu.io/archive/category/Python[Python (3)]
+* https://blog.cybozu.io/archive/category/QA[QA (68)]
+* https://blog.cybozu.io/archive/category/R[R (1)]
+* https://blog.cybozu.io/archive/category/React[React (12)]
+* https://blog.cybozu.io/archive/category/Rook[Rook (5)]
+* https://blog.cybozu.io/archive/category/Rust[Rust (2)]
+* https://blog.cybozu.io/archive/category/Selenium[Selenium (9)]
+* https://blog.cybozu.io/archive/category/SRE[SRE (11)]
+* https://blog.cybozu.io/archive/category/Storage[Storage (11)]
+* https://blog.cybozu.io/archive/category/Swift[Swift (12)]
+* https://blog.cybozu.io/archive/category/SwiftUI[SwiftUI (1)]
+* https://blog.cybozu.io/archive/category/TDD[TDD (1)]
+* https://blog.cybozu.io/archive/category/TE[TE (6)]
+* https://blog.cybozu.io/archive/category/TLS[TLS (1)]
+* https://blog.cybozu.io/archive/category/TypeScript[TypeScript (1)]
+* https://blog.cybozu.io/archive/category/Ubuntu[Ubuntu (5)]
+* https://blog.cybozu.io/archive/category/UX%2FUI[UX/UI (17)]
+* https://blog.cybozu.io/archive/category/UX%E3%83%A9%E3%82%A4%E3%82%BF%E3%83%BC[UXライター
+(1)]
+* https://blog.cybozu.io/archive/category/Windows[Windows (5)]
+* https://blog.cybozu.io/archive/category/WWDC[WWDC (1)]
+* https://blog.cybozu.io/archive/category/Yakumo[Yakumo (18)]
+* https://blog.cybozu.io/archive/category/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B[お知らせ
+(32)]
+* https://blog.cybozu.io/archive/category/%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A[ふりかえり
+(6)]
+* https://blog.cybozu.io/archive/category/%E3%82%8F%E3%81%8C%E3%81%BE%E3%81%BE%E3%82%AB%E3%83%BC%E3%83%89[わがままカード
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B7%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3[アクセシビリティ
+(12)]
+* https://blog.cybozu.io/archive/category/%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB[アジャイル
+(27)]
+* https://blog.cybozu.io/archive/category/%E3%82%A2%E3%83%89%E3%83%99%E3%83%B3%E3%83%88%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC[アドベントカレンダー
+(22)]
+* https://blog.cybozu.io/archive/category/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88[イベント
+(121)]
+* https://blog.cybozu.io/archive/category/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3[インターン
+(63)]
+* https://blog.cybozu.io/archive/category/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9[インフラ
+(47)]
+* https://blog.cybozu.io/archive/category/%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9[オープンソース
+(29)]
+* https://blog.cybozu.io/archive/category/%E3%82%B5%E3%82%A4%E3%83%9C%E3%82%A6%E3%82%BAOffice[サイボウズOffice
+(2)]
+* https://blog.cybozu.io/archive/category/%E3%82%B5%E3%82%A4%E3%83%9C%E3%82%A6%E3%82%BA%E3%83%BB%E3%83%A9%E3%83%9C[サイボウズ・ラボ
+(18)]
+* https://blog.cybozu.io/archive/category/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0[スクラム
+(26)]
+* https://blog.cybozu.io/archive/category/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC[スクラムマスター
+(4)]
+* https://blog.cybozu.io/archive/category/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3[セキュリティ
+(58)]
+* https://blog.cybozu.io/archive/category/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88[ソフトウェアテスト
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%81%E3%83%BC%E3%83%A0%E3%83%93%E3%83%AB%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0[チームビルディング
+(2)]
+* https://blog.cybozu.io/archive/category/%E3%83%86%E3%82%AF%E3%83%8B%E3%82%AB%E3%83%AB%E3%83%A9%E3%82%A4%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0[テクニカルライティング
+(21)]
+* https://blog.cybozu.io/archive/category/%E3%83%86%E3%82%B9%E3%83%88[テスト
+(20)]
+* https://blog.cybozu.io/archive/category/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA[テスト駆動開発
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%86%E3%83%AC%E3%83%AF%E3%83%BC%E3%82%AF[テレワーク
+(3)]
+* https://blog.cybozu.io/archive/category/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%8A%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3[デザイナーインターン
+(4)]
+* https://blog.cybozu.io/archive/category/%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3[デザイン
+(15)]
+* https://blog.cybozu.io/archive/category/%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90[データ分析
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86[ドキュメント管理
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%8F%E3%83%83%E3%82%AB%E3%82%BD%E3%83%B3[ハッカソン
+(22)]
+* https://blog.cybozu.io/archive/category/%E3%83%90%E3%82%B0%E3%83%90%E3%82%A6%E3%83%B3%E3%83%86%E3%82%A3[バグバウンティ
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0[パフォーマンスチューニング
+(6)]
+* https://blog.cybozu.io/archive/category/%E3%83%95%E3%83%AD%E3%83%AA%E3%82%A2[フロリア
+(35)]
+* https://blog.cybozu.io/archive/category/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%89[フロントエンド
+(47)]
+* https://blog.cybozu.io/archive/category/%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6[ブラウザ
+(5)]
+* https://blog.cybozu.io/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E[プログラマ
+(7)]
+* https://blog.cybozu.io/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0[プログラミング
+(41)]
+* https://blog.cybozu.io/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88[プログラミングコンテスト
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88[マネジメント
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB[モバイル
+(68)]
+* https://blog.cybozu.io/archive/category/%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0[モブプログラミング
+(7)]
+* https://blog.cybozu.io/archive/category/%E3%83%A9%E3%83%9C%E3%83%A6%E3%83%BC%E3%82%B9[ラボユース
+(20)]
+* https://blog.cybozu.io/archive/category/%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0[リファクタリング
+(2)]
+* https://blog.cybozu.io/archive/category/%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF[リモートワーク
+(4)]
+* https://blog.cybozu.io/archive/category/%E3%83%AA%E3%83%AC%E3%83%BC%E3%83%96%E3%83%AD%E3%82%B0[リレーブログ
+(2)]
+* https://blog.cybozu.io/archive/category/%E3%83%AC%E3%83%88%E3%83%AD%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96[レトロスペクティブ
+(1)]
+* https://blog.cybozu.io/archive/category/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%A9%E3%82%A4%E3%82%BA[ローカライズ
+(10)]
+* https://blog.cybozu.io/archive/category/%E5%83%8D%E3%81%8D%E6%96%B9[働き方
+(7)]
+* https://blog.cybozu.io/archive/category/%E5%86%85%E5%AE%9A%E8%80%85%E3%82%A2%E3%83%AB%E3%83%90%E3%82%A4%E3%83%88[内定者アルバイト
+(1)]
+* https://blog.cybozu.io/archive/category/%E5%8B%89%E5%BC%B7%E4%BC%9A[勉強会
+(64)]
+* https://blog.cybozu.io/archive/category/%E5%8C%97%E6%B5%B7%E9%81%93[北海道
+(1)]
+* https://blog.cybozu.io/archive/category/%E5%8F%82%E5%8A%A0%E5%A0%B1%E5%91%8A[参加報告
+(13)]
+* https://blog.cybozu.io/archive/category/%E5%90%88%E5%AE%BF[合宿 (2)]
+* https://blog.cybozu.io/archive/category/%E5%93%81%E8%B3%AA[品質 (1)]
+* https://blog.cybozu.io/archive/category/%E5%BA%83%E5%B3%B6[広島 (1)]
+* https://blog.cybozu.io/archive/category/%E6%83%85%E3%82%B7%E3%82%B9[情シス
+(1)]
+* https://blog.cybozu.io/archive/category/%E6%8A%80%E8%A1%93%E5%90%8C%E4%BA%BA%E8%AA%8C[技術同人誌
+(1)]
+* https://blog.cybozu.io/archive/category/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A[振り返り
+(4)]
+* https://blog.cybozu.io/archive/category/%E6%96%87%E5%8C%96[文化 (45)]
+* https://blog.cybozu.io/archive/category/%E6%A4%9C%E8%A8%BC[検証 (8)]
+* https://blog.cybozu.io/archive/category/%E6%A9%9F%E8%83%BD%E6%94%B9%E5%96%84[機能改善
+(3)]
+* https://blog.cybozu.io/archive/category/%E6%B5%B7%E5%A4%96%E5%87%BA%E5%BC%B5[海外出張
+(7)]
+* https://blog.cybozu.io/archive/category/%E7%94%9F%E6%88%90AI[生成AI
+(2)]
+* https://blog.cybozu.io/archive/category/%E7%94%9F%E7%94%A3%E6%80%A7%E5%90%91%E4%B8%8A%E3%83%81%E3%83%BC%E3%83%A0[生産性向上チーム
+(12)]
+* https://blog.cybozu.io/archive/category/%E7%99%BA%E8%A1%A8%E8%B3%87%E6%96%99[発表資料
+(22)]
+* https://blog.cybozu.io/archive/category/%E7%A4%BE%E5%86%85%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88[社内イベント
+(14)]
+* https://blog.cybozu.io/archive/category/%E8%A8%BC%E6%98%8E%E6%9B%B8[証明書
+(1)]
+* https://blog.cybozu.io/archive/category/%E9%96%8B%E7%99%BA%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9[開発プロセス
+(37)]
+* https://blog.cybozu.io/archive/category/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83[開発環境
+(29)]
+* https://blog.cybozu.io/archive/category/%E9%A1%A7%E5%AE%A2%E7%90%86%E8%A7%A3[顧客理解
+(1)]
+
+https://blog.cybozu.io/archive[月別アーカイブ]
+
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2025[2025]
+** https://blog.cybozu.io/archive/2025/03[2025 / 3]
+** https://blog.cybozu.io/archive/2025/02[2025 / 2]
+** https://blog.cybozu.io/archive/2025/01[2025 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2024[2024]
+** https://blog.cybozu.io/archive/2024/12[2024 / 12]
+** https://blog.cybozu.io/archive/2024/11[2024 / 11]
+** https://blog.cybozu.io/archive/2024/10[2024 / 10]
+** https://blog.cybozu.io/archive/2024/09[2024 / 9]
+** https://blog.cybozu.io/archive/2024/08[2024 / 8]
+** https://blog.cybozu.io/archive/2024/07[2024 / 7]
+** https://blog.cybozu.io/archive/2024/06[2024 / 6]
+** https://blog.cybozu.io/archive/2024/05[2024 / 5]
+** https://blog.cybozu.io/archive/2024/04[2024 / 4]
+** https://blog.cybozu.io/archive/2024/03[2024 / 3]
+** https://blog.cybozu.io/archive/2024/02[2024 / 2]
+** https://blog.cybozu.io/archive/2024/01[2024 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2023[2023]
+** https://blog.cybozu.io/archive/2023/12[2023 / 12]
+** https://blog.cybozu.io/archive/2023/11[2023 / 11]
+** https://blog.cybozu.io/archive/2023/10[2023 / 10]
+** https://blog.cybozu.io/archive/2023/09[2023 / 9]
+** https://blog.cybozu.io/archive/2023/08[2023 / 8]
+** https://blog.cybozu.io/archive/2023/07[2023 / 7]
+** https://blog.cybozu.io/archive/2023/06[2023 / 6]
+** https://blog.cybozu.io/archive/2023/05[2023 / 5]
+** https://blog.cybozu.io/archive/2023/04[2023 / 4]
+** https://blog.cybozu.io/archive/2023/03[2023 / 3]
+** https://blog.cybozu.io/archive/2023/02[2023 / 2]
+** https://blog.cybozu.io/archive/2023/01[2023 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2022[2022]
+** https://blog.cybozu.io/archive/2022/12[2022 / 12]
+** https://blog.cybozu.io/archive/2022/11[2022 / 11]
+** https://blog.cybozu.io/archive/2022/10[2022 / 10]
+** https://blog.cybozu.io/archive/2022/09[2022 / 9]
+** https://blog.cybozu.io/archive/2022/08[2022 / 8]
+** https://blog.cybozu.io/archive/2022/07[2022 / 7]
+** https://blog.cybozu.io/archive/2022/06[2022 / 6]
+** https://blog.cybozu.io/archive/2022/05[2022 / 5]
+** https://blog.cybozu.io/archive/2022/04[2022 / 4]
+** https://blog.cybozu.io/archive/2022/03[2022 / 3]
+** https://blog.cybozu.io/archive/2022/02[2022 / 2]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2021[2021]
+** https://blog.cybozu.io/archive/2021/12[2021 / 12]
+** https://blog.cybozu.io/archive/2021/11[2021 / 11]
+** https://blog.cybozu.io/archive/2021/10[2021 / 10]
+** https://blog.cybozu.io/archive/2021/09[2021 / 9]
+** https://blog.cybozu.io/archive/2021/08[2021 / 8]
+** https://blog.cybozu.io/archive/2021/07[2021 / 7]
+** https://blog.cybozu.io/archive/2021/06[2021 / 6]
+** https://blog.cybozu.io/archive/2021/05[2021 / 5]
+** https://blog.cybozu.io/archive/2021/04[2021 / 4]
+** https://blog.cybozu.io/archive/2021/03[2021 / 3]
+** https://blog.cybozu.io/archive/2021/02[2021 / 2]
+** https://blog.cybozu.io/archive/2021/01[2021 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2020[2020]
+** https://blog.cybozu.io/archive/2020/12[2020 / 12]
+** https://blog.cybozu.io/archive/2020/11[2020 / 11]
+** https://blog.cybozu.io/archive/2020/10[2020 / 10]
+** https://blog.cybozu.io/archive/2020/09[2020 / 9]
+** https://blog.cybozu.io/archive/2020/08[2020 / 8]
+** https://blog.cybozu.io/archive/2020/07[2020 / 7]
+** https://blog.cybozu.io/archive/2020/06[2020 / 6]
+** https://blog.cybozu.io/archive/2020/05[2020 / 5]
+** https://blog.cybozu.io/archive/2020/04[2020 / 4]
+** https://blog.cybozu.io/archive/2020/03[2020 / 3]
+** https://blog.cybozu.io/archive/2020/02[2020 / 2]
+** https://blog.cybozu.io/archive/2020/01[2020 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2019[2019]
+** https://blog.cybozu.io/archive/2019/12[2019 / 12]
+** https://blog.cybozu.io/archive/2019/11[2019 / 11]
+** https://blog.cybozu.io/archive/2019/10[2019 / 10]
+** https://blog.cybozu.io/archive/2019/09[2019 / 9]
+** https://blog.cybozu.io/archive/2019/08[2019 / 8]
+** https://blog.cybozu.io/archive/2019/07[2019 / 7]
+** https://blog.cybozu.io/archive/2019/06[2019 / 6]
+** https://blog.cybozu.io/archive/2019/05[2019 / 5]
+** https://blog.cybozu.io/archive/2019/04[2019 / 4]
+** https://blog.cybozu.io/archive/2019/03[2019 / 3]
+** https://blog.cybozu.io/archive/2019/02[2019 / 2]
+** https://blog.cybozu.io/archive/2019/01[2019 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2018[2018]
+** https://blog.cybozu.io/archive/2018/12[2018 / 12]
+** https://blog.cybozu.io/archive/2018/11[2018 / 11]
+** https://blog.cybozu.io/archive/2018/10[2018 / 10]
+** https://blog.cybozu.io/archive/2018/09[2018 / 9]
+** https://blog.cybozu.io/archive/2018/08[2018 / 8]
+** https://blog.cybozu.io/archive/2018/07[2018 / 7]
+** https://blog.cybozu.io/archive/2018/06[2018 / 6]
+** https://blog.cybozu.io/archive/2018/05[2018 / 5]
+** https://blog.cybozu.io/archive/2018/04[2018 / 4]
+** https://blog.cybozu.io/archive/2018/03[2018 / 3]
+** https://blog.cybozu.io/archive/2018/02[2018 / 2]
+** https://blog.cybozu.io/archive/2018/01[2018 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2017[2017]
+** https://blog.cybozu.io/archive/2017/12[2017 / 12]
+** https://blog.cybozu.io/archive/2017/11[2017 / 11]
+** https://blog.cybozu.io/archive/2017/10[2017 / 10]
+** https://blog.cybozu.io/archive/2017/09[2017 / 9]
+** https://blog.cybozu.io/archive/2017/08[2017 / 8]
+** https://blog.cybozu.io/archive/2017/07[2017 / 7]
+** https://blog.cybozu.io/archive/2017/06[2017 / 6]
+** https://blog.cybozu.io/archive/2017/05[2017 / 5]
+** https://blog.cybozu.io/archive/2017/04[2017 / 4]
+** https://blog.cybozu.io/archive/2017/03[2017 / 3]
+** https://blog.cybozu.io/archive/2017/02[2017 / 2]
+** https://blog.cybozu.io/archive/2017/01[2017 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2016[2016]
+** https://blog.cybozu.io/archive/2016/12[2016 / 12]
+** https://blog.cybozu.io/archive/2016/11[2016 / 11]
+** https://blog.cybozu.io/archive/2016/10[2016 / 10]
+** https://blog.cybozu.io/archive/2016/09[2016 / 9]
+** https://blog.cybozu.io/archive/2016/08[2016 / 8]
+** https://blog.cybozu.io/archive/2016/07[2016 / 7]
+** https://blog.cybozu.io/archive/2016/06[2016 / 6]
+** https://blog.cybozu.io/archive/2016/05[2016 / 5]
+** https://blog.cybozu.io/archive/2016/04[2016 / 4]
+** https://blog.cybozu.io/archive/2016/03[2016 / 3]
+** https://blog.cybozu.io/archive/2016/02[2016 / 2]
+** https://blog.cybozu.io/archive/2016/01[2016 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2015[2015]
+** https://blog.cybozu.io/archive/2015/12[2015 / 12]
+** https://blog.cybozu.io/archive/2015/11[2015 / 11]
+** https://blog.cybozu.io/archive/2015/10[2015 / 10]
+** https://blog.cybozu.io/archive/2015/09[2015 / 9]
+** https://blog.cybozu.io/archive/2015/07[2015 / 7]
+** https://blog.cybozu.io/archive/2015/06[2015 / 6]
+** https://blog.cybozu.io/archive/2015/05[2015 / 5]
+** https://blog.cybozu.io/archive/2015/04[2015 / 4]
+** https://blog.cybozu.io/archive/2015/03[2015 / 3]
+** https://blog.cybozu.io/archive/2015/02[2015 / 2]
+** https://blog.cybozu.io/archive/2015/01[2015 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2014[2014]
+** https://blog.cybozu.io/archive/2014/12[2014 / 12]
+** https://blog.cybozu.io/archive/2014/11[2014 / 11]
+** https://blog.cybozu.io/archive/2014/10[2014 / 10]
+** https://blog.cybozu.io/archive/2014/09[2014 / 9]
+** https://blog.cybozu.io/archive/2014/08[2014 / 8]
+** https://blog.cybozu.io/archive/2014/07[2014 / 7]
+** https://blog.cybozu.io/archive/2014/06[2014 / 6]
+** https://blog.cybozu.io/archive/2014/05[2014 / 5]
+** https://blog.cybozu.io/archive/2014/04[2014 / 4]
+** https://blog.cybozu.io/archive/2014/03[2014 / 3]
+** https://blog.cybozu.io/archive/2014/02[2014 / 2]
+** https://blog.cybozu.io/archive/2014/01[2014 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2013[2013]
+** https://blog.cybozu.io/archive/2013/12[2013 / 12]
+** https://blog.cybozu.io/archive/2013/11[2013 / 11]
+** https://blog.cybozu.io/archive/2013/10[2013 / 10]
+** https://blog.cybozu.io/archive/2013/09[2013 / 9]
+** https://blog.cybozu.io/archive/2013/08[2013 / 8]
+** https://blog.cybozu.io/archive/2013/07[2013 / 7]
+** https://blog.cybozu.io/archive/2013/06[2013 / 6]
+** https://blog.cybozu.io/archive/2013/05[2013 / 5]
+** https://blog.cybozu.io/archive/2013/04[2013 / 4]
+** https://blog.cybozu.io/archive/2013/03[2013 / 3]
+** https://blog.cybozu.io/archive/2013/02[2013 / 2]
+** https://blog.cybozu.io/archive/2013/01[2013 / 1]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2012[2012]
+** https://blog.cybozu.io/archive/2012/12[2012 / 12]
+** https://blog.cybozu.io/archive/2012/11[2012 / 11]
+** https://blog.cybozu.io/archive/2012/10[2012 / 10]
+** https://blog.cybozu.io/archive/2012/09[2012 / 9]
+** https://blog.cybozu.io/archive/2012/06[2012 / 6]
+** https://blog.cybozu.io/archive/2012/04[2012 / 4]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2011[2011]
+** https://blog.cybozu.io/archive/2011/11[2011 / 11]
+** https://blog.cybozu.io/archive/2011/07[2011 / 7]
+** https://blog.cybozu.io/archive/2011/04[2011 / 4]
+** https://blog.cybozu.io/archive/2011/03[2011 / 3]
+** https://blog.cybozu.io/archive/2011/02[2011 / 2]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2010[2010]
+** https://blog.cybozu.io/archive/2010/06[2010 / 6]
+** https://blog.cybozu.io/archive/2010/05[2010 / 5]
+** https://blog.cybozu.io/archive/2010/04[2010 / 4]
+** https://blog.cybozu.io/archive/2010/02[2010 / 2]
+* {blank}
++
+[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
++
+https://blog.cybozu.io/archive/2009[2009]
+** https://blog.cybozu.io/archive/2009/09[2009 / 9]
+** https://blog.cybozu.io/archive/2009/07[2009 / 7]
+** https://blog.cybozu.io/archive/2009/05[2009 / 5]
+
+[[bottom-editarea]]
+http://cybozu.co.jp/[サイボウズ株式会社]
+
+http://labs.cybozu.co.jp/[サイボウズ・ラボ株式会社]
+
+https://cybozu.co.jp/recruit/[採用情報]
+
+http://blog.cybozu.io/entry/privacy[プライバシーポリシー]
+
+__
+
+[.js-tweet-quote]#image:https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8[https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon,title="引用して投稿する"]#
+
+[[quote-stock-message-box]]
+[[quote-stock-succeeded-message]]
+引用をストックしました
+
+ストック一覧を見る
+
+閉じる
+
+[[quote-login-required-message]]
+引用するにはまずログインしてください
+
+ログイン
+
+閉じる
+
+[[quote-stock-failed-message]]
+引用をストックできませんでした。再度お試しください
+
+閉じる
+
+[[unstockable-quote-message-box]]
+限定公開記事のため引用できません。
+
+[[hidden-subscribe-button]]
+link:#[[.subscribing]# [.foreground]#読者です#
+[.background]#読者をやめる# # [.unsubscribing]#
+[.foreground]#読者になる# [.background]#読者になる# #]
+
+__ [.underline]## [.subscription-count .js-subscription-count]# #

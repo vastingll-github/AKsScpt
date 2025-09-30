@@ -1,0 +1,260 @@
+[[GlobalHeader-react-component-cfdc659d-2108-4a6a-afb5-cc30dc1d06f6]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_2.svg
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
+
+link:/login?callback_action=login_or_signup&redirect_to=%2FHayao0819%2Fitems%2F0e04b39b0804a0d16020&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2FHayao0819%2Fitems%2F0e04b39b0804a0d16020&realm=qiita[Signup]
+
+[.material-symbols-outlined .style-18lpml7]#search#
+
+. link:/[Trend]
+. link:/question-feed[Question]
+. link:/official-events[Official Event]
+. link:/official-columns[Official
+Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
+. link:/organizations[Organization]
+
+[[AlertMessage-react-component-dd4e95d3-602b-4027-b19b-6d28592e6e89]]
+
+[[PersonalArticlePage-react-component-f3180ed1-af61-4ede-ba31-ec4e71131f3d]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_22.svg
+
+link:/Hayao0819/items/0e04b39b0804a0d16020/likers[34]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_28.svg
+
+[.style-1vem4tk]#18#
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_32.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_34.svg
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_36.svg
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[.material-symbols-outlined .is-fill .style-1l7bzw8]#info#
+
+More than 1 year has passed since last update.
+
+link:/Hayao0819[]
+
+image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F234470%2Fprofile-images%2F1732636165?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=085bceb8e84ede8216759a0506ebc9f8[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F234470%2Fprofile-images%2F1732636165?ixlib=rb-4.0,width=24,height=24]
+
+@Hayao0819[.style-15fzge]##(山田 ハヤオ)##
+
+== 【Bash】配列に値が含まれているか確認する方法
+
+* link:/tags/shellscript[ShellScript]
+* link:/tags/bash[Bash]
+* link:/tags/array[array]
+
+[.style-3k9iaf]#Last updated at 2023-07-05#[.style-3k9iaf]#Posted at
+2020-03-22#
+
+[[personal-public-article-body]]
+== [#前提 .fragment]##link:#%E5%89%8D%E6%8F%90[__]前提
+
+配列`array`に`orange`に含まれているかどうかを判定するスクリプトです。
+
+いくつかコードがありますが急いでいる人はhttps://qiita.com/Hayao0819/items/0e04b39b0804a0d16020#%E3%81%95%E3%82%89%E3%81%AB%E4%BF%AE%E6%AD%A3[結論]へどうぞ
+
+== [#コード .fragment]##link:#%E3%82%B3%E3%83%BC%E3%83%89[__]コード
+
+....
+array=('apple' 'orange' 'banana' 'peach')
+check_array() {
+    local i
+    for i in ${array[@]}; do
+        if [[ ${i} = ${1} ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+if check_array "orange"; then
+    echo "Orange exists."
+else
+    echo "Orange does not exist."
+fi
+....
+
+== [#解説 .fragment]##link:#%E8%A7%A3%E8%AA%AC[__]解説
+
+== [#check_arrayについて .fragment]##link:#check_array%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6[__]check_arrayについて
+
+`for`で配列の文字を1つずつ比較し、引数に渡された値と同一の値があればその時点で`true`を出力して終了します。 +
+もし`for`が終了したらその時点で値が存在していないことになるので`false`を出力して終了します。
+
+== [#if以降について .fragment]##link:#if%E4%BB%A5%E9%99%8D%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6[__]if以降について
+
+あとは`check_array`を実行して値を比較しているだけです。
+
+== [#もっといい方法が合った .fragment]##link:#%E3%82%82%E3%81%A3%E3%81%A8%E3%81%84%E3%81%84%E6%96%B9%E6%B3%95%E3%81%8C%E5%90%88%E3%81%A3%E3%81%9F[__]もっといい方法が合った
+
+コメントにて教えていただきました
+
+....
+if [[ $(printf '%s\n' "${array[@]}" | grep -qx "orange"; echo -n ${?} ) -eq 0 ]]; then
+    echo "Orange exists."
+else
+    echo "Orange does not exist."
+fi
+....
+
+=== [#教えてもらったコードを修正 .fragment]##link:#%E6%95%99%E3%81%88%E3%81%A6%E3%82%82%E3%82%89%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E4%BF%AE%E6%AD%A3[__]教えてもらったコードを修正
+
+終了コードの判定なのでこっちのほうがいいよっていう +
+grepのオプションを編集すれば条件を正規表現とかでいい感じにできるはず
+
+....
+if printf '%s\n' "${array[@]}" | grep -x "orange" > /dev/null >&2; then
+    echo "Orange exists."
+else
+    echo "Orange does not exist."
+fi
+....
+
+=== [#さらに修正 .fragment]##link:#%E3%81%95%E3%82%89%E3%81%AB%E4%BF%AE%E6%AD%A3[__]さらに修正
+
+grepの`-q`オプションという存在を知ったのでもっと短くなった
+
+....
+if printf '%s\n' "${array[@]}" | grep -qx "orange"; then
+    echo "Orange exists."
+else
+    echo "Orange does not exist."
+fi
+....
+
+== [#最後に .fragment]##link:#%E6%9C%80%E5%BE%8C%E3%81%AB[__]最後に
+
+もしもっと良い方法があれば教えて下さい
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_153.svg
+
+link:/Hayao0819/items/0e04b39b0804a0d16020/likers[34]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_159.svg
+
+[.style-1129w32]#18#
+
+link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##5]
+
+Go to list of comments
+
+Register as a new user and use Qiita more conveniently
+
+. You get articles that match your needs
+. You can efficiently read back useful information
+. You can use dark theme
+
+https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
+signing up]
+
+link:/signup?callback_action=login_or_signup&redirect_to=%2FHayao0819%2Fitems%2F0e04b39b0804a0d16020&realm=qiita[Sign
+up]link:/login?callback_action=login_or_signup&redirect_to=%2FHayao0819%2Fitems%2F0e04b39b0804a0d16020&realm=qiita[Login]
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_179.svg
+
+link:/Hayao0819/items/0e04b39b0804a0d16020/likers[34]
+
+Go to list of users who liked
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_185.svg
+
+[.style-1vem4tk]#18#
+
+[.material-symbols-outlined .style-v2p563]#more_horiz#
+
+Delete article
+
+[.material-symbols-outlined .style-v2p563]#close#
+
+Deleted articles cannot be recovered.
+
+Draft of this article would be also deleted.
+
+Are you sure you want to delete this article?
+
+Cancel
+
+Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
+
+[[GlobalFooter-react-component-3db85066-7734-4047-a77f-f1a0bb07ebb9]]
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_206.svg
+
+How developers code is here.
+
+[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
+
+Guide & Help
+
+* link:/about[About]
+* link:/terms[Terms]
+* link:/privacy[Privacy]
+* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
+* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
+* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
+* https://help.qiita.com[Help]
+* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
+
+Contents
+
+* link:/release-notes[Release Note]
+* link:/official-events[Official Event]
+* link:/official-columns[Official Column]
+* link:/advent-calendar/2024[Advent Calendar]
+* link:/qiita-award[Qiita Award]
+* link:/white_papers/2024[Engineer White Paper]
+* link:/api/v2/docs[API]
+
+Official Accounts
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_235.svg
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_236.svg
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-2/6-2_237.svg
+* https://www.facebook.com/qiita/[Facebook]
+* https://www.youtube.com/@qiita5366[YouTube]
+* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
+
+Our service
+
+* https://teams.qiita.com/[Qiita Team]
+* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
+Zine]
+* https://suzuri.jp/qiita[Official Shop]
+
+Company
+
+* https://corp.qiita.com/company[About Us]
+* https://corp.qiita.com/jobs/[Careers]
+* https://blog.qiita.com[Qiita Blog]
+* https://corp.qiita.com/releases/[News Release]
+
+[[Snackbar-react-component-351a4503-68ba-45d2-b353-048d0788567d]]
+
+[[LoginModal-react-component-bebc6013-7013-409a-a469-59eab15590cb]]
+
+[[dataContainer]]
