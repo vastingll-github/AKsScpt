@@ -1,0 +1,34 @@
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/02.Debug/2-5/2-5.adoc 02.Debug/2-5/2-5.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/02.Debug/2-6/2-6.adoc 02.Debug/2-6/2-6.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/03.ファイル読書込/3-1/3-1.adoc 03.ファイル読書込/3-1/3-1.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/03.ファイル読書込/3-2/3-2.adoc 03.ファイル読書込/3-2/3-2.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/03.ファイル読書込/3-3/3-3.adoc 03.ファイル読書込/3-3/3-3.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/03.ファイル読書込/3-4/3-4.adoc 03.ファイル読書込/3-4/3-4.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/03.ファイル読書込/3-5/3-5.adoc 03.ファイル読書込/3-5/3-5.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/04.変数定義/4-1/4-1.adoc 04.変数定義/4-1/4-1.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/04.変数定義/4-2/4-2.adoc 04.変数定義/4-2/4-2.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/05.変数種類/5-1/5-1.adoc 05.変数種類/5-1/5-1.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/06.配列/6-1/6-1.adoc 06.配列/6-1/6-1.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/06.配列/6-2/6-2.adoc 06.配列/6-2/6-2.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/06.配列/6-3/6-3.adoc 06.配列/6-3/6-3.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/06.配列/6-4/6-4.adoc 06.配列/6-4/6-4.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/07.制御文/7-1/7-1.adoc 07.制御文/7-1/7-1.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/08.for書き方/8-1/8-1.adoc 08.for書き方/8-1/8-1.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/08.for書き方/8-2/8-2.adoc 08.for書き方/8-2/8-2.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/08.for書き方/8-3/8-3.adoc 08.for書き方/8-3/8-3.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/08.for書き方/8-4/8-4.adoc 08.for書き方/8-4/8-4.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/08.for書き方/8-5/8-5.adoc 08.for書き方/8-5/8-5.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/08.for書き方/8-6/8-6.adoc 08.for書き方/8-6/8-6.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/09.条件定義/9-1/9-1.adoc 09.条件定義/9-1/9-1.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1.adoc 10.関数定義/10-1/10-1.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/10.関数定義/10-2/10-2.adoc 10.関数定義/10-2/10-2.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/10.関数定義/10-3/10-3.adoc 10.関数定義/10-3/10-3.adoc
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-04/11-4.adoc 11.参考/11-04/11-4.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-05/11-5.adoc 11.参考/11-05/11-5.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-06/11-6.adoc 11.参考/11-06/11-6.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-07/11-7.adoc 11.参考/11-07/11-7.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-08/11-8.adoc 11.参考/11-08/11-8.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-09/11-9.adoc 11.参考/11-09/11-9.adoc 
+cp ../../../Github-vastingll.100M3files/20250305_1305mmd/ShellScript大全/11.参考/11-10/11-10.adoc 11.参考/11-10/11-10.adoc 
+
+

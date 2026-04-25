@@ -1,0 +1,164 @@
+
+== Bashの安全な配列の使い方まとめ
+
+==  配列を作成する
+
+===  ダメな例
+
+論外
+
+そもそも配列を使っていません。実行結果をそのまま文字列の変数に入れています。
+POSIXなシェルを使う場合はこれしか方法がありません。
+
+[source,language-bash]
+----
+textfile=$(cat /path/to/file)
+----
+
+配列を使っているのですが、そのまま実行結果を配列に代入しています。
+
+シェルのデフォルトの区切り文字は改行や空白なので、そのまま全ての区切られているものが配列の要素として代入されてしまいます。
+
+おそらく殆どの状況で期待される動作は1行づつの代入でしょうから、この挙動はバグや混乱を引き起こします。
+
+[source,language-bash]
+----
+textfile=($(cat /path/to/file))
+----
+
+これについてはhttps://www.shellcheck.net/wiki/SC2207[SC2207]で詳細な解説があります。
+
+=== 文字列から作成する
+
+区切りは`,`とかじゃなくて半角空白（ここら辺は$IFSに依存します）
+
+これは一番基本的なやつ
+
+[source,language-bash]
+----
+your_array=("hoge" "${HOME}" "piyo")
+----
+
+===  ファイルの内容を配列に入れる
+
+`readarray`と`mapfile`は全く同じコマンドです。
+
+
+[source,language-bash]
+----
+readarray -t your_array < "/path/to/file"
+----
+
+===  コマンドの実行結果を配列に入れる
+
+`<(your_command)`は内部的には標準出力を返す仮想デバイスへのパスに置換されます。
+
+[source,language-bash]
+----
+readarray -t your_array < <(your_command)
+----
+
+-tオプションがないと改行コードまでそのまま配列に代入されてしまい、少々おかしな挙動になります。
+
+==  配列に追記する
+
+=== 先頭に文字列を追記
+
+新しい文字列と既存の配列を使って改めて配列を定義しなおす。
+
+[source,language-bash]
+----
+your_array=("new string" "${your_array[@]}")
+----
+
+=== 末尾に文字列を追記
+
+これは簡単
+
+[source,language-bash]
+----
+your_array+=("new string")
+
+# こっちでも同じことできるけど長い
+your_array=("${your_array[@]}" "new string")
+----
+
+===  末尾にファイル内容を追記
+
+`readarray`には代入開始地点を指定するオプションがある
+
+[source,language-bash]
+----
+readarray -O "${#your_array[@]}" -t your_array < "/path/to/file"
+----
+
+===  末尾にコマンド実行結果を追記
+
+[source,language-bash]
+----
+readarray -O "${#your_array[@]}" -t your_array < <(your_command)
+----
+
+==  配列を参照する
+
+=== 要素を指定
+
+[source,language-bash]
+----
+echo "${your_array[1]}"
+----
+
+===  文字列に変換
+
+[source,language-bash]
+----
+echo "${your_array[*]}"
+----
+
+=== コマンドの引数に渡す
+
+[source,language-bash]
+----
+your_command "${your_array[@]}"
+----
+
+引数に渡す際に`"${your_array[*]}"`を用いると1つの文字列として変換された後引数として渡されることになります。
+
+===  内容を1行づつ出力
+
+[source,language-bash]
+----
+printf "%s\n" "${your_array[@]}"
+----
+
+printfは2つめ以降の引数に対して1つめの引数のフォーマットを適用して出力するコマンドです。
+
+=== 値が含まれているか確認
+
+外部コマンドを使わず確実にやる方法があったら教えてください。
+
+[source,language-bash]
+----
+if printf "%s\n" "${your_array[@]}" | grep -qx "match_string"; then
+    echo "your_array has match_string"
+fi
+----
+
+要素に空白がないっていないと確実に言えるならこの方法でも可能。
+
+しかし空白文字が入った瞬間に正常に動作しなくなるなるため、注意してください。
+
+[source,language-bash]
+----
+if [[ "${your_array[*]}" == *"match_string"* ]]; then
+    echo "your_array has match_string"
+fi
+----
+
+==  注意事項
+
+`readarray`で`-t`を忘れると要素の末尾に改行文字が加わってしまって予期した動作になりません。
+
+また、今回の`readarray`や配列の挙動はBash
+4.4以上のバージョンでないと動作しません。
+

@@ -1,0 +1,332 @@
+[[globalheader-container]]
+
+[[container]]
+[[container-inner]]
+[[blog-title]]
+[[blog-title-inner]]
+[[blog-title-content]]
+[[title]]
+== Bash 補完
+
+[[content]]
+[[content-inner]]
+[[wrapper]]
+[[main]]
+[[main-inner]]
+== Bashタブ補完自作入門
+
+いい感じのShellScriptはいい感じのタブ補完を付けたくなります。この項ではBashのタブ補完を自作する方法を紹介します。
+
+== タブ補完の仕組み
+
+Bashのタブ補完自体はBashに組み込まれている仕組みです。 +
+参考：
+http://www.gnu.org/software/bash/manual/bash.html#Programmable-Completion[Bash
+Reference Manual - 8.6 Programmable
+Completion]）。 +
+`complete`というBashの組込み関数を利用し補完方法（`compspec(completion specification)`）が規定され、これがタブなどによって起動されます。
+
+タブ補完は、`ls`ならファイル名、`cd`ならディレクトリ名、というようにコマンドに応じたものが設定されています。最近のLinuxディストリビューションでは多くのコマンドで快適にタブ補完ができますが、それはhttps://github.com/scop/bash-completion[bash-completion]というパッケージのおかげです。
+
+このパッケージが用意してくれている数々の補完関数は、`/usr/share/bash-completion/completions`以下に配置されていることが多いです（このパスはディストリビューションやbash-completionのバージョンによっても異なります）。たとえば、`man`の補完方法は`/usr/share/bash-completion/completions/man`に定義されています。見てみましょう。
+
+[source,code,lang-sh]
+----
+$ cat /usr/share/bash-completion/completions/man
+# man(1) completion                                        -*- shell-script -*-
+
+[[ $OSTYPE == *@(darwin|freebsd|solaris|cygwin|openbsd)* ]] || _userland GNU \
+    || return 1
+
+_man()
+{
+    local cur prev words cword split
+    _init_completion -s -n : || return
+
+...略...
+
+    __ltrim_colon_completions "$cur"
+    return 0
+} &&
+complete -F _man man apropos whatis
+
+# ex: ts=4 sw=4 et filetype=sh
+----
+
+`_man()`というシェル関数が定義され、それに続いて`complete`コマンドが実行されています。`-F`は、補完するための関数を指定するオプションです。これによって、`man`コマンドと`apropos`コマンドと`whatis`コマンドは`_man()`という関数によって補完が行われるように設定されています。
+
+ユーザがタブを押すと、`_man()`に`COMP_CWORD`とか`COMP_WORDS`といった変数（後述）で今のコマンドラインに入力されている文字が渡されます。`_man()`はそこから候補を絞り込んだ結果を、`COMPREPLY`という変数で返します。それがタブ補完の候補として表示される、という流れです。
+
+== 手はじめ
+
+まず、候補として`one`と`two`を表示するシンプルな関数`_dummy()`をつくってみます。候補のリストを`COMPREPLY`という変数に入れると、補完候補として表示されるようになります。
+
+[source,code,lang-sh]
+----
+$ _dummy() { COMPREPLY=(one two); }
+----
+
+これを`man`コマンドの補完方法に指定します。
+
+[source,code,lang-sh]
+----
+$ complete -F _dummy man
+----
+
+これで`man`コマンドは`_dummy`関数でタブ補完されるようになりました。ここで、
+
+[source,code,lang-sh]
+----
+$ man <TAB>
+----
+
+と打つと、以下のように候補が表示されるはずです。
+
+[source,code,lang-sh]
+----
+$ man
+one  two
+----
+
+でも上の`_dummy()`だと、コマンドラインの状態はお構いなしに同じ候補しか表示しません。
+
+[source,code,lang-sh]
+----
+$ man o<TAB>
+one  two
+$ man one<TAB>
+one  two
+----
+
+`o`まで打ったら候補は`one`だけになってほしいですよね。そのために`_dummy()`は、今のコマンドラインの状態を受け取って、候補の絞り込みをする必要があります。
+
+== 補完候補の絞り込み
+
+これには、`COMP_CWORD`・`COMP_WORDS`という変数と`compgen`というコマンドを使います。
+
+=== `COMP_CWORD`・`COMP_WORDS`
+
+この変数には、それぞれ以下の値が入っています。
+
+* `COMP_CWORD`: 今カーソルがあるワードは何語目か
+* `COMP_WORDS`: コマンドラインのワードのリスト
+
+たとえば、以下のように`COMP_CWORD`と`COMP_WORDS`を`echo`する関数を設定してみます。
+
+[source,code,lang-sh]
+----
+$ _dummy()
+{
+  echo
+  echo COMP_CWORD: ${COMP_CWORD}
+  echo COMP_WORDS: ${COMP_WORDS[@]}
+}
+----
+
+これでタブを押すと、以下のような結果になります。`COMP_CWORD`と`COMP_WORDS`にどのような変数が渡っているかイメージが付くでしょうか。カーソルの直前がワードのときと空白のときで結果が異なる点には注意が必要です。
+
+[source,code,lang-sh]
+----
+$ man <TAB>
+COMP_CWORD: 1
+COMP_WORDS: man
+----
+
+[source,code,lang-sh]
+----
+$ man test test2<TAB>
+COMP_CWORD: 2
+COMP_WORDS: man test test2
+----
+
+[source,code,lang-sh]
+----
+$ man test test2 <TAB>
+COMP_CWORD: 3
+COMP_WORDS: man test test2
+----
+
+=== `_get_comp_words_by_ref()`
+
+現在カーソルがあるワードは`${COMP_WORDS[${COMP_CWORD}]}`、そのひとつ前は`${COMP_WORDS[${COMP_CWORD}-1]}`といったかたちでアクセスすることができます。でも、ちょっと長くて見づらいです。`_get_comp_words_by_ref()`という便利関数を使うと、現在カーソルがあるワードは`$cur`、ひとつ前のワードは`$prev`、ワード数は`$cword`という変数に入ります。
+
+こんな感じです。
+
+[source,code,lang-sh]
+----
+$ _dummy()
+{
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  echo
+  echo cur: ${cur}
+  echo prev: ${prev}
+  echo cword: ${cword}
+}
+
+$ man arg1 arg2<TAB>
+cur: arg2
+prev: arg1
+cword: 2
+----
+
+こうした便利関数はやはりbash-completionパッケージによって提供されているもので、`/usr/share/bash-completion/bash_completion`に定義されています。定義が気になる場合はこのファイルを覗いてみましょう。（例えば`_get_comp_words_by_ref`の定義はhttps://github.com/scop/bash-completion/blob/c16826ee35ecb405fe87007404d0fb846ad61a15/bash_completion#L343-L369[このあたり]です）
+
+=== `compgen`
+
+`compgen`は、オプションによって出てくる補完候補から、引数とマッチ（基本的に前方一致）するものだけを絞り込むコマンドです。各オプションは`man 7 bash-builtins`に詳しく書かれています。ここでは主要なオプションだけ紹介します。
+
+* `-W`
+
+`-W`は、変換候補となる文字列のリストを指定するオプションです。以下のように、指定した文字列リストから、引数と前方一致するものだけに絞り込んでリストアップしてくれます。
+
+[source,code,lang-sh]
+----
+$ compgen -W "one two once twice" --
+one
+two
+once
+twice
+$ compgen -W "one two once twice" -- o
+one
+once
+$ compgen -W "one two once twice" -- onc
+once
+----
+
+* `-c`/`-f`/`-d`
+
+自前で文字列のリストを与えなくても、コマンドのリストとか、ファイルのリストとかを補完候補にすることができるオプションです。`-c`はコマンド（と実行ファイル、ディレクトリ）、`-f`はファイル、`-d`はディレクトリを補完するようになります。たとえば、以下のように`-c`オプションに`man`という引数を与えると、`man`から始まるコマンドがリストアップされます。
+
+[source,code,lang-sh]
+----
+$ compgen -c -- man
+mandb
+manpage-alert
+man
+manpath
+----
+
+=== 補完してみる
+
+`compgen`を使うと、`dummy()`は現在のコマンドラインの文字を使って候補を絞り込んだ補完ができるようになります。
+
+[source,code,lang-sh]
+----
+$ _dummy()
+{
+  local cur prev opts
+  _get_comp_words_by_ref -n : cur prev
+  opts="one two once twice"
+
+  COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+}
+----
+
+こんな感じの動きです。
+
+[source,code,lang-sh]
+----
+$ man <TAB>
+once   one    twice  two
+$ man on<TAB>
+once  one
+----
+
+ようやく補完できました。めでたしめでたし！（たったこれだけしか補完できない`_dummy()`に飽きたら、`complete -r man`でデフォルトの補完に戻すことができます）
+
+== 例：go-apt-cacher の補完
+
+具体例として、APT専用のキャッシュプロキシhttp://blog.cybozu.io/entry/2016/07/19/103000[go-apt-cacher]のタブ補完をつくってみましょう。
+
+`go-apt-cacher`には以下のオプションがあります（バージョン1.2.2時点）。オプションによって補完すべきものが違います。`-f`と`-logfile`はファイル名をとり、`-logformat`と`-loglevel`はそれぞれ固有の選択肢をとります。
+
+[source,code,lang-sh]
+----
+$ go-apt-cacher -h
+Usage of go-apt-cacher:
+  -f string
+        configuration file name (default "/etc/go-apt-cacher.toml")
+  -logfile string
+        Log filename
+  -logformat string
+        Log format [plain,logfmt,json]
+  -loglevel string
+        Log level [critical,error,warning,info,debug]
+----
+
+まず、`go-apt-cacher -`まで入力してタブを押すとオプションが補完されるようにしてみましょう。オプションはコマンドの直後、つまり`$cword`が1の位置にきます。このときはオプションのリストを`compgen`の`-W`に指定して補完するようにします。
+
+[source,code,lang-sh]
+----
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+----
+
+次に、オプションが`-logformat`の場合は`plain`、`logfmt`、`json`のいずれかが、`-loglevel`の場合は`critical`、`error`、`warning`、`info`、`debug`が補完されるようにしてみましょう。カーソルがオプションの次に来ているときは、`$prev`にオプションが入るのでこれを条件分岐に使うといいでしょう。
+
+[source,code,lang-sh]
+----
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+  elif [ "${cword}" -eq 2 ]; then
+    if [ "${prev}" = "-logformat" ]; then
+      COMPREPLY=( $(compgen -W "plain logfmt json" -- "${cur}") )
+    elif [ "${prev}" = "-loglevel" ]; then
+      COMPREPLY=( $(compgen -W "critical error warning info debug" -- "${cur}") )
+    fi
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+----
+
+さらに、オプションが`-logfile`や`-f`のときにはファイルへのパスが補完されるようにしてみます。ファイルの補完には`compgen`の`-f`オプションを使います。`compopt -o filenames`は、ディレクトリ名には`/`を付けてくれるようにするおまじないです（詳しいことが気になる方は`man 7 bash-builtins`を読んでください）。
+
+[source,code,lang-sh]
+----
+$ _go_apt_cacher(){
+  local cur prev cword
+  _get_comp_words_by_ref -n : cur prev cword
+  
+  if [ "${cword}" -eq 1 ]; then
+    COMPREPLY=( $(compgen -W "-f -logfile -logformat -loglevel" -- "${cur}") )
+
+  elif [ "${cword}" -eq 2 ]; then
+    if [ "${prev}" = "-logformat" ]; then
+      COMPREPLY=( $(compgen -W "plain logfmt json" -- "${cur}") )
+    elif [ "${prev}" = "-loglevel" ]; then
+      COMPREPLY=( $(compgen -W "critical error warning info debug" -- "${cur}") )
+    elif [ "${prev}" = "-logfile" -o "${prev}" = "-f" ]; then
+      compopt -o filenames
+      COMPREPLY=( $(compgen -f -- "${cur}") )
+    fi
+  fi
+} &&
+complete -F _go_apt_cacher go-apt-cacher
+----
+
+これで完成です。
+
+この例は`compgen`の`-W`と`-f`しか使いませんでしたが、最終的に`COMPREPLY`に候補のリストを渡せば何をしてもかまいません。やり方は様々です。`/usr/share/bash-completion/completions/`下に良い例がたくさんあるので、探求心の強い方は参考にしてみてください。
+
+== 補完関数の置き場所
+
+個人的に使うものであれば`~/.bash_completion`というファイルをつくって書いておけば、ログイン時に自動で読み込まれます。
+
+パッケージなどに含める場合であれば、bash-completionパッケージが使っている`/usr/share/bash-completion/completions`などに置くのが良いでしょう。このパスは、`pkg-config --variable=completionsdir bash-completion`というコマンドで調べることができます。詳しくはhttps://github.com/scop/bash-completion#faq[bash-completionのFAQ]を参照してください。
+
+== まとめ
+
+みなさまの快適なBash生活の一助となれば幸いです。
+

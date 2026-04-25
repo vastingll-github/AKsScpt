@@ -1,0 +1,445 @@
+
+== シェルスクリプトの共通関数・定数の管理
+
+
+[[personal-public-article-body]]
+=== シェルスクリプトの共通関数 
+
+環境構築・設定ファイル等のスクリプトを１つのリポジトリ（https://github.com/等）にまとめることが可能な環境なら共通関数は有効です。登録・管理・再利用する場合、条件とか情報整理が重要です。shellcheckerを自動的にかけるとかあれば安心して利用可能かもしれません。 +
+
+
+一人で作成を積み重ねたものを無駄にせず、複数人で使う場合は情報共有・整理が重要です。共通でよく使う定数や共通関数をまとめてGithubで管理すれば永続的に有効です。+
+以下、画面出力msg を色付けしたい場合の共通関数です。↓
+
+[.bold]#DEBUG.bash#
+
+....
+#!/usr/bin/env bash
+set -Ceux
+# -C : リダイレクト「＞」を使ってすでにあるファイルを上書きすることを禁止
+# -e : bashで利用可能なtest構文、 fileの存在確認
+# -u : 同上。 set-uidビット・ fileが存在し、かつset-uid-bitが立っているか確認
+# -x : スクリプト実行内容を画面出力する
+
+declare -A ESV
+
+PSV="PSV" # Print Shell-Value
+
+# 他ファイル定義の関数呼出し保法例
+# source PSV_FUNCTIONS
+# . PSV_FUNCTIONS
+
+function PSV_INIT() {
+        RED_MSG $0
+  ### シェル変数打出しのデバッグ文出力ための前処理
+  # 打出し関数を利用する行を取得し、表示したい変数名を打出しに利用したい
+  # sed や tail,head （千行以上ではtail・headが早い)でPSHVAL行を取得可能だがgrep -n で検索
+  STPOUT=(`grep -n ${PSV} $0 | grep -v "^[0-9]*:[ \t]*#" | grep -v function | grep -v "PSV=" | tr -s " " | cut -d" " -f1-`)
+  
+  # ダブルクォーテーションで括ると改行を入れる
+  for i in "${STPOUT[@]}"; do
+    # シェル変数の正規表現利用は以下のようにする。expre 比較1:比較2 もある
+    # シェル変数が配列"[]"を含むか判定する
+    if [[ $i =~ [0-9]*: ]] ;then
+      GNUM=`echo $i | cut -d":" -f1`; TMPSV=`echo $i | cut -d":" -f2`
+      if [[ -v $TMPSV ]] ;then
+        STPOUT01[$GNUM]+=" $GNUM"; STPOUT01[$GNUM]+=" $TMPSV"
+      fi
+    elif [[ $i =~ \[@\] ]] ;then
+      ESV[$GNUM]+=" ARRAYALL-${i}"; STPOUT01[$GNUM]+=" ${i}"
+    elif [[ $i =~ \[[0-9]*\] ]] ;then
+      ESV[$GNUM]+=" ARRAY-${i}"; STPOUT01[$GNUM]+=" ${i}"
+    else
+      if [[ ${i} =~ $PSV ]] ;then
+        :
+      else
+        # 連想配列にスペースを入れながら追加する
+        # result_ex. ESV[22]="PSHVAL $BJ2 $BJ3 .." 
+        ESV[$GNUM]+=" ${i}"; STPOUT01[$GNUM]+=" ${i}"
+      fi
+    fi
+  done
+}
+
+function PSV() {
+  # 打出し変数表示のためのインデックス値
+  CNT=0;
+  # 呼出された行番号を改行無しで表示する
+  echo -n "==> Call Line: ${BASH_LINENO[0]}  "
+  # 配列変数の打出しの場合の対処
+  DVN=(${ESV[${BASH_LINENO[0]}]})
+  # この関数をコールされた引数の表示処理をする。引数の数は可変なので以下ループで処理
+  for i in $@; do
+    # 呼出された行番号表示。呼出しの打出し変数を表示する（大変だった）
+    # 連想配列ESV[行番号]="PSHVAL $BJ2 $BJ2" をスペースで分割する。cf. ("${ESV[${dim}]}")
+    # ESV[行番号]="PSHVAL $fsch3 $FILENAME $CFNAME"のため以下
+    echo -n "${DVN[${CNT}]}=[${i}] "
+    # CNT はコールするパラメータ変数名表示のため記述
+    CNT=`expr $CNT + 1`
+  done
+  # 強制的に改行を挿入。デバッグ用変数打出しを目立たせるため
+  echo
+}
+
+function del_kakko() {
+  tr -d "(" < $1 > $APCHANLDIR/ontheway01-1.txt; tr -d ")" < $APCHANLDIR/ontheway01-1.txt > $2
+  rm $APCHANLDIR/ontheway01-1.txt
+}
+
+function CP_MSG() {
+        # echo -e ： backslash でEscapeSeaguenceを有効化するオプション
+        # NC='\033[0m'  テキストの色をデフォルトにリセットする変数を定義
+  # 出力色の変更
+  # 先述した \e[0m でリセット可能。
+  # 文字色        背景色  色
+        # BLACK='\e[30m'
+        # RED='\033[0;31m'      赤色のテキストの ANSI エスケープ コードを使用して変数を定義
+  # GREEN='\e[32m'
+        # YELLOW='\e[33m'
+  # BLUE='\e[34m'
+        # MAGENTA='\e[35m'
+        # SYAN='\e[36m'
+  # WHITE='\e[37m'
+  #   # 出力色の変更（拡張）
+  #   # \e[38;5;nm      \e[48;5;nm      nを0～255のカラーコードを指定
+  #   # \e[38;2;r;g;bm  \e[48;2;r;g;bm  RGBでのカラーコードを指定
+  #   # 注：ターミナルによって対応してる/してないが分かれる
+  #   # （対応端末少ない）
+  # 
+
+  case "$1" in
+    red)
+      color_code='\e[31m'
+                        echo -e ${color_code}$2
+      ;;
+    green)
+      color_code='\e[32m'
+                        echo -e ${color_code}$2
+      ;;
+    yellow)
+      color_code='\e[33m'
+                        echo -e ${color_code}$2
+      ;;
+    magenta)
+      color_code='\e[36m'
+                        echo -e ${color_code}$2
+      ;;
+  esac
+
+  # 文字出力例: 太字・薄字・斜字・下線字・背景字・黒字・？
+  # 文字色      背景色  内容
+  # \e[1m               太字
+  # \e[2m       薄く表示
+  # \e[3m       イタリック
+  # \e[4m       アンダーライン
+  # \e[5m       ブリンク
+  # \e[6m       高速ブリンク
+  # \e[7m       文字色と背景色の反転
+  # \e[8m       表示を隠す（コピペ可能）
+  # \e[9m       取り消し
+  # for ((i = 1; i <= 9; i++)); do
+  #  printf '\e[%dm%d\e[m ' $i $i
+  # done
+  #
+  # \e[31m      \e[41m  赤
+  # \e[32m      \e[42m  緑
+  # \e[33m      \e[43m  黄色
+  # \e[34m      \e[44m  青
+  # \e[35m      \e[45m  マゼンダ
+  # \e[36m      \e[46m  シアン
+  # \e[37m      \e[47m  白
+}
+
+function ECHO_TXTRED() {
+  echo -e '\e[31m'$1'\e[0m'
+}
+function ECHO_TXTGREEN() {
+  echo -e '\e[32m'$1'\e[0m'
+}
+function ECHO_TXTYELLOW() {
+  echo -e '\e[33m'$1'\e[0m'
+}
+function ECHO_TXTBLUE() {
+  echo -e '\e[34m'$1'\e[0m'
+}
+function ECHO_TXTMAGENDA() {
+  echo -e '\e[35m'$1'\e[0m'
+}
+function ECHO_TXTCYAN() {
+  echo -e '\e[36m'$1'\e[0m'
+  echo_color cyan "$@"
+}
+function ECHO_TXTWHITE() {
+  echo -e '\e[37m'$1'\e[0m'
+}
+function ECHO_WEBERR() {
+  echo_color red "<b>ERROR</b>: " "$@"
+}
+function ECHO_TXTLOG() {
+  echo_color magenta "LOG: " "$@"
+}
+
+echo_color() {
+  case "$1" in
+    red)
+      color_code='\e[31m'
+      ;;
+    green)
+      color_code='\e[32m'
+      ;;
+    yellow)
+      color_code='\e[33m'
+      ;;
+    magenta)
+      color_code='\e[35m'
+      ;;
+    cyan)
+      color_code='\e[36m'
+      ;;
+  esac
+  shift
+
+  for msg in "$@"; do
+    echo "$(echo "$msg" | sed \
+      -e 's/<b>/\\e\[1m/g'\
+      -e 's/<\/b>/\\e[m\'"$color_code"'/g')"
+  done
+  echo '\e[m'
+  echo # 改行用
+}
+
+
+....
+
+
+== 外部スクリプトの有効性
+
+外部スクリプトに対してできることは、
+
+* 実行する
+* `.`（ドット）コマンドで読み込む。Bashでは`source`コマンド利用。
+
+の2択です。 +
+「.」の実行は実行するスクリプトの中で記述した変数や関数は、自分が作成したスクリプトに取込めないので、ドットコマンドで読み込んでみます。
+
+bashのシェルスクリプトでは、他ファイルに作成した関数をsourceで取り込めます。
+以下はロードする例。
+
+[.bold]#main.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+# プロジェクトフォルダの絶対パス取得
+cd "$(dirname "$0")"  # このスクリプトがあるフォルダに移動
+cd ./                 # ＝ここをプロジェクトフォルダとします。
+dir_project=$(pwd)
+
+# 共通部分読み込み
+. "$dir_project/DEBUG.bash"
+
+# 使用
+YELLOW_MAG  'わぁい'"$login_shell"' あかり'"$login_shell"'大好き'
+....
+
+
+できました。
+
+=== 問題点
+
+名前空間が区切られてないので、`main.sh`と`common.sh`が密結合なんですよね。 +
+互いの変数・関数が流出して良からぬ動きをするかもしれない。
+
+実は上の例ではわざとバグりそうな穴を作ってあります。
+
+[.bold]#（続き）main.sh#
+
+....
+color_code='イェ〜イ　エンジニア見てる〜？　実装失敗してどうだった？'
+echo_with_color RED 'あなたは赤い部屋が好きですか？'
+
+echo_with_color green 'グリーン姉さん'
+echo $color_code
+....
+
+https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F140384%2F202caddc-7ff1-9fd3-e386-54183987e205.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=0489314f4c054d533904786cf4165a15[image:https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F140384%2F202caddc-7ff1-9fd3-e386-54183987e205.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=0489314f4c054d533904786cf4165a15[image.png]] +
+`color_code`変数が双方向に流出しています。 +
+関数スコープが無いせいと言えなくも無いですが、良くない状況なのは確かです。
+
+== [#解決策 .fragment]##link:#%E8%A7%A3%E6%B1%BA%E7%AD%96[__]解決策
+
+ドットコマンドがダメなら実行するしか無いですね。
+
+実行可能なスクリプトファイルっていうのは、すなわちコマンドです。 +
+全部コマンドに落とし込んでみましょう。 +
+コマンド同士なら色々流出することはないです。
+
+小さなコマンドの組み合わせで大きなことを実現する。 +
+UNIX哲学の基本でしたね。
+
+[.bold]#util/project_const.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+case "$1" in
+  login_shell)
+    echo fish
+    ;;
+  config_dir_path)
+    echo "$HOME/Config"
+    ;;
+  *)
+    exit 1
+    ;;
+esac
+....
+
+[.bold]#util/echo_with_color.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+case "$1" in
+  red)
+    color_code='\e[31m'
+    ;;
+  green)
+    color_code='\e[32m'
+    ;;
+  yellow)
+    color_code='\e[33m'
+    ;;
+  magenta)
+    color_code='\e[36m'
+    ;;
+esac
+shift
+
+printf "$color_code"
+for msg in "$@"; do
+  printf "$(echo "$msg" | sed \
+    -e 's/<b>/\\e\[1m/g'\
+    -e 's/<\/b>/\\e[m\'"$color_code"'/g')"
+done
+printf '\e[m'
+echo # 改行用
+....
+
+[.bold]#util/echo_err.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+cd "$(dirname "$0")"  # このスクリプトがあるフォルダに移動
+
+./echo_with_color.sh red "<b>ERROR</b>: " "$@"
+....
+
+[.bold]#util/echo_log.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+cd "$(dirname "$0")"  # このスクリプトがあるフォルダに移動
+
+./echo_with_color.sh magenta "LOG: " "$@"
+....
+
+少々手間ですがこれで割と堅牢になりました。 +
+使ってみます。
+
+[.bold]#main.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+# プロジェクトフォルダの絶対パス取得
+cd "$(dirname "$0")"  # このスクリプトがあるフォルダ
+cd ./                 # ＝プロジェクトフォルダとします。
+dir_project=$(pwd)
+cd util
+dir_util=$(pwd)
+
+# 使用
+login_shell="$($dir_util/project_const.sh login_shell)"
+"$dir_util/echo_with_color.sh" yellow 'わぁい'"$login_shell"' あかり'"$login_shell"'大好き'
+
+color_code='イェ〜イ　エンジニア見てる〜？　実装失敗してどうだった？'
+"$dir_util/echo_with_color.sh" RED 'あなたは赤い部屋が好きですか？'
+
+"$dir_util/echo_with_color.sh" green 'グリーン姉さん'
+echo $color_code
+....
+
+https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F140384%2F9649dbec-5642-5f9b-a73f-80467e89aef9.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=083f28421d15f9d04b1345fde0715d44[image:https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F140384%2F9649dbec-5642-5f9b-a73f-80467e89aef9.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=083f28421d15f9d04b1345fde0715d44[image.png]]
+
+「`color_code`なんて宣言してねえだろゴルァ！」的なことを言われたので、`main.sh`で仕込んだ`color_code`が流出して悪さすることはなくなってるのが確認できました。
+
+[.bold]#（修正）main.sh#
+
+....
+# RED -> red
+"$dir_util/echo_with_color.sh" red 'あなたは赤い部屋が好きですか？'
+....
+
+https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F140384%2F74abd3bd-31a3-a0f8-15f8-df1b74049ea6.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=3d1b947411ecbee31e08655f4fbf7c54[image:https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F140384%2F74abd3bd-31a3-a0f8-15f8-df1b74049ea6.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=3d1b947411ecbee31e08655f4fbf7c54[image.png]]
+
+もちろん、`util/echo_with_color.sh`から`main.sh`への流出も起きてません。
+
+=== [#より綺麗に .fragment]##link:#%E3%82%88%E3%82%8A%E7%B6%BA%E9%BA%97%E3%81%AB[__]より綺麗に
+
+いちいちファイルパスを指定して呼び出すのも長ったらしいです。 +
+最初にまとめてエイリアス関数を定義しちゃいましょう。
+
+[.bold]#main.sh#
+
+....
+#!/bin/sh
+set -Ceu
+
+# プロジェクトフォルダの絶対パス取得
+cd "$(dirname "$0")"  # このスクリプトがあるフォルダ
+cd ./                 # ＝プロジェクトフォルダとします。
+dir_project=$(pwd)
+cd util
+dir_util=$(pwd)
+
+# インポート
+## util関数
+echo_with_color() {
+  $dir_util/echo_with_color.sh "$@"
+}
+project_const() {
+  $dir_util/project_const.sh "$@"
+}
+## 定数
+login_shell="$(project_const login_shell)"
+
+# 使用
+echo_with_color yellow 'わぁい'"$login_shell"' あかり'"$login_shell"'大好き'
+
+color_code='イェ〜イ　エンジニア見てる〜？　実装失敗してどうだった？'
+echo_with_color red 'あなたは赤い部屋が好きですか？'
+
+echo_with_color green 'グリーン姉さん'
+echo $color_code
+....
+
+import文ライクな使用感になりました。 +
+依存関係がまとまってていい感じ。
+
+== # 感想
+
+マイクロサービスアーキテクチャって感じ（多分違う）。
+
+あ、ここでは省略しましたが、本当はもっと引数の数チェックしたりエラーメッセージちゃんとしたりステータスコード整備したりした方が良さげです。
+
+image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/1-4/1-4_359.svg
+

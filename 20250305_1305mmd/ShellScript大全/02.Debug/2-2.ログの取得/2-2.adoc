@@ -1,0 +1,194 @@
+[[GlobalHeader-react-component-f58aed4b-d25a-40e4-95e9-d0153c5202f7]]
+* link: files:///home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/2.Debug/2-2_2.svg
+
+== シェルスクリプトのロギングを楽にするtips
+
+[[personal-public-article-body]]
+=== 背景
+
+cronの仕込むShellScriptのデバッグでは、echoでログ出力’はよくある話です。 +
+ちょっとした関数を用意しておけばログは楽で汎用的に取れるのでまとめます。 +
+
+==== log関数をつくる
+
+=== コード
+たった5行。 +
+使う前に *`LOGFILE`変数を変数利用前に設定が条件です。* +
+ログレベルみたいなものがほしい場合、INFO/WARN/ERROR/EMERGを第１引数で渡し、
+第１引数がない場合はINFOとか決めた関数を作ればよい。
+
+....
+#!/usr/bin/env bash -
+# 書込み権限ある場所のファイル名設定は必須 'LOGFILE'
+LOGFILE="/home/username/LOG/SC01.log"
+
+readonly SSNAME=${0##*/} # ShellScript名をパスを含む指定で起動しても最長のパス名を削除する変数操作
+function log() {
+  local fname=${BASH_SOURCE[1]##*/}
+  echo -e "$(date '+%Y-%m-%dT%H:%M:%S') ${SSNAME} (${fname}:${BASH_LINENO[0]}:${FUNCNAME[1]}) $@" | tee -a ${LOGFILE}
+}
+....
+
+出力フォーマットはただのecho文なので好きに直してください。`-e`オプションも改行\nも使わないから不要かな・・・ +
+`PROCNAME`変数は重複する可能性があるので、必要に応じて変えてください。
+
+=== ログのフォーマット
+
+上記実装だとこのように出力される。
+
+....
+2026-08-27T18:58:14 test.sh (test.sh:5:main) message
+....
+
+途中の()の中身は、コロン区切りでこんな感じ。
+
+* log関数を呼び出した *スクリプト名*
+* log関数を呼び出したスクリプトの *行番号*
+* log関数を呼び出した *関数名*
+
+ホスト名は付けていないので、必要なら`${HOSTNAME}`とかを入れると良いんじゃないかと。 +
+大元のプロセス名部分は不要だというなら、`${PROCNAME}`を削ってください。
+
+=== 使い方
+
+echoと一緒。
+
+....
+log "message"
+....
+
+=== 単一スクリプトでの実装例
+
+先ほどのlog関数を実装したスクリプトを書いてみる。
+
+==== 実装
+
+`LOGFILE`変数は最初に宣言している。 +
+mainの途中に関数実装が挟まる素敵な例。
+
+[.bold]#bash_log.sh#
+
+....
+#!/bin/bash -
+readonly LOGFILE="/tmp/${0##*/}.log"
+
+readonly PROCNAME=${0##*/}
+function log() {
+  local fname=${BASH_SOURCE[1]##*/}
+  echo -e "$(date '+%Y-%m-%dT%H:%M:%S') ${PROCNAME} (${fname}:${BASH_LINENO[0]}:${FUNCNAME[1]}) $@" | tee -a ${LOGFILE}
+}
+
+
+#
+# MAIN
+#
+
+log "This is test message 1"
+log "Test 2"
+log "Test 3"
+
+function logtest() {
+  log "test from logtest function"
+}
+
+logtest
+....
+
+==== [#実行 .fragment]##link:#%E5%AE%9F%E8%A1%8C[__]実行
+
+....
+$ cd /tmp
+$ ./bash_log.sh
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:13:main) This is test message 1
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:14:main) Test 2
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:15:main) Test 3
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:18:logtest) test from logtest function
+
+$ cat bash_log.sh.log
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:13:main) This is test message 1
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:14:main) Test 2
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:15:main) Test 3
+2015-08-27T15:56:23 bash_log.sh (bash_log.sh:18:logtest) test from logtest function
+....
+
+コンソールにも出力し、ログにも記録する。 +
+プロセス名とかスクリプト名が冗長かな・・・
+
+=== [#ライブラリ風の実装例 .fragment]##link:#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E9%A2%A8%E3%81%AE%E5%AE%9F%E8%A3%85%E4%BE%8B[__]ライブラリ風の実装例
+
+今度はライブラリのように、`loglib.sh`を作成してみる。
+
+==== [#実装ライブラリ .fragment]##link:#%E5%AE%9F%E8%A3%85%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA[__]実装(ライブラリ)
+
+`LOGFILE`変数は、スクリプト毎に定義できるようにここでは定義していない。
+
+[.bold]#loglib.sh#
+
+....
+#!/bin/bash -
+# You must set 'LOGFILE'
+readonly PROCNAME=${0##*/}
+function log() {
+  local fname=${BASH_SOURCE[1]##*/}
+  echo -e "$(date '+%Y-%m-%dT%H:%M:%S') ${PROCNAME} (${fname}:${BASH_LINENO[0]}:${FUNCNAME[1]}) $@" | tee -a ${LOGFILE}
+}
+....
+
+==== [#実装スクリプト本体 .fragment]##link:#%E5%AE%9F%E8%A3%85%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E6%9C%AC%E4%BD%93[__]実装(スクリプト本体)
+
+作った`loglib.sh`を使う`libtest.sh`を書く。 +
+`LOGFILE`変数は、ライブラリを使う *本体スクリプト側で定義する*
+例としている。
+
+[.bold]#libtest.sh#
+
+....
+#!/bin/bash -
+LOGFILE="/tmp/test.log"
+. /tmp/loglib.sh
+
+log "test message from main"
+
+function logtest() {
+  log "test message from func"
+}
+
+logtest
+
+. /tmp/libtest_sub.sh
+sub_command
+....
+
+最後の2行で呼び出している`lib_test.sh`および`sub_commmand`の実装はこちら。
+
+[.bold]#libtest_sub.sh#
+
+....
+#!/bin/bash -
+
+function sub_command() {
+  log "This is sub script"
+}
+....
+
+うーん。試験用とはいえ、我ながらとんでもない実装だ。
+
+==== [#実行-1 .fragment]##link:#%E5%AE%9F%E8%A1%8C-1[__]実行
+
+....
+$ ./libtest.sh
+2015-08-27T18:58:14 libtest.sh (libtest.sh:5:main) test message from main
+2015-08-27T18:58:14 libtest.sh (libtest.sh:8:logtest) test message from func
+2015-08-27T18:58:14 libtest.sh (libtest_sub.sh:4:sub_command) This is sub script
+
+$ cat /tmp/test.log
+2015-08-27T18:58:14 libtest.sh (libtest.sh:5:main) test message from main
+2015-08-27T18:58:14 libtest.sh (libtest.sh:8:logtest) test message from func
+2015-08-27T18:58:14 libtest.sh (libtest_sub.sh:4:sub_command) This is sub script
+....
+
+よしよし。
+
+どのスクリプトファイルのどの位置から呼ばれたかわかるので、複数人でメンテしているようなバッチに向いている出力になったと思う。
+
+

@@ -1,0 +1,207 @@
+
+== bash のスクリプトで実行行/呼出し行の取得（行番号の取得）
+
+
+[[personal-public-article-body]]
+____
+ファイル上の**現在の行番号を Bash のスクリプト内で取得**したい。
+____
+
+例えば Perl や PHP の「'\___LINE___'」 のように。
+
+Bashではどうか調査。
+
+. シェル変数の「`$LINENO`」を使う。行番号の略。
+. 関数の「呼び出し元の実行行」を取得したい場合は「`$BASH_LINENO`」
+. 動くサンプルは以下。
+
+確認したBashバージョン
+....
+$ bash --version
+GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)`
+....
+
+
+....
+$ cat psv_lineno.bash#
+#!/usr/bin/env bash
+
+echo $LINENO
+echo $LINENO
+....
+
+#実行結果#
+
+....
+$ ./psv_lineno.bash
+3
+4
+....
+
+関数の中で使う場合をチェック。${LINENO}ではなく
+${BASH_LINENO}を使うことで呼び出し元の行番号を取得可能。
+
+$ psv_bash_lineno.bash
+
+[source, bash, linenum]
+----
+#!/usr/bin/env bash
+
+PSV () {
+    echo "Exec from line:${BASH_LINENO[0]}"
+}
+
+PSV
+PSV
+----
+
+#実行結果#
+
+....
+$ ./psv_bash_lineno.bash
+Exec at line:7
+Exec at line:8
+
+....
+
+
+
+行番号の取得はShellScriptのexitの終了ステータスに利用すればデバッグや修正に有効かもと考えました。
+ただ、exit の終了番号は１バイト（０〜２５５）なので２５６行以上のShellScriptでは単純に利用できません。よってexit の数値より、メッセージを出すことがデバッグや異常通知には有効という考えにいたりました。スクリプトを `exit` する際の
+"`0`"（正常終了）以外の場合、通常はエラー番号（エラーコード）を "`1`"
+や独自のエラーコードにするところを、「**`exit`
+した行」にしたかった**ものです。コマンドの返却値を判断することはやめたいと「指針」で記述済ですが、確認するとコマンド(ls,grep等)により制御が難しい場合があるので、利用する場合注意が必要です。以下の例です。
+
+
+....
+$ cat psv_sample.bash
+#!/usr/bin/env bash
+
+dir_loc=$(cd $(dirname $0); pwd)
+echo "dir_loc: ${dir_loc}"
+
+# -------------------
+# Make temp directory
+echo 'Creating dir_temp ... '
+if dir_temp=$(mktemp -d); then
+        echo "OK: ${dir_temp}"
+else
+    echo ' NG: Error while creating temp directory.'; exit $LINENO
+fi
+
+# -------------------
+# Delete temp directory
+echo "Deleting ${dir_temp} ... "
+if rm -r "${dir_temp}"; then
+        echo "OK: ${dir_temp}"
+else
+    echo " NG: Error while deleting temp-dir."; exit $LINENO
+fi
+
+exit 0
+....
+
+その他スクリプト言語（Perl、 PHP等）
+からシェル・スクリプトを外部コマンドとして実行した際、問題があった場合に標準出力（`STDOUT`）か標準エラー出力（`STDERR`）に、エラー番号で場所を特定させたかったからです。
+*管理が面倒なので*、「ShellScriptは行番号の方が楽」と**考え、「エラー番号
+＝ エラーで抜けた行」に統一**がよいのではと考えました。
+
+**注意点**として、*bash の終了ステータス番号は１バイト*、つまり 0-255
+の整数です。255 を越えると 0 から再度カウントされます。
+
+つまり、`exit 256` は 0 と出力されます。
+**スクリプトが 256 行以上ならファイルをわけ**て、メインのスクリプトから呼び出すことも可能です。255行以内に抑えることが難しい場合は、別のスクリプトにわけるかするしかないですが、スクリプトは単純に書くことが重要ですね。よって$LINENO使うが、「エラー番号＝終了行」とならないことを認識する必要があります。
+256行以上のライン数でも、$LINENOを利用する行が255個以内であれば、
+行番号ではなく、自動的にステータスをわけるメッセージ出力関数を作成し利用する一案もあります。exit の戻り値とはなりませんが、デバッグ時は有効です。
+
+
+==== `source` でスクリプトを `include` しても動作する
+
+別のスクリプト・ファイルにわける場合は、`source <inclueするファイルのパス>`
+で可能です。その際に、`include` する側は `$BASH_LINENO`
+で「呼び出し元の行番号」を取得できます。
+
+[.bold]#sample1.bash#
+
+....
+function PSV1(){
+  echo $BASH_LINENO
+}
+....
+
+[.bold]#Main.bash#
+
+....
+#!/usr/bin/env bash
+
+source sample1.sh
+PSV1
+....
+
+....
+$ ./Main.bash
+4
+....
+
+[.bold]#COM_DEBUG.bash#
+....
+# 利用方法
+# bash スクリプト先頭で
+# source COM_DEBUG.bash
+# で作成スクリプトにこのデバッグ機能を取込む
+# 作成するスクリプト開始前にデバッグ機能初期化
+# PSV_INIT
+# 上記でPSVを利用してシェル変数名を取得し、出力時に利用
+# PSV shellvalue0 shellvalue1 ,,,,,
+# と記述して、シェル変数の名と値を出力する
+
+function PSV_INIT() {
+        RED_MSG $0
+  ### シェル変数打出しのデバッグ文出力ための前処理
+  # 打出し関数を利用する行を取得し、表示したい変数名を打出しに利用
+  # sed や tail,head（千行以上ではtail・headが早い)
+  # PSV(PrintShelllValue)行を取得のためgrep -n で検索
+  # "^[0-9]*:[ \t]*#" で、行頭に#があるコメント行は除外
+  # "PSV\[:space:\]=" で、
+  SVOUT=(`grep -n ${PSV} $0 | grep -v "^[0-9]*:[ \t]*#" | grep -v function | grep -v "PSV\[:space:\]=" | tr -s " " | cut -d" " -f1-`)
+        echo "STPPUT : ${STPOUT}"
+  
+  # ダブルクォーテーションで括ると改行を入れる
+  for i in "${STPOUT[@]}"; do
+  #for i in ${STPOUT[@]}; do
+    # シェル変数の正規表現利用は以下のようにする。expre 比較1:比較2 もある
+    # シェル変数が配列"[]"を含むか判定する
+    if [[ $i =~ [0-9]*: ]] ;then
+      GNUM=`echo $i | cut -d":" -f1`; TMPSV=`echo $i | cut -d":" -f2`
+      if [[ -v $TMPSV ]] ;then
+        STPOUT01[$GNUM]+=" $GNUM"; STPOUT01[$GNUM]+=" $TMPSV"
+      fi
+      ##else
+      ##  ESV[$GNUM]+=" ${PSV}"
+      ##fi
+    elif [[ $i =~ \[@\] ]] ;then
+      ESV[$GNUM]+=" ARRAYALL-${i}"; STPOUT01[$GNUM]+=" ${i}"
+    elif [[ $i =~ \[[0-9]*\] ]] ;then
+      ESV[$GNUM]+=" ARRAY-${i}"; STPOUT01[$GNUM]+=" ${i}"
+    else
+      if [[ ${i} =~ $PSV ]] ;then
+        :
+      else
+        # 連想配列にスペースを入れながら追加する
+        # result_ex. ESV[22]="PSHVAL $BJ2 $BJ3 .." 
+        ESV[$GNUM]+=" ${i}"; STPOUT01[$GNUM]+=" ${i}"
+      fi
+    fi
+    #echo "97 GNUM($GNUM): " ${STPOUT01[$GNUM]}
+  done
+
+  cat data.txt | \
+    shuf -n 255 | \
+    sort -n | \
+    cat -n | \
+    awk '{print $2, $1}'
+}
+
+
+....
+

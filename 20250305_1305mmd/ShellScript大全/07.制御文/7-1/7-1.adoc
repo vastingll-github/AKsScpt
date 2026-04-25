@@ -1,0 +1,224 @@
+
+== 【Linux】シェルスクリプトの比較演算子
+
+[シェルスクリプトで使える比較演算子の使い方まとめ,width=800,height=630]
+
+ここで、シェルスクリプトで使える比較演算子を理解する。
+
+== 比較演算子一覧
+
+Linuxのシェルスクリプトでは、様々な比較演算子が利用できます。 +
+これらを上手に組み合わせることで、条件分岐やループなどの制御構造を構築することができます。 +
+以下に、よく使用される比較演算子をまとめました。
+
+=== 数値比較演算子
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|数値A -eq 数値B
+|数値Aと数値Bが等しければ真
+|数値A -ne 数値B 
+|数値Aと数値Bが等しくなければ真
+|数値A -gt 数値B 
+|数値Aが数値Bより大きければ真
+|数値A -lt 数値B 
+|数値Aが数値Bより小さければ真
+|数値A -ge 数値B 
+|数値Aが数値B以上であれば真
+|数値A -le 数値B 
+|数値Aが数値B以下であれば真
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -eq "$B" ]; then
+    echo "変数 A と B は等しいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -ne "$B" ]; then
+    echo "変数 A と B は等しくありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -gt "$B" ]; then
+    echo "変数 A は変数 B より大きいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -lt "$B" ]; then
+    echo "変数 A は変数 B より小さいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -ge "$B" ]; then
+    echo "変数 A は変数 B 以上です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$A" -le "$B" ]; then
+    echo "変数 A は変数 B 以下または等しいです"
+fi
+----
+
+=== 文字列比較演算子
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|文字列1 = 文字列str2 |文字列1と文字列2が等しければ真
+|文字列1 != 文字列str2 |文字列1と文字列2が等しくなければ真
+|-z 文字列 |文字列の長さが0であれば真
+|-n 文字列 |文字列の長さが0より大きければ真
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$str1" = "$str2" ]; then
+    echo "文字列 str1 と str2 は等しいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$str1" != "$str2" ]; then
+    echo "文字列 str1 と str2 は等しくありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -z "$str" ]; then
+    echo "文字列 str は長さがゼロです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -n "$str" ]; then
+    echo "文字列 str は長さがゼロでないです"
+fi
+----
+
+=== ファイルチェック演算子
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|-e ファイル |ファイルであれば真
+|-f ファイル |通常ファイルなら真
+|-r ファイル |読み取り可能であれば真
+|-w ファイル |書き込み可能であれば真
+|-x ファイル |実行可能であれば真
+|-d ファイル |ディレクトリであれば真
+|-s ファイル |ファイルが存在し、空でなければ真
+|-L ファイル |ファイルがシンボリックリンクならば真
+|ファイル1 -nt ファイル2 |ファイル1がファイル2より新しければ真
+|ファイル1 -ot ファイル2 |ファイル1がファイル2より古ければ真
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -e "$file" ]; then
+    echo "ファイル file は存在します"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -f "$file" ]; then
+    echo "ファイル $file は通常のファイルです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -r "$file" ]; then
+    echo "ファイル file は読み込み可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -w "$file" ]; then
+    echo "ファイル file は書き込み可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -x "$file" ]; then
+    echo "ファイル file は実行可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -d "$dir" ]; then
+    echo "ディレクトリ $dir は存在します"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -s "$file" ]; then
+    echo "ファイル $file はゼロバイトではありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ ! -L "$file" ]; then
+    echo "ファイル $file はシンボリックリンクではありません"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$file1" -nt "$file2" ]; then
+    echo "ファイル $file1 はファイル $file2 より新しいです"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ "$file1" -ot "$file2" ]; then
+    echo "ファイル $file1 はファイル $file2 より古いです"
+fi
+----
+
+=== 条件式の結合
+
+[cols=",",options="header",]
+|===
+|演算子 |説明
+|条件1 -a 条件2 |両方の条件式が真であれば真（and条件）
+|条件1 -o 条件2 |いずれかの条件式が真であれば真（or条件)
+|===
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -e "$file" -a -r "$file" ]; then
+    echo "ファイル $file は存在し、読み込み可能です"
+fi
+----
+
+[source,prism,line-numbers,lang-bash]
+----
+if [ -e "$file" -o -w "$file" ]; then
+    echo "ファイル $file は存在するか、書き込み可能です"
+fi
+----
+
+

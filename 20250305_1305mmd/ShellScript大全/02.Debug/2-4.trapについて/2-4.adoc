@@ -1,0 +1,218 @@
+== bash入門：trapについて -スクリプト終了時に処理をする-
+
+.bash入門：trapについて -スクリプト終了時に処理をする-
+
+#ノウハウ#
+
+####これは[.bold]##約7分##で読めます。
+
+.
+bashにおけるtrapについてです。
+
+[[toc]]
+目次
+
+. link:#toc1[背景]
+. link:#toc2[実行環境について]
+. link:#toc3[概要]
+.. link:#toc4[作成ファイル一覧]
+.. link:#toc5[10_finally.sh]
+. link:#toc6[動作確認]
+. link:#toc7[解説]
+.. link:#toc8[10_finally.sh]
+. link:#toc9[おわりに]
+
+== [#toc1]#背景#
+
+bashにおけるtrapについて調査しました。
+
+== [#toc2]#実行環境について#
+
+実行環境は下記の記事を参考にお願いします。
+
+bash入門：Linux環境でbashは利用可能と想定して検証した環境を明記します。
+確認したBashバージョン
+
+....
+$ bash --version
+GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)`
+....
+
+
+
+== [#toc3]#概要#
+
+本記事のtrapは、スクリプト終了時に必ず処理します。
+
+=== [#toc4]#作成ファイル一覧#
+
+下記のファイルを作成しました。
+
+[source,wp-block-code]
+----
+　file:   shellscript/02Debug/2-4Script/ccm_traptest.bash
+----
+
+=== [#toc5]#ccm_traptest.bash#
+
+[source,wp-block-code]
+----
+#!/usr/bin/env bash
+
+set -euCo pipefail
+
+readonly LOG_OUT=./stdout.log
+readonly LOG_ERR=./stderr.log
+
+exec 1> >(tee -a "$LOG_OUT")
+exec 2> >(tee -a "$LOG_ERR")
+
+function log_debug() {
+    log 'DEBUG' "$*"
+}
+
+function log_err() {
+    log 'ERROR' "$*"
+}
+
+function log() {
+    printf "%s\t[%5s]\t%s\n" "$(date '+%Y/%m/%d %H:%M:%S.%3N')" "$1" "$2"
+}
+
+function trap_err() {
+    error_status=$?
+    msg=$(printf "エラー発生 \$?=%d %s %s:%d" ${error_status} "${BASH_SOURCE[0]}" "${FUNCNAME[1]}" ${BASH_LINENO[0]})
+    log_err "${msg}"
+}
+
+function trap_exit() {
+    msg=$(printf "終了時の処理 %s %s:%d" "${BASH_SOURCE[0]}" "${FUNCNAME[1]}" ${BASH_LINENO[0]})
+    log_debug "${msg}"
+}
+
+trap trap_err ERR
+
+trap trap_exit EXIT
+
+log_debug "$(which bash)"
+
+log_debug "$(bash --version)"
+
+# 標準エラーへの出力確認用
+ls dummy.txt
+
+echo "ここは表示されない"
+----
+
+== [#toc6]#動作確認#
+
+下記のコマンドを実行します。
+
+[source,wp-block-code,bash]
+----
+make build
+
+make up
+
+make login
+
+cd 10_finally
+
+chmod +x 10_finally.sh
+
+./10_finally.sh
+----
+
+strout.logに下記の文言が出力されている想定です。
+
+[source,wp-block-code]
+----
+2023/12/10 14:45:59.721    [DEBUG] /usr/bin/bash
+2023/12/10 14:45:59.726 [DEBUG] GNU bash, version 5.2.15(1)-release (aarch64-unknown-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+ls: cannot access 'dummy.txt': No such file or directory
+2023/12/10 14:45:59.742 [ERROR] エラー発生 $?=2 ./10_finally.sh main:43
+2023/12/10 14:45:59.745 [DEBUG] 終了時の処理 ./10_finally.sh main:1
+----
+
+== [#toc7]#解説#
+
+=== [#toc8]#10_finally.sh#
+
+このスクリプトは、`trap`コマンドを使用してエラーハンドリングとスクリプト終了時の処理を行う
+Bash スクリプトです。以下に各部分の解説を示します：
+
+. `#!/usr/bin/env bash`: スクリプトが Bash
+シェルで実行されることを指定しています。
+. `set -euCo pipefail`: スクリプトの設定を変更しています。
+
+* `-e`: エラーが発生したら即座にスクリプトを終了します。
+* `-u`: 未定義の変数を使用しようとするとエラーを発生させます。
+* `-C`:
+コマンドの返り値が0以外の場合、そのコマンドが非零であることを示します。
+* `-o pipefail`:
+パイプの途中でエラーが発生した場合、パイプ全体をエラーとして扱います。
+
+. `readonly LOG_OUT=./stdout.log`:
+標準出力を記録するログファイルのパスを指定します。
+. `readonly LOG_ERR=./stderr.log`:
+標準エラーを記録するログファイルのパスを指定します。
+. `exec 1> >(tee -a "$LOG_OUT")`:
+標準出力をファイルにリダイレクトし、同時にその内容を標準出力にも表示します。リダイレクト先は
+`$LOG_OUT` となります。
+. `exec 2> >(tee -a "$LOG_ERR")`:
+標準エラーをファイルにリダイレクトし、同時にその内容を標準エラーにも表示します。リダイレクト先は
+`$LOG_ERR` となります。
+. `function log_debug() { ... }`:
+`log_debug`というデバッグ用のログを記録する関数を定義しています。`log`関数を呼び出して、ログの種類を
+“DEBUG” としています。
+. `function log_err() { ... }`:
+`log_err`というエラーログを記録する関数を定義しています。`log`関数を呼び出して、ログの種類を
+“ERROR” としています。
+. `function log() { ... }`:
+`log`という共通のログを記録する関数を定義しています。日付、ログの種類、メッセージを整形して表示します。
+. `function trap_err() { ... }`:
+`trap_err`というエラーが発生した際に呼び出される関数を定義しています。エラーのステータスや発生箇所の情報を取得し、`log_err`関数を呼び出してエラーログを記録します。
+. `function trap_exit() { ... }`:
+`trap_exit`というスクリプトが終了する際に呼び出される関数を定義しています。終了時の処理を行い、`log_debug`関数を呼び出してデバッグログを記録します。
+. `trap trap_err ERR`: `ERR`
+シグナルに対して、`trap_err`関数が呼び出されるように設定します。
+. `trap trap_exit EXIT`: `EXIT`
+シグナルに対して、`trap_exit`関数が呼び出されるように設定します。
+. `log_debug "$(which bash)"`: インストールされている Bash
+の実行ファイルのパスをデバッグログに記録します。
+. `log_debug "$(bash --version)"`: Bash
+のバージョン情報をデバッグログに記録します。
+. `ls dummy.txt`: 標準エラーへの出力確認用に、存在しないファイル
+`dummy.txt` を `ls`
+コマンドでリストします。この部分でエラーが発生し、`trap_err`関数が呼び出されてエラーログが記録されます。
+. `echo "ここは表示されない"`: 上記の `ls dummy.txt`
+でエラーが発生した場合、この行は実行されません。スクリプトはエラーが発生した時点で終了するため、この行は実行されません。
+. スクリプト終了時に
+`trap_exit`関数が呼び出され、終了時の処理が実行されます。
+
+== [#toc9]#おわりに #
+
+今日は、bashにおけるtrapについてご紹介しました。
+
+
+=== findコマンドでカレントディレクトリを検索対象外にする方法
+
+findコマンドでカレントディレクトリを対象外にする方法です。あるディレクトリ内でディレクトリだけを検索しようとして、下記のコマンドを実行します。find
+. -type...
+
+[.cat-label .cat-label-6]#ノウハウ#
+
+=== bash入門：シェル内でfunctionを並列実行させる
+
+シェル内でfunctionを並列実行させる方法です。シェル内でfunctionを並列実行させたい時です。この記事のソースは下記...
+
+https://yossi-note.com/basic_knowledge_of_gpg/[]
+
+image:https://yossi-note.com/wp-content/uploads/2023/04/66_Basic_Knowledge_of_GPG-160x90.jpg[https://yossi-note.com/wp-content/uploads/2023/04/66_Basic_Knowledge_of_GPG-160x90,width=160,height=90]
+[.cat-label .cat-label-6]#ノウハウ#
+

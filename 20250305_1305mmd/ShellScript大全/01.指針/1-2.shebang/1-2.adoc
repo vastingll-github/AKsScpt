@@ -1,0 +1,449 @@
+
+== bashスクリプトの書き方
+
+bashスクリプトについてまとめました。
+
+まとめた理由ですが、以下です。
+
+* bashのシェルスクリプトは簡単に利用可能だが、第三者のバグ対応や、可読性に注意しないと維持管理が難しい
+* スクリプトは簡単に作成できるが、Perlと同じようにすぐ利用することが主だが、すぐ忘れがちなのでどうにかならないか
+* 簡単に利用できる、現状よく使われている、効率的に作業が進められるが個別の領域から抜けきれない、展開したいAIのネタになれば幸せかも
+
+=== シェルスクリプトファイル
+
+shebang とは
+シェバンと読み、Linux等で実行されるシェルスクリプトにおいて先頭についている +#!+ を指します。このシェバン +#!+ で、コンピュータ内でパスを指定すると実行時にそのプログラムが起動されて
+それ以降のスクリプトが引き渡されて実行可能です。
++#+(ハッシュ:hash/シャープ:sharp) と ！(バン:bang)を縮めて、shebangを言われるようになったようです。
++#+!/bin/shではなく
+*#!/usr/bin/env bash （環境によりbashのパス相違に対処）* 
+にしていきましょう。
+
+[source,language-shell]
+----
+#!/bin/bash
+#
+
+or 以下の方がディストリビューションによる影響を受けにくい
+
+#!/usr/bin/env bash
+#
+----
+
+=== スクリプトファイル冒頭に用途・使い方を明記
+
+自分で作成した内容を忘れないためや、第三者にわかりやすいように、以下のことに注意した方がよいと最近思い始めました。ノウハウも忘れがちとなるためです。
+この、その、どのシェルスクリプトの説明を以下のように先頭に記述しましょう。
+
+* 利用方法を記述
+* 引数やオプションの説明
+* 使いまわせる意識で書く（この項目はちょっと難なので拘らない）
+
+usage()関数を作成する
+
+[source,language-shell]
+----
+function usage() {
+　　echo -e "\n\nUsage:  $0 <arg1> <arg2> <arg3>
+　　　arg1  aaaaaaaa
+　　　arg2  bbbbbbb
+　　　arg3  ccccccc\n\n"
+}
+----
+
+=== スクリプト内、functionを作成するときはしっかりとコメントを記述する
+
+* 複雑な処理は他者が把握しやすいように、実行内容などをコメント
+* そのスクリプト・コマンドの用途・使い方・利用上の注意点
+* 関数名は、先頭３文字で分類を表し、_のあとは動詞・目的物を記述する(用途をわかりやすく)
+
+[source,language-shell]
+----
+## この関数の内容
+## 注意点:ある場合記述
+## 先頭３文字(FLN(ファイル名)、FLC(ファイル内容)等、_は操作と目的物
+function flc_useresult(){
+    cat [a-z]* | grep -wn xxx
+    command1;
+}
+
+fnc_useresult
+----
+
+=== 定数や関数について
+
+* 定数は大文字で記述(declare -r my_var (読み出し専用の変数を宣言), typeset)
+* 関数は定数の後に記述
+* 関数と関数の間に実行コードは書かない
+
+
+=== main関数を作成する
+
+* 25行以下（昔のCUIターミナルの行数）のスクリプトであれば不要だが、一つ以上の関数を含む長さの場合はmain関数を作成する
+* main関数を一番下に置いてスクリプトの最後でそれを呼び出すように記述する
+* main関数の実行を`if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then`でブロックし、scriptを直接実行した時のみ処理を行うようにする
+
+== Tips
+
+=== ShellCheckを行う
+
+* ShellCheck は、バグ要因となる記述を検知し警告してくれる、Shell
+の Linter
+
+=== shfmtを行う
+
+* shfmt は、スクリプト内の記述を設定したルールにしたがって整形してくれる
+Formatter
+
+==== インストール
+
+[source,language-shell]
+----
+% brew install shellcheck shfmt
+% shellcheck ./sample.sh # shellcheck実行
+% shfmt -w ./sample.sh # shfmt実行、整形して保存
+----
+
+=== シェルの文法をチェックする
+
+* 実行時に`-n`を付与することでシェルを実行せず文法チェックができる
+
+[source,language-shell]
+----
+# bash -n miss.bash #文法エラーあり
+miss.sh: line 4: syntax error near unexpected token `done'
+miss.sh: line 4: `done'
+----
+
+=== パイプで渡したコマンドの終了ステータスをみる
+
+* 通常`$?`では最後に実行したコマンドの終了ステータスしか見ることができない
+* パイプで渡したコマンドの終了ステータスが見たいときは、`PIPESTATUS`を見ればよい
+
+[source,language-shell]
+----
+# echo ${PIPESTATUS[@]}
+0 0 0 0 0
+----
+
+=== スクリプトのカレントディレクトリ設定
+
+* 他の関連ファイル・ログ等を作成する場合に、このディレクトリを起点に色々相対パスで指定できる
+
+[source,language-shell]
+----
+SCRIPT_DIR=$(cd $(dirnm $0);pwd)
+LOG=$SCRIPT_DIR/tst.log
+----
+
+=== エラーメッセージは標準エラー出力に出力する
+
+* エラーメッセージと他のステータス情報を一緒に出力する関数を作成すると便利
+
+[source,language-shell]
+----
+function err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+}
+
+if ! do_something; then
+  err "Unable to do_something"
+  exit 1
+fi
+----
+
+== より良い書き方、と思われるもの
+
+=== if文は[〜]ではなく[[〜]]を使う
+
+* [[の方が安全で機能が豊富
+
+....
+[[ は && や || を利用可（ex. [[ ]] && [[ ]]）
+[[ の中で-e FILEが利用可
+[[ は -eq が利用可
+[[ は = でglob(正規表現・ワイルドカード[*、?等]でファイル名に一致させる機能)マッチが利用可
+[[ は =~ の 正規表現マッチが利用可
+[[ は < で文字列長さ比較可能
+
+* globbingや単語分割がないため [[ ]]にある=の左辺をクオートする必要がない
+* 空の変数も正しく扱われる
+....
+
+
+=== コマンド置換は$(cmd)を使う
+
+* `cmd`と$(cmd)で２通りの記法があるが $(cmd)で記述する
+* 理由は$(cmd)ならネストできる
+　ネストとは「入れ子」ともいいます。Linuxのシェルスクリプトでは、$(...)というコマンド置換の記法を使うことで、古い記法であるバッククォート `...`ではできない、複数のコマンドを入れ子にして実行できます。
+例：
+echo "今日の午前中は、$(echo "こんにちは $(date +%H)時") です"
+実行結果：今日の午前中は、こんにちは 10時 です
+この例では、$(date +%H) が最初に実行されて現在の時間が取得され、その結果が外側の $(echo ...) に渡されます。最終的に、一番外側の echo が全体の文字列を出力します。 
+* `cmd`は見にくい
+
+[source,language-bash]
+----
+VAL=`echo "hoge"`
+VAL=$(echo "hoge")
+----
+
+=== 定数は読み取り専用にする
+
+* 想定外の値の上書きを防止するため、上書きする必要がない値は読み取り専用で定義する
+* bashでは以下で定義すると定数になる
+
+[source,language-bash]
+----
+declare -r val1
+readonly val1
+local -r val1
+----
+
+* それぞれの違いは、`declare -r`と`local -r`は関数内で定義した場合スコープが関数内で、`readonly`はスコープがグローバルになる
+* 個人的には、グローバル定数を`readonly`で定義、ローカル定数を`local -r`で定義するとわかりやすいと思います。
+
+=== 変数名の命名
+
+* snake caseとは、プログラミングやファイル名などで複数の英単語を連結して表記する際に、単語間をアンダースコア（_）でつなぐ命名規則をいいます。通常は、すべての文字を小文字で表記します。  (例: use_this_format、OUTPUT_DIR)
+* グローバルな変数・定数は全て大文字(例:
+OUTPUT_DIR)、ファイルの先頭で宣言する
+* ローカル変数は小文字で先頭に_をつける (例: _use_this_format)
+
+=== オプションは`euC`をつける
+
+[source,language-shell]
+----
+#!/bin/bash
+
+# 最初に設定
+set -euC
+
+echo "myscript"
+----
+
+* シェバンのに記述できるがbashコマンドで直接実行するときにオプションが機能しなくなるのでsetで指定する方が良い
+
+==== `-e`オプション
+
+* スクリプト中のコマンドがエラーになった場合にスクリプトを停止する +
+※`grep`
+`ls`などが0件になる場合に終了コード0以外になるので、一時的に`-e`を解除する必要がある
+
+==== `-u`オプション
+
+* 未定義変数を使おうとするとエラー終了するようになる
+* 変数名のタイプミスや初期化わすれでの変数の利用などを防ぐことができる
+* 以下のようにデフォルト値を指定すれば回避できる
+
+[source,language-shell]
+----
+"${VAL1:-}"
+----
+
+==== `-C`オプション
+
+* リダイレクトでのファイル上書き時にエラー終了するようになる
+* リダイレクトでファイルを生成するときに想定外に上書きしてしまうことを防ぐことができる
+* 以下のようにすれば回避できる
+
+[source,language-shell]
+----
+echo "Hello" >| file1.txt
+----
+
+=== 配列変数を展開するときは「"」で必ず囲う
+
+* 値に半角スペースを含む場合に囲うかどうかで挙動が変わる
+
+[source,language-shell]
+----
+# 以下のようにコマンド実行した場合
+# myfunc 100 200 "foo bar" 300
+
+# 以下２つのfor文の結果が異なる
+
+for i in $@; do echo $i; done
+=> 100
+=> 200
+=> foo
+=> bar
+=> 300
+
+for i in "$@"; do echo $i; done
+=> 100
+=> 200
+=> foo bar
+=> 300
+----
+
+=== evalは使わない
+
+* なにが実行されたのかわかりにくい
+* 成功したのかどうかがわからない
+* 変数へ代入すると、その変数がなにであったかを確認することなく設定してしまう
+
+[source,language-shell]
+----
+# What does this set?
+# Did it succeed? In part or whole?
+eval $(set_my_variables)
+
+# What happens if one of the returned values has a space in it?
+variable="$(eval some_function)"
+----
+
+=== パイプ出力をwhileで読み込むより、プロセス置換やreadarrayを使用する
+
+* whileスコープ内で変数代入しても、ループを抜けると消えてしまう
+* パイプで接続された各々のコマンドはサブシェル（bashからbashを呼び別プロセスで動作すること）を作成して実行される
+* shell変数は一つのプロセス内でしか共有できないため、その内容を他のプロセスから見ることはできない
+
+[source,language-shell]
+----
+last_line='NULL'
+your_command | while read -r line; do
+  if [[ -n "${line}" ]]; then
+    last_line="${line}"
+  fi
+done
+
+# This will always output 'NULL'!
+echo "${last_line}"
+----
+
+[source,language-shell]
+----
+while read line; do
+  command01
+  command02
+done < $FILE_NAME
+----
+
+* プロセス置換もサブシェルを作成するが、サブシェルからwhileにリダイレクトすることが可能
+
+[source,language-shell]
+----
+last_line='NULL'
+while read line; do
+  if [[ -n "${line}" ]]; then
+    last_line="${line}"
+  fi
+done < <(your_command)
+
+# This will output the last non-empty line from your_command
+echo "${last_line}"
+----
+
+* readarrayはbashの組み込みのコマンド
+* readarrayを使用して、コマンドの出力を配列に読み込み、ループする
+
+[source,language-shell]
+----
+last_line='NULL'
+readarray -t lines < <(your_command)
+for line in "${lines[@]}"; do
+  if [[ -n "${line}" ]]; then
+    last_line="${line}"
+  fi
+done
+echo "${last_line}"
+----
+
+=== 算術演算では`(( ... ))`か`$(( ... ))`を使う
+
+* `let`, `$[ ... ]`, `expr`は使用しない
+* `<`, `>`は`[[ ... ]]`の中では数値比較ではなく、辞書式比較を行う
+* 数値比較には`[[ ... ]]`ではなく`(( ... ))`を用いる
+* シェルの組み込み演算は`expr`より何倍も速い
+* `$(( ... ))`内では`${var}`, `$var`は必要ない（`var`で良い）
+
+[source,language-shell]
+----
+# Do some complicated computations.
+# Note that normal arithmetic operator precedence is observed.
+hr=2
+min=5
+sec=30
+echo $(( hr * 3600 + min * 60 + sec )) # prints 7530 as expected
+----
+
+=== ループないの変数名はループしている変数に似た名前をつける
+
+[source,language-shell]
+----
+for zone in "${zones[@]}"; do
+  something_with "${zone}"
+done
+----
+
+== テンプレート
+
+[source,language-shell]
+----
+#!/bin/bash
+#
+# 例) MySQLのダンプファイル取得
+# マスキング処理を実行
+# S3にアップロード
+
+# オプションを付与する
+set -euC
+
+# グローバル定数の定義 
+readonly SCRIPT_DIR=$(cd $(dirname $0);pwd)
+readonly GLOBAL_CONST="GLOBAL_CONST"
+
+# 関数や変数ファイルの読み込み
+source $SCRIPT_DIR/functions.sh
+
+#
+# 関数定義
+#
+
+# usage関数を作成
+function usage() {
+　　echo -e "\n\nUsage:  $0 <arg1> <arg2> <arg3>
+　　　arg1  aaaaaaaa
+　　　arg2  bbbbbbb
+　　　arg3  ccccccc\n\n"
+}
+
+# 引数を受け取る関数を作成
+function parse_args(){
+  if [[ #? != 3 ]]; then
+    usage
+  fi
+  readonly ARG1="$1"
+  readonly ARG2="$2"
+  readonly ARG3="$3"
+}
+
+# commandを実行
+#
+# $1: ローカル変数
+# 出力: ~~~
+function my_func() {
+  # ローカル定数
+  local -r _local_const="$1"
+  command "$local_const"
+  echo "~~~"
+}
+
+# main関数
+
+function main(){
+  local -r _arg1="$1"
+  local -r _arg2="$2"
+  local -r _arg3="$3"
+
+  my_func "$_arg1"
+}
+
+# entry point
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  parse_args "$@"
+  main "$ARG1" "$ARG2" "$ARG3"
+fi
+----
+
