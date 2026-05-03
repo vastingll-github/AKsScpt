@@ -5,7 +5,7 @@
 # 4. bookmark で章(ShellScript)節(制御・変数等)項(htmlの題目) でディレクトリやasciidoc ファイルを作成する
 # ./UTF8_Html2pandc.bash ${URL} ${CURDIR}/${SETSDIR}
 
-function usage {
+function usage() {
 	echo -e "\n\n   $0 URL StoredDir\n\n"
 	exit 1
 }

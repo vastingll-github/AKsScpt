@@ -63,13 +63,13 @@ function usage() {
 ----
 ## この関数の内容
 ## 注意点:ある場合記述
-## 先頭３文字(FLN(ファイル名)、FLC(ファイル内容)等、_は操作と目的物
+## 先頭３文字(FLN(ファイル名)、FLC(ファイル内容)等、_の後は操作と操作対象物
 function flc_useresult(){
     cat [a-z]* | grep -wn xxx # 単語（-w:スペース等で区切られたものでxxxを検索）
     command1;
 }
 
-fnc_useresult
+flc_useresult
 ----
 
 === 定数や関数について
