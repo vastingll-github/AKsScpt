@@ -1,0 +1,81 @@
+2026/05/18 18:33:09.058	[DEBUG]	/usr/bin/bash
+2026/05/18 18:33:09.065	[DEBUG]	GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+ls: 'dummy.txt' にアクセスできません: そのようなファイルやディレクトリはありません
+2026/05/18 18:33:09.073	[ERROR]	エラー発生 $?=2 ./logging.bash main:45
+2026/05/18 18:33:09.078	[DEBUG]	終了時の処理 ./logging.bash main:1
++ trap trap_err ERR
++ trap trap_exit EXIT
+++ which bash
++ log_debug /usr/bin/bash
+++ gen_log_msg DEBUG /usr/bin/bash
++++ date '+%Y/%m/%d %H:%M:%S.%3N'
+++ printf '%s\t[%5s]\t%s' '2026/05/18 18:34:35.716' DEBUG /usr/bin/bash
+2026/05/18 18:34:35.716	[DEBUG]	/usr/bin/bash
++ lgg_msg='2026/05/18 18:34:35.716	[DEBUG]	/usr/bin/bash'
++ echo '2026/05/18 18:34:35.716	[DEBUG]	/usr/bin/bash'
+++ bash --version
++ log_debug 'GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
+++ gen_log_msg DEBUG 'GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
++++ date '+%Y/%m/%d %H:%M:%S.%3N'
+++ printf '%s\t[%5s]\t%s' '2026/05/18 18:34:35.723' DEBUG 'GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
++ lgg_msg='2026/05/18 18:34:35.723	[DEBUG]	GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
+2026/05/18 18:34:35.723	[DEBUG]	GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
++ echo '2026/05/18 18:34:35.723	[DEBUG]	GNU bash, バージョン 5.2.21(1)-release (x86_64-pc-linux-gnu)
+Copyright (C) 2022 Free Software Foundation, Inc.
+ライセンス GPLv3+: GNU GPL バージョン 3 またはそれ以降 <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
++ ls dummy.txt
+ls: 'dummy.txt' にアクセスできません: そのようなファイルやディレクトリはありません
+++ trap_err
+++ error_status=2
++++ printf 'エラー発生 $?=%d %s %s:%d' 2 ./logging.bash main 47
+++ msg='エラー発生 $?=2 ./logging.bash main:47'
+++ log_err 'エラー発生 $?=2 ./logging.bash main:47'
++++ gen_log_msg ERROR 'エラー発生 $?=2 ./logging.bash main:47'
+++++ date '+%Y/%m/%d %H:%M:%S.%3N'
++++ printf '%s\t[%5s]\t%s' '2026/05/18 18:34:35.731' ERROR 'エラー発生 $?=2 ./logging.bash main:47'
+++ lgg_msg='2026/05/18 18:34:35.731	[ERROR]	エラー発生 $?=2 ./logging.bash main:47'
+++ echo '2026/05/18 18:34:35.731	[ERROR]	エラー発生 $?=2 ./logging.bash main:47'
+2026/05/18 18:34:35.731	[ERROR]	エラー発生 $?=2 ./logging.bash main:47
++ trap_exit
+++ printf '終了時の処理 %s %s:%d' ./logging.bash main 1
++ msg='終了時の処理 ./logging.bash main:1'
++ log_debug '終了時の処理 ./logging.bash main:1'
+++ gen_log_msg DEBUG '終了時の処理 ./logging.bash main:1'
++++ date '+%Y/%m/%d %H:%M:%S.%3N'
+++ printf '%s\t[%5s]\t%s' '2026/05/18 18:34:35.736' DEBUG '終了時の処理 ./logging.bash main:1'
+2026/05/18 18:34:35.736	[DEBUG]	終了時の処理 ./logging.bash main:1
++ lgg_msg='2026/05/18 18:34:35.736	[DEBUG]	終了時の処理 ./logging.bash main:1'
++ echo '2026/05/18 18:34:35.736	[DEBUG]	終了時の処理 ./logging.bash main:1'

@@ -1,0 +1,4 @@
+ proc.psinfo.uname
+ proc.psinfo.rss
+  proc.psinf.vsize
+kernel.mem.size

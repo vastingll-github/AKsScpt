@@ -9,7 +9,7 @@
 . link:#toc1[背景]
 . link:#toc2[概要]
 .. link:#toc3[作成ファイル一覧]
-.. link:#toc4[12_logging.sh]
+.. link:#toc4[logging.bash]
 . link:#toc5[動作確認]
 . link:#toc6[解説]
 .. link:#toc7[12_logging.sh]
@@ -17,11 +17,11 @@
 
 == [#toc1]#背景#
 
-bashにおけるlogging(ロギング)について調査する機会があったので、そのときの内容を備忘として残しました。
+bashにおけるlogging(ロギング)について何パターンか調査し、時事適的に利用したいので、その内容をまとめました。
 
 == [#toc2]#概要#
 
-本記事のロギングは、infoとdebug、warn、errorで使い分けるようにしました。また、色付けをしています。
+ここのロギングは、infoとdebug、warn、errorで使い分けるようにしました。また、色付けをしています。
 
 === [#toc3]#作成ファイル一覧#
 
@@ -29,10 +29,10 @@ bashにおけるlogging(ロギング)について調査する機会があった�
 
 [source,wp-block-code]
 ----
-        new file:   local/work/12_logging/12_logging.sh
+~/logging/logging.bash
 ----
 
-=== [#toc4]#12_logging.sh#
+=== [#toc4]#logging.bash#
 
 [source,wp-block-code]
 ----
@@ -40,10 +40,13 @@ bashにおけるlogging(ロギング)について調査する機会があった�
 
 set -euCo pipefail
 
-readonly LOG_OUT=./stdout.log
+# readonlyは変数を読取専用にし後続処理で、値代入や変数のunsetは不可。
+readonly LOG_STD=./stdout.log
 readonly LOG_ERR=./stderr.log
 
-exec 1> >(tee -a "$LOG_OUT")
+# exec はbash内部コマンドで実行中bashでリダイレクトを有効化できる(TIPS)
+# ファイル出力と標準出力・エラー出力を同時に実行する方法
+exec 1> >(tee -a "$LOG_STD")
 exec 2> >(tee -a "$LOG_ERR")
 
 function log_debug() {

@@ -1,0 +1,5 @@
+IFS=
+for i in $(seq ${2:-10000}); do
+readarray mline < "$1"
+mline="${mline[*]}" # 配列に読み込んだものを結合する
+done

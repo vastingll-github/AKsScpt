@@ -1,0 +1,4 @@
+IFS=
+for i in $(seq ${2:-10000}); do
+mline=$(<"$1")
+done

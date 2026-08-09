@@ -1,66 +1,3 @@
-[[GlobalHeader-react-component-843efc29-c765-4925-8c15-58dfda7cbae4]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_2.svg
-
-[.material-symbols-outlined .style-18lpml7]#search#
-
-[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
-
-link:/login?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Signup]
-
-[.material-symbols-outlined .style-18lpml7]#search#
-
-. link:/[Trend]
-. link:/question-feed[Question]
-. link:/official-events[Official Event]
-. link:/official-columns[Official
-Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
-. link:/organizations[Organization]
-
-[[AlertMessage-react-component-2c7ff171-208a-4399-9729-174c892b15e4]]
-
-[[PersonalArticlePage-react-component-f7c67918-e61c-4bc5-8383-0fd557f7c953]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_22.svg
-
-link:/ko1nksm/items/bfe95cc72eb8ec31c11f/likers[11]
-
-Go to list of users who liked
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_28.svg
-
-[.style-1vem4tk]#9#
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_32.svg
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_34.svg
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_36.svg
-
-[.material-symbols-outlined .style-v2p563]#more_horiz#
-
-Delete article
-
-[.material-symbols-outlined .style-v2p563]#close#
-
-Deleted articles cannot be recovered.
-
-Draft of this article would be also deleted.
-
-Are you sure you want to delete this article?
-
-Cancel
-
-Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
-
-[.material-symbols-outlined .is-fill .style-1l7bzw8]#info#
-
-More than 3 years have passed since last update.
-
-link:/ko1nksm[]
-
-image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F54918%2Fprofile-images%2F1473693528?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=0964fa6812034922ec2b40404d3ddde1[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F54918%2Fprofile-images%2F1473693528?ixlib=rb-4.0,width=24,height=24]
-
-@ko1nksm[.style-15fzge]##(Koichi Nakashima)##
-
 == シェルスクリプトの配列・連想配列の書き方まとめ（全POSIXシェル対応、実装の違いと考察）
 
 * link:/tags/shellscript[ShellScript]
@@ -68,11 +5,8 @@ image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-stor
 * link:/tags/zsh[Zsh]
 * link:/tags/ksh[ksh]
 
-[.style-3k9iaf]#Last updated at 2021-09-06#[.style-3k9iaf]#Posted at
-2021-08-20#
-
 [[personal-public-article-body]]
-== [#はじめに .fragment]##link:#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB[__]はじめに
+== はじめに
 
 POSIX
 シェルでは配列や連想配列の機能は標準化されていませんが、多くのシェルで拡張機能として使うことができます。しかしながらシェルやバージョンによって実装されている機能は異なっており、適切な書き方か分かりづらいです。そこで記事では配列や連想配列の違いと使い方をまとめています。またどうしてそのような違いがあるのかを考察も行っています。（「考察」なので正しい情報ではなく私の考えです。調べればどこかに書いてあるかもしれませんが調べていません。）
@@ -84,9 +18,9 @@ POSIX
 というか、そもそもこれは ShellSpec
 の配列サポートと将来私が作る予定の複数シェル対応の配列操作ライブラリのための調査資料です。
 
-== [#注意点 .fragment]##link:#%E6%B3%A8%E6%84%8F%E7%82%B9[__]注意点
+== 注意点
 
-=== [#typeset-declare-local-の違い .fragment]##link:#typeset-declare-local-%E3%81%AE%E9%81%95%E3%81%84[__]`typeset`, `declare`, `local` の違い
+=== `typeset`, `declare`, `local` の違い
 
 この記事ではどのシェルでも使用可能で汎用的な `typeset`
 コマンドに統一して調べていますが `typeset` の代わりに `declare` や
@@ -105,13 +39,13 @@ bash で `typeset`
 `help typeset` では確かに Obsolete と表示されるのですが 4.4 以降では
 synonym に変わってるので非推奨でなくなったのかもしれません。
 
-=== [#バージョンについて .fragment]##link:#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6[__]バージョンについて
+=== バージョンについて
 
 配列・連想配列が使えるバージョンは実際のシェルや
 https://hub.docker.com/r/fidian/multishell/[fidian/multishell]
 やドキュメントを元に出来る限り正確に調べているつもりですが、すべてのバージョンを手元に用意しているわけではなく多少バージョンがずれている可能性があるので注意してください。個人的にはどれがどのあたりから使えるようになったかだいたい把握できれば十分なのです。
 
-== [#歴史 .fragment]##link:#%E6%AD%B4%E5%8F%B2[__]歴史
+== 歴史
 
 各シェルで配列や連想配列の機能は統一されていませんが、気まぐれで実装を決定することはあまりありません。通常はその時点で最善と考えた方法で実装しているはずです。シェルの歴史を知ることはなぜこのような実装を選択したのかを読み取る手がかりになります。
 
@@ -175,9 +109,9 @@ oksh とほぼ同じだと思われます
 * https://www.zsh.org/mla/users/2021/msg00367.html[古い zsh
 のソースコードへのリンク]
 
-== [#配列-array .fragment]##link:#%E9%85%8D%E5%88%97-array[__]配列 (Array)
+== 配列 (Array)
 
-=== [#インデックス番号 .fragment]##link:#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]インデックス番号
+=== インデックス番号
 
 [cols=",,,,,,,",options="header",]
 |===
@@ -192,7 +126,7 @@ oksh とほぼ同じだと思われます
 |最大インデックス番号 |4095 |2^31-1 |2^32-1 |2^22-1 |2^63-1 |不明 |不明
 |===
 
-==== [#最初のインデックス番号 .fragment]##link:#%E6%9C%80%E5%88%9D%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]最初のインデックス番号
+==== 最初のインデックス番号
 
 インデックス番号が 0 から始まるもの（bash、ksh、mksh、oksh）と 1
 から始めるもの（zsh、yash）があります。zsh が 1
@@ -299,7 +233,7 @@ zsh に近い設計（例えばインデックス番号が 1
 番目から後ろから 2 番目」という意味になるなどインデックス番号が 1
 から始まった方が合理的である理由は他にもあります。
 
-==== [#配列名だけ指定した場合 .fragment]##link:#%E9%85%8D%E5%88%97%E5%90%8D%E3%81%A0%E3%81%91%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88[__]配列名だけ指定した場合
+==== 配列名だけ指定した場合
 
 配列名だけを指定した場合に、インデックス番号 0
 の要素を指す場合と、配列全体を指す場合の 2
@@ -325,7 +259,7 @@ $ set | grep ^var # 配列に変わってしまう
 var[0]=abc
 ....
 
-==== [#離散的なインデックス番号 .fragment]##link:#%E9%9B%A2%E6%95%A3%E7%9A%84%E3%81%AA%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]離散的なインデックス番号
+==== 離散的なインデックス番号
 
 例えば `ary[10]=1`
 を実行した後の要素数は何個になるのか？という話です。zsh では 1 〜 9
@@ -338,7 +272,7 @@ ksh93
 ではインデックス番号に大きな数字を指定すると時間がかかるため内部の実装はすべての要素のメモリが確保されていると思われます。ksh88
 でも連続的に確保されている可能性が高いですが最大配列サイズが制限されておりソースコードが確認できない為不明です。
 
-==== [#最大インデックス番号 .fragment]##link:#%E6%9C%80%E5%A4%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E7%95%AA%E5%8F%B7[__]最大インデックス番号
+==== 最大インデックス番号
 
 Solaris 10 での ksh88 の配列の最大サイズは 4096 でしたが古いシステムでは
 1024 の場合もあるようです。pdksh の場合は
@@ -347,7 +281,7 @@ Solaris 10 での ksh88 の配列の最大サイズは 4096 でしたが古い�
 の範囲のようです。bash も同様のようです。zsh と yash
 も同じだと思いますがメモリ確保に時間がかるため調べていません。かなり大きなサイズが扱えることは確認しています。
 
-=== [#配列の定義方法 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E5%AE%9A%E7%BE%A9%E6%96%B9%E6%B3%95[__]配列の定義方法
+=== 配列の定義方法
 
 配列を定義する方法は複数あります。そのまとめとともにその特徴からどういう考えで設計されたのかを考察します。
 
@@ -366,7 +300,7 @@ Solaris 10 での ksh88 の配列の最大サイズは 4096 でしたが古い�
 
 参考 csh では `set ary=(1 2 3)`
 
-==== [#set--a-ary-1-2-3 .fragment]##link:++#set--a-ary-1-2-3++[__]`set -A ary 1 2 3`
+==== `set -A ary 1 2 3`
 
 最初に配列が登場した ksh88 で実装された方法で `set -A ary 1 2 3`
 という書き方で配列を定義します。この書き方のメリットは、それまでの
@@ -387,7 +321,7 @@ ksh93 は ksh88 の後継シェルなので互換性の点から `set -A`
 の上位互換である `typeset -a ary=(1 2 3)`
 をこの時点で実装したためだと思われます。
 
-==== [#aryi1-aryj2-aryk3 .fragment]##link:#aryi1-aryj2-aryk3[__]`ary[I]=1 ary[J]=2 ary[K]=3`
+==== `ary[I]=1 ary[J]=2 ary[K]=3`
 
 実は ksh88 は配列の定義方法として `set -A`
 だけの実装では足りません。なぜなら `set`
@@ -408,7 +342,7 @@ yash が対応していないのが少々不思議です。`array`
 `: "${ary[I]:=1}"`
 という書き方でインデックス番号を指定して代入することは可能です。
 
-==== [#ary1-2-3 .fragment]##link:#ary1-2-3[__]`ary=(1 2 3)`
+==== `ary=(1 2 3)`
 
 ksh93
 ではより使いやすくするために新しい構文を使った配列定義が作られました。これは
@@ -420,7 +354,7 @@ pdksh 系である mksh でも R30 (2007) で対応しました。他 bash、zsh
 変数代入前に `ary`
 に連想配列属性をつけないように注意してください。連想配列属性がついている場合は代入は連想配列の定義（キーと値のペア）として扱われます。
 
-==== [#aryi1-j2-k3 .fragment]##link:#aryi1-j2-k3[__]`ary=([I]=1 [J]=2 [K]=3)`
+==== `ary=([I]=1 [J]=2 [K]=3)`
 
 この形式には bash と zsh が対応しています。ksh93
 の場合は一見動くように見えるかもしれませんが連想配列を作ります。困ったことに
@@ -448,7 +382,7 @@ zsh の対応は 5.5 (2018)
 からと少し遅めなので注意が必要です。配列に限らず（つまり連想配列も含む）`[キー]=値`
 という形式に対応したのが 5.5 からです。
 
-==== [#typeset--a-aryi1-j2-k3 .fragment]##link:++#typeset--a-aryi1-j2-k3++[__]`typeset -a ary=([I]=1 [J]=2 [K]=3)`
+==== `typeset -a ary=([I]=1 [J]=2 [K]=3)`
 
 ksh93 とそれに続いた bash、zsh
 で使える方法で、もっとも冗長的（明示的）な書き方です。インデックス番号は連続していなくても構いません。ksh93
@@ -458,13 +392,13 @@ ksh93 とそれに続いた bash、zsh
 の要素を参照します。連想配列の場合は文字列として解釈されるため `5+5`
 というキーの要素を参照します。
 
-==== [#typeset--a-ary1-2-3 .fragment]##link:++#typeset--a-ary1-2-3++[__]`typeset -a ary=(1 2 3)`
+==== `typeset -a ary=(1 2 3)`
 
 インデックス番号が下限から連続している場合に使える前項の書き方の省略形です。配列属性を明示的につける書き方ですが、さらに省略した
 `ary=(1 2 3)` の方が移植性が高い（mksh と yash
 でも対応している）ので特に必要がないのであれば使わなくて良い書き方だと思います。
 
-==== [#typeset--a-ary1-2-3-1 .fragment]##link:++#typeset--a-ary1-2-3-1++[__]`typeset -a ary='(1 2 3)'`
+==== `typeset -a ary='(1 2 3)'`
 
 配列の値をクォートで括って指定することもできます。なぜこの形式に対応したのか不思議に思うかもしれませんが、私はこれを
 `set -A ary 1 2 3`
@@ -476,7 +410,7 @@ bash
 に対応する意味はありませんのでこの形式を使う必要はありません。https://www.gnu.org/software/bash/manual/html_node/Shell-Compatibility-Mode.html[ここ]
 によると非推奨となっているようです。
 
-==== [#array .fragment]##link:#array[__]`array`
+==== `array`
 
 この書き方は yash でのみ使えます。yash は配列の定義自体は `ary=(1 2 3)`
 で行うことができますが、それに対する `array` コマンドのメリットは
@@ -487,7 +421,7 @@ bash
 シェルでもシンタックスエラーにならない方法としてこれを採用したのではないかと推測しています。そして
 `ary=(1 2 3)` は他のシェルとの互換性を目的としたものなのでしょう。
 
-=== [#配列の添字-subscript .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E6%B7%BB%E5%AD%97-subscript[__]配列の添字 (subscript)
+=== 配列の添字 (subscript)
 
 [cols=",,,,,,,",options="header",]
 |===
@@ -501,12 +435,12 @@ bash
 |`${ary[I][J]}` |- |- |- |93 |- |2.0 |-
 |===
 
-==== [#ary--ary .fragment]##link:++#ary--ary++[__]`${ary[*]}` / `${ary[@]}`
+==== `${ary[*]}` / `${ary[@]}`
 
 配列の全要素を参照するための添字で全てのシェルで対応しています。構文的には位置パラメーターの
 `$*` や `$@` に配列変数名をつけた形になっています。
 
-==== [#aryn .fragment]##link:#aryn[__]`${ary[N]}`
+==== `${ary[N]}`
 
 配列の指定した要素を参照するための添字でこれも全てのシェルで対応しています。
 
@@ -550,7 +484,7 @@ ary=(1 2 3 4 5)
 echo "${ary[1+2]}" # => "${ary[3]}" を参照する
 ....
 
-==== [#arynm .fragment]##link:#arynm[__]`${ary[N,M]}`
+==== `${ary[N,M]}`
 
 zsh と yash
 はこの書き方で配列の部分配列（リスト）を取得することができます。
@@ -616,7 +550,7 @@ echo "${ary[2,3]}" # $((2,3)) = 3 なので、${ary[3]} を参照する
 なお参考までですが (t)csh で部分配列を得るためには `${ary[N-M]}`
 という書式を使用します。
 
-==== [#arypl--arypl .fragment]##link:++#arypl--arypl++[__]`${ary[*]:P:L}` / `${ary[@]:P:L}`
+==== `${ary[*]:P:L}` / `${ary[@]:P:L}`
 
 添字ではなく変数展開ですが、zsh と yash だけでなく ksh93 と bash
 でも部分配列の取得はできますよということでここに記載しておきます。指定する数字はインデックス番号ではなく位置と長さなので注意してください。ksh93、bash、zsh
@@ -641,7 +575,7 @@ printf "%s\n" "${arr[@]: -3}" # - の前にスペースを入れること
 # 5
 ....
 
-==== [#aryij .fragment]##link:#aryij[__]`${ary[I][J]}`
+==== `${ary[I][J]}`
 
 この構文に対応しているのは ksh93 と zsh ですが意味が全く異なります。
 
@@ -668,7 +602,7 @@ echo "${ary[2,4][1,2][1][2]}" # => 2 （文字列として 2 文字目を返す�
 
 その他のシェルではシンタックスエラーになります。
 
-=== [#配列のインデックス一覧 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E4%B8%80%E8%A6%A7[__]配列のインデックス一覧
+=== 配列のインデックス一覧
 
 [cols=",,,,,,,",options="header",]
 |===
@@ -677,7 +611,7 @@ echo "${ary[2,4][1,2][1][2]}" # => 2 （文字列として 2 文字目を返す�
 |`${!ary[@]}` |- |- |R39 |93 |3.00 |- |-
 |===
 
-==== [#ary--ary-1 .fragment]##link:++#ary--ary-1++[__]`${!ary[*]}` / `${!ary[@]}`
+==== `${!ary[*]}` / `${!ary[@]}`
 
 zsh と yash
 では連続するインデックス番号しか使えないのでインデックス一覧を取得する必要はありません。その他のシェルでは離散的なインデックス番号が使えるためインデックス一覧が必要になる場合が出てきます。（一般的には離散的なインデックス番号が多数必要になる時点で配列を使うのは間違ってる可能性が高いですが。）
@@ -696,7 +630,7 @@ bash でも同様ですが流石に 2.0
 という文字を取り除いて `set`
 で位置パラメータに安全に設定できれば簡単にできるかもしれません。）
 
-=== [#配列の要素数 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0[__]配列の要素数
+=== 配列の要素数
 
 [cols=",,,,,,,",options="header",]
 |===
@@ -707,7 +641,7 @@ bash でも同様ですが流石に 2.0
 |`${ary[#]}` |- |- |- |- |- |- |2.1
 |===
 
-==== [#ary .fragment]##link:#ary[__]`${#ary}`
+==== `${#ary}`
 
 この書き方で配列の要素数を取得できるのは zsh
 だけです。その他のシェルは以下のような意味を持ちます。
@@ -728,7 +662,7 @@ ary=(12 123 1234)
 echo "${#ary}" # => 2 3 4 （それぞれの要素の文字列の長さ）
 ....
 
-==== [#ary--ary-2 .fragment]##link:++#ary--ary-2++[__]`${#ary[*]}` / `${#ary[@]}`
+==== `${#ary[*]}` / `${#ary[@]}`
 
 yash 以外はこの方法で配列の要素数を取得することができます。yash
 の場合は全要素の文字列の長さを要素ごとに取得します。yash
@@ -740,7 +674,7 @@ echo "${#ary[@]}" # => 2 3 4 （それぞれの要素の文字列の長さ）
 echo "${#ary[*]}" # => 11 （全要素を IFS 区切りで結合した文字列の長さ）
 ....
 
-==== [#ary-1 .fragment]##link:#ary-1[__]`${ary[#]}`
+==== `${ary[#]}`
 
 yash での要素数の取得の仕方です。
 
@@ -749,7 +683,7 @@ ary=(12 123 1234)
 echo "${ary[#]}" # => 3
 ....
 
-=== [#配列の加工 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E5%8A%A0%E5%B7%A5[__]配列の加工
+=== 配列の加工
 
 [cols=",,,,,,,",options="header",]
 |===
@@ -758,7 +692,7 @@ echo "${ary[#]}" # => 3
 |`array -i ary 1 2 3` |- |- |- |- |- |- |2.1
 |===
 
-==== [#a-b-c .fragment]##link:#a-b-c[__]`+=(a b c)`
+==== `+=(a b c)`
 
 既存の配列に後に複数の要素を追加します。前や任意の場所に追加する場合は
 `set -A ary 1 "${ary[@]}" 2` や `ary=(1 "${ary[@]"} 3)`
@@ -766,7 +700,7 @@ echo "${ary[#]}" # => 3
 や古いシェルでも動作します。未検証ですがメモリコピーを減らせる分
 `+=(a b c)` の方が速いかもしれません。
 
-==== [#array--i-ary-1-2-3 .fragment]##link:++#array--i-ary-1-2-3++[__]`array -i ary 1 2 3`
+==== `array -i ary 1 2 3`
 
 yash の場合は `array`
 コマンドを使用して任意の場所に値を追加したり、値を削除することができます。
@@ -791,24 +725,24 @@ array: 配列を操作する
 詳しくは: man yash
 ....
 
-=== [#要素の削除 .fragment]##link:#%E8%A6%81%E7%B4%A0%E3%81%AE%E5%89%8A%E9%99%A4[__]要素の削除
+=== 要素の削除
 
 要素の削除はインデックスを指定して `unset`
 で行うことができます。複数の要素の削除やインデックス番号を詰めたりしたい場合はコードを書く必要があるでしょう。個人的には
 yash の `array`
 コマンドと互換のライブラリ関数を作るのが良いのではないかと考えています。
 
-=== [#配列の変数展開 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%AE%E5%A4%89%E6%95%B0%E5%B1%95%E9%96%8B[__]配列の変数展開
+=== 配列の変数展開
 
 zsh
 であれば変数展開を行って高度な配列演算を行うことができます。変数展開については別の記事でまとめる予定です。
 
-== [#連想配列-associative-array .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97-associative-array[__]連想配列 (Associative array)
+== 連想配列 (Associative array)
 
 連想配列は、現在 ksh93、bash、zsh のみが対応しています。mksh と yash
 も対応が検討されているようですが現時点では対応していません。なお対応してないシェルは一覧から省いています。
 
-=== [#連想配列の定義方法 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E5%AE%9A%E7%BE%A9%E6%96%B9%E6%B3%95[__]連想配列の定義方法
+=== 連想配列の定義方法
 
 [cols=",,,",options="header",]
 |===
@@ -820,7 +754,7 @@ zsh
 |`typeset -A hash=(a 1 b 2)` |- |5.1 |5.1
 |===
 
-==== [#hasha1-b2 .fragment]##link:#hasha1-b2[__]`hash=([a]=1 [b]=2)`
+==== `hash=([a]=1 [b]=2)`
 
 この書き方は bash と zsh
 でも動きますが、連想配列属性がついていない場合は配列を定義します（ `[a]`
@@ -828,7 +762,7 @@ zsh
 の場合は常に連想配列を定義します。使用する場合は先に `typeset -A`
 で連想配列属性をつけておくべきでしょう。
 
-==== [#typeset--a-hasha1-b2 .fragment]##link:++#typeset--a-hasha1-b2++[__]`typeset -A hash=([a]=1 [b]=2)`
+==== `typeset -A hash=([a]=1 [b]=2)`
 
 bash では連想配列に対応した 4.0 (2009) から使える書き方ですが zsh では
 5.5 (2018) まで使えなかった書き方です。zsh
@@ -839,13 +773,13 @@ bash では連想配列に対応した 4.0 (2009) から使える書き方です
 は ksh との互換性を重視していたためか `=(...)` と `[...]=`
 への対応は配列に対応した 2.0 の時点ですでに完了していました。
 
-==== [#typeset--a-hasha1-b2-1 .fragment]##link:++#typeset--a-hasha1-b2-1++[__]`typeset -A hash='([a]=1 [b]=2)'`
+==== `typeset -A hash='([a]=1 [b]=2)'`
 
 bash
 のみが対応しています。値が文字列となっているのでおそらく非対応シェルに読み込んでもシンタックスエラーにならないようにするための構文だと思われますが必要になることは殆どないでしょう。https://www.gnu.org/software/bash/manual/html_node/Shell-Compatibility-Mode.html[ここ]
 によると非推奨となっているようです。
 
-==== [#typeset--a-hash-hasha-1-b-2 .fragment]##link:++#typeset--a-hash-hasha-1-b-2++[__]`typeset -A hash; hash=(a 1 b 2)`
+==== `typeset -A hash; hash=(a 1 b 2)`
 
 zsh が連想配列に対応した 3.1.6 (1999) から使える書き方です。`typeset` と
 変数代入の 2 つの命令に分けて実行します。zsh は bash
@@ -857,7 +791,7 @@ zsh が連想配列に対応した 3.1.6 (1999) から使える書き方です�
 bash でも 5.1.0 (2020) でこの書き方に対応しましたが、おそらく zsh
 との互換性を向上させるのが目的だと思われます。
 
-==== [#typeset--a-hasha-1-b-2 .fragment]##link:++#typeset--a-hasha-1-b-2++[__]`typeset -A hash=(a 1 b 2)`
+==== `typeset -A hash=(a 1 b 2)`
 
 zsh 5.1 (2015) でコマンドの引数に `=(...)`
 の構文が使えるようになったことで対応した書き方だと思われます。`typeset -A hash; hash=(a 1 b 2)`
@@ -865,7 +799,7 @@ zsh 5.1 (2015) でコマンドの引数に `=(...)`
 `typeset -A hash=([a]=1 [b]=2)`
 が使えるのであまり出番のない書き方な気がします。
 
-=== [#連想配列の添字 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E6%B7%BB%E5%AD%97[__]連想配列の添字
+=== 連想配列の添字
 
 [cols=",,,",options="header",]
 |===
@@ -875,15 +809,15 @@ zsh 5.1 (2015) でコマンドの引数に `=(...)`
 |`${hash[KEY]}` |all |4.0 |3.1.6
 |===
 
-==== [#hashkey .fragment]##link:#hashkey[__]`${hash[KEY]}`
+==== `${hash[KEY]}`
 
 全てのシェルでこの書き方です。
 
-==== [#hash--hash .fragment]##link:++#hash--hash++[__]`${hash[*]]}` / `${hash[@]]}`
+==== `${hash[*]]}` / `${hash[@]]}`
 
 連想配列の全ての要素の値を取得します。
 
-=== [#連想配列のキー一覧 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E3%82%AD%E3%83%BC%E4%B8%80%E8%A6%A7[__]連想配列のキー一覧
+=== 連想配列のキー一覧
 
 [cols=",,,",options="header",]
 |===
@@ -894,16 +828,16 @@ zsh 5.1 (2015) でコマンドの引数に `=(...)`
 |`${(k)hash[@]}` |- |- |3.1.6
 |===
 
-==== [#hash--hash-1 .fragment]##link:++#hash--hash-1++[__]`${!hash[*]}` / `${!hash[@]}`
+==== `${!hash[*]}` / `${!hash[@]}`
 
 ksh93 と bash で使えるのはこの書き方です。
 
-==== [#khash--khash .fragment]##link:++#khash--khash++[__]`${(k)hash[*]}` / `${(k)hash[@]}`
+==== `${(k)hash[*]}` / `${(k)hash[@]}`
 
 zsh では
 パラメータ展開フラグを利用することでキー一覧を取得することができます。
 
-=== [#連想配列の要素数 .fragment]##link:#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0[__]連想配列の要素数
+=== 連想配列の要素数
 
 [cols=",,,",options="header",]
 |===
@@ -913,7 +847,7 @@ zsh では
 |`${#hash[@]}` |all |4.0 |3.1.6
 |===
 
-==== [#hash .fragment]##link:#hash[__]`${#hash}`
+==== `${#hash}`
 
 zsh でのみ使える方法です。これは配列と同じで `hash` は `hash[@]`
 として扱われるため連想配列の全ての要素の値の数を数えます。次項の方法を使えば良いので使う必要はないでしょう。
@@ -932,11 +866,11 @@ typeset -A hash=([a]=1 [b]=12 [c]=123 [0]=abcde)
 echo "${#hash}" # => 5 （hash[0] = abcde の文字列の長さ）
 ....
 
-==== [#hash--hash-2 .fragment]##link:++#hash--hash-2++[__]`${#hash[*]}` / `${#hash[@]}`
+==== `${#hash[*]}` / `${#hash[@]}`
 
 ksh93、bash、zsh 全てで使える配列の要素数を取得する方法です。
 
-=== [#配列から連想配列への変換 .fragment]##link:#%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B[__]配列から連想配列への変換
+=== 配列から連想配列への変換
 
 ksh93
 では配列から連想配列に変換することができます（逆は当然できません）。面白いですがこれが便利な場面はまず無いでしょう。
@@ -955,7 +889,7 @@ $ typeset -a ary
 ksh: typeset: cannot change associative array ary to index array
 ....
 
-== [#さいごに .fragment]##link:#%E3%81%95%E3%81%84%E3%81%94%E3%81%AB[__]さいごに
+== さいごに
 
 実装ごとの差異多すぎ・・・。ksh88 と oksh
 はほぼ同じと考えたとしても、配列は 6
@@ -964,111 +898,3 @@ ksh: typeset: cannot change associative array ary to index array
 パターンですか。それに比べて連想配列は実装しているシェルも少なくたった 3
 パターンなので楽そうですね（マヒ）。
 
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_967.svg
-
-link:/ko1nksm/items/bfe95cc72eb8ec31c11f/likers[11]
-
-Go to list of users who liked
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_973.svg
-
-[.style-1129w32]#9#
-
-link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##2]
-
-Go to list of comments
-
-Register as a new user and use Qiita more conveniently
-
-. You get articles that match your needs
-. You can efficiently read back useful information
-. You can use dark theme
-
-https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
-signing up]
-
-link:/signup?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Sign
-up]link:/login?callback_action=login_or_signup&redirect_to=%2Fko1nksm%2Fitems%2Fbfe95cc72eb8ec31c11f&realm=qiita[Login]
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_993.svg
-
-link:/ko1nksm/items/bfe95cc72eb8ec31c11f/likers[11]
-
-Go to list of users who liked
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_999.svg
-
-[.style-1vem4tk]#9#
-
-[.material-symbols-outlined .style-v2p563]#more_horiz#
-
-Delete article
-
-[.material-symbols-outlined .style-v2p563]#close#
-
-Deleted articles cannot be recovered.
-
-Draft of this article would be also deleted.
-
-Are you sure you want to delete this article?
-
-Cancel
-
-Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
-
-[[GlobalFooter-react-component-83b500cc-b3d3-4385-bd0a-be33d5210ced]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_1020.svg
-
-How developers code is here.
-
-[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
-
-Guide & Help
-
-* link:/about[About]
-* link:/terms[Terms]
-* link:/privacy[Privacy]
-* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
-* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
-* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
-* https://help.qiita.com[Help]
-* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
-
-Contents
-
-* link:/release-notes[Release Note]
-* link:/official-events[Official Event]
-* link:/official-columns[Official Column]
-* link:/advent-calendar/2024[Advent Calendar]
-* link:/qiita-award[Qiita Award]
-* link:/white_papers/2024[Engineer White Paper]
-* link:/api/v2/docs[API]
-
-Official Accounts
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_1049.svg
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_1050.svg
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/6.配列/6-3/6-3_1051.svg
-* https://www.facebook.com/qiita/[Facebook]
-* https://www.youtube.com/@qiita5366[YouTube]
-* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
-
-Our service
-
-* https://teams.qiita.com/[Qiita Team]
-* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
-Zine]
-* https://suzuri.jp/qiita[Official Shop]
-
-Company
-
-* https://corp.qiita.com/company[About Us]
-* https://corp.qiita.com/jobs/[Careers]
-* https://blog.qiita.com[Qiita Blog]
-* https://corp.qiita.com/releases/[News Release]
-
-[[Snackbar-react-component-5a264737-fbb7-4dfa-93ff-4080c428de0f]]
-
-[[LoginModal-react-component-226b40df-34e0-4938-95a2-46f3a7f606e8]]
-
-[[dataContainer]]

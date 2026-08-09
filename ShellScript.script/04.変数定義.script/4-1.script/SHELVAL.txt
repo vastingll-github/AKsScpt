@@ -1,0 +1,96 @@
+|1|`BASH`
+|2|`BASHOPTS`
+|3|`BASHPID`
+|4|`BASH_ALIASES`
+|5|`BASH_ARGC`
+|6|`BASH_ARGV`
+|7|`BASH_CMDS`
+|8|`BASH_COMMAND` |現在実行しているか実行しようとしているコマンド。
+|9|`BASH_EXECUTION_STRING` |起動オプション -c で指定されたコマンド。
+|10|`BASH_LINENO`
+|11|`BASH_REMATCH`
+|12|`BASH_SOURCE` |ソースファイル名からなる配列変数。
+|13|`BASH_SUBSHELL`
+|14|`BASH_VERSINFO` |`0`: メジャー +
+|15|`BASH_VERSION`
+|16|`COMP_CWORD`
+|17|`COMP_KEY` |現在の補完関数を呼び出したキー。
+|18|`COMP_LINE`
+|19|`COMP_POINT`
+|20|`COMP_TYPE`
+|21|`COMP_WORDBREAKS`
+|22|`COMP_WORDS`
+|23|`COPROC`
+|24|`DIRSTACK`
+|25|`EUID` |現在のユーザの実効ユーザID。
+|26|`FUNCNAME`
+|27|`GROUPS`
+|28|`HISTCMD` |現在のコマンドの履歴番号(履歴リストにおけるインデックス)。
+|29|`HOSTNAME` |現在のホスト名。(`raspberrypi`等)
+|30|`HOSTTYPE`
+|31|`LINENO` |行番号。
+|32|`MACHTYPE`
+|33|`MAPFILE`
+|34|`OLDPWD`
+|35|`OPTARG` |組込コマンド`getopts`で処理した最後のオプション引数値。
+|36|`OPTIND`
+|37|`OSTYPE`
+|38|`PIPESTATUS`
+|39|`PPID` |そのシェルの親のプロセスID。
+|40|`PWD`
+|41|`RANDOM` |`0`〜`32767`までのランダムな整数。
+|42|`READLINE_LINE` |readlineの編集バッファ内容。`bind -x`で使う。
+|43|`READLINE_POINT`
+|44|`REPLY`
+|45|`SECONDS` |シェルが起動されてからの秒数。
+|46|`SHELLOPTS` |有効になっているシェルのオプションを示す。（コロン区切り）
+|47|`SHLVL`
+|48|`UID` |現在のユーザのユーザID。
+|`BASH_ENV`
+|`BASH_XTRACEFD`
+|`CDPATH` |`cd`コマンドの検索パス。コロン区切り。
+|`COLUMNS`
+|`COMPREPLY`
+|`EMACS`
+|`ENV`
+|`BASH_ENV`と類似の変数でhttp://d.hatena.ne.jp/keyword/POSIX[POSIX]モードで使われる。
+|`FCEDIT` |組み込みコマンド`fc`が使うデフォルトのエディタ。
+|`FIGNORE`
+|`FUNCNEST`
+|`GLOBIGNORE`
+|`HISTCONTROL` |履歴リストに入れるコマンドを制御する値（コロン区切り）
+|`HISTFILE`
+|`HISTFILESIZE` |履歴ファイルに保持する履歴の最大数。
+|`HISTIGNORE`
+|`HISTSIZE` |コマンド履歴に記憶するコマンドの数。 デフォルト`500`。
+|`HISTTIMEFORMAT`
+|`HOME`
+|`HOSTFILE`
+|`IFS` |内部フィールド区切文字(Internal Field
+|`IGNOREEOF` |単独で入力された EOF
+|`INPUTRC`
+|`LANG`
+|`LC_ALL`
+|`LC_COLLATE`
+|`LC_CTYPE`
+|`LC_MESSAGES`
+|`LC_NUMERIC`
+|`LINES`
+|`MAIL`
+|`MAILCHECK`
+|`MAILPATH` |メールのチェックに使うファイル名（コロン区切り）。
+|`OPTERR`
+|`PATH` |コマンドの検索パス。（コロン区切り）
+|`POSIXLY_CORRECT`
+|`PROMPT_COMMAND`
+|`PROMPT_DIRTRIM`
+|`PS1`
+|`PS2` |このパラメータの値は PS1
+|`PS3` |このパラメータの値は`select`コマンドのプロンプトとして使われる。
+|`PS4`
+|`SHELL`
+|`TIMEFORMAT` |`time`コマンドの書式設定。 +
+|`TMOUT`
+|`TMPDIR`
+|`auto_resume` |ユーザがジョブ制御をするときの方法を変更する。
+|`histchars`

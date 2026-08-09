@@ -116,8 +116,6 @@ https://atmarkit.itmedia.co.jp/ait/subtop/lowcodenocode/[]
 
 https://atmarkit.itmedia.co.jp/ait/subtop/cloudnative/[]
 
-ƒNƒ‰ƒEƒhƒlƒCƒeƒBƒu
-
 https://atmarkit.itmedia.co.jp/ait/subtop/features/server/ms_win_2025.html[]
 
 Microsoft&Windows

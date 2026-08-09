@@ -1,0 +1,758 @@
+== Bash用の補完スクリプトの作り方
+
+[[personal-public-article-body]]
+. Bash用の補完スクリプトの作り方
+. Bash用の補完スクリプトを実際に作ってみる(4種)
+
+Bashにはプログラム補完という機能があり、 +
+このプログラム補完によって、タブ補完起動時にコマンドに応じた補完がされるようになっています。
+
+コマンドに応じた補完は全てのコマンドについて用意されている訳ではありませんが、 +
+補完スクリプトを作成することで、コマンドに応じた補完を追加することが可能です。
+
+この記事では、この補完スクリプトの作り方について解説します。
+
+== 準備
+
+次のものが必要です。
+
+* Bash (バージョン4.x以上)
+* bash-completion (バージョン2.x以上)
+
+Linuxの場合は、Bashは確実に入っていますが、bash-completionが入っているかどうかはまちまちなので、 +
+もしbash-completionが入っていなければ、aptやdnf、pacmanといったパッケージマネージャを利用して、bash-completionをインストールしてください。
+
+Macの場合は、標準搭載のBashのバージョンが3.xであり、bash-completionも入っていないので、いくつか手順を踏む必要があります。 +
+Homebrewをインストールした上で、次のような手順でBashのバージョンを上げ、bash-completion@2をインストールしてください。
+
+....
+# 最新版のBash、bash-completion@2をインストール
+brew install bash
+brew install bash-completion@2
+
+# 使用可能なシェルの一覧に/usr/local/bin/bashを追加する
+sudo vim /etc/shells
+
+# デフォルトのシェルをHomebrewで入れたBashに変更する
+chsh -s /usr/local/bin/bash
+
+# ~/.bash_profileにbash-completionを読み込むための設定(矢印の下)を追加する
+vim ~/.bash_profile
+↓
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+....
+
+
+== 補完スクリプトの作り方
+
+補完スクリプトは単なるBashスクリプトです。 +
+補完スクリプトとして成立させるには次の2つを含める必要があります。
+
+. 補完関数の定義
+. 補完関数とコマンドの結びつけ
+
+例を見てみましょう。 +
+noteという、次のようにシェルスクリプトで書かれたコマンドがあったとします。 +
+このコマンドは`note edit <name>`でメモの編集、`note remove <name>`でメモの削除、`note list`でメモの一覧表示をする、というコマンドです。
+
+[.bold]#note#
+
+....
+#!/bin/sh
+set -eu
+
+cmd=$1
+shift
+case $cmd in
+    edit)
+        "${EDITOR:-vi}" -- "$HOME/.note/$1"
+        ;;
+    remove)
+        rm -- "$HOME/.note/$1"
+        ;;
+    list)
+        ls -- "$HOME/.note"
+        ;;
+    *)
+        printf "%s\n" "${0##*/}: $cmd: no such sub command" >&2
+        ;;
+esac
+....
+
+このnoteに対する補完スクリプトは次のようになります。
+
+[.bold]#note.bash#
+
+....
+# 1. 補完関数の定義
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+    
+    local defaultIFS=$' \t\n'
+    local IFS=$defaultIFS
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+        *)
+            case ${words[1]} in
+                edit)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                remove)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                list)
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+# 2. 補完関数とコマンドの結びつけ
+complete -F _note note
+....
+
+**1. 補完関数の定義**では、関数を定義します。 +
+補完関数はwordsやcwordなどの変数を読み取り、COMPREPLYという配列変数に補完候補リストをセットする関数です。 +
+補完関数の関数名は`_コマンド名`とします。
+
+**2.
+補完関数とコマンドの結びつけ**では、completeを用いて、先ほど定義した関数とコマンドを結びつけます。 +
+completeはコマンドに応じた補完の設定をするコマンドです。 +
+completeにはいくつかオプションがありますが、基本的には、`complete -F 補完関数名 コマンド名`という形で利用します。
+
+補完スクリプトでやることはこれだけです。 +
+これらを含むBashスクリプトを作成すれば、補完スクリプトが完成します。
+
+あとは、この補完スクリプトを何かしらの方法で読み込めば、 +
+該当のコマンドについてコマンドに応じた補完がされるようになります。
+
+補完スクリプトを読み込む方法は後述しますが、 +
+基本的には、補完スクリプトを`コマンド名.bash`という名前のファイルとして保存し、 +
+`~/.local/share/bash-completion/completions`の配下に置くようにします。 +
+そうすることで、該当のコマンドの引数を補完するタイミングで補完スクリプトが自動読み込みされるようになります。
+
+コマンド名が`note`の場合、次の場所に補完スクリプトを配置します。
+
+....
+~/.local/share/bash-completion/completions/note.bash
+(正確には${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/note.bashに配置すれば読み込まれます)
+....
+
+試作の段階では、編集の都度sourceするようにしたほうが試作しやすいので、 +
+完成してから`~/.local/share/bash-completion/completions`に配置するようにするとよいでしょう。
+
+コマンド名が`note`の場合、次のようなコマンドで補完スクリプトの読み込み・再読み込みができます。 +
+(コマンドはnote.bashを置いているディレクトリで実行します)
+
+....
+source note.bash
+....
+
+補完スクリプトのおおまかな作り方としてはこれぐらいです。 +
+あとは、補完スクリプトで使ういくつかのコマンド、関数、変数を覚えれば、補完スクリプトの自作ができるようになります。 +
+補完スクリプトで使ういくつかのコマンド、関数、変数を一つ一つ見ていきましょう。
+
+=== 覚えるもの
+
+覚える必要のあるものは次の5つです。
+
+* _init_completion
+** コマンドライン情報を取得する関数
+* COMPREPLY
+** 補完候補を格納する変数
+* compgen
+** 補完候補を絞り込むコマンド
+* compopt
+** 補完の設定を一時的に変えるコマンド
+* complete
+** 補完の設定をするコマンド
+
+別途、次の4つの補助関数も覚えておくと便利でしょう。
+
+* _filedir
+** ファイルパスを補完する関数
+* _command_offset
+** 別コマンドの引数を補完する関数
+* _parse_help
+** コマンドのロングオプション一覧を取得する補助関数
+* _longopt
+** ロングオプションを取るコマンド用の定義済みの補完関数
+
+一つ一つ見ていきましょう。
+
+==== init_completion
+
+コマンドライン情報の取得+αを行う関数です。 +
+補完関数では最初にこれを使ってコマンドライン情報を取得します。^link:#fn-4[4]^
+^link:#fn-5[5]^
+
+....
+# 基本形式
+local cur prev words cword split
+_init_completion オプション || return
+
+# コマンドライン情報を取得する
+local cur prev words cword split
+_init_completion || return
+
+# ロングオプションの分割を有効にしてコマンドライン情報を取得する
+local cur prev words cword split
+_init_completion -s || return
+
+# 引数分割に:を使わないようにしてコマンドライン情報を取得する
+local cur prev words cword split
+_init_completion -n : || return
+....
+
+_init_completionはローカル変数宣言とセットで使用します。 +
+_init_completionが完了すると、次の5つの変数に値がセットされます。 +
+補完関数でどのような補完候補を生成するかはこれらの変数を見て決定します。
+
+[cols=",",options="header",]
+|===
+|変数 |内容
+|cur
+|カーソル位置の引数(-sオプションが指定されていてsplitがtrueだった場合はカーソル位置の引数の=の右半分)
+
+|prev
+|カーソル位置の一つ前の引数(-sオプションが指定されていてsplitがtrueだった場合はカーソル位置の引数の=の左半分)
+
+|words |引数一覧
+
+|cword |カーソル位置の引数の番号
+
+|split
+|カーソル位置の引数が--オプション名=値となっているかの真偽値(-sオプションが指定された場合のみ有効)
+|===
+
+(_init_completionについては最初はこれだけ覚えれば十分です。続きを読むのは後で問題ありません)
+
+`_init_completion || return`としていますが、 +
+これは次の3パターンのときに処理を進めず補完を完了させるためにこうしています。
+
+* 引数が$で始まっていたとき。シェル変数を補完する。
+* リダイレクト演算子の直後の引数だったとき。ファイルパスを補完する。
+* コマンドライン引数がなかったとき。何もしない。
+
+この3パターンのいずれにも該当しなければ処理が続行されます。
+
+また、_init_completionはオプションを指定しなくても使えますが、 +
+_init_completionはいくつかオプションを受け取るようになっており、 +
+状況にあわせて次の2つのオプションを利用します。
+
+* -n 引数分割に使わない文字一覧
+* -s
+
+-nは引数分割に使われる文字を減らすために使うオプションです。 +
+Bashは補完関数を呼び出す際にCOMP_WORDBREAKSという変数を見て、この変数に含まれている文字で引数一覧をさらに分割するようになっているのですが、 +
+COMP_WORDBREAKSには`=`と`:`が含まれているため、ddやscpなどの補完を行う際に問題が生じます。 +
+そのため、この引数に`=`や`:`、`=:`を指定して引数の分割を回避します。
+
+-sはロングオプションの値の補完を楽にするために使うオプションです。 +
+このオプションそ指定すると、カーソル位置の引数が`--オプション名=値`となっていたときに、curが`値`に、prevが`--オプション名`に、splitが`true`になるようになります。 +
+GNUのコマンドなどはオプションの値を`--オプション名 値`、`--オプション名=値`の2種類の形で受け取るようになっているので、 +
+そういったコマンドの補完を楽にするためにこの引数を指定します。
+
+一見するとどういう場面で指定するか迷うオプションですが、 +
+どのオプションを指定するかは次のようなフローチャートで決定できます。
+
+....
+--オプション名=値という形の引数を取る
+|
+|-(YES)-> :を値の区切り文字などに使う
+|         |
+|         |-(YES)-> [-s -n :を指定する]
+|         |
+|         `-(NO)--> [-sを指定する]
+|
+`-(NO)--> =を値の区切り文字などに使う
+          |
+          |-(YES)-> :を値の区切り文字などに使う
+          |         |
+          |         |-(YES)-> [-n =:を指定する]
+          |         |
+          |         `-(NO)--> [-n :を指定する]
+          |
+          `-(NO)--> :を値の区切り文字などに使う
+                    |
+                    |-(YES)-> [-n :を指定する]
+                    |
+                    `-(NO)--> [何も指定しない]
+....
+
+イディオムとして、 +
+-sオプションで有効になるsplitという変数は次のように使います。
+
+....
+case $prev in
+  --output)
+    _filedir
+    ;;
+esac
+$split && return
+....
+
+このようにすると、 +
+`--output`の次の引数のとき、`--output=`から始まる引数のときにファイルパスの補完が行われ、 +
+他のオプションの次の引数のときは素通りされ、 +
+他のオプションの`--オプション名=`から始まる引数のときは何もしないで終了するようになります。
+
+==== [#compreply .fragment]##link:#compreply[__]COMPREPLY
+
+補完候補を格納する配列変数です。 +
+補完関数ではこのCOMPREPLYに補完候補を格納します。
+
+....
+# 基本形式
+COMPREPLY=( 絞り込み済みの補完候補 )
+
+# edit、remove、listの3つを補完候補とする
+COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+
+# note listの出力結果を補完候補とする(''の中で$()を使っているのは誤記ではないです)
+COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") )
+
+# コマンド名を補完候補とする
+COMPREPLY=( $(compgen -A command -- "$cur") )
+....
+
+COMPREPLYに格納された値がそのまま補完時の補完候補となります。
+
+注意することとして、 +
+COMPREPLYに格納するのは補完候補全てではなく、絞り込み済みの補完候補である点に注意。 +
+compgenというコマンドを使って補完候補の絞り込みを行う必要があります。
+
+....
+# 誤った格納方法(全ての補完候補をCOMPREPLYに格納する)
+COMPREPLY=( edit remove list )
+
+# 正しい格納方法(絞り込んだ補完候補をCOMPREPLYに格納する)
+COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+....
+
+また、コマンドの出力結果を補完候補とする場合はIFSを制御しないと、 +
+空白混じりの行があったとき1行が2つや3つに分割されてしまい正しい補完候補が得られません。
+
+イディオムとして、 +
+コマンドの出力結果を補完候補とする場合は次のようにIFSを都度変更します。 +
+(defaultIFSとIFSの初期化は補完関数の最初のほうで1度だけ行っておけば十分です)
+
+....
+local defaultIFS=$' \t\n'
+local IFS=$defaultIFS
+
+IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+....
+
+このようにすると、 +
+COMPREPLYに値を代入するときだけIFSが改行文字だけになり、 +
+note
+listの出力結果が空白区切りの一覧ではなく改行区切りの一覧として扱われるようになります。
+
+==== [#compgen .fragment]##link:#compgen[__]compgen
+
+補完候補の絞り込みを行うコマンドです。 +
+補完関数ではCOMPREPLYに格納する補完候補を絞り込むために使います。
+
+....
+# 基本形式
+compgen 補完候補 -- カーソル位置の引数
+
+# edit、remove、listの3つを補完候補とする
+compgen -W 'edit remove list' -- "$cur"
+
+# note listの出力結果を補完候補とする(''の中で$()を使っているのは誤記ではないです)
+compgen -W '$(note list)' -- "$cur"
+
+# コマンド名を補完候補とする
+compgen -A command -- "$cur"
+....
+
+compgenの-W、-Aで指定した補完候補をカーソル位置の引数との先頭一致で絞り込みます。 +
+compgenを使わないケースもたまにありますが、compgenはクォート等も考慮してくれるので基本的にはcompgenを使うのが無難です。
+
+使うオプションは前述した-Wオプションと-Aオプションです。
+
+-Wオプションはワードリストを補完候補とするオプションです。 +
+ワードリストであるため、次のようにしてシェル変数やコマンド置換を使うことが可能です。 +
+(出力結果を補完候補とするときはCOMPREPLYの説明の通りIFSを制御する必要がある点に注意)
+
+....
+# 基本形式
+compgen -W 'ワードリスト' -- カーソル位置の引数
+
+# edit、remove、listの3つを補完候補とする
+compgen -W 'edit remove list' -- "$cur"
+
+# edit、remove、listの3つを補完候補とする
+local list=(edit remove list)
+compgen -W '"${list[@]}"' -- "$cur"
+
+# note listの出力結果を補完候補とする
+compgen -W '$(note list)' -- "$cur"
+....
+
+-Aオプションは組み込みの補完候補を補完候補とするオプションです。 +
+利用できる組み込みの補完候補の一覧は次のリンク先の-A
+actionのところにあります。 +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins
+
+....
+# 基本形式
+compgen -A アクション -- カーソル位置の引数
+
+# コマンドを補完候補とする
+compgen -A command -- "$cur"
+
+# シグナルを補完候補とする
+compgen -A signal -- "$cur"
+....
+
+==== compopt
+
+補完の挙動の設定を設定するコマンドです。 +
+補完関数ではnospaceオプションを有効化するために使います。^link:#fn-6[6]^
+
+....
+# 基本形式
+compopt -o 有効化するオプション
+
+# 補完終了時に補完候補の末尾のスペースを追加しない
+compopt -o nospace
+....
+
+compoptの-oオプションで指定したオプションが有効になります。 +
+compoptで有効化できるオプションは他にもありますが、基本的にはnospaceオプションを有効化するために使います。 +
+nospaceオプションは補完候補が1つだったときにつく末尾のスペースをつけないようにするオプションです。
+
+イディオムとして、 +
+nospaceオプションは次のように使います。
+
+....
+[[ $COMPREPLY == *= ]] && compopt -o nospace
+....
+
+このようにすると、 +
+補完候補が1つだけで補完候補が`--オプション名=`のように`=`で終わるものだったときに末尾のスペースがつかないようになります。
+
+==== complete
+
+コマンドに応じた補完の設定をするコマンドです。 +
+補完スクリプトでは補完関数とコマンドの結びつけに使います。
+
+....
+# 基本形式
+complete -F 補完関数名 コマンド名
+
+# _noteをnoteコマンドの補完関数として設定する
+complete -F _note note
+
+# _scalaをscalaコマンドの補完関数として設定する
+complete -F _scala scala
+....
+
+completeの-Fオプションで指定した補完関数が該当のコマンドの補完に使われるようになります。 +
+completeにはいくつかオプションがありますが、基本的にはこの形で使います。
+
+使いそうなオプションとなると-oオプションと-pオプションでしょうか。
+
+-oオプションを使うとcompoptで有効化できるオプションを最初から有効化することができます。 +
+defaultオプションとbashdefaultオプションは有効化しておくと補完候補が何もなかったときにデフォルトの補完を行うようになるので、コマンドによっては指定しておくと便利でしょう。
+
+....
+# _noteをnoteコマンドの補完関数として設定しつつ、_noteのフォールバック先としてReadlineデフォルトの補完とBashデフォルトの補完を使用する
+complete -F _note -o default -o bashdefault note
+....
+
+-pオプションを使うと補完の設定を確認できます。
+
+....
+# noteコマンドの補完の設定を表示する
+complete -p note
+....
+
+==== 補助関数
+
+===== filedir
+
+ファイルパスを補完する関数です。 +
+呼び出すとCOMPREPLYに絞り込み済みの補完候補(ファイルパス)が入ります。 +
+ディレクトリのみを補完する場合は`_filedir -d`とします。
+
+....
+# ファイルパスを補完候補とする
+_filedir
+
+# ディレクトリパスを補完候補とする
+_filedir -d
+....
+
+===== command_offset
+
+コマンドを引数に取るコマンドがあったとき、 +
+引数となるほうのコマンドの引数を補完する関数です。 +
+呼び出すとCOMPREPLYに絞り込み済みの補完候補(引数のコマンドの引数)が入ります。 +
+引数には何番目からが引数のコマンドなのかを指定します。
+
+....
+# 第1引数以降を引数のコマンドとして補完候補の生成を行う
+_command_offset 1
+
+# 第3引数以降を引数のコマンドとして補完候補の生成を行う
+_command_offset 3
+....
+
+===== parse_help
+
+コマンドのヘルプ表示をざっくりと解析して、 +
+コマンドのオプション一覧を取得する関数です。compgenとセットで使います。 +
+全てのヘルプ表示に対応している訳ではありませんが、 +
+ものによってはこれだけでオプションの補完候補を得られます。
+
+....
+# sedのオプションを補完候補とする
+# (コマンド --helpでヘルプ表示がされるコマンドであれば、第一引数にコマンドを指定する)
+COMPREPLY=( $(compgen -W '$(_parse_help sed)' -- "$cur") )
+
+# sedのオプションを補完候補とする
+# (コマンド --helpでヘルプ表示がされないコマンドであれば、第一引数に-を指定し、パイプ等で標準入力からヘルプ表示を流し込むようにする)
+COMPREPLY=( $(compgen -W '$(sed --help 2>&1 | _parse_help -)' -- "$cur") )
+....
+
+===== longopt
+
+定義済みの補完関数です。 +
+`コマンド --help`を実行して得られるヘルプ表示を解析して、ざっくりとした補完を行ってくれます。 +
+オプションとファイルパスのみを取る形のコマンドについてしか対応していませんが、 +
+ものによってはこれとcompleteだけで補完スクリプトが完成します。
+
+....
+# _longoptをzshコマンドの補完関数として設定する
+complete -F _longopt zsh
+
+# _longoptをnanoコマンドの補完関数として設定する
+complete -F _longopt nano
+....
+
+=== サンプル
+
+これらのことを踏まえて、noteコマンド用の補完スクリプトを1から作ってみます。 +
+まず、ベースとして_init_completionを呼び出すだけのもの書きます。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+}
+complete -F _note note
+....
+
+これでcur、words、cwordにアクセスできるようになりました。 +
+次に、第一引数はサブコマンドなので引数の番号が1のときはサブコマンドを補完するようにします。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+    esac
+}
+complete -F _note note
+....
+
+これで第一引数が補完されるようになりました。 +
+次に、第二引数以降は何を補完するのかはサブコマンド次第なので、 +
+サブコマンドごとに補完候補を変えるようにします。 +
+サブコマンドがeditのときと、removeのときはメモの名前が引数なのでnote
+listの出力を元にメモの名前を補完するようにします。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+        *)
+            case ${words[1]} in
+                edit)
+                    COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") )
+                    ;;
+                remove)
+                    COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") )
+                    ;;
+                list)
+                    ;;
+            esac
+            ;;
+    esac
+}
+complete -F _note note
+....
+
+これでサブコマンドの引数も補完されるようになりました。 +
+しかし、note listの出力結果を何もケアせずに利用しているため、 +
+これではメモの名前に空白が含まれていた場合に正しく補完がされません。 +
+そのため、note
+listの出力結果を空白区切りの一覧としてではなく、改行区切りの一覧として扱うためにIFSを制御するようにします。
+
+....
+_note() {
+    local cur prev words cword split
+    _init_completion || return
+
+    local defaultIFS=$' \t\n'
+    local IFS=$defaultIFS
+
+    case $cword in
+        1)
+            COMPREPLY=( $(compgen -W 'edit remove list' -- "$cur") )
+            ;;
+        *)
+            case ${words[1]} in
+                edit)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                remove)
+                    IFS=$'\n'; COMPREPLY=( $(compgen -W '$(note list)' -- "$cur") ); IFS=$defaultIFS
+                    ;;
+                list)
+                    ;;
+            esac
+            ;;
+    esac
+}
+complete -F _note note
+....
+
+これで完成です。
+
+== 補完スクリプトの提供の仕方
+
+補完スクリプトが完成したら、 +
+それを提供できる形にしておきましょう。
+
+補完スクリプトを提供するやり方にはいくつか種類があります。
+
+基本的には後述するファイル式の方法がおすすめですが、 +
+補完スクリプトを提供するための方法は大まかに分けて2つあるので、場合によって使い分けるとよいと思います。
+
+=== 1. ファイル式
+
+補完スクリプトをファイルとして配布し、 +
+決められた場所に置いてもらうことで読み込んでもらう方法です。
+
+ユーザに次のディレクトリにファイルを置いてもらうことで、 +
+ユーザの環境で該当のコマンドについての補完が有効になります。^link:#fn-7[7]^
+^link:#fn-8[8]^ ^link:#fn-9[9]^
+
+....
+~/.local/share/bash-completion/completions
+(正確には${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions)
+....
+
+注意することとして、 +
+補完スクリプトのファイル名には決まりがある点に注意。 +
+ファイル名は次のいずれかの形式の名前にする必要があります。
+
+....
+コマンド名.bash
+コマンド名
+_コマンド名
+
+例)
+note.bash
+note
+_note
+....
+
+例として、`note`というコマンドに対応する補完スクリプトであれば、次の場所に置くことになるでしょう。
+
+....
+~/.local/share/bash-completion/completions/note.bash
+(正確には${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions/note.bash)
+....
+
+基本的にはこの方法がおすすめです。 +
+補完スクリプトを置く場所を規定しているのはbash-completionであるため、 +
+bash-completionが入っていない環境では`~/.local/share/bash-completion/completions`に補完スクリプトを置いても補完スクリプトの自動読み込みがされませんが、 +
+補完を利用する環境でbash-completionを入れないというのはまれですし、_init_completionを使っている時点でbash-completionに依存しているため、この方式で問題ありません。
+
+=== 2. eval式
+
+コマンドに補完スクリプトの出力機能を組み込み、 +
+補完スクリプトをコマンド置換とevalで読み込んでもらう方法です。
+
+ユーザに次のような設定を~/.bashrc等に書いてもらうことで、 +
+ユーザの環境で該当のコマンドについての補完が有効になります。
+
+....
+command -v コマンド > /dev/null && eval "$(補完スクリプトを出力するためのコマンド)"
+....
+
+これは`command -v コマンド > /dev/null`でコマンドの有無をチェックし、 +
+コマンドがあれば、補完スクリプトを出力するコマンドを実行、コマンド置換で出力を文字列化し、evalで読み込む、という設定です。 +
+例えば、rbenvを使う際には`eval "$(rbenv init -)"`という設定を書いていると思いますが、それと似た設定になります(rbenv
+init
+-ではシェルのインテグレーションを有効にするスクリプトに加えて、補完スクリプトを読み込むスクリプトが出力されます)。
+
+例として、`note`というコマンドが`note complete シェル名`としたときに補完スクリプトを出力するようになっていたとすれば、 +
+次のような設定を書くことになるでしょう。
+
+....
+command -v note > /dev/null && eval "$(note complete bash)"
+....
+
+コマンドに機能を追加する必要があるため、 +
+無理にこの方法を採用することもないと思いますが、 +
+rbenvのように設定ファイルでevalをしてもらうタイミングがあるコマンドであるとか、 +
+コマンドラインアプリを作るライブラリに補完スクリプトを生成する機能があるとかであれば、 +
+この方法も選択肢に入れていいのかなと思います。
+
+== まとめ
+
+このように、Bash用の補完スクリプトは作る上で覚えることが少なく、 +
+自作が結構しやすいものとなっています。
+
+とはいえ、実際に作ってみると、考慮したいことが色々と出てくることでしょう。 +
+ですが、デフォルトのgitの補完でさえも全部を考慮はできていませんし、 +
+クォートを含む補完候補の正確な取り扱いはBashの実装上ほぼ不可能です。 +
+なので、補完候補の空白をケアするぐらいで、あとは大体補完できていたらそれで大丈夫です。 +
+目安としては、bash-completion標準の補完スクリプトと同等程度の補完ができていれば、それで十分な品質だと思います。
+
+補完スクリプトの作り方、提供の仕方についてはこれぐらいなので、 +
+あとは、この記事の続きとなるhttps://qiita.com/nil2/items/3ae0c06732af35a0f7f2[Bash用の補完スクリプトを実際に作ってみる(4種)]や、 +
+下記の参考リンクにある情報を参照してBash用の補完を作ってみてください。
+
+== 参考リンク
+
+=== 公式
+
+bash-completionの公式リポジトリ +
+https://github.com/scop/bash-completion
+
+補完にまつわるBashの公式ドキュメント +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html +
+https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html
+
+bash-completionの公式リポジトリにはbash-completionのドキュメント、大量のサンプルがあり、とても参考になると思います。 +
+Bash本体の公式ドキュメントは必ずしも読む必要はありませんが、補完の詳細が気になったときに読むといいと思います。
+
+また、次のBashのマニュアルの日本語訳も参考になると思います。 +
+若干バージョンが古めですが、補完回りの仕組みは大きく変わっていないので、こちらを見ても問題ないと思います。 +
+compgen、compopt、completeの使い方が気になったときなどに参照するとよいでしょう。
+
+Man Page of BASH +
+https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html
+

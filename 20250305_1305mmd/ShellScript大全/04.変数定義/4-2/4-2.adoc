@@ -1,132 +1,20 @@
-[[__next]]
-[[popover-trigger-undefined]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_3.svg
-
-[[popover-content-undefined]]
-[[popover-header-undefined]]
-通知
-
-[[popover-body-undefined]]
-
-[[popover-trigger-undefined]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_12.svg
-
-[[popover-content-undefined]]
-
-[[popover-header-undefined]]
-記事を検索する
-
-[[popover-body-undefined]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_20.svg
-
-link:/[]
-
-image:/logo/logo_single_primary.png[logo]
-
-image:/logo/logo_double_primary.png[logo]
-
-link:/[]
-
 トップ
 
-link:/hot/page/1[]
 
-人気記事
-
-link:/articles/page/1[]
-
-新着記事
-
-link:/topics/page/1[]
-
-お役立ち記事
-
-link:/[]
-
-トップ
-
-link:/hot/page/1[]
-
-人気記事
-
-link:/articles/page/1[]
-
-新着記事
-
-link:/topics/page/1[]
-
-お役立ち記事
-
-link:/[]
-
-トップページ >
-
-link:/categories/language/page/1[]
-
-言語・開発 >
-
-bashの配列とは？事例で分かる配列の使い方をまとめて紹介
-
-image:/placeholder.png[bash]
 
 == bashの配列とは？事例で分かる配列の使い方をまとめて紹介
 
-link:/categories/language/page/1[]
+bashの配列とは？事例で分かる配列の使い方をまとめて紹介
 
-言語・開発
-
-link:/tags/command-language/page/1[]
-
-コマンド言語
-
-アンドエンジニア編集部
-
-2021.08.28
-
-この記事でわかること
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_88.svg
 
 bashの配列は1次元のインデックス配列と連想配列が用意されています
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_92.svg
-
 bashの配列は変数の数値も文字列と区別されずに文字列として扱われます
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_96.svg
-
 bashの配列はcsvファイルの読み込みや、grepを用いた集計にも利用できます
 
-https://twitter.com/share?url=https%3A%2F%2Fand-engineer.com%2Farticles%2FYRsLrhAAACRz7nVV&text=bash%E3%81%AE%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BA%8B%E4%BE%8B%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E7%B4%B9%E4%BB%8B%20%7C%20%E3%82%A2%E3%83%B3%E3%83%89%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%0A[]
-
-image:/placeholder.png[アンドエンジニアX]
-
-X
-
-https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fand-engineer.com%2Farticles%2FYRsLrhAAACRz7nVV&t=bash%E3%81%AE%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BA%8B%E4%BE%8B%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E7%B4%B9%E4%BB%8B[]
-
-image:/placeholder.png[アンドエンジニアFacebook]
-
-Facebook
-
-http://line.me/R/msg/text/?bash%E3%81%AE%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BA%8B%E4%BE%8B%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E7%B4%B9%E4%BB%8Bhttps%3A%2F%2Fand-engineer.com%2Farticles%2FYRsLrhAAACRz7nVV[]
-
-image:/placeholder.png[アンドエンジニアLINE]
-
-LINE
-
-https://b.hatena.ne.jp/entry/https://and-engineer.com/articles/YRsLrhAAACRz7nVV[]
-
-image:/placeholder.png[アンドエンジニアはてなブックマーク]
-
-Hatena
 
 目次
 
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_126.svg
-
 [[accordion-panel-undefined]]
-link:#heading2-1[]
 
 1.
 
@@ -162,9 +50,7 @@ link:#heading3-7[]
 
 link:#heading2-2[]
 
-2.
-
-配列の実際の例は？
+2. 配列の実際の例は？
 
 link:#heading3-8[]
 
@@ -196,36 +82,33 @@ link:#heading3-14[]
 
 link:#heading2-3[]
 
-3.
-
-bashの配列をマスターし、集計に活用しましょう
+3. bashの配列をマスターし、集計に活用しましょう
 
 [#heading2-1]##
 
 == bashとは？
 
-image:/placeholder.png[bash shell]
-
-**bashとはUNIX系システムで用いられているシェル**です。bashとは、「
-
-*Bourne-again
-shell*」の頭文字をとった名称です。簡単に言うと、bashはBourne
-Shellの**フリーソフトウェア版**として機能を継承しつつ、C
-ShellやKornShellの機能を取り入れたシェルと言えます。
-
+bashとは、「*Bourne-again shell*」の頭文字をとった名称です。 + 
+簡単に言うと、bashはsh(BourneShell)の**フリーソフトウェア版**として機能を継承しつつ、C ShellやKornShellの機能を取入れたシェルと言えます。
+**shはUNIX系システムで用いられているシェル**です。
 現在、bashは**LinuxやMacOSおよびMicrosoft
-Windows**でも対応する**代表的なシェル**と位置づけれています。bashのリファレンスマニュアルおよび関連情報は以下のサイトから入手可能です。
-参考：
+Windows**でも対応する**代表的なシェルと位置づけれています。bashのリファレンスマニュアルおよび関連情報は以下のサイトにあります。
 
-https://www.gnu.org/software/bash/[GNU Bash]
-参考：https://www.gnu.org/software/bash/manual/bash.html[Bash Reference
-Manual]
+参考： https://www.gnu.org/software/bash/ [GNU Bash 情報・ダウンロード] +
+参考：https://www.gnu.org/software/bash/manual/bash.html [Bash ドキュメンㇳ]
 
 [#heading3-1]##
 
 === bashの配列とは？
 
-bashの配列は**1次元インデックス配列**および**連想配列**の**2種類**からなります。なお、bashでは残念ながら**2次元配列は用意されていません**。なお、bashの変数では**数字と文字列の区別なく**文字列として扱われます。
+bashの配列は
+
+. 数字による1次元インデックス配列
+. 文字列による連想配列
+. bashは2次元配列なし
+
+なお、bashの変数は基本文字列として扱われます。
+配列とは無関係ですが、数値の計算には昔はexprコマンド(ex. expr 10 \* 2 <結果: 20 ※*はエスケープが必要>)を利用しましたが、現在は$(( ))を利用します。
 
 ・*1次元インデックス配列*
 　添字に1次元の数値を用いる配列で、添字は0から始まります。 *使用例：*
@@ -428,392 +311,5 @@ fruits[*]、またはunset fruits[@]
 
 == bashの配列をマスターし、集計に活用しましょう
 
-image:/placeholder.png[calculation]
-
 **bash**はコマンドインタプリタのため、*開発作業は難しくありません*。bashの**オンライン利用サイト**もありますので、インストールすることなく利用することもできます。bashの配列が理解できたら**ファイル集計や分析に活用する**ことをおすすめします。
 
-link:/tags/command-language/page/1[]
-
-コマンド言語
-
-気になる人のXをフォローしよう！
-
-https://twitter.com/intent/follow?screen_name=AndEngineerJp[]
-
-image:/icon/sns/X_white.svg[/icon/sns/X_white,width=9,height=9]
-
-**@AndEngineerJpさん**をフォロー
-
-公式LINE
-
-https://aura-mico.jp/qr-codes/19483/preview[]
-
-image:/icon/line_button.png[公式LINE]
-
-公式YouTube
-
-https://aura-mico.jp/qr-codes/19483/preview[]
-
-この記事をシェア
-
-https://twitter.com/share?url=https%3A%2F%2Fand-engineer.com%2Farticles%2FYRsLrhAAACRz7nVV&text=bash%E3%81%AE%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BA%8B%E4%BE%8B%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E7%B4%B9%E4%BB%8B%20%7C%20%E3%82%A2%E3%83%B3%E3%83%89%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%0A[]
-
-image:/placeholder.png[アンドエンジニアX]
-
-X
-
-https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fand-engineer.com%2Farticles%2FYRsLrhAAACRz7nVV&t=bash%E3%81%AE%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BA%8B%E4%BE%8B%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E7%B4%B9%E4%BB%8B[]
-
-image:/placeholder.png[アンドエンジニアFacebook]
-
-Facebook
-
-http://line.me/R/msg/text/?bash%E3%81%AE%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BA%8B%E4%BE%8B%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E7%B4%B9%E4%BB%8Bhttps%3A%2F%2Fand-engineer.com%2Farticles%2FYRsLrhAAACRz7nVV[]
-
-image:/placeholder.png[アンドエンジニアLINE]
-
-LINE
-
-https://b.hatena.ne.jp/entry/https://and-engineer.com/articles/YRsLrhAAACRz7nVV[]
-
-image:/placeholder.png[アンドエンジニアはてなブックマーク]
-
-Hatena
-
-https://mynavi-agent.jp/it/lp/029.html[image:/images/banner_under_01.avif[マイナビITエージェント]]
-
-== 編集部オススメコンテンツ
-
-[[article-show-recommend-ad-body]]
-https://mynavi-agent.jp/it/diagnosis/income/?utm_source=and-engineer&utm_medium=banner&utm_campaign=carousel_4[]
-
-image:/placeholder.png[Sponsored]
-
-[[article-show-recommend-ad-ad-body]]
-【年収±診断】6つの質問に答えて、真の市場価値をチェック！
-
-[[article-show-recommend-ad-footer]]
-[[article-show-recommend-ad-author]]
-マイナビITエージェント
-
-[[article-show-recommend-ad-pr]]
-Sponsored
-
-link:/articles/ZJRPPxAAACMA6YsU[]
-
-image:/placeholder.png[thumb_gptowten_01]
-
-ChatGPTの面白い使い方15選！ビジネスや遊び相手になる事例
-
-アンドエンジニア編集部
-
-2024.02.19
-
-link:/articles/ZNSWUxEAACIAVzb-[]
-
-image:/placeholder.png[thumb_noadd_01]
-
-NotionのChrome拡張機能10選！作業効率アップのおすすめプラグインを紹介
-
-アンドエンジニア編集部
-
-2024.12.18
-
-link:/articles/YRn2KRAAACIA6YPW[]
-
-image:/placeholder.png[thumb_pythoncanauto_01]
-
-Pythonで自動化できること8選！面倒な作業を効率化しよう
-
-アンドエンジニア編集部
-
-2024.08.27
-
-link:/articles/YwD0AxAAAO4GrpxT[]
-
-image:/placeholder.png[thumb_progbrow_01]
-
-ブラウザ上でプログラミングができる無料のWebサービス16選
-
-アンドエンジニア編集部
-
-2024.08.27
-
-link:/articles/YhuWdhAAACIAsLR_[]
-
-image:/placeholder.png[thumb_ouyoubook_01]
-
-応用情報技術者試験におすすめの参考書13選！過去問・問題集を紹介
-
-アンドエンジニア編集部
-
-2024.02.21
-
-== 人気のある記事
-
-link:/articles/Z7PxkRAAACQALY0z[]
-
-image:/placeholder.png[cover]
-
-ChatGPTを会社で活用する方法をフレームワークで解説！AIコンサルタントが語る「最適な仕組みづくり」とは？
-
-岸 裕介
-
-2025.03.05
-
-link:/articles/ZDOTwhEAACkAO7v_[]
-
-image:/placeholder.png[cover]
-
-エンジニア必見のビジネスバッグ9選！機能的＆スタイリッシュなPCバッグをエレコムに聞く
-
-岸 裕介
-
-2023.05.11
-
-link:/articles/X3f6vxIAAIPV7sdf[]
-
-image:/placeholder.png[miri_eyecatch]
-
-知られざる"競技タイピング"の世界。競技タイピング日本一のmiriさんに聞くその面白さや見どころとは。
-
-kurimao
-
-2020.10.14
-
-アンドエンジニアへの取材依頼、情報提供などはこちらから
-
-link:/contact[お問い合わせ・情報提供]
-
-== カテゴリー
-
-link:/categories/career/page/1?utm_source=and-engineer&utm_medium=content-text&utm_campaign=navi_career[]
-
-image:/placeholder.png[転職・キャリア]
-
-転職・キャリア
-
->
-
-link:/categories/qualification/page/1?utm_source=and-engineer&utm_medium=content-text&utm_campaign=navi_qualification[]
-
-image:/placeholder.png[資格・スキル]
-
-資格・スキル
-
->
-
-link:/categories/language/page/1?utm_source=and-engineer&utm_medium=content-text&utm_campaign=navi_language[]
-
-image:/placeholder.png[言語・開発]
-
-言語・開発
-
->
-
-link:/categories/services_tools/page/1?utm_source=and-engineer&utm_medium=content-text&utm_campaign=navi_services_tools[]
-
-image:/placeholder.png[サービス・ツール・技術]
-
-サービス・ツール・技術
-
->
-
-link:/categories/interview/page/1?utm_source=and-engineer&utm_medium=content-text&utm_campaign=navi_interview[]
-
-image:/placeholder.png[インタビュー・取材]
-
-インタビュー・取材
-
->
-
-link:/categories/news/page/1?utm_source=and-engineer&utm_medium=content-text&utm_campaign=navi_news[]
-
-image:/placeholder.png[ニュース]
-
-ニュース
-
->
-
-== 注目のタグ
-
-link:/tags/fe/page/1[]
-
-基本情報技術者試験
-
-link:/tags/ap/page/1[]
-
-応用情報技術者試験
-
-link:/tags/notion/page/1[]
-
-Notion
-
-link:/tags/aws/page/1[]
-
-AWS
-
-link:/tags/book/page/1[]
-
-本・参考書
-
-== 編集部おすすめコンテンツ
-
-[[article-show-recommend-ad-body]]
-https://mynavi-agent.jp/it/diagnosis/income/?utm_source=and-engineer&utm_medium=banner&utm_campaign=carousel_4[]
-
-image:/placeholder.png[Sponsored]
-
-[[article-show-recommend-ad-ad-body]]
-[[article-show-recommend-ad-title]]
-【年収±診断】6つの質問に答えて、真の市場価値をチェック！
-
-[[article-show-recommend-ad-footer]]
-[[article-show-recommend-ad-author]]
-マイナビITエージェント
-
-[[article-show-recommend-ad-pr]]
-Sponsored
-
-link:/articles/ZJRPPxAAACMA6YsU[]
-
-image:/placeholder.png[thumb_gptowten_01]
-
-ChatGPTの面白い使い方15選！ビジネスや遊び相手になる事例
-
-アンドエンジニア編集部
-
-2024.02.19
-
-link:/articles/ZNSWUxEAACIAVzb-[]
-
-image:/placeholder.png[thumb_noadd_01]
-
-NotionのChrome拡張機能10選！作業効率アップのおすすめプラグインを紹介
-
-アンドエンジニア編集部
-
-2024.12.18
-
-link:/articles/YRn2KRAAACIA6YPW[]
-
-image:/placeholder.png[thumb_pythoncanauto_01]
-
-Pythonで自動化できること8選！面倒な作業を効率化しよう
-
-アンドエンジニア編集部
-
-2024.08.27
-
-link:/articles/YwD0AxAAAO4GrpxT[]
-
-image:/placeholder.png[thumb_progbrow_01]
-
-ブラウザ上でプログラミングができる無料のWebサービス16選
-
-アンドエンジニア編集部
-
-2024.08.27
-
-link:/articles/YhuWdhAAACIAsLR_[]
-
-image:/placeholder.png[thumb_ouyoubook_01]
-
-応用情報技術者試験におすすめの参考書13選！過去問・問題集を紹介
-
-アンドエンジニア編集部
-
-2024.02.21
-
-== 人気のある記事
-
-link:/articles/Z7PxkRAAACQALY0z[]
-
-image:/placeholder.png[cover]
-
-ChatGPTを会社で活用する方法をフレームワークで解説！AIコンサルタントが語る「最適な仕組みづくり」とは？
-
-岸 裕介
-
-2025.03.05
-
-link:/articles/ZDOTwhEAACkAO7v_[]
-
-image:/placeholder.png[cover]
-
-エンジニア必見のビジネスバッグ9選！機能的＆スタイリッシュなPCバッグをエレコムに聞く
-
-岸 裕介
-
-2023.05.11
-
-link:/articles/X3f6vxIAAIPV7sdf[]
-
-image:/placeholder.png[miri_eyecatch]
-
-知られざる"競技タイピング"の世界。競技タイピング日本一のmiriさんに聞くその面白さや見どころとは。
-
-kurimao
-
-2020.10.14
-
-アンドエンジニアへの取材依頼、情報提供などはこちらから
-
-link:/contact[お問い合わせ・情報提供]
-
-link:/[]
-
-image:/icon/menu_home.png[ホーム]
-
-*ホーム*
-
-image:/icon/menu_Category.png[カテゴリ]*カテゴリ*
-
-link:/hot/page/1[]
-
-image:/placeholder.png[ピックアップ]*ピックアップ*
-
-https://twitter.com/intent/follow?screen_name=AndEngineerJp[]
-
-image:/icon/menu_X.png[アンドエンジニアX]*フォロー*
-
-image:/logo/logo_single_primary.png[logo]
-
-image:/logo/logo_single_primary.png[logo]
-
-https://twitter.com/AndEngineerJp[]
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_786.svg
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_788.svg
-
-link:/hot/page/1[]
-
-人気記事
-
-link:/articles/page/1[]
-
-新着記事
-
-link:/privacy[]
-
-個人情報の取り扱い
-
-link:/terms[]
-
-利用規約
-
-link:/corporate[]
-
-運営会社
-
-link:/contact[]
-
-お問い合わせ・情報提供
-
-https://mynavi-agent.jp/it/[image:/powered_by_mynavi_agent.png[Powered
-by マイナビ AGENT]]
-
-link:#top[]
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-2/4-2_819.svg

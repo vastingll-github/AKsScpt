@@ -1,0 +1,7 @@
+cat /etc/os-release
+lscpu
+nproc
+free -h
+ulimit -a
+echo コントロールグループチェック : chk /docker/xxx, /kubepods/...
+cat /proc/1/cgroup

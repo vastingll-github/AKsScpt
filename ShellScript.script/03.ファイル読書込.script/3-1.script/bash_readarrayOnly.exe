@@ -1,0 +1,1 @@
+readarray mline < "$1"

@@ -1,61 +1,3 @@
-[[GlobalHeader-react-component-df92e1e2-1607-4852-a7e3-d15ec8db0a18]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_2.svg
-
-[.material-symbols-outlined .style-18lpml7]#search#
-
-[.material-symbols-outlined .style-v2p563]#search#[.style-1afofdy]#Search#
-
-link:/login?callback_action=login_or_signup&redirect_to=%2Fpokoyakazan%2Fitems%2F6e7962e47ca90dde66bf&realm=qiita[Login]link:/signup?callback_action=login_or_signup&redirect_to=%2Fpokoyakazan%2Fitems%2F6e7962e47ca90dde66bf&realm=qiita[Signup]
-
-[.material-symbols-outlined .style-18lpml7]#search#
-
-. link:/[Trend]
-. link:/question-feed[Question]
-. link:/official-events[Official Event]
-. link:/official-columns[Official
-Column[.material-symbols-outlined .style-1o3zxqp]##open_in_new##]
-. link:/organizations[Organization]
-
-[[AlertMessage-react-component-755900e1-6db6-4945-84ee-0c1cdc020629]]
-
-[[PersonalArticlePage-react-component-58fa25ef-b780-4c9c-a1f0-50a8a528952a]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_22.svg
-
-link:/pokoyakazan/items/6e7962e47ca90dde66bf/likers[0]
-
-Go to list of users who liked
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_28.svg
-
-[.style-1vem4tk]#0#
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_32.svg
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_34.svg
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_36.svg
-
-[.material-symbols-outlined .style-v2p563]#more_horiz#
-
-Delete article
-
-[.material-symbols-outlined .style-v2p563]#close#
-
-Deleted articles cannot be recovered.
-
-Draft of this article would be also deleted.
-
-Are you sure you want to delete this article?
-
-Cancel
-
-Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
-
-link:/pokoyakazan[]
-
-image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F531002%2Fprofile-images%2F1669093712?ixlib=rb-4.0.0&auto=compress%2Cformat&lossless=0&w=48&s=e3cf5c6e53e0909c34532872b7aff6ac[https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F531002%2Fprofile-images%2F1669093712?ixlib=rb-4.0,width=24,height=24]
-
-
 == Bash で function 定義
 
 
@@ -63,12 +5,12 @@ image:https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-stor
 Bash スクリプトで関数( function ) を定義する方法のメモ。 +
 Bashにおける関数の基本的な定義方法と、関数間で引数を伝搬させる方法について書いていく。
 
-== [#bashにおける関数の記述方法 .fragment]##link:#bash%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E9%96%A2%E6%95%B0%E3%81%AE%E8%A8%98%E8%BF%B0%E6%96%B9%E6%B3%95[__]Bashにおける関数の記述方法
+== Bashにおける関数の記述方法
 
 Bashにおいて関数を定義するには、主に2つの方法がある。 +
 1つはfunctionキーワードを使用する方法、もう1つはキーワードを使用せずに関数名の後に`()`を付ける方法。
 
-=== [#関数の定義方法 .fragment]##link:#%E9%96%A2%E6%95%B0%E3%81%AE%E5%AE%9A%E7%BE%A9%E6%96%B9%E6%B3%95[__]関数の定義方法
+=== 関数の定義方法
 
 `function` キーワードを使用する方法
 
@@ -88,7 +30,7 @@ my_function2() {
 
 `function` キーワードは任意のため、どちらも同じように機能する。
 
-=== [#関数の呼び出し方法 .fragment]##link:#%E9%96%A2%E6%95%B0%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E6%96%B9%E6%B3%95[__]関数の呼び出し方法
+=== 関数の呼び出し方法
 
 定義された関数を呼び出すには、関数名をそのままコマンドのように使用する。
 
@@ -104,14 +46,14 @@ my_function  # my_functionを呼び出す
 my_function "arg1" "arg2"  # 2つの引数を持つmy_functionを呼び出す
 ....
 
-=== [#実際にやってみる .fragment]##link:#%E5%AE%9F%E9%9A%9B%E3%81%AB%E3%82%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B[__]実際にやってみる
+=== 実際にやってみる
 
 `func_test.sh` を作成して実行してみる。
 
 ....
 # func_test.sh の中身確認
 $ cat func_test.sh
-#! /bin/bash
+#! /usr/bin/env bash
 
 function my_function1 {
     echo "This is a function1"
@@ -130,7 +72,7 @@ This is a function1
 This is a function2
 ....
 
-== [#bashスクリプトファイル内の関数をターミナルで使用する .fragment]##link:#bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%86%85%E3%81%AE%E9%96%A2%E6%95%B0%E3%82%92%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B[__]Bashスクリプトファイル内の関数をターミナルで使用する
+== Bashスクリプトファイル内の関数をターミナルで使用する
 
 Bash
 スクリプトファイルで定義した関数をターミナルのコマンドとして使いたい場合、関数を含むスクリプトファイルをソース化してしまうのが早い。 +
@@ -149,13 +91,13 @@ $ my_function1
 This is a function1
 ....
 
-== [#おまけ-関数間で引数を伝搬させる .fragment]##link:#%E3%81%8A%E3%81%BE%E3%81%91-%E9%96%A2%E6%95%B0%E9%96%93%E3%81%A7%E5%BC%95%E6%95%B0%E3%82%92%E4%BC%9D%E6%90%AC%E3%81%95%E3%81%9B%E3%82%8B[__]おまけ: 関数間で引数を伝搬させる
+== おまけ: 関数間で引数を伝搬させる
 
 以下では、2つの引数を `first_function` から `second_function`
 に伝搬させるコード (`function2function_test.sh`)
 
 ....
-#!/bin/bash
+#!/usr/bin/env bash
 
 # 最初の関数を定義
 function first_function {
@@ -187,111 +129,3 @@ Second function: Hello, Bash
 
 めでたし！
 
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_196.svg
-
-link:/pokoyakazan/items/6e7962e47ca90dde66bf/likers[0]
-
-Go to list of users who liked
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_202.svg
-
-[.style-1129w32]#0#
-
-link:#comments[[.material-symbols-outlined .style-n5k90r]##comment##0]
-
-Go to list of comments
-
-Register as a new user and use Qiita more conveniently
-
-. You get articles that match your needs
-. You can efficiently read back useful information
-. You can use dark theme
-
-https://help.qiita.com/ja/articles/qiita-login-user[What you can do with
-signing up]
-
-link:/signup?callback_action=login_or_signup&redirect_to=%2Fpokoyakazan%2Fitems%2F6e7962e47ca90dde66bf&realm=qiita[Sign
-up]link:/login?callback_action=login_or_signup&redirect_to=%2Fpokoyakazan%2Fitems%2F6e7962e47ca90dde66bf&realm=qiita[Login]
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_222.svg
-
-link:/pokoyakazan/items/6e7962e47ca90dde66bf/likers[0]
-
-Go to list of users who liked
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_228.svg
-
-[.style-1vem4tk]#0#
-
-[.material-symbols-outlined .style-v2p563]#more_horiz#
-
-Delete article
-
-[.material-symbols-outlined .style-v2p563]#close#
-
-Deleted articles cannot be recovered.
-
-Draft of this article would be also deleted.
-
-Are you sure you want to delete this article?
-
-Cancel
-
-Delete[.material-symbols-outlined .is-fill .style-1jvcm2e]##delete##
-
-[[GlobalFooter-react-component-13d09d9a-eefd-45a3-8d09-5e674748cdeb]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_249.svg
-
-How developers code is here.
-
-[.small]#© 2011-2025[.style-15fzge]##Qiita Inc.###
-
-Guide & Help
-
-* link:/about[About]
-* link:/terms[Terms]
-* link:/privacy[Privacy]
-* http://help.qiita.com/ja/articles/qiita-community-guideline[Guideline]
-* https://help.qiita.com/ja/articles/others-brand-guideline[Media Kit]
-* https://github.com/increments/qiita-discussions/discussions/116[Feedback/Requests]
-* https://help.qiita.com[Help]
-* https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_content=footer[Advertisement]
-
-Contents
-
-* link:/release-notes[Release Note]
-* link:/official-events[Official Event]
-* link:/official-columns[Official Column]
-* link:/advent-calendar/2024[Advent Calendar]
-* link:/qiita-award[Qiita Award]
-* link:/white_papers/2024[Engineer White Paper]
-* link:/api/v2/docs[API]
-
-Official Accounts
-
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_278.svg
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_279.svg
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/10.関数定義/10-1/10-1_280.svg
-* https://www.facebook.com/qiita/[Facebook]
-* https://www.youtube.com/@qiita5366[YouTube]
-* https://open.spotify.com/show/4E7yCLeCLeQUsNqM4HXFXA[Podcast]
-
-Our service
-
-* https://teams.qiita.com/[Qiita Team]
-* https://zine.qiita.com?utm_source=qiita&utm_medium=referral&utm_content=footer[Qiita
-Zine]
-* https://suzuri.jp/qiita[Official Shop]
-
-Company
-
-* https://corp.qiita.com/company[About Us]
-* https://corp.qiita.com/jobs/[Careers]
-* https://blog.qiita.com[Qiita Blog]
-* https://corp.qiita.com/releases/[News Release]
-
-[[Snackbar-react-component-cd5b3d98-82c6-4a69-804a-f441cbd161a0]]
-
-[[LoginModal-react-component-29133d96-b45d-44f7-bd2c-40fc5adc2a53]]
-
-[[dataContainer]]

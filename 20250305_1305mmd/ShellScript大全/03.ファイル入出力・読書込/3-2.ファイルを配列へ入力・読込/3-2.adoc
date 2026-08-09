@@ -1,0 +1,177 @@
+
+== Bashの安全な配列の使い方まとめ
+
+==  配列とは
+
+シェル変数は、名称を決め「文字列」や「数値」を入込むもので、配列とはその名称に添字[0]〜[数字]をつけた箱を用意するものです。
+添字に数字ではなく、文字列を使用するものを「連想配列」と呼びます。
+文字列を利用すると覚え難くなる人や、他者が見る時理解するような文字列でないと運用が難しくなるので注意が必要です。
+
+一行を読込み、IFS(Internal Field Separator)である改行や空白で区切った定形フォーマットで並ぶファイルを操作するときなどに有効と思う人には、使い易い変数となると考えます。
+ファイル内容を一つの変数に格納するより、そのファイル内の要素(IFSで区切られた単語)に何か処理をしたい場合有効です。
+
+[source,language-bash]
+1990〜2010年代は、「｀」(バックsyラッシュ)を利用しコマンド結果を変数に格納しましたが現在は「$(コマンド)」の形で変数に代入するようになっています。
+
+fileinn.bash
+
+----
+#!/usr/bin/env bash
+
+textfile=$(cat /confirm/content/of/file)
+echo $textfile
+----
+
+上記ではコマンド実行結果を変数に代入しています。
+シェルのデフォルトの区切り文字は改行(\n)や空白( )なので、結果は以下となります。
+
+----
+# fileinn.bash fileinn.bash
+#!/usr/bin/env bash textfile=$(cat /confirm/content/of/file) echo $textfile
+----
+
+空白行や改行は削除され、空白で区切られたテキストファイル内容が表示されます。
+
+OFS(Output Field Separator)はawk 利用される出力区切り子設定です。
+おそらく殆どの状況で期待される動作は1行づつの操作でしょうから、これは注意します。
+
+[source,language-bash]
+以下が配列に代入する操作です。カッコで囲むことでファイル内容を配列に代入します。
+----
+textfile=($(cat /path/to/file))
+----
+
+=== 配列を自分で文字列設定
+
+区切りは`,`(CSV)ではなく半角空白（$IFSに依存）
+
+これは一番基本的なやつ
+
+[source,language-bash]
+----
+example_array=("confirm" "${HOME}" "content")
+----
+
+=== ファイルの内容を配列挿入
+
+`readarray`(`mapfile`と等しい)が早く簡単に配列変数に読込むコマンドです。
+textfile=($(cat /path/to/file))と動きが違い、改行毎に配列[0]〜に格納します。
+この違いと出力結果を注意し、理解すれば配列はわかったことでしょう。
+誤解を生じたかもしれませんがこの程度です。
+
+[source,language-bash]
+----
+readarray -t example_array < "~/confirm/content/of/file"
+----
+
+===  コマンドの実行結果を配列に挿入
+
+`<(test_command)`はファイル内のコマンドが標準出力に返すものになります。
+
+[source,language-bash]
+----
+readarray -t example_array < <(test_command)
+----
+
+-tオプションがないと改行コードまでそのまま配列に代入されるため注意が必要です。
+
+==  注意事項
+`readarray`や配列の挙動はBash4.4以上のバージョンで動作。
+
+
+
+==  配列に追記する
+
+=== 先頭に文字列を挿入
+
+新しい文字列と既存の配列を使って改めて配列に挿入します。
+
+[source,language-bash]
+----
+example_array=("new string" "${example_array[@]}")
+----
+
+=== 末尾に文字列を追記
+
+これは簡単
+
+[source,language-bash]
+----
+example_array+=("new string")
+
+# 同等だが長い
+exapmle_array=("${exapmle_array[@]}" "new string")
+----
+
+===  末尾にファイル内容を追記
+
+`readarray`には代入開始配列位置を指定するオプションがあり
+${#example_array[@]} は、配列変数の全要素の数、つまり最後を示す。
+
+[source,language-bash]
+----
+readarray -O "${#example_array[@]}" -t example_array < "/confirm/content/of/file"
+----
+
+===  末尾にコマンド実行結果を追記
+
+[source,language-bash]
+----
+readarray -O "${#example_array[@]}" -t example_array < <(test_command)
+----
+
+==  配列を参照する
+
+=== 要素を指定して参照
+
+[source,language-bash]
+----
+echo "${example_array[1]}"
+----
+
+=== 文字列に変換して参照
+
+[source,language-bash]
+----
+echo "${example_array[*]}"
+----
+
+=== コマンドの引数に設定
+
+[source,language-bash]
+----
+test_command "${example_array[@]}"
+----
+
+引数に渡す際に`"${example_array[*]}"`を用いると1つの文字列として変換された後引数として渡されることになります。
+
+=== 配列変数を1行づつ出力
+
+[source,language-bash]
+----
+printf "%s\n" "${example_array[@]}"
+----
+
+printfは2つめ以降の引数に対して1つめの引数のフォーマットを適用して出力するコマンドです。
+
+=== シェル変数の値が設定されているか確認
+
+変数が「定義されているか（値の有無を問わない）」の判定は、
+
+----
+if [[ -v VAR ]];then
+----
+
+変数が「未定義、または空文字であるか」の判定は、
+
+----
+if [[ -z "$VAR" ]];then
+----
+
+変数が「定義されており、かつ値が設定されているか」の判定は、
+
+----
+if [[ -n "$VAR" ]];then
+----
+
+

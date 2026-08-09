@@ -1,124 +1,81 @@
 [[globalheader-container]]
 
-https://ytyaru.hatenablog.com/[image:https://cdn.image.st-hatena.com/image/square/4aac36de5ebe218f2ec4e52e1bce268776821a8d/backend=imagemagick;height=128;version=1;width=128/https%3A%2F%2Fcdn.user.blog.st-hatena.com%2Fcustom_blog_icon%2F120967881%2F1514215479294562[やってみる]]
 
-https://ytyaru.hatenablog.com/[やってみる]
-
-https://blog.hatena.ne.jp/ytyaru/ytyaru.hatenablog.com/subscribe?utm_medium=button&utm_source=blogs_topright_button&utm_campaign=subscribe_blog[読者になる]
-
-[[container]]
-[[container-inner]]
-[[blog-title]]
-[[blog-title-inner]]
-[[blog-title-content]]
-[[title]]
-== https://ytyaru.hatenablog.com/[やってみる]
-
-[[blog-description]]
-=== アウトプットすべく己を導くためのブログ。その試行錯誤すらたれ流す。
-
-[[top-editarea]]
-https://github.com/ytyaru[image:https://ghchart.rshah.org/ytyaru[https://ghchart.rshah.org/ytyaru,scaledwidth=100.0%]]
-
-https://ytyaru.hatenablog.com/entry/collection[📌]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-1/4-1_24.svg
-https://github.com/ytyaru[image:https://github.githubassets.com/favicon.ico[https://github.githubassets.com/favicon,width=32,height=32]]
-https://twitter.com/ytyaru1[image:https://upload.wikimedia.org/wikipedia/sco/9/9f/Twitter_bird_logo_2012.svg[https://upload.wikimedia.org/wikipedia/sco/9/9f/Twitter_bird_logo_2012,width=32,height=32]]
-https://mstdn.jp/@ytyaru[image:https://upload.wikimedia.org/wikipedia/commons/4/48/Mastodon_Logotype_%28Simple%29.svg[https://upload.wikimedia.org/wikipedia/commons/4/48/Mastodon_Logotype_%28Simple%29,width=32,height=32]]
-https://ytyaru.hatenablog.com/rss[image:https://upload.wikimedia.org/wikipedia/commons/4/46/Generic_Feed-icon.svg[https://upload.wikimedia.org/wikipedia/commons/4/46/Generic_Feed-icon,width=32,height=32]]
-https://ytyaru.github.io/[image:https://cdn.user.blog.st-hatena.com/default_entry_og_image/120967881/1514215858186975[https://cdn.user.blog.st-hatena.com/default_entry_og_image/120967881/1514215858186975,width=32,height=32]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-1/4-1_30.30:javascript:window.mpurse.sendAsset('MEHCqJbgiNERCH3bRAtNSSD9uxPViEX1nu'
-https://ytyaru.github.io/Html.Mpurse.Api.20220517160403/setup.html[？]
-
-[[top-box]]
-https://ytyaru.hatenablog.com/[トップ] [.breadcrumb-gt]#>#
-[.breadcrumb-child]#
-https://ytyaru.hatenablog.com/archive/category/Bash[Bash] #
-[.breadcrumb-gt]#># [.breadcrumb-child]# bashのシェル変数（全95個） #
+# bashのシェル変数（全95個） #
 
 [[content]]
 [[content-inner]]
 [[wrapper]]
 [[main]]
 [[main-inner]]
-https://ytyaru.hatenablog.com/archive/2020/06/17[[.date-year]#2020#[.hyphen]#-#[.date-month]#06#[.hyphen]#-#[.date-day]#17#]
 
-== https://ytyaru.hatenablog.com/entry/2020/06/17/000000[bashのシェル変数（全95個）]
-
-https://ytyaru.hatenablog.com/archive/category/Bash[Bash]
-
-　使いこなせばhttp://d.hatena.ne.jp/keyword/Bash[Bash]マスター。
-
-== 成果物
-
-* https://github.com/ytyaru/Shell.Study.20190406091150[github]
-** https://github.com/ytyaru/Shell.Study.20190406091150/blob/master/src/06_shell_var.sh[06_shell_var.sh]
+== bashの予約変数（全95個）
 
 == 一覧
 
-　以下の変数はシェルが設定する。（48個）
+　以下の予約変数はシェルが設定する。（48個）
 
-[width="100%",cols="50%,50%",options="header",]
+[width="100%",cols="8%,42%,50%",options="header",]
 |===
-|シェル変数 |概要
-|`BASH`
+|項番|シェル予約変数 |概要
+|1|`BASH`
 |現在実行しているhttp://d.hatena.ne.jp/keyword/bash[bash]のフルパス。
 
-|`BASHOPTS`
+|2|`BASHOPTS`
 |有効になっているシェルのオプションを示す(コロン区切り)。読込専用。`shopt -s`で`on`と表示されるものである。
 
-|`BASHPID`
+|3|`BASHPID`
 |現在のhttp://d.hatena.ne.jp/keyword/bash[bash]プロセスID。（$$は非更新）
 
-|`BASH_ALIASES`
+|4|`BASH_ALIASES`
 |http://d.hatena.ne.jp/keyword/%A5%A8%A5%A4%A5%EA%A5%A2%A5%B9[エイリアス]の内部的なリストに対応するhttp://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]変数。
 
-|`BASH_ARGC`
+|5|`BASH_ARGC`
 |http://d.hatena.ne.jp/keyword/bash[bash]の現在の呼出スタックについて、フレームごとの引数の数が並んだ配列変数。
 
-|`BASH_ARGV`
+|6|`BASH_ARGV`
 |http://d.hatena.ne.jp/keyword/bash[bash]の現在の呼出スタックについて、全ての引き数が並んだ配列変数。
 
-|`BASH_CMDS`
+|7|`BASH_CMDS`
 |http://d.hatena.ne.jp/keyword/bash[bash]が内部に持つコマンドのハッシュテーブルに対応するhttp://d.hatena.ne.jp/keyword/%CF%A2%C1%DB%C7%DB%CE%F3[連想配列]変数。
 
-|`BASH_COMMAND` |現在実行しているか実行しようとしているコマンド。
+|8|`BASH_COMMAND` |現在実行しているか実行しようとしているコマンド。
 
-|`BASH_EXECUTION_STRING` |起動オプション -c で指定されたコマンド。
+|9|`BASH_EXECUTION_STRING` |起動オプション -c で指定されたコマンド。
 
-|`BASH_LINENO`
+|10|`BASH_LINENO`
 |ソースファイル中の行番号からなる配列変数。`FUNCNAME`と対応する。現在の行番号は`LINENO`。
 
-|`BASH_REMATCH`
+|11|`BASH_REMATCH`
 |`[[`中のhttp://d.hatena.ne.jp/keyword/%C6%F3%B9%E0%B1%E9%BB%BB%BB%D2[二項演算子]`=~`により設定される配列変数。
 
-|`BASH_SOURCE` |ソースファイル名からなる配列変数。
+|12|`BASH_SOURCE` |ソースファイル名からなる配列変数。
 
-|`BASH_SUBSHELL`
+|13|`BASH_SUBSHELL`
 |サブシェルやサブシェル環境が作成されるたびに1増加。初期値`0`。
 
-|`BASH_VERSINFO` |`0`: メジャー +
+|14|`BASH_VERSINFO` |`0`: メジャー +
 `1`: マイナー +
 `2`:パッチレベル +
 `3`:ビルドバージョン +
 `4`:リリースステータス(beta1等) +
 `5`:MACHTYPE の値
 
-|`BASH_VERSION`
+|15|`BASH_VERSION`
 |現在実行しているhttp://d.hatena.ne.jp/keyword/bash[bash]のバージョン。
 
-|`COMP_CWORD`
+|16|`COMP_CWORD`
 |現在カーソル位置がある単語の配列変数`${COMP_WORDS}`におけるインデックス。
 
-|`COMP_KEY` |現在の補完関数を呼び出したキー。
+|17|`COMP_KEY` |現在の補完関数を呼び出したキー。
 
-|`COMP_LINE`
+|18|`COMP_LINE`
 |現在のhttp://d.hatena.ne.jp/keyword/%A5%B3%A5%DE%A5%F3%A5%C9%A5%E9%A5%A4%A5%F3[コマンドライン]。
 
-|`COMP_POINT`
+|19|`COMP_POINT`
 |現在のコマンドの先頭からの相対値として与えられたカーソル位置のインデックス。
 
-|`COMP_TYPE`
+|20|`COMP_TYPE`
 |補完関数を呼び出した補完のタイプに対応する整数値が設定される。 +
 `<TAB>`: 通常の補完 +
 `?`: 連続したタブ入力による候補リスト +
@@ -126,79 +83,79 @@ https://ytyaru.hatenablog.com/archive/category/Bash[Bash]
 `@`: 部分的な補完ができないときの候補リスト +
 `%`: メニュー補完 (menu completion)
 
-|`COMP_WORDBREAKS`
+|21|`COMP_WORDBREAKS`
 |単語補完のときにreadlineライブラリが単語分割の区切文字として扱う文字の並び。
 
-|`COMP_WORDS`
+|22|`COMP_WORDS`
 |現在のhttp://d.hatena.ne.jp/keyword/%A5%B3%A5%DE%A5%F3%A5%C9%A5%E9%A5%A4%A5%F3[コマンドライン]の各単語からなる配列変数。
 
-|`COPROC`
+|23|`COPROC`
 |無名のコプロセスが入出力するファイル・http://d.hatena.ne.jp/keyword/%A5%C7%A5%A3%A5%B9%A5%AF%A5%EA%A5%D7%A5%BF[ディスクリプタ]ーを保持する配列変数。
 
-|`DIRSTACK`
+|24|`DIRSTACK`
 |現在のhttp://d.hatena.ne.jp/keyword/%A5%C7%A5%A3%A5%EC%A5%AF%A5%C8[ディレクト]リスタックの内容を持つ配列変数。
 
-|`EUID` |現在のユーザの実効ユーザID。
+|25|`EUID` |現在のユーザの実効ユーザID。
 
-|`FUNCNAME`
+|26|`FUNCNAME`
 |現在の呼び出しスタックにある全てのシェル関数名が入った配列変数。
 
-|`GROUPS`
+|27|`GROUPS`
 |現在のユーザがメンバになっているグループのリストを含んだ配列変数。
 
-|`HISTCMD` |現在のコマンドの履歴番号(履歴リストにおけるインデックス)。
+|28|`HISTCMD` |現在のコマンドの履歴番号(履歴リストにおけるインデックス)。
 
-|`HOSTNAME` |現在のホスト名。(`raspberrypi`等)
+|29|`HOSTNAME` |現在のホスト名。(`raspberrypi`等)
 
-|`HOSTTYPE`
+|30|`HOSTTYPE`
 |http://d.hatena.ne.jp/keyword/bash[bash]を実行するマシンの種類をユニークに記述する文字列。(`arm`等)
 
-|`LINENO` |行番号。
+|31|`LINENO` |行番号。
 
-|`MACHTYPE`
+|32|`MACHTYPE`
 |http://d.hatena.ne.jp/keyword/bash[bash]を実行するシステムの種類（http://d.hatena.ne.jp/keyword/GNU[GNU]標準のcpu-company-system形式）(`arm-unknown-linux-gnueabihf`)
 
-|`MAPFILE`
+|33|`MAPFILE`
 |組込コマンド`mapfile`に変数名が指定されなかったときに読み込んだテキストを保持する配列変数。
 
-|`OLDPWD`
+|34|`OLDPWD`
 |1つ前の作業http://d.hatena.ne.jp/keyword/%A5%C7%A5%A3%A5%EC%A5%AF%A5%C8[ディレクト]リ。
 
-|`OPTARG` |組込コマンド`getopts`で処理した最後のオプション引数値。
+|35|`OPTARG` |組込コマンド`getopts`で処理した最後のオプション引数値。
 
-|`OPTIND`
+|36|`OPTIND`
 |組込コマンド`getopts`で次に処理されるオプション引数インデックス。
 
-|`OSTYPE`
+|37|`OSTYPE`
 |http://d.hatena.ne.jp/keyword/bash[bash]を実行するOSを記述する文字列。(`linux-gnueabihf`等)
 
-|`PIPESTATUS`
+|38|`PIPESTATUS`
 |フォアグラウンドで最後に実行したパイプラインの各プロセスの終了ステータスのリストを含む配列変数。
 
-|`PPID` |そのシェルの親のプロセスID。
+|39|`PPID` |そのシェルの親のプロセスID。
 
-|`PWD`
+|40|`PWD`
 |現在の作業http://d.hatena.ne.jp/keyword/%A5%C7%A5%A3%A5%EC%A5%AF%A5%C8[ディレクト]リ。
 
-|`RANDOM` |`0`〜`32767`までのランダムな整数。
+|41|`RANDOM` |`0`〜`32767`までのランダムな整数。
 
-|`READLINE_LINE` |readlineの編集バッファ内容。`bind -x`で使う。
+|42|`READLINE_LINE` |readlineの編集バッファ内容。`bind -x`で使う。
 
-|`READLINE_POINT`
+|43|`READLINE_POINT`
 |readlineの編集バッファでの挿入ポイント位置。`bind -x`で使う。
 
-|`REPLY`
+|44|`REPLY`
 |組込コマンド`read`に引き数が与えられなかったときに読み込まれた行。
 
-|`SECONDS` |シェルが起動されてからの秒数。
+|45|`SECONDS` |シェルが起動されてからの秒数。
 
-|`SHELLOPTS` |有効になっているシェルのオプションを示す。（コロン区切り）
+|46|`SHELLOPTS` |有効になっているシェルのオプションを示す。（コロン区切り）
 リスト中の単語は組込コマンド`set -o`に対応。
 
-|`SHLVL`
+|47|`SHLVL`
 |http://d.hatena.ne.jp/keyword/bash[bash]が起動するときにhttp://d.hatena.ne.jp/keyword/%B4%C4%B6%AD%CA%D1%BF%F4[環境変数]で渡された値から1増やした値。
 
-|`UID` |現在のユーザのユーザID。
+|48|`UID` |現在のユーザのユーザID。
 |===
 
 　以下の変数はシェルが使用する。（47個）
@@ -206,7 +163,7 @@ https://ytyaru.hatenablog.com/archive/category/Bash[Bash]
 [width="100%",cols="50%,50%",options="header",]
 |===
 |シェル変数 |概要
-|`BASH_ENV`
+__|`BASH_ENV`
 |http://d.hatena.ne.jp/keyword/bash[bash]がhttp://d.hatena.ne.jp/keyword/%A5%B7%A5%A7%A5%EB%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8[シェルスクリプト]を実行するときにこの値が設定されている場合、この値は(~/.bashrc
 のように)シェルを初期化するコマンドが書かれているファイル名と解釈される。
 
@@ -352,7 +309,7 @@ Separator)。デフォルト値`<空白><タブ><改行>`。
 |`histchars`
 |`2`文字か`3`文字で履歴の展開とhttp://d.hatena.ne.jp/keyword/%A5%C8%A1%BC%A5%AF[トーク]ン分割を制御する。デフォルト値:
 `\`^`````\'\'\'\''`。
-|===
+__|===
 
 == 対象環境
 
@@ -370,469 +327,3 @@ Linux raspberrypi 4.14.98-v7+ #1200 SMP Tue Feb 12 20:27:48 GMT 2019 armv7l GNU/
 
 　使いこなせる気がしない……。
 
-[.author .vcard]#[.fn]#ytyaru##
-[.entry-footer-time]#https://ytyaru.hatenablog.com/entry/2020/06/17/000000[2020-06-17
-00:00]# [.entry-footer-subscribe]#
-https://blog.hatena.ne.jp/ytyaru/ytyaru.hatenablog.com/subscribe?utm_medium=button&utm_campaign=subscribe_blog&utm_source=blogs_entry_footer[読者になる]
-#
-
-https://b.hatena.ne.jp/entry/s/ytyaru.hatenablog.com/entry/2020/06/17/000000[image:https://b.st-hatena.com/images/entry-button/button-only.gif[この記事をはてなブックマークに追加,width=20,height=20]]
-
-https://x.com/intent/tweet?text=bash%E3%81%AE%E3%82%B7%E3%82%A7%E3%83%AB%E5%A4%89%E6%95%B0%EF%BC%88%E5%85%A895%E5%80%8B%EF%BC%89+-+%E3%82%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B&url=https%3A%2F%2Fytyaru.hatenablog.com%2Fentry%2F2020%2F06%2F17%2F000000[]
-
-[[google_afc_user_container_0]]
-
-http://blog.hatena.ne.jp/guide/pro[広告を非表示にする]
-
-[[entry-footer-secondary-modules]]
-関連記事
-
-* {blank}
-+
-https://ytyaru.hatenablog.com/archive/2023/07/28[2023-07-28]
-
-https://ytyaru.hatenablog.com/entry/2023/07/28/000000[「環境変数」を読む]
-
-知らなくても良さそう。
-* {blank}
-+
-https://ytyaru.hatenablog.com/archive/2023/07/23[2023-07-23]
-
-https://ytyaru.hatenablog.com/entry/2023/07/23/000000[Rubyのシバンについて（shebang）]
-
-コードの先頭に#!/usr/bin/env rubyと書くやつ。
-* {blank}
-+
-https://ytyaru.hatenablog.com/archive/2021/06/06[2021-06-06]
-
-https://ytyaru.hatenablog.com/entry/2021/06/06/000000[SQLite3のCLI文脈にて動的コマンドを実行する方法]
-
-.outputしたコマンドを.readする。
-* {blank}
-+
-https://ytyaru.hatenablog.com/archive/2020/06/21[2020-06-21]
-
-https://ytyaru.hatenablog.com/entry/2020/06/21/000000[Bashの宣言・スコープ・ライフサイクル]
-
-変数・関数について。
-* {blank}
-+
-https://ytyaru.hatenablog.com/archive/2020/06/15[2020-06-15]
-
-https://ytyaru.hatenablog.com/entry/2020/06/15/000000[bashテンプレートエンジンmo（mustache）]
-
-気になっていたので試す。
-
-* もっと読む
-
-[.leave-comment-title .js-leave-comment-title]#コメントを書く#
-
-[.pager-prev]#
-https://ytyaru.hatenablog.com/entry/2020/06/18/000000[[.pager-arrow]#« #
-bashで変数を動的参照する（配列・連想配…] # [.pager-next]#
-https://ytyaru.hatenablog.com/entry/2020/06/16/000000[bashの特殊パラメータ
-[.pager-arrow]# »#] #
-
-[[box1-inner]]
-
-[[box2-inner]]
-関連記事
-
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2023/05/30/000000[ツイートを半自動化するスクリプトを書く２]
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2023/05/29/000000[ツイートを半自動化するスクリプトを書く１]
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2023/01/18/000000[4bitカラーの糖衣構文をつくる]
-
-検索
-
-リンク
-
-* http://ytyaru.hatenablog.com/entry/about[このブログについて]
-* http://ytyaru.hatenablog.com/archive[アーカイブ]
-* http://ytyaru.hatenablog.com/entry/WorkProducts[できたもの一覧]
-
-カテゴリー
-
-* https://ytyaru.hatenablog.com/archive/category/%E6%84%9F%E6%83%B3[感想
-(2)]
-* https://ytyaru.hatenablog.com/archive/category/JavaScript[JavaScript
-(165)]
-* https://ytyaru.hatenablog.com/archive/category/Chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD[Chrome拡張機能
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/NTT[NTT (2)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88[インターネット
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/BlueTooth[BlueTooth
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/RaspberryPi[RaspberryPi
-(207)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%82%B9%E3%83%9E%E3%83%9B[スマホ
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%83%89%E3%83%83%E3%83%88%E7%B5%B5[ドット絵
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/%E4%BB%8A%E9%80%B1%E3%81%AE%E3%81%8A%E9%A1%8C[今週のお題
-(20)]
-* https://ytyaru.hatenablog.com/archive/category/Font[Font (1)]
-* https://ytyaru.hatenablog.com/archive/category/CSS[CSS (14)]
-* https://ytyaru.hatenablog.com/archive/category/HTML[HTML (59)]
-* https://ytyaru.hatenablog.com/archive/category/SVG[SVG (2)]
-* https://ytyaru.hatenablog.com/archive/category/%E8%80%83%E5%AF%9F[考察
-(8)]
-* https://ytyaru.hatenablog.com/archive/category/%E6%84%8F%E8%A6%8B%E6%96%87[意見文
-(6)]
-* https://ytyaru.hatenablog.com/archive/category/C%2B%2B[C++ (152)]
-* https://ytyaru.hatenablog.com/archive/category/VanJS[VanJS (2)]
-* https://ytyaru.hatenablog.com/archive/category/Micromodal.js[Micromodal.js
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/Eel[Eel (1)]
-* https://ytyaru.hatenablog.com/archive/category/Python[Python (541)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%AD%E3%82%B0[はてなブログ
-(5)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%83%96%E3%83%AD%E3%82%B0[ブログ
-(30)]
-* https://ytyaru.hatenablog.com/archive/category/%E6%9A%97%E5%8F%B7%E9%80%9A%E8%B2%A8[暗号通貨
-(3)]
-* https://ytyaru.hatenablog.com/archive/category/Linux[Linux (69)]
-* https://ytyaru.hatenablog.com/archive/category/Electron[Electron (2)]
-* https://ytyaru.hatenablog.com/archive/category/Tool[Tool (253)]
-* https://ytyaru.hatenablog.com/archive/category/WebAssembly[WebAssembly
-(4)]
-* https://ytyaru.hatenablog.com/archive/category/Node.js[Node.js (18)]
-* https://ytyaru.hatenablog.com/archive/category/Vite[Vite (3)]
-* https://ytyaru.hatenablog.com/archive/category/%E5%8D%98%E4%BD%93%E3%83%86%E3%82%B9%E3%83%88[単体テスト
-(2)]
-* https://ytyaru.hatenablog.com/archive/category/AssemblyScript[AssemblyScript
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/TypeScript[TypeScript
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/npm[npm (12)]
-* https://ytyaru.hatenablog.com/archive/category/GitHub[GitHub (4)]
-* https://ytyaru.hatenablog.com/archive/category/%E7%94%9F%E3%81%8D%E6%96%B9[生き方
-(19)]
-* https://ytyaru.hatenablog.com/archive/category/%E8%A6%8F%E6%A0%BC[規格
-(13)]
-* https://ytyaru.hatenablog.com/archive/category/%E8%AA%BF%E6%9F%BB[調査
-(5)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC[ワークフロー
-(238)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0[プログラミング
-(180)]
-* https://ytyaru.hatenablog.com/archive/category/WebService[WebService
-(140)]
-* https://ytyaru.hatenablog.com/archive/category/%E7%94%9F%E6%B4%BB[生活
-(28)]
-* https://ytyaru.hatenablog.com/archive/category/%E8%AA%B2%E9%A1%8C[課題
-(10)]
-* https://ytyaru.hatenablog.com/archive/category/Ruby[Ruby (115)]
-* https://ytyaru.hatenablog.com/archive/category/VSCode[VSCode (9)]
-* https://ytyaru.hatenablog.com/archive/category/Terminal[Terminal (5)]
-* https://ytyaru.hatenablog.com/archive/category/Vim[Vim (1)]
-* https://ytyaru.hatenablog.com/archive/category/espanso[espanso (5)]
-* https://ytyaru.hatenablog.com/archive/category/C%23[C# (207)]
-* https://ytyaru.hatenablog.com/archive/category/Web%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0[Webスクレイピング
-(10)]
-* https://ytyaru.hatenablog.com/archive/category/IFTTT[IFTTT (6)]
-* https://ytyaru.hatenablog.com/archive/category/WebApi[WebApi (14)]
-* https://ytyaru.hatenablog.com/archive/category/watchexec[watchexec
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/Twitter[Twitter (7)]
-* https://ytyaru.hatenablog.com/archive/category/Rust[Rust (187)]
-* https://ytyaru.hatenablog.com/archive/category/DTM[DTM (14)]
-* https://ytyaru.hatenablog.com/archive/category/Json[Json (2)]
-* https://ytyaru.hatenablog.com/archive/category/GAS[GAS (1)]
-* https://ytyaru.hatenablog.com/archive/category/mstdn.jp[mstdn.jp (1)]
-* https://ytyaru.hatenablog.com/archive/category/Mastodon[Mastodon (3)]
-* https://ytyaru.hatenablog.com/archive/category/AKM322[AKM322 (2)]
-* https://ytyaru.hatenablog.com/archive/category/%E8%B3%BC%E5%85%A5[購入
-(34)]
-* https://ytyaru.hatenablog.com/archive/category/Bash[Bash (118)]
-* https://ytyaru.hatenablog.com/archive/category/Audio[Audio (117)]
-* https://ytyaru.hatenablog.com/archive/category/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF[静的サイトジェネレータ
-(28)]
-* https://ytyaru.hatenablog.com/archive/category/%E7%81%BD%E5%AE%B3[災害
-(31)]
-* https://ytyaru.hatenablog.com/archive/category/%E9%9B%BB%E5%AD%90%E5%B7%A5%E4%BD%9C[電子工作
-(65)]
-* https://ytyaru.hatenablog.com/archive/category/GIMP[GIMP (17)]
-* https://ytyaru.hatenablog.com/archive/category/vue.js[vue.js (12)]
-* https://ytyaru.hatenablog.com/archive/category/webpack[webpack (9)]
-* https://ytyaru.hatenablog.com/archive/category/babel[babel (3)]
-* https://ytyaru.hatenablog.com/archive/category/%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90[音声合成
-(5)]
-* https://ytyaru.hatenablog.com/archive/category/OpenJTalk[OpenJTalk
-(3)]
-* https://ytyaru.hatenablog.com/archive/category/%E6%96%B0%E5%9E%8B%E3%82%B3%E3%83%AD%E3%83%8A%E3%82%A6%E3%82%A4%E3%83%AB%E3%82%B9COVID-19[新型コロナウイルスCOVID-19
-(76)]
-* https://ytyaru.hatenablog.com/archive/category/Library[Library (18)]
-* https://ytyaru.hatenablog.com/archive/category/%E7%B5%B1%E4%B8%80%E6%95%99%E4%BC%9A[統一教会
-(5)]
-* https://ytyaru.hatenablog.com/archive/category/Go[Go (2)]
-* https://ytyaru.hatenablog.com/archive/category/LibreOffice[LibreOffice
-(74)]
-* https://ytyaru.hatenablog.com/archive/category/Chromium[Chromium (1)]
-* https://ytyaru.hatenablog.com/archive/category/SQLite3[SQLite3 (307)]
-* https://ytyaru.hatenablog.com/archive/category/PySide2[PySide2 (34)]
-* https://ytyaru.hatenablog.com/archive/category/SciKitImage[SciKitImage
-(2)]
-* https://ytyaru.hatenablog.com/archive/category/%E3%83%A2%E3%83%8A%E3%82%B3%E3%82%A4%E3%83%B3[モナコイン
-(1)]
-* https://ytyaru.hatenablog.com/archive/category/Pillow[Pillow (3)]
-* https://ytyaru.hatenablog.com/archive/category/PySDL2[PySDL2 (1)]
-* https://ytyaru.hatenablog.com/archive/category/SDL2[SDL2 (2)]
-* https://ytyaru.hatenablog.com/archive/category/OpenGL[OpenGL (6)]
-* https://ytyaru.hatenablog.com/archive/category/blender[blender (8)]
-* https://ytyaru.hatenablog.com/archive/category/haxe[haxe (1)]
-* https://ytyaru.hatenablog.com/archive/category/MineTest[MineTest (2)]
-* https://ytyaru.hatenablog.com/archive/category/pyxel[pyxel (34)]
-* https://ytyaru.hatenablog.com/archive/category/Markdown[Markdown (10)]
-* https://ytyaru.hatenablog.com/archive/category/paiza[paiza (1)]
-* https://ytyaru.hatenablog.com/archive/category/MeCab[MeCab (15)]
-* https://ytyaru.hatenablog.com/archive/category/Tcl[Tcl (1)]
-* https://ytyaru.hatenablog.com/archive/category/release[release (3)]
-* https://ytyaru.hatenablog.com/archive/category/git[git (2)]
-* https://ytyaru.hatenablog.com/archive/category/WindowsXP[WindowsXP
-(160)]
-* https://ytyaru.hatenablog.com/archive/category/AsciiDoc[AsciiDoc (36)]
-
-https://ytyaru.hatenablog.com/archive[最新記事]
-
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2025/03/01/000000[Chromeのタブが多すぎるのでHTMLファイル化して保存する拡張機能を作った]
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2025/02/27/000000[スポーツ観戦が大嫌い]
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2025/02/26/000000[NTT返却キットが酷い（ただの紙袋）]
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2025/02/25/000000[NTT光回線の値上げに関する調査と対応]
-* {blank}
-+
-https://ytyaru.hatenablog.com/entry/2025/02/22/000000[BlueTooth活用！スマホで撮影した写真をRaspberry
-Pi 4Bへ送受信する]
-
-https://ytyaru.hatenablog.com/archive[月別アーカイブ]
-
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2025[2025]
-** https://ytyaru.hatenablog.com/archive/2025/03[2025 / 3]
-** https://ytyaru.hatenablog.com/archive/2025/02[2025 / 2]
-** https://ytyaru.hatenablog.com/archive/2025/01[2025 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2024[2024]
-** https://ytyaru.hatenablog.com/archive/2024/07[2024 / 7]
-** https://ytyaru.hatenablog.com/archive/2024/06[2024 / 6]
-** https://ytyaru.hatenablog.com/archive/2024/03[2024 / 3]
-** https://ytyaru.hatenablog.com/archive/2024/02[2024 / 2]
-** https://ytyaru.hatenablog.com/archive/2024/01[2024 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2023[2023]
-** https://ytyaru.hatenablog.com/archive/2023/12[2023 / 12]
-** https://ytyaru.hatenablog.com/archive/2023/11[2023 / 11]
-** https://ytyaru.hatenablog.com/archive/2023/10[2023 / 10]
-** https://ytyaru.hatenablog.com/archive/2023/09[2023 / 9]
-** https://ytyaru.hatenablog.com/archive/2023/08[2023 / 8]
-** https://ytyaru.hatenablog.com/archive/2023/07[2023 / 7]
-** https://ytyaru.hatenablog.com/archive/2023/06[2023 / 6]
-** https://ytyaru.hatenablog.com/archive/2023/05[2023 / 5]
-** https://ytyaru.hatenablog.com/archive/2023/04[2023 / 4]
-** https://ytyaru.hatenablog.com/archive/2023/03[2023 / 3]
-** https://ytyaru.hatenablog.com/archive/2023/02[2023 / 2]
-** https://ytyaru.hatenablog.com/archive/2023/01[2023 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2022[2022]
-** https://ytyaru.hatenablog.com/archive/2022/12[2022 / 12]
-** https://ytyaru.hatenablog.com/archive/2022/11[2022 / 11]
-** https://ytyaru.hatenablog.com/archive/2022/10[2022 / 10]
-** https://ytyaru.hatenablog.com/archive/2022/09[2022 / 9]
-** https://ytyaru.hatenablog.com/archive/2022/08[2022 / 8]
-** https://ytyaru.hatenablog.com/archive/2022/07[2022 / 7]
-** https://ytyaru.hatenablog.com/archive/2022/06[2022 / 6]
-** https://ytyaru.hatenablog.com/archive/2022/05[2022 / 5]
-** https://ytyaru.hatenablog.com/archive/2022/04[2022 / 4]
-** https://ytyaru.hatenablog.com/archive/2022/03[2022 / 3]
-** https://ytyaru.hatenablog.com/archive/2022/02[2022 / 2]
-** https://ytyaru.hatenablog.com/archive/2022/01[2022 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2021[2021]
-** https://ytyaru.hatenablog.com/archive/2021/12[2021 / 12]
-** https://ytyaru.hatenablog.com/archive/2021/11[2021 / 11]
-** https://ytyaru.hatenablog.com/archive/2021/10[2021 / 10]
-** https://ytyaru.hatenablog.com/archive/2021/09[2021 / 9]
-** https://ytyaru.hatenablog.com/archive/2021/08[2021 / 8]
-** https://ytyaru.hatenablog.com/archive/2021/07[2021 / 7]
-** https://ytyaru.hatenablog.com/archive/2021/06[2021 / 6]
-** https://ytyaru.hatenablog.com/archive/2021/05[2021 / 5]
-** https://ytyaru.hatenablog.com/archive/2021/04[2021 / 4]
-** https://ytyaru.hatenablog.com/archive/2021/03[2021 / 3]
-** https://ytyaru.hatenablog.com/archive/2021/02[2021 / 2]
-** https://ytyaru.hatenablog.com/archive/2021/01[2021 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2020[2020]
-** https://ytyaru.hatenablog.com/archive/2020/12[2020 / 12]
-** https://ytyaru.hatenablog.com/archive/2020/11[2020 / 11]
-** https://ytyaru.hatenablog.com/archive/2020/10[2020 / 10]
-** https://ytyaru.hatenablog.com/archive/2020/09[2020 / 9]
-** https://ytyaru.hatenablog.com/archive/2020/08[2020 / 8]
-** https://ytyaru.hatenablog.com/archive/2020/07[2020 / 7]
-** https://ytyaru.hatenablog.com/archive/2020/06[2020 / 6]
-** https://ytyaru.hatenablog.com/archive/2020/05[2020 / 5]
-** https://ytyaru.hatenablog.com/archive/2020/04[2020 / 4]
-** https://ytyaru.hatenablog.com/archive/2020/03[2020 / 3]
-** https://ytyaru.hatenablog.com/archive/2020/02[2020 / 2]
-** https://ytyaru.hatenablog.com/archive/2020/01[2020 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2019[2019]
-** https://ytyaru.hatenablog.com/archive/2019/12[2019 / 12]
-** https://ytyaru.hatenablog.com/archive/2019/11[2019 / 11]
-** https://ytyaru.hatenablog.com/archive/2019/10[2019 / 10]
-** https://ytyaru.hatenablog.com/archive/2019/09[2019 / 9]
-** https://ytyaru.hatenablog.com/archive/2019/08[2019 / 8]
-** https://ytyaru.hatenablog.com/archive/2019/07[2019 / 7]
-** https://ytyaru.hatenablog.com/archive/2019/06[2019 / 6]
-** https://ytyaru.hatenablog.com/archive/2019/05[2019 / 5]
-** https://ytyaru.hatenablog.com/archive/2019/04[2019 / 4]
-** https://ytyaru.hatenablog.com/archive/2019/03[2019 / 3]
-** https://ytyaru.hatenablog.com/archive/2019/02[2019 / 2]
-** https://ytyaru.hatenablog.com/archive/2019/01[2019 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2018[2018]
-** https://ytyaru.hatenablog.com/archive/2018/12[2018 / 12]
-** https://ytyaru.hatenablog.com/archive/2018/11[2018 / 11]
-** https://ytyaru.hatenablog.com/archive/2018/10[2018 / 10]
-** https://ytyaru.hatenablog.com/archive/2018/09[2018 / 9]
-** https://ytyaru.hatenablog.com/archive/2018/08[2018 / 8]
-** https://ytyaru.hatenablog.com/archive/2018/07[2018 / 7]
-** https://ytyaru.hatenablog.com/archive/2018/06[2018 / 6]
-** https://ytyaru.hatenablog.com/archive/2018/05[2018 / 5]
-** https://ytyaru.hatenablog.com/archive/2018/04[2018 / 4]
-** https://ytyaru.hatenablog.com/archive/2018/03[2018 / 3]
-** https://ytyaru.hatenablog.com/archive/2018/02[2018 / 2]
-** https://ytyaru.hatenablog.com/archive/2018/01[2018 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2017[2017]
-** https://ytyaru.hatenablog.com/archive/2017/12[2017 / 12]
-** https://ytyaru.hatenablog.com/archive/2017/11[2017 / 11]
-** https://ytyaru.hatenablog.com/archive/2017/10[2017 / 10]
-** https://ytyaru.hatenablog.com/archive/2017/09[2017 / 9]
-** https://ytyaru.hatenablog.com/archive/2017/08[2017 / 8]
-** https://ytyaru.hatenablog.com/archive/2017/07[2017 / 7]
-** https://ytyaru.hatenablog.com/archive/2017/06[2017 / 6]
-** https://ytyaru.hatenablog.com/archive/2017/05[2017 / 5]
-** https://ytyaru.hatenablog.com/archive/2017/04[2017 / 4]
-** https://ytyaru.hatenablog.com/archive/2017/03[2017 / 3]
-** https://ytyaru.hatenablog.com/archive/2017/02[2017 / 2]
-** https://ytyaru.hatenablog.com/archive/2017/01[2017 / 1]
-* {blank}
-+
-[.archive-module-hide-button]#▼# [.archive-module-show-button]#▶#
-+
-https://ytyaru.hatenablog.com/archive/2016[2016]
-** https://ytyaru.hatenablog.com/archive/2016/12[2016 / 12]
-** https://ytyaru.hatenablog.com/archive/2016/11[2016 / 11]
-** https://ytyaru.hatenablog.com/archive/2016/10[2016 / 10]
-** https://ytyaru.hatenablog.com/archive/2016/09[2016 / 9]
-** https://ytyaru.hatenablog.com/archive/2016/08[2016 / 8]
-** https://ytyaru.hatenablog.com/archive/2016/07[2016 / 7]
-** https://ytyaru.hatenablog.com/archive/2016/06[2016 / 6]
-
-プロフィール
-
-http://ytyaru.hatenablog.com/about[image:http://cdn1.www.st-hatena.com/users/yt/ytyaru/profile.gif?1472478950[id:ytyaru]]
-https://ytyaru.github.io/[image:https://cdn.user.blog.st-hatena.com/default_entry_og_image/120967881/1514215858186975[https://cdn.user.blog.st-hatena.com/default_entry_og_image/120967881/1514215858186975,width=32,height=32]]
-https://twitter.com/ytyaru1[image:https://upload.wikimedia.org/wikipedia/sco/9/9f/Twitter_bird_logo_2012.svg[https://upload.wikimedia.org/wikipedia/sco/9/9f/Twitter_bird_logo_2012,width=32,height=32]]
-https://github.com/ytyaru[image:https://github.githubassets.com/favicon.ico[https://github.githubassets.com/favicon,width=32,height=32]]https://mstdn.jp/web/accounts/233143[image:https://upload.wikimedia.org/wikipedia/commons/4/48/Mastodon_Logotype_%28Simple%29.svg[https://upload.wikimedia.org/wikipedia/commons/4/48/Mastodon_Logotype_%28Simple%29,width=32,height=32]]
-image:~//home/stingll/GIT/Github-vastingll/20250305_1305mmd/ShellScript大全/4.変数定義/4-1/4-1_779.779:javascript:window.mpurse.sendAsset('MEHCqJbgiNERCH3bRAtNSSD9uxPViEX1nu'
-
-アウトプットすべく己を導くためのブログ。その試行錯誤すらたれ流す。
-
-link:#[[.subscribing]# [.foreground]#読者です#
-[.background]#読者をやめる# # [.unsubscribing]#
-[.foreground]#読者になる# [.background]#読者になる# #]
-
-__ [.underline]## [.subscription-count .js-subscription-count]#3#
-
-[[footer-inner]]
-== はてなブログをはじめよう！
-
-ytyaruさんは、はてなブログを使っています。あなたもはてなブログをはじめてみませんか？
-
-https://blog.hatena.ne.jp/register?via=200227[はてなブログをはじめる（無料）]
-
-https://hatena.blog/guide[はてなブログとは]
-
-https://ytyaru.hatenablog.com/[image:https://cdn.image.st-hatena.com/image/square/4aac36de5ebe218f2ec4e52e1bce268776821a8d/backend=imagemagick;height=128;version=1;width=128/https%3A%2F%2Fcdn.user.blog.st-hatena.com%2Fcustom_blog_icon%2F120967881%2F1514215479294562[やってみる,width=16,height=16]
-[.footer-address-name]#やってみる#]
-
-Powered by https://hatena.blog/[Hatena Blog] |
-https://blog.hatena.ne.jp/-/abuse_report?target_url=https%3A%2F%2Fytyaru.hatenablog.com%2Fentry%2F2020%2F06%2F17%2F000000[ブログを報告する]
-
-[[fb-root]]
-
-__
-
-[.js-tweet-quote]#image:https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon.svg?version=1ca111bc9f0112690b12e1842a1ce8[https://cdn.blog.st-hatena.com/images/admin/quote/quote-x-icon,title="引用して投稿する"]#
-
-[[quote-stock-message-box]]
-[[quote-stock-succeeded-message]]
-引用をストックしました
-
-ストック一覧を見る
-
-閉じる
-
-[[quote-login-required-message]]
-引用するにはまずログインしてください
-
-ログイン
-
-閉じる
-
-[[quote-stock-failed-message]]
-引用をストックできませんでした。再度お試しください
-
-閉じる
-
-[[unstockable-quote-message-box]]
-限定公開記事のため引用できません。
-
-[[hidden-subscribe-button]]
-link:#[[.subscribing]# [.foreground]#読者です#
-[.background]#読者をやめる# # [.unsubscribing]#
-[.foreground]#読者になる# [.background]#読者になる# #]
-
-__ [.underline]## [.subscription-count .js-subscription-count]# #

@@ -1,0 +1,97 @@
+BASH:  /usr/bin/bash
+BASHOPTS:  checkwinsize:cmdhist:complete_fullquote:extquote:force_fignore:globasciiranges:globskipdots:hostcomplete:interactive_comments:patsub_replacement:progcomp:promptvars:sourcepath
+BASHPID:  17301
+BASH_ARGC:  0
+BASH_COMMAND:  echo "BASH_COMMAND: " ${BASH_COMMAND}
+BASH_LINENO:  0
+BASH_SOURCE:  ./SHELVAL01.txt
+BASH_SUBSHELL:  0
+BASH_VERSINFO:  5
+BASH_VERSION:  5.2.21(1)-release
+COMP_WORDBREAKS:  "'@><=;|&(:
+DIRSTACK:  /home/stingll/GIT/Github-vastingll02/ShellScript.script/04.変数定義.script/4-1.script
+EUID:  1000
+GROUPS:  1000
+HISTCMD:  0
+HOSTNAME:  trigk-spd
+HOSTTYPE:  x86_64
+LINENO:  33
+MACHTYPE:  x86_64-pc-linux-gnu
+OLDPWD:  /home/stingll/GIT/Github-vastingll02/ShellScript.script/04.変数定義.script
+OPTIND:  1
+OSTYPE:  linux-gnu
+PIPESTATUS:  0
+PPID:  10060
+PWD:  /home/stingll/GIT/Github-vastingll02/ShellScript.script/04.変数定義.script/4-1.script
+RANDOM:  18726
+SECONDS:  0
+SHELLOPTS:  braceexpand:hashall:interactive-comments:xtrace
+SHLVL:  2
+UID:  1000
+HOME:  /home/stingll
+LANG:  ja_JP.UTF-8
+LC_NUMERIC:  ja_JP.UTF-8
+OPTERR:  1
+PATH:  /home/stingll/.local/bin:/home/stingll/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+PS1: 
+PS2: 
+PS3: 
+PS4:  +
+
+BASH_ALIASES: 
+BASH_ARGV: 
+BASH_CMDS: 
+BASH_EXECUTION_STRING: 
+BASH_REMATCH: 
+COMP_CWORD: 
+COMP_KEY: 
+COMP_LINE: 
+COMP_POINT: 
+COMP_TYPE: 
+COMP_WORDS: 
+COPROC: 
+FUNCNAME: 
+MAPFILE: 
+OPTARG: 
+READLINE_LINE: 
+READLINE_POINT: 
+REPLY: 
+BASH_ENV: 
+BASH_XTRACEFD: 
+CDPATH: 
+COLUMNS: 
+COMPREPLY: 
+EMACS: 
+ENV: 
+BASH_ENV: 
+FCEDIT: 
+FIGNORE: 
+FUNCNEST: 
+GLOBIGNORE: 
+HISTCONTROL: 
+HISTFILE: 
+HISTFILESIZE: 
+HISTIGNORE: 
+HISTSIZE: 
+HISTTIMEFORMAT: 
+HOSTFILE: 
+IFS: 
+IGNOREEOF: 
+INPUTRC: 
+LC_ALL: 
+LC_COLLATE: 
+LC_CTYPE: 
+LC_MESSAGES: 
+LINES: 
+MAIL: 
+MAILCHECK: 
+MAILPATH: 
+POSIXLY_CORRECT: 
+PROMPT_COMMAND: 
+PROMPT_DIRTRIM: 
+SHELL:  /bin/bash
+TIMEFORMAT: 
+TMOUT: 
+TMPDIR: 
+auto_resume: 
+histchars: 

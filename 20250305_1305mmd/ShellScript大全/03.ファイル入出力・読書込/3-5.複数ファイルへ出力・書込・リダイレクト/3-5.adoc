@@ -1,0 +1,173 @@
+== tee - 複数のファイルに出力をリダイレクトする
+
+[.cat-label .cat-label-17]#Linuxコマンド#
+
+teeコマンドは標準入力を標準出力に書き出すだけではなく、引数に指定した複数のファイルにも書き出すことができます。teeコマンドは、別のコマンドの実行結果をファイル書き出すだけではなく標準出力でも確認したいときや、一つのコマンドの実行結果を使用して、複数の処理に分岐させたいときに利用できます。
+
+[[toc_container]]
+目次
+
+* link:#tee[[.toc_number .toc_depth_1]#1# teeコマンドの利用例]
+** link:#i[[.toc_number .toc_depth_2]#1.1#
+実行結果を同時にファイルと標準出力に出力]
+** link:#tee_-a[[.toc_number .toc_depth_2]#1.2#
+teeコマンドで出力するファイルに追記で出力 (-aオプション)]
+* link:#tee-2[[.toc_number .toc_depth_1]#2# teeコマンドのテクニック]
+** link:#tee-3[[.toc_number .toc_depth_2]#2.1#
+標準エラー出力もteeコマンドで出力]
+** link:#i-2[[.toc_number .toc_depth_2]#2.2#
+プロセス置換を用いてコマンドを処理]
+** link:#exec[[.toc_number .toc_depth_2]#2.3#
+execコマンドでファイルディスクリプタを変換]
+* link:#i-3[[.toc_number .toc_depth_1]#3# 参考]
+
+=== #teeコマンドの利用例#
+
+==== [#i]#実行結果を同時にファイルと標準出力に出力#
+
+teeコマンドは、パイプを利用し別のコマンドの実行結果をファイルと標準出力に書込可能です。ただし、teeコマンドで指定したファイルは存在しない場合は作成され、存在する場合は上書きされます。
+
+#*コマンド例と実行結果*#
+
+[source,bash,options="linenums"]
+----
+$ echo 'tee test' \| tee file1 file2
+tee test
+$ cat file1
+tee test
+$cat file2
+tee test
+----
+
+
+==== teeコマンドで出力するファイルに追記で出力
+
+(-aオプション) +
+-aオプションを用いると、teeコマンドで指定したファイルを上書きではなく、追記で出力していくことができます。ログファイルなどに利用する場合に便利なオプションになります。
+
+#*コマンド例と実行結果*#
+##[width="90%",cols="5%,95%",]
+
+[source,bash,options="linenums"]
+----
+$ cat file1
+tee test
+$ echo 'tee -a option test' \| tee -a file1
+tee -a option test
+$ cat file1
+tee test
+tee -a option test
+----
+
+
+=== [#tee-2]#teeコマンドのテクニック#
+
+==== [#tee-3]#標準エラー出力もteeコマンドで出力#
+
+リダイレクトの構文は
+
+[source,bash,options="linenums"]
+----
+[n]>redirect-filename
+----
+
+になり、nは数字で、ファイル記述子(ファイルディスクリプタ,file
+descriptor)を表します。 +
+ファイル記述子は基本的に、 +
+
+- 0が標準入力
+- 1が標準出力
+- 2が標準エラー出力 +
+
+を表します。redirect-filenameはファイル名を表します。出力の場合、nが省略された場合は1が指定されます。また、リダイレクトの複製の構文は
+
+
+[source,bash,options="linenums"]
+----
+[n]>&redirect-filename
+----
+
+で、この場合のredirect-filenameは数字でファイル記述子を表します。これはredirect-filenameのファイル記述子の出力先が、nのファイル記述子の出力先と同じになります。
+
+teeコマンドで標準エラーも同時に出力したい場合は、teeコマンドで通す前のコマンドに対して、標準エラー出力を標準出力にするリダイレクトを行います。 +
+つまり、リダイレクトの方法は以下のようになります。
+
+
+[source,bash,options="linenums"]
+----
+command 2>&1
+----
+
+以下、>&2 と 2> の相違をまとめます。 +
+
+この２つは、記述する場所と目的が全く異なります。 + 
+一言では、 + 
+
+- >&2 は「出力の送り先（右側）」に使い、 +
+- 2> は「キャッチする出力の指定（左側）」に使う。 +
+
+
+☆ 「2> とは？」 +
+ 　（エラーをファイルに繋ぐ）コマンドの左側（または後ろ）に書き、「エラー出力（2）をファイルへリダイレクトする」という指示です。
+
+  -　　　　　　 役割:   出力データの入り口を固定する
+  - 構文:   コマンド 2> ファイル名
+  - 例:     bash ls /not_exist 2> error.log
+　（出たエラーを error.log というファイルの中に流し込みます）
+
+☆ 「>&2 とは？」 +
+ （出力先を画面のエラー枠に変える）echo などの出力コマンドの右側に書き、「通常の出力（1）を、エラー出力（2）と同じ宛先に変更する」という指示です。
+  - 役割:   データの出口を切り替える
+  - 構文:   echo "メッセージ" >&2
+  - 例:     bash echo "設定ファイルがありません" >&2
+ （通常の文字列を、あえて「エラーメッセージ」としてターミナルに送ります）
+ 
+.  同時に使うとどうなるか？（イメージで理解する） +
+
+2つを組み合わせたスクリプトを作成すると、仕組みがすっきり理解できます。+ 
+
+【スクリプト：print.bash】
+[source,bash,options="linenums"]
+----
+#!/usr/bin/env bash
+echo "これは正常Data通知"
+echo "これはエラー通知" >&2  # <--- ここで >&2 を使用
+----
+
+このスクリプトを、 2> を使って実行してみます。
+
+[source,bash,options="linenums"]
+----
+$ ./print.bash 2> error.txt
+これは正常Data通知
+----
+ターミナル画面には「これは正常Data通知」だけが表示されます。 +
+error.txt を開くと、
+[source,bash,options="linenums"]
+----
+$ cat error.txt
+これはエラー通知
+----
+「これはエラー通知」が保存されています。>&2 を設定したため、2> という網にエラーメッセージだけが引っかかった状態になります。
+
+*コマンド例と実行結果*
+
+[source,bash,options="linenums"]
+----
+$ bash print.bash \| tee file
+これは正常Data通知
+これはエラー通知
+$
+$ cat file
+これは正常Data通知
+$
+$ bash print.sh 2>&1 \| tee file
+これは正常Data通知
+これはエラー通知
+$
+$ cat file
+これは正常Data通知
+これはエラー通知
+----
+
+
