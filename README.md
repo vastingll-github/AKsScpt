@@ -1,4 +1,4 @@
-# AKsScpt
+COMPREPLY=( $(compgen -W "$(echo "higehige" | sudo -S ls -1Rp | grep -v "[a-zA-Z0-9\t\S]*/$" | egrep "([.a-zA-Z0-9]*:$|[0-9]*\.[0-9]\.xz)" | awk '/[a-zA-Z0-9_\- ]*:$/ {dp=$0; sub(/.$/,"",dp)}; /^[0-9]+\.[0-9]\.xz/ {print dp "/" $0}') " -- "${cur}") )# AKsScpt
 All Kinds of Script
 
 
